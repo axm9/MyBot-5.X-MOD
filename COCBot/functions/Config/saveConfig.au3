@@ -466,6 +466,12 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "advanced", "TSMeetDE", 0)
 	EndIf
+	
+	If GUICtrlRead($chkTSAttackDB) = $GUI_CHECKED Then
+		IniWrite($config, "advanced", "TSAttackDB", 1)
+	Else
+		IniWrite($config, "advanced", "TSAttackDB", 0)
+	EndIf
 
 	IniWrite($config, "advanced", "THaddTiles", GUICtrlRead($txtTHaddtiles))
 	IniWrite($config, "advanced", "TSSearchGold", GUICtrlRead($txtTSMinGold))
@@ -473,7 +479,6 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "advanced", "TSSearchDE", GUICtrlRead($txtTSMinDarkElixir))
 	IniWrite($config, "advanced", "AttackTHType", _GUICtrlComboBox_GetCurSel($cmbAttackTHType))
 	$txtAttackTHType = GUICtrlRead($cmbAttackTHType)
-	;IniWrite($config, "advanced", "AttackBottomTHType", _GUICtrlComboBox_GetCurSel($cmbAttackbottomType))
 	IniWrite($config, "advanced", "AttackTHType", $scmbAttackTHType)
 
 

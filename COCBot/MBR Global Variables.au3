@@ -307,6 +307,7 @@ Global $ichkMeetDETH = 0
 Global $iMinGoldTH = 100000
 Global $iMinElixirTH = 100000
 Global $iMinDETH = 1000
+Global $ichkAttackDB = 0
 Global $ichkUseKingTH = 0
 Global $ichkUseQueenTH = 0
 Global $ichkUseWardenTH = 0

@@ -72,22 +72,6 @@ Func chkSnipeWhileTrain()
 
 EndFunc   ;==>chkSnipeWhileTrain
 
-#comments-start
-Func GUILightSpell()
-	If GUICtrlRead($chkLightSpell) = $GUI_CHECKED Then
-		$iChkLightSpell = 1
-		GUICtrlSetState($lbliLSpellQ, $GUI_ENABLE)
-		GUICtrlSetState($cmbiLSpellQ, $GUI_ENABLE)
-		GUICtrlSetState($lbliLSpellQ2, $GUI_ENABLE)
-	Else
-		$iChkLightSpell = 0
-		GUICtrlSetState($lbliLSpellQ, $GUI_DISABLE)
-		GUICtrlSetState($cmbiLSpellQ, $GUI_DISABLE)
-		GUICtrlSetState($lbliLSpellQ2, $GUI_DISABLE)
-	EndIf
-EndFunc   ;==>GUILightSpell
-#comments-end
-
 Func chkBullyMode()
 	If GUICtrlRead($chkBullyMode) = $GUI_CHECKED Then
 		$OptBullyMode = 1
@@ -111,8 +95,8 @@ Func chkSnipeMode()
 		GUICtrlSetState($chkTSMeetGold, $GUI_ENABLE)
 		GUICtrlSetState($chkTSMeetElixir, $GUI_ENABLE)
 		GUICtrlSetState($chkTSMeetDE, $GUI_ENABLE)
+		GUICtrlSetState($chkTSAttackDB, $GUI_ENABLE)
 		GUICtrlSetState($cmbAttackTHType, $GUI_ENABLE)
-		;GUICtrlSetState($cmbAttackbottomType, $GUI_ENABLE)
 		GUICtrlSetState($chkUseClastleTH, $GUI_ENABLE)
 		GUICtrlSetState($chkUseQueenTH, $GUI_ENABLE)
 		GUICtrlSetState($chkUseKingTH, $GUI_ENABLE)
@@ -128,8 +112,8 @@ Func chkSnipeMode()
 		GUICtrlSetState($txtTSMinGold, $GUI_DISABLE)
 		GUICtrlSetState($txtTSMinElixir, $GUI_DISABLE)
 		GUICtrlSetState($txtTSMinDarkElixir, $GUI_DISABLE)
+		GUICtrlSetState($chkTSAttackDB, $GUI_DISABLE)
 		GUICtrlSetState($cmbAttackTHType, $GUI_DISABLE)
-		;GUICtrlSetState($cmbAttackbottomType, $GUI_DISABLE)
 		GUICtrlSetState($chkUseClastleTH, $GUI_DISABLE)
 		GUICtrlSetState($chkUseQueenTH, $GUI_DISABLE)
 		GUICtrlSetState($chkUseKingTH, $GUI_DISABLE)
@@ -162,6 +146,14 @@ Func chkTSMeetDE()
 		_GUICtrlEdit_SetReadOnly($txtTSMinDarkElixir, True)
 	EndIf
 EndFunc   ;==>chkTSMeetDE
+
+Func chkTSAttackDB()
+	If GUICtrlRead($chkTSAttackDB) = $GUI_CHECKED Then
+		$ichkAttackDB = 1
+	Else
+		$ichkAttackDB = 0
+	EndIf
+EndFunc   ;==>chkTSAttackDB
 
 Func LoadThSnipeAttacks()
 	Dim $FileSearch, $NewFile

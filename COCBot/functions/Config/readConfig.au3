@@ -222,11 +222,11 @@ Func readConfig() ;Reads config and sets it to the variables
 		$ichkMeetGoldTH = IniRead($config, "advanced", "TSMeetGold", "0")
 		$ichkMeetElixirTH = IniRead($config, "advanced", "TSMeetElixir", "0")
 		$ichkMeetDETH = IniRead($config, "advanced", "TSMeetDE", "0")
+		$ichkAttackDB = IniRead($config, "advanced", "TSAttackDB", "0")
 		$iMinGoldTH = IniRead($config, "advanced", "TSSearchGold", "100000")
 		$iMinElixirTH = IniRead($config, "advanced", "TSSearchElixir", "100000")
 		$iMinDETH = IniRead($config, "advanced", "TSSearchDE", "1000")		
 		$THaddtiles = IniRead($config, "advanced", "THaddTiles", "2")
-		;$icmbAttackTHType = IniRead($config, "advanced", "AttackTHType", "3")
 		$scmbAttackTHType = IniRead($config, "advanced", "AttackTHType", "bam")
 		$icmbDeployBtmTHType = IniRead($config, "advanced", "AttackBottomTHType", "1")
 

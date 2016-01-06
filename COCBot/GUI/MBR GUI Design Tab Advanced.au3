@@ -59,6 +59,7 @@
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 2)
 			GUICtrlSetState(-1, $GUI_DISABLE)
+			
 		$y +=22
 		$lblSearchlimit = GUICtrlCreateLabel(GetTranslated(4,18, "Search limit") & ":", $x + 95, $y + 4, 72, -1, $SS_RIGHT)
 			$txtTip = GetTranslated(4,19, "Maximum searches first to return to home.")
@@ -68,6 +69,7 @@
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetState(-1, $GUI_DISABLE)
+			
 		$y +=22
 		$lblminArmyCapacityTHSnipe = GUICtrlCreateLabel(GetTranslated(4,20, "Min Army Capacity % to start Snipe") & ":", $x - 10, $y + 4, 177, -1, $SS_RIGHT)
 			$txtTip = GetTranslated(4,21, "Minimum Army Capacity to start Snipe.")
@@ -77,11 +79,13 @@
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 2)
 			GUICtrlSetState(-1, $GUI_DISABLE)
+			
 		$y +=22
 		$chkTrophyMode = GUICtrlCreateCheckbox(GetTranslated(4,23, "Snipe Combo"), $x-10, $y, -1, -1)
 			$txtTip = GetTranslated(4,24, "Adds the TH Snipe combination to the current search settings. (Example: Deadbase OR TH Snipe)")
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "chkSnipeMode")
+			
 		$y+= 25
 		$lblTHadd = GUICtrlCreateLabel(GetTranslated(4,25, "Add") & ":", $x -10, $y+5, -1, 17, $SS_RIGHT)
 		    $txtTip = GetTranslated(4,26, "Enter how many 'Grass' 1x1 tiles the TH may be from the Base edges to be seen as a TH Outside.") & @CRLF & GetTranslated(4,27, "Ex: (0) tiles; TH must be exactly at the edge. (4) tiles: TH may be 4 tiles farther from edges and closer to the center of the village.") & @CRLF & GetTranslated(4,28, "If the TH is farther away then the No. of tiles set, the base will be skipped.")
@@ -92,8 +96,8 @@
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 1)
 			GUICtrlSetState(-1, $GUI_DISABLE)
-		$y+= 30
 		
+		$y += 30		
 		$chkTSMeetGold = GUICtrlCreateCheckbox(GetTranslated(4,30, "Min Gold"), $x , $y, -1, -1)
 			$txtTip = GetTranslated(4,31, "Search for a base that meets the value set for Min. Gold.")
 			GUICtrlSetOnEvent(-1, "chkTSMeetGold")
@@ -104,6 +108,7 @@
 			GUICtrlSetLimit(-1, 6)
 		$picTSMinGold = GUICtrlCreateIcon($pIconLib, $eIcnGold, $x + 131, $y, 16, 16)
 			GUICtrlSetTip(-1, $txtTip)
+			
 		$y += 21
 		$chkTSMeetElixir= GUICtrlCreateCheckbox(GetTranslated(4,32, "Min Elixir"), $x , $y, -1, -1)
 			$txtTip = GetTranslated(4,33, "Search for a base that meets the value set for Min. Elixir.")
@@ -115,6 +120,7 @@
 			GUICtrlSetLimit(-1, 6)
 		$picTSMinElixir = GUICtrlCreateIcon($pIconLib, $eIcnElixir, $x + 131, $y, 16, 16)
 			GUICtrlSetTip(-1, $txtTip)
+			
 		$y += 21		
 		$chkTSMeetDE = GUICtrlCreateCheckbox(GetTranslated(4,35, "Min Dark"), $x , $y, -1, -1)
 			$txtTip = GetTranslated(4,36, "Search for a base that meets the value set for Min. Dark Elixir.")
@@ -126,8 +132,14 @@
 			GUICtrlSetLimit(-1, 5)
 		$picTSMinDarkElixir = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 131, $y, 16, 16)
 			GUICtrlSetTip(-1, $txtTip)
+			
 		$y += 30
-
+		$chkTSAttackDB = GUICtrlCreateCheckbox(GetTranslated(4,40, "Attack DB"), $x , $y, -1, -1)
+			$txtTip = GetTranslated(4,41, "Check loot gained by TH snipe and attack normally if it was a dead base")
+			GUICtrlSetOnEvent(-1, "chkTSAttackDB")
+			GUICtrlSetTip(-1, $txtTip)
+        
+		$y += 30
 		$lblAttackTHType = GUICtrlCreateLabel(GetTranslated(4,38, "Attack TH Type") & ":", $x - 15 , $y + 5 , 90, -1, $SS_RIGHT)
 		$cmbAttackTHType = GUICtrlCreateCombo("",  $x + 80, $y, 120, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, "")
@@ -137,13 +149,7 @@
 			GUICtrlSetState(-1, $GUI_DISABLE)
 			GUICtrlSetOnEvent(-1, "cmbAttackTHType")
 			LoadThSnipeAttacks()
-        ;$y +=25
-		;$lblAttackBottomType = GUICtrlCreateLabel(GetTranslated(4,40, "If TH is at bottom") & ":", $x -15 , $y + 5, 90, -1, $SS_RIGHT)
-		;$cmbAttackbottomType = GUICtrlCreateCombo("",  $x + 80, $y, 120, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		;	GUICtrlSetData(-1, GetTranslated(4,41, "Deploy: Zoomed In") & "|" & GetTranslated(4,42, "Deploy: On Sides")&"|" & GetTranslated(4,43, "Deploy: Custom"), GetTranslated(4,44, -1))
-		;	$txtTip = GetTranslated(4,44, "Select your strategy to deploy troops when the TH is detected on the Bottom of the screen!") & @CRLF & GetTranslated(4,45, "Zoomed in • Zoom in first, then Attack from bottom.") & @CRLF & GetTranslated(4,46, "On Sides • Try to get the TH from the left and right without zooming in, your troops may pick another target!") & @CRLF & GetTranslated(4,46, "Custom • Use your custom function")
-		;	GUICtrlSetTip(-1, $txtTip)
-		;	GUICtrlSetState(-1, $GUI_DISABLE)
+			
 		$y += 30
 		GUICtrlCreateIcon($pIconLib, $eIcnKing, $x - 16 , $y, 24, 24)
 		$chkUseKingTH = GUICtrlCreateCheckbox(GetTranslated(4,47, "Use King"), $x + 12 , $y+1, -1, -1)
@@ -180,16 +186,7 @@
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_DISABLE)
 
-
 		$y+= 30
-
-;~ 		$btnTestTHcsv = GUICtrlCreateButton("Test TH attack in log", $x , $y + 45, -1, -1)
-;~ 			$txtTip = "Click here to parse crv attack and show results in log"
-;~ 			GUICtrlSetTip(-1, $txtTip)
-;~ 			GUICtrlSetOnEvent(-1, "btnTestTHcsv")
-;~ 			IF $btnColor then GUICtrlSetBkColor(-1, 0x5CAD85)
-
-
 
     GUICtrlCreateGroup("", -99, -99, 1, 1)
 

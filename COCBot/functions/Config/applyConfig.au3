@@ -461,6 +461,13 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	chkTSMeetDE()
 	GUICtrlSetData($txtTSMinDarkElixir, $iMinDETH)
 
+	If $ichkAttackDB = 1 Then
+		GUICtrlSetState($chkTSAttackDB, $GUI_CHECKED)
+	ElseIf $ichkAttackDB = 0 Then
+		GUICtrlSetState($chkTSAttackDB, $GUI_UNCHECKED)
+	EndIf
+	chkTSAttackDB()
+
 	If $ichkUseKingTH = 1 Then
 		GUICtrlSetState($chkUseKingTH, $GUI_CHECKED)
 	ElseIf $ichkUseKingTH = 0 Then
