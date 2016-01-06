@@ -100,12 +100,12 @@ EndFunc   ;==>waitMainScreen
 Func TestLoots($GoldStart = 0, $ElixirStart = 0)
 	Local $GoldEnd = getGoldVillageSearch(48, 69)
 	Local $ElixirEnd = getElixirVillageSearch(48, 69 + 29)
-	Local $GoldPerc = 100 * ($GoldStart - $GoldEnd) / $GoldStart)
+	Local $GoldPerc = 100 * (($GoldStart - $GoldEnd) / $GoldStart)
 	Local $ElixirPerc = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart)
 	Setlog ("Gold loot % = " & $GoldPerc)
 	Setlog ("Elixir loot % " & $ElixirPerc)
 	If $GoldPerc < 5 And $ElixirPerc < 5 Then 		
-		Setlog ("Loot is mostly in collectors!")
+		Setlog ("Loot is mostly in collectors! Change to DB attack.")
 		If $zoomedin = True Then
 			ZoomOut()
 			$zoomedin = False
