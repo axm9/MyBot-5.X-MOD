@@ -1,0 +1,398 @@
+2015-12-27 17:04:40 :  My Bot v5.0.2 860x780 (BlueStacks) Powered by MyBot.run ~
+2015-12-27 17:04:40 : MyBot.mod.au3 Script running on WIN_81  X64
+2015-12-27 17:04:40 : =================== Bot Start ====================
+2015-12-27 17:04:40 : -------------------------  Current Profile: 01 --------------------------
+2015-12-27 17:04:40 : Trying to locate Main Screen
+2015-12-27 17:04:40 : Main Screen Located
+2015-12-27 17:04:42 : Detecting your Buildings..
+2015-12-27 17:04:43 : Finding your Clan Level, wait..
+2015-12-27 17:04:45 : Found Clan Level: 8
+2015-12-27 17:04:47 : Detecting your Village Theme
+2015-12-27 17:04:47 : Normal Theme detected
+2015-12-27 17:04:48 : Language setting is English: Correct.
+2015-12-27 17:04:49 : Trying to locate Main Screen
+2015-12-27 17:04:49 : Main Screen Located
+2015-12-27 17:04:51 : Village Report
+2015-12-27 17:04:51 : No. of Free/Total Builders: 0/5
+2015-12-27 17:04:51 :  [T]: 1 038
+2015-12-27 17:04:51 :  [G]: 6 858 911 [E]: 4 476 720 [D]: 145 064 [GEM]: 4 780
+2015-12-27 17:04:52 : Collecting Resources
+2015-12-27 17:05:00 : Checking if Village needs Rearming..
+2015-12-27 17:05:06 : Reloaded Inferno(s)
+2015-12-27 17:05:11 : Training Troops & Spells
+2015-12-27 17:05:12 : Checking Army Camp...
+2015-12-27 17:05:13 : Total Army Camp capacity: 240/240 (100%)
+2015-12-27 17:05:16 :  - No. of Barbarians: 147
+2015-12-27 17:05:16 :  - No. of Archers: 93
+2015-12-27 17:05:16 : Barracks and Spell factory status: 
+2015-12-27 17:05:16 : - Barracks detected: 4 | Available: 4 | Upgrading: 0
+2015-12-27 17:05:16 : - Dark Barracks detected: 2 | Available: 2 | Upgrading: 0
+2015-12-27 17:05:16 : - Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2015-12-27 17:05:16 : - Dark Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2015-12-27 17:05:17 : Your Army Camps are now Full
+2015-12-27 17:05:17 : Calculating Troops before Training new Army.
+2015-12-27 17:05:49 : Going to Attack...
+2015-12-27 17:05:55 : ============== Searching For Dead Base ===============
+2015-12-27 17:05:55 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-27 17:05:55 : Meet: Gold + Elixir, Dark
+2015-12-27 17:05:55 : Meet One and Attack!
+2015-12-27 17:05:55 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-27 17:05:55 : Aim: [G+E]: 250000 [D]: 1000 [T]: 0 for: Dead Base
+2015-12-27 17:05:55 : ============== Searching For Live Base ===============
+2015-12-27 17:05:55 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-27 17:05:55 : Meet: Gold + Elixir, Dark, Weak Base(Mortar: 7, WizTower: 7)
+2015-12-27 17:05:55 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-27 17:05:55 : Aim: [G+E]: 200000 [D]: 1000 [T]: 0 for: Live Base
+2015-12-27 17:05:55 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-27 17:05:55 : THSnipe Combo, 4 Tile(s),  Attack TH Outside custom1
+2015-12-27 17:05:55 : Aim: [G]: 100000 [E]: 100000 [D]: 1000
+2015-12-27 17:05:55 : ==================================================
+2015-12-27 17:06:01 :   1> [G]:  88528 [E]: 104275 [D]:  848 [T]:31 [TH]:10, Out
+2015-12-27 17:06:01 :       TH Outside Found! 
+2015-12-27 17:06:01 :       Resource requirement met for TH snipe 
+2015-12-27 17:06:03 : ================ Search Complete =================
+2015-12-27 17:06:03 : Initiating attack for: TH Snipe
+2015-12-27 17:06:05 : -*-Barbarians 147
+2015-12-27 17:06:05 : -*-Archers 93
+2015-12-27 17:06:05 : -*-Clan Castle 
+2015-12-27 17:06:05 : -*-Queen 
+2015-12-27 17:06:05 : -*-Heal Spells 3
+2015-12-27 17:06:05 : -*-Rage Spells 1
+2015-12-27 17:06:05 : -*-Jump Spells 1
+2015-12-27 17:06:05 : -*-Poison Spells 1
+2015-12-27 17:06:05 :  ====== Start Attack ====== 
+2015-12-27 17:06:07 : Sniping TH with Barch            	 
+2015-12-27 17:06:07 : Attacking TH with 1st wave of BARCH   
+2015-12-27 17:06:07 : Dropping Only wave of 5 Barbarians
+2015-12-27 17:06:08 : Deployment of 5 Barbarians was Successful!
+2015-12-27 17:06:10 :                                       
+2015-12-27 17:06:10 : Dropping Only wave of 5 Archers
+2015-12-27 17:06:11 : Deployment of 5 Archers was Successful!
+2015-12-27 17:06:13 :                                       
+2015-12-27 17:06:13 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:06:16 :                                       
+2015-12-27 17:06:16 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:06:20 :                                       
+2015-12-27 17:06:20 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:06:23 :                                       
+2015-12-27 17:06:23 : Oh Shit! Seems like a trapped TH!     
+2015-12-27 17:06:23 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:06:26 :                                       
+2015-12-27 17:06:26 : Quit wasting troops					 
+2015-12-27 17:06:27 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:06:30 :                                       
+2015-12-27 17:06:30 : ~Finished Attacking, waiting to finish
+2015-12-27 17:06:30 : Checking if the Gold&Elixir are changing for 20 sec...
+2015-12-27 17:06:33 : 										 
+2015-12-27 17:06:33 : Wait few sec before close attack
+2015-12-27 17:06:51 : Returning Home
+2015-12-27 17:06:55 : Loot: [G]: 6 378 [E]: 10 402 [DE]: 143 [T]: 10
+2015-12-27 17:06:55 : Bonus Percentage: 11%
+2015-12-27 17:06:56 : Bonus [G]: 407 out of 3 700 [E]: 407 out of 3 700
+2015-12-27 17:06:56 : Your league level is: Silver II
+2015-12-27 17:06:56 : Stars earned: 1
+2015-12-27 17:07:05 : Trying to locate Main Screen
+2015-12-27 17:07:05 : Main Screen Located
+2015-12-27 17:07:06 : Village Report
+2015-12-27 17:07:06 : No. of Free/Total Builders: 0/5
+2015-12-27 17:07:06 :  [T]: 1 048
+2015-12-27 17:07:06 :  [G]: 6 875 669 [E]: 4 496 890 [D]: 145 246 [GEM]: 4 780
+2015-12-27 17:07:08 : Collecting Resources
+2015-12-27 17:07:16 : Checking if Village needs Rearming..
+2015-12-27 17:07:22 : Reloaded Inferno(s)
+2015-12-27 17:07:26 : Chat Request: Giants Wizards Archers Minions Poision
+2015-12-27 17:07:26 : Castle Capacity : 0/30
+2015-12-27 17:07:26 : Archers Keyword found: archers
+2015-12-27 17:07:26 : Donating 8 Archers
+2015-12-27 17:07:30 : Training Troops & Spells
+2015-12-27 17:07:30 : Checking Army Camp...
+2015-12-27 17:07:31 : Total Army Camp capacity: 236/240 (98%)
+2015-12-27 17:07:32 :  - No. of Barbarians: 150
+2015-12-27 17:07:32 :  - No. of Archers: 86
+2015-12-27 17:07:32 :  - Archer Queen available
+2015-12-27 17:07:51 : ====== Waiting for full army ======
+2015-12-27 17:08:31 : Training Troops & Spells
+2015-12-27 17:08:31 : Checking Army Camp...
+2015-12-27 17:08:33 : Total Army Camp capacity: 240/240 (100%)
+2015-12-27 17:08:33 :  - No. of Barbarians: 152
+2015-12-27 17:08:33 :  - No. of Archers: 88
+2015-12-27 17:08:33 :  - Archer Queen available
+2015-12-27 17:08:35 : Your Army Camps are now Full
+2015-12-27 17:08:35 : Calculating Troops before Training new Army.
+2015-12-27 17:08:52 : Going to Attack...
+2015-12-27 17:08:57 : ============== Searching For Dead Base ===============
+2015-12-27 17:08:57 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-27 17:08:57 : Meet: Gold + Elixir, Dark
+2015-12-27 17:08:57 : Meet One and Attack!
+2015-12-27 17:08:57 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-27 17:08:57 : Aim: [G+E]: 250000 [D]: 1000 [T]: 0 for: Dead Base
+2015-12-27 17:08:57 : ============== Searching For Live Base ===============
+2015-12-27 17:08:57 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-27 17:08:57 : Meet: Gold + Elixir, Dark, Weak Base(Mortar: 7, WizTower: 7)
+2015-12-27 17:08:57 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-27 17:08:57 : Aim: [G+E]: 200000 [D]: 1000 [T]: 0 for: Live Base
+2015-12-27 17:08:57 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-27 17:08:57 : THSnipe Combo, 4 Tile(s),  Attack TH Outside custom1
+2015-12-27 17:08:57 : Aim: [G]: 100000 [E]: 100000 [D]: 1000
+2015-12-27 17:08:57 : ==================================================
+2015-12-27 17:09:06 :   1> [G]: 489643 [E]: 186825 [D]: 1473 [T]:33 [TH]:11, In
+2015-12-27 17:09:06 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-27 17:09:15 :   2> [G]: 286664 [E]: 334095 [D]:  702 [T]:33 [TH]:10, Out
+2015-12-27 17:09:15 :       TH Outside Found! 
+2015-12-27 17:09:15 :       Resource requirement met for TH snipe 
+2015-12-27 17:09:16 : ================ Search Complete =================
+2015-12-27 17:09:16 : Initiating attack for: TH Snipe
+2015-12-27 17:09:18 : -*-Barbarians 152
+2015-12-27 17:09:18 : -*-Archers 88
+2015-12-27 17:09:18 : -*-Clan Castle 
+2015-12-27 17:09:18 : -*-Queen 
+2015-12-27 17:09:18 : -*-Heal Spells 3
+2015-12-27 17:09:18 : -*-Rage Spells 1
+2015-12-27 17:09:18 : -*-Jump Spells 1
+2015-12-27 17:09:18 : -*-Poison Spells 1
+2015-12-27 17:09:18 :  ====== Start Attack ====== 
+2015-12-27 17:09:20 : Sniping TH with Barch            	 
+2015-12-27 17:09:21 : Attacking TH with 1st wave of BARCH   
+2015-12-27 17:09:21 : Dropping Only wave of 5 Barbarians
+2015-12-27 17:09:22 : Deployment of 5 Barbarians was Successful!
+2015-12-27 17:09:24 :                                       
+2015-12-27 17:09:24 : Dropping Only wave of 5 Archers
+2015-12-27 17:09:26 : Deployment of 5 Archers was Successful!
+2015-12-27 17:09:27 :                                       
+2015-12-27 17:09:27 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:09:31 :                                       
+2015-12-27 17:09:31 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:09:34 :                                       
+2015-12-27 17:09:34 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:09:37 :                                       
+2015-12-27 17:09:37 : Oh Shit! Seems like a trapped TH!     
+2015-12-27 17:09:37 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:09:41 :                                       
+2015-12-27 17:09:41 : Quit wasting troops					 
+2015-12-27 17:09:41 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:09:44 :                                       
+2015-12-27 17:09:44 : ~Finished Attacking, waiting to finish
+2015-12-27 17:09:44 : Checking if the Gold&Elixir are changing for 20 sec...
+2015-12-27 17:09:47 : 										 
+2015-12-27 17:09:47 : Wait few sec before close attack
+2015-12-27 17:10:10 : Returning Home
+2015-12-27 17:10:13 : Loot: [G]: 54 134 [E]: 63 613 [DE]: 109 [T]: 11
+2015-12-27 17:10:13 : Bonus Percentage: 3%
+2015-12-27 17:10:14 : Bonus [G]: 111 out of 3 700 [E]: 111 out of 3 700
+2015-12-27 17:10:14 : Your league level is: Silver II
+2015-12-27 17:10:15 : Stars earned: 1
+2015-12-27 17:10:23 : Trying to locate Main Screen
+2015-12-27 17:10:23 : Main Screen Located
+2015-12-27 17:10:24 : Village Report
+2015-12-27 17:10:24 : No. of Free/Total Builders: 0/5
+2015-12-27 17:10:24 :  [T]: 1 059
+2015-12-27 17:10:25 :  [G]: 6 928 114 [E]: 4 556 314 [D]: 145 361 [GEM]: 4 780
+2015-12-27 17:10:26 : Collecting Resources
+2015-12-27 17:10:34 : Checking if Village needs Rearming..
+2015-12-27 17:10:40 : Reloaded Inferno(s)
+2015-12-27 17:10:45 : Training Troops & Spells
+2015-12-27 17:10:46 : Checking Army Camp...
+2015-12-27 17:10:47 : Total Army Camp capacity: 240/240 (100%)
+2015-12-27 17:10:48 :  - No. of Barbarians: 153
+2015-12-27 17:10:48 :  - No. of Archers: 87
+2015-12-27 17:10:48 :  - Archer Queen available
+2015-12-27 17:10:49 : Your Army Camps are now Full
+2015-12-27 17:10:49 : Calculating Troops before Training new Army.
+2015-12-27 17:11:05 : Going to Attack...
+2015-12-27 17:11:10 : ============== Searching For Dead Base ===============
+2015-12-27 17:11:10 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-27 17:11:11 : Meet: Gold + Elixir, Dark
+2015-12-27 17:11:11 : Meet One and Attack!
+2015-12-27 17:11:11 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-27 17:11:11 : Aim: [G+E]: 250000 [D]: 1000 [T]: 0 for: Dead Base
+2015-12-27 17:11:11 : ============== Searching For Live Base ===============
+2015-12-27 17:11:11 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-27 17:11:11 : Meet: Gold + Elixir, Dark, Weak Base(Mortar: 7, WizTower: 7)
+2015-12-27 17:11:11 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-27 17:11:11 : Aim: [G+E]: 200000 [D]: 1000 [T]: 0 for: Live Base
+2015-12-27 17:11:11 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-27 17:11:11 : THSnipe Combo, 4 Tile(s),  Attack TH Outside custom1
+2015-12-27 17:11:11 : Aim: [G]: 100000 [E]: 100000 [D]: 1000
+2015-12-27 17:11:11 : ==================================================
+2015-12-27 17:11:18 :   1> [G]: 340954 [E]:   1526 [D]:  526 [T]:32 [TH]:11, In
+2015-12-27 17:11:18 :       Not a Dead Base
+2015-12-27 17:11:26 :   2> [G]:  40214 [E]:  93386 [D]:  863 [T]:37 [TH]: 9, In
+2015-12-27 17:11:34 :   3> [G]:  24592 [E]:  32544 [D]:  897 [T]:30 [TH]: 9, In
+2015-12-27 17:11:43 :   4> [G]: 322782 [E]:  94125 [D]:  930 [T]:36 [TH]:10, Out
+2015-12-27 17:11:43 :       TH Outside Found! 
+2015-12-27 17:11:43 :       Resource requirement met for TH snipe 
+2015-12-27 17:11:44 : ================ Search Complete =================
+2015-12-27 17:11:44 : Initiating attack for: TH Snipe
+2015-12-27 17:11:46 : -*-Barbarians 153
+2015-12-27 17:11:46 : -*-Archers 87
+2015-12-27 17:11:46 : -*-Clan Castle 
+2015-12-27 17:11:46 : -*-Queen 
+2015-12-27 17:11:46 : -*-Heal Spells 3
+2015-12-27 17:11:46 : -*-Rage Spells 1
+2015-12-27 17:11:46 : -*-Jump Spells 1
+2015-12-27 17:11:46 : -*-Poison Spells 1
+2015-12-27 17:11:46 :  ====== Start Attack ====== 
+2015-12-27 17:11:48 : Sniping TH with Barch            	 
+2015-12-27 17:11:49 : Attacking TH with 1st wave of BARCH   
+2015-12-27 17:11:49 : Dropping Only wave of 5 Barbarians
+2015-12-27 17:11:49 : Custom Center Bottom deployment THi = 16 ,x = 425 ,y = 568
+2015-12-27 17:11:50 : Deployment of Barbarians wasn't Successful!
+2015-12-27 17:11:50 :                                       
+2015-12-27 17:11:50 : Dropping Only wave of 5 Archers
+2015-12-27 17:11:51 : Custom Center Bottom deployment THi = 16 ,x = 425 ,y = 568
+2015-12-27 17:11:51 : Deployment of Archers wasn't Successful!
+2015-12-27 17:11:51 :                                       
+2015-12-27 17:11:52 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:11:55 :                                       
+2015-12-27 17:11:55 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:11:58 :                                       
+2015-12-27 17:11:58 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:11:59 : Bot was Paused!
+2015-12-27 17:12:48 : Bot was Resumed.
+2015-12-27 17:12:49 : Gold & Elixir change detected, waiting...
+2015-12-27 17:12:50 : Bot was Paused!
+2015-12-27 17:13:41 : Bot was Resumed.
+2015-12-27 17:13:41 : Gold & Elixir change detected, waiting...
+2015-12-27 17:13:44 : Gold & Elixir change detected, waiting...
+2015-12-27 17:13:44 :                                       
+2015-12-27 17:13:44 : Townhall has been destroyed!
+2015-12-27 17:13:45 : Wait few sec before close attack
+2015-12-27 17:13:51 : Returning Home
+2015-12-27 17:13:55 : Loot: [G]: 64 853 [E]: 45 002 [DE]: 481 [T]: 12
+2015-12-27 17:13:55 : Bonus Percentage: 19%
+2015-12-27 17:13:55 : Bonus [G]: 703 out of 3 700 [E]: 703 out of 3 700
+2015-12-27 17:13:56 : Your league level is: Silver II
+2015-12-27 17:13:56 : Stars earned: 1
+2015-12-27 17:14:04 : Trying to locate Main Screen
+2015-12-27 17:14:04 : Main Screen Located
+2015-12-27 17:14:06 : Village Report
+2015-12-27 17:14:06 : No. of Free/Total Builders: 0/5
+2015-12-27 17:14:06 :  [T]: 1 071
+2015-12-27 17:14:06 :  [G]: 6 990 070 [E]: 4 595 519 [D]: 145 852 [GEM]: 4 780
+2015-12-27 17:14:07 : Collecting Resources
+2015-12-27 17:14:16 : Checking if Village needs Rearming..
+2015-12-27 17:14:21 : Reloaded Inferno(s)
+2015-12-27 17:14:27 : Training Troops & Spells
+2015-12-27 17:14:28 : Checking Army Camp...
+2015-12-27 17:14:29 : Total Army Camp capacity: 235/240 (97%)
+2015-12-27 17:14:29 :  - No. of Barbarians: 143
+2015-12-27 17:14:30 :  - No. of Archers: 92
+2015-12-27 17:14:30 :  - Archer Queen available
+2015-12-27 17:14:49 : ====== Waiting for full army ======
+2015-12-27 17:15:33 : Training Troops & Spells
+2015-12-27 17:15:34 : Checking Army Camp...
+2015-12-27 17:15:35 : Total Army Camp capacity: 240/240 (100%)
+2015-12-27 17:15:36 :  - No. of Barbarians: 145
+2015-12-27 17:15:36 :  - No. of Archers: 95
+2015-12-27 17:15:36 :  - Archer Queen available
+2015-12-27 17:15:37 : Your Army Camps are now Full
+2015-12-27 17:15:37 : Calculating Troops before Training new Army.
+2015-12-27 17:15:54 : Going to Attack...
+2015-12-27 17:16:00 : ============== Searching For Dead Base ===============
+2015-12-27 17:16:00 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-27 17:16:00 : Meet: Gold + Elixir, Dark
+2015-12-27 17:16:00 : Meet One and Attack!
+2015-12-27 17:16:00 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-27 17:16:00 : Aim: [G+E]: 250000 [D]: 1000 [T]: 0 for: Dead Base
+2015-12-27 17:16:00 : ============== Searching For Live Base ===============
+2015-12-27 17:16:00 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-27 17:16:00 : Meet: Gold + Elixir, Dark, Weak Base(Mortar: 7, WizTower: 7)
+2015-12-27 17:16:00 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-27 17:16:00 : Aim: [G+E]: 200000 [D]: 1000 [T]: 0 for: Live Base
+2015-12-27 17:16:00 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-27 17:16:00 : THSnipe Combo, 4 Tile(s),  Attack TH Outside custom1
+2015-12-27 17:16:00 : Aim: [G]: 100000 [E]: 100000 [D]: 1000
+2015-12-27 17:16:00 : ==================================================
+2015-12-27 17:16:06 :   1> [G]:  39641 [E]:  81032 [D]:  451 [T]:34 [TH]: 8, Out
+2015-12-27 17:16:06 :       TH Outside Found! 
+2015-12-27 17:16:06 :       Resource requirement not met for TH snipe 
+2015-12-27 17:16:06 :   1> [G]:  39641 [E]:  81032 [D]:  451 [T]:34 [TH]: 8, Out
+2015-12-27 17:16:14 :   2> [G]:  41646 [E]:  38721 [D]:  459 [T]:35 [TH]: 9, Out
+2015-12-27 17:16:14 :       TH Outside Found! 
+2015-12-27 17:16:14 :       Resource requirement not met for TH snipe 
+2015-12-27 17:16:14 :   2> [G]:  41646 [E]:  38721 [D]:  459 [T]:35 [TH]: 9, Out
+2015-12-27 17:16:25 :   3> [G]:  95660 [E]: 321007 [D]: 1677 [T]:31 [TH]:10, In
+2015-12-27 17:16:25 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-27 17:16:32 :   4> [G]:  43398 [E]:  61646 [D]:  902 [T]:42 [TH]: 9, Out
+2015-12-27 17:16:32 :       TH Outside Found! 
+2015-12-27 17:16:32 :       Resource requirement not met for TH snipe 
+2015-12-27 17:16:32 :   4> [G]:  43398 [E]:  61646 [D]:  902 [T]:42 [TH]: 9, Out
+2015-12-27 17:16:42 :   5> [G]:  36365 [E]: 286009 [D]: 2661 [T]:42 [TH]:10, In
+2015-12-27 17:16:42 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-27 17:16:52 :   6> [G]: 214925 [E]:  43227 [D]: 2329 [T]:26 [TH]:10, In
+2015-12-27 17:16:52 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-27 17:16:59 :   7> [G]:  68853 [E]:  86468 [D]:  807 [T]:40 [TH]: 9, In
+2015-12-27 17:17:08 :   8> [G]:   6725 [E]: 297809 [D]:  850 [T]:37 [TH]: 9, In
+2015-12-27 17:17:08 :       Not a Dead Base
+2015-12-27 17:17:17 :   9> [G]: 162701 [E]: 281933 [D]:  713 [T]:11 [TH]: 9, In
+2015-12-27 17:17:17 :       Not a Dead Base
+2015-12-27 17:17:25 :  10> [G]: 248693 [E]: 282606 [D]:  486 [T]:38 [TH]: 9, In
+2015-12-27 17:17:25 :       Not a Dead Base
+2015-12-27 17:17:34 :  11> [G]: 412598 [E]:  89061 [D]: 3117 [T]:40 [TH]:10, In
+2015-12-27 17:17:34 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-27 17:17:44 :  12> [G]: 153329 [E]:  95483 [D]: 2417 [T]:31 [TH]:10, In
+2015-12-27 17:17:44 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-27 17:17:54 :  13> [G]: 239363 [E]: 337286 [D]: 2289 [T]:44 [TH]:10, In
+2015-12-27 17:17:54 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-27 17:18:02 :  14> [G]:  18524 [E]: 105890 [D]:  192 [T]:37 [TH]:10, In
+2015-12-27 17:18:10 :  15> [G]:  33932 [E]: 145665 [D]:   75 [T]:13 [TH]: 8, In
+2015-12-27 17:18:18 :  16> [G]: 196048 [E]:  69362 [D]:  895 [T]:33 [TH]: 9, In
+2015-12-27 17:18:18 :       Not a Dead Base
+2015-12-27 17:18:26 :  17> [G]:  33955 [E]: 100905 [D]: 1971 [T]:31 [TH]: 9, In
+2015-12-27 17:18:26 :       Not a Dead Base
+2015-12-27 17:18:35 :  18> [G]: 416979 [E]: 168402 [D]: 3210 [T]:47 [TH]:10, In
+2015-12-27 17:18:35 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-27 17:18:43 :  19> [G]:  67573 [E]: 222882 [D]:  803 [T]:31 [TH]: 9, In
+2015-12-27 17:18:43 :       Not a Dead Base
+2015-12-27 17:18:51 :  20> [G]:  94571 [E]:  86479 [D]: 1070 [T]:23 [TH]: 9, Out
+2015-12-27 17:18:51 :       TH Outside Found! 
+2015-12-27 17:18:51 :       Resource requirement met for TH snipe 
+2015-12-27 17:18:53 : ================ Search Complete =================
+2015-12-27 17:18:53 : Initiating attack for: TH Snipe
+2015-12-27 17:18:55 : -*-Barbarians 145
+2015-12-27 17:18:55 : -*-Archers 95
+2015-12-27 17:18:55 : -*-Clan Castle 
+2015-12-27 17:18:55 : -*-Queen 
+2015-12-27 17:18:55 : -*-Heal Spells 3
+2015-12-27 17:18:55 : -*-Rage Spells 1
+2015-12-27 17:18:55 : -*-Jump Spells 1
+2015-12-27 17:18:55 : -*-Poison Spells 1
+2015-12-27 17:18:55 :  ====== Start Attack ====== 
+2015-12-27 17:18:57 : Sniping TH with Barch            	 
+2015-12-27 17:18:57 : Attacking TH with 1st wave of BARCH   
+2015-12-27 17:18:57 : Dropping Only wave of 5 Barbarians
+2015-12-27 17:18:59 : Deployment of 5 Barbarians was Successful!
+2015-12-27 17:19:01 :                                       
+2015-12-27 17:19:01 : Dropping Only wave of 5 Archers
+2015-12-27 17:19:02 : Deployment of 5 Archers was Successful!
+2015-12-27 17:19:04 :                                       
+2015-12-27 17:19:04 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:19:07 :                                       
+2015-12-27 17:19:07 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:19:09 : Gold & Elixir change detected, waiting...
+2015-12-27 17:19:11 : Gold & Elixir change detected, waiting...
+2015-12-27 17:19:14 : Gold & Elixir change detected, waiting...
+2015-12-27 17:19:14 :                                       
+2015-12-27 17:19:14 : Checking if the Gold&Elixir are changing for 2 sec...
+2015-12-27 17:19:16 : Gold & Elixir change detected, waiting...
+2015-12-27 17:19:18 : Gold & Elixir change detected, waiting...
+2015-12-27 17:19:20 : Bot was Paused!
+2015-12-27 17:19:58 : Bot was Resumed.
+2015-12-27 17:19:59 : Gold & Elixir change detected, waiting...
+2015-12-27 17:19:59 :                                       
+2015-12-27 17:19:59 : Townhall has been destroyed!
+2015-12-27 17:20:00 : Wait few sec before close attack
+2015-12-27 17:20:08 : Returning Home
+2015-12-27 17:20:12 : Loot: [G]: 26 834 [E]: 37 551 [DE]: 60 [T]: 7
+2015-12-27 17:20:12 : Bonus Percentage: 19%
+2015-12-27 17:20:12 : Bonus [G]: 703 out of 3 700 [E]: 703 out of 3 700
+2015-12-27 17:20:13 : Your league level is: Silver II
+2015-12-27 17:20:13 : Stars earned: 1
+2015-12-27 17:20:21 : Trying to locate Main Screen
+2015-12-27 17:20:21 : Main Screen Located
+2015-12-27 17:20:23 : Village Report
+2015-12-27 17:20:23 : No. of Free/Total Builders: 0/5
+2015-12-27 17:20:23 :  [T]: 1 078
+2015-12-27 17:20:23 :  [G]: 6 999 879 [E]: 4 619 002 [D]: 145 922 [GEM]: 4 780
+2015-12-27 17:20:24 : Collecting Resources
+2015-12-27 17:20:33 : Checking if Village needs Rearming..

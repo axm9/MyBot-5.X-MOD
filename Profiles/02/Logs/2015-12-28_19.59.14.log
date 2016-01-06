@@ -1,0 +1,375 @@
+2015-12-28 19:59:15 :  My Bot v5.0.2 860x780 (BlueStacks) Powered by MyBot.run ~
+2015-12-28 19:59:15 : MyBot.mod.au3 Script running on WIN_81  X64
+2015-12-28 19:59:15 : =================== Bot Start ====================
+2015-12-28 19:59:15 : -------------------------  Current Profile: 01 --------------------------
+2015-12-28 19:59:16 : Trying to locate Main Screen
+2015-12-28 19:59:16 : Main Screen Located
+2015-12-28 19:59:17 : Detecting your Buildings..
+2015-12-28 19:59:18 : Finding your Clan Level, wait..
+2015-12-28 19:59:20 : Found Clan Level: 8
+2015-12-28 19:59:22 : Detecting your Village Theme
+2015-12-28 19:59:22 : Normal Theme detected
+2015-12-28 19:59:23 : Language setting is English: Correct.
+2015-12-28 19:59:24 : Trying to locate Main Screen
+2015-12-28 19:59:24 : Main Screen Located
+2015-12-28 19:59:25 : Village Report
+2015-12-28 19:59:25 : No. of Free/Total Builders: 0/5
+2015-12-28 19:59:25 :  [T]: 1 144
+2015-12-28 19:59:26 :  [G]: 4 539 748 [E]: 6 210 071 [D]: 38 561 [GEM]: 4 732
+2015-12-28 19:59:27 : Collecting Resources
+2015-12-28 19:59:38 : Chat Request: any
+2015-12-28 19:59:38 : Castle Capacity : 0/35
+2015-12-28 19:59:38 : Custom Donation Keyword found: any
+2015-12-28 19:59:39 : Donating 4 Barbarians
+2015-12-28 19:59:40 : Donating 4 Archers
+2015-12-28 19:59:42 : Chat Request: golem wizbarb fw thx
+2015-12-28 19:59:42 : Castle Capacity : 0/35
+2015-12-28 19:59:42 : King Blacklist Keyword found: golem
+2015-12-28 19:59:42 : Barbarians Blacklist Keyword found: golem
+2015-12-28 19:59:42 : Archers Blacklist Keyword found: golem
+2015-12-28 19:59:43 : Chat Request: any
+2015-12-28 19:59:43 : Castle Capacity : 24/30
+2015-12-28 19:59:43 : Custom Donation Keyword found: any
+2015-12-28 19:59:44 : Donating 4 Barbarians
+2015-12-28 19:59:45 : Donating 4 Archers
+2015-12-28 19:59:47 : Chat Request: an
+2015-12-28 19:59:47 : Castle Capacity : 20/30
+2015-12-28 19:59:50 : Training Troops & Spells
+2015-12-28 19:59:50 : Checking Army Camp...
+2015-12-28 19:59:51 : Total Army Camp capacity: 230/240 (95%)
+2015-12-28 19:59:54 :  - No. of Barbarians: 140
+2015-12-28 19:59:54 :  - No. of Archers: 90
+2015-12-28 19:59:54 : Barracks and Spell factory status: 
+2015-12-28 19:59:54 : - Barracks detected: 4 | Available: 4 | Upgrading: 0
+2015-12-28 19:59:54 : - Dark Barracks detected: 2 | Available: 2 | Upgrading: 0
+2015-12-28 19:59:54 : - Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2015-12-28 19:59:54 : - Dark Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2015-12-28 20:00:27 : ====== Waiting for full army ======
+2015-12-28 20:01:07 : Training Troops & Spells
+2015-12-28 20:01:08 : Checking Army Camp...
+2015-12-28 20:01:09 : Total Army Camp capacity: 240/240 (100%)
+2015-12-28 20:01:10 :  - No. of Barbarians: 146
+2015-12-28 20:01:10 :  - No. of Archers: 94
+2015-12-28 20:01:11 : Your Army Camps are now Full
+2015-12-28 20:01:11 : Calculating Troops before Training new Army.
+2015-12-28 20:01:28 : Going to Attack...
+2015-12-28 20:01:34 : ============== Searching For Dead Base ===============
+2015-12-28 20:01:34 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-28 20:01:34 : Meet: Gold + Elixir, Dark
+2015-12-28 20:01:34 : Meet One and Attack!
+2015-12-28 20:01:34 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-28 20:01:34 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2015-12-28 20:01:34 : ============== Searching For Live Base ===============
+2015-12-28 20:01:34 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-28 20:01:34 : Meet: Gold + Elixir, Dark, Weak Base(Mortar: 7, WizTower: 7)
+2015-12-28 20:01:34 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-28 20:01:34 : Aim: [G+E]: 200000 [D]: 1000 [T]: 0 for: Live Base
+2015-12-28 20:01:34 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-28 20:01:34 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2015-12-28 20:01:34 : Aim: [G]: 100000 [E]: 100000 [D]: 1000
+2015-12-28 20:01:34 : ==================================================
+2015-12-28 20:01:42 :   1> [G]: 101912 [E]:  17256 [D]:  615 [T]:20 [TH]: 9, In
+2015-12-28 20:01:51 :   2> [G]: 454911 [E]: 198387 [D]: 3002 [T]:26 [TH]:10, In
+2015-12-28 20:01:51 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-28 20:02:00 :   3> [G]:  21394 [E]:  79354 [D]: 1489 [T]:20 [TH]:10, In
+2015-12-28 20:02:00 :       Not a Dead Base
+2015-12-28 20:02:08 :   4> [G]: 422806 [E]: 363780 [D]: 1393 [T]:34 [TH]:10, In
+2015-12-28 20:02:08 :       Not a Weak Base for Live Base, Not a Dead Base
+2015-12-28 20:02:16 :   5> [G]: 160548 [E]: 129925 [D]:  828 [T]:33 [TH]:10, Out
+2015-12-28 20:02:16 :       TH Outside Found! 
+2015-12-28 20:02:16 :       Resource requirement met for TH snipe 
+2015-12-28 20:02:17 : ================ Search Complete =================
+2015-12-28 20:02:17 : Initiating attack for: TH Snipe
+2015-12-28 20:02:19 : -*-Barbarians 146
+2015-12-28 20:02:19 : -*-Archers 94
+2015-12-28 20:02:19 : -*-Clan Castle 
+2015-12-28 20:02:19 : -*-Heal Spells 3
+2015-12-28 20:02:19 : -*-Rage Spells 1
+2015-12-28 20:02:19 : -*-Jump Spells 1
+2015-12-28 20:02:19 : -*-Poison Spells 1
+2015-12-28 20:02:19 :  ====== Start Attack ====== 
+2015-12-28 20:02:21 : Sniping TH with Barch            	 
+2015-12-28 20:02:21 : Attacking TH with 1st wave of BARCH   
+2015-12-28 20:02:22 : Dropping Only wave of 4 Barbarians
+2015-12-28 20:02:22 : Custom Center Bottom deployment THi = 16 ,x = 427 ,y = 533
+2015-12-28 20:02:23 : Deployment of 4 Barbarians was Successful!
+2015-12-28 20:02:25 :                                       
+2015-12-28 20:02:25 : Dropping Only wave of 4 Archers
+2015-12-28 20:02:26 : Custom Center Bottom deployment THi = 16 ,x = 427 ,y = 533
+2015-12-28 20:02:26 : Deployment of 4 Archers was Successful!
+2015-12-28 20:02:28 :                                       
+2015-12-28 20:02:29 : Checking if the Gold&Elixir are changing...
+2015-12-28 20:02:31 :                                       
+2015-12-28 20:02:33 : Checking if the Gold&Elixir are changing...
+2015-12-28 20:02:35 :                                       
+2015-12-28 20:02:36 : Checking if the Gold&Elixir are changing...
+2015-12-28 20:02:38 :                                       
+2015-12-28 20:02:38 : Oh Shit! Seems like a trapped TH!     
+2015-12-28 20:02:39 : Checking if the Gold&Elixir are changing...
+2015-12-28 20:02:40 : Bot was Paused!
+2015-12-28 20:03:57 : Bot was Resumed.
+2015-12-28 20:03:57 : Gold & Elixir change detected, waiting...
+2015-12-28 20:03:59 :                                       
+2015-12-28 20:03:59 : Townhall has been destroyed!
+2015-12-28 20:04:01 : Wait few sec before close attack
+2015-12-28 20:04:10 : Returning Home
+2015-12-28 20:04:14 : Loot: [G]: 102 205 [E]: 79 501 [DE]: 725 [T]: 11
+2015-12-28 20:04:14 : Bonus Percentage: 52%
+2015-12-28 20:04:14 : Bonus [G]: 1 924 out of 3 700 [E]: 1 924 out of 3 700
+2015-12-28 20:04:15 : Your league level is: Silver II
+2015-12-28 20:04:15 : Stars earned: 1
+2015-12-28 20:04:23 : Trying to locate Main Screen
+2015-12-28 20:04:23 : Main Screen Located
+2015-12-28 20:04:25 : Village Report
+2015-12-28 20:04:25 : No. of Free/Total Builders: 0/5
+2015-12-28 20:04:25 :  [T]: 1 155
+2015-12-28 20:04:25 :  [G]: 4 639 605 [E]: 6 277 923 [D]: 39 308 [GEM]: 4 732
+2015-12-28 20:04:26 : Collecting Resources
+2015-12-28 20:04:37 : Chat Request: 1 golem, 1 wizard, 1 barb eq
+2015-12-28 20:04:37 : Castle Capacity : 30/35
+2015-12-28 20:04:37 : King Blacklist Keyword found: golem
+2015-12-28 20:04:37 : Barbarians Blacklist Keyword found: golem
+2015-12-28 20:04:37 : Archers Blacklist Keyword found: golem
+2015-12-28 20:04:38 : Chat Request: golem wizbarb fw thx
+2015-12-28 20:04:38 : Castle Capacity : 30/35
+2015-12-28 20:04:38 : King Blacklist Keyword found: golem
+2015-12-28 20:04:38 : Barbarians Blacklist Keyword found: golem
+2015-12-28 20:04:38 : Archers Blacklist Keyword found: golem
+2015-12-28 20:04:40 : Chat Request: an
+2015-12-28 20:04:40 : Castle Capacity : 20/30
+2015-12-28 20:04:43 : Training Troops & Spells
+2015-12-28 20:04:43 : Checking Army Camp...
+2015-12-28 20:04:44 : Total Army Camp capacity: 202/240 (84%)
+2015-12-28 20:04:45 :  - No. of Barbarians: 127
+2015-12-28 20:04:45 :  - No. of Archers: 75
+2015-12-28 20:05:04 : ====== Waiting for full army ======
+2015-12-28 20:05:44 : Training Troops & Spells
+2015-12-28 20:05:45 : Checking Army Camp...
+2015-12-28 20:05:46 : Total Army Camp capacity: 212/240 (88%)
+2015-12-28 20:05:47 :  - No. of Barbarians: 135
+2015-12-28 20:05:47 :  - No. of Archers: 79
+2015-12-28 20:06:05 : Trophy Count : 1155
+2015-12-28 20:06:05 : Dropping Trophies to 900
+2015-12-28 20:06:07 : Going to Attack...
+2015-12-28 20:06:13 : Identification of your troops:
+2015-12-28 20:06:13 : Initiating attack for: Drop Trophy
+2015-12-28 20:06:15 : -*-Barbarians 137
+2015-12-28 20:06:15 : -*-Archers 81
+2015-12-28 20:06:15 : -*-Clan Castle 
+2015-12-28 20:06:15 : -*-Heal Spells 3
+2015-12-28 20:06:15 : -*-Rage Spells 1
+2015-12-28 20:06:15 : -*-Jump Spells 1
+2015-12-28 20:06:15 : -*-Poison Spells 1
+2015-12-28 20:06:15 : Deploying 1 Barbarian
+2015-12-28 20:06:15 :  Trophy loss = 19
+2015-12-28 20:06:16 : Returning Home
+2015-12-28 20:06:23 : Trophy Count : 1136
+2015-12-28 20:06:23 : Dropping Trophies to 900
+2015-12-28 20:06:25 : Going to Attack...
+2015-12-28 20:06:31 : Identification of your troops:
+2015-12-28 20:06:31 : Initiating attack for: Drop Trophy
+2015-12-28 20:06:33 : -*-Barbarians 136
+2015-12-28 20:06:33 : -*-Archers 83
+2015-12-28 20:06:33 : -*-Clan Castle 
+2015-12-28 20:06:33 : -*-Heal Spells 3
+2015-12-28 20:06:33 : -*-Rage Spells 1
+2015-12-28 20:06:33 : -*-Jump Spells 1
+2015-12-28 20:06:33 : -*-Poison Spells 1
+2015-12-28 20:06:33 : Deploying 1 Barbarian
+2015-12-28 20:06:33 :  Trophy loss = 21
+2015-12-28 20:06:34 : Returning Home
+2015-12-28 20:06:41 : Trophy Count : 1115
+2015-12-28 20:06:41 : Dropping Trophies to 900
+2015-12-28 20:06:43 : Going to Attack...
+2015-12-28 20:06:49 : Identification of your troops:
+2015-12-28 20:06:49 : Initiating attack for: Drop Trophy
+2015-12-28 20:06:51 : -*-Barbarians 137
+2015-12-28 20:06:51 : -*-Archers 83
+2015-12-28 20:06:51 : -*-Clan Castle 
+2015-12-28 20:06:51 : -*-Heal Spells 3
+2015-12-28 20:06:51 : -*-Rage Spells 1
+2015-12-28 20:06:51 : -*-Jump Spells 1
+2015-12-28 20:06:51 : -*-Poison Spells 1
+2015-12-28 20:06:51 : Deploying 1 Barbarian
+2015-12-28 20:06:51 :  Trophy loss = 16
+2015-12-28 20:06:52 : Returning Home
+2015-12-28 20:06:59 : Trophy Count : 1099
+2015-12-28 20:06:59 : Dropping Trophies to 900
+2015-12-28 20:07:01 : Going to Attack...
+2015-12-28 20:07:07 : Identification of your troops:
+2015-12-28 20:07:07 : Initiating attack for: Drop Trophy
+2015-12-28 20:07:09 : -*-Barbarians 136
+2015-12-28 20:07:09 : -*-Archers 85
+2015-12-28 20:07:09 : -*-Clan Castle 
+2015-12-28 20:07:09 : -*-Heal Spells 3
+2015-12-28 20:07:09 : -*-Rage Spells 1
+2015-12-28 20:07:09 : -*-Jump Spells 1
+2015-12-28 20:07:09 : -*-Poison Spells 1
+2015-12-28 20:07:09 : Deploying 1 Barbarian
+2015-12-28 20:07:09 :  Trophy loss = 19
+2015-12-28 20:07:10 : Returning Home
+2015-12-28 20:07:17 : Trophy Count : 1080
+2015-12-28 20:07:17 : Dropping Trophies to 900
+2015-12-28 20:07:19 : Going to Attack...
+2015-12-28 20:07:25 : Identification of your troops:
+2015-12-28 20:07:25 : Initiating attack for: Drop Trophy
+2015-12-28 20:07:27 : -*-Barbarians 137
+2015-12-28 20:07:27 : -*-Archers 85
+2015-12-28 20:07:27 : -*-Clan Castle 
+2015-12-28 20:07:27 : -*-Heal Spells 3
+2015-12-28 20:07:27 : -*-Rage Spells 1
+2015-12-28 20:07:27 : -*-Jump Spells 1
+2015-12-28 20:07:27 : -*-Poison Spells 1
+2015-12-28 20:07:27 : Deploying 1 Barbarian
+2015-12-28 20:07:27 :  Trophy loss = 20
+2015-12-28 20:07:28 : Returning Home
+2015-12-28 20:07:35 : Trophy Count : 1060
+2015-12-28 20:07:35 : Dropping Trophies to 900
+2015-12-28 20:07:37 : Going to Attack...
+2015-12-28 20:07:43 : Identification of your troops:
+2015-12-28 20:07:43 : Initiating attack for: Drop Trophy
+2015-12-28 20:07:45 : -*-Barbarians 138
+2015-12-28 20:07:45 : -*-Archers 87
+2015-12-28 20:07:45 : -*-Clan Castle 
+2015-12-28 20:07:45 : -*-Heal Spells 3
+2015-12-28 20:07:45 : -*-Rage Spells 1
+2015-12-28 20:07:45 : -*-Jump Spells 1
+2015-12-28 20:07:45 : -*-Poison Spells 1
+2015-12-28 20:07:45 : Deploying 1 Barbarian
+2015-12-28 20:07:45 :  Trophy loss = 19
+2015-12-28 20:07:46 : Returning Home
+2015-12-28 20:07:53 : Trophy Count : 1041
+2015-12-28 20:07:53 : Dropping Trophies to 900
+2015-12-28 20:07:55 : Going to Attack...
+2015-12-28 20:08:01 : Identification of your troops:
+2015-12-28 20:08:01 : Initiating attack for: Drop Trophy
+2015-12-28 20:08:03 : -*-Barbarians 137
+2015-12-28 20:08:03 : -*-Archers 87
+2015-12-28 20:08:03 : -*-Clan Castle 
+2015-12-28 20:08:03 : -*-Heal Spells 3
+2015-12-28 20:08:03 : -*-Rage Spells 1
+2015-12-28 20:08:03 : -*-Jump Spells 1
+2015-12-28 20:08:03 : -*-Poison Spells 1
+2015-12-28 20:08:03 : Deploying 1 Barbarian
+2015-12-28 20:08:03 :  Trophy loss = 17
+2015-12-28 20:08:04 : Returning Home
+2015-12-28 20:08:11 : Trophy Count : 1024
+2015-12-28 20:08:11 : Dropping Trophies to 900
+2015-12-28 20:08:13 : Going to Attack...
+2015-12-28 20:08:19 : Identification of your troops:
+2015-12-28 20:08:19 : Initiating attack for: Drop Trophy
+2015-12-28 20:08:21 : -*-Barbarians 138
+2015-12-28 20:08:21 : -*-Archers 89
+2015-12-28 20:08:21 : -*-Clan Castle 
+2015-12-28 20:08:21 : -*-Heal Spells 3
+2015-12-28 20:08:21 : -*-Rage Spells 1
+2015-12-28 20:08:21 : -*-Jump Spells 1
+2015-12-28 20:08:21 : -*-Poison Spells 1
+2015-12-28 20:08:21 : Deploying 1 Barbarian
+2015-12-28 20:08:21 :  Trophy loss = 20
+2015-12-28 20:08:23 : Returning Home
+2015-12-28 20:08:29 : Trophy Count : 1004
+2015-12-28 20:08:29 : Dropping Trophies to 900
+2015-12-28 20:08:31 : Going to Attack...
+2015-12-28 20:08:37 : Identification of your troops:
+2015-12-28 20:08:37 : Initiating attack for: Drop Trophy
+2015-12-28 20:08:39 : -*-Barbarians 139
+2015-12-28 20:08:39 : -*-Archers 91
+2015-12-28 20:08:39 : -*-Clan Castle 
+2015-12-28 20:08:39 : -*-Heal Spells 3
+2015-12-28 20:08:39 : -*-Rage Spells 1
+2015-12-28 20:08:39 : -*-Jump Spells 1
+2015-12-28 20:08:39 : -*-Poison Spells 1
+2015-12-28 20:08:40 : Deploying 1 Barbarian
+2015-12-28 20:08:40 :  Trophy loss = 22
+2015-12-28 20:08:41 : Returning Home
+2015-12-28 20:08:47 : Trophy Count : 982
+2015-12-28 20:08:47 : Dropping Trophies to 900
+2015-12-28 20:08:50 : Going to Attack...
+2015-12-28 20:08:58 : Identification of your troops:
+2015-12-28 20:08:58 : Initiating attack for: Drop Trophy
+2015-12-28 20:09:00 : -*-Barbarians 138
+2015-12-28 20:09:00 : -*-Archers 91
+2015-12-28 20:09:00 : -*-Clan Castle 
+2015-12-28 20:09:00 : -*-Heal Spells 3
+2015-12-28 20:09:00 : -*-Rage Spells 1
+2015-12-28 20:09:00 : -*-Jump Spells 1
+2015-12-28 20:09:00 : -*-Poison Spells 1
+2015-12-28 20:09:00 : Deploying 1 Barbarian
+2015-12-28 20:09:00 :  Trophy loss = 13
+2015-12-28 20:09:01 : Returning Home
+2015-12-28 20:09:08 : Trophy Count : 969
+2015-12-28 20:09:08 : Dropping Trophies to 900
+2015-12-28 20:09:10 : Going to Attack...
+2015-12-28 20:09:16 : Identification of your troops:
+2015-12-28 20:09:16 : Initiating attack for: Drop Trophy
+2015-12-28 20:09:18 : -*-Barbarians 139
+2015-12-28 20:09:18 : -*-Archers 93
+2015-12-28 20:09:18 : -*-Clan Castle 
+2015-12-28 20:09:18 : -*-Heal Spells 3
+2015-12-28 20:09:18 : -*-Rage Spells 1
+2015-12-28 20:09:18 : -*-Jump Spells 1
+2015-12-28 20:09:18 : -*-Poison Spells 1
+2015-12-28 20:09:18 : Deploying 1 Barbarian
+2015-12-28 20:09:18 :  Trophy loss = 18
+2015-12-28 20:09:19 : Returning Home
+2015-12-28 20:09:26 : Trophy Count : 951
+2015-12-28 20:09:26 : Dropping Trophies to 900
+2015-12-28 20:09:28 : Going to Attack...
+2015-12-28 20:09:34 : Identification of your troops:
+2015-12-28 20:09:34 : Initiating attack for: Drop Trophy
+2015-12-28 20:09:36 : -*-Barbarians 140
+2015-12-28 20:09:36 : -*-Archers 93
+2015-12-28 20:09:36 : -*-Clan Castle 
+2015-12-28 20:09:36 : -*-Heal Spells 3
+2015-12-28 20:09:36 : -*-Rage Spells 1
+2015-12-28 20:09:36 : -*-Jump Spells 1
+2015-12-28 20:09:36 : -*-Poison Spells 1
+2015-12-28 20:09:36 : Deploying 1 Barbarian
+2015-12-28 20:09:36 :  Trophy loss = 19
+2015-12-28 20:09:37 : Returning Home
+2015-12-28 20:09:44 : Trophy Count : 932
+2015-12-28 20:09:44 : Dropping Trophies to 900
+2015-12-28 20:09:46 : Going to Attack...
+2015-12-28 20:09:55 : Identification of your troops:
+2015-12-28 20:09:55 : Initiating attack for: Drop Trophy
+2015-12-28 20:09:57 : -*-Barbarians 139
+2015-12-28 20:09:57 : -*-Archers 95
+2015-12-28 20:09:57 : -*-Clan Castle 
+2015-12-28 20:09:57 : -*-Heal Spells 3
+2015-12-28 20:09:57 : -*-Rage Spells 1
+2015-12-28 20:09:57 : -*-Jump Spells 1
+2015-12-28 20:09:57 : -*-Poison Spells 1
+2015-12-28 20:09:57 : Deploying 1 Barbarian
+2015-12-28 20:09:57 :  Trophy loss = 13
+2015-12-28 20:09:58 : Returning Home
+2015-12-28 20:10:05 : Trophy Count : 919
+2015-12-28 20:10:05 : Dropping Trophies to 900
+2015-12-28 20:10:07 : Going to Attack...
+2015-12-28 20:10:13 : Identification of your troops:
+2015-12-28 20:10:13 : Initiating attack for: Drop Trophy
+2015-12-28 20:10:15 : -*-Barbarians 140
+2015-12-28 20:10:15 : -*-Archers 95
+2015-12-28 20:10:15 : -*-Clan Castle 
+2015-12-28 20:10:15 : -*-Heal Spells 3
+2015-12-28 20:10:15 : -*-Rage Spells 1
+2015-12-28 20:10:15 : -*-Jump Spells 1
+2015-12-28 20:10:15 : -*-Poison Spells 1
+2015-12-28 20:10:15 : Deploying 1 Barbarian
+2015-12-28 20:10:15 :  Trophy loss = 16
+2015-12-28 20:10:16 : Returning Home
+2015-12-28 20:10:23 : Trophy Count : 903
+2015-12-28 20:10:23 : Dropping Trophies to 900
+2015-12-28 20:10:25 : Going to Attack...
+2015-12-28 20:10:32 : Identification of your troops:
+2015-12-28 20:10:32 : Initiating attack for: Drop Trophy
+2015-12-28 20:10:34 : -*-Barbarians 141
+2015-12-28 20:10:34 : -*-Archers 97
+2015-12-28 20:10:34 : -*-Clan Castle 
+2015-12-28 20:10:34 : -*-Heal Spells 3
+2015-12-28 20:10:34 : -*-Rage Spells 1
+2015-12-28 20:10:34 : -*-Jump Spells 1
+2015-12-28 20:10:34 : -*-Poison Spells 1
+2015-12-28 20:10:34 : Deploying 1 Barbarian
+2015-12-28 20:10:34 :  Trophy loss = 16
+2015-12-28 20:10:35 : Returning Home

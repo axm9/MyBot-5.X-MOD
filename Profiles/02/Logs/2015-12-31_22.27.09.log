@@ -1,0 +1,495 @@
+2015-12-31 22:27:10 :  My Bot v5.0.2 860x780 (BlueStacks) Powered by MyBot.run ~
+2015-12-31 22:27:10 : MyBot.mod.au3 Script running on WIN_81  X64
+2015-12-31 22:27:10 : =================== Bot Start ====================
+2015-12-31 22:27:10 : -------------------------  Current Profile: 01 --------------------------
+2015-12-31 22:27:10 : Trying to locate Main Screen
+2015-12-31 22:27:10 : Main Screen Located
+2015-12-31 22:27:12 : Detecting your Buildings..
+2015-12-31 22:27:13 : Finding your Clan Level, wait..
+2015-12-31 22:27:13 : Found Clan Level: 8
+2015-12-31 22:27:15 : Detecting your Village Theme
+2015-12-31 22:27:15 : Normal Theme detected
+2015-12-31 22:27:16 : Language setting is English: Correct.
+2015-12-31 22:27:17 : Trying to locate Main Screen
+2015-12-31 22:27:17 : Main Screen Located
+2015-12-31 22:27:19 : Village Report
+2015-12-31 22:27:19 : No. of Free/Total Builders: 1/5
+2015-12-31 22:27:19 :  [T]: 1 099
+2015-12-31 22:27:19 :  [G]: 3 261 871 [E]: 3 228 747 [D]: 167 997 [GEM]: 4 112
+2015-12-31 22:27:20 : Collecting Resources
+2015-12-31 22:27:31 : Chat Request: hound plz
+2015-12-31 22:27:32 : Castle Capacity : 0/35
+2015-12-31 22:27:32 : King Blacklist Keyword found: hound
+2015-12-31 22:27:32 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:27:32 : Archers Blacklist Keyword found: hound
+2015-12-31 22:27:34 : Training Troops & Spells
+2015-12-31 22:27:35 : Checking Army Camp...
+2015-12-31 22:27:36 : Total Army Camp capacity: 122/240 (50%)
+2015-12-31 22:27:37 :  - No. of Barbarians: 62
+2015-12-31 22:27:37 :  - No. of Archers: 60
+2015-12-31 22:27:37 : Barracks and Spell factory status: 
+2015-12-31 22:27:37 : - Barracks detected: 4 | Available: 4 | Upgrading: 0
+2015-12-31 22:27:37 : - Dark Barracks detected: 2 | Available: 2 | Upgrading: 0
+2015-12-31 22:27:37 : - Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2015-12-31 22:27:37 : - Dark Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2015-12-31 22:28:10 : ====== Waiting for full army ======
+2015-12-31 22:28:50 : Training Troops & Spells
+2015-12-31 22:28:51 : Checking Army Camp...
+2015-12-31 22:28:52 : Total Army Camp capacity: 135/240 (56%)
+2015-12-31 22:28:53 :  - No. of Barbarians: 69
+2015-12-31 22:28:53 :  - No. of Archers: 66
+2015-12-31 22:29:15 : Time Idle: 00:01:04
+2015-12-31 22:29:15 : ***[Trying TH snipe while training army]***
+2015-12-31 22:29:15 : Going to Attack...
+2015-12-31 22:29:20 : ============== Searching For Dead Base ===============
+2015-12-31 22:29:20 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-31 22:29:20 : Meet: Gold + Elixir, Trophy
+2015-12-31 22:29:20 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-31 22:29:20 : Aim: [G+E]: 300000 [D]: 1000 [T]:99 for: Dead Base
+2015-12-31 22:29:20 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-31 22:29:20 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2015-12-31 22:29:20 : Aim: [G]: 125000 [E]: 125000 [D]: 1250
+2015-12-31 22:29:20 : ==================================================
+2015-12-31 22:29:26 :   1> [G]:  64151 [E]: 168093 [D]: 1862 [T]:28 [TH]: 9, In
+2015-12-31 22:29:34 :   2> [G]: 349336 [E]: 285753 [D]: 3581 [T]:31 [TH]:11, In
+2015-12-31 22:29:41 :   3> [G]:  67844 [E]:  55908 [D]:  501 [T]:30 [TH]: 9, Out
+2015-12-31 22:29:41 :       TH Outside Found! 
+2015-12-31 22:29:41 :       Resource requirement not met for TH snipe 
+2015-12-31 22:29:41 :   3> [G]:  67844 [E]:  55908 [D]:  501 [T]:30 [TH]: 9, Out
+2015-12-31 22:29:48 :   4> [G]: 207046 [E]:  74735 [D]:  596 [T]:33 [TH]: 9, In
+2015-12-31 22:29:55 :   5> [G]:  72570 [E]:  66572 [D]:  844 [T]:28 [TH]:10, Out
+2015-12-31 22:29:55 :       TH Outside Found! 
+2015-12-31 22:29:55 :       Resource requirement not met for TH snipe 
+2015-12-31 22:29:56 :   5> [G]:  72570 [E]:  66572 [D]:  844 [T]:28 [TH]:10, Out
+2015-12-31 22:30:04 :   6> [G]: 404348 [E]: 401978 [D]: 3034 [T]:22 [TH]:10, In
+2015-12-31 22:30:11 :   7> [G]:  38712 [E]: 211844 [D]: 1749 [T]:20 [TH]:10, In
+2015-12-31 22:30:20 :   8> [G]: 249874 [E]: 339025 [D]:  996 [T]:36 [TH]:10, In
+2015-12-31 22:30:28 :   9> [G]:  37607 [E]:  29720 [D]:  269 [T]:29 [TH]: 9, Out
+2015-12-31 22:30:28 :       TH Outside Found! 
+2015-12-31 22:30:28 :       Resource requirement not met for TH snipe 
+2015-12-31 22:30:28 :   9> [G]:  37607 [E]:  29720 [D]:  269 [T]:29 [TH]: 9, Out
+2015-12-31 22:30:35 :  10> [G]:  89588 [E]: 119773 [D]:  969 [T]:23 [TH]: 9, Out
+2015-12-31 22:30:35 :       TH Outside Found! 
+2015-12-31 22:30:35 :       Resource requirement not met for TH snipe 
+2015-12-31 22:30:35 :  10> [G]:  89588 [E]: 119773 [D]:  969 [T]:23 [TH]: 9, Out
+2015-12-31 22:30:38 : ***[End trying TH snipe while training army]***
+2015-12-31 22:30:40 : ====== Waiting for full army ======
+2015-12-31 22:30:42 : Chat Request: any
+2015-12-31 22:30:42 : Castle Capacity : 0/35
+2015-12-31 22:30:42 : Custom Donation Keyword found: any
+2015-12-31 22:30:43 : Donating 4 Barbarians
+2015-12-31 22:30:44 : Donating 4 Archers
+2015-12-31 22:30:46 : Chat Request: hound plz
+2015-12-31 22:30:46 : Castle Capacity : 0/35
+2015-12-31 22:30:46 : King Blacklist Keyword found: hound
+2015-12-31 22:30:46 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:30:46 : Archers Blacklist Keyword found: hound
+2015-12-31 22:31:27 : Training Troops & Spells
+2015-12-31 22:31:27 : Checking Army Camp...
+2015-12-31 22:31:29 : Total Army Camp capacity: 152/240 (63%)
+2015-12-31 22:31:29 :  - No. of Barbarians: 79
+2015-12-31 22:31:29 :  - No. of Archers: 73
+2015-12-31 22:31:52 : Time Idle: 00:02:16
+2015-12-31 22:31:52 : ***[Trying TH snipe while training army]***
+2015-12-31 22:31:52 : Going to Attack...
+2015-12-31 22:31:57 : ============== Searching For Dead Base ===============
+2015-12-31 22:31:57 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-31 22:31:57 : Meet: Gold + Elixir, Trophy
+2015-12-31 22:31:57 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-31 22:31:57 : Aim: [G+E]: 300000 [D]: 1000 [T]:99 for: Dead Base
+2015-12-31 22:31:57 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-31 22:31:57 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2015-12-31 22:31:57 : Aim: [G]: 125000 [E]: 125000 [D]: 1250
+2015-12-31 22:31:57 : ==================================================
+2015-12-31 22:32:04 :   1> [G]: 263016 [E]: 264844 [D]: 3000 [T]:27 [TH]:10, In
+2015-12-31 22:32:12 :   2> [G]: 293775 [E]: 207213 [D]:  345 [T]:32 [TH]:10, In
+2015-12-31 22:32:19 :   3> [G]:  53302 [E]:  77150 [D]:  426 [T]:35 [TH]:10, In
+2015-12-31 22:32:28 :   4> [G]: 306285 [E]: 380370 [D]: 2945 [T]:17 [TH]:11, In
+2015-12-31 22:32:35 :   5> [G]:  75826 [E]:  60202 [D]:  201 [T]:29 [TH]: 9, Out
+2015-12-31 22:32:35 :       TH Outside Found! 
+2015-12-31 22:32:35 :       Resource requirement not met for TH snipe 
+2015-12-31 22:32:35 :   5> [G]:  75826 [E]:  60202 [D]:  201 [T]:29 [TH]: 9, Out
+2015-12-31 22:32:42 :   6> [G]:  74833 [E]:  90122 [D]: 1224 [T]:35 [TH]:10, Out
+2015-12-31 22:32:42 :       TH Outside Found! 
+2015-12-31 22:32:42 :       Resource requirement not met for TH snipe 
+2015-12-31 22:32:42 :   6> [G]:  74833 [E]:  90122 [D]: 1224 [T]:35 [TH]:10, Out
+2015-12-31 22:32:49 :   7> [G]:  44093 [E]:  34124 [D]:  730 [T]:31 [TH]: 9, Out
+2015-12-31 22:32:49 :       TH Outside Found! 
+2015-12-31 22:32:49 :       Resource requirement not met for TH snipe 
+2015-12-31 22:32:50 :   7> [G]:  44093 [E]:  34124 [D]:  730 [T]:31 [TH]: 9, Out
+2015-12-31 22:32:57 :   8> [G]:   9810 [E]: 260602 [D]:  988 [T]:30 [TH]: 9, In
+2015-12-31 22:33:04 :   9> [G]:  33784 [E]: 213838 [D]: 2400 [T]:38 [TH]:10, In
+2015-12-31 22:33:11 :  10> [G]:  23571 [E]: 419102 [D]:  732 [T]:38 [TH]:10, In
+2015-12-31 22:33:14 : ***[End trying TH snipe while training army]***
+2015-12-31 22:33:17 : ====== Waiting for full army ======
+2015-12-31 22:33:19 : Chat Request: any
+2015-12-31 22:33:19 : Castle Capacity : 31/35
+2015-12-31 22:33:19 : Custom Donation Keyword found: any
+2015-12-31 22:33:25 : Could not Find the Donation Window!!
+2015-12-31 22:33:27 : Chat Request: hound plz
+2015-12-31 22:33:27 : Castle Capacity : 0/35
+2015-12-31 22:33:27 : King Blacklist Keyword found: hound
+2015-12-31 22:33:27 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:33:27 : Archers Blacklist Keyword found: hound
+2015-12-31 22:34:07 : Training Troops & Spells
+2015-12-31 22:34:08 : Checking Army Camp...
+2015-12-31 22:34:09 : Total Army Camp capacity: 178/240 (74%)
+2015-12-31 22:34:10 :  - No. of Barbarians: 93
+2015-12-31 22:34:10 :  - No. of Archers: 85
+2015-12-31 22:34:33 : Time Idle: 00:03:32
+2015-12-31 22:34:33 : ***[Trying TH snipe while training army]***
+2015-12-31 22:34:33 : Going to Attack...
+2015-12-31 22:34:38 : ============== Searching For Dead Base ===============
+2015-12-31 22:34:38 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-31 22:34:38 : Meet: Gold + Elixir, Trophy
+2015-12-31 22:34:38 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-31 22:34:38 : Aim: [G+E]: 300000 [D]: 1000 [T]:99 for: Dead Base
+2015-12-31 22:34:38 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-31 22:34:38 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2015-12-31 22:34:38 : Aim: [G]: 125000 [E]: 125000 [D]: 1250
+2015-12-31 22:34:38 : ==================================================
+2015-12-31 22:34:44 :   1> [G]: 248795 [E]: 466018 [D]: 1372 [T]:27 [TH]:11, In
+2015-12-31 22:34:52 :   2> [G]:  52903 [E]:  57825 [D]:  365 [T]:33 [TH]: 9, In
+2015-12-31 22:34:59 :   3> [G]:  97475 [E]:  83927 [D]:  433 [T]:34 [TH]: 9, In
+2015-12-31 22:35:06 :   4> [G]:  50938 [E]:  43307 [D]:  352 [T]:26 [TH]: 9, Out
+2015-12-31 22:35:06 :       TH Outside Found! 
+2015-12-31 22:35:06 :       Resource requirement not met for TH snipe 
+2015-12-31 22:35:07 :   4> [G]:  50938 [E]:  43307 [D]:  352 [T]:26 [TH]: 9, Out
+2015-12-31 22:35:14 :   5> [G]:  64210 [E]:  63039 [D]:  933 [T]:33 [TH]: 9, Out
+2015-12-31 22:35:14 :       TH Outside Found! 
+2015-12-31 22:35:14 :       Resource requirement not met for TH snipe 
+2015-12-31 22:35:14 :   5> [G]:  64210 [E]:  63039 [D]:  933 [T]:33 [TH]: 9, Out
+2015-12-31 22:35:21 :   6> [G]: 118503 [E]:  70344 [D]:  815 [T]:25 [TH]: 9, Out
+2015-12-31 22:35:21 :       TH Outside Found! 
+2015-12-31 22:35:21 :       Resource requirement not met for TH snipe 
+2015-12-31 22:35:21 :   6> [G]: 118503 [E]:  70344 [D]:  815 [T]:25 [TH]: 9, Out
+2015-12-31 22:35:29 :   7> [G]: 413637 [E]: 414675 [D]: 3104 [T]:34 [TH]:10, In
+2015-12-31 22:35:36 :   8> [G]:  17408 [E]: 304775 [D]: 1006 [T]:13 [TH]:10, In
+2015-12-31 22:35:44 :   9> [G]:  65734 [E]:  38091 [D]:  398 [T]:29 [TH]: 9, Out
+2015-12-31 22:35:44 :       TH Outside Found! 
+2015-12-31 22:35:44 :       Resource requirement not met for TH snipe 
+2015-12-31 22:35:44 :   9> [G]:  65734 [E]:  38091 [D]:  398 [T]:29 [TH]: 9, Out
+2015-12-31 22:35:51 :  10> [G]:  20861 [E]: 218522 [D]:  669 [T]:32 [TH]: 9, In
+2015-12-31 22:35:54 : ***[End trying TH snipe while training army]***
+2015-12-31 22:35:56 : ====== Waiting for full army ======
+2015-12-31 22:35:59 : Chat Request: any
+2015-12-31 22:35:59 : Castle Capacity : 31/35
+2015-12-31 22:35:59 : Custom Donation Keyword found: any
+2015-12-31 22:36:06 : Could not Find the Donation Window!!
+2015-12-31 22:36:07 : Chat Request: hound plz
+2015-12-31 22:36:07 : Castle Capacity : 0/35
+2015-12-31 22:36:07 : King Blacklist Keyword found: hound
+2015-12-31 22:36:07 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:36:07 : Archers Blacklist Keyword found: hound
+2015-12-31 22:36:31 : Chat Request: any
+2015-12-31 22:36:31 : Castle Capacity : 32/35
+2015-12-31 22:36:31 : Custom Donation Keyword found: any
+2015-12-31 22:36:37 : Could not Find the Donation Window!!
+2015-12-31 22:36:39 : Chat Request: hound plz
+2015-12-31 22:36:39 : Castle Capacity : 0/35
+2015-12-31 22:36:39 : King Blacklist Keyword found: hound
+2015-12-31 22:36:39 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:36:39 : Archers Blacklist Keyword found: hound
+2015-12-31 22:36:47 : Chat Request: any
+2015-12-31 22:36:47 : Castle Capacity : 32/35
+2015-12-31 22:36:47 : Custom Donation Keyword found: any
+2015-12-31 22:36:54 : Could not Find the Donation Window!!
+2015-12-31 22:36:55 : Chat Request: hound plz
+2015-12-31 22:36:55 : Castle Capacity : 0/35
+2015-12-31 22:36:55 : King Blacklist Keyword found: hound
+2015-12-31 22:36:55 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:36:55 : Archers Blacklist Keyword found: hound
+2015-12-31 22:37:11 : Training Troops & Spells
+2015-12-31 22:37:11 : Checking Army Camp...
+2015-12-31 22:37:12 : Total Army Camp capacity: 208/240 (86%)
+2015-12-31 22:37:13 :  - No. of Barbarians: 111
+2015-12-31 22:37:13 :  - No. of Archers: 98
+2015-12-31 22:37:36 : Time Idle: 00:05:11
+2015-12-31 22:37:36 : ***[Trying TH snipe while training army]***
+2015-12-31 22:37:36 : Going to Attack...
+2015-12-31 22:37:42 : ============== Searching For Dead Base ===============
+2015-12-31 22:37:42 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-31 22:37:42 : Meet: Gold + Elixir, Trophy
+2015-12-31 22:37:42 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-31 22:37:42 : Aim: [G+E]: 300000 [D]: 1000 [T]:99 for: Dead Base
+2015-12-31 22:37:42 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-31 22:37:42 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2015-12-31 22:37:42 : Aim: [G]: 125000 [E]: 125000 [D]: 1250
+2015-12-31 22:37:42 : ==================================================
+2015-12-31 22:37:48 :   1> [G]:  49180 [E]:  12259 [D]: 1417 [T]:34 [TH]:10, In
+2015-12-31 22:37:56 :   2> [G]: 400194 [E]: 434790 [D]: 1208 [T]:29 [TH]:10, In
+2015-12-31 22:38:04 :   3> [G]:  92574 [E]:  32440 [D]:   93 [T]:25 [TH]: 9, In
+2015-12-31 22:38:11 :   4> [G]:  77561 [E]:  75627 [D]:  218 [T]:30 [TH]: 9, Out
+2015-12-31 22:38:11 :       TH Outside Found! 
+2015-12-31 22:38:11 :       Resource requirement not met for TH snipe 
+2015-12-31 22:38:11 :   4> [G]:  77561 [E]:  75627 [D]:  218 [T]:30 [TH]: 9, Out
+2015-12-31 22:38:19 :   5> [G]:  45620 [E]:  61051 [D]:   85 [T]:16 [TH]:10, In
+2015-12-31 22:38:27 :   6> [G]:  23282 [E]:  98455 [D]: 2352 [T]:35 [TH]: 9, In
+2015-12-31 22:38:34 :   7> [G]:  28133 [E]: 236198 [D]:  334 [T]:35 [TH]: 9, In
+2015-12-31 22:38:42 :   8> [G]:  41252 [E]:  34106 [D]:  613 [T]:32 [TH]: 9, Out
+2015-12-31 22:38:42 :       TH Outside Found! 
+2015-12-31 22:38:42 :       Resource requirement not met for TH snipe 
+2015-12-31 22:38:42 :   8> [G]:  41252 [E]:  34106 [D]:  613 [T]:32 [TH]: 9, Out
+2015-12-31 22:38:49 :   9> [G]:  46764 [E]:  47845 [D]:  616 [T]:26 [TH]: 9, In
+2015-12-31 22:38:57 :  10> [G]:    904 [E]:   1460 [D]:   14 [T]:38 [TH]:11, In
+2015-12-31 22:39:00 : ***[End trying TH snipe while training army]***
+2015-12-31 22:39:02 : ====== Waiting for full army ======
+2015-12-31 22:39:05 : Chat Request: hound plz
+2015-12-31 22:39:05 : Castle Capacity : 0/35
+2015-12-31 22:39:05 : King Blacklist Keyword found: hound
+2015-12-31 22:39:05 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:39:05 : Archers Blacklist Keyword found: hound
+2015-12-31 22:39:46 : Training Troops & Spells
+2015-12-31 22:39:46 : Checking Army Camp...
+2015-12-31 22:39:48 : Total Army Camp capacity: 234/240 (97%)
+2015-12-31 22:39:48 :  - No. of Barbarians: 125
+2015-12-31 22:39:49 :  - No. of Archers: 110
+2015-12-31 22:39:50 : Your Army Camps are now Full
+2015-12-31 22:39:50 : Calculating Troops before Training new Army.
+2015-12-31 22:40:07 : Going to Attack...
+2015-12-31 22:40:13 : ============== Searching For Dead Base ===============
+2015-12-31 22:40:13 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-31 22:40:13 : Meet: Gold + Elixir
+2015-12-31 22:40:13 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-31 22:40:13 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2015-12-31 22:40:13 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-31 22:40:13 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2015-12-31 22:40:13 : Aim: [G]: 125000 [E]: 125000 [D]: 1250
+2015-12-31 22:40:13 : ==================================================
+2015-12-31 22:40:19 :   1> [G]:  15743 [E]:   9723 [D]:    0 [T]:15 [TH]:10, In
+2015-12-31 22:40:27 :   2> [G]: 281529 [E]:   2377 [D]:   92 [T]:25 [TH]: 9, In
+2015-12-31 22:40:34 :   3> [G]:  36755 [E]:  67438 [D]:  166 [T]:29 [TH]: 9, Out
+2015-12-31 22:40:35 :       TH Outside Found! 
+2015-12-31 22:40:35 :       Resource requirement not met for TH snipe 
+2015-12-31 22:40:35 :   3> [G]:  36755 [E]:  67438 [D]:  166 [T]:29 [TH]: 9, Out
+2015-12-31 22:40:42 :   4> [G]:  72644 [E]: 125902 [D]: 1669 [T]:29 [TH]: 9, Out
+2015-12-31 22:40:42 :       TH Outside Found! 
+2015-12-31 22:40:42 :       Resource requirement met for TH snipe 
+2015-12-31 22:40:43 : ================ Search Complete =================
+2015-12-31 22:40:43 : Initiating attack for: TH Snipe
+2015-12-31 22:40:45 : -*-Barbarians 127
+2015-12-31 22:40:45 : -*-Archers 112
+2015-12-31 22:40:45 : -*-Clan Castle 
+2015-12-31 22:40:45 : -*-Heal Spells 3
+2015-12-31 22:40:45 : -*-Rage Spells 1
+2015-12-31 22:40:45 : -*-Jump Spells 1
+2015-12-31 22:40:45 : -*-Poison Spells 1
+2015-12-31 22:40:45 :  ====== Start Attack ====== 
+2015-12-31 22:40:47 : Sniping TH with Barch            	 
+2015-12-31 22:40:47 : Attacking TH with 1st wave of BARCH   
+2015-12-31 22:40:48 : Dropping Only wave of 4 Barbarians
+2015-12-31 22:40:49 : Deployment of 4 Barbarians was Successful!
+2015-12-31 22:40:51 :                                       
+2015-12-31 22:40:51 : Dropping Only wave of 4 Archers
+2015-12-31 22:40:52 : Deployment of 4 Archers was Successful!
+2015-12-31 22:40:54 :                                       
+2015-12-31 22:40:55 : Checking if the Gold&Elixir are changing...
+2015-12-31 22:40:57 :                                       
+2015-12-31 22:40:58 : Checking if the Gold&Elixir are changing...
+2015-12-31 22:41:01 :                                       
+2015-12-31 22:41:02 : Checking if the Gold&Elixir are changing...
+2015-12-31 22:41:04 :                                       
+2015-12-31 22:41:04 : Oh Shit! Seems like a trapped TH!     
+2015-12-31 22:41:05 : Checking if the Gold&Elixir are changing...
+2015-12-31 22:41:07 :                                       
+2015-12-31 22:41:07 : Quit wasting troops					 
+2015-12-31 22:41:09 : Checking if the Gold&Elixir are changing...
+2015-12-31 22:41:11 :                                       
+2015-12-31 22:41:11 : ~Finished Attacking, waiting to finish
+2015-12-31 22:41:22 : Checking if the Gold&Elixir are changing...
+2015-12-31 22:41:24 : Gold & Elixir change detected, waiting...
+2015-12-31 22:41:26 : 										 
+2015-12-31 22:41:26 : Townhall has been destroyed!
+2015-12-31 22:41:28 : Wait few sec before close attack
+2015-12-31 22:41:35 : Returning Home
+2015-12-31 22:41:39 : Loot: [G]: 10 593 [E]: 21 561 [DE]: 326 [T]: 9
+2015-12-31 22:41:39 : Bonus Percentage: 4%
+2015-12-31 22:41:40 : Bonus [G]: 148 out of 3 700 [E]: 148 out of 3 700
+2015-12-31 22:41:40 : Your league level is: Silver II
+2015-12-31 22:41:40 : Stars earned: 1
+2015-12-31 22:41:49 : Trying to locate Main Screen
+2015-12-31 22:41:49 : Main Screen Located
+2015-12-31 22:41:50 : Village Report
+2015-12-31 22:41:50 : No. of Free/Total Builders: 1/5
+2015-12-31 22:41:50 :  [T]: 1 108
+2015-12-31 22:41:50 :  [G]: 3 239 147 [E]: 3 178 387 [D]: 168 385 [GEM]: 4 112
+2015-12-31 22:41:52 : Collecting Resources
+2015-12-31 22:42:04 : Chat Request: hound plz
+2015-12-31 22:42:04 : Castle Capacity : 0/35
+2015-12-31 22:42:04 : King Blacklist Keyword found: hound
+2015-12-31 22:42:04 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:42:04 : Archers Blacklist Keyword found: hound
+2015-12-31 22:42:06 : Training Troops & Spells
+2015-12-31 22:42:07 : Checking Army Camp...
+2015-12-31 22:42:08 : Total Army Camp capacity: 240/240 (100%)
+2015-12-31 22:42:09 :  - No. of Barbarians: 129
+2015-12-31 22:42:09 :  - No. of Archers: 111
+2015-12-31 22:42:10 : Your Army Camps are now Full
+2015-12-31 22:42:10 : Calculating Troops before Training new Army.
+2015-12-31 22:42:26 : Going to Attack...
+2015-12-31 22:42:31 : ============== Searching For Dead Base ===============
+2015-12-31 22:42:31 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-31 22:42:31 : Meet: Gold + Elixir
+2015-12-31 22:42:31 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-31 22:42:31 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2015-12-31 22:42:31 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-31 22:42:31 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2015-12-31 22:42:31 : Aim: [G]: 125000 [E]: 125000 [D]: 1250
+2015-12-31 22:42:31 : ==================================================
+2015-12-31 22:42:38 :   1> [G]: 106429 [E]: 120075 [D]: 1043 [T]:27 [TH]:11, In
+2015-12-31 22:42:47 :   2> [G]: 150552 [E]: 362260 [D]: 2145 [T]:36 [TH]:11, In
+2015-12-31 22:42:47 :       Not a Dead Base
+2015-12-31 22:42:54 :   3> [G]:  55983 [E]:  67261 [D]:  838 [T]:30 [TH]: 9, Out
+2015-12-31 22:42:54 :       TH Outside Found! 
+2015-12-31 22:42:54 :       Resource requirement not met for TH snipe 
+2015-12-31 22:42:54 :   3> [G]:  55983 [E]:  67261 [D]:  838 [T]:30 [TH]: 9, Out
+2015-12-31 22:43:02 :   4> [G]:  93543 [E]:  85591 [D]: 2359 [T]:33 [TH]:10, In
+2015-12-31 22:43:09 :   5> [G]:  33464 [E]: 182228 [D]:  454 [T]:32 [TH]:10, In
+2015-12-31 22:43:18 :   6> [G]: 264494 [E]: 413778 [D]: 3852 [T]:28 [TH]:11, In
+2015-12-31 22:43:18 :       Not a Dead Base
+2015-12-31 22:43:26 :   7> [G]: 400328 [E]:  76018 [D]: 1144 [T]:31 [TH]:10, In
+2015-12-31 22:43:26 :       Not a Dead Base
+2015-12-31 22:43:34 :   8> [G]: 318073 [E]: 371229 [D]: 1823 [T]:32 [TH]: 9, Out
+2015-12-31 22:43:34 :       Dead Base Found! 
+2015-12-31 22:43:36 : ================ Search Complete =================
+2015-12-31 22:43:36 : Initiating attack for: Dead Base
+2015-12-31 22:43:38 : -*-Barbarians 129
+2015-12-31 22:43:38 : -*-Archers 111
+2015-12-31 22:43:38 : -*-Clan Castle 
+2015-12-31 22:43:38 : -*-Heal Spells 3
+2015-12-31 22:43:38 : -*-Rage Spells 1
+2015-12-31 22:43:38 : -*-Jump Spells 1
+2015-12-31 22:43:38 : -*-Poison Spells 1
+2015-12-31 22:43:38 :  ====== Start Attack ====== 
+2015-12-31 22:43:40 : Attacking four finger fight style
+2015-12-31 22:43:41 : Dropping only wave of 129 Barbarians
+2015-12-31 22:43:43 : Dropping only wave of 111 Archers
+2015-12-31 22:43:46 : Dropping Clan Castle
+2015-12-31 22:43:48 : Dropping left over troops
+2015-12-31 22:43:48 : Checking remaining unused troops for: Dead Base
+2015-12-31 22:43:50 : -*-Barbarians 11
+2015-12-31 22:43:50 : -*-Heal Spells 3
+2015-12-31 22:43:50 : -*-Rage Spells 1
+2015-12-31 22:43:50 : -*-Jump Spells 1
+2015-12-31 22:43:50 : -*-Poison Spells 1
+2015-12-31 22:43:50 : Dropping last wave of 11 Barbarians
+2015-12-31 22:43:59 : Checking remaining unused troops for: Dead Base
+2015-12-31 22:44:01 : -*-Barbarians 1
+2015-12-31 22:44:01 : -*-Heal Spells 3
+2015-12-31 22:44:01 : -*-Rage Spells 1
+2015-12-31 22:44:01 : -*-Jump Spells 1
+2015-12-31 22:44:01 : -*-Poison Spells 1
+2015-12-31 22:44:01 : Dropping last wave of 1 Barbarians
+2015-12-31 22:44:10 : Finished Attacking, waiting for the battle to end
+2015-12-31 22:44:10 : Checking if the battle has finished
+2015-12-31 22:44:12 : detected [G]: 118483 [E]: 182312 [DE]: 1528 |  Exit in  8 sec.
+2015-12-31 22:44:12 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:19 : detected [G]: 118483 [E]: 182312 [DE]: 1008 |  Exit in  4 sec.
+2015-12-31 22:44:19 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:22 : detected [G]: 117427 [E]: 168220 [DE]: 1008 |  Exit in  8 sec.
+2015-12-31 22:44:22 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:26 : detected [G]: 114259 [E]: 156834 [DE]: 1008 |  Exit in  8 sec.
+2015-12-31 22:44:26 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:29 : detected [G]: 107355 [E]: 141102 [DE]: 1008 |  Exit in  8 sec.
+2015-12-31 22:44:29 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:32 : detected [G]: 97912 [E]: 134054 [DE]: 984 |  Exit in  8 sec.
+2015-12-31 22:44:32 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:36 : detected [G]: 84990 [E]: 128629 [DE]: 948 |  Exit in  8 sec.
+2015-12-31 22:44:36 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:39 : detected [G]: 82875 [E]: 117772 [DE]: 871 |  Exit in  8 sec.
+2015-12-31 22:44:39 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:42 : detected [G]: 77799 [E]: 105282 [DE]: 767 |  Exit in  8 sec.
+2015-12-31 22:44:42 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:46 : detected [G]: 71454 [E]: 104194 [DE]: 689 |  Exit in  8 sec.
+2015-12-31 22:44:46 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:49 : detected [G]: 68916 [E]: 104194 [DE]: 611 |  Exit in  8 sec.
+2015-12-31 22:44:49 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:52 : detected [G]: 66378 [E]: 104194 [DE]: 507 |  Exit in  8 sec.
+2015-12-31 22:44:52 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:56 : detected [G]: 63840 [E]: 104194 [DE]: 504 |  Exit in  8 sec.
+2015-12-31 22:44:56 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:44:59 : detected [G]: 60455 [E]: 104194 [DE]: 504 |  Exit in  8 sec.
+2015-12-31 22:44:59 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:45:02 : detected [G]: 58337 [E]: 104194 [DE]: 504 |  Exit in  8 sec.
+2015-12-31 22:45:02 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:45:06 : detected [G]: 56219 [E]: 104194 [DE]: 504 |  Exit in  8 sec.
+2015-12-31 22:45:06 : Gold & Elixir & DE change detected, waiting...
+2015-12-31 22:45:09 : detected [G]: 55866 [E]: 104194 [DE]: 504 |  Exit in  8 sec.
+2015-12-31 22:45:11 : detected [G]: 55866 [E]: 104194 [DE]: 504 |  Exit in  6 sec.
+2015-12-31 22:45:12 : detected [G]: 55866 [E]: 104194 [DE]: 504 |  Exit in  4 sec.
+2015-12-31 22:45:14 : detected [G]: 55866 [E]: 104194 [DE]: 504 |  Exit in  3 sec.
+2015-12-31 22:45:16 : detected [G]: 55866 [E]: 104194 [DE]: 504 |  Exit in  1 sec.
+2015-12-31 22:45:18 : detected [G]: 55866 [E]: 104194 [DE]: 504 |  Exit in  0 sec.
+2015-12-31 22:45:18 : Gold & Elixir & DE no change detected, exit
+2015-12-31 22:45:18 : Returning Home
+2015-12-31 22:45:22 : Loot: [G]: 262 207 [E]: 267 035 [DE]: 1 319 [T]: 21
+2015-12-31 22:45:22 : Bonus Percentage: 100%
+2015-12-31 22:45:23 : Bonus [G]: 3 700 [E]: 3 700
+2015-12-31 22:45:23 : Your league level is: Silver II
+2015-12-31 22:45:24 : Stars earned: 2
+2015-12-31 22:45:27 : Bot was Paused!
+2015-12-31 22:45:42 : Bot was Resumed.
+2015-12-31 22:45:46 : Trying to locate Main Screen
+2015-12-31 22:45:46 : Main Screen Located
+2015-12-31 22:45:47 : Village Report
+2015-12-31 22:45:47 : No. of Free/Total Builders: 1/5
+2015-12-31 22:45:47 :  [T]: 1 129
+2015-12-31 22:45:48 :  [G]: 3 502 940 [E]: 3 400 377 [D]: 169 746 [GEM]: 4 112
+2015-12-31 22:45:49 : Collecting Resources
+2015-12-31 22:46:01 : Chat Request: hound plz
+2015-12-31 22:46:01 : Castle Capacity : 0/35
+2015-12-31 22:46:01 : King Blacklist Keyword found: hound
+2015-12-31 22:46:01 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:46:01 : Archers Blacklist Keyword found: hound
+2015-12-31 22:46:03 : Training Troops & Spells
+2015-12-31 22:46:04 : Checking Army Camp...
+2015-12-31 22:46:05 : Total Army Camp capacity: 39/240 (16%)
+2015-12-31 22:46:06 :  - No. of Barbarians: 22
+2015-12-31 22:46:06 :  - No. of Archers: 17
+2015-12-31 22:46:21 : Requesting Clan Castle Troops
+2015-12-31 22:46:31 : ====== Waiting for full army ======
+2015-12-31 22:47:11 : Collecting Resources
+2015-12-31 22:47:23 : Chat Request: hound plz
+2015-12-31 22:47:23 : Castle Capacity : 0/35
+2015-12-31 22:47:23 : King Blacklist Keyword found: hound
+2015-12-31 22:47:23 : Barbarians Blacklist Keyword found: hound
+2015-12-31 22:47:23 : Archers Blacklist Keyword found: hound
+2015-12-31 22:47:27 : Training Troops & Spells
+2015-12-31 22:47:27 : Checking Army Camp...
+2015-12-31 22:47:28 : Total Army Camp capacity: 53/240 (22%)
+2015-12-31 22:47:29 :  - No. of Barbarians: 30
+2015-12-31 22:47:29 :  - No. of Archers: 23
+2015-12-31 22:47:51 : Time Idle: 00:01:20
+2015-12-31 22:47:51 : ***[Trying TH snipe while training army]***
+2015-12-31 22:47:51 : Going to Attack...
+2015-12-31 22:47:57 : ============== Searching For Dead Base ===============
+2015-12-31 22:47:57 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-31 22:47:57 : Meet: Gold + Elixir, Trophy
+2015-12-31 22:47:57 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-31 22:47:57 : Aim: [G+E]: 300000 [D]: 1000 [T]:99 for: Dead Base
+2015-12-31 22:47:57 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-31 22:47:57 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2015-12-31 22:47:57 : Aim: [G]: 125000 [E]: 125000 [D]: 1250
+2015-12-31 22:47:57 : ==================================================
+2015-12-31 22:48:03 :   1> [G]:  15201 [E]:  75326 [D]:  514 [T]:29 [TH]: 9, In
+2015-12-31 22:48:10 :   2> [G]:  72429 [E]:  84144 [D]:  911 [T]:17 [TH]: 9, Out
+2015-12-31 22:48:10 :       TH Outside Found! 
+2015-12-31 22:48:10 :       Resource requirement not met for TH snipe 
+2015-12-31 22:48:11 :   2> [G]:  72429 [E]:  84144 [D]:  911 [T]:17 [TH]: 9, Out
+2015-12-31 22:48:18 :   3> [G]:  42411 [E]:  99205 [D]: 2108 [T]:30 [TH]: 9, In
+2015-12-31 22:48:25 :   4> [G]:  69195 [E]:  69775 [D]:  711 [T]:18 [TH]: 9, Out
+2015-12-31 22:48:25 :       TH Outside Found! 
+2015-12-31 22:48:25 :       Resource requirement not met for TH snipe 
+2015-12-31 22:48:25 :   4> [G]:  69195 [E]:  69775 [D]:  711 [T]:18 [TH]: 9, Out
+2015-12-31 22:48:26 : Attacking disabled, Take-A-Break detected. Exiting CoC
+2015-12-31 22:48:26 : Returning Home
+2015-12-31 22:48:37 : Waiting 20 seconds before starting CoC
+2015-12-31 22:48:59 : Trying to locate Main Screen
+2015-12-31 22:49:00 : Village must take a break, wait ...
+2015-12-31 22:51:00 : Waiting for Main Screen
+2015-12-31 22:51:02 : Village must take a break, wait ...
+2015-12-31 22:53:04 : Village must take a break, wait ...
+2015-12-31 22:55:16 : Main Screen Located
+2015-12-31 22:55:16 : ***[End trying TH snipe while training army]***
+2015-12-31 22:55:18 : ====== Waiting for full army ======
+2015-12-31 22:55:37 : Bot was Paused!

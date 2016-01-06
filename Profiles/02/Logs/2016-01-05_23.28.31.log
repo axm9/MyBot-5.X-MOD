@@ -1,0 +1,107 @@
+2016-01-05 23:28:32 :  My Bot v5.0.2 860x780 (BlueStacks) Powered by MyBot.run ~
+2016-01-05 23:28:32 : MyBot.run.au3 Script running on WIN_81  X64
+2016-01-05 23:28:32 : =================== Bot Start ====================
+2016-01-05 23:28:32 : -------------------------  Current Profile: 01 --------------------------
+2016-01-05 23:28:33 : Trying to locate Main Screen
+2016-01-05 23:28:35 : Please wait for CoC restart......
+2016-01-05 23:28:35 : Waiting for Main Screen
+2016-01-05 23:28:40 : Main Screen Located
+2016-01-05 23:28:41 : Detecting your Buildings..
+2016-01-05 23:28:42 : Finding your Clan Level, wait..
+2016-01-05 23:28:43 : Found Clan Level: 8
+2016-01-05 23:28:44 : Detecting your Village Theme
+2016-01-05 23:28:44 : Normal Theme detected
+2016-01-05 23:28:46 : Language setting is English: Correct.
+2016-01-05 23:28:47 : Trying to locate Main Screen
+2016-01-05 23:28:47 : Main Screen Located
+2016-01-05 23:28:48 : Village Report
+2016-01-05 23:28:48 : No. of Free/Total Builders: 1/5
+2016-01-05 23:28:48 :  [T]: 1 017
+2016-01-05 23:28:48 :  [G]: 1 269 073 [E]: 2 426 057 [D]: 67 978 [GEM]: 3 635
+2016-01-05 23:28:50 : Collecting Resources
+2016-01-05 23:29:03 : Training Troops & Spells
+2016-01-05 23:29:04 : Checking Army Camp...
+2016-01-05 23:29:05 : Total Army Camp capacity: 240/240 (100%)
+2016-01-05 23:29:06 :  - No. of Goblins: 240
+2016-01-05 23:29:06 : Barracks and Spell factory status: 
+2016-01-05 23:29:06 : - Barracks detected: 4 | Available: 4 | Upgrading: 0
+2016-01-05 23:29:06 : - Dark Barracks detected: 2 | Available: 2 | Upgrading: 0
+2016-01-05 23:29:06 : - Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-05 23:29:06 : - Dark Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-05 23:29:07 : Your Army Camps are now Full
+2016-01-05 23:29:07 : Calculating Troops before Training new Army.
+2016-01-05 23:29:36 : Boost Barracks started, checking available Barracks.
+2016-01-05 23:29:36 : Boosting All Barracks
+2016-01-05 23:29:38 : Barracks Boost Button not found
+2016-01-05 23:29:44 : Going to Attack...
+2016-01-05 23:29:50 : ============== Searching For Dead Base ===============
+2016-01-05 23:29:50 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-05 23:29:50 : Meet: Gold and Elixir
+2016-01-05 23:29:50 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-05 23:29:50 : Aim: [G]: 100000 [E]: 100000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-05 23:29:50 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-05 23:29:50 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-05 23:29:50 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-05 23:29:50 : ==================================================
+2016-01-05 23:29:57 :       TH Outside Found! 
+2016-01-05 23:29:57 :       Resource requirement not met for TH snipe 
+2016-01-05 23:29:57 :   1> [G]:  73262 [E]:  73061 [D]:  741 [T]:41 [TH]: 9, Out
+2016-01-05 23:30:05 :   2> [G]:  66837 [E]:  99276 [D]:  595 [T]:38 [TH]:10, In
+2016-01-05 23:30:14 :   3> [G]: 251212 [E]: 163290 [D]:  956 [T]:25 [TH]:10, In
+2016-01-05 23:30:14 :       Not a Dead Base
+2016-01-05 23:30:21 :       TH Outside Found! 
+2016-01-05 23:30:21 :       Resource requirement not met for TH snipe 
+2016-01-05 23:30:21 :   4> [G]:  10381 [E]:  25263 [D]:  532 [T]:30 [TH]:10, Out
+2016-01-05 23:30:29 :       TH Outside Found! 
+2016-01-05 23:30:29 :       Resource requirement not met for TH snipe 
+2016-01-05 23:30:29 :   5> [G]:  78254 [E]:  73320 [D]:   90 [T]:38 [TH]: 9, Out
+2016-01-05 23:30:37 :   6> [G]: 302034 [E]: 430204 [D]: 1773 [T]:36 [TH]:10, In
+2016-01-05 23:30:37 :       Not a Dead Base
+2016-01-05 23:30:45 :   7> [G]:  74376 [E]: 223098 [D]: 1671 [T]:31 [TH]: 9, In
+2016-01-05 23:30:52 :   8> [G]: 150674 [E]:  88797 [D]:  499 [T]:41 [TH]: 9, In
+2016-01-05 23:31:01 :   9> [G]: 276510 [E]: 452598 [D]: 2774 [T]:36 [TH]:4-6, In
+2016-01-05 23:31:01 :       Not a Dead Base
+2016-01-05 23:31:09 :  10> [G]:  70565 [E]: 217748 [D]: 3547 [T]:35 [TH]:11, In
+2016-01-05 23:31:18 :  11> [G]: 428294 [E]: 411479 [D]: 3133 [T]:30 [TH]:10, In
+2016-01-05 23:31:18 :       Not a Dead Base
+2016-01-05 23:31:25 :       TH Outside Found! 
+2016-01-05 23:31:25 :       Resource requirement not met for TH snipe 
+2016-01-05 23:31:25 :  12> [G]:  59856 [E]: 108563 [D]: 1190 [T]:30 [TH]: 9, Out
+2016-01-05 23:31:34 :  13> [G]:  13629 [E]: 253250 [D]: 3041 [T]:36 [TH]:10, In
+2016-01-05 23:31:43 :  14> [G]: 188454 [E]: 272116 [D]: 2536 [T]:41 [TH]:10, In
+2016-01-05 23:31:43 :       Dead Base Found! 
+2016-01-05 23:31:44 : ================ Search Complete =================
+2016-01-05 23:31:44 : Initiating attack for: Dead Base
+2016-01-05 23:31:46 : -*-Goblins 240
+2016-01-05 23:31:46 : -*-Clan Castle 
+2016-01-05 23:31:46 : -*-Heal Spells 3
+2016-01-05 23:31:46 : -*-Rage Spells 1
+2016-01-05 23:31:46 : -*-Jump Spells 1
+2016-01-05 23:31:46 : -*-Poison Spells 1
+2016-01-05 23:31:46 :  ====== Start Attack ====== 
+2016-01-05 23:31:48 : Calculating Smart Attack Strategy
+2016-01-05 23:31:49 : Calculated  (in 0.52 seconds) :
+2016-01-05 23:31:49 : Locating Mines, Collectors & Drills
+2016-01-05 23:31:52 : Located  (in 3.47 seconds) :
+2016-01-05 23:31:52 : [7] Gold Mines
+2016-01-05 23:31:52 : [7] Elixir Collectors
+2016-01-05 23:31:52 : [3] Dark Elixir Drill/s
+2016-01-05 23:31:52 : Attacking on all sides
+2016-01-05 23:31:54 : Dropping first wave of Goblins 60
+2016-01-05 23:32:00 : End Goblin Milking
+2016-01-05 23:32:00 : Finished Attacking, waiting for the battle to end
+2016-01-05 23:32:00 : Checking if the battle has finished
+2016-01-05 23:32:03 : detected [G]: 171857 [E]: 257863 [DE]: 2476 |  Exit in  8 sec.
+2016-01-05 23:32:03 : Gold & Elixir & DE change detected, waiting...
+2016-01-05 23:32:06 : detected [G]: 169522 [E]: 255380 [DE]: 2476 |  Exit in  8 sec.
+2016-01-05 23:32:06 : Gold & Elixir & DE change detected, waiting...
+2016-01-05 23:32:09 : detected [G]: 169522 [E]: 255380 [DE]: 2476 |  Exit in  8 sec.
+2016-01-05 23:32:11 : detected [G]: 169522 [E]: 255380 [DE]: 2476 |  Exit in  6 sec.
+2016-01-05 23:32:13 : detected [G]: 169522 [E]: 255380 [DE]: 2476 |  Exit in  4 sec.
+2016-01-05 23:32:14 : detected [G]: 169522 [E]: 255380 [DE]: 2476 |  Exit in  3 sec.
+2016-01-05 23:32:16 : detected [G]: 169522 [E]: 255380 [DE]: 2476 |  Exit in  1 sec.
+2016-01-05 23:32:18 : detected [G]: 169522 [E]: 255380 [DE]: 2476 |  Exit in  0 sec.
+2016-01-05 23:32:18 : Gold & Elixir & DE no change detected, exit
+2016-01-05 23:32:18 : Returning Home
+2016-01-05 23:32:18 : Bot was Paused!
+2016-01-05 23:32:48 : Bot was Resumed.

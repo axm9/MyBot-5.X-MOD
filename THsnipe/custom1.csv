@@ -1,0 +1,7 @@
+TROOP |S1|S2|Q1|Q2|DEL1 |DEL2 |LOG_TEXT                                                            |NOTES,Column 2,Column 3,Column 4,Column 5,Column 6
+Text  |  |  |  |  |     |     |Sniping TH with Gobs Snipe                                 		   |,,,,,
+Text  |  |  |  |  |     |     |Wave1: Sending 5 gobs and wait 30 seconds                           |,,,,,
+Gobl  | 5| 5| 1| 1|  800| 1000|                                                                    |deploys 5x1 gobelins,,,,,
+WAIT  |  |  |  |  |     |30000|                                                                    |wait for 30 seconds,,,,,
+Text  |  |  |  |  |     |     |~Finished Attacking                                                 |,,,,,
+WAIT  |  |  |  |  |     | 5000|                                                                    |wait for 5 seconds,,,,,

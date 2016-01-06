@@ -1,0 +1,1567 @@
+2016-01-01 20:08:19 :  My Bot v5.0.2 860x780 (BlueStacks) Powered by MyBot.run ~
+2016-01-01 20:08:19 : MyBot.mod.au3 Script running on WIN_81  X64
+2016-01-01 20:08:19 : =================== Bot Start ====================
+2016-01-01 20:08:19 : -------------------------  Current Profile: 01 --------------------------
+2016-01-01 20:08:19 : Trying to locate Main Screen
+2016-01-01 20:08:22 : Please wait for CoC restart......
+2016-01-01 20:08:22 : Waiting for Main Screen
+2016-01-01 20:08:35 : Main Screen Located
+2016-01-01 20:08:36 : Detecting your Buildings..
+2016-01-01 20:08:37 : Finding your Clan Level, wait..
+2016-01-01 20:08:38 : Found Clan Level: 8
+2016-01-01 20:08:40 : Detecting your Village Theme
+2016-01-01 20:08:40 : Normal Theme detected
+2016-01-01 20:08:41 : Language setting is English: Correct.
+2016-01-01 20:08:42 : Trying to locate Main Screen
+2016-01-01 20:08:42 : Main Screen Located
+2016-01-01 20:08:44 : Village Report
+2016-01-01 20:08:44 : No. of Free/Total Builders: 1/5
+2016-01-01 20:08:44 :  [T]: 1 087
+2016-01-01 20:08:44 :  [G]: 976 963 [E]: 795 681 [D]: 55 494 [GEM]: 3 642
+2016-01-01 20:08:45 : Collecting Resources
+2016-01-01 20:08:58 : Training Troops & Spells
+2016-01-01 20:08:58 : Checking Army Camp...
+2016-01-01 20:09:00 : Total Army Camp capacity: 240/240 (100%)
+2016-01-01 20:09:00 :  - No. of Barbarians: 133
+2016-01-01 20:09:00 :  - No. of Archers: 107
+2016-01-01 20:09:01 :  - Archer Queen available
+2016-01-01 20:09:01 : Barracks and Spell factory status: 
+2016-01-01 20:09:01 : - Barracks detected: 4 | Available: 4 | Upgrading: 0
+2016-01-01 20:09:01 : - Dark Barracks detected: 2 | Available: 2 | Upgrading: 0
+2016-01-01 20:09:01 : - Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-01 20:09:01 : - Dark Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-01 20:09:02 : Your Army Camps are now Full
+2016-01-01 20:09:02 : Calculating Troops before Training new Army.
+2016-01-01 20:09:33 : Going to Attack...
+2016-01-01 20:09:39 : ============== Searching For Dead Base ===============
+2016-01-01 20:09:39 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 20:09:39 : Meet: Gold + Elixir
+2016-01-01 20:09:39 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 20:09:39 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-01 20:09:39 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 20:09:39 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 20:09:39 : Aim: [G]: 150000 [E]: 150000 [D]: 1500
+2016-01-01 20:09:39 : ==================================================
+2016-01-01 20:09:47 :   1> [G]: 302792 [E]: 445319 [D]: 3015 [T]:34 [TH]:10, In
+2016-01-01 20:09:47 :       Not a Dead Base
+2016-01-01 20:09:56 :   2> [G]: 152292 [E]: 286516 [D]:  596 [T]:24 [TH]: 9, In
+2016-01-01 20:09:56 :       Not a Dead Base
+2016-01-01 20:10:03 :   3> [G]:  62028 [E]:  45096 [D]:  155 [T]:33 [TH]: 9, In
+2016-01-01 20:10:10 :   4> [G]:  17209 [E]:  21438 [D]:  543 [T]:34 [TH]: 8, In
+2016-01-01 20:10:17 :   5> [G]:  15941 [E]:   9844 [D]:   32 [T]:30 [TH]: 8, Out
+2016-01-01 20:10:17 :       TH Outside Found! 
+2016-01-01 20:10:17 :       Resource requirement not met for TH snipe 
+2016-01-01 20:10:17 :   5> [G]:  15941 [E]:   9844 [D]:   32 [T]:30 [TH]: 8, Out
+2016-01-01 20:10:26 :   6> [G]: 408402 [E]: 150819 [D]: 1528 [T]:30 [TH]:10, In
+2016-01-01 20:10:26 :       Not a Dead Base
+2016-01-01 20:10:33 :   7> [G]: 163102 [E]: 130755 [D]:  219 [T]:30 [TH]: 9, In
+2016-01-01 20:10:41 :   8> [G]:  41087 [E]:  56414 [D]:  671 [T]:33 [TH]:10, Out
+2016-01-01 20:10:41 :       TH Outside Found! 
+2016-01-01 20:10:41 :       Resource requirement not met for TH snipe 
+2016-01-01 20:10:41 :   8> [G]:  41087 [E]:  56414 [D]:  671 [T]:33 [TH]:10, Out
+2016-01-01 20:10:50 :   9> [G]:  40940 [E]: 101620 [D]:  610 [T]:35 [TH]: 9, Out
+2016-01-01 20:10:50 :       TH Outside Found! 
+2016-01-01 20:10:50 :       Resource requirement not met for TH snipe 
+2016-01-01 20:10:50 :   9> [G]:  40940 [E]: 101620 [D]:  610 [T]:35 [TH]: 9, Out
+2016-01-01 20:10:59 :  10> [G]: 414333 [E]: 413909 [D]: 3147 [T]:38 [TH]:10, In
+2016-01-01 20:10:59 :       Not a Dead Base
+2016-01-01 20:11:06 :  11> [G]:  88868 [E]: 130850 [D]: 2700 [T]:22 [TH]:10, In
+2016-01-01 20:11:14 :  12> [G]:  71041 [E]: 166593 [D]: 3066 [T]:11 [TH]:10, In
+2016-01-01 20:11:22 :  13> [G]:  35350 [E]:  25979 [D]: 1593 [T]:38 [TH]:11, In
+2016-01-01 20:11:29 :  14> [G]: 146767 [E]:  15653 [D]:  233 [T]:37 [TH]: 9, In
+2016-01-01 20:11:36 :  15> [G]:   3894 [E]:   4032 [D]:    8 [T]:32 [TH]: 8, In
+2016-01-01 20:11:43 :  16> [G]: 184201 [E]:  23692 [D]: 3573 [T]:36 [TH]:11, In
+2016-01-01 20:11:52 :  17> [G]: 401163 [E]: 401584 [D]:  643 [T]:36 [TH]:10, In
+2016-01-01 20:11:52 :       Not a Dead Base
+2016-01-01 20:12:01 :  18> [G]: 202101 [E]: 422381 [D]: 3429 [T]:37 [TH]:10, In
+2016-01-01 20:12:01 :       Not a Dead Base
+2016-01-01 20:12:08 :  19> [G]:  29718 [E]:  22681 [D]:  222 [T]:33 [TH]: 9, In
+2016-01-01 20:12:16 :  20> [G]:  22553 [E]: 298249 [D]: 1036 [T]:26 [TH]: 9, In
+2016-01-01 20:12:16 :       Not a Dead Base
+2016-01-01 20:12:24 :  21> [G]: 186282 [E]: 437981 [D]: 1239 [T]:23 [TH]:10, In
+2016-01-01 20:12:24 :       Not a Dead Base
+2016-01-01 20:12:32 :  22> [G]:  13649 [E]: 377364 [D]:  143 [T]:39 [TH]:10, In
+2016-01-01 20:12:32 :       Not a Dead Base
+2016-01-01 20:12:40 :  23> [G]:  47660 [E]:  32448 [D]:  352 [T]:43 [TH]:10, Out
+2016-01-01 20:12:40 :       TH Outside Found! 
+2016-01-01 20:12:40 :       Resource requirement not met for TH snipe 
+2016-01-01 20:12:40 :  23> [G]:  47660 [E]:  32448 [D]:  352 [T]:43 [TH]:10, Out
+2016-01-01 20:12:47 :  24> [G]:  44212 [E]:  28903 [D]:  328 [T]:33 [TH]: 9, Out
+2016-01-01 20:12:47 :       TH Outside Found! 
+2016-01-01 20:12:47 :       Resource requirement not met for TH snipe 
+2016-01-01 20:12:47 :  24> [G]:  44212 [E]:  28903 [D]:  328 [T]:33 [TH]: 9, Out
+2016-01-01 20:12:54 :  25> [G]:  16084 [E]:  29166 [D]:  719 [T]:31 [TH]: 9, In
+2016-01-01 20:13:02 :  26> [G]:   8750 [E]: 186550 [D]:   11 [T]:34 [TH]:10, In
+2016-01-01 20:13:09 :  27> [G]:   9933 [E]:  98614 [D]:  416 [T]:33 [TH]: 9, In
+2016-01-01 20:13:17 :  28> [G]:  79816 [E]: 474527 [D]: 3251 [T]:43 [TH]:10, In
+2016-01-01 20:13:17 :       Not a Dead Base
+2016-01-01 20:13:24 :  29> [G]: 107986 [E]: 158342 [D]: 1226 [T]:41 [TH]:11, In
+2016-01-01 20:13:31 :  30> [G]:  25417 [E]:  28201 [D]:  274 [T]:30 [TH]: 8, Out
+2016-01-01 20:13:31 :       TH Outside Found! 
+2016-01-01 20:13:31 :       Resource requirement not met for TH snipe 
+2016-01-01 20:13:32 :  30> [G]:  25417 [E]:  28201 [D]:  274 [T]:30 [TH]: 8, Out
+2016-01-01 20:13:40 :  31> [G]: 462209 [E]: 181174 [D]: 1245 [T]:44 [TH]:10, In
+2016-01-01 20:13:40 :       Not a Dead Base
+2016-01-01 20:13:47 :  32> [G]:  27819 [E]:  95069 [D]:  202 [T]:35 [TH]: 9, In
+2016-01-01 20:13:55 :  33> [G]: 414351 [E]: 415146 [D]: 1467 [T]:38 [TH]:10, In
+2016-01-01 20:13:55 :       Not a Dead Base
+2016-01-01 20:14:04 :  34> [G]:  17568 [E]: 356967 [D]: 3206 [T]:39 [TH]:10, In
+2016-01-01 20:14:04 :       Not a Dead Base
+2016-01-01 20:14:12 :  35> [G]:  38777 [E]: 409018 [D]:  659 [T]:39 [TH]:10, In
+2016-01-01 20:14:12 :       Not a Dead Base
+2016-01-01 20:14:20 :  36> [G]: 168398 [E]:  50724 [D]: 1179 [T]:26 [TH]:10, Out
+2016-01-01 20:14:20 :       TH Outside Found! 
+2016-01-01 20:14:20 :       Resource requirement met for TH snipe 
+2016-01-01 20:14:21 : ================ Search Complete =================
+2016-01-01 20:14:21 : Initiating attack for: TH Snipe
+2016-01-01 20:14:23 : -*-Barbarians 133
+2016-01-01 20:14:23 : -*-Archers 107
+2016-01-01 20:14:23 : -*-Clan Castle 
+2016-01-01 20:14:23 : -*-Queen 
+2016-01-01 20:14:23 : -*-Heal Spells 3
+2016-01-01 20:14:23 : -*-Rage Spells 1
+2016-01-01 20:14:23 : -*-Jump Spells 1
+2016-01-01 20:14:23 : -*-Poison Spells 1
+2016-01-01 20:14:23 :  ====== Start Attack ====== 
+2016-01-01 20:14:25 : Sniping TH with Barch            	 
+2016-01-01 20:14:25 : Attacking TH with 1st wave of BARCH   
+2016-01-01 20:14:25 : Dropping Only wave of 4 Barbarians
+2016-01-01 20:14:26 : Custom Corner deployment THi = 16 ,x = 445 ,y = 503
+2016-01-01 20:14:27 : Deployment of 4 Barbarians was Successful!
+2016-01-01 20:14:29 :                                       
+2016-01-01 20:14:29 : Dropping Only wave of 4 Archers
+2016-01-01 20:14:29 : Custom Corner deployment THi = 16 ,x = 445 ,y = 503
+2016-01-01 20:14:30 : Deployment of 4 Archers was Successful!
+2016-01-01 20:14:32 :                                       
+2016-01-01 20:14:33 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:14:35 :                                       
+2016-01-01 20:14:36 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:14:38 :                                       
+2016-01-01 20:14:40 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:14:42 :                                       
+2016-01-01 20:14:42 : Oh Shit! Seems like a trapped TH!     
+2016-01-01 20:14:43 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:14:45 :                                       
+2016-01-01 20:14:45 : Quit wasting troops					 
+2016-01-01 20:14:47 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:14:49 :                                       
+2016-01-01 20:14:49 : ~Finished Attacking, waiting to finish
+2016-01-01 20:15:00 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:15:02 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:04 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:06 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:08 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:10 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:13 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:15 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:17 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:19 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:21 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:23 : Gold & Elixir change detected, waiting...
+2016-01-01 20:15:23 : 										 
+2016-01-01 20:15:23 : Townhall has been destroyed!
+2016-01-01 20:15:25 : Wait few sec before close attack
+2016-01-01 20:15:28 : Bot was Paused!
+2016-01-01 20:15:48 : Bot was Resumed.
+2016-01-01 20:15:52 : Returning Home
+2016-01-01 20:15:56 : Loot: [G]: 38 239 [E]: 27 487 [DE]: 180 [T]: 8
+2016-01-01 20:15:56 : Bonus Percentage: 20%
+2016-01-01 20:15:56 : Bonus [G]: 740 out of 3 700 [E]: 740 out of 3 700
+2016-01-01 20:15:57 : Your league level is: Silver II
+2016-01-01 20:15:57 : Stars earned: 1
+2016-01-01 20:16:05 : Trying to locate Main Screen
+2016-01-01 20:16:05 : Main Screen Located
+2016-01-01 20:16:07 : Village Report
+2016-01-01 20:16:07 : No. of Free/Total Builders: 1/5
+2016-01-01 20:16:07 :  [T]: 1 095
+2016-01-01 20:16:07 :  [G]: 987 940 [E]: 828 303 [D]: 55 710 [GEM]: 3 642
+2016-01-01 20:16:08 : Collecting Resources
+2016-01-01 20:16:19 : Chat Request: any thx
+2016-01-01 20:16:19 : Castle Capacity : 16/30
+2016-01-01 20:16:19 : Custom Donation Keyword found: any
+2016-01-01 20:16:20 : Donating 4 Barbarians
+2016-01-01 20:16:21 : Donating 4 Archers
+2016-01-01 20:16:24 : Training Troops & Spells
+2016-01-01 20:16:25 : Checking Army Camp...
+2016-01-01 20:16:26 : Total Army Camp capacity: 236/240 (98%)
+2016-01-01 20:16:27 :  - No. of Barbarians: 139
+2016-01-01 20:16:27 :  - No. of Archers: 97
+2016-01-01 20:16:27 :  - Archer Queen available
+2016-01-01 20:16:28 : Your Army Camps are now Full
+2016-01-01 20:16:28 : Calculating Troops before Training new Army.
+2016-01-01 20:16:44 : Going to Attack...
+2016-01-01 20:16:50 : ============== Searching For Dead Base ===============
+2016-01-01 20:16:50 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 20:16:50 : Meet: Gold + Elixir
+2016-01-01 20:16:50 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 20:16:50 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-01 20:16:50 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 20:16:50 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 20:16:50 : Aim: [G]: 150000 [E]: 150000 [D]: 1500
+2016-01-01 20:16:50 : ==================================================
+2016-01-01 20:16:56 :   1> [G]:  14193 [E]:  88321 [D]:  859 [T]:26 [TH]: 9, In
+2016-01-01 20:17:03 :   2> [G]:  77767 [E]:  64600 [D]:  653 [T]:25 [TH]: 9, Out
+2016-01-01 20:17:03 :       TH Outside Found! 
+2016-01-01 20:17:03 :       Resource requirement not met for TH snipe 
+2016-01-01 20:17:03 :   2> [G]:  77767 [E]:  64600 [D]:  653 [T]:25 [TH]: 9, Out
+2016-01-01 20:17:11 :   3> [G]: 195117 [E]:  31724 [D]:  747 [T]:32 [TH]: 9, In
+2016-01-01 20:17:19 :   4> [G]:  75923 [E]: 383343 [D]: 1725 [T]:34 [TH]:10, In
+2016-01-01 20:17:19 :       Not a Dead Base
+2016-01-01 20:17:27 :   5> [G]: 117911 [E]: 393908 [D]: 5034 [T]:10 [TH]:11, Out
+2016-01-01 20:17:27 :       TH Outside Found! 
+2016-01-01 20:17:27 :       Resource requirement met for TH snipe 
+2016-01-01 20:17:28 : ================ Search Complete =================
+2016-01-01 20:17:28 : Initiating attack for: TH Snipe
+2016-01-01 20:17:30 : -*-Barbarians 141
+2016-01-01 20:17:30 : -*-Archers 97
+2016-01-01 20:17:30 : -*-Clan Castle 
+2016-01-01 20:17:30 : -*-Queen 
+2016-01-01 20:17:30 : -*-Heal Spells 3
+2016-01-01 20:17:30 : -*-Rage Spells 1
+2016-01-01 20:17:30 : -*-Jump Spells 1
+2016-01-01 20:17:30 : -*-Poison Spells 1
+2016-01-01 20:17:30 :  ====== Start Attack ====== 
+2016-01-01 20:17:32 : Sniping TH with Barch            	 
+2016-01-01 20:17:32 : Attacking TH with 1st wave of BARCH   
+2016-01-01 20:17:33 : Dropping Only wave of 4 Barbarians
+2016-01-01 20:17:34 : Deployment of 4 Barbarians was Successful!
+2016-01-01 20:17:36 :                                       
+2016-01-01 20:17:36 : Dropping Only wave of 4 Archers
+2016-01-01 20:17:37 : Deployment of 4 Archers was Successful!
+2016-01-01 20:17:39 :                                       
+2016-01-01 20:17:40 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:17:42 :                                       
+2016-01-01 20:17:44 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:17:46 :                                       
+2016-01-01 20:17:47 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:17:49 :                                       
+2016-01-01 20:17:49 : Oh Shit! Seems like a trapped TH!     
+2016-01-01 20:17:50 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:17:53 :                                       
+2016-01-01 20:17:53 : Quit wasting troops					 
+2016-01-01 20:17:54 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:17:56 :                                       
+2016-01-01 20:17:56 : ~Finished Attacking, waiting to finish
+2016-01-01 20:18:07 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:18:09 : 										 
+2016-01-01 20:18:09 : Wait few sec before close attack
+2016-01-01 20:18:47 : Returning Home
+2016-01-01 20:18:51 : Loot: [G]: 12 071 [E]: 63 798 [DE]: 672 [T]: 3
+2016-01-01 20:18:51 : Bonus Percentage: 3%
+2016-01-01 20:18:52 : Bonus [G]: 111 out of 3 700 [E]: 111 out of 3 700
+2016-01-01 20:18:52 : Your league level is: Silver II
+2016-01-01 20:18:52 : Stars earned: 1
+2016-01-01 20:19:00 : Trying to locate Main Screen
+2016-01-01 20:19:00 : Main Screen Located
+2016-01-01 20:19:02 : Village Report
+2016-01-01 20:19:02 : No. of Free/Total Builders: 1/5
+2016-01-01 20:19:02 :  [T]: 1 098
+2016-01-01 20:19:02 :  [G]: 995 843 [E]: 883 981 [D]: 56 404 [GEM]: 3 642
+2016-01-01 20:19:03 : Collecting Resources
+2016-01-01 20:19:14 : Chat Request: any
+2016-01-01 20:19:15 : Castle Capacity : 14/35
+2016-01-01 20:19:15 : Custom Donation Keyword found: any
+2016-01-01 20:19:15 : Donating 4 Barbarians
+2016-01-01 20:19:16 : Donating 4 Archers
+2016-01-01 20:19:19 : Training Troops & Spells
+2016-01-01 20:19:20 : Checking Army Camp...
+2016-01-01 20:19:22 : Total Army Camp capacity: 236/240 (98%)
+2016-01-01 20:19:22 :  - No. of Barbarians: 139
+2016-01-01 20:19:23 :  - No. of Archers: 97
+2016-01-01 20:19:23 :  - Archer Queen available
+2016-01-01 20:19:24 : Your Army Camps are now Full
+2016-01-01 20:19:24 : Calculating Troops before Training new Army.
+2016-01-01 20:19:39 : Going to Attack...
+2016-01-01 20:19:45 : ============== Searching For Dead Base ===============
+2016-01-01 20:19:45 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 20:19:45 : Meet: Gold + Elixir
+2016-01-01 20:19:45 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 20:19:45 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-01 20:19:45 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 20:19:45 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 20:19:45 : Aim: [G]: 150000 [E]: 150000 [D]: 1500
+2016-01-01 20:19:45 : ==================================================
+2016-01-01 20:19:51 :   1> [G]:  55300 [E]:  38846 [D]:  447 [T]:33 [TH]: 9, Out
+2016-01-01 20:19:51 :       TH Outside Found! 
+2016-01-01 20:19:51 :       Resource requirement not met for TH snipe 
+2016-01-01 20:19:51 :   1> [G]:  55300 [E]:  38846 [D]:  447 [T]:33 [TH]: 9, Out
+2016-01-01 20:20:00 :   2> [G]: 369804 [E]: 295797 [D]: 3058 [T]:23 [TH]:10, In
+2016-01-01 20:20:00 :       Not a Dead Base
+2016-01-01 20:20:08 :   3> [G]:  99023 [E]: 294656 [D]:  573 [T]:29 [TH]: 9, In
+2016-01-01 20:20:08 :       Not a Dead Base
+2016-01-01 20:20:18 :   4> [G]: 406562 [E]: 293474 [D]: 1153 [T]:26 [TH]:10, In
+2016-01-01 20:20:18 :       Not a Dead Base
+2016-01-01 20:20:25 :   5> [G]:   5898 [E]:   5639 [D]:  671 [T]:31 [TH]: 8, In
+2016-01-01 20:20:33 :   6> [G]:  30022 [E]:  43190 [D]:  148 [T]:35 [TH]: 9, Out
+2016-01-01 20:20:33 :       TH Outside Found! 
+2016-01-01 20:20:33 :       Resource requirement not met for TH snipe 
+2016-01-01 20:20:33 :   6> [G]:  30022 [E]:  43190 [D]:  148 [T]:35 [TH]: 9, Out
+2016-01-01 20:20:41 :   7> [G]: 407842 [E]: 402811 [D]: 1130 [T]:17 [TH]:10, In
+2016-01-01 20:20:41 :       Not a Dead Base
+2016-01-01 20:20:49 :   8> [G]:  41433 [E]: 247996 [D]: 2179 [T]:30 [TH]:10, In
+2016-01-01 20:20:56 :   9> [G]: 141727 [E]: 153781 [D]:  705 [T]:31 [TH]: 9, In
+2016-01-01 20:21:03 :  10> [G]:  41355 [E]:  54949 [D]:  556 [T]:40 [TH]:10, In
+2016-01-01 20:21:10 :  11> [G]: 169169 [E]:  93880 [D]: 1721 [T]:28 [TH]: 9, Out
+2016-01-01 20:21:10 :       TH Outside Found! 
+2016-01-01 20:21:10 :       Resource requirement met for TH snipe 
+2016-01-01 20:21:12 : ================ Search Complete =================
+2016-01-01 20:21:12 : Initiating attack for: TH Snipe
+2016-01-01 20:21:14 : -*-Barbarians 141
+2016-01-01 20:21:14 : -*-Archers 97
+2016-01-01 20:21:14 : -*-Clan Castle 
+2016-01-01 20:21:14 : -*-Queen 
+2016-01-01 20:21:14 : -*-Heal Spells 3
+2016-01-01 20:21:14 : -*-Rage Spells 1
+2016-01-01 20:21:14 : -*-Jump Spells 1
+2016-01-01 20:21:14 : -*-Poison Spells 1
+2016-01-01 20:21:14 :  ====== Start Attack ====== 
+2016-01-01 20:21:16 : Sniping TH with Barch            	 
+2016-01-01 20:21:16 : Attacking TH with 1st wave of BARCH   
+2016-01-01 20:21:16 : Dropping Only wave of 4 Barbarians
+2016-01-01 20:21:17 : Custom Corner deployment THi = 15 ,x = 408 ,y = 97
+2016-01-01 20:21:17 : Deployment of 4 Barbarians was Successful!
+2016-01-01 20:21:19 :                                       
+2016-01-01 20:21:19 : Dropping Only wave of 4 Archers
+2016-01-01 20:21:20 : Custom Corner deployment THi = 15 ,x = 408 ,y = 97
+2016-01-01 20:21:20 : Deployment of 4 Archers was Successful!
+2016-01-01 20:21:22 :                                       
+2016-01-01 20:21:23 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:21:26 :                                       
+2016-01-01 20:21:27 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:21:29 :                                       
+2016-01-01 20:21:30 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:21:32 :                                       
+2016-01-01 20:21:32 : Oh Shit! Seems like a trapped TH!     
+2016-01-01 20:21:34 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:21:36 :                                       
+2016-01-01 20:21:36 : Quit wasting troops					 
+2016-01-01 20:21:37 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:21:39 :                                       
+2016-01-01 20:21:39 : ~Finished Attacking, waiting to finish
+2016-01-01 20:21:44 : Townhall has been destroyed!
+2016-01-01 20:21:45 : Wait few sec before close attack
+2016-01-01 20:21:52 : Returning Home
+2016-01-01 20:21:56 : Loot: [G]: 30 170 [E]: 15 693 [DE]: 293 [T]: 9
+2016-01-01 20:21:56 : Bonus Percentage: 3%
+2016-01-01 20:21:56 : Bonus [G]: 111 out of 3 700 [E]: 111 out of 3 700
+2016-01-01 20:21:57 : Your league level is: Silver II
+2016-01-01 20:21:57 : Stars earned: 1
+2016-01-01 20:22:05 : Trying to locate Main Screen
+2016-01-01 20:22:05 : Main Screen Located
+2016-01-01 20:22:07 : Village Report
+2016-01-01 20:22:07 : No. of Free/Total Builders: 1/5
+2016-01-01 20:22:07 :  [T]: 1 107
+2016-01-01 20:22:07 :  [G]: 1 016 224 [E]: 894 833 [D]: 56 705 [GEM]: 3 642
+2016-01-01 20:22:08 : Collecting Resources
+2016-01-01 20:22:21 : Training Troops & Spells
+2016-01-01 20:22:22 : Checking Army Camp...
+2016-01-01 20:22:23 : Total Army Camp capacity: 240/240 (100%)
+2016-01-01 20:22:24 :  - No. of Barbarians: 141
+2016-01-01 20:22:24 :  - No. of Archers: 99
+2016-01-01 20:22:24 :  - Archer Queen available
+2016-01-01 20:22:25 : Your Army Camps are now Full
+2016-01-01 20:22:25 : Calculating Troops before Training new Army.
+2016-01-01 20:22:40 : Going to Attack...
+2016-01-01 20:22:46 : ============== Searching For Dead Base ===============
+2016-01-01 20:22:46 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 20:22:46 : Meet: Gold + Elixir
+2016-01-01 20:22:46 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 20:22:46 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-01 20:22:46 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 20:22:46 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 20:22:46 : Aim: [G]: 150000 [E]: 150000 [D]: 1500
+2016-01-01 20:22:46 : ==================================================
+2016-01-01 20:22:54 :   1> [G]:  85272 [E]: 272720 [D]: 3423 [T]:34 [TH]:10, In
+2016-01-01 20:22:54 :       Not a Dead Base
+2016-01-01 20:23:03 :   2> [G]: 151071 [E]: 212543 [D]: 3674 [T]:34 [TH]:11, In
+2016-01-01 20:23:03 :       Not a Dead Base
+2016-01-01 20:23:11 :   3> [G]:  77246 [E]: 213783 [D]: 1267 [T]:34 [TH]: 9, In
+2016-01-01 20:23:18 :   4> [G]:  56910 [E]:  54725 [D]:  390 [T]:32 [TH]: 9, Out
+2016-01-01 20:23:18 :       TH Outside Found! 
+2016-01-01 20:23:18 :       Resource requirement not met for TH snipe 
+2016-01-01 20:23:18 :   4> [G]:  56910 [E]:  54725 [D]:  390 [T]:32 [TH]: 9, Out
+2016-01-01 20:23:25 :   5> [G]:  63928 [E]:  43971 [D]:  173 [T]:32 [TH]: 9, Out
+2016-01-01 20:23:25 :       TH Outside Found! 
+2016-01-01 20:23:25 :       Resource requirement not met for TH snipe 
+2016-01-01 20:23:25 :   5> [G]:  63928 [E]:  43971 [D]:  173 [T]:32 [TH]: 9, Out
+2016-01-01 20:23:34 :   6> [G]: 230541 [E]: 288313 [D]:  562 [T]:33 [TH]: 9, In
+2016-01-01 20:23:34 :       Not a Dead Base
+2016-01-01 20:23:41 :   7> [G]:  46182 [E]:  22048 [D]:   83 [T]:32 [TH]: 8, Out
+2016-01-01 20:23:41 :       TH Outside Found! 
+2016-01-01 20:23:41 :       Resource requirement not met for TH snipe 
+2016-01-01 20:23:41 :   7> [G]:  46182 [E]:  22048 [D]:   83 [T]:32 [TH]: 8, Out
+2016-01-01 20:23:49 :   8> [G]:  45234 [E]:  52102 [D]:  510 [T]:29 [TH]: 9, Out
+2016-01-01 20:23:49 :       TH Outside Found! 
+2016-01-01 20:23:49 :       Resource requirement not met for TH snipe 
+2016-01-01 20:23:49 :   8> [G]:  45234 [E]:  52102 [D]:  510 [T]:29 [TH]: 9, Out
+2016-01-01 20:23:57 :   9> [G]:   7920 [E]:  15201 [D]:  311 [T]:33 [TH]: 9, Out
+2016-01-01 20:23:57 :       TH Outside Found! 
+2016-01-01 20:23:57 :       Resource requirement not met for TH snipe 
+2016-01-01 20:23:57 :   9> [G]:   7920 [E]:  15201 [D]:  311 [T]:33 [TH]: 9, Out
+2016-01-01 20:24:05 :  10> [G]: 439994 [E]: 434167 [D]: 3902 [T]:32 [TH]:10, In
+2016-01-01 20:24:05 :       Not a Dead Base
+2016-01-01 20:24:13 :  11> [G]: 235571 [E]: 183561 [D]:  445 [T]:24 [TH]: 9, Out
+2016-01-01 20:24:13 :       TH Outside Found! 
+2016-01-01 20:24:13 :       Resource requirement met for TH snipe 
+2016-01-01 20:24:15 : ================ Search Complete =================
+2016-01-01 20:24:15 : Initiating attack for: TH Snipe
+2016-01-01 20:24:17 : -*-Barbarians 141
+2016-01-01 20:24:17 : -*-Archers 99
+2016-01-01 20:24:17 : -*-Clan Castle 
+2016-01-01 20:24:17 : -*-Queen 
+2016-01-01 20:24:17 : -*-Heal Spells 3
+2016-01-01 20:24:17 : -*-Rage Spells 1
+2016-01-01 20:24:17 : -*-Jump Spells 1
+2016-01-01 20:24:17 : -*-Poison Spells 1
+2016-01-01 20:24:17 :  ====== Start Attack ====== 
+2016-01-01 20:24:19 : Sniping TH with Barch            	 
+2016-01-01 20:24:19 : Attacking TH with 1st wave of BARCH   
+2016-01-01 20:24:19 : Dropping Only wave of 4 Barbarians
+2016-01-01 20:24:20 : Custom Corner deployment THi = 16 ,x = 430 ,y = 580
+2016-01-01 20:24:20 : Deployment of 4 Barbarians was Successful!
+2016-01-01 20:24:22 :                                       
+2016-01-01 20:24:22 : Dropping Only wave of 4 Archers
+2016-01-01 20:24:23 : Custom Corner deployment THi = 16 ,x = 430 ,y = 580
+2016-01-01 20:24:23 : Deployment of 4 Archers was Successful!
+2016-01-01 20:24:25 :                                       
+2016-01-01 20:24:26 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:24:29 :                                       
+2016-01-01 20:24:30 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:24:32 :                                       
+2016-01-01 20:24:33 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:24:35 :                                       
+2016-01-01 20:24:36 : Oh Shit! Seems like a trapped TH!     
+2016-01-01 20:24:37 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:24:39 :                                       
+2016-01-01 20:24:39 : Quit wasting troops					 
+2016-01-01 20:24:40 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:24:42 :                                       
+2016-01-01 20:24:42 : ~Finished Attacking, waiting to finish
+2016-01-01 20:24:46 : Townhall has been destroyed!
+2016-01-01 20:24:47 : Wait few sec before close attack
+2016-01-01 20:24:56 : Returning Home
+2016-01-01 20:25:00 : Loot: [G]: 44 817 [E]: 34 684 [DE]: 76 [T]: 8
+2016-01-01 20:25:00 : Bonus Percentage: 6%
+2016-01-01 20:25:00 : Bonus [G]: 222 out of 3 700 [E]: 222 out of 3 700
+2016-01-01 20:25:01 : Your league level is: Silver II
+2016-01-01 20:25:01 : Stars earned: 1
+2016-01-01 20:25:09 : Trying to locate Main Screen
+2016-01-01 20:25:09 : Main Screen Located
+2016-01-01 20:25:11 : Village Report
+2016-01-01 20:25:11 : No. of Free/Total Builders: 1/5
+2016-01-01 20:25:11 :  [T]: 1 115
+2016-01-01 20:25:11 :  [G]: 1 055 798 [E]: 929 674 [D]: 56 789 [GEM]: 3 642
+2016-01-01 20:25:12 : Collecting Resources
+2016-01-01 20:25:25 : Training Troops & Spells
+2016-01-01 20:25:26 : Checking Army Camp...
+2016-01-01 20:25:27 : Total Army Camp capacity: 240/240 (100%)
+2016-01-01 20:25:28 :  - No. of Barbarians: 141
+2016-01-01 20:25:28 :  - No. of Archers: 99
+2016-01-01 20:25:28 :  - Archer Queen available
+2016-01-01 20:25:29 : Your Army Camps are now Full
+2016-01-01 20:25:29 : Calculating Troops before Training new Army.
+2016-01-01 20:25:45 : Going to Attack...
+2016-01-01 20:25:50 : ============== Searching For Dead Base ===============
+2016-01-01 20:25:50 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 20:25:50 : Meet: Gold + Elixir
+2016-01-01 20:25:50 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 20:25:50 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-01 20:25:50 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 20:25:50 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 20:25:50 : Aim: [G]: 150000 [E]: 150000 [D]: 1500
+2016-01-01 20:25:50 : ==================================================
+2016-01-01 20:25:56 :   1> [G]:  56315 [E]: 174960 [D]:  872 [T]:30 [TH]: 9, Out
+2016-01-01 20:25:56 :       TH Outside Found! 
+2016-01-01 20:25:56 :       Resource requirement met for TH snipe 
+2016-01-01 20:25:58 : ================ Search Complete =================
+2016-01-01 20:25:58 : Initiating attack for: TH Snipe
+2016-01-01 20:26:00 : -*-Barbarians 141
+2016-01-01 20:26:00 : -*-Archers 99
+2016-01-01 20:26:00 : -*-Clan Castle 
+2016-01-01 20:26:00 : -*-Queen 
+2016-01-01 20:26:00 : -*-Heal Spells 3
+2016-01-01 20:26:00 : -*-Rage Spells 1
+2016-01-01 20:26:00 : -*-Jump Spells 1
+2016-01-01 20:26:00 : -*-Poison Spells 1
+2016-01-01 20:26:00 :  ====== Start Attack ====== 
+2016-01-01 20:26:02 : Sniping TH with Barch            	 
+2016-01-01 20:26:02 : Attacking TH with 1st wave of BARCH   
+2016-01-01 20:26:02 : Dropping Only wave of 4 Barbarians
+2016-01-01 20:26:03 : Custom Corner deployment THi = 16 ,x = 430 ,y = 507
+2016-01-01 20:26:03 : Deployment of 4 Barbarians was Successful!
+2016-01-01 20:26:05 :                                       
+2016-01-01 20:26:05 : Dropping Only wave of 4 Archers
+2016-01-01 20:26:06 : Custom Corner deployment THi = 16 ,x = 430 ,y = 507
+2016-01-01 20:26:07 : Deployment of 4 Archers was Successful!
+2016-01-01 20:26:08 :                                       
+2016-01-01 20:26:10 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:26:12 :                                       
+2016-01-01 20:26:13 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:26:15 :                                       
+2016-01-01 20:26:16 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:26:18 :                                       
+2016-01-01 20:26:19 : Oh Shit! Seems like a trapped TH!     
+2016-01-01 20:26:20 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:26:22 :                                       
+2016-01-01 20:26:22 : Quit wasting troops					 
+2016-01-01 20:26:23 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:26:25 :                                       
+2016-01-01 20:26:25 : ~Finished Attacking, waiting to finish
+2016-01-01 20:26:32 : Townhall has been destroyed!
+2016-01-01 20:26:34 : Wait few sec before close attack
+2016-01-01 20:26:41 : Returning Home
+2016-01-01 20:26:45 : Loot: [G]: 2 583 [E]: 28 220 [DE]: 93 [T]: 10
+2016-01-01 20:26:45 : Bonus Percentage: 4%
+2016-01-01 20:26:46 : Bonus [G]: 148 out of 3 700 [E]: 148 out of 3 700
+2016-01-01 20:26:46 : Your league level is: Silver II
+2016-01-01 20:26:46 : Stars earned: 1
+2016-01-01 20:26:55 : Trying to locate Main Screen
+2016-01-01 20:26:55 : Main Screen Located
+2016-01-01 20:26:56 : Village Report
+2016-01-01 20:26:56 : No. of Free/Total Builders: 1/5
+2016-01-01 20:26:56 :  [T]: 1 125
+2016-01-01 20:26:56 :  [G]: 1 057 901 [E]: 955 313 [D]: 56 890 [GEM]: 3 642
+2016-01-01 20:26:58 : Collecting Resources
+2016-01-01 20:27:10 : Training Troops & Spells
+2016-01-01 20:27:11 : Checking Army Camp...
+2016-01-01 20:27:12 : Total Army Camp capacity: 240/240 (100%)
+2016-01-01 20:27:13 :  - No. of Barbarians: 141
+2016-01-01 20:27:13 :  - No. of Archers: 99
+2016-01-01 20:27:13 :  - Archer Queen available
+2016-01-01 20:27:14 : Your Army Camps are now Full
+2016-01-01 20:27:14 : Calculating Troops before Training new Army.
+2016-01-01 20:27:30 : Going to Attack...
+2016-01-01 20:27:35 : ============== Searching For Dead Base ===============
+2016-01-01 20:27:35 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 20:27:35 : Meet: Gold + Elixir
+2016-01-01 20:27:35 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 20:27:35 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-01 20:27:35 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 20:27:35 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 20:27:35 : Aim: [G]: 150000 [E]: 150000 [D]: 1500
+2016-01-01 20:27:35 : ==================================================
+2016-01-01 20:27:41 :   1> [G]:  93969 [E]:  62780 [D]: 1106 [T]:28 [TH]: 9, Out
+2016-01-01 20:27:41 :       TH Outside Found! 
+2016-01-01 20:27:41 :       Resource requirement not met for TH snipe 
+2016-01-01 20:27:41 :   1> [G]:  93969 [E]:  62780 [D]: 1106 [T]:28 [TH]: 9, Out
+2016-01-01 20:27:49 :   2> [G]:   6741 [E]:   6822 [D]:   29 [T]:21 [TH]: 8, Out
+2016-01-01 20:27:49 :       TH Outside Found! 
+2016-01-01 20:27:49 :       Resource requirement not met for TH snipe 
+2016-01-01 20:27:49 :   2> [G]:   6741 [E]:   6822 [D]:   29 [T]:21 [TH]: 8, Out
+2016-01-01 20:27:57 :   3> [G]: 143510 [E]: 291232 [D]: 1460 [T]:33 [TH]: 9, In
+2016-01-01 20:27:57 :       Not a Dead Base
+2016-01-01 20:28:05 :   4> [G]: 214027 [E]: 171450 [D]: 3078 [T]:36 [TH]:10, In
+2016-01-01 20:28:05 :       Not a Dead Base
+2016-01-01 20:28:14 :   5> [G]:  94641 [E]: 327050 [D]: 1432 [T]:29 [TH]:10, In
+2016-01-01 20:28:14 :       Not a Dead Base
+2016-01-01 20:28:21 :   6> [G]: 182255 [E]:  83618 [D]: 2044 [T]:32 [TH]: 9, In
+2016-01-01 20:28:28 :   7> [G]:  26207 [E]:  12852 [D]: 1924 [T]:22 [TH]: 9, In
+2016-01-01 20:28:35 :   8> [G]:  47192 [E]:  52013 [D]:  267 [T]:30 [TH]: 9, Out
+2016-01-01 20:28:35 :       TH Outside Found! 
+2016-01-01 20:28:35 :       Resource requirement not met for TH snipe 
+2016-01-01 20:28:35 :   8> [G]:  47192 [E]:  52013 [D]:  267 [T]:30 [TH]: 9, Out
+2016-01-01 20:28:44 :   9> [G]: 402564 [E]: 411886 [D]: 3036 [T]:33 [TH]:10, In
+2016-01-01 20:28:44 :       Not a Dead Base
+2016-01-01 20:28:51 :  10> [G]:   4094 [E]:   1668 [D]:  150 [T]:25 [TH]:10, In
+2016-01-01 20:28:58 :  11> [G]: 116294 [E]: 182385 [D]:  712 [T]:22 [TH]: 9, In
+2016-01-01 20:29:06 :  12> [G]:  59450 [E]: 250163 [D]:  705 [T]:26 [TH]: 9, In
+2016-01-01 20:29:06 :       Not a Dead Base
+2016-01-01 20:29:14 :  13> [G]:  35724 [E]:  54600 [D]:  803 [T]:33 [TH]: 9, Out
+2016-01-01 20:29:14 :       TH Outside Found! 
+2016-01-01 20:29:14 :       Resource requirement not met for TH snipe 
+2016-01-01 20:29:14 :  13> [G]:  35724 [E]:  54600 [D]:  803 [T]:33 [TH]: 9, Out
+2016-01-01 20:29:22 :  14> [G]:  66754 [E]: 426407 [D]: 2369 [T]:38 [TH]:10, In
+2016-01-01 20:29:22 :       Not a Dead Base
+2016-01-01 20:29:29 :  15> [G]:  44492 [E]: 105810 [D]: 2202 [T]:29 [TH]: 9, In
+2016-01-01 20:29:36 :  16> [G]:  69623 [E]:   3290 [D]:   60 [T]:29 [TH]: 9, In
+2016-01-01 20:29:45 :  17> [G]:  27485 [E]: 282976 [D]:   55 [T]:21 [TH]: 9, In
+2016-01-01 20:29:45 :       Not a Dead Base
+2016-01-01 20:29:55 :  18> [G]: 412611 [E]:  38822 [D]: 3210 [T]:29 [TH]:10, In
+2016-01-01 20:29:55 :       Not a Dead Base
+2016-01-01 20:30:03 :  19> [G]: 146968 [E]:  93186 [D]: 1917 [T]:27 [TH]: 9, In
+2016-01-01 20:30:10 :  20> [G]:  40677 [E]:  32848 [D]:  232 [T]:33 [TH]: 9, Out
+2016-01-01 20:30:10 :       TH Outside Found! 
+2016-01-01 20:30:10 :       Resource requirement not met for TH snipe 
+2016-01-01 20:30:10 :  20> [G]:  40677 [E]:  32848 [D]:  232 [T]:33 [TH]: 9, Out
+2016-01-01 20:30:18 :  21> [G]:  43833 [E]: 156260 [D]:  595 [T]:32 [TH]: 9, In
+2016-01-01 20:30:25 :  22> [G]:  99953 [E]:  57948 [D]: 1540 [T]:36 [TH]:10, In
+2016-01-01 20:30:33 :  23> [G]:  45467 [E]:  94546 [D]:  289 [T]:33 [TH]: 9, Out
+2016-01-01 20:30:33 :       TH Outside Found! 
+2016-01-01 20:30:33 :       Resource requirement not met for TH snipe 
+2016-01-01 20:30:33 :  23> [G]:  45467 [E]:  94546 [D]:  289 [T]:33 [TH]: 9, Out
+2016-01-01 20:30:41 :  24> [G]:  73697 [E]: 415100 [D]: 2478 [T]:38 [TH]:10, In
+2016-01-01 20:30:41 :       Not a Dead Base
+2016-01-01 20:30:49 :  25> [G]:  49781 [E]:  40886 [D]: 1045 [T]:41 [TH]:10, In
+2016-01-01 20:30:57 :  26> [G]:  26540 [E]:  39136 [D]:  263 [T]:38 [TH]:10, Out
+2016-01-01 20:30:57 :       TH Outside Found! 
+2016-01-01 20:30:57 :       Resource requirement not met for TH snipe 
+2016-01-01 20:30:57 :  26> [G]:  26540 [E]:  39136 [D]:  263 [T]:38 [TH]:10, Out
+2016-01-01 20:31:04 :  27> [G]:   2079 [E]:  34847 [D]:  119 [T]:26 [TH]: 8, In
+2016-01-01 20:31:12 :  28> [G]:  32453 [E]:  24742 [D]:  251 [T]:31 [TH]: 9, Out
+2016-01-01 20:31:12 :       TH Outside Found! 
+2016-01-01 20:31:12 :       Resource requirement not met for TH snipe 
+2016-01-01 20:31:12 :  28> [G]:  32453 [E]:  24742 [D]:  251 [T]:31 [TH]: 9, Out
+2016-01-01 20:31:19 :  29> [G]:  79616 [E]:  95126 [D]: 2076 [T]:32 [TH]: 9, In
+2016-01-01 20:31:28 :  30> [G]: 223447 [E]: 423410 [D]: 2214 [T]:40 [TH]:10, In
+2016-01-01 20:31:28 :       Not a Dead Base
+2016-01-01 20:31:36 :  31> [G]: 223447 [E]: 423410 [D]: 2214 [T]:40 [TH]:10, In
+2016-01-01 20:31:36 :       Not a Dead Base
+2016-01-01 20:31:37 : Attacking disabled, Take-A-Break detected. Exiting CoC
+2016-01-01 20:31:37 : Returning Home
+2016-01-01 20:31:48 : Waiting 20 seconds before starting CoC
+2016-01-01 20:32:10 : Trying to locate Main Screen
+2016-01-01 20:32:11 : Village must take a break, wait ...
+2016-01-01 20:34:11 : Waiting for Main Screen
+2016-01-01 20:34:13 : Village must take a break, wait ...
+2016-01-01 20:36:15 : Village must take a break, wait ...
+2016-01-01 20:38:25 : Main Screen Located
+2016-01-01 20:38:27 : Trying to locate Main Screen
+2016-01-01 20:38:27 : Main Screen Located
+2016-01-01 20:38:29 : Village Report
+2016-01-01 20:38:29 : No. of Free/Total Builders: 1/5
+2016-01-01 20:38:29 :  [T]: 1 174
+2016-01-01 20:38:29 :  [G]: 1 030 901 [E]: 952 313 [D]: 56 890 [GEM]: 3 642
+2016-01-01 20:38:30 : Collecting Resources
+2016-01-01 20:38:41 : Chat Request: any
+2016-01-01 20:38:41 : Castle Capacity : 8/30
+2016-01-01 20:38:41 : Custom Donation Keyword found: any
+2016-01-01 20:38:42 : Donating 4 Barbarians
+2016-01-01 20:38:43 : Donating 4 Archers
+2016-01-01 20:38:46 : Training Troops & Spells
+2016-01-01 20:38:47 : Checking Army Camp...
+2016-01-01 20:38:48 : Total Army Camp capacity: 236/240 (98%)
+2016-01-01 20:38:49 :  - No. of Barbarians: 139
+2016-01-01 20:38:49 :  - No. of Archers: 97
+2016-01-01 20:38:49 :  - Archer Queen available
+2016-01-01 20:38:50 : Your Army Camps are now Full
+2016-01-01 20:38:50 : Calculating Troops before Training new Army.
+2016-01-01 20:39:05 : Going to Attack...
+2016-01-01 20:39:11 : ============== Searching For Dead Base ===============
+2016-01-01 20:39:11 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 20:39:11 : Meet: Gold + Elixir
+2016-01-01 20:39:11 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 20:39:11 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-01 20:39:11 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 20:39:11 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 20:39:11 : Aim: [G]: 150000 [E]: 150000 [D]: 1500
+2016-01-01 20:39:11 : ==================================================
+2016-01-01 20:39:17 :   1> [G]:  35136 [E]:  43062 [D]:  549 [T]:30 [TH]: 9, Out
+2016-01-01 20:39:17 :       TH Outside Found! 
+2016-01-01 20:39:17 :       Resource requirement not met for TH snipe 
+2016-01-01 20:39:17 :   1> [G]:  35136 [E]:  43062 [D]:  549 [T]:30 [TH]: 9, Out
+2016-01-01 20:39:24 :   2> [G]:  62765 [E]:  80321 [D]:  290 [T]:30 [TH]: 9, In
+2016-01-01 20:39:31 :   3> [G]:  22481 [E]:  22601 [D]:  200 [T]:26 [TH]: 9, In
+2016-01-01 20:39:39 :   4> [G]: 114779 [E]: 159950 [D]: 1031 [T]:34 [TH]: 9, In
+2016-01-01 20:39:48 :   5> [G]: 375366 [E]: 411129 [D]: 1690 [T]:11 [TH]:10, In
+2016-01-01 20:39:48 :       Not a Dead Base
+2016-01-01 20:39:56 :   6> [G]: 204917 [E]: 115785 [D]:  141 [T]:25 [TH]:11, In
+2016-01-01 20:39:56 :       Not a Dead Base
+2016-01-01 20:40:05 :   7> [G]: 421885 [E]: 321762 [D]: 1707 [T]:31 [TH]:10, In
+2016-01-01 20:40:05 :       Not a Dead Base
+2016-01-01 20:40:12 :   8> [G]:  35046 [E]:   6724 [D]:  231 [T]:34 [TH]:10, In
+2016-01-01 20:40:20 :   9> [G]: 396386 [E]: 205475 [D]: 4760 [T]:40 [TH]:11, In
+2016-01-01 20:40:20 :       Not a Dead Base
+2016-01-01 20:40:29 :  10> [G]: 248504 [E]: 404767 [D]: 3992 [T]:13 [TH]:11, In
+2016-01-01 20:40:29 :       Not a Dead Base
+2016-01-01 20:40:38 :  11> [G]: 228238 [E]: 231048 [D]:  507 [T]:36 [TH]:10, In
+2016-01-01 20:40:38 :       Not a Dead Base
+2016-01-01 20:40:47 :  12> [G]: 416307 [E]:  89875 [D]:  789 [T]:35 [TH]:10, In
+2016-01-01 20:40:47 :       Not a Dead Base
+2016-01-01 20:40:55 :  13> [G]:  20354 [E]:  12555 [D]:  615 [T]:35 [TH]:10, In
+2016-01-01 20:41:02 :  14> [G]: 208379 [E]:  47855 [D]: 3047 [T]:38 [TH]:10, In
+2016-01-01 20:41:10 :  15> [G]: 294582 [E]: 253446 [D]: 3569 [T]:17 [TH]:11, In
+2016-01-01 20:41:10 :       Not a Dead Base
+2016-01-01 20:41:18 :  16> [G]: 148193 [E]:  25786 [D]: 3234 [T]:35 [TH]:10, In
+2016-01-01 20:41:26 :  17> [G]: 532968 [E]: 533662 [D]: 2276 [T]:29 [TH]:10, In
+2016-01-01 20:41:26 :       Not a Dead Base
+2016-01-01 20:41:34 :  18> [G]: 412429 [E]: 401014 [D]: 3012 [T]:13 [TH]:10, In
+2016-01-01 20:41:34 :       Not a Dead Base
+2016-01-01 20:41:43 :  19> [G]: 108892 [E]: 304706 [D]: 1329 [T]: 9 [TH]:10, Out
+2016-01-01 20:41:43 :       TH Outside Found! 
+2016-01-01 20:41:43 :       Resource requirement met for TH snipe 
+2016-01-01 20:41:45 : ================ Search Complete =================
+2016-01-01 20:41:45 : Initiating attack for: TH Snipe
+2016-01-01 20:41:47 : -*-Barbarians 141
+2016-01-01 20:41:47 : -*-Archers 97
+2016-01-01 20:41:47 : -*-Clan Castle 
+2016-01-01 20:41:47 : -*-Queen 
+2016-01-01 20:41:47 : -*-Heal Spells 3
+2016-01-01 20:41:47 : -*-Rage Spells 1
+2016-01-01 20:41:47 : -*-Jump Spells 1
+2016-01-01 20:41:47 : -*-Poison Spells 1
+2016-01-01 20:41:47 :  ====== Start Attack ====== 
+2016-01-01 20:41:49 : Sniping TH with Barch            	 
+2016-01-01 20:41:49 : Attacking TH with 1st wave of BARCH   
+2016-01-01 20:41:49 : Dropping Only wave of 4 Barbarians
+2016-01-01 20:41:50 : Custom Corner deployment THi = 2 ,x = 697 ,y = 329
+2016-01-01 20:41:50 : Deployment of 4 Barbarians was Successful!
+2016-01-01 20:41:52 :                                       
+2016-01-01 20:41:52 : Dropping Only wave of 4 Archers
+2016-01-01 20:41:53 : Custom Corner deployment THi = 2 ,x = 697 ,y = 329
+2016-01-01 20:41:53 : Deployment of 4 Archers was Successful!
+2016-01-01 20:41:55 :                                       
+2016-01-01 20:41:56 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:41:58 :                                       
+2016-01-01 20:41:59 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:42:02 :                                       
+2016-01-01 20:42:03 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:42:05 :                                       
+2016-01-01 20:42:05 : Oh Shit! Seems like a trapped TH!     
+2016-01-01 20:42:06 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:42:09 :                                       
+2016-01-01 20:42:09 : Quit wasting troops					 
+2016-01-01 20:42:10 : Checking if the Gold&Elixir are changing...
+2016-01-01 20:42:12 :                                       
+2016-01-01 20:42:12 : ~Finished Attacking, waiting to finish
+2016-01-01 20:42:21 : Townhall has been destroyed!
+2016-01-01 20:42:22 : Wait few sec before close attack
+2016-01-01 20:42:29 : Returning Home
+2016-01-01 20:42:33 : Loot: [G]: 15 704 [E]: 54 870 [DE]: 214 [T]: 3
+2016-01-01 20:42:33 : Bonus Percentage: 4%
+2016-01-01 20:42:33 : Bonus [G]: 148 out of 3 700 [E]: 148 out of 3 700
+2016-01-01 20:42:34 : Your league level is: Silver II
+2016-01-01 20:42:34 : Stars earned: 1
+2016-01-01 20:42:42 : Trying to locate Main Screen
+2016-01-01 20:42:42 : Main Screen Located
+2016-01-01 20:42:44 : Village Report
+2016-01-01 20:42:44 : No. of Free/Total Builders: 1/5
+2016-01-01 20:42:44 :  [T]: 1 177
+2016-01-01 20:42:44 :  [G]: 1 034 621 [E]: 1 011 847 [D]: 57 136 [GEM]: 3 642
+2016-01-01 20:42:45 : Collecting Resources
+2016-01-01 20:42:58 : Training Troops & Spells
+2016-01-01 20:42:58 : Checking Army Camp...
+2016-01-01 20:43:00 : Total Army Camp capacity: 240/240 (100%)
+2016-01-01 20:43:00 :  - No. of Barbarians: 141
+2016-01-01 20:43:01 :  - No. of Archers: 99
+2016-01-01 20:43:01 :  - Archer Queen available
+2016-01-01 20:43:02 : Your Army Camps are now Full
+2016-01-01 20:43:02 : Calculating Troops before Training new Army.
+2016-01-01 20:43:17 : Going to Attack...
+2016-01-01 20:43:23 : ============== Searching For Dead Base ===============
+2016-01-01 20:43:23 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 20:43:23 : Meet: Gold + Elixir
+2016-01-01 20:43:23 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 20:43:23 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-01 20:43:23 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 20:43:23 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 20:43:23 : Aim: [G]: 150000 [E]: 150000 [D]: 1500
+2016-01-01 20:43:23 : ==================================================
+2016-01-01 20:43:29 :   1> [G]:  42841 [E]: 121803 [D]:  612 [T]:33 [TH]:10, In
+2016-01-01 20:43:36 :   2> [G]:  61939 [E]:  58531 [D]: 1047 [T]:23 [TH]:10, Out
+2016-01-01 20:43:36 :       TH Outside Found! 
+2016-01-01 20:43:36 :       Resource requirement not met for TH snipe 
+2016-01-01 20:43:36 :   2> [G]:  61939 [E]:  58531 [D]: 1047 [T]:23 [TH]:10, Out
+2016-01-01 20:43:44 :   3> [G]:  18714 [E]:  24343 [D]:  184 [T]:29 [TH]:10, In
+2016-01-01 20:43:52 :   4> [G]: 468449 [E]: 468260 [D]: 1381 [T]:28 [TH]:10, In
+2016-01-01 20:43:52 :       Not a Dead Base
+2016-01-01 20:44:00 :   5> [G]:  45728 [E]: 125924 [D]:  104 [T]:32 [TH]:10, In
+2016-01-01 20:44:07 :   6> [G]:  56246 [E]:  45175 [D]:  152 [T]:30 [TH]: 9, Out
+2016-01-01 20:44:07 :       TH Outside Found! 
+2016-01-01 20:44:07 :       Resource requirement not met for TH snipe 
+2016-01-01 20:44:07 :   6> [G]:  56246 [E]:  45175 [D]:  152 [T]:30 [TH]: 9, Out
+2016-01-01 20:44:15 :   7> [G]: 421752 [E]: 312753 [D]: 1926 [T]:33 [TH]:10, In
+2016-01-01 20:44:15 :       Not a Dead Base
+2016-01-01 20:44:23 :   8> [G]: 237027 [E]: 103017 [D]:   76 [T]:35 [TH]:10, In
+2016-01-01 20:44:23 :       Not a Dead Base
+2016-01-01 20:44:30 :   9> [G]:  21131 [E]: 239189 [D]: 1492 [T]:36 [TH]:10, In
+2016-01-01 20:44:38 :  10> [G]:  92519 [E]:  47811 [D]: 3076 [T]:36 [TH]:10, In
+2016-01-01 20:44:45 :  11> [G]:  87035 [E]:  97677 [D]:  313 [T]:34 [TH]: 9, Out
+2016-01-01 20:44:45 :       TH Outside Found! 
+2016-01-01 20:44:45 :       Resource requirement not met for TH snipe 
+2016-01-01 20:44:45 :  11> [G]:  87035 [E]:  97677 [D]:  313 [T]:34 [TH]: 9, Out
+2016-01-01 20:44:52 :  12> [G]:  36231 [E]:  36005 [D]:  405 [T]:28 [TH]: 9, Out
+2016-01-01 20:44:52 :       TH Outside Found! 
+2016-01-01 20:44:52 :       Resource requirement not met for TH snipe 
+2016-01-01 20:44:52 :  12> [G]:  36231 [E]:  36005 [D]:  405 [T]:28 [TH]: 9, Out
+2016-01-01 20:45:00 :  13> [G]: 108908 [E]: 451326 [D]: 3274 [T]:37 [TH]:10, In
+2016-01-01 20:45:00 :       Not a Dead Base
+2016-01-01 20:45:09 :  14> [G]: 439627 [E]:  63184 [D]: 2023 [T]:37 [TH]:10, In
+2016-01-01 20:45:09 :       Not a Dead Base
+2016-01-01 20:45:18 :  15> [G]: 150801 [E]: 407453 [D]: 1489 [T]:35 [TH]:10, In
+2016-01-01 20:45:18 :       Not a Dead Base
+2016-01-01 20:45:26 :  16> [G]:  29327 [E]: 354317 [D]:  509 [T]:33 [TH]:10, In
+2016-01-01 20:45:26 :       Not a Dead Base
+2016-01-01 20:45:33 :  17> [G]:  69345 [E]: 199253 [D]: 1679 [T]:26 [TH]: 9, In
+2016-01-01 20:45:41 :  18> [G]: 215356 [E]: 163948 [D]:  412 [T]:25 [TH]: 9, In
+2016-01-01 20:45:41 :       Not a Dead Base
+2016-01-01 20:45:49 :  19> [G]:  17358 [E]: 444315 [D]: 3757 [T]:32 [TH]:11, In
+2016-01-01 20:45:49 :       Not a Dead Base
+2016-01-01 20:45:57 :  20> [G]: 137752 [E]: 296576 [D]: 3869 [T]:41 [TH]:10, In
+2016-01-01 20:45:57 :       Not a Dead Base
+2016-01-01 20:46:05 :  21> [G]: 314430 [E]: 217709 [D]: 1357 [T]:27 [TH]:11, In
+2016-01-01 20:46:05 :       Not a Dead Base
+2016-01-01 20:46:14 :  22> [G]: 411108 [E]: 400018 [D]: 2486 [T]: 9 [TH]:10, In
+2016-01-01 20:46:14 :       Not a Dead Base
+2016-01-01 20:46:21 :  23> [G]:  19436 [E]: 137737 [D]:  602 [T]:18 [TH]: 9, In
+2016-01-01 20:46:29 :  24> [G]:  75700 [E]: 114943 [D]: 1093 [T]:34 [TH]:11, In
+2016-01-01 20:46:36 :  25> [G]:  18723 [E]:  14951 [D]:  264 [T]:28 [TH]: 8, Out
+2016-01-01 20:46:36 :       TH Outside Found! 
+2016-01-01 20:46:36 :       Resource requirement not met for TH snipe 
+2016-01-01 20:46:36 :  25> [G]:  18723 [E]:  14951 [D]:  264 [T]:28 [TH]: 8, Out
+2016-01-01 20:46:45 :  26> [G]: 437434 [E]:  37429 [D]: 3414 [T]:31 [TH]:10, In
+2016-01-01 20:46:45 :       Not a Dead Base
+2016-01-01 20:46:53 :  27> [G]: 200339 [E]: 213419 [D]: 1413 [T]:36 [TH]:10, In
+2016-01-01 20:46:53 :       Dead Base Found! 
+2016-01-01 20:46:54 : ================ Search Complete =================
+2016-01-01 20:46:54 : Initiating attack for: Dead Base
+2016-01-01 20:46:56 : -*-Barbarians 141
+2016-01-01 20:46:56 : -*-Archers 99
+2016-01-01 20:46:56 : -*-Clan Castle 
+2016-01-01 20:46:56 : -*-Queen 
+2016-01-01 20:46:56 : -*-Heal Spells 3
+2016-01-01 20:46:56 : -*-Rage Spells 1
+2016-01-01 20:46:56 : -*-Jump Spells 1
+2016-01-01 20:46:56 : -*-Poison Spells 1
+2016-01-01 20:46:56 :  ====== Start Attack ====== 
+2016-01-01 20:46:58 : Attacking four finger fight style
+2016-01-01 20:46:59 : Dropping only wave of 141 Barbarians
+2016-01-01 20:47:02 : Dropping only wave of 99 Archers
+2016-01-01 20:47:04 : Dropping Clan Castle
+2016-01-01 20:47:05 : Dropping Queen
+2016-01-01 20:47:07 : Dropping left over troops
+2016-01-01 20:47:07 : Checking remaining unused troops for: Dead Base
+2016-01-01 20:47:08 : -*-Barbarians 11
+2016-01-01 20:47:08 : -*-Heal Spells 3
+2016-01-01 20:47:08 : -*-Rage Spells 1
+2016-01-01 20:47:08 : -*-Jump Spells 1
+2016-01-01 20:47:08 : -*-Poison Spells 1
+2016-01-01 20:47:08 : Dropping last wave of 11 Barbarians
+2016-01-01 20:47:18 : Checking remaining unused troops for: Dead Base
+2016-01-01 20:47:20 : -*-Heal Spells 3
+2016-01-01 20:47:20 : -*-Rage Spells 1
+2016-01-01 20:47:20 : -*-Jump Spells 1
+2016-01-01 20:47:20 : -*-Poison Spells 1
+2016-01-01 20:47:22 : Queen is getting weak, Activating Queen's power
+2016-01-01 20:47:28 : Finished Attacking, waiting for the battle to end
+2016-01-01 20:47:28 : Checking if the battle has finished
+2016-01-01 20:47:31 : detected [G]: 6036 [E]: 3661 [DE]: 1383 |  Exit in  8 sec.
+2016-01-01 20:47:32 : detected [G]: 6036 [E]: 3661 [DE]: 1383 |  Exit in  6 sec.
+2016-01-01 20:47:34 : detected [G]: 6036 [E]: 3661 [DE]: 1383 |  Exit in  5 sec.
+2016-01-01 20:47:36 : detected [G]: 6036 [E]: 3661 [DE]: 1383 |  Exit in  3 sec.
+2016-01-01 20:47:37 : detected [G]: 6036 [E]: 3661 [DE]: 1383 |  Exit in  1 sec.
+2016-01-01 20:47:39 : detected [G]: 6036 [E]: 3661 [DE]: 1383 |  Exit in  0 sec.
+2016-01-01 20:47:41 : detected [G]: 6036 [E]: 3661 [DE]: 1383 |  Exit in  0 sec.
+2016-01-01 20:47:41 : Gold & Elixir & DE no change detected, exit
+2016-01-01 20:47:41 : Returning Home
+2016-01-01 20:47:45 : Loot: [G]: 194 303 [E]: 209 758 [DE]: 30 [T]: 24
+2016-01-01 20:47:45 : Bonus Percentage: 80%
+2016-01-01 20:47:46 : Bonus [G]: 2 960 out of 3 700 [E]: 2 960 out of 3 700
+2016-01-01 20:47:46 : Your league level is: Silver II
+2016-01-01 20:47:46 : Stars earned: 2
+2016-01-01 20:47:55 : Trying to locate Main Screen
+2016-01-01 20:47:55 : Main Screen Located
+2016-01-01 20:47:56 : Village Report
+2016-01-01 20:47:56 : No. of Free/Total Builders: 1/5
+2016-01-01 20:47:56 :  [T]: 1 201
+2016-01-01 20:47:56 :  [G]: 1 207 584 [E]: 1 220 065 [D]: 57 178 [GEM]: 3 642
+2016-01-01 20:47:58 : Collecting Resources
+2016-01-01 20:48:10 : Training Troops & Spells
+2016-01-01 20:48:11 : Checking Army Camp...
+2016-01-01 20:48:12 : Total Army Camp capacity: 52/240 (21%)
+2016-01-01 20:48:13 :  - No. of Barbarians: 28
+2016-01-01 20:48:13 :  - No. of Archers: 24
+2016-01-01 20:48:28 : Requesting Clan Castle Troops
+2016-01-01 20:48:38 : ====== Waiting for full army ======
+2016-01-01 20:49:18 : Training Troops & Spells
+2016-01-01 20:49:19 : Checking Army Camp...
+2016-01-01 20:49:20 : Total Army Camp capacity: 62/240 (25%)
+2016-01-01 20:49:21 :  - No. of Barbarians: 34
+2016-01-01 20:49:21 :  - No. of Archers: 28
+2016-01-01 20:49:39 : Trophy Count : 1201
+2016-01-01 20:49:39 : Dropping Trophies to 750
+2016-01-01 20:49:41 : Going to Attack...
+2016-01-01 20:49:47 : Identification of your troops:
+2016-01-01 20:49:47 : Initiating attack for: Drop Trophy
+2016-01-01 20:49:49 : -*-Barbarians 36
+2016-01-01 20:49:49 : -*-Archers 30
+2016-01-01 20:49:49 : -*-Heal Spells 3
+2016-01-01 20:49:49 : -*-Rage Spells 1
+2016-01-01 20:49:49 : -*-Jump Spells 1
+2016-01-01 20:49:49 : -*-Poison Spells 1
+2016-01-01 20:49:49 : Deploying 1 Barbarian
+2016-01-01 20:49:49 :  Trophy loss = 20
+2016-01-01 20:49:50 : Returning Home
+2016-01-01 20:49:59 : Trophy Count : 1201
+2016-01-01 20:49:59 : Dropping Trophies to 750
+2016-01-01 20:50:01 : Going to Attack...
+2016-01-01 20:50:07 : Identification of your troops:
+2016-01-01 20:50:07 : Initiating attack for: Drop Trophy
+2016-01-01 20:50:09 : -*-Barbarians 38
+2016-01-01 20:50:09 : -*-Archers 32
+2016-01-01 20:50:09 : -*-Heal Spells 3
+2016-01-01 20:50:09 : -*-Rage Spells 1
+2016-01-01 20:50:09 : -*-Jump Spells 1
+2016-01-01 20:50:09 : -*-Poison Spells 1
+2016-01-01 20:50:09 : Deploying 1 Barbarian
+2016-01-01 20:50:09 :  Trophy loss = 22
+2016-01-01 20:50:10 : Returning Home
+2016-01-01 20:50:17 : Trophy Count : 1179
+2016-01-01 20:50:17 : Dropping Trophies to 750
+2016-01-01 20:50:19 : Going to Attack...
+2016-01-01 20:50:25 : Identification of your troops:
+2016-01-01 20:50:25 : Initiating attack for: Drop Trophy
+2016-01-01 20:50:27 : -*-Barbarians 39
+2016-01-01 20:50:27 : -*-Archers 32
+2016-01-01 20:50:27 : -*-Heal Spells 3
+2016-01-01 20:50:27 : -*-Rage Spells 1
+2016-01-01 20:50:27 : -*-Jump Spells 1
+2016-01-01 20:50:27 : -*-Poison Spells 1
+2016-01-01 20:50:27 : Deploying 1 Barbarian
+2016-01-01 20:50:27 :  Trophy loss = 20
+2016-01-01 20:50:28 : Returning Home
+2016-01-01 20:50:35 : Trophy Count : 1159
+2016-01-01 20:50:35 : Dropping Trophies to 750
+2016-01-01 20:50:37 : Going to Attack...
+2016-01-01 20:50:43 : Identification of your troops:
+2016-01-01 20:50:43 : Initiating attack for: Drop Trophy
+2016-01-01 20:50:45 : -*-Barbarians 38
+2016-01-01 20:50:45 : -*-Archers 34
+2016-01-01 20:50:45 : -*-Heal Spells 3
+2016-01-01 20:50:45 : -*-Rage Spells 1
+2016-01-01 20:50:45 : -*-Jump Spells 1
+2016-01-01 20:50:45 : -*-Poison Spells 1
+2016-01-01 20:50:45 : Deploying 1 Barbarian
+2016-01-01 20:50:45 :  Trophy loss = 18
+2016-01-01 20:50:47 : Returning Home
+2016-01-01 20:50:53 : Trophy Count : 1141
+2016-01-01 20:50:53 : Dropping Trophies to 750
+2016-01-01 20:50:56 : Going to Attack...
+2016-01-01 20:51:02 : Identification of your troops:
+2016-01-01 20:51:02 : Initiating attack for: Drop Trophy
+2016-01-01 20:51:04 : -*-Barbarians 39
+2016-01-01 20:51:04 : -*-Archers 36
+2016-01-01 20:51:04 : -*-Heal Spells 3
+2016-01-01 20:51:04 : -*-Rage Spells 1
+2016-01-01 20:51:04 : -*-Jump Spells 1
+2016-01-01 20:51:04 : -*-Poison Spells 1
+2016-01-01 20:51:04 : Deploying 1 Barbarian
+2016-01-01 20:51:04 :  Trophy loss = 19
+2016-01-01 20:51:05 : Returning Home
+2016-01-01 20:51:12 : Trophy Count : 1122
+2016-01-01 20:51:12 : Dropping Trophies to 750
+2016-01-01 20:51:14 : Going to Attack...
+2016-01-01 20:51:20 : Identification of your troops:
+2016-01-01 20:51:20 : Initiating attack for: Drop Trophy
+2016-01-01 20:51:22 : -*-Barbarians 40
+2016-01-01 20:51:22 : -*-Archers 36
+2016-01-01 20:51:22 : -*-Heal Spells 3
+2016-01-01 20:51:22 : -*-Rage Spells 1
+2016-01-01 20:51:22 : -*-Jump Spells 1
+2016-01-01 20:51:22 : -*-Poison Spells 1
+2016-01-01 20:51:22 : Deploying 1 Barbarian
+2016-01-01 20:51:22 :  Trophy loss = 17
+2016-01-01 20:51:23 : Returning Home
+2016-01-01 20:51:30 : Trophy Count : 1105
+2016-01-01 20:51:30 : Dropping Trophies to 750
+2016-01-01 20:51:32 : Going to Attack...
+2016-01-01 20:51:39 : Identification of your troops:
+2016-01-01 20:51:39 : Initiating attack for: Drop Trophy
+2016-01-01 20:51:41 : -*-Barbarians 41
+2016-01-01 20:51:41 : -*-Archers 38
+2016-01-01 20:51:41 : -*-Heal Spells 3
+2016-01-01 20:51:41 : -*-Rage Spells 1
+2016-01-01 20:51:41 : -*-Jump Spells 1
+2016-01-01 20:51:41 : -*-Poison Spells 1
+2016-01-01 20:51:41 : Deploying 1 Barbarian
+2016-01-01 20:51:41 :  Trophy loss = 20
+2016-01-01 20:51:42 : Returning Home
+2016-01-01 20:51:49 : Trophy Count : 1085
+2016-01-01 20:51:49 : Dropping Trophies to 750
+2016-01-01 20:51:51 : Going to Attack...
+2016-01-01 20:51:57 : Identification of your troops:
+2016-01-01 20:51:57 : Initiating attack for: Drop Trophy
+2016-01-01 20:51:59 : -*-Barbarians 40
+2016-01-01 20:51:59 : -*-Archers 38
+2016-01-01 20:51:59 : -*-Heal Spells 3
+2016-01-01 20:51:59 : -*-Rage Spells 1
+2016-01-01 20:51:59 : -*-Jump Spells 1
+2016-01-01 20:51:59 : -*-Poison Spells 1
+2016-01-01 20:51:59 : Deploying 1 Barbarian
+2016-01-01 20:51:59 :  Trophy loss = 21
+2016-01-01 20:52:00 : Returning Home
+2016-01-01 20:52:07 : Trophy Count : 1064
+2016-01-01 20:52:07 : Dropping Trophies to 750
+2016-01-01 20:52:09 : Going to Attack...
+2016-01-01 20:52:16 : Identification of your troops:
+2016-01-01 20:52:16 : Initiating attack for: Drop Trophy
+2016-01-01 20:52:17 : -*-Barbarians 41
+2016-01-01 20:52:17 : -*-Archers 40
+2016-01-01 20:52:18 : -*-Heal Spells 3
+2016-01-01 20:52:18 : -*-Rage Spells 1
+2016-01-01 20:52:18 : -*-Jump Spells 1
+2016-01-01 20:52:18 : -*-Poison Spells 1
+2016-01-01 20:52:18 : Deploying 1 Barbarian
+2016-01-01 20:52:18 :  Trophy loss = 17
+2016-01-01 20:52:19 : Returning Home
+2016-01-01 20:52:26 : Trophy Count : 1047
+2016-01-01 20:52:26 : Dropping Trophies to 750
+2016-01-01 20:52:28 : Going to Attack...
+2016-01-01 20:52:34 : Identification of your troops:
+2016-01-01 20:52:34 : Initiating attack for: Drop Trophy
+2016-01-01 20:52:36 : -*-Barbarians 42
+2016-01-01 20:52:36 : -*-Archers 40
+2016-01-01 20:52:36 : -*-Heal Spells 3
+2016-01-01 20:52:36 : -*-Rage Spells 1
+2016-01-01 20:52:36 : -*-Jump Spells 1
+2016-01-01 20:52:36 : -*-Poison Spells 1
+2016-01-01 20:52:36 : Deploying 1 Barbarian
+2016-01-01 20:52:36 :  Trophy loss = 17
+2016-01-01 20:52:37 : Returning Home
+2016-01-01 20:52:44 : Trophy Count : 1030
+2016-01-01 20:52:44 : Dropping Trophies to 750
+2016-01-01 20:52:46 : Going to Attack...
+2016-01-01 20:52:52 : Identification of your troops:
+2016-01-01 20:52:52 : Initiating attack for: Drop Trophy
+2016-01-01 20:52:54 : -*-Barbarians 41
+2016-01-01 20:52:54 : -*-Archers 42
+2016-01-01 20:52:54 : -*-Heal Spells 3
+2016-01-01 20:52:54 : -*-Rage Spells 1
+2016-01-01 20:52:54 : -*-Jump Spells 1
+2016-01-01 20:52:54 : -*-Poison Spells 1
+2016-01-01 20:52:54 : Deploying 1 Barbarian
+2016-01-01 20:52:54 :  Trophy loss = 24
+2016-01-01 20:52:55 : Returning Home
+2016-01-01 20:53:02 : Trophy Count : 1006
+2016-01-01 20:53:02 : Dropping Trophies to 750
+2016-01-01 20:53:04 : Going to Attack...
+2016-01-01 20:53:10 : Identification of your troops:
+2016-01-01 20:53:10 : Initiating attack for: Drop Trophy
+2016-01-01 20:53:12 : -*-Barbarians 42
+2016-01-01 20:53:12 : -*-Archers 42
+2016-01-01 20:53:12 : -*-Heal Spells 3
+2016-01-01 20:53:12 : -*-Rage Spells 1
+2016-01-01 20:53:12 : -*-Jump Spells 1
+2016-01-01 20:53:12 : -*-Poison Spells 1
+2016-01-01 20:53:12 : Deploying 1 Barbarian
+2016-01-01 20:53:12 :  Trophy loss = 20
+2016-01-01 20:53:13 : Returning Home
+2016-01-01 20:53:20 : Trophy Count : 986
+2016-01-01 20:53:20 : Dropping Trophies to 750
+2016-01-01 20:53:22 : Going to Attack...
+2016-01-01 20:53:28 : Identification of your troops:
+2016-01-01 20:53:28 : Initiating attack for: Drop Trophy
+2016-01-01 20:53:30 : -*-Barbarians 43
+2016-01-01 20:53:30 : -*-Archers 44
+2016-01-01 20:53:30 : -*-Heal Spells 3
+2016-01-01 20:53:30 : -*-Rage Spells 1
+2016-01-01 20:53:30 : -*-Jump Spells 1
+2016-01-01 20:53:30 : -*-Poison Spells 1
+2016-01-01 20:53:30 : Deploying 1 Barbarian
+2016-01-01 20:53:30 :  Trophy loss = 16
+2016-01-01 20:53:31 : Returning Home
+2016-01-01 20:53:38 : Trophy Count : 970
+2016-01-01 20:53:38 : Dropping Trophies to 750
+2016-01-01 20:53:40 : Going to Attack...
+2016-01-01 20:53:46 : Identification of your troops:
+2016-01-01 20:53:46 : Initiating attack for: Drop Trophy
+2016-01-01 20:53:48 : -*-Barbarians 42
+2016-01-01 20:53:48 : -*-Archers 44
+2016-01-01 20:53:48 : -*-Heal Spells 3
+2016-01-01 20:53:48 : -*-Rage Spells 1
+2016-01-01 20:53:48 : -*-Jump Spells 1
+2016-01-01 20:53:48 : -*-Poison Spells 1
+2016-01-01 20:53:49 : Deploying 1 Barbarian
+2016-01-01 20:53:49 :  Trophy loss = 24
+2016-01-01 20:53:50 : Returning Home
+2016-01-01 20:53:57 : Trophy Count : 946
+2016-01-01 20:53:57 : Dropping Trophies to 750
+2016-01-01 20:53:59 : Going to Attack...
+2016-01-01 20:54:06 : Identification of your troops:
+2016-01-01 20:54:06 : Initiating attack for: Drop Trophy
+2016-01-01 20:54:08 : -*-Barbarians 43
+2016-01-01 20:54:08 : -*-Archers 46
+2016-01-01 20:54:08 : -*-Heal Spells 3
+2016-01-01 20:54:08 : -*-Rage Spells 1
+2016-01-01 20:54:08 : -*-Jump Spells 1
+2016-01-01 20:54:08 : -*-Poison Spells 1
+2016-01-01 20:54:08 : Deploying 1 Barbarian
+2016-01-01 20:54:08 :  Trophy loss = 24
+2016-01-01 20:54:09 : Returning Home
+2016-01-01 20:54:16 : Trophy Count : 922
+2016-01-01 20:54:16 : Dropping Trophies to 750
+2016-01-01 20:54:18 : Going to Attack...
+2016-01-01 20:54:24 : Identification of your troops:
+2016-01-01 20:54:24 : Initiating attack for: Drop Trophy
+2016-01-01 20:54:26 : -*-Barbarians 44
+2016-01-01 20:54:26 : -*-Archers 48
+2016-01-01 20:54:26 : -*-Heal Spells 3
+2016-01-01 20:54:26 : -*-Rage Spells 1
+2016-01-01 20:54:26 : -*-Jump Spells 1
+2016-01-01 20:54:26 : -*-Poison Spells 1
+2016-01-01 20:54:26 : Deploying 1 Barbarian
+2016-01-01 20:54:26 :  Trophy loss = 16
+2016-01-01 20:54:27 : Returning Home
+2016-01-01 20:54:34 : Trophy Count : 906
+2016-01-01 20:54:34 : Dropping Trophies to 750
+2016-01-01 20:54:36 : Going to Attack...
+2016-01-01 20:54:42 : Identification of your troops:
+2016-01-01 20:54:42 : Initiating attack for: Drop Trophy
+2016-01-01 20:54:44 : -*-Barbarians 43
+2016-01-01 20:54:44 : -*-Archers 48
+2016-01-01 20:54:44 : -*-Heal Spells 3
+2016-01-01 20:54:44 : -*-Rage Spells 1
+2016-01-01 20:54:44 : -*-Jump Spells 1
+2016-01-01 20:54:44 : -*-Poison Spells 1
+2016-01-01 20:54:44 : Deploying 1 Barbarian
+2016-01-01 20:54:44 :  Trophy loss = 17
+2016-01-01 20:54:45 : Returning Home
+2016-01-01 20:54:52 : Trophy Count : 889
+2016-01-01 20:54:52 : Dropping Trophies to 750
+2016-01-01 20:54:54 : Going to Attack...
+2016-01-01 20:55:02 : Identification of your troops:
+2016-01-01 20:55:02 : Initiating attack for: Drop Trophy
+2016-01-01 20:55:04 : -*-Barbarians 44
+2016-01-01 20:55:04 : -*-Archers 50
+2016-01-01 20:55:04 : -*-Clan Castle 
+2016-01-01 20:55:04 : -*-Heal Spells 3
+2016-01-01 20:55:04 : -*-Rage Spells 1
+2016-01-01 20:55:04 : -*-Jump Spells 1
+2016-01-01 20:55:04 : -*-Poison Spells 1
+2016-01-01 20:55:04 : Deploying 1 Barbarian
+2016-01-01 20:55:04 :  Trophy loss = 11
+2016-01-01 20:55:05 : Returning Home
+2016-01-01 20:55:12 : Trophy Count : 878
+2016-01-01 20:55:12 : Dropping Trophies to 750
+2016-01-01 20:55:14 : Going to Attack...
+2016-01-01 20:55:20 : Identification of your troops:
+2016-01-01 20:55:20 : Initiating attack for: Drop Trophy
+2016-01-01 20:55:22 : -*-Barbarians 45
+2016-01-01 20:55:22 : -*-Archers 50
+2016-01-01 20:55:22 : -*-Clan Castle 
+2016-01-01 20:55:22 : -*-Heal Spells 3
+2016-01-01 20:55:22 : -*-Rage Spells 1
+2016-01-01 20:55:22 : -*-Jump Spells 1
+2016-01-01 20:55:22 : -*-Poison Spells 1
+2016-01-01 20:55:22 : Deploying 1 Barbarian
+2016-01-01 20:55:22 :  Trophy loss = 14
+2016-01-01 20:55:23 : Returning Home
+2016-01-01 20:55:30 : Trophy Count : 864
+2016-01-01 20:55:30 : Dropping Trophies to 750
+2016-01-01 20:55:32 : Going to Attack...
+2016-01-01 20:55:39 : Identification of your troops:
+2016-01-01 20:55:39 : Initiating attack for: Drop Trophy
+2016-01-01 20:55:41 : -*-Barbarians 44
+2016-01-01 20:55:41 : -*-Archers 52
+2016-01-01 20:55:41 : -*-Clan Castle 
+2016-01-01 20:55:41 : -*-Heal Spells 3
+2016-01-01 20:55:41 : -*-Rage Spells 1
+2016-01-01 20:55:41 : -*-Jump Spells 1
+2016-01-01 20:55:41 : -*-Poison Spells 1
+2016-01-01 20:55:41 : Deploying 1 Barbarian
+2016-01-01 20:55:41 :  Trophy loss = 13
+2016-01-01 20:55:42 : Returning Home
+2016-01-01 20:55:49 : Trophy Count : 851
+2016-01-01 20:55:49 : Dropping Trophies to 750
+2016-01-01 20:55:51 : Going to Attack...
+2016-01-01 20:55:57 : Identification of your troops:
+2016-01-01 20:55:58 : Initiating attack for: Drop Trophy
+2016-01-01 20:55:59 : -*-Barbarians 45
+2016-01-01 20:55:59 : -*-Archers 52
+2016-01-01 20:55:59 : -*-Clan Castle 
+2016-01-01 20:55:59 : -*-Heal Spells 3
+2016-01-01 20:55:59 : -*-Rage Spells 1
+2016-01-01 20:55:59 : -*-Jump Spells 1
+2016-01-01 20:55:59 : -*-Poison Spells 1
+2016-01-01 20:55:59 : Deploying 1 Barbarian
+2016-01-01 20:56:00 :  Trophy loss = 16
+2016-01-01 20:56:01 : Returning Home
+2016-01-01 20:56:07 : Trophy Count : 835
+2016-01-01 20:56:07 : Dropping Trophies to 750
+2016-01-01 20:56:10 : Going to Attack...
+2016-01-01 20:56:22 : Identification of your troops:
+2016-01-01 20:56:22 : Initiating attack for: Drop Trophy
+2016-01-01 20:56:24 : -*-Barbarians 46
+2016-01-01 20:56:24 : -*-Archers 54
+2016-01-01 20:56:24 : -*-Clan Castle 
+2016-01-01 20:56:24 : -*-Heal Spells 3
+2016-01-01 20:56:24 : -*-Rage Spells 1
+2016-01-01 20:56:24 : -*-Jump Spells 1
+2016-01-01 20:56:24 : -*-Poison Spells 1
+2016-01-01 20:56:24 : Deploying 1 Barbarian
+2016-01-01 20:56:24 :  Trophy loss = 8
+2016-01-01 20:56:25 : Returning Home
+2016-01-01 20:56:32 : Trophy Count : 827
+2016-01-01 20:56:32 : Dropping Trophies to 750
+2016-01-01 20:56:34 : Going to Attack...
+2016-01-01 20:56:44 : Identification of your troops:
+2016-01-01 20:56:44 : Initiating attack for: Drop Trophy
+2016-01-01 20:56:46 : -*-Barbarians 45
+2016-01-01 20:56:46 : -*-Archers 56
+2016-01-01 20:56:46 : -*-Clan Castle 
+2016-01-01 20:56:46 : -*-Heal Spells 3
+2016-01-01 20:56:46 : -*-Rage Spells 1
+2016-01-01 20:56:46 : -*-Jump Spells 1
+2016-01-01 20:56:46 : -*-Poison Spells 1
+2016-01-01 20:56:46 : Deploying 1 Barbarian
+2016-01-01 20:56:46 :  Trophy loss = 11
+2016-01-01 20:56:47 : Returning Home
+2016-01-01 20:56:54 : Trophy Count : 816
+2016-01-01 20:56:54 : Dropping Trophies to 750
+2016-01-01 20:56:56 : Going to Attack...
+2016-01-01 20:57:04 : Identification of your troops:
+2016-01-01 20:57:04 : Initiating attack for: Drop Trophy
+2016-01-01 20:57:05 : -*-Heal Spells 3
+2016-01-01 20:57:05 : -*-Rage Spells 1
+2016-01-01 20:57:05 : -*-Jump Spells 1
+2016-01-01 20:57:05 : -*-Poison Spells 1
+2016-01-01 20:57:05 : You don´t have Tier 1/2 Troops, exit of dropping Trophies
+2016-01-01 20:57:06 : Returning Home
+2016-01-01 20:57:15 : Trophy Count : 816
+2016-01-01 20:57:15 : Dropping Trophies to 750
+2016-01-01 20:57:17 : Going to Attack...
+2016-01-01 20:57:27 : Identification of your troops:
+2016-01-01 20:57:27 : Initiating attack for: Drop Trophy
+2016-01-01 20:57:29 : -*-Barbarians 48
+2016-01-01 20:57:29 : -*-Archers 58
+2016-01-01 20:57:29 : -*-Clan Castle 
+2016-01-01 20:57:29 : -*-Heal Spells 3
+2016-01-01 20:57:29 : -*-Rage Spells 1
+2016-01-01 20:57:29 : -*-Jump Spells 1
+2016-01-01 20:57:29 : -*-Poison Spells 1
+2016-01-01 20:57:29 : Deploying 1 Barbarian
+2016-01-01 20:57:29 :  Trophy loss = 14
+2016-01-01 20:57:30 : Returning Home
+2016-01-01 20:57:37 : Trophy Count : 802
+2016-01-01 20:57:37 : Dropping Trophies to 750
+2016-01-01 20:57:39 : Going to Attack...
+2016-01-01 20:57:50 : Identification of your troops:
+2016-01-01 20:57:50 : Initiating attack for: Drop Trophy
+2016-01-01 20:57:52 : -*-Barbarians 49
+2016-01-01 20:57:52 : -*-Archers 60
+2016-01-01 20:57:52 : -*-Clan Castle 
+2016-01-01 20:57:52 : -*-Heal Spells 3
+2016-01-01 20:57:52 : -*-Rage Spells 1
+2016-01-01 20:57:52 : -*-Jump Spells 1
+2016-01-01 20:57:52 : -*-Poison Spells 1
+2016-01-01 20:57:52 : Deploying 1 Barbarian
+2016-01-01 20:57:52 :  Trophy loss = 10
+2016-01-01 20:57:53 : Returning Home
+2016-01-01 20:58:00 : Trophy Count : 792
+2016-01-01 20:58:00 : Dropping Trophies to 750
+2016-01-01 20:58:02 : Going to Attack...
+2016-01-01 20:58:11 : Identification of your troops:
+2016-01-01 20:58:11 : Initiating attack for: Drop Trophy
+2016-01-01 20:58:13 : -*-Barbarians 50
+2016-01-01 20:58:13 : -*-Archers 60
+2016-01-01 20:58:13 : -*-Clan Castle 
+2016-01-01 20:58:13 : -*-Heal Spells 3
+2016-01-01 20:58:13 : -*-Rage Spells 1
+2016-01-01 20:58:13 : -*-Jump Spells 1
+2016-01-01 20:58:13 : -*-Poison Spells 1
+2016-01-01 20:58:13 : Deploying 1 Barbarian
+2016-01-01 20:58:13 :  Trophy loss = 12
+2016-01-01 20:58:14 : Returning Home
+2016-01-01 20:58:21 : Trophy Count : 780
+2016-01-01 20:58:21 : Dropping Trophies to 750
+2016-01-01 20:58:23 : Going to Attack...
+2016-01-01 20:58:32 : Identification of your troops:
+2016-01-01 20:58:32 : Initiating attack for: Drop Trophy
+2016-01-01 20:58:34 : -*-Barbarians 51
+2016-01-01 20:58:34 : -*-Archers 62
+2016-01-01 20:58:34 : -*-Clan Castle 
+2016-01-01 20:58:34 : -*-Heal Spells 3
+2016-01-01 20:58:34 : -*-Rage Spells 1
+2016-01-01 20:58:34 : -*-Jump Spells 1
+2016-01-01 20:58:34 : -*-Poison Spells 1
+2016-01-01 20:58:34 : Deploying 1 Barbarian
+2016-01-01 20:58:34 :  Trophy loss = 8
+2016-01-01 20:58:35 : Returning Home
+2016-01-01 20:58:42 : Trophy Count : 772
+2016-01-01 20:58:42 : Dropping Trophies to 750
+2016-01-01 20:58:44 : Going to Attack...
+2016-01-01 20:58:54 : Identification of your troops:
+2016-01-01 20:58:54 : Initiating attack for: Drop Trophy
+2016-01-01 20:58:56 : -*-Barbarians 50
+2016-01-01 20:58:56 : -*-Archers 64
+2016-01-01 20:58:56 : -*-Clan Castle 
+2016-01-01 20:58:56 : -*-Heal Spells 3
+2016-01-01 20:58:56 : -*-Rage Spells 1
+2016-01-01 20:58:56 : -*-Jump Spells 1
+2016-01-01 20:58:56 : -*-Poison Spells 1
+2016-01-01 20:58:56 : Deploying 1 Barbarian
+2016-01-01 20:58:56 :  Trophy loss = 9
+2016-01-01 20:58:57 : Returning Home
+2016-01-01 20:59:04 : Trophy Count : 763
+2016-01-01 20:59:04 : Dropping Trophies to 750
+2016-01-01 20:59:06 : Going to Attack...
+2016-01-01 20:59:19 : Identification of your troops:
+2016-01-01 20:59:19 : Initiating attack for: Drop Trophy
+2016-01-01 20:59:21 : -*-Barbarians 51
+2016-01-01 20:59:21 : -*-Archers 64
+2016-01-01 20:59:21 : -*-Clan Castle 
+2016-01-01 20:59:21 : -*-Heal Spells 3
+2016-01-01 20:59:21 : -*-Rage Spells 1
+2016-01-01 20:59:21 : -*-Jump Spells 1
+2016-01-01 20:59:21 : -*-Poison Spells 1
+2016-01-01 20:59:21 : Deploying 1 Barbarian
+2016-01-01 20:59:21 :  Trophy loss = 6
+2016-01-01 20:59:22 : Returning Home
+2016-01-01 20:59:29 : Trophy Count : 757
+2016-01-01 20:59:29 : Dropping Trophies to 750
+2016-01-01 20:59:31 : Going to Attack...
+2016-01-01 20:59:42 : Identification of your troops:
+2016-01-01 20:59:42 : Initiating attack for: Drop Trophy
+2016-01-01 20:59:44 : -*-Barbarians 52
+2016-01-01 20:59:44 : -*-Archers 66
+2016-01-01 20:59:44 : -*-Clan Castle 
+2016-01-01 20:59:44 : -*-Heal Spells 3
+2016-01-01 20:59:44 : -*-Rage Spells 1
+2016-01-01 20:59:44 : -*-Jump Spells 1
+2016-01-01 20:59:44 : -*-Poison Spells 1
+2016-01-01 20:59:44 : Deploying 1 Barbarian
+2016-01-01 20:59:44 :  Trophy loss = 7
+2016-01-01 20:59:45 : Returning Home
+2016-01-01 20:59:52 : Trophy Count : 750
+2016-01-01 20:59:52 : Trophy Drop Complete
+2016-01-01 20:59:56 : Time Idle: 00:11:17
+2016-01-01 20:59:56 : ***[Trying TH snipe while training army]***
+2016-01-01 20:59:56 : Going to Attack...
+2016-01-01 21:00:02 : ============== Searching For Dead Base ===============
+2016-01-01 21:00:02 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 21:00:02 : Meet: Gold + Elixir, Trophy
+2016-01-01 21:00:02 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 21:00:02 : Aim: [G+E]: 300000 [D]: 1000 [T]:99 for: Dead Base
+2016-01-01 21:00:02 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 21:00:02 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 21:00:02 : Aim: [G]: 120000 [E]: 120000 [D]: 1000
+2016-01-01 21:00:02 : ==================================================
+2016-01-01 21:00:08 :   1> [G]:  96698 [E]:  68456 [D]:  703 [T]:41 [TH]: 9, Out
+2016-01-01 21:00:08 :       TH Outside Found! 
+2016-01-01 21:00:08 :       Resource requirement not met for TH snipe 
+2016-01-01 21:00:08 :   1> [G]:  96698 [E]:  68456 [D]:  703 [T]:41 [TH]: 9, Out
+2016-01-01 21:00:18 :   2> [G]:  26210 [E]:  36950 [D]:  240 [T]:50 [TH]: 8, Out
+2016-01-01 21:00:18 :       TH Outside Found! 
+2016-01-01 21:00:18 :       Resource requirement not met for TH snipe 
+2016-01-01 21:00:18 :   2> [G]:  26210 [E]:  36950 [D]:  240 [T]:50 [TH]: 8, Out
+2016-01-01 21:00:26 :   3> [G]: 184926 [E]: 144247 [D]:  254 [T]:46 [TH]: 9, In
+2016-01-01 21:00:33 :   4> [G]:  90265 [E]:  94832 [D]:  992 [T]:47 [TH]:11, Out
+2016-01-01 21:00:33 :       TH Outside Found! 
+2016-01-01 21:00:33 :       Resource requirement not met for TH snipe 
+2016-01-01 21:00:33 :   4> [G]:  90265 [E]:  94832 [D]:  992 [T]:47 [TH]:11, Out
+2016-01-01 21:00:41 :   5> [G]: 462422 [E]: 448257 [D]: 2543 [T]:50 [TH]:10, In
+2016-01-01 21:00:49 :   6> [G]: 186755 [E]: 107163 [D]: 1909 [T]:44 [TH]:10, Out
+2016-01-01 21:00:49 :       TH Outside Found! 
+2016-01-01 21:00:49 :       Resource requirement met for TH snipe 
+2016-01-01 21:00:50 : ================ Search Complete =================
+2016-01-01 21:00:50 : Initiating attack for: TH Snipe
+2016-01-01 21:00:52 : -*-Barbarians 53
+2016-01-01 21:00:52 : -*-Archers 68
+2016-01-01 21:00:52 : -*-Clan Castle 
+2016-01-01 21:00:52 : -*-Heal Spells 3
+2016-01-01 21:00:52 : -*-Rage Spells 1
+2016-01-01 21:00:52 : -*-Jump Spells 1
+2016-01-01 21:00:52 : -*-Poison Spells 1
+2016-01-01 21:00:52 :  ====== Start Attack ====== 
+2016-01-01 21:00:54 : Sniping TH with Barch            	 
+2016-01-01 21:00:54 : Attacking TH with 1st wave of BARCH   
+2016-01-01 21:00:54 : Dropping Only wave of 4 Barbarians
+2016-01-01 21:00:55 : Custom Corner deployment THi = 16 ,x = 425 ,y = 507
+2016-01-01 21:00:56 : Deployment of 4 Barbarians was Successful!
+2016-01-01 21:00:57 :                                       
+2016-01-01 21:00:57 : Dropping Only wave of 4 Archers
+2016-01-01 21:00:58 : Custom Corner deployment THi = 16 ,x = 425 ,y = 507
+2016-01-01 21:00:58 : Deployment of 4 Archers was Successful!
+2016-01-01 21:01:00 :                                       
+2016-01-01 21:01:01 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:01:04 :                                       
+2016-01-01 21:01:05 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:01:07 : Gold & Elixir change detected, waiting...
+2016-01-01 21:01:09 : Gold & Elixir change detected, waiting...
+2016-01-01 21:01:09 :                                       
+2016-01-01 21:01:10 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:01:13 : Gold & Elixir change detected, waiting...
+2016-01-01 21:01:15 : Gold & Elixir change detected, waiting...
+2016-01-01 21:01:15 :                                       
+2016-01-01 21:01:15 : Oh Shit! Seems like a trapped TH!     
+2016-01-01 21:01:16 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:01:18 : Gold & Elixir change detected, waiting...
+2016-01-01 21:01:20 : Gold & Elixir change detected, waiting...
+2016-01-01 21:01:20 :                                       
+2016-01-01 21:01:21 : Quit wasting troops					 
+2016-01-01 21:01:22 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:01:24 : Gold & Elixir change detected, waiting...
+2016-01-01 21:01:26 : Gold & Elixir change detected, waiting...
+2016-01-01 21:01:26 :                                       
+2016-01-01 21:01:26 : ~Finished Attacking, waiting to finish
+2016-01-01 21:01:27 : Townhall has been destroyed!
+2016-01-01 21:01:29 : Wait few sec before close attack
+2016-01-01 21:01:32 : Bot was Paused!
+2016-01-01 21:02:05 : Bot was Resumed.
+2016-01-01 21:02:07 : Returning Home
+2016-01-01 21:02:11 : Loot: [G]: 41 020 [E]: 25 460 [DE]: 259 [T]: 14
+2016-01-01 21:02:11 : Bonus Percentage: 9%
+2016-01-01 21:02:12 : Bonus [G]: 234 out of 2 600 [E]: 234 out of 2 600
+2016-01-01 21:02:12 : Your league level is: Silver III
+2016-01-01 21:02:12 : Stars earned: 1
+2016-01-01 21:02:18 : ***[End trying TH snipe while training army]***
+2016-01-01 21:02:20 : ====== Waiting for full army ======
+2016-01-01 21:03:02 : Training Troops & Spells
+2016-01-01 21:03:03 : Checking Army Camp...
+2016-01-01 21:03:04 : Total Army Camp capacity: 141/240 (58%)
+2016-01-01 21:03:05 :  - No. of Barbarians: 67
+2016-01-01 21:03:05 :  - No. of Archers: 74
+2016-01-01 21:03:30 : Time Idle: 00:12:27
+2016-01-01 21:03:30 : ***[Trying TH snipe while training army]***
+2016-01-01 21:03:30 : Going to Attack...
+2016-01-01 21:03:36 : ============== Searching For Dead Base ===============
+2016-01-01 21:03:36 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 21:03:36 : Meet: Gold + Elixir, Trophy
+2016-01-01 21:03:36 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 21:03:36 : Aim: [G+E]: 300000 [D]: 1000 [T]:99 for: Dead Base
+2016-01-01 21:03:36 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 21:03:36 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 21:03:36 : Aim: [G]: 120000 [E]: 120000 [D]: 1000
+2016-01-01 21:03:36 : ==================================================
+2016-01-01 21:03:43 :   1> [G]:   3586 [E]:  54007 [D]:  243 [T]:44 [TH]: 8, In
+2016-01-01 21:03:50 :   2> [G]: 213966 [E]: 110670 [D]:  719 [T]:47 [TH]:11, In
+2016-01-01 21:03:58 :   3> [G]:  41275 [E]: 124706 [D]: 1854 [T]:51 [TH]: 9, In
+2016-01-01 21:04:05 :   4> [G]:  83781 [E]:  81660 [D]: 1800 [T]:46 [TH]:10, Out
+2016-01-01 21:04:05 :       TH Outside Found! 
+2016-01-01 21:04:05 :       Resource requirement met for TH snipe 
+2016-01-01 21:04:07 : ================ Search Complete =================
+2016-01-01 21:04:07 : Initiating attack for: TH Snipe
+2016-01-01 21:04:09 : -*-Barbarians 69
+2016-01-01 21:04:09 : -*-Archers 76
+2016-01-01 21:04:09 : -*-Clan Castle 
+2016-01-01 21:04:09 : -*-Heal Spells 3
+2016-01-01 21:04:09 : -*-Rage Spells 1
+2016-01-01 21:04:09 : -*-Jump Spells 1
+2016-01-01 21:04:09 : -*-Poison Spells 1
+2016-01-01 21:04:09 :  ====== Start Attack ====== 
+2016-01-01 21:04:11 : Sniping TH with Barch            	 
+2016-01-01 21:04:11 : Attacking TH with 1st wave of BARCH   
+2016-01-01 21:04:11 : Dropping Only wave of 4 Barbarians
+2016-01-01 21:04:12 : Custom Corner deployment THi = 16 ,x = 432 ,y = 530
+2016-01-01 21:04:12 : Deployment of 4 Barbarians was Successful!
+2016-01-01 21:04:14 :                                       
+2016-01-01 21:04:14 : Dropping Only wave of 4 Archers
+2016-01-01 21:04:15 : Custom Corner deployment THi = 16 ,x = 432 ,y = 530
+2016-01-01 21:04:16 : Deployment of 4 Archers was Successful!
+2016-01-01 21:04:17 :                                       
+2016-01-01 21:04:19 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:04:21 :                                       
+2016-01-01 21:04:22 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:04:24 : Gold & Elixir change detected, waiting...
+2016-01-01 21:04:26 :                                       
+2016-01-01 21:04:28 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:04:30 :                                       
+2016-01-01 21:04:30 : Oh Shit! Seems like a trapped TH!     
+2016-01-01 21:04:31 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:04:33 :                                       
+2016-01-01 21:04:33 : Quit wasting troops					 
+2016-01-01 21:04:34 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:04:37 :                                       
+2016-01-01 21:04:37 : ~Finished Attacking, waiting to finish
+2016-01-01 21:04:43 : Bot was Paused!
+2016-01-01 21:05:06 : Bot was Resumed.
+2016-01-01 21:05:07 : Townhall has been destroyed!
+2016-01-01 21:05:09 : Wait few sec before close attack
+2016-01-01 21:05:16 : Returning Home
+2016-01-01 21:05:20 : Loot: [G]: 15 173 [E]: 17 177 [DE]: 1 266 [T]: 15
+2016-01-01 21:05:20 : Bonus Percentage: 14%
+2016-01-01 21:05:20 : Bonus [G]: 364 out of 2 600 [E]: 364 out of 2 600
+2016-01-01 21:05:24 : Stars earned: 1
+2016-01-01 21:05:30 : ***[End trying TH snipe while training army]***
+2016-01-01 21:05:32 : ====== Waiting for full army ======
+2016-01-01 21:06:14 : Collecting Resources
+2016-01-01 21:06:28 : Training Troops & Spells
+2016-01-01 21:06:28 : Checking Army Camp...
+2016-01-01 21:06:30 : Total Army Camp capacity: 103/240 (42%)
+2016-01-01 21:06:30 :  - No. of Barbarians: 52
+2016-01-01 21:06:31 :  - No. of Archers: 51
+2016-01-01 21:06:53 : Time Idle: 00:13:48
+2016-01-01 21:06:53 : ***[Trying TH snipe while training army]***
+2016-01-01 21:06:53 : Going to Attack...
+2016-01-01 21:06:59 : ============== Searching For Dead Base ===============
+2016-01-01 21:06:59 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-01 21:06:59 : Meet: Gold + Elixir, Trophy
+2016-01-01 21:06:59 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-01 21:06:59 : Aim: [G+E]: 300000 [D]: 1000 [T]:99 for: Dead Base
+2016-01-01 21:06:59 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-01 21:06:59 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-01 21:06:59 : Aim: [G]: 120000 [E]: 120000 [D]: 1000
+2016-01-01 21:06:59 : ==================================================
+2016-01-01 21:07:05 :   1> [G]: 277335 [E]: 247265 [D]: 3542 [T]:27 [TH]:11, In
+2016-01-01 21:07:14 :   2> [G]:  41181 [E]: 142648 [D]:  277 [T]:36 [TH]: 8, In
+2016-01-01 21:07:21 :   3> [G]: 125929 [E]: 283542 [D]:  457 [T]:43 [TH]: 9, In
+2016-01-01 21:07:28 :   4> [G]: 100755 [E]:  20231 [D]:  665 [T]:43 [TH]: 9, Out
+2016-01-01 21:07:28 :       TH Outside Found! 
+2016-01-01 21:07:28 :       Resource requirement not met for TH snipe 
+2016-01-01 21:07:28 :   4> [G]: 100755 [E]:  20231 [D]:  665 [T]:43 [TH]: 9, Out
+2016-01-01 21:07:36 :   5> [G]: 278304 [E]: 153954 [D]: 1507 [T]:47 [TH]: 9, In
+2016-01-01 21:07:43 :   6> [G]: 260257 [E]: 145942 [D]:  830 [T]:50 [TH]: 9, Out
+2016-01-01 21:07:43 :       TH Outside Found! 
+2016-01-01 21:07:43 :       Resource requirement met for TH snipe 
+2016-01-01 21:07:44 : ================ Search Complete =================
+2016-01-01 21:07:44 : Initiating attack for: TH Snipe
+2016-01-01 21:07:46 : -*-Barbarians 56
+2016-01-01 21:07:46 : -*-Archers 53
+2016-01-01 21:07:46 : -*-Clan Castle 
+2016-01-01 21:07:46 : -*-Heal Spells 3
+2016-01-01 21:07:46 : -*-Rage Spells 1
+2016-01-01 21:07:46 : -*-Jump Spells 1
+2016-01-01 21:07:46 : -*-Poison Spells 1
+2016-01-01 21:07:46 :  ====== Start Attack ====== 
+2016-01-01 21:07:49 : Sniping TH with Barch            	 
+2016-01-01 21:07:49 : Attacking TH with 1st wave of BARCH   
+2016-01-01 21:07:49 : Dropping Only wave of 4 Barbarians
+2016-01-01 21:07:49 : Custom Corner deployment THi = 16 ,x = 430 ,y = 519
+2016-01-01 21:07:50 : Deployment of 4 Barbarians was Successful!
+2016-01-01 21:07:52 :                                       
+2016-01-01 21:07:52 : Dropping Only wave of 4 Archers
+2016-01-01 21:07:53 : Custom Corner deployment THi = 16 ,x = 430 ,y = 519
+2016-01-01 21:07:53 : Deployment of 4 Archers was Successful!
+2016-01-01 21:07:55 :                                       
+2016-01-01 21:07:56 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:07:59 :                                       
+2016-01-01 21:08:00 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:08:02 : Gold & Elixir change detected, waiting...
+2016-01-01 21:08:04 : Gold & Elixir change detected, waiting...
+2016-01-01 21:08:04 :                                       
+2016-01-01 21:08:05 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:08:07 : Gold & Elixir change detected, waiting...
+2016-01-01 21:08:10 : Gold & Elixir change detected, waiting...
+2016-01-01 21:08:10 :                                       
+2016-01-01 21:08:10 : Oh Shit! Seems like a trapped TH!     
+2016-01-01 21:08:11 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:08:13 : Gold & Elixir change detected, waiting...
+2016-01-01 21:08:15 : Gold & Elixir change detected, waiting...
+2016-01-01 21:08:15 :                                       
+2016-01-01 21:08:15 : Quit wasting troops					 
+2016-01-01 21:08:16 : Checking if the Gold&Elixir are changing...
+2016-01-01 21:08:19 : Gold & Elixir change detected, waiting...
+2016-01-01 21:08:21 : Gold & Elixir change detected, waiting...
+2016-01-01 21:08:21 :                                       
+2016-01-01 21:08:21 : ~Finished Attacking, waiting to finish
+2016-01-01 21:08:27 : Townhall has been destroyed!
+2016-01-01 21:08:28 : Wait few sec before close attack
+2016-01-01 21:08:37 : Returning Home
+2016-01-01 21:08:41 : Loot: [G]: 49 728 [E]: 28 759 [DE]: 134 [T]: 16
+2016-01-01 21:08:41 : Bonus Percentage: 3%
+2016-01-01 21:08:41 : Bonus [G]: 78 out of 2 600 [E]: 78 out of 2 600
+2016-01-01 21:08:42 : Your league level is: Silver III
+2016-01-01 21:08:42 : Stars earned: 0
+2016-01-01 21:08:48 : ***[End trying TH snipe while training army]***
+2016-01-01 21:08:50 : ====== Waiting for full army ======
+2016-01-01 21:08:57 : Chat Request: arch wiz min pekka witch drag Valk
+2016-01-01 21:08:57 : Castle Capacity : 0/35
+2016-01-01 21:08:57 : King Blacklist Keyword found: pekka
+2016-01-01 21:08:57 : Barbarians Blacklist Keyword found: pekka
+2016-01-01 21:08:57 : Archers Blacklist Keyword found: pekka
+2016-01-01 21:09:33 : Training Troops & Spells
+2016-01-01 21:09:34 : Checking Army Camp...
+2016-01-01 21:09:35 : Total Army Camp capacity: 124/240 (51%)
+2016-01-01 21:09:36 :  - No. of Barbarians: 66
+2016-01-01 21:09:36 :  - No. of Archers: 58
+2016-01-01 21:09:58 : Time Idle: 00:14:57
+2016-01-01 21:09:58 : ***[Trying TH snipe while training army]***
+2016-01-01 21:09:58 : Going to Attack...
+2016-01-01 21:10:02 : Attacking disabled, Take-A-Break detected. Exiting CoC
+2016-01-01 21:10:02 : Please wait for CoC restart......
+2016-01-01 21:10:36 : Can not find Okay button to exit CoC, Forcefully Closing CoC
+2016-01-01 21:10:36 : Please wait for CoC restart......
+2016-01-01 21:10:39 : Waiting 20 seconds before starting CoC
+2016-01-01 21:11:01 : Trying to locate Main Screen
+2016-01-01 21:11:02 : Village must take a break, wait ...
+2016-01-01 21:13:02 : Waiting for Main Screen
+2016-01-01 21:13:04 : Village must take a break, wait ...

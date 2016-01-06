@@ -1,0 +1,1052 @@
+2016-01-06 02:03:16 :  My Bot v5.0.2 860x780 (BlueStacks) Powered by MyBot.run ~
+2016-01-06 02:03:16 : MyBot.run.au3 Script running on WIN_81  X64
+2016-01-06 02:03:16 : =================== Bot Start ====================
+2016-01-06 02:03:16 : -------------------------  Current Profile: 02 --------------------------
+2016-01-06 02:03:16 : Trying to locate Main Screen
+2016-01-06 02:03:16 : Main Screen Located
+2016-01-06 02:03:17 : Detecting your Buildings..
+2016-01-06 02:03:18 : Finding your Clan Level, wait..
+2016-01-06 02:03:21 : Found Clan Level: 8
+2016-01-06 02:03:22 : Detecting your Village Theme
+2016-01-06 02:03:23 : Normal Theme detected
+2016-01-06 02:03:24 : Language setting is English: Correct.
+2016-01-06 02:03:25 : Trying to locate Main Screen
+2016-01-06 02:03:25 : Main Screen Located
+2016-01-06 02:03:27 : Village Report
+2016-01-06 02:03:27 : No. of Free/Total Builders: 1/5
+2016-01-06 02:03:27 :  [T]: 985
+2016-01-06 02:03:27 :  [G]: 2 229 020 [E]: 3 480 183 [D]: 72 068 [GEM]: 3 625
+2016-01-06 02:03:28 : Collecting Resources
+2016-01-06 02:03:42 : Bot was Paused!
+2016-01-06 02:03:48 : Bot was Resumed.
+2016-01-06 02:03:48 : Training Troops & Spells
+2016-01-06 02:03:49 : Checking Army Camp...
+2016-01-06 02:03:50 : Total Army Camp capacity: 240/240 (100%)
+2016-01-06 02:03:53 :  - No. of Barbarians: 128
+2016-01-06 02:03:53 :  - No. of Archers: 112
+2016-01-06 02:03:53 : Barracks and Spell factory status: 
+2016-01-06 02:03:53 : - Barracks detected: 4 | Available: 4 | Upgrading: 0
+2016-01-06 02:03:53 : - Dark Barracks detected: 2 | Available: 2 | Upgrading: 0
+2016-01-06 02:03:53 : - Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-06 02:03:53 : - Dark Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-06 02:03:54 : Your Army Camps are now Full
+2016-01-06 02:03:54 : Calculating Troops before Training new Army.
+2016-01-06 02:04:27 : Going to Attack...
+2016-01-06 02:04:33 : ============== Searching For Dead Base ===============
+2016-01-06 02:04:33 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:04:33 : Meet: Gold + Elixir
+2016-01-06 02:04:33 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:04:33 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:04:33 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:04:33 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:04:33 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:04:33 : ==================================================
+2016-01-06 02:04:39 :   1> [G]: 120687 [E]: 136947 [D]:  878 [T]:28 [TH]: 9, In
+2016-01-06 02:04:48 :   2> [G]: 155250 [E]: 295270 [D]:  752 [T]:30 [TH]: 9, In
+2016-01-06 02:04:48 :       Not a Dead Base
+2016-01-06 02:04:57 :   3> [G]:  18974 [E]: 416628 [D]: 3171 [T]:41 [TH]:10, In
+2016-01-06 02:04:57 :       Not a Dead Base
+2016-01-06 02:05:05 :       TH Outside Found! 
+2016-01-06 02:05:05 :       Resource requirement not met for TH snipe 
+2016-01-06 02:05:05 :   4> [G]: 135319 [E]:  83855 [D]:  757 [T]:40 [TH]: 9, Out
+2016-01-06 02:05:12 :       TH Outside Found! 
+2016-01-06 02:05:12 :       Resource requirement not met for TH snipe 
+2016-01-06 02:05:13 :   5> [G]:  61994 [E]:  40114 [D]:   73 [T]:42 [TH]: 9, Out
+2016-01-06 02:05:20 :       TH Outside Found! 
+2016-01-06 02:05:20 :       Resource requirement not met for TH snipe 
+2016-01-06 02:05:20 :   6> [G]:  61447 [E]:  73886 [D]:  452 [T]:25 [TH]:10, Out
+2016-01-06 02:05:28 :   7> [G]: 134089 [E]:  41068 [D]:  238 [T]:43 [TH]: 9, In
+2016-01-06 02:05:35 :   8> [G]:  34536 [E]: 122056 [D]: 2161 [T]:32 [TH]: 9, In
+2016-01-06 02:05:45 :   9> [G]: 260463 [E]: 243540 [D]: 3230 [T]:34 [TH]:10, In
+2016-01-06 02:05:45 :       Not a Dead Base
+2016-01-06 02:05:52 :  10> [G]:  23733 [E]: 118915 [D]:  347 [T]:41 [TH]: 9, In
+2016-01-06 02:06:00 :  11> [G]:  26673 [E]: 116289 [D]:  906 [T]:34 [TH]: 9, In
+2016-01-06 02:06:09 :  12> [G]: 280150 [E]: 290314 [D]:  643 [T]:41 [TH]: 9, In
+2016-01-06 02:06:09 :       Not a Dead Base
+2016-01-06 02:06:16 :  13> [G]:  43352 [E]:  41579 [D]:  284 [T]:45 [TH]: 9, In
+2016-01-06 02:06:24 :  14> [G]:  47282 [E]:  97697 [D]:  498 [T]:45 [TH]:10, In
+2016-01-06 02:06:31 :  15> [G]:  95717 [E]:  53743 [D]:  970 [T]:37 [TH]: 9, In
+2016-01-06 02:06:39 :  16> [G]: 125244 [E]:  69527 [D]:  890 [T]:42 [TH]:10, In
+2016-01-06 02:06:47 :  17> [G]:  27097 [E]:  28305 [D]:  133 [T]:47 [TH]:10, In
+2016-01-06 02:06:55 :  18> [G]: 242851 [E]:  53040 [D]: 2154 [T]:39 [TH]: 9, In
+2016-01-06 02:07:03 :       TH Outside Found! 
+2016-01-06 02:07:03 :       Resource requirement met for TH snipe 
+2016-01-06 02:07:03 :  19> [G]:  84512 [E]: 169308 [D]: 1339 [T]:29 [TH]:10, Out
+2016-01-06 02:07:04 : ================ Search Complete =================
+2016-01-06 02:07:04 : Initiating attack for: TH Snipe
+2016-01-06 02:07:06 : -*-Barbarians 128
+2016-01-06 02:07:06 : -*-Archers 112
+2016-01-06 02:07:06 : -*-Clan Castle 
+2016-01-06 02:07:06 : -*-Heal Spells 3
+2016-01-06 02:07:06 : -*-Rage Spells 1
+2016-01-06 02:07:06 : -*-Jump Spells 1
+2016-01-06 02:07:06 : -*-Poison Spells 1
+2016-01-06 02:07:06 :  ====== Start Attack ====== 
+2016-01-06 02:07:08 : Sniping TH with Barch            	 
+2016-01-06 02:07:08 : Attacking TH with 1 wave of BARCH   	 
+2016-01-06 02:07:08 : Dropping Only wave of 4 Barbarians
+2016-01-06 02:07:09 : Custom Corner deployment THi = 2 ,x = 152 ,y = 323
+2016-01-06 02:07:10 : Deployment of 4 Barbarians was Successful!
+2016-01-06 02:07:11 :                                       
+2016-01-06 02:07:11 : Dropping Only wave of 4 Archers
+2016-01-06 02:07:11 : Custom Corner deployment THi = 2 ,x = 152 ,y = 323
+2016-01-06 02:07:12 : Deployment of 4 Archers was Successful!
+2016-01-06 02:07:13 :                                       
+2016-01-06 02:07:13 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:07:40 : Townhall has been destroyed!
+2016-01-06 02:07:44 : detected [G]: 83601 [E]: 146940 [DE]: 1151 |  Exit in  8 sec.
+2016-01-06 02:07:44 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:07:47 : detected [G]: 83601 [E]: 146550 [DE]: 1151 |  Exit in  8 sec.
+2016-01-06 02:07:47 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:07:51 : detected [G]: 83601 [E]: 146250 [DE]: 1151 |  Exit in  8 sec.
+2016-01-06 02:07:51 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:07:54 : detected [G]: 83601 [E]: 146025 [DE]: 1151 |  Exit in  8 sec.
+2016-01-06 02:07:54 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:07:58 : detected [G]: 83601 [E]: 145800 [DE]: 1151 |  Exit in  8 sec.
+2016-01-06 02:07:58 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:08:01 : detected [G]: 83601 [E]: 145500 [DE]: 1151 |  Exit in  8 sec.
+2016-01-06 02:08:01 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:08:04 : detected [G]: 83601 [E]: 145275 [DE]: 1151 |  Exit in  8 sec.
+2016-01-06 02:08:04 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:08:08 : detected [G]: 83601 [E]: 144975 [DE]: 1151 |  Exit in  8 sec.
+2016-01-06 02:08:08 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:08:11 : detected [G]: 83601 [E]: 144930 [DE]: 1151 |  Exit in  8 sec.
+2016-01-06 02:08:13 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  6 sec.
+2016-01-06 02:08:13 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:08:16 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  8 sec.
+2016-01-06 02:08:18 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  6 sec.
+2016-01-06 02:08:20 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  4 sec.
+2016-01-06 02:08:21 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  3 sec.
+2016-01-06 02:08:23 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  1 sec.
+2016-01-06 02:08:25 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  0 sec.
+2016-01-06 02:08:25 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:08:25 :                                       
+2016-01-06 02:08:25 : Oh Shit! Seems like a trapped TH!     
+2016-01-06 02:08:25 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:08:26 : Townhall has been destroyed!
+2016-01-06 02:08:30 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  8 sec.
+2016-01-06 02:08:32 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  6 sec.
+2016-01-06 02:08:33 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  4 sec.
+2016-01-06 02:08:35 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  3 sec.
+2016-01-06 02:08:37 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  1 sec.
+2016-01-06 02:08:38 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  0 sec.
+2016-01-06 02:08:38 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:08:38 :                                       
+2016-01-06 02:08:38 : ~Finished Attacking, waiting to finish
+2016-01-06 02:08:38 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:08:40 : Townhall has been destroyed!
+2016-01-06 02:08:43 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  8 sec.
+2016-01-06 02:08:45 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  6 sec.
+2016-01-06 02:08:47 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  4 sec.
+2016-01-06 02:08:49 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  3 sec.
+2016-01-06 02:08:50 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  1 sec.
+2016-01-06 02:08:52 : detected [G]: 83601 [E]: 144930 [DE]: 1150 |  Exit in  0 sec.
+2016-01-06 02:08:52 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:08:52 : 										 
+2016-01-06 02:08:52 : Wait few sec before close attack
+2016-01-06 02:09:00 : Returning Home
+2016-01-06 02:09:04 : Loot: [G]: 911 [E]: 24 378 [DE]: 189 [T]: 9
+2016-01-06 02:09:04 : Bonus Percentage: 4%
+2016-01-06 02:09:04 : Bonus [G]: 148 out of 3 700 [E]: 148 out of 3 700
+2016-01-06 02:09:05 : Your league level is: Silver II
+2016-01-06 02:09:05 : Stars earned: 1
+2016-01-06 02:09:13 : Trying to locate Main Screen
+2016-01-06 02:09:13 : Main Screen Located
+2016-01-06 02:09:15 : Village Report
+2016-01-06 02:09:15 : No. of Free/Total Builders: 1/5
+2016-01-06 02:09:15 :  [T]: 994
+2016-01-06 02:09:15 :  [G]: 2 213 671 [E]: 3 504 459 [D]: 72 265 [GEM]: 3 625
+2016-01-06 02:09:16 : Collecting Resources
+2016-01-06 02:09:29 : Chat Request: wiz arch min thx
+2016-01-06 02:09:29 : Castle Capacity : 0/30
+2016-01-06 02:09:29 : Archers Keyword found: arch
+2016-01-06 02:09:29 : Donating 8 Archers
+2016-01-06 02:09:31 : Chat Request: wam poison
+2016-01-06 02:09:31 : Castle Capacity : 8/35
+2016-01-06 02:09:31 : Archers Keyword found: wam
+2016-01-06 02:09:32 : Donating 8 Archers
+2016-01-06 02:09:36 : Training Troops & Spells
+2016-01-06 02:09:36 : Checking Army Camp...
+2016-01-06 02:09:37 : Total Army Camp capacity: 230/240 (95%)
+2016-01-06 02:09:38 :  - No. of Barbarians: 132
+2016-01-06 02:09:38 :  - No. of Archers: 98
+2016-01-06 02:09:39 : Your Army Camps are now Full
+2016-01-06 02:09:40 : Calculating Troops before Training new Army.
+2016-01-06 02:09:56 : Going to Attack...
+2016-01-06 02:10:02 : ============== Searching For Dead Base ===============
+2016-01-06 02:10:02 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:10:02 : Meet: Gold + Elixir
+2016-01-06 02:10:02 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:10:02 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:10:02 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:10:02 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:10:02 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:10:02 : ==================================================
+2016-01-06 02:10:08 :   1> [G]:    758 [E]:    556 [D]:  662 [T]:35 [TH]:11, In
+2016-01-06 02:10:16 :       TH Outside Found! 
+2016-01-06 02:10:16 :       Resource requirement not met for TH snipe 
+2016-01-06 02:10:16 :   2> [G]:  50439 [E]:  49106 [D]: 1012 [T]:31 [TH]: 9, Out
+2016-01-06 02:10:23 :   3> [G]:  84077 [E]: 139357 [D]:  287 [T]:39 [TH]: 9, In
+2016-01-06 02:10:32 :   4> [G]: 336705 [E]: 113547 [D]: 3033 [T]:33 [TH]:10, In
+2016-01-06 02:10:32 :       Not a Dead Base
+2016-01-06 02:10:42 :   5> [G]: 406863 [E]: 353006 [D]:  908 [T]:29 [TH]:10, In
+2016-01-06 02:10:42 :       Not a Dead Base
+2016-01-06 02:10:51 :   6> [G]:  54137 [E]: 303239 [D]:  785 [T]:40 [TH]: 9, In
+2016-01-06 02:10:51 :       Not a Dead Base
+2016-01-06 02:11:00 :   7> [G]: 296660 [E]: 325381 [D]: 3441 [T]:33 [TH]:10, In
+2016-01-06 02:11:00 :       Not a Dead Base
+2016-01-06 02:11:08 :       TH Outside Found! 
+2016-01-06 02:11:08 :       Resource requirement not met for TH snipe 
+2016-01-06 02:11:08 :   8> [G]:  47014 [E]:  43210 [D]:  312 [T]:38 [TH]: 9, Out
+2016-01-06 02:11:17 :   9> [G]: 415859 [E]: 414731 [D]: 2116 [T]:43 [TH]:10, In
+2016-01-06 02:11:17 :       Not a Dead Base
+2016-01-06 02:11:24 :       TH Outside Found! 
+2016-01-06 02:11:24 :       Resource requirement not met for TH snipe 
+2016-01-06 02:11:24 :  10> [G]:  55526 [E]:  65399 [D]:  848 [T]:36 [TH]: 9, Out
+2016-01-06 02:11:32 :       TH Outside Found! 
+2016-01-06 02:11:32 :       Resource requirement met for TH snipe 
+2016-01-06 02:11:32 :  11> [G]:  15243 [E]: 225235 [D]:  667 [T]:27 [TH]: 9, Out
+2016-01-06 02:11:33 : ================ Search Complete =================
+2016-01-06 02:11:33 : Initiating attack for: TH Snipe
+2016-01-06 02:11:35 : -*-Barbarians 136
+2016-01-06 02:11:35 : -*-Archers 104
+2016-01-06 02:11:35 : -*-Clan Castle 
+2016-01-06 02:11:35 : -*-Heal Spells 3
+2016-01-06 02:11:35 : -*-Rage Spells 1
+2016-01-06 02:11:35 : -*-Jump Spells 1
+2016-01-06 02:11:35 : -*-Poison Spells 1
+2016-01-06 02:11:35 :  ====== Start Attack ====== 
+2016-01-06 02:11:37 : Sniping TH with Barch            	 
+2016-01-06 02:11:37 : Attacking TH with 1 wave of BARCH   	 
+2016-01-06 02:11:38 : Dropping Only wave of 4 Barbarians
+2016-01-06 02:11:38 : Custom Corner deployment THi = 16 ,x = 417 ,y = 554
+2016-01-06 02:11:39 : Deployment of 4 Barbarians was Successful!
+2016-01-06 02:11:40 :                                       
+2016-01-06 02:11:40 : Dropping Only wave of 4 Archers
+2016-01-06 02:11:40 : Custom Corner deployment THi = 16 ,x = 417 ,y = 554
+2016-01-06 02:11:41 : Deployment of 4 Archers was Successful!
+2016-01-06 02:11:42 :                                       
+2016-01-06 02:11:42 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:12:04 : Townhall has been destroyed!
+2016-01-06 02:12:08 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  8 sec.
+2016-01-06 02:12:10 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  6 sec.
+2016-01-06 02:12:12 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  5 sec.
+2016-01-06 02:12:13 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  3 sec.
+2016-01-06 02:12:15 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  1 sec.
+2016-01-06 02:12:17 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  0 sec.
+2016-01-06 02:12:17 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:12:17 :                                       
+2016-01-06 02:12:17 : Oh Shit! Seems like a trapped TH!     
+2016-01-06 02:12:17 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:12:18 : Townhall has been destroyed!
+2016-01-06 02:12:22 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  8 sec.
+2016-01-06 02:12:24 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  6 sec.
+2016-01-06 02:12:25 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  5 sec.
+2016-01-06 02:12:27 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  3 sec.
+2016-01-06 02:12:29 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  1 sec.
+2016-01-06 02:12:30 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  0 sec.
+2016-01-06 02:12:30 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:12:30 :                                       
+2016-01-06 02:12:30 : ~Finished Attacking, waiting to finish
+2016-01-06 02:12:30 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:12:32 : Townhall has been destroyed!
+2016-01-06 02:12:35 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  8 sec.
+2016-01-06 02:12:37 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  6 sec.
+2016-01-06 02:12:39 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  4 sec.
+2016-01-06 02:12:41 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  3 sec.
+2016-01-06 02:12:42 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  1 sec.
+2016-01-06 02:12:44 : detected [G]: 14815 [E]: 178272 [DE]: 551 |  Exit in  0 sec.
+2016-01-06 02:12:44 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:12:44 : 										 
+2016-01-06 02:12:44 : Wait few sec before close attack
+2016-01-06 02:12:52 : Returning Home
+2016-01-06 02:12:56 : Loot: [G]: 428 [E]: 46 963 [DE]: 116 [T]: 9
+2016-01-06 02:12:56 : Bonus Percentage: 4%
+2016-01-06 02:12:56 : Bonus [G]: 148 out of 3 700 [E]: 148 out of 3 700
+2016-01-06 02:12:57 : Your league level is: Silver II
+2016-01-06 02:12:57 : Stars earned: 1
+2016-01-06 02:13:05 : Trying to locate Main Screen
+2016-01-06 02:13:05 : Main Screen Located
+2016-01-06 02:13:07 : Village Report
+2016-01-06 02:13:07 : No. of Free/Total Builders: 1/5
+2016-01-06 02:13:07 :  [T]: 1 003
+2016-01-06 02:13:07 :  [G]: 2 204 670 [E]: 3 547 444 [D]: 72 417 [GEM]: 3 625
+2016-01-06 02:13:08 : Collecting Resources
+2016-01-06 02:13:22 : Training Troops & Spells
+2016-01-06 02:13:23 : Checking Army Camp...
+2016-01-06 02:13:24 : Total Army Camp capacity: 240/240 (100%)
+2016-01-06 02:13:25 :  - No. of Barbarians: 136
+2016-01-06 02:13:25 :  - No. of Archers: 104
+2016-01-06 02:13:26 : Your Army Camps are now Full
+2016-01-06 02:13:26 : Calculating Troops before Training new Army.
+2016-01-06 02:13:42 : Going to Attack...
+2016-01-06 02:13:48 : ============== Searching For Dead Base ===============
+2016-01-06 02:13:48 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:13:48 : Meet: Gold + Elixir
+2016-01-06 02:13:48 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:13:48 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:13:48 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:13:48 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:13:48 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:13:48 : ==================================================
+2016-01-06 02:13:56 :   1> [G]:  95746 [E]:  13599 [D]: 1026 [T]:34 [TH]: 9, In
+2016-01-06 02:14:04 :       TH Outside Found! 
+2016-01-06 02:14:04 :       Resource requirement met for TH snipe 
+2016-01-06 02:14:04 :   2> [G]: 151511 [E]: 143828 [D]:  815 [T]:30 [TH]: 9, Out
+2016-01-06 02:14:05 : ================ Search Complete =================
+2016-01-06 02:14:05 : Initiating attack for: TH Snipe
+2016-01-06 02:14:07 : -*-Barbarians 136
+2016-01-06 02:14:07 : -*-Archers 104
+2016-01-06 02:14:07 : -*-Clan Castle 
+2016-01-06 02:14:07 : -*-Heal Spells 3
+2016-01-06 02:14:07 : -*-Rage Spells 1
+2016-01-06 02:14:07 : -*-Jump Spells 1
+2016-01-06 02:14:07 : -*-Poison Spells 1
+2016-01-06 02:14:07 :  ====== Start Attack ====== 
+2016-01-06 02:14:09 : Sniping TH with Barch            	 
+2016-01-06 02:14:09 : Attacking TH with 1 wave of BARCH   	 
+2016-01-06 02:14:09 : Dropping Only wave of 4 Barbarians
+2016-01-06 02:14:10 : Custom Corner deployment THi = 16 ,x = 417 ,y = 554
+2016-01-06 02:14:11 : Deployment of 4 Barbarians was Successful!
+2016-01-06 02:14:12 :                                       
+2016-01-06 02:14:12 : Dropping Only wave of 4 Archers
+2016-01-06 02:14:12 : Custom Corner deployment THi = 16 ,x = 417 ,y = 554
+2016-01-06 02:14:13 : Deployment of 4 Archers was Successful!
+2016-01-06 02:14:14 :                                       
+2016-01-06 02:14:14 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:14:36 : Townhall has been destroyed!
+2016-01-06 02:14:40 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  8 sec.
+2016-01-06 02:14:42 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  6 sec.
+2016-01-06 02:14:44 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  4 sec.
+2016-01-06 02:14:45 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  3 sec.
+2016-01-06 02:14:47 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  1 sec.
+2016-01-06 02:14:49 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  0 sec.
+2016-01-06 02:14:49 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:14:49 :                                       
+2016-01-06 02:14:49 : Oh Shit! Seems like a trapped TH!     
+2016-01-06 02:14:49 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:14:50 : Townhall has been destroyed!
+2016-01-06 02:14:54 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  8 sec.
+2016-01-06 02:14:56 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  6 sec.
+2016-01-06 02:14:57 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  4 sec.
+2016-01-06 02:14:59 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  3 sec.
+2016-01-06 02:15:01 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  1 sec.
+2016-01-06 02:15:02 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  0 sec.
+2016-01-06 02:15:02 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:15:02 :                                       
+2016-01-06 02:15:02 : ~Finished Attacking, waiting to finish
+2016-01-06 02:15:02 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:15:04 : Townhall has been destroyed!
+2016-01-06 02:15:07 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  8 sec.
+2016-01-06 02:15:09 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  6 sec.
+2016-01-06 02:15:11 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  4 sec.
+2016-01-06 02:15:13 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  3 sec.
+2016-01-06 02:15:14 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  1 sec.
+2016-01-06 02:15:16 : detected [G]: 142724 [E]: 136244 [DE]: 748 |  Exit in  0 sec.
+2016-01-06 02:15:16 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:15:16 : 										 
+2016-01-06 02:15:16 : Wait few sec before close attack
+2016-01-06 02:15:25 : Returning Home
+2016-01-06 02:15:29 : Loot: [G]: 8 787 [E]: 7 584 [DE]: 67 [T]: 10
+2016-01-06 02:15:29 : Bonus Percentage: 6%
+2016-01-06 02:15:29 : Bonus [G]: 222 out of 3 700 [E]: 222 out of 3 700
+2016-01-06 02:15:30 : Your league level is: Silver II
+2016-01-06 02:15:30 : Stars earned: 1
+2016-01-06 02:15:38 : Trying to locate Main Screen
+2016-01-06 02:15:38 : Main Screen Located
+2016-01-06 02:15:40 : Village Report
+2016-01-06 02:15:40 : No. of Free/Total Builders: 1/5
+2016-01-06 02:15:40 :  [T]: 1 013
+2016-01-06 02:15:40 :  [G]: 2 214 975 [E]: 3 554 225 [D]: 72 508 [GEM]: 3 625
+2016-01-06 02:15:41 : Collecting Resources
+2016-01-06 02:15:55 : Training Troops & Spells
+2016-01-06 02:15:56 : Checking Army Camp...
+2016-01-06 02:15:57 : Total Army Camp capacity: 240/240 (100%)
+2016-01-06 02:15:58 :  - No. of Barbarians: 136
+2016-01-06 02:15:58 :  - No. of Archers: 104
+2016-01-06 02:15:59 : Your Army Camps are now Full
+2016-01-06 02:15:59 : Calculating Troops before Training new Army.
+2016-01-06 02:16:15 : Going to Attack...
+2016-01-06 02:16:21 : ============== Searching For Dead Base ===============
+2016-01-06 02:16:21 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:16:21 : Meet: Gold + Elixir
+2016-01-06 02:16:21 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:16:21 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:16:21 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:16:21 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:16:21 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:16:21 : ==================================================
+2016-01-06 02:16:27 :       TH Outside Found! 
+2016-01-06 02:16:27 :       Resource requirement met for TH snipe 
+2016-01-06 02:16:27 :   1> [G]:  84008 [E]:  60707 [D]: 2286 [T]:36 [TH]:10, Out
+2016-01-06 02:16:29 : ================ Search Complete =================
+2016-01-06 02:16:29 : Initiating attack for: TH Snipe
+2016-01-06 02:16:31 : -*-Barbarians 136
+2016-01-06 02:16:31 : -*-Archers 104
+2016-01-06 02:16:31 : -*-Clan Castle 
+2016-01-06 02:16:31 : -*-Heal Spells 3
+2016-01-06 02:16:31 : -*-Rage Spells 1
+2016-01-06 02:16:31 : -*-Jump Spells 1
+2016-01-06 02:16:31 : -*-Poison Spells 1
+2016-01-06 02:16:31 :  ====== Start Attack ====== 
+2016-01-06 02:16:33 : Sniping TH with Barch            	 
+2016-01-06 02:16:33 : Attacking TH with 1 wave of BARCH   	 
+2016-01-06 02:16:33 : Dropping Only wave of 4 Barbarians
+2016-01-06 02:16:34 : Custom Corner deployment THi = 16 ,x = 417 ,y = 135
+2016-01-06 02:16:34 : Deployment of 1 Barbarians was Successful!
+2016-01-06 02:16:35 :                                       
+2016-01-06 02:16:35 : Dropping Only wave of 4 Archers
+2016-01-06 02:16:36 : Custom Corner deployment THi = 16 ,x = 417 ,y = 135
+2016-01-06 02:16:37 : Deployment of 4 Archers was Successful!
+2016-01-06 02:16:38 :                                       
+2016-01-06 02:16:38 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:17:07 : Townhall has been destroyed!
+2016-01-06 02:17:11 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  8 sec.
+2016-01-06 02:17:13 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  6 sec.
+2016-01-06 02:17:14 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  4 sec.
+2016-01-06 02:17:16 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  3 sec.
+2016-01-06 02:17:18 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  1 sec.
+2016-01-06 02:17:20 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  0 sec.
+2016-01-06 02:17:20 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:17:20 :                                       
+2016-01-06 02:17:20 : Oh Shit! Seems like a trapped TH!     
+2016-01-06 02:17:20 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:17:21 : Townhall has been destroyed!
+2016-01-06 02:17:25 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  8 sec.
+2016-01-06 02:17:26 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  6 sec.
+2016-01-06 02:17:28 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  4 sec.
+2016-01-06 02:17:30 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  3 sec.
+2016-01-06 02:17:32 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  1 sec.
+2016-01-06 02:17:33 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  0 sec.
+2016-01-06 02:17:34 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:17:34 :                                       
+2016-01-06 02:17:34 : ~Finished Attacking, waiting to finish
+2016-01-06 02:17:34 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:17:35 : Townhall has been destroyed!
+2016-01-06 02:17:39 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  8 sec.
+2016-01-06 02:17:40 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  6 sec.
+2016-01-06 02:17:42 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  4 sec.
+2016-01-06 02:17:44 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  3 sec.
+2016-01-06 02:17:46 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  1 sec.
+2016-01-06 02:17:47 : detected [G]: 70943 [E]: 52313 [DE]: 1873 |  Exit in  0 sec.
+2016-01-06 02:17:47 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:17:47 : 										 
+2016-01-06 02:17:47 : Wait few sec before close attack
+2016-01-06 02:17:54 : Returning Home
+2016-01-06 02:17:58 : Loot: [G]: 13 065 [E]: 8 394 [DE]: 413 [T]: 12
+2016-01-06 02:17:58 : Bonus Percentage: 4%
+2016-01-06 02:17:59 : Bonus [G]: 148 out of 3 700 [E]: 148 out of 3 700
+2016-01-06 02:18:00 : Your league level is: Silver II
+2016-01-06 02:18:00 : Stars earned: 1
+2016-01-06 02:18:08 : Trying to locate Main Screen
+2016-01-06 02:18:08 : Main Screen Located
+2016-01-06 02:18:10 : Village Report
+2016-01-06 02:18:10 : No. of Free/Total Builders: 1/5
+2016-01-06 02:18:10 :  [T]: 1 025
+2016-01-06 02:18:10 :  [G]: 2 227 970 [E]: 3 559 767 [D]: 72 937 [GEM]: 3 625
+2016-01-06 02:18:11 : Collecting Resources
+2016-01-06 02:18:25 : Training Troops & Spells
+2016-01-06 02:18:26 : Checking Army Camp...
+2016-01-06 02:18:27 : Total Army Camp capacity: 240/240 (100%)
+2016-01-06 02:18:28 :  - No. of Barbarians: 136
+2016-01-06 02:18:28 :  - No. of Archers: 104
+2016-01-06 02:18:29 : Your Army Camps are now Full
+2016-01-06 02:18:29 : Calculating Troops before Training new Army.
+2016-01-06 02:18:46 : Going to Attack...
+2016-01-06 02:18:52 : ============== Searching For Dead Base ===============
+2016-01-06 02:18:52 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:18:52 : Meet: Gold + Elixir
+2016-01-06 02:18:52 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:18:52 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:18:52 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:18:52 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:18:52 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:18:52 : ==================================================
+2016-01-06 02:18:58 :   1> [G]: 128308 [E]:  43465 [D]:  613 [T]:33 [TH]: 9, In
+2016-01-06 02:19:06 :   2> [G]:  42079 [E]: 245715 [D]: 3104 [T]:26 [TH]:10, In
+2016-01-06 02:19:16 :   3> [G]: 149674 [E]: 395425 [D]: 1394 [T]:38 [TH]:10, In
+2016-01-06 02:19:16 :       Not a Dead Base
+2016-01-06 02:19:23 :       TH Outside Found! 
+2016-01-06 02:19:23 :       Resource requirement not met for TH snipe 
+2016-01-06 02:19:23 :   4> [G]:  56579 [E]:  46133 [D]:  539 [T]:39 [TH]: 9, Out
+2016-01-06 02:19:31 :       TH Outside Found! 
+2016-01-06 02:19:31 :       Resource requirement not met for TH snipe 
+2016-01-06 02:19:31 :   5> [G]:  42564 [E]:  11197 [D]:  177 [T]:38 [TH]: 9, Out
+2016-01-06 02:19:38 :       TH Outside Found! 
+2016-01-06 02:19:38 :       Resource requirement met for TH snipe 
+2016-01-06 02:19:38 :   6> [G]: 141034 [E]: 108455 [D]:  980 [T]:24 [TH]:10, Out
+2016-01-06 02:19:40 : ================ Search Complete =================
+2016-01-06 02:19:40 : Initiating attack for: TH Snipe
+2016-01-06 02:19:42 : -*-Barbarians 136
+2016-01-06 02:19:42 : -*-Archers 104
+2016-01-06 02:19:42 : -*-Clan Castle 
+2016-01-06 02:19:42 : -*-Heal Spells 3
+2016-01-06 02:19:42 : -*-Rage Spells 1
+2016-01-06 02:19:42 : -*-Jump Spells 1
+2016-01-06 02:19:42 : -*-Poison Spells 1
+2016-01-06 02:19:42 :  ====== Start Attack ====== 
+2016-01-06 02:19:44 : Sniping TH with Barch            	 
+2016-01-06 02:19:44 : Attacking TH with 1 wave of BARCH   	 
+2016-01-06 02:19:44 : Dropping Only wave of 4 Barbarians
+2016-01-06 02:19:44 : Custom Corner deployment THi = 1 ,x = 143 ,y = 323
+2016-01-06 02:19:45 : Deployment of 4 Barbarians was Successful!
+2016-01-06 02:19:46 :                                       
+2016-01-06 02:19:46 : Dropping Only wave of 4 Archers
+2016-01-06 02:19:47 : Custom Corner deployment THi = 1 ,x = 143 ,y = 323
+2016-01-06 02:19:47 : Deployment of 4 Archers was Successful!
+2016-01-06 02:19:48 :                                       
+2016-01-06 02:19:48 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:20:17 : Townhall has been destroyed!
+2016-01-06 02:20:21 : detected [G]: 141017 [E]: 108450 [DE]: 955 |  Exit in  8 sec.
+2016-01-06 02:20:22 : detected [G]: 141017 [E]: 108450 [DE]: 955 |  Exit in  6 sec.
+2016-01-06 02:20:24 : detected [G]: 141017 [E]: 106263 [DE]: 955 |  Exit in  4 sec.
+2016-01-06 02:20:24 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:20:28 : detected [G]: 141017 [E]: 100512 [DE]: 955 |  Exit in  8 sec.
+2016-01-06 02:20:28 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:20:31 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  8 sec.
+2016-01-06 02:20:31 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:20:35 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  8 sec.
+2016-01-06 02:20:36 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  6 sec.
+2016-01-06 02:20:38 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  4 sec.
+2016-01-06 02:20:40 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  3 sec.
+2016-01-06 02:20:41 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  1 sec.
+2016-01-06 02:20:43 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  0 sec.
+2016-01-06 02:20:43 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:20:43 :                                       
+2016-01-06 02:20:43 : Oh Shit! Seems like a trapped TH!     
+2016-01-06 02:20:43 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:20:44 : Townhall has been destroyed!
+2016-01-06 02:20:48 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  8 sec.
+2016-01-06 02:20:50 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  6 sec.
+2016-01-06 02:20:52 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  4 sec.
+2016-01-06 02:20:54 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  3 sec.
+2016-01-06 02:20:55 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  1 sec.
+2016-01-06 02:20:57 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  0 sec.
+2016-01-06 02:20:57 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:20:57 :                                       
+2016-01-06 02:20:57 : ~Finished Attacking, waiting to finish
+2016-01-06 02:20:57 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:20:58 : Townhall has been destroyed!
+2016-01-06 02:21:02 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  8 sec.
+2016-01-06 02:21:04 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  6 sec.
+2016-01-06 02:21:06 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  4 sec.
+2016-01-06 02:21:07 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  3 sec.
+2016-01-06 02:21:09 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  1 sec.
+2016-01-06 02:21:11 : detected [G]: 141017 [E]: 98081 [DE]: 955 |  Exit in  0 sec.
+2016-01-06 02:21:11 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:21:11 : 										 
+2016-01-06 02:21:11 : Wait few sec before close attack
+2016-01-06 02:21:19 : Returning Home
+2016-01-06 02:21:23 : Loot: [G]: 17 [E]: 10 374 [DE]: 25 [T]: 8
+2016-01-06 02:21:23 : Bonus Percentage: 4%
+2016-01-06 02:21:23 : Bonus [G]: 148 out of 3 700 [E]: 148 out of 3 700
+2016-01-06 02:21:24 : Your league level is: Silver II
+2016-01-06 02:21:24 : Stars earned: 1
+2016-01-06 02:21:32 : Trying to locate Main Screen
+2016-01-06 02:21:32 : Main Screen Located
+2016-01-06 02:21:34 : Village Report
+2016-01-06 02:21:34 : No. of Free/Total Builders: 1/5
+2016-01-06 02:21:34 :  [T]: 1 033
+2016-01-06 02:21:34 :  [G]: 2 223 000 [E]: 3 567 553 [D]: 72 976 [GEM]: 3 625
+2016-01-06 02:21:35 : Collecting Resources
+2016-01-06 02:21:49 : Training Troops & Spells
+2016-01-06 02:21:50 : Checking Army Camp...
+2016-01-06 02:21:51 : Total Army Camp capacity: 240/240 (100%)
+2016-01-06 02:21:52 :  - No. of Barbarians: 136
+2016-01-06 02:21:52 :  - No. of Archers: 104
+2016-01-06 02:21:53 : Your Army Camps are now Full
+2016-01-06 02:21:53 : Calculating Troops before Training new Army.
+2016-01-06 02:22:10 : Going to Attack...
+2016-01-06 02:22:16 : ============== Searching For Dead Base ===============
+2016-01-06 02:22:16 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:22:16 : Meet: Gold + Elixir
+2016-01-06 02:22:16 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:22:16 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:22:16 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:22:16 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:22:16 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:22:16 : ==================================================
+2016-01-06 02:22:23 :       TH Outside Found! 
+2016-01-06 02:22:23 :       Resource requirement met for TH snipe 
+2016-01-06 02:22:23 :   1> [G]: 193408 [E]: 162527 [D]:  593 [T]:35 [TH]: 9, Out
+2016-01-06 02:22:25 : ================ Search Complete =================
+2016-01-06 02:22:25 : Initiating attack for: TH Snipe
+2016-01-06 02:22:27 : -*-Barbarians 136
+2016-01-06 02:22:27 : -*-Archers 104
+2016-01-06 02:22:27 : -*-Clan Castle 
+2016-01-06 02:22:27 : -*-Heal Spells 3
+2016-01-06 02:22:27 : -*-Rage Spells 1
+2016-01-06 02:22:27 : -*-Jump Spells 1
+2016-01-06 02:22:27 : -*-Poison Spells 1
+2016-01-06 02:22:27 :  ====== Start Attack ====== 
+2016-01-06 02:22:29 : Sniping TH with Barch            	 
+2016-01-06 02:22:29 : Attacking TH with 1 wave of BARCH   	 
+2016-01-06 02:22:29 : Dropping Only wave of 4 Barbarians
+2016-01-06 02:22:30 : Custom Corner deployment THi = 16 ,x = 430 ,y = 519
+2016-01-06 02:22:30 : Deployment of 4 Barbarians was Successful!
+2016-01-06 02:22:31 :                                       
+2016-01-06 02:22:31 : Dropping Only wave of 4 Archers
+2016-01-06 02:22:32 : Custom Corner deployment THi = 16 ,x = 430 ,y = 519
+2016-01-06 02:22:33 : Deployment of 4 Archers was Successful!
+2016-01-06 02:22:34 :                                       
+2016-01-06 02:22:34 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:23:04 :                                       
+2016-01-06 02:23:04 : Oh Shit! Seems like a trapped TH!     
+2016-01-06 02:23:04 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:23:34 :                                       
+2016-01-06 02:23:34 : ~Finished Attacking, waiting to finish
+2016-01-06 02:23:34 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:24:05 : 										 
+2016-01-06 02:24:05 : Wait few sec before close attack
+2016-01-06 02:24:45 : Returning Home
+2016-01-06 02:24:49 : Loot: [G]: 0 [E]: 0 [DE]:  [T]: -16
+2016-01-06 02:24:49 : Stars earned: 0
+2016-01-06 02:24:58 : Trying to locate Main Screen
+2016-01-06 02:24:58 : Main Screen Located
+2016-01-06 02:24:59 : Village Report
+2016-01-06 02:24:59 : No. of Free/Total Builders: 1/5
+2016-01-06 02:24:59 :  [T]: 1 017
+2016-01-06 02:24:59 :  [G]: 2 222 100 [E]: 3 564 553 [D]: 72 998 [GEM]: 3 625
+2016-01-06 02:25:01 : Collecting Resources
+2016-01-06 02:25:15 : Training Troops & Spells
+2016-01-06 02:25:15 : Checking Army Camp...
+2016-01-06 02:25:17 : Total Army Camp capacity: 240/240 (100%)
+2016-01-06 02:25:17 :  - No. of Barbarians: 136
+2016-01-06 02:25:18 :  - No. of Archers: 104
+2016-01-06 02:25:19 : Your Army Camps are now Full
+2016-01-06 02:25:19 : Calculating Troops before Training new Army.
+2016-01-06 02:25:35 : Going to Attack...
+2016-01-06 02:25:41 : ============== Searching For Dead Base ===============
+2016-01-06 02:25:41 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:25:41 : Meet: Gold + Elixir
+2016-01-06 02:25:41 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:25:41 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:25:41 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:25:41 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:25:41 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:25:41 : ==================================================
+2016-01-06 02:25:49 :   1> [G]:  18446 [E]: 292085 [D]:  466 [T]:31 [TH]:10, In
+2016-01-06 02:25:49 :       Not a Dead Base
+2016-01-06 02:25:57 :       TH Outside Found! 
+2016-01-06 02:25:57 :       Resource requirement not met for TH snipe 
+2016-01-06 02:25:57 :   2> [G]:  35500 [E]:  33426 [D]:  289 [T]:26 [TH]:10, Out
+2016-01-06 02:26:04 :   3> [G]:  47675 [E]:  51348 [D]:  168 [T]:30 [TH]: 8, In
+2016-01-06 02:26:12 :   4> [G]: 124502 [E]: 138348 [D]: 2405 [T]:19 [TH]:10, In
+2016-01-06 02:26:21 :   5> [G]: 124865 [E]:  23251 [D]: 1394 [T]:39 [TH]:10, In
+2016-01-06 02:26:30 :   6> [G]:  79840 [E]: 369085 [D]: 1245 [T]:39 [TH]:10, In
+2016-01-06 02:26:30 :       Not a Dead Base
+2016-01-06 02:26:37 : Trying to locate Main Screen
+2016-01-06 02:26:38 : Connection lost, Reloading CoC...
+2016-01-06 02:26:43 : Waiting for Main Screen
+2016-01-06 02:26:43 : Main Screen Located
+2016-01-06 02:26:43 : Connection Lost While Searching
+2016-01-06 02:26:45 : Trying to locate Main Screen
+2016-01-06 02:26:45 : Main Screen Located
+2016-01-06 02:26:45 : Restarted after Out of Sync Error: Attack Now
+2016-01-06 02:26:46 : Trying to locate Main Screen
+2016-01-06 02:26:46 : Main Screen Located
+2016-01-06 02:26:46 : Going to Attack...
+2016-01-06 02:26:52 : ============== Searching For Dead Base ===============
+2016-01-06 02:26:52 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:26:52 : Meet: Gold + Elixir
+2016-01-06 02:26:52 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:26:52 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:26:52 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:26:52 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:26:52 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:26:52 : ==================================================
+2016-01-06 02:27:00 :   7> [G]: 425299 [E]: 400434 [D]: 3402 [T]:32 [TH]:10, In
+2016-01-06 02:27:00 :       Not a Dead Base
+2016-01-06 02:27:08 :   8> [G]:  81225 [E]:  12388 [D]: 1995 [T]:35 [TH]: 9, In
+2016-01-06 02:27:17 :   9> [G]: 465571 [E]: 465520 [D]: 2531 [T]:38 [TH]:10, In
+2016-01-06 02:27:17 :       Not a Dead Base
+2016-01-06 02:27:26 :  10> [G]: 462761 [E]: 388728 [D]:  552 [T]:25 [TH]:11, In
+2016-01-06 02:27:26 :       Not a Dead Base
+2016-01-06 02:27:34 :       TH Outside Found! 
+2016-01-06 02:27:34 :       Resource requirement not met for TH snipe 
+2016-01-06 02:27:34 :  11> [G]:  70618 [E]:  80556 [D]:  533 [T]:33 [TH]: 9, Out
+2016-01-06 02:27:43 :  12> [G]: 429673 [E]: 412876 [D]: 1568 [T]:31 [TH]:10, In
+2016-01-06 02:27:43 :       Not a Dead Base
+2016-01-06 02:27:51 :  13> [G]:  81691 [E]:  77598 [D]:  251 [T]:43 [TH]:10, In
+2016-01-06 02:27:58 :       TH Outside Found! 
+2016-01-06 02:27:58 :       Resource requirement not met for TH snipe 
+2016-01-06 02:27:58 :  14> [G]:  58526 [E]:  35620 [D]:  627 [T]:39 [TH]: 9, Out
+2016-01-06 02:28:07 :  15> [G]:  57002 [E]: 285512 [D]: 1309 [T]:38 [TH]: 9, In
+2016-01-06 02:28:07 :       Not a Dead Base
+2016-01-06 02:28:15 :  16> [G]: 135163 [E]: 105387 [D]: 2004 [T]:34 [TH]: 9, In
+2016-01-06 02:28:22 :  17> [G]: 155066 [E]:  69411 [D]:  559 [T]:37 [TH]: 9, In
+2016-01-06 02:28:30 :       TH Outside Found! 
+2016-01-06 02:28:30 :       Resource requirement not met for TH snipe 
+2016-01-06 02:28:30 :  18> [G]:  94795 [E]:  86687 [D]:  770 [T]:28 [TH]: 9, Out
+2016-01-06 02:28:37 :       TH Outside Found! 
+2016-01-06 02:28:37 :       Resource requirement not met for TH snipe 
+2016-01-06 02:28:37 :  19> [G]:  52867 [E]:  40195 [D]:  723 [T]:33 [TH]: 9, Out
+2016-01-06 02:28:45 :  20> [G]:  92255 [E]: 132905 [D]: 2157 [T]:39 [TH]: 9, In
+2016-01-06 02:28:54 :  21> [G]: 226247 [E]: 142089 [D]: 2371 [T]:42 [TH]:10, In
+2016-01-06 02:28:55 :       Not a Dead Base
+2016-01-06 02:29:02 : Trying to locate Main Screen
+2016-01-06 02:29:03 : Connection lost, Reloading CoC...
+2016-01-06 02:29:08 : Waiting for Main Screen
+2016-01-06 02:29:08 : Main Screen Located
+2016-01-06 02:29:08 : Connection Lost While Searching
+2016-01-06 02:29:09 : Trying to locate Main Screen
+2016-01-06 02:29:09 : Main Screen Located
+2016-01-06 02:29:09 : Restarted after Out of Sync Error: Attack Now
+2016-01-06 02:29:10 : Trying to locate Main Screen
+2016-01-06 02:29:10 : Main Screen Located
+2016-01-06 02:29:10 : Going to Attack...
+2016-01-06 02:29:16 : ============== Searching For Dead Base ===============
+2016-01-06 02:29:16 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:29:16 : Meet: Gold + Elixir
+2016-01-06 02:29:16 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:29:16 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:29:16 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:29:16 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:29:16 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:29:16 : ==================================================
+2016-01-06 02:29:22 :  22> [G]: 107497 [E]: 116968 [D]:  596 [T]:35 [TH]: 9, In
+2016-01-06 02:29:30 :  23> [G]:  55031 [E]:  51159 [D]: 2022 [T]:29 [TH]: 9, In
+2016-01-06 02:29:38 :       TH Outside Found! 
+2016-01-06 02:29:38 :       Resource requirement not met for TH snipe 
+2016-01-06 02:29:38 :  24> [G]:  76718 [E]:  57082 [D]:  652 [T]:34 [TH]: 9, Out
+2016-01-06 02:29:45 :  25> [G]:  89376 [E]: 151307 [D]: 2935 [T]:35 [TH]:11, In
+2016-01-06 02:29:55 :  26> [G]:  78753 [E]: 311155 [D]:  737 [T]:25 [TH]: 9, In
+2016-01-06 02:29:55 :       Not a Dead Base
+2016-01-06 02:30:02 :       TH Outside Found! 
+2016-01-06 02:30:02 :       Resource requirement not met for TH snipe 
+2016-01-06 02:30:02 :  27> [G]: 126187 [E]:  95384 [D]:  638 [T]:36 [TH]: 9, Out
+2016-01-06 02:30:10 :  28> [G]:  14637 [E]: 217899 [D]:  602 [T]:39 [TH]:10, In
+2016-01-06 02:30:19 :  29> [G]: 283994 [E]: 378774 [D]: 1431 [T]:33 [TH]:10, In
+2016-01-06 02:30:19 :       Not a Dead Base
+2016-01-06 02:30:26 :  30> [G]:  23600 [E]: 257514 [D]: 1664 [T]:40 [TH]: 9, In
+2016-01-06 02:30:34 :  31> [G]:  15217 [E]:   3640 [D]:  789 [T]:42 [TH]: 9, In
+2016-01-06 02:30:41 :  32> [G]:  78418 [E]:  80459 [D]: 1199 [T]:43 [TH]: 9, In
+2016-01-06 02:30:49 :  33> [G]: 217924 [E]:  65329 [D]: 3199 [T]:43 [TH]:10, In
+2016-01-06 02:30:58 :  34> [G]: 477615 [E]: 479056 [D]: 2753 [T]:33 [TH]:11, In
+2016-01-06 02:30:58 :       Not a Dead Base
+2016-01-06 02:31:07 :  35> [G]: 264514 [E]: 281069 [D]:  934 [T]:41 [TH]: 9, In
+2016-01-06 02:31:07 :       Not a Dead Base
+2016-01-06 02:31:14 :       TH Outside Found! 
+2016-01-06 02:31:14 :       Resource requirement not met for TH snipe 
+2016-01-06 02:31:15 :  36> [G]:  40780 [E]:  13280 [D]:  128 [T]:31 [TH]: 8, Out
+2016-01-06 02:31:22 :  37> [G]:  27943 [E]: 132624 [D]:  211 [T]:33 [TH]: 9, In
+2016-01-06 02:31:31 :  38> [G]: 212677 [E]: 201633 [D]: 1367 [T]:40 [TH]:11, In
+2016-01-06 02:31:31 :       Not a Dead Base
+2016-01-06 02:31:40 :       TH Outside Found! 
+2016-01-06 02:31:40 :       Resource requirement not met for TH snipe 
+2016-01-06 02:31:40 :  39> [G]:  74237 [E]:  80687 [D]:  455 [T]:30 [TH]: 9, Out
+2016-01-06 02:31:47 :       TH Outside Found! 
+2016-01-06 02:31:47 :       Resource requirement not met for TH snipe 
+2016-01-06 02:31:47 :  40> [G]: 135633 [E]:  54446 [D]:  111 [T]:26 [TH]:10, Out
+2016-01-06 02:31:55 :       TH Outside Found! 
+2016-01-06 02:31:55 :       Resource requirement not met for TH snipe 
+2016-01-06 02:31:55 :  41> [G]:  40270 [E]:  49097 [D]:  366 [T]:44 [TH]:10, Out
+2016-01-06 02:32:02 :       TH Outside Found! 
+2016-01-06 02:32:02 :       Resource requirement not met for TH snipe 
+2016-01-06 02:32:02 :  42> [G]:  83899 [E]: 114522 [D]:  741 [T]:32 [TH]: 9, Out
+2016-01-06 02:32:11 :  43> [G]: 123899 [E]:  46944 [D]:  626 [T]:43 [TH]:10, In
+2016-01-06 02:32:20 :  44> [G]: 199146 [E]: 290185 [D]: 2408 [T]:39 [TH]: 9, In
+2016-01-06 02:32:20 :       Not a Dead Base
+2016-01-06 02:32:27 :  45> [G]:  57426 [E]:  29681 [D]:  738 [T]:40 [TH]: 9, In
+2016-01-06 02:32:35 :       TH Outside Found! 
+2016-01-06 02:32:35 :       Resource requirement not met for TH snipe 
+2016-01-06 02:32:35 :  46> [G]:  97124 [E]:  60756 [D]:  333 [T]:21 [TH]: 9, Out
+2016-01-06 02:32:45 :  47> [G]: 463503 [E]: 157462 [D]: 1889 [T]:42 [TH]:11, In
+2016-01-06 02:32:45 :       Not a Dead Base
+2016-01-06 02:32:52 :  48> [G]:  61061 [E]:  69798 [D]: 3045 [T]:38 [TH]:10, In
+2016-01-06 02:33:00 :       TH Outside Found! 
+2016-01-06 02:33:00 :       Resource requirement not met for TH snipe 
+2016-01-06 02:33:00 :  49> [G]:  58505 [E]:  48520 [D]:  346 [T]:35 [TH]: 9, Out
+2016-01-06 02:33:08 :  50> [G]:  38550 [E]:  32096 [D]:  254 [T]:36 [TH]: 8, In
+2016-01-06 02:33:17 :  51> [G]: 217635 [E]: 280526 [D]:  960 [T]:42 [TH]: 9, In
+2016-01-06 02:33:17 :       Not a Dead Base
+2016-01-06 02:33:26 :  52> [G]:  39778 [E]: 268581 [D]:  783 [T]:37 [TH]:10, In
+2016-01-06 02:33:26 :       Not a Dead Base
+2016-01-06 02:33:34 :  53> [G]:  68696 [E]: 110987 [D]:  813 [T]:40 [TH]: 9, In
+2016-01-06 02:33:44 :  54> [G]: 466517 [E]:  24357 [D]: 2552 [T]:50 [TH]:11, In
+2016-01-06 02:33:44 :       Not a Dead Base
+2016-01-06 02:33:51 :       TH Outside Found! 
+2016-01-06 02:33:51 :       Resource requirement not met for TH snipe 
+2016-01-06 02:33:51 :  55> [G]:  29833 [E]:  15702 [D]:  195 [T]:34 [TH]: 8, Out
+2016-01-06 02:34:00 :  56> [G]: 396172 [E]: 366600 [D]: 3504 [T]:50 [TH]:10, In
+2016-01-06 02:34:00 :       Not a Dead Base
+2016-01-06 02:34:09 :  57> [G]: 238612 [E]: 421193 [D]: 2467 [T]:46 [TH]:11, In
+2016-01-06 02:34:09 :       Not a Dead Base
+2016-01-06 02:34:18 :  58> [G]: 226271 [E]:  50100 [D]: 1482 [T]:31 [TH]: 9, In
+2016-01-06 02:34:27 :  59> [G]:  33380 [E]: 403636 [D]: 3033 [T]:51 [TH]:10, In
+2016-01-06 02:34:27 :       Not a Dead Base
+2016-01-06 02:34:35 :  60> [G]:  44065 [E]:  64766 [D]:  130 [T]:38 [TH]: 9, In
+2016-01-06 02:34:44 :  61> [G]: 218763 [E]: 253928 [D]: 1135 [T]:30 [TH]:10, In
+2016-01-06 02:34:44 :       Not a Dead Base
+2016-01-06 02:34:51 :  62> [G]: 105657 [E]: 165240 [D]:  622 [T]:28 [TH]:10, In
+2016-01-06 02:35:01 :  63> [G]: 135401 [E]: 272860 [D]:  987 [T]:51 [TH]:10, In
+2016-01-06 02:35:01 :       Not a Dead Base
+2016-01-06 02:35:10 :  64> [G]: 262248 [E]: 358308 [D]: 2719 [T]:49 [TH]:10, In
+2016-01-06 02:35:10 :       Not a Dead Base
+2016-01-06 02:35:18 :  65> [G]:  89364 [E]:  32961 [D]: 2501 [T]:50 [TH]:11, In
+2016-01-06 02:35:25 :  66> [G]:  93516 [E]:  48249 [D]:  107 [T]:41 [TH]: 9, In
+2016-01-06 02:35:33 :  67> [G]:  84121 [E]:  23596 [D]:   72 [T]:28 [TH]: 9, In
+2016-01-06 02:35:42 :  68> [G]: 414291 [E]: 413160 [D]: 3305 [T]:45 [TH]:10, In
+2016-01-06 02:35:42 :       Not a Dead Base
+2016-01-06 02:35:51 :  69> [G]: 129249 [E]: 437696 [D]: 2087 [T]:46 [TH]:10, In
+2016-01-06 02:35:51 :       Not a Dead Base
+2016-01-06 02:35:59 :  70> [G]:  18750 [E]: 405257 [D]:  494 [T]:29 [TH]:10, In
+2016-01-06 02:35:59 :       Not a Dead Base
+2016-01-06 02:36:08 :  71> [G]:  50584 [E]: 407174 [D]: 1438 [T]:47 [TH]:10, In
+2016-01-06 02:36:08 :       Not a Dead Base
+2016-01-06 02:36:17 :  72> [G]: 413857 [E]: 413167 [D]:  342 [T]:42 [TH]:10, In
+2016-01-06 02:36:17 :       Not a Dead Base
+2016-01-06 02:36:26 :  73> [G]: 371234 [E]: 439540 [D]: 1910 [T]:50 [TH]:10, In
+2016-01-06 02:36:26 :       Not a Dead Base
+2016-01-06 02:36:35 :  74> [G]: 440781 [E]: 295549 [D]: 2372 [T]:40 [TH]:10, In
+2016-01-06 02:36:35 :       Not a Dead Base
+2016-01-06 02:36:44 :  75> [G]: 296852 [E]: 132521 [D]: 1143 [T]:51 [TH]:10, In
+2016-01-06 02:36:44 :       Not a Dead Base
+2016-01-06 02:36:52 :  76> [G]: 193272 [E]:  39845 [D]: 2038 [T]:40 [TH]: 9, In
+2016-01-06 02:37:01 :  77> [G]: 432601 [E]: 432603 [D]:  902 [T]:33 [TH]:10, In
+2016-01-06 02:37:01 :       Not a Dead Base
+2016-01-06 02:37:08 :       TH Outside Found! 
+2016-01-06 02:37:08 :       Resource requirement not met for TH snipe 
+2016-01-06 02:37:08 :  78> [G]:  93581 [E]:  76162 [D]: 1089 [T]:40 [TH]: 9, Out
+2016-01-06 02:37:16 :       TH Outside Found! 
+2016-01-06 02:37:16 :       Resource requirement not met for TH snipe 
+2016-01-06 02:37:16 :  79> [G]:  33151 [E]:  32442 [D]:  601 [T]:42 [TH]: 9, Out
+2016-01-06 02:37:24 :  80> [G]:   9933 [E]: 241689 [D]: 1899 [T]:38 [TH]: 9, In
+2016-01-06 02:37:33 :  81> [G]: 212503 [E]: 242467 [D]: 3204 [T]:41 [TH]:10, In
+2016-01-06 02:37:33 :       Not a Dead Base
+2016-01-06 02:37:40 :  82> [G]:  25878 [E]: 103833 [D]: 1289 [T]:25 [TH]: 9, In
+2016-01-06 02:37:49 :  83> [G]: 209247 [E]: 214677 [D]:  414 [T]:44 [TH]:10, In
+2016-01-06 02:37:49 :       Not a Dead Base
+2016-01-06 02:37:58 :       TH Outside Found! 
+2016-01-06 02:37:58 :       Resource requirement met for TH snipe 
+2016-01-06 02:37:58 :  84> [G]: 169340 [E]: 172236 [D]: 1505 [T]:48 [TH]:10, Out
+2016-01-06 02:38:00 : ================ Search Complete =================
+2016-01-06 02:38:00 : Initiating attack for: TH Snipe
+2016-01-06 02:38:01 : -*-Barbarians 136
+2016-01-06 02:38:01 : -*-Archers 104
+2016-01-06 02:38:01 : -*-Clan Castle 
+2016-01-06 02:38:01 : -*-Heal Spells 3
+2016-01-06 02:38:02 : -*-Rage Spells 1
+2016-01-06 02:38:02 : -*-Jump Spells 1
+2016-01-06 02:38:02 : -*-Poison Spells 1
+2016-01-06 02:38:02 :  ====== Start Attack ====== 
+2016-01-06 02:38:04 : Sniping TH with Barch            	 
+2016-01-06 02:38:04 : Attacking TH with 1 wave of BARCH   	 
+2016-01-06 02:38:04 : Dropping Only wave of 4 Barbarians
+2016-01-06 02:38:04 : Custom Corner deployment THi = 16 ,x = 425 ,y = 556
+2016-01-06 02:38:05 : Deployment of 4 Barbarians was Successful!
+2016-01-06 02:38:06 :                                       
+2016-01-06 02:38:06 : Dropping Only wave of 4 Archers
+2016-01-06 02:38:07 : Custom Corner deployment THi = 16 ,x = 425 ,y = 556
+2016-01-06 02:38:07 : Deployment of 4 Archers was Successful!
+2016-01-06 02:38:08 :                                       
+2016-01-06 02:38:08 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:38:39 :                                       
+2016-01-06 02:38:39 : Oh Shit! Seems like a trapped TH!     
+2016-01-06 02:38:39 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:38:42 : Townhall has been destroyed!
+2016-01-06 02:38:46 : detected [G]: 148325 [E]: 152082 [DE]: 1379 |  Exit in  8 sec.
+2016-01-06 02:38:46 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:38:50 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  8 sec.
+2016-01-06 02:38:50 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:38:53 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  8 sec.
+2016-01-06 02:38:55 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  6 sec.
+2016-01-06 02:38:57 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  4 sec.
+2016-01-06 02:38:58 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  3 sec.
+2016-01-06 02:39:00 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  1 sec.
+2016-01-06 02:39:02 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  0 sec.
+2016-01-06 02:39:02 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:39:02 :                                       
+2016-01-06 02:39:02 : ~Finished Attacking, waiting to finish
+2016-01-06 02:39:02 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:39:03 : Townhall has been destroyed!
+2016-01-06 02:39:07 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  8 sec.
+2016-01-06 02:39:09 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  6 sec.
+2016-01-06 02:39:11 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  4 sec.
+2016-01-06 02:39:12 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  2 sec.
+2016-01-06 02:39:14 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  1 sec.
+2016-01-06 02:39:16 : detected [G]: 147401 [E]: 152082 [DE]: 1379 |  Exit in  0 sec.
+2016-01-06 02:39:16 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:39:16 : 										 
+2016-01-06 02:39:16 : Wait few sec before close attack
+2016-01-06 02:39:23 : Returning Home
+2016-01-06 02:39:27 : Loot: [G]: 21 939 [E]: 20 154 [DE]: 126 [T]: 16
+2016-01-06 02:39:27 : Bonus Percentage: 3%
+2016-01-06 02:39:27 : Bonus [G]: 111 out of 3 700 [E]: 111 out of 3 700
+2016-01-06 02:39:28 : Your league level is: Silver II
+2016-01-06 02:39:28 : Stars earned: 1
+2016-01-06 02:39:36 : Trying to locate Main Screen
+2016-01-06 02:39:36 : Main Screen Located
+2016-01-06 02:39:37 : Village Report
+2016-01-06 02:39:37 : No. of Free/Total Builders: 1/5
+2016-01-06 02:39:37 :  [T]: 1 033
+2016-01-06 02:39:38 :  [G]: 2 170 000 [E]: 3 585 719 [D]: 73 146 [GEM]: 3 625
+2016-01-06 02:39:39 : Collecting Resources
+2016-01-06 02:39:51 : Chat Request: any tks
+2016-01-06 02:39:51 : Castle Capacity : 8/30
+2016-01-06 02:39:51 : Custom Donation Keyword found: any
+2016-01-06 02:39:52 : Donating 4 Barbarians
+2016-01-06 02:39:53 : Donating 4 Archers
+2016-01-06 02:39:55 : Chat Request: golem poison
+2016-01-06 02:39:55 : Castle Capacity : 30/30
+2016-01-06 02:39:55 : King Blacklist Keyword found: golem
+2016-01-06 02:39:55 : Barbarians Blacklist Keyword found: golem
+2016-01-06 02:39:55 : Archers Blacklist Keyword found: golem
+2016-01-06 02:39:58 : Training Troops & Spells
+2016-01-06 02:39:58 : Checking Army Camp...
+2016-01-06 02:40:00 : Total Army Camp capacity: 236/240 (98%)
+2016-01-06 02:40:01 :  - No. of Barbarians: 134
+2016-01-06 02:40:01 :  - No. of Archers: 102
+2016-01-06 02:40:02 : Your Army Camps are now Full
+2016-01-06 02:40:02 : Calculating Troops before Training new Army.
+2016-01-06 02:40:19 : Going to Attack...
+2016-01-06 02:40:24 : ============== Searching For Dead Base ===============
+2016-01-06 02:40:24 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:40:24 : Meet: Gold + Elixir
+2016-01-06 02:40:24 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:40:24 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:40:24 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:40:24 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:40:25 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:40:25 : ==================================================
+2016-01-06 02:40:31 :       TH Outside Found! 
+2016-01-06 02:40:31 :       Resource requirement not met for TH snipe 
+2016-01-06 02:40:31 :   1> [G]:  41085 [E]:  42545 [D]:  217 [T]:33 [TH]: 9, Out
+2016-01-06 02:40:38 :       TH Outside Found! 
+2016-01-06 02:40:38 :       Resource requirement not met for TH snipe 
+2016-01-06 02:40:38 :   2> [G]:  47625 [E]:  55758 [D]:  990 [T]:36 [TH]: 9, Out
+2016-01-06 02:40:46 :       TH Outside Found! 
+2016-01-06 02:40:46 :       Resource requirement not met for TH snipe 
+2016-01-06 02:40:46 :   3> [G]:  60393 [E]:  56489 [D]:  307 [T]:29 [TH]: 9, Out
+2016-01-06 02:40:53 :   4> [G]: 122596 [E]: 147440 [D]: 2410 [T]:33 [TH]:10, In
+2016-01-06 02:41:02 :   5> [G]: 146289 [E]:  76564 [D]:    2 [T]:26 [TH]:10, In
+2016-01-06 02:41:12 :   6> [G]: 341184 [E]: 265049 [D]: 3716 [T]:35 [TH]:11, In
+2016-01-06 02:41:12 :       Not a Dead Base
+2016-01-06 02:41:19 :   7> [G]:  38349 [E]:  57430 [D]:  537 [T]:41 [TH]: 9, In
+2016-01-06 02:41:28 :   8> [G]: 530998 [E]: 135252 [D]: 3984 [T]:36 [TH]:11, In
+2016-01-06 02:41:28 :       Not a Dead Base
+2016-01-06 02:41:36 :   9> [G]:  33496 [E]:  59976 [D]:  691 [T]:37 [TH]:11, In
+2016-01-06 02:41:45 :  10> [G]: 231848 [E]: 444761 [D]: 4104 [T]:39 [TH]:10, In
+2016-01-06 02:41:45 :       Not a Dead Base
+2016-01-06 02:41:52 :       TH Outside Found! 
+2016-01-06 02:41:52 :       Resource requirement not met for TH snipe 
+2016-01-06 02:41:52 :  11> [G]:  31679 [E]: 133437 [D]:  282 [T]:40 [TH]:10, Out
+2016-01-06 02:42:00 :       TH Outside Found! 
+2016-01-06 02:42:00 :       Resource requirement not met for TH snipe 
+2016-01-06 02:42:00 :  12> [G]:  59659 [E]:  95377 [D]: 1024 [T]:42 [TH]: 9, Out
+2016-01-06 02:42:08 :  13> [G]:  23559 [E]:  25410 [D]:  817 [T]:32 [TH]: 9, In
+2016-01-06 02:42:18 :  14> [G]: 350329 [E]: 174792 [D]:  688 [T]:41 [TH]:10, In
+2016-01-06 02:42:18 :       Not a Dead Base
+2016-01-06 02:42:25 :       TH Outside Found! 
+2016-01-06 02:42:25 :       Resource requirement met for TH snipe 
+2016-01-06 02:42:25 :  15> [G]:  38593 [E]:  32214 [D]: 1287 [T]:35 [TH]: 9, Out
+2016-01-06 02:42:27 : ================ Search Complete =================
+2016-01-06 02:42:27 : Initiating attack for: TH Snipe
+2016-01-06 02:42:29 : -*-Barbarians 136
+2016-01-06 02:42:29 : -*-Archers 104
+2016-01-06 02:42:29 : -*-Clan Castle 
+2016-01-06 02:42:29 : -*-Heal Spells 3
+2016-01-06 02:42:29 : -*-Rage Spells 1
+2016-01-06 02:42:29 : -*-Jump Spells 1
+2016-01-06 02:42:29 : -*-Poison Spells 1
+2016-01-06 02:42:29 :  ====== Start Attack ====== 
+2016-01-06 02:42:31 : Sniping TH with Barch            	 
+2016-01-06 02:42:31 : Attacking TH with 1 wave of BARCH   	 
+2016-01-06 02:42:31 : Dropping Only wave of 4 Barbarians
+2016-01-06 02:42:31 : Custom Corner deployment THi = 17 ,x = 430 ,y = 116
+2016-01-06 02:42:32 : Deployment of 4 Barbarians was Successful!
+2016-01-06 02:42:33 :                                       
+2016-01-06 02:42:33 : Dropping Only wave of 4 Archers
+2016-01-06 02:42:34 : Custom Corner deployment THi = 17 ,x = 430 ,y = 116
+2016-01-06 02:42:34 : Deployment of 4 Archers was Successful!
+2016-01-06 02:42:35 :                                       
+2016-01-06 02:42:35 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:42:59 : Townhall has been destroyed!
+2016-01-06 02:43:03 : detected [G]: 38590 [E]: 32213 [DE]: 1284 |  Exit in  8 sec.
+2016-01-06 02:43:05 : detected [G]: 38590 [E]: 32213 [DE]: 1284 |  Exit in  6 sec.
+2016-01-06 02:43:07 : detected [G]: 38590 [E]: 31447 [DE]: 1284 |  Exit in  4 sec.
+2016-01-06 02:43:07 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:43:10 : detected [G]: 38590 [E]: 29195 [DE]: 1284 |  Exit in  8 sec.
+2016-01-06 02:43:10 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:43:14 : detected [G]: 38590 [E]: 28557 [DE]: 1284 |  Exit in  8 sec.
+2016-01-06 02:43:14 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:43:17 : detected [G]: 38590 [E]: 27230 [DE]: 1284 |  Exit in  8 sec.
+2016-01-06 02:43:17 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:43:21 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  8 sec.
+2016-01-06 02:43:21 : Gold & Elixir & DE change detected, waiting...
+2016-01-06 02:43:24 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  8 sec.
+2016-01-06 02:43:26 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  6 sec.
+2016-01-06 02:43:28 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  4 sec.
+2016-01-06 02:43:29 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  3 sec.
+2016-01-06 02:43:31 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  1 sec.
+2016-01-06 02:43:33 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  0 sec.
+2016-01-06 02:43:33 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:43:33 :                                       
+2016-01-06 02:43:33 : Oh Shit! Seems like a trapped TH!     
+2016-01-06 02:43:33 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:43:34 : Townhall has been destroyed!
+2016-01-06 02:43:38 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  8 sec.
+2016-01-06 02:43:40 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  6 sec.
+2016-01-06 02:43:42 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  4 sec.
+2016-01-06 02:43:43 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  3 sec.
+2016-01-06 02:43:45 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  1 sec.
+2016-01-06 02:43:47 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  0 sec.
+2016-01-06 02:43:47 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:43:47 :                                       
+2016-01-06 02:43:47 : ~Finished Attacking, waiting to finish
+2016-01-06 02:43:47 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-06 02:43:48 : Townhall has been destroyed!
+2016-01-06 02:43:52 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  8 sec.
+2016-01-06 02:43:54 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  6 sec.
+2016-01-06 02:43:56 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  4 sec.
+2016-01-06 02:43:57 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  3 sec.
+2016-01-06 02:43:59 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  1 sec.
+2016-01-06 02:44:01 : detected [G]: 38590 [E]: 26259 [DE]: 1284 |  Exit in  0 sec.
+2016-01-06 02:44:01 : Gold & Elixir & DE no change detected, exit
+2016-01-06 02:44:01 : 										 
+2016-01-06 02:44:01 : Wait few sec before close attack
+2016-01-06 02:44:10 : Returning Home
+2016-01-06 02:44:14 : Loot: [G]: 3 [E]: 5 955 [DE]: 3 [T]: 11
+2016-01-06 02:44:14 : Bonus Percentage: 16%
+2016-01-06 02:44:14 : Bonus [G]: 592 out of 3 700 [E]: 592 out of 3 700
+2016-01-06 02:44:15 : Your league level is: Silver II
+2016-01-06 02:44:15 : Stars earned: 1
+2016-01-06 02:44:23 : Trying to locate Main Screen
+2016-01-06 02:44:24 : Main Screen Located
+2016-01-06 02:44:25 : Village Report
+2016-01-06 02:44:25 : No. of Free/Total Builders: 1/5
+2016-01-06 02:44:25 :  [T]: 1 044
+2016-01-06 02:44:25 :  [G]: 2 163 240 [E]: 3 594 445 [D]: 73 243 [GEM]: 3 625
+2016-01-06 02:44:27 : Collecting Resources
+2016-01-06 02:44:40 : Training Troops & Spells
+2016-01-06 02:44:41 : Checking Army Camp...
+2016-01-06 02:44:43 : Total Army Camp capacity: 240/240 (100%)
+2016-01-06 02:44:43 :  - No. of Barbarians: 136
+2016-01-06 02:44:43 :  - No. of Archers: 104
+2016-01-06 02:44:45 : Your Army Camps are now Full
+2016-01-06 02:44:45 : Calculating Troops before Training new Army.
+2016-01-06 02:45:01 : Going to Attack...
+2016-01-06 02:45:07 : ============== Searching For Dead Base ===============
+2016-01-06 02:45:07 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-06 02:45:07 : Meet: Gold + Elixir
+2016-01-06 02:45:07 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-06 02:45:07 : Aim: [G+E]: 300000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-06 02:45:07 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-06 02:45:07 : THSnipe Combo, 3 Tile(s),  Attack TH Outside SmartBarch
+2016-01-06 02:45:07 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-06 02:45:07 : ==================================================
+2016-01-06 02:45:15 :   1> [G]: 438819 [E]: 430295 [D]: 1604 [T]:36 [TH]:10, In
+2016-01-06 02:45:15 :       Not a Dead Base
+2016-01-06 02:45:22 :       TH Outside Found! 
+2016-01-06 02:45:22 :       Resource requirement not met for TH snipe 
+2016-01-06 02:45:22 :   2> [G]:  27867 [E]:   7170 [D]:  116 [T]:30 [TH]: 9, Out
+2016-01-06 02:45:31 :   3> [G]: 414544 [E]: 405043 [D]: 3070 [T]:37 [TH]:10, In
+2016-01-06 02:45:31 :       Not a Dead Base
+2016-01-06 02:45:40 :   4> [G]: 450563 [E]: 457891 [D]: 1744 [T]:37 [TH]:10, In
+2016-01-06 02:45:40 :       Not a Dead Base
+2016-01-06 02:45:50 :   5> [G]: 422111 [E]: 374302 [D]: 3004 [T]:39 [TH]:10, In
+2016-01-06 02:45:50 :       Not a Dead Base
+2016-01-06 02:45:58 :       TH Outside Found! 
+2016-01-06 02:45:58 :       Resource requirement not met for TH snipe 
+2016-01-06 02:45:58 :   6> [G]:  80503 [E]:  49108 [D]:  360 [T]:25 [TH]:10, Out
+2016-01-06 02:46:06 :   7> [G]:  19974 [E]: 222675 [D]:  476 [T]:41 [TH]: 9, In

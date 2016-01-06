@@ -1,0 +1,71 @@
+2016-01-05 23:25:21 :  My Bot v5.0.2 860x780 (BlueStacks) Powered by MyBot.run ~
+2016-01-05 23:25:21 : MyBot.run.au3 Script running on WIN_81  X64
+2016-01-05 23:25:21 : =================== Bot Start ====================
+2016-01-05 23:25:21 : -------------------------  Current Profile: 01 --------------------------
+2016-01-05 23:25:21 : Trying to locate Main Screen
+2016-01-05 23:25:21 : Main Screen Located
+2016-01-05 23:25:23 : Detecting your Buildings..
+2016-01-05 23:25:24 : Finding your Clan Level, wait..
+2016-01-05 23:25:24 : Found Clan Level: 8
+2016-01-05 23:25:26 : Detecting your Village Theme
+2016-01-05 23:25:26 : Normal Theme detected
+2016-01-05 23:25:27 : Language setting is English: Correct.
+2016-01-05 23:25:28 : Trying to locate Main Screen
+2016-01-05 23:25:28 : Main Screen Located
+2016-01-05 23:25:30 : Village Report
+2016-01-05 23:25:30 : No. of Free/Total Builders: 1/5
+2016-01-05 23:25:30 :  [T]: 1 029
+2016-01-05 23:25:30 :  [G]: 1 272 188 [E]: 2 439 357 [D]: 67 978 [GEM]: 3 635
+2016-01-05 23:25:32 : Collecting Resources
+2016-01-05 23:25:45 : Training Troops & Spells
+2016-01-05 23:25:46 : Checking Army Camp...
+2016-01-05 23:25:47 : Total Army Camp capacity: 240/240 (100%)
+2016-01-05 23:25:49 :  - No. of Goblins: 240
+2016-01-05 23:25:50 : Barracks and Spell factory status: 
+2016-01-05 23:25:50 : - Barracks detected: 4 | Available: 4 | Upgrading: 0
+2016-01-05 23:25:50 : - Dark Barracks detected: 2 | Available: 2 | Upgrading: 0
+2016-01-05 23:25:50 : - Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-05 23:25:50 : - Dark Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-05 23:25:51 : Your Army Camps are now Full
+2016-01-05 23:25:51 : Calculating Troops before Training new Army.
+2016-01-05 23:26:17 : Boost Barracks started, checking available Barracks.
+2016-01-05 23:26:17 : Boosting All Barracks
+2016-01-05 23:26:19 : Barracks Boost Button not found
+2016-01-05 23:26:25 : Going to Attack...
+2016-01-05 23:26:31 : ============== Searching For Dead Base ===============
+2016-01-05 23:26:31 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-05 23:26:31 : Meet: Gold and Elixir
+2016-01-05 23:26:31 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-05 23:26:31 : Aim: [G]: 100000 [E]: 100000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-05 23:26:31 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-05 23:26:31 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-05 23:26:31 : Aim: [G]: 120000 [E]: 120000 [D]: 1000
+2016-01-05 23:26:31 : ==================================================
+2016-01-05 23:26:37 :   1> [G]:  97178 [E]:  97961 [D]:  952 [T]:38 [TH]: 9, In
+2016-01-05 23:26:45 :   2> [G]:  46678 [E]:  54406 [D]:  595 [T]:37 [TH]: 9, In
+2016-01-05 23:26:53 :   3> [G]: 291113 [E]: 299198 [D]: 2158 [T]:38 [TH]: 9, In
+2016-01-05 23:26:53 :       Not a Dead Base
+2016-01-05 23:27:01 :   4> [G]:  38494 [E]: 104495 [D]: 1664 [T]:35 [TH]: 9, In
+2016-01-05 23:27:10 :   5> [G]: 175650 [E]: 196292 [D]: 1808 [T]:33 [TH]:10, In
+2016-01-05 23:27:10 :       Not a Dead Base
+2016-01-05 23:27:18 :   6> [G]: 354790 [E]: 475488 [D]: 3946 [T]:35 [TH]:11, In
+2016-01-05 23:27:18 :       Not a Dead Base
+2016-01-05 23:27:26 :       TH Outside Found! 
+2016-01-05 23:27:26 :       Resource requirement met for TH snipe 
+2016-01-05 23:27:26 :   7> [G]:  75170 [E]:  65448 [D]: 1026 [T]:41 [TH]:10, Out
+2016-01-05 23:27:27 : ================ Search Complete =================
+2016-01-05 23:27:27 : Initiating attack for: TH Snipe
+2016-01-05 23:27:29 : -*-Goblins 240
+2016-01-05 23:27:29 : -*-Clan Castle 
+2016-01-05 23:27:29 : -*-Heal Spells 3
+2016-01-05 23:27:29 : -*-Rage Spells 1
+2016-01-05 23:27:29 : -*-Jump Spells 1
+2016-01-05 23:27:29 : -*-Poison Spells 1
+2016-01-05 23:27:29 :  ====== Start Attack ====== 
+2016-01-05 23:27:32 : Sniping TH with Gobs Snipe                                 		   
+2016-01-05 23:27:32 : Wave1: Sending 4 gobs and wait 20 seconds                           
+2016-01-05 23:27:32 : Dropping Only wave of 4 Goblins
+2016-01-05 23:27:32 : Custom Corner deployment THi = 3 ,x = 165 ,y = 324
+2016-01-05 23:27:33 : Deployment of 4 Goblins was Successful!
+2016-01-05 23:27:34 :                                                                     
+2016-01-05 23:27:34 : Waiting for 30000 milliseconds or until the destruction of the town hall

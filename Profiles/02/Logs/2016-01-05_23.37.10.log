@@ -1,0 +1,289 @@
+2016-01-05 23:37:11 :  My Bot v5.0.2 860x780 (BlueStacks) Powered by MyBot.run ~
+2016-01-05 23:37:11 : MyBot.run.au3 Script running on WIN_81  X64
+2016-01-05 23:37:11 : =================== Bot Start ====================
+2016-01-05 23:37:11 : -------------------------  Current Profile: 01 --------------------------
+2016-01-05 23:37:11 : Trying to locate Main Screen
+2016-01-05 23:37:11 : Main Screen Located
+2016-01-05 23:37:12 : Detecting your Buildings..
+2016-01-05 23:37:14 : Finding your Clan Level, wait..
+2016-01-05 23:37:16 : Found Clan Level: 8
+2016-01-05 23:37:17 : Detecting your Village Theme
+2016-01-05 23:37:18 : Normal Theme detected
+2016-01-05 23:37:19 : Language setting is English: Correct.
+2016-01-05 23:37:20 : Trying to locate Main Screen
+2016-01-05 23:37:20 : Main Screen Located
+2016-01-05 23:37:21 : Village Report
+2016-01-05 23:37:22 : No. of Free/Total Builders: 1/5
+2016-01-05 23:37:22 :  [T]: 1 005
+2016-01-05 23:37:22 :  [G]: 1 287 207 [E]: 2 446 932 [D]: 68 149 [GEM]: 3 635
+2016-01-05 23:37:23 : Collecting Resources
+2016-01-05 23:37:37 : Training Troops & Spells
+2016-01-05 23:37:37 : Checking Army Camp...
+2016-01-05 23:37:39 : Total Army Camp capacity: 240/240 (100%)
+2016-01-05 23:37:41 :  - No. of Goblins: 240
+2016-01-05 23:37:41 : Barracks and Spell factory status: 
+2016-01-05 23:37:41 : - Barracks detected: 4 | Available: 4 | Upgrading: 0
+2016-01-05 23:37:41 : - Dark Barracks detected: 2 | Available: 2 | Upgrading: 0
+2016-01-05 23:37:41 : - Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-05 23:37:41 : - Dark Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2016-01-05 23:37:42 : Your Army Camps are now Full
+2016-01-05 23:37:42 : Calculating Troops before Training new Army.
+2016-01-05 23:38:13 : Going to Attack...
+2016-01-05 23:38:19 : ============== Searching For Dead Base ===============
+2016-01-05 23:38:19 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-05 23:38:19 : Meet: Gold and Elixir
+2016-01-05 23:38:19 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-05 23:38:19 : Aim: [G]: 100000 [E]: 100000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-05 23:38:19 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-05 23:38:19 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-05 23:38:19 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-05 23:38:19 : ==================================================
+2016-01-05 23:38:26 :   1> [G]:  52720 [E]:  74993 [D]:  548 [T]:33 [TH]: 9, In
+2016-01-05 23:38:33 :   2> [G]:  89691 [E]: 297748 [D]:  708 [T]:33 [TH]: 9, In
+2016-01-05 23:38:40 :   3> [G]:  84568 [E]: 282050 [D]:  450 [T]:31 [TH]: 9, In
+2016-01-05 23:38:48 :   4> [G]:  52165 [E]:  55056 [D]:  649 [T]:41 [TH]: 9, In
+2016-01-05 23:38:55 :   5> [G]: 134641 [E]:  42599 [D]: 1322 [T]:39 [TH]: 9, In
+2016-01-05 23:39:04 :   6> [G]: 162215 [E]: 411677 [D]:  710 [T]:39 [TH]:10, In
+2016-01-05 23:39:04 :       Not a Dead Base
+2016-01-05 23:39:13 :   7> [G]: 451585 [E]: 451357 [D]: 5139 [T]:25 [TH]:11, In
+2016-01-05 23:39:13 :       Not a Dead Base
+2016-01-05 23:39:20 :   8> [G]:   2236 [E]: 440146 [D]: 2684 [T]:23 [TH]:11, In
+2016-01-05 23:39:28 :       TH Outside Found! 
+2016-01-05 23:39:28 :       Resource requirement met for TH snipe 
+2016-01-05 23:39:28 :   9> [G]: 108486 [E]: 124013 [D]: 1462 [T]:35 [TH]:10, Out
+2016-01-05 23:39:30 : ================ Search Complete =================
+2016-01-05 23:39:30 : Initiating attack for: TH Snipe
+2016-01-05 23:39:32 : -*-Goblins 240
+2016-01-05 23:39:32 : -*-Clan Castle 
+2016-01-05 23:39:32 : -*-Heal Spells 3
+2016-01-05 23:39:32 : -*-Rage Spells 1
+2016-01-05 23:39:32 : -*-Jump Spells 1
+2016-01-05 23:39:32 : -*-Poison Spells 1
+2016-01-05 23:39:32 :  ====== Start Attack ====== 
+2016-01-05 23:39:34 : Sniping TH with Gobs Snipe                                 		   
+2016-01-05 23:39:34 : Wave1: Sending 4 gobs and wait 20 seconds                           
+2016-01-05 23:39:34 : Dropping Only wave of 4 Goblins
+2016-01-05 23:39:35 : Custom Corner deployment THi = 16 ,x = 425 ,y = 568
+2016-01-05 23:39:35 : Deployment of 4 Goblins was Successful!
+2016-01-05 23:39:36 :                                                                     
+2016-01-05 23:39:36 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-05 23:40:00 : Townhall has been destroyed!
+2016-01-05 23:40:02 : Bot was Paused!
+2016-01-05 23:40:08 : Bot was Resumed.
+2016-01-05 23:40:11 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  8 sec.
+2016-01-05 23:40:11 : Gold & Elixir & DE change detected, waiting...
+2016-01-05 23:40:14 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  8 sec.
+2016-01-05 23:40:21 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  1 sec.
+2016-01-05 23:40:23 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  0 sec.
+2016-01-05 23:40:23 : Gold & Elixir & DE no change detected, exit
+2016-01-05 23:40:23 :                                                                     
+2016-01-05 23:40:23 : ~Finished Attacking                                                 
+2016-01-05 23:40:23 : Waiting for 5000 milliseconds or until the destruction of the town hall
+2016-01-05 23:40:24 : Townhall has been destroyed!
+2016-01-05 23:40:28 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  8 sec.
+2016-01-05 23:40:29 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  6 sec.
+2016-01-05 23:40:31 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  4 sec.
+2016-01-05 23:40:33 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  3 sec.
+2016-01-05 23:40:35 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  1 sec.
+2016-01-05 23:40:37 : detected [G]: 95431 [E]: 93854 [DE]: 1349 |  Exit in  0 sec.
+2016-01-05 23:40:37 : Gold & Elixir & DE no change detected, exit
+2016-01-05 23:40:37 :                                                                     
+2016-01-05 23:40:37 : Wait few sec before close attack
+2016-01-05 23:40:45 : Returning Home
+2016-01-05 23:40:49 : Loot: [G]: 13 055 [E]: 30 159 [DE]: 113 [T]: 11
+2016-01-05 23:40:49 : Bonus Percentage: 6%
+2016-01-05 23:40:50 : Bonus [G]: 222 out of 3 700 [E]: 222 out of 3 700
+2016-01-05 23:40:51 : Your league level is: Silver II
+2016-01-05 23:40:51 : Stars earned: 1
+2016-01-05 23:40:59 : Trying to locate Main Screen
+2016-01-05 23:40:59 : Main Screen Located
+2016-01-05 23:41:01 : Village Report
+2016-01-05 23:41:01 : No. of Free/Total Builders: 1/5
+2016-01-05 23:41:01 :  [T]: 1 016
+2016-01-05 23:41:01 :  [G]: 1 296 569 [E]: 2 469 980 [D]: 68 286 [GEM]: 3 635
+2016-01-05 23:41:02 : Collecting Resources
+2016-01-05 23:41:14 : Chat Request: arch wiz min pekka witch drag Valk
+2016-01-05 23:41:14 : Castle Capacity : 24/35
+2016-01-05 23:41:14 : Goblins Blacklist Keyword found: pekka
+2016-01-05 23:41:17 : Training Troops & Spells
+2016-01-05 23:41:18 : Checking Army Camp...
+2016-01-05 23:41:19 : Total Army Camp capacity: 240/240 (100%)
+2016-01-05 23:41:20 :  - No. of Goblins: 240
+2016-01-05 23:41:21 : Your Army Camps are now Full
+2016-01-05 23:41:21 : Calculating Troops before Training new Army.
+2016-01-05 23:41:38 : Going to Attack...
+2016-01-05 23:41:43 : ============== Searching For Dead Base ===============
+2016-01-05 23:41:43 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-05 23:41:43 : Meet: Gold and Elixir
+2016-01-05 23:41:43 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-05 23:41:43 : Aim: [G]: 100000 [E]: 100000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-05 23:41:43 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-05 23:41:43 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-05 23:41:43 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-05 23:41:43 : ==================================================
+2016-01-05 23:41:50 :       TH Outside Found! 
+2016-01-05 23:41:50 :       Resource requirement met for TH snipe 
+2016-01-05 23:41:50 :   1> [G]:  73581 [E]:   7403 [D]: 1951 [T]:30 [TH]: 9, Out
+2016-01-05 23:41:51 : ================ Search Complete =================
+2016-01-05 23:41:51 : Initiating attack for: TH Snipe
+2016-01-05 23:41:53 : -*-Goblins 240
+2016-01-05 23:41:53 : -*-Clan Castle 
+2016-01-05 23:41:53 : -*-Heal Spells 3
+2016-01-05 23:41:53 : -*-Rage Spells 1
+2016-01-05 23:41:53 : -*-Jump Spells 1
+2016-01-05 23:41:53 : -*-Poison Spells 1
+2016-01-05 23:41:53 :  ====== Start Attack ====== 
+2016-01-05 23:41:55 : Sniping TH with Gobs Snipe                                 		   
+2016-01-05 23:41:55 : Wave1: Sending 4 gobs and wait 20 seconds                           
+2016-01-05 23:41:55 : Dropping Only wave of 4 Goblins
+2016-01-05 23:41:57 : Deployment of 4 Goblins was Successful!
+2016-01-05 23:41:58 :                                                                     
+2016-01-05 23:41:58 : Waiting for 30000 milliseconds or until the destruction of the town hall
+2016-01-05 23:42:28 :                                                                     
+2016-01-05 23:42:28 : ~Finished Attacking                                                 
+2016-01-05 23:42:28 : Waiting for 5000 milliseconds or until the destruction of the town hall
+2016-01-05 23:42:34 :                                                                     
+2016-01-05 23:42:34 : Wait few sec before close attack
+2016-01-05 23:43:12 : Returning Home
+2016-01-05 23:43:16 : Loot: [G]: 0 [E]: 66 [DE]:  [T]: -19
+2016-01-05 23:43:16 : Stars earned: 0
+2016-01-05 23:43:24 : Trying to locate Main Screen
+2016-01-05 23:43:24 : Main Screen Located
+2016-01-05 23:43:26 : Village Report
+2016-01-05 23:43:26 : No. of Free/Total Builders: 1/5
+2016-01-05 23:43:26 :  [T]: 997
+2016-01-05 23:43:26 :  [G]: 1 295 669 [E]: 2 468 946 [D]: 68 296 [GEM]: 3 635
+2016-01-05 23:43:27 : Collecting Resources
+2016-01-05 23:43:40 : Chat Request: arch wiz min pekka witch drag Valk
+2016-01-05 23:43:40 : Castle Capacity : 24/35
+2016-01-05 23:43:40 : Goblins Blacklist Keyword found: pekka
+2016-01-05 23:43:42 : Training Troops & Spells
+2016-01-05 23:43:43 : Checking Army Camp...
+2016-01-05 23:43:45 : Total Army Camp capacity: 240/240 (100%)
+2016-01-05 23:43:45 :  - No. of Goblins: 240
+2016-01-05 23:43:46 : Your Army Camps are now Full
+2016-01-05 23:43:46 : Calculating Troops before Training new Army.
+2016-01-05 23:44:03 : Going to Attack...
+2016-01-05 23:44:09 : ============== Searching For Dead Base ===============
+2016-01-05 23:44:09 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-05 23:44:09 : Meet: Gold and Elixir
+2016-01-05 23:44:09 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-05 23:44:09 : Aim: [G]: 100000 [E]: 100000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-05 23:44:09 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-05 23:44:09 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-05 23:44:09 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-05 23:44:09 : ==================================================
+2016-01-05 23:44:16 :   1> [G]: 212886 [E]: 215067 [D]:  556 [T]:28 [TH]: 9, In
+2016-01-05 23:44:16 :       Not a Dead Base
+2016-01-05 23:44:23 :   2> [G]:  75509 [E]: 125952 [D]: 1374 [T]:39 [TH]: 9, In
+2016-01-05 23:44:31 :   3> [G]:  12081 [E]:  71903 [D]:  417 [T]:42 [TH]: 9, In
+2016-01-05 23:44:38 :   4> [G]: 244415 [E]: 163721 [D]:  228 [T]:36 [TH]: 9, Out
+2016-01-05 23:44:38 :       Dead Base Found! 
+2016-01-05 23:44:40 : ================ Search Complete =================
+2016-01-05 23:44:40 : Initiating attack for: Dead Base
+2016-01-05 23:44:42 : -*-Goblins 240
+2016-01-05 23:44:42 : -*-Clan Castle 
+2016-01-05 23:44:42 : -*-Heal Spells 3
+2016-01-05 23:44:42 : -*-Rage Spells 1
+2016-01-05 23:44:42 : -*-Jump Spells 1
+2016-01-05 23:44:42 : -*-Poison Spells 1
+2016-01-05 23:44:42 :  ====== Start Attack ====== 
+2016-01-05 23:44:44 : Calculating Smart Attack Strategy
+2016-01-05 23:44:44 : Calculated  (in 0.37 seconds) :
+2016-01-05 23:44:44 : Locating Mines, Collectors & Drills
+2016-01-05 23:44:50 : Located  (in 5.28 seconds) :
+2016-01-05 23:44:50 : [6] Gold Mines
+2016-01-05 23:44:50 : [6] Elixir Collectors
+2016-01-05 23:44:50 : [2] Dark Elixir Drill/s
+2016-01-05 23:44:50 : Attacking on all sides
+2016-01-05 23:44:51 : Dropping first wave of Goblins 120
+2016-01-05 23:44:59 : End Goblin Milking
+2016-01-05 23:44:59 : Finished Attacking, waiting for the battle to end
+2016-01-05 23:44:59 : Checking if the battle has finished
+2016-01-05 23:45:02 : detected [G]: 13391 [E]: 1840 [DE]: 228 |  Exit in  8 sec.
+2016-01-05 23:45:02 : Gold & Elixir & DE change detected, waiting...
+2016-01-05 23:45:05 : detected [G]: 2387 [E]: 1840 [DE]: 228 |  Exit in  8 sec.
+2016-01-05 23:45:07 : detected [G]: 2387 [E]: 1840 [DE]: 132 |  Exit in  6 sec.
+2016-01-05 23:45:07 : Gold & Elixir & DE change detected, waiting...
+2016-01-05 23:45:10 : detected [G]: 1790 [E]: 1380 [DE]: 29 |  Exit in  8 sec.
+2016-01-05 23:45:10 : Gold & Elixir & DE change detected, waiting...
+2016-01-05 23:45:14 : detected [G]: 1790 [E]: 1380 [DE]: 29 |  Exit in  8 sec.
+2016-01-05 23:45:16 : detected [G]: 1790 [E]: 1380 [DE]: 29 |  Exit in  6 sec.
+2016-01-05 23:45:20 : detected [G]: 1790 [E]: 1380 [DE]: 29 |  Exit in  2 sec.
+2016-01-05 23:45:21 : detected [G]: 1790 [E]: 1380 [DE]: 29 |  Exit in  0 sec.
+2016-01-05 23:45:23 : detected [G]: 1790 [E]: 1380 [DE]: 29 |  Exit in  0 sec.
+2016-01-05 23:45:23 : Gold & Elixir & DE no change detected, exit
+2016-01-05 23:45:23 : Returning Home
+2016-01-05 23:45:28 : Loot: [G]: 242 625 [E]: 162 341 [DE]: 199 [T]: 12
+2016-01-05 23:45:28 : Bonus Percentage: 43%
+2016-01-05 23:45:28 : Bonus [G]: 1 591 out of 3 700 [E]: 1 591 out of 3 700
+2016-01-05 23:45:29 : Your league level is: Silver II
+2016-01-05 23:45:29 : Stars earned: 1
+2016-01-05 23:45:38 : Trying to locate Main Screen
+2016-01-05 23:45:38 : Main Screen Located
+2016-01-05 23:45:39 : Village Report
+2016-01-05 23:45:39 : No. of Free/Total Builders: 1/5
+2016-01-05 23:45:39 :  [T]: 1 009
+2016-01-05 23:45:39 :  [G]: 1 536 285 [E]: 2 631 978 [D]: 68 501 [GEM]: 3 635
+2016-01-05 23:45:41 : Collecting Resources
+2016-01-05 23:45:55 : Training Troops & Spells
+2016-01-05 23:45:56 : Checking Army Camp...
+2016-01-05 23:45:57 : Total Army Camp capacity: 130/240 (54%)
+2016-01-05 23:45:58 :  - No. of Goblins: 134
+2016-01-05 23:45:59 : Your Army Camps are now Full
+2016-01-05 23:45:59 : Calculating Troops before Training new Army.
+2016-01-05 23:46:17 : Going to Attack...
+2016-01-05 23:46:23 : ============== Searching For Dead Base ===============
+2016-01-05 23:46:23 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2016-01-05 23:46:23 : Meet: Gold and Elixir
+2016-01-05 23:46:23 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2016-01-05 23:46:23 : Aim: [G]: 100000 [E]: 100000 [D]: 1000 [T]: 0 for: Dead Base
+2016-01-05 23:46:23 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2016-01-05 23:46:23 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2016-01-05 23:46:23 : Aim: [G]: 140000 [E]: 140000 [D]: 1200
+2016-01-05 23:46:23 : ==================================================
+2016-01-05 23:46:29 :       TH Outside Found! 
+2016-01-05 23:46:29 :       Resource requirement not met for TH snipe 
+2016-01-05 23:46:29 :   1> [G]:  56834 [E]:  42169 [D]:  544 [T]:30 [TH]: 9, Out
+2016-01-05 23:46:40 :   2> [G]: 124137 [E]: 233462 [D]: 2065 [T]:42 [TH]: 9, In
+2016-01-05 23:46:40 :       Not a Dead Base
+2016-01-05 23:46:48 :   3> [G]:  14620 [E]:  65573 [D]: 1522 [T]:30 [TH]: 9, In
+2016-01-05 23:46:56 :   4> [G]:   6438 [E]: 196957 [D]:  960 [T]:43 [TH]: 9, In
+2016-01-05 23:47:04 :   5> [G]: 408782 [E]: 213323 [D]: 1327 [T]:30 [TH]:10, In
+2016-01-05 23:47:04 :       Not a Dead Base
+2016-01-05 23:47:13 :   6> [G]: 121964 [E]: 161359 [D]: 3940 [T]:38 [TH]:10, In
+2016-01-05 23:47:13 :       Not a Dead Base
+2016-01-05 23:47:21 :   7> [G]: 177038 [E]: 391618 [D]: 2922 [T]:40 [TH]:11, In
+2016-01-05 23:47:21 :       Not a Dead Base
+2016-01-05 23:47:30 :   8> [G]:  91060 [E]: 147241 [D]: 3973 [T]:43 [TH]:10, In
+2016-01-05 23:47:37 :   9> [G]:  59830 [E]:  10898 [D]:  250 [T]:43 [TH]:10, In
+2016-01-05 23:47:45 :  10> [G]:  62526 [E]:  38152 [D]:    6 [T]:29 [TH]:10, In
+2016-01-05 23:47:52 :  11> [G]:  14142 [E]:  33371 [D]:  899 [T]:42 [TH]: 9, In
+2016-01-05 23:48:00 :  12> [G]: 430361 [E]:  80011 [D]:  225 [T]:44 [TH]:10, In
+2016-01-05 23:48:07 :  13> [G]:  44387 [E]:  67100 [D]:  351 [T]:45 [TH]:11, In
+2016-01-05 23:48:16 :  14> [G]: 401048 [E]: 231853 [D]:  625 [T]:29 [TH]:10, In
+2016-01-05 23:48:16 :       Not a Dead Base
+2016-01-05 23:48:24 :  15> [G]:  12717 [E]:   9632 [D]:  441 [T]:31 [TH]: 8, In
+2016-01-05 23:48:32 :  16> [G]: 413220 [E]:  17140 [D]:  872 [T]:37 [TH]:10, In
+2016-01-05 23:48:40 :  17> [G]: 283094 [E]: 133156 [D]:  154 [T]:42 [TH]: 9, In
+2016-01-05 23:48:40 :       Not a Dead Base
+2016-01-05 23:48:49 :  18> [G]: 261137 [E]: 406312 [D]: 3102 [T]:41 [TH]:10, In
+2016-01-05 23:48:49 :       Not a Dead Base
+2016-01-05 23:48:56 :       TH Outside Found! 
+2016-01-05 23:48:56 :       Resource requirement not met for TH snipe 
+2016-01-05 23:48:56 :  19> [G]:  47894 [E]:  28195 [D]:  381 [T]:38 [TH]: 9, Out
+2016-01-05 23:49:05 :  20> [G]: 148250 [E]: 215442 [D]: 1896 [T]:42 [TH]:10, In
+2016-01-05 23:49:05 :       Not a Dead Base
+2016-01-05 23:49:13 :  21> [G]:  38202 [E]: 294703 [D]: 1397 [T]:38 [TH]: 9, In
+2016-01-05 23:49:20 :  22> [G]: 290565 [E]:  40471 [D]: 2246 [T]:37 [TH]: 9, In
+2016-01-05 23:49:28 :       TH Outside Found! 
+2016-01-05 23:49:28 :       Resource requirement not met for TH snipe 
+2016-01-05 23:49:28 :  23> [G]:  98773 [E]:  93265 [D]:  992 [T]:36 [TH]: 9, Out
+2016-01-05 23:49:36 :  24> [G]: 298024 [E]: 309138 [D]: 1402 [T]:47 [TH]:10, In
+2016-01-05 23:49:36 :       Not a Dead Base
+2016-01-05 23:49:44 :  25> [G]:  87252 [E]: 306724 [D]: 3740 [T]:48 [TH]:11, In
+2016-01-05 23:49:53 :  26> [G]: 201472 [E]:  27024 [D]:  953 [T]:40 [TH]: 9, In
+2016-01-05 23:50:01 :  27> [G]: 201472 [E]:  27024 [D]:  953 [T]:40 [TH]: 9, In
+2016-01-05 23:50:01 : Attacking disabled, Take-A-Break detected. Exiting CoC
+2016-01-05 23:50:01 : Returning Home
+2016-01-05 23:50:16 : Waiting 20 seconds before starting CoC

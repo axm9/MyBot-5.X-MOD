@@ -1,0 +1,81 @@
+2015-12-29 18:40:31 :  My Bot v5.0.2 860x780 (BlueStacks) Powered by MyBot.run ~
+2015-12-29 18:40:31 : MyBot.mod.au3 Script running on WIN_81  X64
+2015-12-29 18:40:31 : =================== Bot Start ====================
+2015-12-29 18:40:31 : -------------------------  Current Profile: 01 --------------------------
+2015-12-29 18:40:31 : Trying to locate Main Screen
+2015-12-29 18:40:32 : Waiting for Main Screen
+2015-12-29 18:40:36 : Main Screen Located
+2015-12-29 18:40:38 : Detecting your Buildings..
+2015-12-29 18:40:39 : Finding your Clan Level, wait..
+2015-12-29 18:40:41 : Found Clan Level: 8
+2015-12-29 18:40:43 : Detecting your Village Theme
+2015-12-29 18:40:43 : Normal Theme detected
+2015-12-29 18:40:44 : Language setting is English: Correct.
+2015-12-29 18:40:45 : Trying to locate Main Screen
+2015-12-29 18:40:45 : Main Screen Located
+2015-12-29 18:40:47 : Village Report
+2015-12-29 18:40:47 : No. of Free/Total Builders: 0/5
+2015-12-29 18:40:47 :  [T]: 974
+2015-12-29 18:40:47 :  [G]: 7 320 474 [E]: 7 836 577 [D]: 75 737 [GEM]: 4 713
+2015-12-29 18:40:48 : Collecting Resources
+2015-12-29 18:41:01 : Training Troops & Spells
+2015-12-29 18:41:02 : Checking Army Camp...
+2015-12-29 18:41:03 : Total Army Camp capacity: 134/240 (55%)
+2015-12-29 18:41:06 :  - No. of Barbarians: 80
+2015-12-29 18:41:06 :  - No. of Archers: 55
+2015-12-29 18:41:06 : Barracks and Spell factory status: 
+2015-12-29 18:41:06 : - Barracks detected: 4 | Available: 4 | Upgrading: 0
+2015-12-29 18:41:06 : - Dark Barracks detected: 2 | Available: 2 | Upgrading: 0
+2015-12-29 18:41:06 : - Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2015-12-29 18:41:06 : - Dark Spell factory detected: 1 | Available: 1 | Upgrading: 0
+2015-12-29 18:41:41 : ====== Waiting for full army ======
+2015-12-29 18:42:21 : Training Troops & Spells
+2015-12-29 18:42:21 : Checking Army Camp...
+2015-12-29 18:42:23 : Total Army Camp capacity: 147/240 (61%)
+2015-12-29 18:42:23 :  - No. of Barbarians: 86
+2015-12-29 18:42:23 :  - No. of Archers: 61
+2015-12-29 18:42:45 : Time Idle: 00:01:04
+2015-12-29 18:42:45 : ***[Trying TH snipe while training army]***
+2015-12-29 18:42:45 : Going to Attack...
+2015-12-29 18:42:51 : ============== Searching For Dead Base ===============
+2015-12-29 18:42:51 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-29 18:42:51 : Meet: Gold + Elixir, Dark, Trophy
+2015-12-29 18:42:51 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-29 18:42:51 : Aim: [G+E]: 300000 [D]: 1000 [T]:99 for: Dead Base
+2015-12-29 18:42:51 : ============== Searching For Live Base ===============
+2015-12-29 18:42:51 : ~~~~~~~~~~~~~~~ SEARCH CONDITIONS ~~~~~~~~~~~~~~~~
+2015-12-29 18:42:51 : Meet: Gold + Elixir, Dark, Trophy, Weak Base(Mortar: 7, WizTower: 7)
+2015-12-29 18:42:51 : ~~~~~~~~~~~~~~ RESOURCE CONDITIONS ~~~~~~~~~~~~~~~
+2015-12-29 18:42:51 : Aim: [G+E]: 200000 [D]: 1000 [T]:99 for: Live Base
+2015-12-29 18:42:51 : ~~~~~~~~~~~~~~~ ADVANCED SETTINGS ~~~~~~~~~~~~~~~~
+2015-12-29 18:42:51 : THSnipe Combo, 3 Tile(s),  Attack TH Outside custom1
+2015-12-29 18:42:51 : Aim: [G]: 100000 [E]: 100000 [D]: 1000
+2015-12-29 18:42:51 : ==================================================
+2015-12-29 18:42:58 :   1> [G]:  69370 [E]:  61874 [D]:  247 [T]:38 [TH]: 9, Out
+2015-12-29 18:42:58 :       TH Outside Found! 
+2015-12-29 18:42:58 :       Resource requirement not met for TH snipe 
+2015-12-29 18:42:58 :   1> [G]:  69370 [E]:  61874 [D]:  247 [T]:38 [TH]: 9, Out
+2015-12-29 18:43:05 :   2> [G]: 124079 [E]: 203600 [D]: 3030 [T]:31 [TH]:10, In
+2015-12-29 18:43:13 :   3> [G]: 285150 [E]: 117633 [D]:  476 [T]:30 [TH]:10, In
+2015-12-29 18:43:20 :   4> [G]:  49999 [E]:  37211 [D]:  552 [T]:31 [TH]: 8, Out
+2015-12-29 18:43:20 :       TH Outside Found! 
+2015-12-29 18:43:20 :       Resource requirement not met for TH snipe 
+2015-12-29 18:43:20 :   4> [G]:  49999 [E]:  37211 [D]:  552 [T]:31 [TH]: 8, Out
+2015-12-29 18:43:28 :   5> [G]:  69341 [E]: 302193 [D]:  312 [T]:30 [TH]:10, In
+2015-12-29 18:43:36 :   6> [G]: 115939 [E]:  63811 [D]:  646 [T]:43 [TH]: 9, Out
+2015-12-29 18:43:36 :       TH Outside Found! 
+2015-12-29 18:43:36 :       Resource requirement met for TH snipe 
+2015-12-29 18:43:37 : ================ Search Complete =================
+2015-12-29 18:43:37 : Initiating attack for: TH Snipe
+2015-12-29 18:43:39 : -*-Barbarians 88
+2015-12-29 18:43:39 : -*-Archers 63
+2015-12-29 18:43:39 : -*-Clan Castle 
+2015-12-29 18:43:39 : -*-Heal Spells 3
+2015-12-29 18:43:39 : -*-Rage Spells 1
+2015-12-29 18:43:39 : -*-Jump Spells 1
+2015-12-29 18:43:39 : -*-Poison Spells 1
+2015-12-29 18:43:39 :  ====== Start Attack ====== 
+2015-12-29 18:43:41 : Sniping TH with Barch            	 
+2015-12-29 18:43:42 : Attacking TH with 1st wave of BARCH   
+2015-12-29 18:43:42 : Dropping Only wave of 4 Barbarians
+2015-12-29 18:43:42 : Custom Corner deployment THi = 16 ,x = 417 ,y = 554
