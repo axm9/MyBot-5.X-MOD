@@ -100,8 +100,8 @@ EndFunc   ;==>waitMainScreen
 Func TestLoots($GoldStart = 0, $ElixirStart = 0)
 	Local $GoldEnd = getGoldVillageSearch(48, 69)
 	Local $ElixirEnd = getElixirVillageSearch(48, 69 + 29)
-	Local $GoldPerc = 100 * (($GoldStart - $GoldEnd) / $GoldStart)
-	Local $ElixirPerc = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart)
+	Local $GoldPerc = 100 * ($GoldStart - $GoldEnd) / $GoldStart
+	Local $ElixirPerc = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
 	Setlog ("Gold loot % = " & $GoldPerc)
 	Setlog ("Elixir loot % " & $ElixirPerc)
 	If $GoldPerc < 5 And $ElixirPerc < 5 Then 		
@@ -115,4 +115,3 @@ Func TestLoots($GoldStart = 0, $ElixirStart = 0)
 		$iMatchMode = $DB
 	EndIf	
 EndFunc   ;==>AttackTHParseCSV
-
