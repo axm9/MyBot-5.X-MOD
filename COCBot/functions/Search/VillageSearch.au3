@@ -215,12 +215,14 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If _Sleep($iDelayRespond) Then Return
 		If $OptTrophyMode = 1 Then ;Enables Triple Mode Settings ;---compare resources
 			If SearchTownHallLoc() Then ; check this base if outside TH found to snipe
-				If Not $dbBase And CompareResourcesForSnipe() Then ; check if base is not dead and has enough resources to snipe			
+				If Not $dbBase And CompareResourcesForSnipe() Then ; check if base is not dead and has enough resources to snipe	
+					SetLog("      " & "TH outside found & resource requirement met for snipe ", $COLOR_GREEN, "Lucida Console", 7.5)		
 					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-					SetLog("      " & "TH outside found & resource requirement met for snipe ", $COLOR_GREEN, "Lucida Console", 7.5)
 					$iMatchMode = $TS
 					$logwrited = True
-					ExitLoop				
+					ExitLoop	
+				Else					
+					SetLog("      " & "TH outside found but resource requirement not met for snipe ")
 				EndIf
 			EndIf
 		EndIf

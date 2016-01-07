@@ -286,7 +286,7 @@ EndFunc   ;==>CastSpell
 
 Func ThSnipeWait($delay)
 	Local $ts, $td
-	Setlog("Waiting for " & $delay & " milliseconds or until the destruction of the town hall")
+	Setlog("Waiting for " & $delay/1000 & " seconds or until the destruction of the town hall")
 
 	$ts = TimerInit() 
 	$td = 0

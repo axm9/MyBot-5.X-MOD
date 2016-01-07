@@ -16,8 +16,8 @@ Global Const $iDelayRunBot3 = 200
 Global Const $iDelayRunBot4 = 1500
 Global Const $iDelayRunBot5 = 500
 Global Const $iDelayRunBot6 = 100
-Global Const $iDelayIdle1 = 2000
-Global Const $iDelayIdle2 = 5000
+Global Const $iDelayIdle1 = 1000
+Global Const $iDelayIdle2 = 3000
 Global Const $iDelayAttackMain1 = 1000
 Global Const $iDelayAttackMain2 = 1500
 

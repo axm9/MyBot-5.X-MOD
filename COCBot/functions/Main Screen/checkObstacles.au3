@@ -45,6 +45,7 @@ Func checkObstacles() ;Checks if something is in the way for mainscreen
 		;;;;;;;##### 2- Take a break #####;;;;;;;
 		If _ImageSearchArea($break, 0, 165, 257 + $midOffsetY, 335, 295 + $midOffsetY, $x, $y, 100) Then ; used for all 3 different break messages
 			SetLog("Village must take a break, wait ...", $COLOR_RED)
+			$ineedRearm = True
 			PushMsg("TakeBreak")
 			If _SleepStatus($iDelaycheckObstacles4) Then Return ; 2 Minutes
 			PureClickP($aReloadButton, 1, 0, "#0128");Click on reload button

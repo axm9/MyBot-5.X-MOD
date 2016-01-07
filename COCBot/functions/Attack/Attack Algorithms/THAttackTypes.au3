@@ -105,7 +105,7 @@ Func TestLoots($GoldStart = 0, $ElixirStart = 0)
 		Local $ElixirPerc = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
 		Setlog ("Gold loot % = " & $GoldPerc)
 		Setlog ("Elixir loot % " & $ElixirPerc)
-		If $GoldPerc < 7 And $ElixirPerc < 7 And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 		
+		If $CurCamp > 100 And ($GoldPerc < 5 Or $ElixirPerc < 5) And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 		
 			Setlog ("Loot is mostly in collectors! Change to DB attack.")
 			If $zoomedin = True Then
 				ZoomOut()
