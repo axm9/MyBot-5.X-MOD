@@ -1,8 +1,10 @@
 lib/debug
-profiles/**/Logs
-profiles/**/Loots
-profiles/**/Temp
-profiles/**/building.ini
-profiles/**/stats_chkelixir.INI
-profiles/**/stats_chkelixir75percent.INI
-profiles/**/stats_chktownhall.INI
+Profiles/**/Logs
+Profiles/**/Loots
+Profiles/**/Temp
+Profiles/**/building.ini
+Profiles/**/config.ini
+Profiles/**/stats_chkelixir.INI
+Profiles/**/stats_chkelixir75percent.INI
+Profiles/**/stats_chktownhall.INI
+MyBot.run.exe
