@@ -95,7 +95,12 @@ Func chkSnipeMode()
 		GUICtrlSetState($chkTSMeetGold, $GUI_ENABLE)
 		GUICtrlSetState($chkTSMeetElixir, $GUI_ENABLE)
 		GUICtrlSetState($chkTSMeetDE, $GUI_ENABLE)
-		GUICtrlSetState($chkTSAttackDB, $GUI_ENABLE)
+		GUICtrlSetState($chkTSAttackIfDB, $GUI_ENABLE)
+		GUICtrlSetState($txtTSMinGold, $GUI_ENABLE)
+		GUICtrlSetState($txtTSMinElixir, $GUI_ENABLE)
+		GUICtrlSetState($txtTSMinDarkElixir, $GUI_ENABLE)
+		GUICtrlSetState($txtTSSuccessPercent, $GUI_ENABLE)
+		GUICtrlSetState($txtMinTroopAttackDB, $GUI_ENABLE)
 		GUICtrlSetState($cmbAttackTHType, $GUI_ENABLE)
 		GUICtrlSetState($chkUseClastleTH, $GUI_ENABLE)
 		GUICtrlSetState($chkUseQueenTH, $GUI_ENABLE)
@@ -109,10 +114,12 @@ Func chkSnipeMode()
 		GUICtrlSetState($chkTSMeetGold, $GUI_DISABLE)
 		GUICtrlSetState($chkTSMeetElixir, $GUI_DISABLE)
 		GUICtrlSetState($chkTSMeetDE, $GUI_DISABLE)
+		GUICtrlSetState($chkTSAttackIfDB, $GUI_DISABLE)
 		GUICtrlSetState($txtTSMinGold, $GUI_DISABLE)
 		GUICtrlSetState($txtTSMinElixir, $GUI_DISABLE)
 		GUICtrlSetState($txtTSMinDarkElixir, $GUI_DISABLE)
-		GUICtrlSetState($chkTSAttackDB, $GUI_DISABLE)
+		GUICtrlSetState($txtTSSuccessPercent, $GUI_DISABLE)
+		GUICtrlSetState($txtMinTroopAttackDB, $GUI_DISABLE)
 		GUICtrlSetState($cmbAttackTHType, $GUI_DISABLE)
 		GUICtrlSetState($chkUseClastleTH, $GUI_DISABLE)
 		GUICtrlSetState($chkUseQueenTH, $GUI_DISABLE)
@@ -121,6 +128,7 @@ Func chkSnipeMode()
 		GUICtrlSetState($chkUseHSpellsTH, $GUI_DISABLE)
 		GUICtrlSetState($chkUseLSpellsTH, $GUI_DISABLE)
 	EndIf
+	chkTSAttackIfDB()
 EndFunc   ;==>chkSnipeMode
 
 Func chkTSMeetGold()
@@ -147,13 +155,17 @@ Func chkTSMeetDE()
 	EndIf
 EndFunc   ;==>chkTSMeetDE
 
-Func chkTSAttackDB()
-	If GUICtrlRead($chkTSAttackDB) = $GUI_CHECKED Then
-		$ichkAttackDB = 1
+Func chkTSAttackIfDB()
+	If GUICtrlRead($chkTSAttackIfDB) = $GUI_CHECKED Then
+		$ichkAttackIfDB = 1
+		_GUICtrlEdit_SetReadOnly($txtTSSuccessPercent, False)
+		_GUICtrlEdit_SetReadOnly($txtMinTroopAttackDB, False)
 	Else
-		$ichkAttackDB = 0
+		$ichkAttackIfDB = 0
+		_GUICtrlEdit_SetReadOnly($txtTSSuccessPercent, True)
+		_GUICtrlEdit_SetReadOnly($txtMinTroopAttackDB, True)
 	EndIf
-EndFunc   ;==>chkTSAttackDB
+EndFunc   ;==>chkTSAttackIfDB
 
 Func LoadThSnipeAttacks()
 	Dim $FileSearch, $NewFile

@@ -51,17 +51,13 @@ Func DropTrophy()
 						$iAimGoldPlusElixir[$DB] = $iMinGoldPlusElixir[$DB]
 						$SearchCount = 0
 						GetResources()
-;~ 						$searchGold = getGoldVillageSearch(48, 68)
-;~ 						$searchElixir = getElixirVillageSearch(48, 68 + 28)
-;~ 						$searchTrophy = getTrophyVillageSearch(48, 68 + 28 * 2 + 33)
 
 						Local $G = (Number($searchGold) >= Number($iAimGold[$DB]))
 						Local $E = (Number($searchElixir) >= Number($iAimElixir[$DB]))
 						Local $GPE = ((Number($searchElixir) + Number($searchGold)) >= Number($iAimGoldPlusElixir[$DB]))
-						If $G = True And $E = True And $GPE = True Then
+						If ($G = True And $E = True) Or $GPE = True Then
 							SetLog("Found [G]: " & _NumberFormat($searchGold) & " [E]: " & _NumberFormat($searchElixir) & " [T]: " & _NumberFormat($searchTrophy), $COLOR_BLACK, "Lucida Console")
 							If checkDeadBase() Then
-								; _BlockInputEx(0, "", "", $HWnD) ; block all keyboard keys
 								SetLog(_PadStringCenter(" Dead Base Found!! ", 50, "~"), $COLOR_GREEN)
 								Attack()
 								$FirstStart = True   ;reset barracks upon return when attacked a Dead Base with 70%~100% troops capacity
@@ -70,15 +66,6 @@ Func DropTrophy()
 								ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
 						    EndIf
 						EndIf
-
-						;If ( SearchTownHallLoc() and ( $iChkSnipeWhileTrain= 1 or  $OptTrophyMode= 1 ) ) Then
-						;	SetLog(_PadStringCenter(" TH Snipe found while dropping trophies!! ", 50, "~"), $COLOR_GREEN)
-						;	SwitchAttackTHType() ; launch attack
-						;	ReturnHome($TakeLootSnapShot)
-						;	$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
-						;	ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
-					    ;EndIf
-
 
 						If _Sleep($iDelayDropTrophy3) Then Return
 

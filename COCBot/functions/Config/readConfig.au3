@@ -54,9 +54,6 @@ Func readConfig() ;Reads config and sets it to the variables
 		$WardenAltarPos[0] = IniRead($building, "other", "xWardenAltarPos", "-1")
 		$WardenAltarPos[1] = IniRead($building, "other", "yWardenAltarPos", "-1")
 
-;$barrackNum = IniRead($building, "other", "barrackNum", "0")
-		;$barrackDarkNum = IniRead($building, "other", "barrackDarkNum", "0")
-
 		$listResourceLocation = IniRead($building, "other", "listResource", "")
 
 		For $iz = 0 to 5 ; SReads Upgrade building data
@@ -72,7 +69,6 @@ Func readConfig() ;Reads config and sets it to the variables
 		$itxtUpgrMinDark = Number(IniRead($building, "upgrade", "minupgrdark", "2000"))
 	endif
 	If FileExists($config) Then
-
 		;General Settings--------------------------------------------------------------------------
 		$icmbProfile = IniRead($config, "general", "cmbProfile", "01")
 		$frmBotPosX = IniRead($config, "general", "frmBotPosX", "900")
@@ -151,7 +147,6 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iDeadBase75percent =  IniRead($config, "search", "Enable75PercentDeadBase", "0")
 		$iDeadBase75percentStartLevel =  IniRead($config, "search", "Enable75PercentDeadBaseStartLevel", "6")
 
-
 		;Attack Basics Settings-------------------------------------------------------------------------
 		$iChkDeploySettings[$DB] = IniRead($config, "attack", "DBDeploy", "3")
 		$iCmbUnitDelay[$DB] = IniRead($config, "attack", "DBUnitD", "5")
@@ -222,10 +217,12 @@ Func readConfig() ;Reads config and sets it to the variables
 		$ichkMeetGoldTH = IniRead($config, "advanced", "TSMeetGold", "0")
 		$ichkMeetElixirTH = IniRead($config, "advanced", "TSMeetElixir", "0")
 		$ichkMeetDETH = IniRead($config, "advanced", "TSMeetDE", "0")
-		$ichkAttackDB = IniRead($config, "advanced", "TSAttackDB", "0")
+		$ichkAttackIfDB = IniRead($config, "advanced", "TSAttackIfDB", "0")
 		$iMinGoldTH = IniRead($config, "advanced", "TSSearchGold", "100000")
 		$iMinElixirTH = IniRead($config, "advanced", "TSSearchElixir", "100000")
-		$iMinDETH = IniRead($config, "advanced", "TSSearchDE", "1000")		
+		$iMinDETH = IniRead($config, "advanced", "TSSearchDE", "1000")
+		$ipercentTSSuccess = IniRead($config, "advanced", "TSSuccessPercent", "5")
+		$iMinTroopToAttackDB = IniRead($config, "advanced", "TSMinDBAttack", "100")
 		$THaddtiles = IniRead($config, "advanced", "THaddTiles", "2")
 		$scmbAttackTHType = IniRead($config, "advanced", "AttackTHType", "bam")
 		$icmbDeployBtmTHType = IniRead($config, "advanced", "AttackBottomTHType", "1")

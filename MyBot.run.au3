@@ -49,6 +49,7 @@ If $CmdLine[0] < 2 Then
 EndIf
 ; Update Bot title
 $sBotTitle = $sBotTitle & "(" & ($AndroidInstance <> "" ? $AndroidInstance : $Android) & ")"
+$sBotTitle = $sBotTitle & " Modded by McSlither"
 
 Local $cmdLineHelp = "Please specify as first command line parameter a different Profile (01-06). With second a different Android Emulator and with third an Android Instance. Supported Emulators are BlueStacks, BlueStacks2 and Droid4X. Only Droid4X supports running different instances at the same time."
 If _Singleton($sBotTitle, 1) = 0 Then

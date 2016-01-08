@@ -133,18 +133,34 @@
 		$picTSMinDarkElixir = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 131, $y, 16, 16)
 			GUICtrlSetTip(-1, $txtTip)
 			
-		$y += 30
-		$chkTSAttackDB = GUICtrlCreateCheckbox(GetTranslated(4,40, "Attack DB"), $x , $y, -1, -1)
-			$txtTip = GetTranslated(4,41, "Check loot gained by TH snipe and attack normally if it was a dead base")
-			GUICtrlSetOnEvent(-1, "chkTSAttackDB")
+		$y += 25
+		$chkTSAttackIfDB = GUICtrlCreateCheckbox(GetTranslated(4,38, "Attack DB"), $x , $y, -1, -1)
+			$txtTip = GetTranslated(4,39, "Check loot gained by TH snipe and attack if it was a dead base")
+			GUICtrlSetOnEvent(-1, "chkTSAttackIfDB")
 			GUICtrlSetTip(-1, $txtTip)
+		$lblTSSuccessPercent = GUICtrlCreateLabel(GetTranslated(4,40, "Min loot %") & ":", $x + 67, $y + 4, 100, -1, $SS_RIGHT)
+			$txtTip = GetTranslated(4,41, "% of loot achieved to consider it to be successful snipe, otherwise it's a dead base")
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+		$txtTSSuccessPercent = GUICtrlCreateInput("5", $x + 170, $y, 25, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 2)
+			GUICtrlSetState(-1, $GUI_DISABLE)			
+		$y += 21	
+		$lblMinTroopAttackDB = GUICtrlCreateLabel(GetTranslated(4,42, "Min troops") & ":", $x + 67, $y + 4, 100, -1, $SS_RIGHT)
+			$txtTip = GetTranslated(4,43, "Min number of troop space to initiate a dead base attack")
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+		$txtMinTroopAttackDB = GUICtrlCreateInput("100", $x + 170, $y, 25, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 2)
+			GUICtrlSetState(-1, $GUI_DISABLE)
         
 		$y += 30
-		$lblAttackTHType = GUICtrlCreateLabel(GetTranslated(4,38, "Attack TH Type") & ":", $x - 15 , $y + 5 , 90, -1, $SS_RIGHT)
+		$lblAttackTHType = GUICtrlCreateLabel(GetTranslated(4,44, "Attack TH Type") & ":", $x - 15 , $y + 5 , 90, -1, $SS_RIGHT)
 		$cmbAttackTHType = GUICtrlCreateCombo("",  $x + 80, $y, 120, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetData(-1, "")
-            $txtTip = GetTranslated(4,39, "You can add/edit attack editing csv settings files in THSnipe folder")
-
+            $txtTip = GetTranslated(4,45, "You can add/edit attack editing csv settings files in THSnipe folder")
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_DISABLE)
 			GUICtrlSetOnEvent(-1, "cmbAttackTHType")
