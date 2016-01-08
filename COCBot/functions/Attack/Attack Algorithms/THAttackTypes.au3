@@ -108,10 +108,6 @@ Func TestLoots($GoldStart = 0, $ElixirStart = 0)
 		If $CurCamp > $iMinTroopToAttackDB And ($GoldPerc < $ipercentTSSuccess Or $ElixirPerc < $ipercentTSSuccess) And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 		
 			Setlog ("Loot is mostly in collectors! Change to DB attack.")
 			$iMatchMode = $DB
-			PrepareAttack($iMatchMode)
-			Attack()
-			$iMatchMode = $TS
-			Return			
 		EndIf
 	EndIf
 EndFunc   ;==>AttackTHParseCSV
