@@ -211,7 +211,6 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 EndFunc   ;==>DeployTHNormal
 
 Func DeployCornerTHCustom($x, $y, $iAtEachSpot, $iNbOfSpots)
-	Setlog("Custom Corner deployment THi = " & $THi & " ,x = " & $Thx & " ,y = " & $Thy)
 	For $count = 1 To $iAtEachSpot * $iNbOfSpots
 		If CheckOneStar(0, False, False) Then Return
 		If IsAttackPage() Then Click(Random($x-2, $x+2, 1), Random($y-2, $y+2, 1))

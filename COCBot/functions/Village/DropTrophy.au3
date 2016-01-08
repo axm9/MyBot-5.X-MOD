@@ -39,13 +39,12 @@ Func DropTrophy()
 
 						If _Sleep($iDelayDropTrophy2) Then ExitLoop
 						$iCount = 0
-						While getGoldVillageSearch(48, 69) = "" ; Loops until gold is readable
-							If _Sleep($iDelayDropTrophy1) Then ExitLoop (2)
-							$iCount += 1
-							If $iCount >= 35 Then ExitLoop (2) ; or Return
-						WEnd
-						SetLog("Identification of your troops:", $COLOR_BLUE)
-						PrepareAttack($DT) ; ==== Troops :checks for type, slot, and quantity ===
+						;While getGoldVillageSearch(48, 69) = "" ; Loops until gold is readable
+						;	If _Sleep($iDelayDropTrophy1) Then ExitLoop (2)
+						;	$iCount += 1
+						;	If $iCount >= 35 Then ExitLoop (2) ; or Return
+						;WEnd
+						
 						$iAimGold[$DB] = $iMinGold[$DB]
 						$iAimElixir[$DB] = $iMinElixir[$DB]
 						$iAimGoldPlusElixir[$DB] = $iMinGoldPlusElixir[$DB]
@@ -59,12 +58,15 @@ Func DropTrophy()
 							SetLog("Found [G]: " & _NumberFormat($searchGold) & " [E]: " & _NumberFormat($searchElixir) & " [T]: " & _NumberFormat($searchTrophy), $COLOR_BLACK, "Lucida Console")
 							If checkDeadBase() Then
 								SetLog(_PadStringCenter(" Dead Base Found!! ", 50, "~"), $COLOR_GREEN)
+								PrepareAttack($DB)
 								Attack()
 								$FirstStart = True   ;reset barracks upon return when attacked a Dead Base with 70%~100% troops capacity
 								ReturnHome($TakeLootSnapShot)
 								$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
 								ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
 						    EndIf
+						Else							
+							PrepareAttack($DT)
 						EndIf
 
 						If _Sleep($iDelayDropTrophy3) Then Return
@@ -164,7 +166,6 @@ Func DropTrophy()
 			EndIf
 
 		Else
-
 			While Number($iTrophyCurrent) > Number($itxtMaxTrophyNeedCheck)
 				$iTrophyCurrent = getTrophyMainScreen($aTrophies[0], $aTrophies[1])
 				SetLog("Trophy Count : " & $iTrophyCurrent, $COLOR_GREEN)

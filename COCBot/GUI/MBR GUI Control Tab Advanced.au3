@@ -158,10 +158,14 @@ EndFunc   ;==>chkTSMeetDE
 Func chkTSAttackIfDB()
 	If GUICtrlRead($chkTSAttackIfDB) = $GUI_CHECKED Then
 		$ichkAttackIfDB = 1
+		GUICtrlSetState($lblTSSuccessPercent, $GUI_ENABLE)
+		GUICtrlSetState($lblMinTroopAttackDB, $GUI_ENABLE)
 		_GUICtrlEdit_SetReadOnly($txtTSSuccessPercent, False)
 		_GUICtrlEdit_SetReadOnly($txtMinTroopAttackDB, False)
 	Else
 		$ichkAttackIfDB = 0
+		GUICtrlSetState($lblTSSuccessPercent, $GUI_DISABLE)
+		GUICtrlSetState($lblMinTroopAttackDB, $GUI_DISABLE)
 		_GUICtrlEdit_SetReadOnly($txtTSSuccessPercent, True)
 		_GUICtrlEdit_SetReadOnly($txtMinTroopAttackDB, True)
 	EndIf
