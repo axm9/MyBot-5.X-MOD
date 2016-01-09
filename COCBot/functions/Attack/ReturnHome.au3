@@ -14,7 +14,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
-   If $DebugSetLog  = 1 Then Setlog("ReturnHome function... (from matchmode=" & $iMatchMode & " - " &  $sModeText[$iMatchMode] & ")" , $COLOR_PURPLE)
+	If $DebugSetLog  = 1 Then Setlog("ReturnHome function... (from matchmode=" & $iMatchMode & " - " &  $sModeText[$iMatchMode] & ")" , $COLOR_PURPLE)
 	Local $counter = 0
 	Local $hBitmap_Scaled
 	Local $i
@@ -23,8 +23,8 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 		SaveandDisableEBO()
 		SetLog("Disabling Normal End Battle Options", $COLOR_GREEN)
 	EndIf
+	
 	If $GoldChangeCheck = True Then
-
 	    If not(IsReturnHomeBattlePage(True,False) ) Then ; if already in return home battle page do not wait and try to activate Hero Ability and close battle
 			SetLog("Checking if the battle has finished", $COLOR_BLUE)
 			While GoldElixirChangeEBO()
@@ -65,7 +65,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 
 	If not (IsReturnHomeBattlePage(True,False) ) Then
 		; ---- CLICK SURRENDER BUTTON ----
- 	   $i = 0 ; Reset Loop counter
+		$i = 0 ; Reset Loop counter
 		While 1
 			If _CheckPixel($aSurrenderButton, $bCapturePixel) Then
 				If IsAttackPage() Then ClickP($aSurrenderButton, 1, 0, "#0099") ;Click Surrender
@@ -105,8 +105,6 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
     Else
 		If $debugsetlog=1 Then Setlog("Battle already over.",$COLOR_PURPLE)
 	EndIf
-
-
 
 	If _Sleep($iDelayReturnHome2) Then Return ; short wait for return
 

@@ -367,7 +367,7 @@ Func IsSearchModeActive($pMode)
 	Return False
 EndFunc   ;==>IsSearchModeActive
 
- Func IsWeakBase($pMode)
+Func IsWeakBase($pMode)
 	_WinAPI_DeleteObject($hBitmapFirst)
 	$hBitmapFirst = _CaptureRegion2()
 	Local $resultHere = DllCall($hFuncLib, "str", "CheckConditionForWeakBase", "ptr", $hBitmapFirst, "int", ($iCmbWeakMortar[$pMode] + 1), "int", ($iCmbWeakWizTower[$pMode] + 1), "int", 10)

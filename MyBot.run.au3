@@ -380,8 +380,6 @@ Func AttackMain() ;Main control for attack functions
 	If $Restart = True Then Return
 	PrepareAttack($iMatchMode)
 	If $Restart = True Then Return
-	;checkDarkElix()
-	;DEAttack()
 	If $Restart = True Then Return
 	Attack()
 	If $Restart = True Then Return

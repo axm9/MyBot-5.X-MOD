@@ -35,10 +35,9 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 	If $debugSetlog=1 Then SetLog("Use CC SLOT n° " & $CC, $COLOR_PURPLE)
 	If $debugSetlog=1 Then SetLog("Use Warden SLOT n° " & $Warden, $COLOR_PURPLE)
 
-
 	If _Sleep($iDelayalgorithm_AllTroops1) Then Return
 
-	If $iMatchMode = $TS  Then
+	If $iMatchMode = $TS Then
 		SwitchAttackTHType()
 		If $zoomedin = True Then
 			ZoomOut()
@@ -48,7 +47,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		EndIf
 	EndIf
 
-	If $iMatchMode = $TS   Then; Return ;Exit attacking if trophy hunting and not bullymode
+	If $iMatchMode = $TS Then ; Exit attacking if trophy hunting and not bullymode
 		If  ($THusedKing = 0 and $THusedQueen=0 ) Then
 			Setlog("Wait few sec before close attack")
 			If _Sleep(random(2,5,1)*1000) Then Return ;wait 2-5 second before exit if king and queen are not dropped
@@ -182,24 +181,23 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 	Else
 		If $MilkAtt = 1 then
 			If $debugSetlog = 1 Then SetLog("listdeploy for milking", $COLOR_PURPLE)
-			Local $listInfoDeploy[3][5] = [[$eGobl, $nbSides, 1, 1, 0] _
+			Local $listInfoDeploy[3][5] = [[$eGobl, $nbSides, 1, 2, 0] _
+				, [$eGobl, $nbSides, 2, 2, 0] _
 				, ["CC", 1, 1, 1, 1] _
 				, ["HEROES", 1, 2, 1, 1] _
 				]
 		Else
 			If $debugSetlog = 1 Then SetLog("listdeploy standard for attack", $COLOR_PURPLE)
 			Local $listInfoDeploy[13][5] = [[$eGiant, $nbSides, 1, 1, 2] _
-				, [$eBarb, $nbSides, 1, 2, 0] _
+				, [$eBarb, $nbSides, 1, 1, 0] _
 				, [$eWall, $nbSides, 1, 1, 1] _
 				, [$eArch, $nbSides, 1, 2, 0] _
-				, [$eBarb, $nbSides, 2, 2, 0] _
-				, [$eGobl, $nbSides, 1, 2, 0] _
+				, [$eGobl, $nbSides, 1, 1, 0] _
 				, ["CC", 1, 1, 1, 1] _
 				, [$eHogs, $nbSides, 1, 1, 1] _
 				, [$eWiza, $nbSides, 1, 1, 0] _
 				, [$eMini, $nbSides, 1, 1, 0] _
 				, [$eArch, $nbSides, 2, 2, 0] _
-				, [$eGobl, $nbSides, 2, 2, 0] _
 				, ["HEROES", 1, 2, 1, 1] _
 				]
 		EndIf
@@ -241,4 +239,3 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 	SetLog("Finished Attacking, waiting for the battle to end")
 EndFunc   ;==>algorithm_AllTroops
-

@@ -15,7 +15,6 @@
 ; ===============================================================================================================================
 
 Func SnipeWhileTrain()
-
 	If $DebugSetLog = 1 Then Setlog("SnipeWhileTrain function ", $COLOR_PURPLE)
 	If $iChkSnipeWhileTrain = 1 And $CommandStop <> 0 And $CommandStop <> 3 Then
 		; Attempt only when $iminArmyCapacityTHSnipe % army full to prevent failure of TH snipe

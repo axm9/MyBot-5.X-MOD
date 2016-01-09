@@ -39,19 +39,17 @@ Func DropTrophy()
 
 						If _Sleep($iDelayDropTrophy2) Then ExitLoop
 						GetResources()
-						If CompareResources($DB) Then
-							SetLog("Found [G]: " & _NumberFormat($searchGold) & " [E]: " & _NumberFormat($searchElixir) & " [T]: " & _NumberFormat($searchTrophy), $COLOR_BLACK, "Lucida Console")
-							If checkDeadBase() Then
-								SetLog(_PadStringCenter(" Dead Base Found!! ", 50, "~"), $COLOR_GREEN)
-								$iMatchMode = $DB
-								PrepareAttack($iMatchMode)
-								Attack()
-								$FirstStart = True   ;reset barracks upon return when attacked a Dead Base with 70%~100% troops capacity
-								ReturnHome($TakeLootSnapShot)
-								$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
-								ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
-						    EndIf
-						Else							
+						SetLog("Checking if it's a dead base", $COLOR_BLACK, "Lucida Console")
+						If $CurCamp > $iMinTroopToAttackDB And CompareResources($DB) And checkDeadBase() Then
+							SetLog("Dead Base Found [G]: " & _NumberFormat($searchGold) & " [E]: " & _NumberFormat($searchElixir) & " [T]: " & _NumberFormat($searchTrophy), $COLOR_GREEN, "Lucida Console")
+							$iMatchMode = $DB
+							RaidCollectors()
+							$FirstStart = True   ;reset barracks upon return when attacked a Dead Base with 70%~100% troops capacity
+							ReturnHome($TakeLootSnapShot)
+							$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
+							ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
+						Else
+							SetLog("Not a dead base", $COLOR_BLACK, "Lucida Console")
 							PrepareAttack($DT)
 						EndIf
 

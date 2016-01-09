@@ -107,14 +107,11 @@ Func LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 				For $i = 0 To UBound($listInfoDeployTroopPixel) - 1
 					Local $infoPixelDropTroop = $listInfoDeployTroopPixel[$i]
 					If (IsString($infoPixelDropTroop[0]) And ($infoPixelDropTroop[0] = "CC" Or $infoPixelDropTroop[0] = "HEROES")) Then
-						;TEMP FIX NEED TO IMPROVED... IF NO PIXELREDAREA DEPLOY IN A PRECISE POINT
-						;Local $pixelRandomDrop = $PixelRedArea[Round(Random(0, UBound($PixelRedArea) - 1))]
 						If Ubound($PixelRedArea) > 0 Then
 							Local $pixelRandomDrop = $PixelRedArea[Random(0, UBound($PixelRedArea) - 1,1)]
 						Else
 							Local $pixelRandomDrop = [747,367] ;
 						EndIf
-						;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 						If ($infoPixelDropTroop[0] = "CC") Then
 							dropCC($pixelRandomDrop[0], $pixelRandomDrop[1], $CC)

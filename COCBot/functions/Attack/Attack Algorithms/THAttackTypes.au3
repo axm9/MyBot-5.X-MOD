@@ -30,9 +30,8 @@ Func AttackTHParseCSV($test=False)
 		While 1
 			$line = FileReadLine($f)
 			If @error = -1 Then ExitLoop
-			;Setlog("line content: " & $line)
 			$acommand = StringSplit($line,"|")
-			if $acommand[0] >=8 Then
+			If $acommand[0] >=8 Then
 				$command = StringStripWS (StringUpper( $acommand[1] ),2)
 				Select
 					Case $command = "TROOP"  or $command = ""
@@ -86,14 +85,14 @@ Func AttackTHParseCSV($test=False)
 			Else
 				if StringStripWS( $acommand[1],2  ) <>"" Then  Setlog("attack row error, discard: " & $line,$COLOR_RED)
 			EndIf
-			If $isTownHallDestroyed = true Then ExitLoop
+			If $isTownHallDestroyed = True Then ExitLoop
 		WEnd
 		FileClose($f)
 	Else
 		SetLog("Cannot found THSnipe attack file " & $dirTHSnipesAttacks & "\" &$scmbAttackTHType & ".csv" , $color_red)
 	EndIf
 
-	If $isTownHallDestroyed = true Then TestLoots($GoldStart, $ElixirStart)
+	If $isTownHallDestroyed = True Then TestLoots($GoldStart, $ElixirStart)
 EndFunc   ;==>waitMainScreen
 
 Func TestLoots($GoldStart = 0, $ElixirStart = 0)
@@ -106,7 +105,42 @@ Func TestLoots($GoldStart = 0, $ElixirStart = 0)
 		Setlog ("Elixir loot % " & $ElixirPerc)
 		If $CurCamp > $iMinTroopToAttackDB And ($GoldPerc < $ipercentTSSuccess Or $ElixirPerc < $ipercentTSSuccess) And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 		
 			Setlog ("Loot is mostly in collectors! Change to DB attack.")
-			$iMatchMode = $DB
+			RaidCollectors()
 		EndIf
 	EndIf
 EndFunc   ;==>AttackTHParseCSV
+
+Func RaidCollectors()
+	; temporarily store original settings
+	$tempMatchMode = $iMatchMode
+	$tempChkRedArea = $iChkRedArea[$DB]
+	$tempChkAttackGold = $iChkSmartAttack[$DB][0]
+	$tempChkAttackElixir = $iChkSmartAttack[$DB][1]
+	$tempChkAttackDark = $iChkSmartAttack[$DB][2]
+	$tempDeployMode = $iChkDeploySettings[$DB]
+
+	; change settings to dead base attack deploying near collectors
+	$iMatchMode = $DB
+	$iChkRedArea[$DB] = 1
+	$iChkSmartAttack[$DB][0] = 1
+	$iChkSmartAttack[$DB][1] = 1
+	$iChkSmartAttack[$DB][2] = 1
+	$iChkDeploySettings[$DB] = 3
+	
+	; attack dead base
+	PrepareAttack($iMatchMode)
+	Attack()	
+	
+	; wait until there's loot change
+	While GoldElixirChangeEBO()
+		If _Sleep($iDelayReturnHome1) Then Return
+	WEnd
+	
+	; reset original settings
+	$iMatchMode = $tempMatchMode
+	$iChkRedArea[$DB] = $tempChkRedArea
+	$iChkSmartAttack[$DB][0] = $tempChkAttackGold
+	$iChkSmartAttack[$DB][1] = $tempChkAttackElixir
+	$iChkSmartAttack[$DB][2] = $tempChkAttackDark
+	$iChkDeploySettings[$DB] = $tempDeployMode
+EndFunc   ;==>RaidCollectors

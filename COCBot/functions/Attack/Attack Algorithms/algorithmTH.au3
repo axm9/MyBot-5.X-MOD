@@ -13,7 +13,6 @@
 ; Example .......: No
 ; ================================================================
 
-
 Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random(800, 900, 1), $waveNb = 0)
 	Local $aThx, $aThy, $num
 	Local $TroopCountBeg
@@ -98,7 +97,6 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 			EndIf
 		EndIf
 		;End CC
-
 	EndIf
 
 	; All Barracks Troops
@@ -155,16 +153,11 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 		If _Sleep($Sleep) Then Return
 	EndIf
 
-
 EndFunc   ;==>AttackTHGrid
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;; TH Deploy Types ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; TH Deploy Types ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
-
 	Switch $THside
 		Case 0 ;UL
 			For $num = 0 To $iAtEachSpot - 1
@@ -207,7 +200,6 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 				Next
 			Next
 	EndSwitch
-
 EndFunc   ;==>DeployTHNormal
 
 Func DeployCornerTHCustom($x, $y, $iAtEachSpot, $iNbOfSpots)
@@ -218,10 +210,9 @@ Func DeployCornerTHCustom($x, $y, $iAtEachSpot, $iNbOfSpots)
 	Next
 EndFunc   ;==>DeployCornerTHCustom
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Func SpellTHGrid($S)
-
 	If ($S = $eHSpell And $ichkUseHSpellsTH = 1) Or ($S = $eLSpell And $ichkUseLSpellsTH = 1) Or ($S = $eRSpell And $ichkUseRSpellsTH = 1) Then
 
 		If _Sleep(10) Then Return
@@ -244,13 +235,10 @@ Func SpellTHGrid($S)
 		If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 			CastSpell($S, $THx, $THy)
 		EndIf
-
 	EndIf
-
 EndFunc   ;==>SpellTHGrid
 
 Func CastSpell($THSpell, $x, $y)
-
 	Local $Spell = -1
 	Local $name = ""
 
@@ -267,7 +255,6 @@ Func CastSpell($THSpell, $x, $y)
 			EndIf
 		Next
 
-		;If ($Spell = -1) Then Return False
 		If $Spell > -1 Then
 			SetLog("Dropping " & $name)
 			SelectDropTroop($Spell)
@@ -276,12 +263,8 @@ Func CastSpell($THSpell, $x, $y)
 		Else
 			If $debugSetlog = 1 Then SetLog("No " & $name & " Found")
 		EndIf
-
 	EndIf
-
 EndFunc   ;==>CastSpell
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Func ThSnipeWait($delay)
 	Local $ts, $td
@@ -292,18 +275,13 @@ Func ThSnipeWait($delay)
 
 	While $td < $delay 
 		_Sleep(1000)
-		If CheckOneStar(0, True, False) Then
-			While GoldElixirChangeEBO()
-				_Sleep(1000)
-			WEnd
-			Return true
+		If CheckOneStar() Then
+			Return True
 		EndIf
 		$td = TimerDiff($ts)
 	WEnd
-	Return false
+	Return False
 EndFunc   ;==>ThSnipeWait
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 	For $i = 0 To $DelayInSec
@@ -347,6 +325,5 @@ Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 	Next
 
 	Return False ; Continue
-
 EndFunc   ;==>CheckOneStar
 

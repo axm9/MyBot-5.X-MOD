@@ -1,7 +1,9 @@
-TROOP |S1|S2|Q1|Q2|DEL1 |DEL2 |LOG_TEXT                                                            |NOTES,Column 2,Column 3,Column 4,Column 5,Column 6
-Text  |  |  |  |  |     |     |Sniping TH with Gobs Snipe                                 		   |,,,,,
-Text  |  |  |  |  |     |     |Wave1: Sending 6 gobs and wait 30 seconds                           |,,,,,
-Gobl  | 6| 6| 1| 1|  800| 1000|                                                                    |deploys 6x1 gobelins,,,,,
-WAIT  |  |  |  |  |     |30000|                                                                    |wait for 30 seconds,,,,,
-Text  |  |  |  |  |     |     |~Finished Attacking                                                 |,,,,,
-WAIT  |  |  |  |  |     | 5000|                                                                    |wait for 5 seconds,,,,,
+TROOP |S1|S2|Q1|Q2|DEL1 |DEL2 |LOG_TEXT                                     |NOTES,Column 2,Column 3,Column 4,Column 5,Column 6
+Text  |  |  |  |  |     |     |Sniping TH with goblins                  	|,,,,,
+Gobl  | 2| 2| 1| 1| 1800| 2000|                                      		|deploys 2 goblins to take out traps, waits 2 seconds for bombs to go off,,,,,
+Gobl  | 4| 4| 1| 1|  800| 1000|                                             |deploys 4 goblins,,,,,
+WAIT  |  |  |  |  |     |30000|                                             |wait for 30 seconds,,,,,
+Text  |  |  |  |  |     |     |Oh Shit! Seems like a trapped TH!     		|,,,,,
+WAIT  |  |  |  |  |     |15000|                                      		|wait for 15 seconds to make sure,,,,,
+Text  |  |  |  |  |     |     |~Finished Attacking                          |,,,,,
+WAIT  |  |  |  |  |     | 5000|                                             |wait for 5 seconds,,,,,
