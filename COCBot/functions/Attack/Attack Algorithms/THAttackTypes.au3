@@ -92,7 +92,13 @@ Func AttackTHParseCSV($test=False)
 		SetLog("Cannot found THSnipe attack file " & $dirTHSnipesAttacks & "\" &$scmbAttackTHType & ".csv" , $color_red)
 	EndIf
 
-	If $isTownHallDestroyed = True Then TestLoots($GoldStart, $ElixirStart)
+	If $isTownHallDestroyed = True Then 
+		TestLoots($GoldStart, $ElixirStart)
+	Else	
+		While GoldElixirChangeEBO()
+			If _Sleep($iDelayReturnHome1) Then Return
+		WEnd
+	EndIf
 EndFunc   ;==>waitMainScreen
 
 Func TestLoots($GoldStart = 0, $ElixirStart = 0)
