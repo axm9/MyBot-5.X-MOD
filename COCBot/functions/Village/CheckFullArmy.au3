@@ -15,10 +15,9 @@
 ; ===============================================================================================================================
 
 Func CheckOverviewFullArmy($bWindowOpen = False)
-
-;;;;;; Checks for full army using the green sign in army overview window ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;; Will only get full army when the maximum capacity of your camps are reached regardless of the full army percentage you input in GUI ;;;;;;;;;
-;;;;;; Use this only in halt attack mode and if an error happened in reading army current number Or Max capacity ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	; Checks for full army using the green sign in army overview window
+	; Will only get full army when the maximum capacity of your camps are reached regardless of the full army percentage you input in GUI
+	; Use this only in halt attack mode and if an error happened in reading army current number Or Max capacity
 
 	If $bWindowOpen = True Then
 		ClickP($aAway,1,0,"#0346") ;Click Away
@@ -76,10 +75,9 @@ EndFunc   ;==>CheckOverviewFullArmy
 ; ===============================================================================================================================
 
 Func CheckFullBarrack()
-
-    ;;;;;;; Dont use this to check for full army it just means the barrack has stopped ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;	It could be that the remaining space is lower than the the Housing Space of troop being trained and thats why The barrack has stopped not full army ;;;;;;;;;
-	;;;;;;; Calling this function will not change the $fullarmy Variable it will only return true if barrack Has Stopped Training ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ; Dont use this to check for full army it just means the barrack has stopped 
+    ; It could be that the remaining space is lower than the the Housing Space of troop being trained and thats why The barrack has stopped not full army
+	; Calling this function will not change the $fullarmy Variable it will only return true if barrack Has Stopped Training 
 
 	If _sleep(200) Then Return
 	Local $Pixel = _CheckPixel($aBarrackFull, True)

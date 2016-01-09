@@ -67,8 +67,6 @@ Func CloseBlueStacks2()
 	RunWait($__BlueStacks_Path & "HD-Quit.exe")
 	If @error <> 0 Then
 	   SetLog($Android & " failed to quit", $COLOR_RED)
-	   ;SetError(1, @extended, -1)
-	   ;Return False
     EndIf
 
 	If _Sleep(2000) Then Return ; wait a bit
@@ -138,10 +136,6 @@ Func ServiceStop($sServiceName)
 		Until @error
 		$Result = StringInStr($data, "stopped")
 		$bFailed = StringInStr($data, "failed")
-;		If $debugsetlog = 1 Then
-;			SetLog($sServiceName & " stop status= " & $Result, $COLOR_PURPLE)
-;			SetLog("StdOutRead= " & $data, $COLOR_PURPLE)
-;		EndIf
 		If $Result Then
 			$ServiceRunning = False
 		EndIf

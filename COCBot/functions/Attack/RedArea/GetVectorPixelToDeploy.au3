@@ -32,7 +32,6 @@ Func GetVectorPixelToDeploy($arrPixel, $vectorDirection, $sizeVector)
 			ReDim $vectorPixel[UBound($vectorPixel) + 1]
 			$vectorPixel[UBound($vectorPixel) - 1] = $arrPixelCloser[0]
 		Next
-
 	EndIf
 	Return $vectorPixel
 EndFunc   ;==>GetVectorPixelToDeploy

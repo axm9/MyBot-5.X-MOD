@@ -68,7 +68,6 @@ Func LocateUpgrades()
 	WEnd
 
 	CheckUpgrades()
-
 EndFunc   ;==>LocateUpgrades
 
 Func CheckUpgrades() ; Valdiate and determine the cost and type of the upgrade and change GUI boxes/pics to match
@@ -249,8 +248,8 @@ Func UpgradeValue($inum) ;function to find the value and type of the upgrade.
 		$aUpgrades[$inum][1] = -1 ; Clear upgrade location value as it  is invalid
 		ClickP($aAway, 2,0,"#0219") ;Click Away
 		Return False
-
 	EndIf
+	
 	ClickP($aAway, 2,0,"#0220") ;Click Away
 	Return True
 

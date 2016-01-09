@@ -1,4 +1,3 @@
-;
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: SendAdbCommand
 ; Description ...:
@@ -18,5 +17,4 @@ Func SendAdbCommand($cmd)
 	Local $process_killed
 
 	Local $data = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " " & $cmd, $process_killed)
-
 EndFunc

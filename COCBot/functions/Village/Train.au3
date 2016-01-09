@@ -16,7 +16,6 @@ Global $LastBarrackTrainDonatedTroop = 1
 Global $LastDarkBarrackTrainDonatedTroop = 1
 
 Func Train()
-
 	Local $anotherTroops
 	Local $tempCounter = 0
 	Local $tempElixir = ""
@@ -49,10 +48,8 @@ Func Train()
 	EndIf
 
 	; ###########################################  1st Stage : Prepare training & Variables & Values ##############################################
-
 	; Reset variables $Cur+TroopName ( used to assign the quantity of troops to train )
 	; Only reset if the FullArmy , Last attacks was a TH Snipes or First Start.
-	; Global $Cur+TroopName = 0
 
 	If $FirstStart Or $iMatchMode = $TS Then
 		For $i = 0 To UBound($TroopName) - 1
@@ -88,7 +85,6 @@ Func Train()
 	; $CurCamp - quantity of troops existing in ArmyCamp  / $TotalCamp - your total troops capacity
 	; BarracksStatus() - Verifying how many barracks / spells factory exists and if are available to use.
 	; $numBarracksAvaiables returns to be used as the divisor to assign the amount of kind troops each barracks | $TroopName+EBarrack
-	;
 
 	SetLog("Training Troops & Spells", $COLOR_BLUE)
 	If _Sleep($iDelayTrain1) Then Return
@@ -96,7 +92,6 @@ Func Train()
 	If _Sleep($iDelayTrain4) Then Return
 
 	;OPEN ARMY OVERVIEW WITH NEW BUTTON
-	; WaitforPixel($iLeft, $iTop, $iRight, $iBottom, $firstColor, $iColorVariation, $maxDelay = 10)
 	If WaitforPixel(28, 505 + $bottomOffsetY, 30, 507 + $bottomOffsetY, Hex(0xE4A438, 6), 5, 10) Then
 		If $debugSetlog = 1 Then SetLog("Click $aArmyTrainButton", $COLOR_GREEN)
 		If IsMainPage() Then Click($aArmyTrainButton[0], $aArmyTrainButton[1], 1, 0, "#0293") ; Button Army Overview
@@ -111,7 +106,6 @@ Func Train()
 
 	; CHECK IF NEED TO MAKE TROOPS
 	; Verify the Global variable $TroopName+Comp and return the GUI selected troops by user
-	;
 	If $isNormalBuild = "" Or $FirstStart Then
 		For $i = 0 To UBound($TroopName) - 1
 			If Eval($TroopName[$i] & "Comp") <> "0" Then
@@ -126,7 +120,6 @@ Func Train()
 
 	; CHECK IF NEED TO MAKE DARK TROOPS
 	; Verify the Global variable $TroopDarkName+Comp and return the GUI selected troops by user
-	;
 	If $isDarkBuild = "" Or $FirstStart Then
 		For $i = 0 To UBound($TroopDarkName) - 1
 			If Eval($TroopDarkName[$i] & "Comp") <> "0" Then
@@ -181,7 +174,6 @@ Func Train()
 
 	; PREPARE TROOPS IF FULL ARMY
 	; Baracks status to false , after the first loop and train Selected Troops composition = True
-	;
 	If $debugSetlog = 1 Then Setlog("Fullarmy = " & $fullarmy & " CurCamp = " & $CurCamp & " TotalCamp = " & $TotalCamp & " - result = " & ($fullarmy = True And $CurCamp = $TotalCamp), $COLOR_PURPLE)
 	If $fullarmy = True Then
 		$BarrackStatus[0] = False
@@ -212,7 +204,6 @@ Func Train()
 	EndIf
 
 	; ########################################  2nd Stage : Calculating of Troops to Make ##############################################
-
 	If $debugSetlog = 1 Then SetLog("Total ArmyCamp :" & $TotalCamp, $COLOR_PURPLE)
 
 	If $fullarmy = True Then
@@ -343,7 +334,6 @@ Func Train()
 		;  The $Cur+TroopName will be the diference bewtween -($Cur+TroopName) returned from ChechArmycamp() and what was selected by user GUI
 		;  $Cur+TroopName = Trained - needed  (-20+25 = 5)
 		;  $anotherTroops = quantity unit troops x $TroopHeight
-		;
 	ElseIf ($ArmyComp = 0 And $icmbTroopComp <> 8) Or $FirstStart Then
 		$anotherTroops = 0
 		For $i = 0 To UBound($TroopName) - 1
@@ -411,15 +401,11 @@ Func Train()
 
 	;RESET TROOPFIRST AND TROOPSECOND
 	For $i = 0 To UBound($TroopName) - 1
-		;If $debugSetlog = 1 Then SetLog("troopFirst" & $TroopName[$i] & ": 0", $COLOR_PURPLE)
 		Assign(("troopFirst" & $TroopName[$i]), 0)
-		;If $debugSetlog = 1 Then SetLog("troopSecond" & $TroopName[$i] & ": 0", $COLOR_PURPLE)
 		Assign(("troopSecond" & $TroopName[$i]), 0)
 	Next
 	For $i = 0 To UBound($TroopDarkName) - 1
-		;If $debugSetlog = 1 Then SetLog("troopFirst" & $TroopDarkName[$i] & ": 0", $COLOR_PURPLE)
 		Assign(("troopFirst" & $TroopDarkName[$i]), 0)
-		;If $debugSetlog = 1 Then SetLog("troopSecond" & $TroopDarkName[$i] & ": 0", $COLOR_PURPLE)
 		Assign(("troopSecond" & $TroopDarkName[$i]), 0)
 	Next
 
@@ -652,7 +638,6 @@ Func Train()
 
 
 			;;;;;;; Train archers to reach full army if trained troops not enough to reach full army or remaining capacity is lower than housing space of trained troop ;;;;;;;
-			;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 			If $icmbTroopComp <> 8 And $fullarmy = False And $FirstStart = False Then
 
 				; Checks if there is Troops being trained in this barrack
@@ -690,9 +675,6 @@ Func Train()
 					If $debugSetlog = 1 Then Setlog("$LastBarrackTrainDonatedTroop: " & $LastBarrackTrainDonatedTroop)
 					If $debugSetlog = 1 Then Setlog("Barrack: " & $brrNum)
 				EndIf
-				;###########################################################################
-
-				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 				; If The remaining capacity is lower than the Housing Space of training troop and its not full army or first start then delete the training troop and train 20 archer
 				; If no troops are being trained in all barracks and its not full army or first start then train 20 archer to reach full army

@@ -17,8 +17,8 @@
 ;~ End Battle
 ;~ -------------------------------------------------------------
 $tabEndBattle = GUICtrlCreateTabItem(GetTranslated(5,1, "End Battle"))
-   Local $x = 30, $y = 150
-   $grpBattleOptions = GUICtrlCreateGroup(GetTranslated(5,2, "End Battle"), $x - 20, $y - 20, 450, 220)
+	Local $x = 30, $y = 150
+	$grpBattleOptions = GUICtrlCreateGroup(GetTranslated(5,2, "End Battle"), $x - 20, $y - 20, 450, 220)
 	$y -=5
 		$chkTimeStopAtk = GUICtrlCreateCheckbox(GetTranslated(5,3, "When no New loot raided within") & ":",$x, $y, -1, -1)
 			$txtTip = GetTranslated(5,4, "End Battle if there is no extra loot raided within this No. of seconds.") & @CRLF & GetTranslated(5,5, "Countdown is started after all Troops and Royals are deployed in battle.")
@@ -29,7 +29,7 @@ $tabEndBattle = GUICtrlCreateTabItem(GetTranslated(5,1, "End Battle"))
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 2)
 		$lblTimeStopAtk = GUICtrlCreateLabel(GetTranslated(5,6, "sec."), $x + 215, $y + 3, -1, -1)
-   $y += 20
+	$y += 20
 		$chkTimeStopAtk2 = GUICtrlCreateCheckbox(GetTranslated(5,3, -1) & ":",$x, $y, -1, -1)
 			$txtTip = GetTranslated(5,4, -1) & @CRLF & GetTranslated(5,5, -1)
 			GUICtrlSetTip(-1, $txtTip)

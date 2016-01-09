@@ -60,11 +60,9 @@ EndFunc   ;==>cmbBalanceDR
 
 Func chkDBRandomSpeedAtk()
 	If GUICtrlRead($chkDBRandomSpeedAtk) = $GUI_CHECKED Then
-		;$iChkDBRandomSpeedAtk = 1
 		GUICtrlSetState($cmbDBUnitDelay, $GUI_DISABLE)
 		GUICtrlSetState($cmbDBWaveDelay, $GUI_DISABLE)
 	Else
-		;$iChkDBRandomSpeedAtk = 0
 		GUICtrlSetState($cmbDBUnitDelay, $GUI_ENABLE)
 		GUICtrlSetState($cmbDBWaveDelay, $GUI_ENABLE)
 	EndIf
@@ -72,11 +70,9 @@ EndFunc   ;==>chkDBRandomSpeedAtk
 
 Func chkABRandomSpeedAtk()
 	If GUICtrlRead($chkABRandomSpeedAtk) = $GUI_CHECKED Then
-		;$iChkABRandomSpeedAtk = 1
 		GUICtrlSetState($cmbABUnitDelay, $GUI_DISABLE)
 		GUICtrlSetState($cmbABWaveDelay, $GUI_DISABLE)
 	Else
-		;$iChkABRandomSpeedAtk = 0
 		GUICtrlSetState($cmbABUnitDelay, $GUI_ENABLE)
 		GUICtrlSetState($cmbABWaveDelay, $GUI_ENABLE)
 	EndIf

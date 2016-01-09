@@ -22,7 +22,6 @@ Func TogglePauseImpl($Source)
 		 If $BlockInputPause>0 Then  _BlockInputEx(0,"","",$HWnD)
 		GUICtrlSetState($btnPause, $GUI_HIDE)
 		GUICtrlSetState($btnResume, $GUI_SHOW)
-		;GUICtrlSetState($btnMakeScreenshot, $GUI_ENABLE)
 	ElseIf $TPaused = False And $Runstate = True Then
 		TrayTip($sBotTitle, "", 1)
 		TrayTip($sBotTitle, "was Resumed.", 1, $TIP_ICONASTERISK)
@@ -36,7 +35,6 @@ Func TogglePauseImpl($Source)
 		 If $BlockInputPausePrev>0 Then $BlockInputPausePrev=0
 		GUICtrlSetState($btnPause, $GUI_SHOW)
 		GUICtrlSetState($btnResume, $GUI_HIDE)
-		;GUICtrlSetState($btnMakeScreenshot, $GUI_DISABLE)
 	EndIf
 	Local $counter = 0
 	While $TPaused ; Actual Pause loop

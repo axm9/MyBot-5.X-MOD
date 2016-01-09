@@ -39,5 +39,3 @@ Func _WindowFromPoint($iX, $iY)
 	If $aRet[0] = 0 Then Return SetError(0, 0, 0)
 	Return $aRet[0]
 EndFunc   ;==>_WindowFromPoint
-
-

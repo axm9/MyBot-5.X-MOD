@@ -1,4 +1,3 @@
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: ProfileReport
 ; Description ...: This function will report Attacks Won, Defenses Won, Troops Donated and Troops Received from Profile info page

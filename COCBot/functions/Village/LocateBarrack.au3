@@ -124,8 +124,6 @@ Func LocateBarrack($ArmyCamp = False)
 										$barrackPos[$x][0] = $TEMPbarrackPos[$i][0]
 										$barrackPos[$x][1] = $TEMPbarrackPos[$i][1]
 										SetLog("- Barrack " & $x  + 1 & ": (" & $barrackPos[$x][0] & "," & $barrackPos[$x][1] & ")", $COLOR_PURPLE)
-										;Else
-										;SetLog("- Barrack " & $i + 1 & " error , position: (" & $TEMPbarrackPos[$i][0] & "," & $TEMPbarrackPos[$i][1] & ")", $COLOR_PURPLE)
 									EndIf
 								Next
 							Else
@@ -203,9 +201,7 @@ Func LocateBarrack($ArmyCamp = False)
 		EndIf
 	EndIf
 	ClickP($aAway, 1, 0, "#0206")
-
 EndFunc   ;==>LocateBarrack
-
 
 Func LocateBarrack2()
 	Local $errorPositon = 0
@@ -269,7 +265,6 @@ Func LocateBarrack2()
 			Next
 		EndIf
 
-
 		If $errorPositon = 1 Or $barrackNum < $numBarracksAvaiables Then
 			Local $TEMPbarrackPos[4][2]
 
@@ -289,8 +284,6 @@ Func LocateBarrack2()
 									$barrackPos[$x][0] = $TEMPbarrackPos[$i][0]
 									$barrackPos[$x][1] = $TEMPbarrackPos[$i][1]
 									SetLog("- Barrack " & $i + 1 & ": (" & $barrackPos[$x][0] & "," & $barrackPos[$x][1] & ")", $COLOR_PURPLE)
-									;Else
-									;SetLog("- Barrack " & $i + 1 & " error , position: (" & $TEMPbarrackPos[$i][0] & "," & $TEMPbarrackPos[$i][1] & ")", $COLOR_PURPLE)
 								EndIf
 							Next
 						Else

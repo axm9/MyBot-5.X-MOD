@@ -65,7 +65,6 @@ Func ZoomOutMEmu()
 EndFunc
 
 Func ZoomOutDroid4X()
-   ;AutoItSetOption ( "SendKeyDownDelay", 3000)
 	Local $result[4], $i = 0, $j
 	Local $ZoomActions[4] = ["ControlFocus", "Ctrl Down", "Mouse Wheel Scroll Down", "Ctrl Up"]
 	_CaptureRegion(0, 0, $DEFAULT_WIDTH, 2)
@@ -120,4 +119,4 @@ Func ZoomOutDroid4X()
 		 MouseMove($aMousePos[0], $aMousePos[1], 0)
 
 	EndIf
- EndFunc
+EndFunc

@@ -16,23 +16,17 @@
 
 Func WindowsArrange($position, $offsetX = 0, $offsetY = 0)
 	Local $BSHandle, $BOTHandle
-	;Local $BSsize = [ControlGetPos($Title, "_ctl.Window", "[CLASS:BlueStacksApp; INSTANCE:1]")[2], ControlGetPos($Title, "_ctl.Window", "[CLASS:BlueStacksApp; INSTANCE:1]")[3]]
 	Local $BSPos = WinGetPos($Title)
 	Local $BOTPos = WinGetPos($sBotTitle)
-	;SetLog("BS: " & $Title & " - BOT: " &  $sBotTitle)
 	If IsArray($BSPos) And IsArray($BOTPos) Then
 		Local $BSx = $BSPos[0]
 		Local $BSy = $BSPos[1]
 		Local $BSw = $BSPos[2]
 		Local $BSh = $BSPos[3]
-		;Setlog($title & " position found:" & $BSx & "," & $BSy & " w:" & $BSw & " h:" & $BSh)
 		Local $BOTx = $BOTPos[0]
 		Local $BOTy = $BOTPos[1]
 		Local $BOTw = $BOTPos[2]
 		Local $BOTh = $BOTPos[3]
-		;Setlog($sBotTitle & " position found:" & $BOTx & "," & $BOTy & " w:" & $BOTw & " h:" & $BOTh)
-		;Setlog(Number( $BSx) & " " & Number($BSy ) )
-		;SetLog(@DesktopWidth)
 		If Number( $BSx) > -30000 and Number($BSy ) > -30000 Then
 			Switch $position
 				Case "BS-BOT" ; position left bs, right adjacent BOT
@@ -60,32 +54,29 @@ Func WindowsArrange($position, $offsetX = 0, $offsetY = 0)
 			EndSwitch
 		EndIf
 	EndIf
-
-
 EndFunc   ;==>WindowsArrange
 
 Func DisposeWindows()
-   ;If $debugSetlog = 1 Then SetLog("Func DisposeWindows ", $COLOR_PURPLE)
-		If $iDisposeWindows = 1 Then
-			Switch $icmbDisposeWindowsPos
-				Case 0
-					WindowsArrange("BS-BOT",  $iWAOffsetX, $iWAOffsetY)
-				Case 1
-					WindowsArrange("BOT-BS",  $iWAOffsetX, $iWAOffsetY)
-				Case 2
-					WindowsArrange("SNAP-TR", $iWAOffsetX, $iWAOffsetY)
-				Case 3
-					WindowsArrange("SNAP-TL", $iWAOffsetX, $iWAOffsetY)
-				Case 4
-					WindowsArrange("SNAP-BR", $iWAOffsetX, $iWAOffsetY)
-				Case 5
-					WindowsArrange("SNAP-BL", $iWAOffsetX, $iWAOffsetY)
-			EndSwitch
-		Else
-			If $bMonitorHeight800orBelow Then
-				WindowsArrange("BS-BOT", 10, 0)
-			EndIf
+	If $iDisposeWindows = 1 Then
+		Switch $icmbDisposeWindowsPos
+			Case 0
+				WindowsArrange("BS-BOT",  $iWAOffsetX, $iWAOffsetY)
+			Case 1
+				WindowsArrange("BOT-BS",  $iWAOffsetX, $iWAOffsetY)
+			Case 2
+				WindowsArrange("SNAP-TR", $iWAOffsetX, $iWAOffsetY)
+			Case 3
+				WindowsArrange("SNAP-TL", $iWAOffsetX, $iWAOffsetY)
+			Case 4
+				WindowsArrange("SNAP-BR", $iWAOffsetX, $iWAOffsetY)
+			Case 5
+				WindowsArrange("SNAP-BL", $iWAOffsetX, $iWAOffsetY)
+		EndSwitch
+	Else
+		If $bMonitorHeight800orBelow Then
+			WindowsArrange("BS-BOT", 10, 0)
 		EndIf
+	EndIf
 EndFunc
 
 ; Replacement for WinMove ( "title", "text", x, y [, width [, height [, speed]]] )
@@ -108,8 +99,7 @@ Func WinMove2($WinTitle, $WinText, $x = -1, $y = -1, $w = -1, $h = -1, $s = 0)
 
    Local $NoMove = $x = $aPos[0] And $y = $aPos[1]
    Local $NoResize = $w = $aPos[2] And $h = $aPos[3]
-
-   ;If $debugSetlog = 1 Then SetLog("Window " & $WinTitle & "(" & $hWnd & "): " & ($NoResize ? "no resize" : "resize to " & $w & " x " & $h) & ($NoMove ? ", no move" : ", move to " & $x & "," & $y), $COLOR_BLUE);
+   
    _WinAPI_SetWindowPos($hWnd, 0, $x, $y, $w, $h, BitOr(($NoMove ? BitOr($SWP_NOMOVE, $SWP_NOREPOSITION) : 0), $SWP_NOACTIVATE, $SWP_NOSENDCHANGING, $SWP_NOZORDER)) ; resize window without sending changing message to window
 
    ; check width and height if it got changed...

@@ -52,7 +52,6 @@ Func DonateCC($Check = False)
 	EndIf
 
 	ClickP($aAway, 1, 0, "#0167") ;Click Away
-	;_CaptureRegion()
 	If _CheckPixel($aChatTab, $bCapturePixel) = False Then ClickP($aOpenChat, 1, 0, "#0168") ; Clicks chat tab
 	If _Sleep($iDelayDonateCC1) Then Return
 
@@ -118,7 +117,7 @@ Func DonateCC($Check = False)
 
 				RemainingCCcapacity() ; Remaining CC capacity of requested troops from your ClanMates
 
-				;;; Custom Combination Donate by ChiefM3
+				; Custom Combination Donate by ChiefM3
 				If $iChkDonateCustom = 1 Then
 					If CheckDonateTroop($eLava + 1, $aDonCustom, $aBlkCustom, $aBlackList, $ClanString) Then
 						For $i = 0 To 2
@@ -650,41 +649,41 @@ EndFunc   ;==>RemainingCCcapacity
 
 Func DetectSlotTroop($Type)
 
-		For $Slot = 0 To 6
-			If $debugSetlog = 1 Then Setlog(" Slot : " & $i + 1, $COLOR_PURPLE)
-			Local $FullTemp = getOcrDonationTroopsDetection(358 + (68 * $Slot), $DonationWindowY + 38 )
-			If $debugSetlog = 1 Then Setlog(" getOcrDonationTroopsDetection: " & $FullTemp, $COLOR_PURPLE)
-			If $Type = $eBarb and $FullTemp = "barbarian"  Then
-				Return $Slot
-			EndIf
-			If $Type = $eArch And $FullTemp = "archer" Then
-				Return $Slot
-			EndIf
-			If $Type = $eGiant And $FullTemp = "giant" Then
-				Return $Slot
-			EndIf
-			If $Type = $eGobl And $FullTemp = "goblin" Then
-				Return $Slot
-			EndIf
-			If $Type = $eWall And $FullTemp = "wb" Then
-				Return $Slot
-			EndIf
-			If $Type = $eBall And $FullTemp = "balloon" Then
-				Return $Slot
-			EndIf
-			If $Type = $eWiza And $FullTemp = "wizard" Then
-				Return $Slot
-			EndIf
-			If $Type = $eHeal And $FullTemp = "healer" Then
-				Return $Slot
-			EndIf
-			If $Type = $eMini And $FullTemp = "minions" Then
-				Return $Slot
-			EndIf
-		Next
-		If $FullTemp = ""  Then
-		Return -1
+	For $Slot = 0 To 6
+		If $debugSetlog = 1 Then Setlog(" Slot : " & $i + 1, $COLOR_PURPLE)
+		Local $FullTemp = getOcrDonationTroopsDetection(358 + (68 * $Slot), $DonationWindowY + 38 )
+		If $debugSetlog = 1 Then Setlog(" getOcrDonationTroopsDetection: " & $FullTemp, $COLOR_PURPLE)
+		If $Type = $eBarb and $FullTemp = "barbarian"  Then
+			Return $Slot
 		EndIf
+		If $Type = $eArch And $FullTemp = "archer" Then
+			Return $Slot
+		EndIf
+		If $Type = $eGiant And $FullTemp = "giant" Then
+			Return $Slot
+		EndIf
+		If $Type = $eGobl And $FullTemp = "goblin" Then
+			Return $Slot
+		EndIf
+		If $Type = $eWall And $FullTemp = "wb" Then
+			Return $Slot
+		EndIf
+		If $Type = $eBall And $FullTemp = "balloon" Then
+			Return $Slot
+		EndIf
+		If $Type = $eWiza And $FullTemp = "wizard" Then
+			Return $Slot
+		EndIf
+		If $Type = $eHeal And $FullTemp = "healer" Then
+			Return $Slot
+		EndIf
+		If $Type = $eMini And $FullTemp = "minions" Then
+			Return $Slot
+		EndIf
+	Next
+	If $FullTemp = ""  Then
+		Return -1
+	EndIf
 
 EndFunc
 

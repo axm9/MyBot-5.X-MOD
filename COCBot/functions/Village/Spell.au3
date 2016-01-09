@@ -14,7 +14,6 @@
 ; Example .......: No
 ; ===============================================================================================================================
 Func BrewSpells()
-
 	; ATTENTION : This function only works if the ArmyOverView Windows is open
 	; Spell Creation
 	; Dark Spell Factory
@@ -22,7 +21,6 @@ Func BrewSpells()
 	If $iTotalCountSpell = 0 Then Return
 
 	If $CurSFactory < $TotalSFactory Then ;  If not full the Spell Factory then try to make spells
-
 		; Spell Creation
 		; Normal Spell Factory
 

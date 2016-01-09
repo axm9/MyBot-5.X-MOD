@@ -1,5 +1,3 @@
-;Drops Clan Castle troops, given the slot and x, y coordinates.
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: dropCC
 ; Description ...: Drops Clan Castle troops, given the slot and x, y coordinates.

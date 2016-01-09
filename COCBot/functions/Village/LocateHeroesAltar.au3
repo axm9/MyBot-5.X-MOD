@@ -14,11 +14,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-
-
-
 Func LocateQueenAltar()
-
 	Local $stext, $MsgBox, $iSilly = 0, $iStupid = 0, $sErrorText = "", $sInfo
 
 	$RunState = True
@@ -144,10 +140,7 @@ Func LocateQueenAltar()
 
 EndFunc   ;==>LocateQueenAltar
 
-
-
 Func LocateKingAltar()
-
 	Local $stext, $MsgBox, $iSilly = 0, $iStupid = 0, $sErrorText = "", $sInfo
 	$RunState = True
 	WinActivate($Title)
@@ -264,7 +257,6 @@ Func LocateKingAltar()
 
 	IniWrite($building, "other", "xKingAltarPos", $KingAltarPos[0])
 	IniWrite($building, "other", "yKingAltarPos", $KingAltarPos[1])
-
 EndFunc   ;==>LocateKingAltar
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -396,7 +388,4 @@ Func LocateWardenAltar()
 
 	IniWrite($building, "other", "xWardenAltarPos", $WardenAltarPos[0])
 	IniWrite($building, "other", "yWardenAltarPos", $WardenAltarPos[1])
-
-
 EndFunc   ;==>LocateWardenAltar
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

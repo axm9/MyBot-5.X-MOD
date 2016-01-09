@@ -366,16 +366,12 @@ Func PushMsg($Message, $Source = "")
 
 EndFunc   ;==>PushMsg
 
-
 Func _DeleteOldPushes()
-
     If $pEnabled = 0 Or $PushToken = "" Or $ichkDeleteOldPushes = 0 Then Return
 	;local UTC time
 	Local $tLocal = _Date_Time_GetLocalTime()
 	Local $tSystem = _Date_Time_TzSpecificLocalTimeToSystemTime(DllStructGetPtr($tLocal))
 	Local $timeUTC = _Date_Time_SystemTimeToDateTimeStr($tSystem, 1)
-
-	;local $timestamplimit = _DateDiff( 's',"1970/01/01 00:00:00", _DateAdd("h",-48,$timeUTC) ) ; limit to 48h read push, antiban purpose
 	Local $timestamplimit = 0
 
 	$oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
@@ -410,14 +406,11 @@ Func _DeleteOldPushes()
 	EndIf
 	If $msgdeleted > 0 Then
 		setlog("Pushbullet: removed " & $msgdeleted & " messages older than " & $icmbHoursPushBullet & " h ", $COLOR_GREEN)
-		;_Push($iOrigPushB & " | removed " & $msgdeleted & " messages older than " & $icmbHoursPushBullet & " h ")
 	EndIf
 
 EndFunc   ;==>_DeleteOldPushes
 
-
 Func _GetDateFromUnix($nPosix)
-
     If $pEnabled = 0 Then Return
 
 	Local $nYear = 1970, $nMon = 1, $nDay = 1, $nHour = 00, $nMin = 00, $nSec = 00, $aNumDays = StringSplit("31,28,31,30,31,30,31,31,30,31,30,31", ",")
@@ -450,7 +443,6 @@ Func _GetDateFromUnix($nPosix)
 		$nDay -= $aNumDays[$i]
 		$nMon += 1
 	Next
-	;   Return $nDay & "/" & $nMon & "/" & $nYear & " " & $nHour & ":" & $nMin & ":" & $nSec
 	Return $nYear & "-" & $nMon & "-" & $nDay & " " & $nHour & ":" & $nMin & ":" & StringFormat("%02i", $nSec)
 
 EndFunc   ;==>_GetDateFromUnix

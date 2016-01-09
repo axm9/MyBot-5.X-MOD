@@ -18,8 +18,6 @@ Func GetVectorPixelAverage($arrPixel, $vectorDirection)
 		Local $arrTemp = $arrPixelCloser[0]
 		debugRedArea("GetVectorPixelAverage $arrTemp x : [" & $arrTemp[0] & "] / y [" & $arrTemp[1] & "] ")
 		$vectorPixelAverage[0] = $arrPixelCloser[0]
-
-
 	EndIf
 	Return $vectorPixelAverage
 EndFunc   ;==>GetVectorPixelAverage

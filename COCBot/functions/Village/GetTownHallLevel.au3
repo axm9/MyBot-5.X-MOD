@@ -12,8 +12,8 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func GetTownHallLevel($bFirstTime = False)
 
+Func GetTownHallLevel($bFirstTime = False)
 	Local $aTHInfo[3] = ["", "", ""]
 
 	If $debugSetlog = 1 Then SetLog("Town Hall Position: " & $TownHallPos[0]& ", "& $TownHallPos[1], $COLOR_PURPLE)
@@ -28,7 +28,7 @@ Func GetTownHallLevel($bFirstTime = False)
 		If _Sleep($iDelayGetTownHallLevel2) Then Return
 	EndIf
 
-	if $debugImageSave= 1 Then  DebugImageSave("GetTHLevelView")
+	If $debugImageSave= 1 Then  DebugImageSave("GetTHLevelView")
 
 	$iTownHallLevel = 0 ; Reset Townhall level
 	$aTHInfo = BuildingInfo(242,520 + $bottomOffsetY)
@@ -47,12 +47,11 @@ Func GetTownHallLevel($bFirstTime = False)
 			Return False
 		EndIf
 	Else
-	  SetLog ("Your Town Hall Level was not found! Please Manually Locate", $COLOR_BLUE)
-	  ClickP($aAway,1,0,"#0351")  ; Unselect TH
-	  Return False
+		SetLog ("Your Town Hall Level was not found! Please Manually Locate", $COLOR_BLUE)
+		ClickP($aAway,1,0,"#0351")  ; Unselect TH
+		Return False
 	EndIf
 
 	ClickP($aAway, 2, $iDelayGetTownHallLevel3,"#0352")  ; Unselect TH
 	Return True
-
-	EndFunc
+EndFunc

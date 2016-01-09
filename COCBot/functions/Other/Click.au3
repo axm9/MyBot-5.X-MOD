@@ -14,7 +14,6 @@
 ; ===============================================================================================================================
 
 Func Click($x, $y, $times = 1, $speed = 0, $debugtxt = "")
-    ;getBSPos()
     $x = $x  + $BSrpos[0]
 	$y = $y  + $BSrpos[1]
     If $debugClick = 1 Then
@@ -50,7 +49,6 @@ Func ClickP($point, $howMuch = 1, $speed = 0, $debugtxt = "")
 EndFunc   ;==>ClickP
 
 Func PureClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
-    ;getBSPos()
     $x = $x  + $BSrpos[0]
 	$y = $y  + $BSrpos[1]
 	If $debugClick = 1 Then
@@ -75,7 +73,6 @@ Func PureClickP($point, $howMuch = 1, $speed = 0, $debugtxt = "")
 EndFunc   ;==>PureClickP
 
 Func GemClick($x, $y, $times = 1, $speed = 0, $debugtxt = "")
-    ;getBSPos()
     $x = $x  + $BSrpos[0]
 	$y = $y  + $BSrpos[1]
 	Local $i

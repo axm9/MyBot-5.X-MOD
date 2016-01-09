@@ -80,68 +80,60 @@ Func getBSPos()
 EndFunc   ;==>getBSPos
 
 Func getAndroidPos()
-   Local $BSsize = ControlGetPos($Title, $AppPaneName, $AppClassInstance)
-
-   If IsArray($BSsize) Then ; Is Android Client Control available?
-
-	 Local $BSx = $BSsize[2] ; ($BSsize[2] > $BSsize[3]) ? $BSsize[2] : $BSsize[3]
-	 Local $BSy = $BSsize[3] ; ($BSsize[2] > $BSsize[3]) ? $BSsize[3] : $BSsize[2]
-
-	 If $BSx <> $AndroidClientWidth Or $BSy <> $AndroidClientHeight Then ; Is Client size correct?
-
-		;DisposeWindows()
-		WinActivate($Title)
-	    SetLog("Unsupported " & $Android & " screen size of " & $BSx & " x " & $BSy & " !", $COLOR_ORANGE)
-
-	    ; check if emultor window only needs resizing (problem with BS or Droid4X in lower Screen Resolutions!)
-		Local $AndroidWinPos = WinGetPos($Title)
-		Local $WinWidth = $AndroidWinPos[2] ; ($AndroidWinPos[2] > $AndroidWinPos[3]) ? $AndroidWinPos[2] : $AndroidWinPos[3]
-		Local $WinHeight = $AndroidWinPos[3] ; ($AndroidWinPos[2] > $AndroidWinPos[3]) ? $AndroidWinPos[3] : $AndroidWinPos[2]
-
-		Local $aWindowClientDiff[2] = [0,0] ; Compensate any controls surrounding the Android Client Control
-		Local $aAndroidWindow[2] = [$AndroidWindowWidth, $AndroidWindowHeight]
-		$HWnD = WinGetHandle($Title) ; get window Handle
-	    Local $tRECT = _WinAPI_GetClientRect($HWnd)
-		If @error = 0 Then
-			$aWindowClientDiff[0] = $WinWidth - (DllStructGetData($tRECT, "Right") - DllStructGetData($tRECT, "Left"))
-			$aWindowClientDiff[1] = $WinHeight - (DllStructGetData($tRECT, "Bottom") - DllStructGetData($tRECT, "Top"))
-			If $debugSetlog = 1 Then SetLog($title & " Window-Client-Diff: " & $aWindowClientDiff[0] & "," & $aWindowClientDiff[1], $COLOR_BLUE)
-			$aAndroidWindow[0] = $AndroidWindowWidth + $aWindowClientDiff[0]
-			$aAndroidWindow[1] = $AndroidWindowHeight + $aWindowClientDiff[1]
-			If $debugSetlog = 1 Then SetLog($title & " Adjusted Window Size: " & $aAndroidWindow[0] & " x " & $aAndroidWindow[1], $COLOR_BLUE)
-		 Else
-			SetLog("WARNING: Cannot determine " & $Android & " Window Client Area!", $COLOR_RED)
-		EndIf
-
-		If $AndroidWindowWidth > 0 And $AndroidWindowHeight > 0 And ($WinWidth <> $aAndroidWindow[0] Or $WinHeight <> $aAndroidWindow[1]) Then ; Check expected Window size
-
-			WinMove2($Title, "", $AndroidWinPos[0], $AndroidWinPos[1], $aAndroidWindow[0], $aAndroidWindow[1])
-			;_WinAPI_SetWindowPos($hWnd, 0, 0, 0, $AndroidWindowWidth, $AndroidWindowHeight, BitOr($SWP_NOACTIVATE, $SWP_NOMOVE, $SWP_NOREPOSITION, $SWP_NOSENDCHANGING, $SWP_NOZORDER)) ; resize window without BS changing it back
+	Local $BSsize = ControlGetPos($Title, $AppPaneName, $AppClassInstance)
+	
+	If IsArray($BSsize) Then ; Is Android Client Control available?
+	
+		Local $BSx = $BSsize[2] ; ($BSsize[2] > $BSsize[3]) ? $BSsize[2] : $BSsize[3]
+		Local $BSy = $BSsize[3] ; ($BSsize[2] > $BSsize[3]) ? $BSsize[3] : $BSsize[2]
+	
+		If $BSx <> $AndroidClientWidth Or $BSy <> $AndroidClientHeight Then ; Is Client size correct?
+			WinActivate($Title)
+			SetLog("Unsupported " & $Android & " screen size of " & $BSx & " x " & $BSy & " !", $COLOR_ORANGE)
+	
+			; check if emultor window only needs resizing (problem with BS or Droid4X in lower Screen Resolutions!)
+			Local $AndroidWinPos = WinGetPos($Title)
+			Local $WinWidth = $AndroidWinPos[2] ; ($AndroidWinPos[2] > $AndroidWinPos[3]) ? $AndroidWinPos[2] : $AndroidWinPos[3]
+			Local $WinHeight = $AndroidWinPos[3] ; ($AndroidWinPos[2] > $AndroidWinPos[3]) ? $AndroidWinPos[3] : $AndroidWinPos[2]
+	
+			Local $aWindowClientDiff[2] = [0,0] ; Compensate any controls surrounding the Android Client Control
+			Local $aAndroidWindow[2] = [$AndroidWindowWidth, $AndroidWindowHeight]
+			$HWnD = WinGetHandle($Title) ; get window Handle
+			Local $tRECT = _WinAPI_GetClientRect($HWnd)
 			If @error = 0 Then
-			   SetLog($Android & " window resized to " & $aAndroidWindow[0] & " x " & $aAndroidWindow[1], $COLOR_GREEN)
-			   ; wait 5 Sec. till window client content is resized also
-			   Local $hTimer = TimerInit()
-			   Do
-				  If _Sleep(100) Then Return False
-				  Local $new_BSsize = ControlGetPos($Title, $AppPaneName, $AppClassInstance)
-			   Until TimerDiff($hTimer) > 5000 Or $BSsize[2] <> $new_BSsize[2] or $BSsize[3] <> $new_BSsize[3]
-
-			   ; reload size
-			   $BSsize[2] = $new_BSsize[2]
-			   $BSsize[3] = $new_BSsize[3]
-			   $BSx = $BSsize[2] ; ($BSsize[2] > $BSsize[3]) ? $BSsize[2] : $BSsize[3]
-			   $BSy = $BSsize[3] ; ($BSsize[2] > $BSsize[3]) ? $BSsize[3] : $BSsize[2]
-
+				$aWindowClientDiff[0] = $WinWidth - (DllStructGetData($tRECT, "Right") - DllStructGetData($tRECT, "Left"))
+				$aWindowClientDiff[1] = $WinHeight - (DllStructGetData($tRECT, "Bottom") - DllStructGetData($tRECT, "Top"))
+				If $debugSetlog = 1 Then SetLog($title & " Window-Client-Diff: " & $aWindowClientDiff[0] & "," & $aWindowClientDiff[1], $COLOR_BLUE)
+				$aAndroidWindow[0] = $AndroidWindowWidth + $aWindowClientDiff[0]
+				$aAndroidWindow[1] = $AndroidWindowHeight + $aWindowClientDiff[1]
+				If $debugSetlog = 1 Then SetLog($title & " Adjusted Window Size: " & $aAndroidWindow[0] & " x " & $aAndroidWindow[1], $COLOR_BLUE)
 			Else
-			   SetLog("WARNING: Cannot resize " & $Android & " window to " & $aAndroidWindow[0] & " x " & $aAndroidWindow[1], $COLOR_RED)
+				SetLog("WARNING: Cannot determine " & $Android & " Window Client Area!", $COLOR_RED)
 			EndIf
-
-		EndIf
-
-     EndIf
-
-   EndIf
-
-   Return $BSsize
-
+	
+			If $AndroidWindowWidth > 0 And $AndroidWindowHeight > 0 And ($WinWidth <> $aAndroidWindow[0] Or $WinHeight <> $aAndroidWindow[1]) Then ; Check expected Window size
+	
+				WinMove2($Title, "", $AndroidWinPos[0], $AndroidWinPos[1], $aAndroidWindow[0], $aAndroidWindow[1])
+				If @error = 0 Then
+				SetLog($Android & " window resized to " & $aAndroidWindow[0] & " x " & $aAndroidWindow[1], $COLOR_GREEN)
+				; wait 5 Sec. till window client content is resized also
+				Local $hTimer = TimerInit()
+				Do
+					If _Sleep(100) Then Return False
+					Local $new_BSsize = ControlGetPos($Title, $AppPaneName, $AppClassInstance)
+				Until TimerDiff($hTimer) > 5000 Or $BSsize[2] <> $new_BSsize[2] or $BSsize[3] <> $new_BSsize[3]
+	
+				; reload size
+				$BSsize[2] = $new_BSsize[2]
+				$BSsize[3] = $new_BSsize[3]
+				$BSx = $BSsize[2] ; ($BSsize[2] > $BSsize[3]) ? $BSsize[2] : $BSsize[3]
+				$BSy = $BSsize[3] ; ($BSsize[2] > $BSsize[3]) ? $BSsize[3] : $BSsize[2]
+	
+				Else
+				SetLog("WARNING: Cannot resize " & $Android & " window to " & $aAndroidWindow[0] & " x " & $aAndroidWindow[1], $COLOR_RED)
+				EndIf	
+			EndIf	
+		EndIf	
+	EndIf	
+	Return $BSsize	
 EndFunc

@@ -35,7 +35,6 @@
 #include "functions\Attack\Attack Algorithms\algorithm_Barch.au3"
 #include "functions\Attack\Attack Algorithms\algorithmTH.au3"
 #include "functions\Attack\Attack Algorithms\THAttackTypes.au3"
-#include "functions\Attack\Attack Algorithms\AttackTHCustomized.au3"
 
 #include "functions\Attack\RedArea\_FindPixelCloser.au3"
 #include "functions\Attack\RedArea\_GetOffsetTroopFurther.au3"
@@ -107,7 +106,6 @@
 #include "functions\Other\getBSPos.au3"
 #include "functions\Other\ExtMsgBox.au3"
 #include "functions\Other\StringSize.au3"
-;#include "functions\Other\GUICtrlGetBkColor.au3" ; included in MBR GUI Control
 #include "functions\Other\SetLog.au3"
 #include "functions\Other\Tab.au3"
 #include "functions\Other\Time.au3"
@@ -141,22 +139,8 @@
 #include "functions\Pixels\isInsideDiamond.au3"
 
 #include "functions\Read Text\BuildingInfo.au3"
-;#include "functions\Read Text\getChar.au3"
-;#include "functions\Read Text\getDarkElixir.au3"
-;#include "functions\Read Text\getDigit.au3"
-;#include "functions\Read Text\getDigitLarge.au3"
-;#include "functions\Read Text\getDigitSmall.au3"
-;#include "functions\Read Text\getDigitProfile.au3"
-;#include "functions\Read Text\getElixir.au3"
-;#include "functions\Read Text\getGold.au3"
-;#include "functions\Read Text\getNormal.au3"
-;#include "functions\Read Text\getOther.au3"
-;#include "functions\Read Text\getReturnHome.au3"
-;#include "functions\Read Text\getTrophy.au3"
-;#include "functions\Read Text\getString.au3"
 #include "functions\Read Text\getOcr.au3"
 
-;#include "functions\Search\checkNextButton.au3"
 #include "functions\Search\CompareResources.au3"
 #include "functions\Search\GetResources.au3"
 #include "functions\Search\PrepareSearch.au3"

@@ -51,7 +51,6 @@ Func _ImageSearchArea($findImage, $resultPosition, $x1, $y1, $right, $bottom, By
 		$right += $BSPos[0]
 		$bottom += $BSPos[1]
 	EndIf
-	;MsgBox(0,"asd","" & $x1 & " " & $y1 & " " & $right & " " & $bottom)
 
 	If IsString($findImage) Then
 		If $Tolerance > 0 Then $findImage = "*" & $Tolerance & " " & $findImage

@@ -167,10 +167,8 @@ EndFunc   ;==>cmbBotCond
 Func chkTrap()
 	If GUICtrlRead($chkTrap) = $GUI_CHECKED Then
 		$ichkTrap = 1
-		;GUICtrlSetState($btnLocateTownHall, $GUI_SHOW)
 	Else
 		$ichkTrap = 0
-		;GUICtrlSetState($btnLocateTownHall, $GUI_HIDE)
 	EndIf
 EndFunc   ;==>chkTrap
 
@@ -264,28 +262,21 @@ EndFunc   ;==>btnResetBuilding
 
 
 Func LoadLanguagesComboBox()
-
 	Dim $FileSearch, $NewFile
 	$FileSearch = FileFindFirstFile($dirLanguages & "*.ini")
-
 	Dim $output = ""
 
-
 	While True
-
 		$NewFile = FileFindNextFile($FileSearch)
-
 		If @error Then ExitLoop
-
 		If $NewFile <> $sGUILanguagesINI Then $output = $output & StringLeft($NewFile, StringLen($NewFile) - 4) & "|"
-
 	WEnd
 
 	FileClose($FileSearch)
 
 	;remove last |
 	$output = StringLeft($output, StringLen($output) - 1)
-
+	
 	;reset combo box
 	_GUICtrlComboBox_ResetContent($cmbLanguage)
 

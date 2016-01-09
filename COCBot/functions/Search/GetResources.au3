@@ -86,34 +86,32 @@ Func GetResources($nolog = False) ;Reads resources
 
 	Local $THString = ""
 	$searchTH = "-"
-	;If ($OptBullyMode = 1 And $SearchCount >= $ATBullyMode) Or $iChkMeetTH[$DB] = 1 Or $iChkMeetTHO[$DB] = 1 Or $iChkMeetTH[$LB] = 1 Or $iChkMeetTHO[$LB] = 1 Then
 	If $chkATH = 1 Or ($OptBullyMode = 1 And $SearchCount >= $ATBullyMode) Or ($iCmbSearchMode <> $LB And ($iChkMeetTH[$DB] = 1 Or $iChkMeetTHO[$DB] = 1)) Or ($iCmbSearchMode <> $DB And ($iChkMeetTH[$LB] = 1 Or $iChkMeetTHO[$LB] = 1)) Then
-			; CODE TO DETECT TOWNHALL ONLY WITH AUTOIT IMAGESEARCH
-			$searchTH = checkTownHallADV2()
+		; CODE TO DETECT TOWNHALL ONLY WITH AUTOIT IMAGESEARCH
+		$searchTH = checkTownHallADV2()
 
-			;2nd attempt
-			If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
-			   	If _Sleep($iDelayGetResources5) Then Return
-			   	SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
-			   	$searchTH = checkTownhallADV2()
-			EndIf
+		;2nd attempt
+		If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
+		   	If _Sleep($iDelayGetResources5) Then Return
+		   	SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
+		   	$searchTH = checkTownhallADV2()
+		EndIf
 
-			;3rd attempt c#
-			If $searchTH = "-" Then ; retry search, matching could not have been caused by heroes that partially hid the townhall
-				If _Sleep($iDelayGetResources4) Then Return
-				If $debugImageSave = 1 Then DebugImageSave("GetResources_NoTHFound2try_", False)
-				THSearch()
-			EndIf
-			If SearchTownHallLoc() = False And $searchTH <> "-" Then
-				$THLoc = "In"
-			ElseIf $searchTH <> "-" Then
-				$THLoc = "Out"
-			Else
-				$THLoc = $searchTH
-				$THx = 0
-				$THy = 0
-			EndIf
-		;EndIf
+		;3rd attempt c#
+		If $searchTH = "-" Then ; retry search, matching could not have been caused by heroes that partially hid the townhall
+			If _Sleep($iDelayGetResources4) Then Return
+			If $debugImageSave = 1 Then DebugImageSave("GetResources_NoTHFound2try_", False)
+			THSearch()
+		EndIf
+		If SearchTownHallLoc() = False And $searchTH <> "-" Then
+			$THLoc = "In"
+		ElseIf $searchTH <> "-" Then
+			$THLoc = "Out"
+		Else
+			$THLoc = $searchTH
+			$THx = 0
+			$THy = 0
+		EndIf
 		$THString = " [TH]:" & StringFormat("%2s", $searchTH) & ", " & $THLoc
 	EndIf
 

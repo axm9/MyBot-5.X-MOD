@@ -14,7 +14,6 @@
 ; ===============================================================================================================================
 
 Func Laboratory()
-
 	;Create local static array to hold upgrade values
 	Static $aUpgradeValue[25] = [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	Local $iAvailElixir, $iAvailDark, $iElixirCount, $iDarkCount
@@ -98,7 +97,6 @@ Func Laboratory()
 
 	If $aLabTroops[$icmbLaboratory][2] > 0 Then ;Check if troop located on page 2 of lab window and Move to page 2 if needed
 		_PostMessage_ClickDrag(734, 393 + $midOffsetY, 3, 393 + $midOffsetY, "left", 2000)
-		;_PostMessage_ClickDrag(734, 393, 643, 393, "left", 1500)
 		If _Sleep($iDelayLaboratory3) Then Return
 		If $debugSetlog = 1 Then LabTroopImages2() ; Debug Only
 		If $iFirstTimeLab < 2 Then
@@ -164,7 +162,7 @@ Func Laboratory()
 	Return False
 
 EndFunc   ;==>Laboratory
-;
+
 Func LabUpgrade()
 	Select
 		Case _ColorCheck(_GetPixelColor($aLabTroops[$icmbLaboratory][0] + 47, $aLabTroops[$icmbLaboratory][1] + 6, True), Hex(0xE0E4D0, 6), 20) = True
@@ -234,7 +232,6 @@ Func LabUpgrade()
 EndFunc   ;==>Laboratory
 
 Func DebugRegionSave($sTxtName = "Unknown", $iLeft = 0, $iTop = 0, $iRight = $DEFAULT_WIDTH, $iBottom = $DEFAULT_HEIGHT)
-
 	; Debug Code to save images before zapping for later review, time stamped to align with logfile!
 	SetLog("Taking debug snapshot for later review", $COLOR_GREEN) ;Debug purposes only :)
 	Local $Date = @MDAY & "." & @MON & "." & @YEAR

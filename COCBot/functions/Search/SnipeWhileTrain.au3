@@ -14,12 +14,10 @@
 ; Example .......:
 ; ===============================================================================================================================
 
-
 Func SnipeWhileTrain()
 
 	If $DebugSetLog = 1 Then Setlog("SnipeWhileTrain function ", $COLOR_PURPLE)
 	If $iChkSnipeWhileTrain = 1 And $CommandStop <> 0 And $CommandStop <> 3 Then
-
 		; Attempt only when $iminArmyCapacityTHSnipe % army full to prevent failure of TH snipe
 		If ($CurCamp <= ($TotalCamp * $itxtminArmyCapacityTHSnipe / 100)) Then
 			SetLog("army Capacity below " & $itxtminArmyCapacityTHSnipe & "%, not enough for Snipe While Train")
@@ -27,7 +25,6 @@ Func SnipeWhileTrain()
 		EndIf
 
 		If $fullArmy = False And ($CurCamp /$TotalCamp >=  ($itxtminArmyCapacityTHSnipe / 100) )  = True Then
-
 			; Swap variables to pure TH snipe mode
 			$tempSnipeWhileTrain[0] = $iChkMeetTrophy[$DB]
 			$tempSnipeWhileTrain[1] = $iChkMeetTrophy[$LB]
@@ -41,7 +38,6 @@ Func SnipeWhileTrain()
 			$tempSnipeWhileTrain[9] = $iMinElixirTH
 			$tempSnipeWhileTrain[10] = $iMinDETH
 
-
 			;change values to snipe while train
 			$iChkMeetTrophy[$DB] = 1
 			$iChkMeetTrophy[$LB] = 1
@@ -54,7 +50,6 @@ Func SnipeWhileTrain()
 			$iMinGoldTH = 120000
 			$iMinElixirTH = 120000
 			$iMinDETH = 1000
-
 
 			;used to Change back values
 			$SnipeChangedSettings = True
@@ -98,7 +93,6 @@ EndFunc   ;==>SWHTrainRevertNormal
 
 Func SWHTSearchLimit($iSkipped)
 	If $isSnipeWhileTrain And $iSkipped >= Number($itxtSearchlimit) Then
-
 		Local $Wcount = 0
 		While not(_CheckPixel($aSurrenderButton, $bCapturepixel))
 			If _Sleep($iDelaySWHTSearchLimit1) Then Return
@@ -121,10 +115,7 @@ Func SWHTSearchLimit($iSkipped)
 		WEnd
 
 		Return True
-
 	Else
 		Return False
-
 	EndIf
 EndFunc   ;==>SWHTSearchLimit
-

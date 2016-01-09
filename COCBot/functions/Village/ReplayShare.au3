@@ -12,8 +12,8 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func ReplayShare($last = 1)
 
+Func ReplayShare($last = 1)
 	; remark: In sharing message "<n>" was replaced by numbers of searches
 	;         Use this option  with caution or risk being reported
 	Local $txtMessage, $tNew
@@ -107,7 +107,6 @@ Func ReplayShare($last = 1)
 					;SetLog("Debug " & $FileListname[$x] & " t:" & $t & "tmin:  " & $tmin & " x:" & $x )
 				Next
 				; oldest filename: $FileListName[$FileListDate]
-				;SetLog("Debug oldest filename: " & $FileListName[$FileListDate] )
 
 				;--  open page of attacks -------------------------------------------------------------
 				ClickP($aAway,1,0,"#0242") ;Click Away
@@ -125,7 +124,6 @@ Func ReplayShare($last = 1)
 					For $VilTol = 0 To 20
 						If $VilLoc = 0 Then
 							$VilLoc = _ImageSearch($dirTemp & $FileListName[$FileListDate], 1, $VilX, $VilY, $VilTol) ;
-							;SetLog( "Debug: Searching " & $FileListName[$FileListDate] & " tollerance" & $VilTol   & " - Found=" & $VilLoc)
 							If $VilLoc = 1 And $VilX > 35 And $VilY < 610 Then
 								;SetLog("Debug: Found!, position: (" & $VilX & "," & $VilY &")", $COLOR_GREEN)
 								Click(500, $VilY,1,0,"#0245") ;Click Share Button
@@ -204,6 +202,3 @@ Func ReplayShare($last = 1)
 	checkMainScreen(False) ; check for screen errors while running function
 
 EndFunc   ;==>ReplayShare
-
-
-

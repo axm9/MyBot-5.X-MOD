@@ -66,13 +66,10 @@ Global $hBitmap; Image for pixel functions
 Global $hHBitmap; Handle Image for pixel functions
 Global $hBitmapScreenshot; Image for screenshot functions
 Global $hHBitmapScreenshot; Handle Image for screenshot functions
-;Global $sFile = @ScriptDir & "\Icons\logo.gif"
 
 Global Const $64Bit = StringInStr(@OSArch, "64") > 0
 Global Const $HKLM = "HKLM" & ($64Bit ? "64" : "")
 Global Const $Wow6432Node = ($64Bit ? "\Wow6432Node" : "")
-;   0            |1               |2                          |3                                  |4            |5                  |6                   |7                  |8                   |9             |10               |11
-;   $Android     |$AndroidInstance|$Title                     |$AppClassInstance                  |$AppPaneName |$AndroidClientWidth|$AndroidClientHeight|$AndroidWindowWidth|$AndroidWindowHeight|$ClientOffsetY|$AndroidAdbDevice|$AndroidSupportsBackgroundMode
 Global $AndroidAppConfig[4][12] = [ _
    ["BlueStacks" ,""              ,"BlueStacks App Player"    ,"[CLASS:BlueStacksApp; INSTANCE:1]","_ctl.Window",$DEFAULT_WIDTH     ,$DEFAULT_HEIGHT     ,$DEFAULT_WIDTH     ,$DEFAULT_HEIGHT     ,0             ,"emulator-5554"  ,True ], _ ; BlueStacks 0.9.x - 0.10.x (set registry to 860x720)
    ["BlueStacks2",""              ,"BlueStacks Android Plugin","[CLASS:BlueStacksApp; INSTANCE:1]","_ctl.Window",$DEFAULT_WIDTH     ,$DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH     ,$DEFAULT_HEIGHT - 48,0             ,"127.0.0.1:5555" ,True ], _ ; BlueStacks 2.x
@@ -246,8 +243,6 @@ Global $iNbrOfDetectedMines[$iModeCount + 2], $iNbrOfDetectedCollectors[$iModeCo
 Global $lblAttacked[$iModeCount + 2], $lblTotalGoldGain[$iModeCount + 2], $lblTotalElixirGain[$iModeCount + 2], $lblTotalDElixirGain[$iModeCount + 2], $lblTotalTrophyGain[$iModeCount + 2]
 Global $lblNbrOfDetectedMines[$iModeCount + 2], $lblNbrOfDetectedCollectors[$iModeCount + 2], $lblNbrOfDetectedDrills[$iModeCount + 2]
 
-;Global $costspell
-
 ;Search Settings
 Global $bSearchMode = False
 Global $Is_ClientSyncError = False ;If true means while searching Client Out Of Sync error occurred.
@@ -258,8 +253,6 @@ Global $iMinGold[$iModeCount], $iMinElixir[$iModeCount], $iMinGoldPlusElixir[$iM
 Global $iAimGold[$iModeCount], $iAimElixir[$iModeCount], $iAimGoldPlusElixir[$iModeCount], $iAimDark[$iModeCount], $iAimTrophy[$iModeCount], $iAimTHtext[$iModeCount] ; Aiming Resource values
 Global $iChkSearchReduction
 Global $ReduceCount, $ReduceGold, $ReduceElixir, $ReduceGoldPlusElixir, $ReduceDark, $ReduceTrophy ; Reducing values
-;Global $chkConditions[7], $ichkMeetOne ;Conditions (meet gold...)
-;Global $icmbTH
 Global $iChkEnableAfter[$iModeCount], $iCmbMeetGE[$iModeCount], $iChkMeetDE[$iModeCount], $iChkMeetTrophy[$iModeCount], $iChkMeetTH[$iModeCount],$iChkMeetTHO[$iModeCount],  $iChkMeetOne[$iModeCount], $iCmbTH[$iModeCount], $iChkWeakBase[$iModeCount]
 Global $chkDBMeetTHO, $chkABMeetTHO, $chkATH
 Global $THLocation
@@ -332,16 +325,6 @@ Global $WallCost
 Global $WallX = 0, $WallY = 0
 Global $Wall[8]
 Global $iMaxNbWall = 8
-
-;Attack Settings
-; Old coordinates
-#cs
-Global $TopLeft[5][2] = [[79, 281], [170, 205], [234, 162], [296, 115], [368, 66]]
-Global $TopRight[5][2] = [[480, 63], [540, 104], [589, 146], [655, 190], [779, 278]]
-Global $BottomLeft[5][2] = [[79, 342], [142, 389], [210, 446], [276, 492], [339, 539]]
-Global $BottomRight[5][2] = [[523, 537], [595, 484], [654, 440], [715, 393], [779, 344]]
-#ce
-; New coordinates by Cru34
 Global $TopLeft[5][2] = [[83, 306], [174, 238], [240, 188], [303, 142], [390, 76]]
 Global $TopRight[5][2] = [[466, 66], [556, 134], [622, 184], [684, 231], [775, 300]]
 Global $BottomLeft[5][2] = [[81, 363], [174, 434], [235, 481], [299, 530], [390, 600]]

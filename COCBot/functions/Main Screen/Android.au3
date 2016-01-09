@@ -38,7 +38,6 @@ EndFunc   ;==>UpdateAndroidConfig
 Func DetectRunningAndroid()
 
 	; Find running Android Emulator
-
 	Local $i
 	For $i = 0 To UBound($AndroidAppConfig) - 1
 
@@ -48,8 +47,7 @@ Func DetectRunningAndroid()
 		$C = $AndroidAppConfig[$i][3]
 		$N = $AndroidAppConfig[$i][4]
 
-		If IsArray(ControlGetPos($T, $N, $C)) Or ($A = $AndroidAppConfig[1][0] And IsArray(ControlGetPos("Bluestacks App Player", "", ""))) Then ; $AndroidAppConfig[1][4]
-
+		If IsArray(ControlGetPos($T, $N, $C)) Or ($A = $AndroidAppConfig[1][0] And IsArray(ControlGetPos("Bluestacks App Player", "", ""))) Then ; 
 			$AndroidConfig = $i
 			UpdateAndroidConfig()
 			$FoundRunningAndroid = True
@@ -65,9 +63,7 @@ EndFunc   ;==>DetectRunningAndroid
 
 ; Detects first installed Adnroid Emulator installation based on $AndroidAppConfig array sequence
 Func DetectInstalledAndroid()
-
 	; Find installed Android Emulator
-
 	Local $i, $installed, $A
 	For $i = 0 To UBound($AndroidAppConfig) - 1
 
@@ -81,18 +77,13 @@ Func DetectInstalledAndroid()
 			; validate install
 			InitAndroid()
 			Return
-
 		EndIf
-
 	Next
-
 EndFunc   ;==>DetectInstalledAndroid
 
 ; Updates Adnroid variables for Droid4X
 Func UpdateDroid4XConfig()
-
 	; Update Window Title if instance has been configured
-
 	If $AndroidInstance = "" Or StringCompare($AndroidInstance, $AndroidAppConfig[$AndroidConfig][1]) = 0 Then
 		; Default title, nothing to do
 	Else
@@ -135,18 +126,15 @@ Func RebootAndroidSetScreen()
 EndFunc   ;==>RebootAndroidSetScreen
 
 Func RebootAndroid()
-
 	; Close Android
 	CloseAndroid()
 	If _Sleep(1000) Then Return
 
 	; Start Android
 	OpenAndroid()
-
 EndFunc   ;==>RebootAndroid
 
 Func RebootAndroidSetScreenDefault()
-
 	; Close Android
 	CloseAndroid()
 	If _Sleep(1000) Then Return
@@ -159,7 +147,5 @@ Func RebootAndroidSetScreenDefault()
 
 	; Start Android
 	OpenAndroid()
-
 	Return True
-
 EndFunc   ;==>RebootAndroidSetScreenDefault

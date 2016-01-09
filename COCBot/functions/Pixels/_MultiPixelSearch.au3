@@ -1,8 +1,5 @@
 ;Uses multiple pixels with coordinates of each color in a certain region, works for memory BMP
 
-;$xSkip and $ySkip for numbers of pixels skip
-;$offColor[2][COLOR/OFFSETX/OFFSETY] offset relative to firstColor coordination
-
 ; rotate y first, x second: search in columns
 Func _MultiPixelSearch($iLeft, $iTop, $iRight, $iBottom, $xSkip, $ySkip, $firstColor, $offColor, $iColorVariation)
 	_CaptureRegion($iLeft, $iTop, $iRight, $iBottom)

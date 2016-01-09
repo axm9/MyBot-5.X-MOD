@@ -1,4 +1,3 @@
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: CloseCoC
 ; Description ...: Kill then restart CoC
@@ -20,10 +19,7 @@ Func CloseCoC($ReOpenCoC = False)
 	SetLog("Please wait for CoC restart......", $COLOR_RED) ; Let user know we need time...
 	$HWnD = WinGetHandle($Title)
 	WinActivate($HWnD) ; ensure bot has window focus
-	;PureClick(126, 700, 2, 250, "#0126") ; click on BS home button twice to clear error and go home.
 	BS1HomeButton()
-	;$Adb = StringReplace(_WinAPI_GetProcessFileName(WinGetProcess($Title)), "Frontend", "Adb")
-	;ShellExecuteWait($Adb, "-s emulator-5554 shell am force-stop com.supercell.clashofclans", "", Default, @SW_HIDE) ; Close CoC ( Forcefull Kill )
 	SendAdbCommand("shell am force-stop com.supercell.clashofclans")
 
 	If $ReOpenCoC Then
@@ -55,11 +51,8 @@ Func OpenCoC()
 	Local $RunApp = "" , $iCount = 0
 	$HWnD = WinGetHandle($Title)
 	WinActivate($HWnD) ; ensure bot has window focus
-	;PureClick(126, 700, 2, 250, "#0126") ; click on BS home button twice to clear error and go home.
 	BS1HomeButton()
 	If _Sleep(250) Then Return
-	;$RunApp = StringReplace(_WinAPI_GetProcessFileName(WinGetProcess($Title)), "Frontend", "RunApp")
-	;Run($RunApp & " Android com.supercell.clashofclans com.supercell.clashofclans.GameApp")
     SendAdbCommand("shell am start -W -S -n com.supercell.clashofclans/.GameApp") ; "-S" not really required, but doesn't hurt restarting app
 
 	While _CheckPixel($aIsMain, True) = False ; Wait for MainScreen
@@ -94,13 +87,10 @@ Func WaitnOpenCoC($iWaitTime, $bFullRestart = False)
 	Local $RunApp = ""
 	$HWnD = WinGetHandle($Title)
 	WinActivate($HWnD) ; ensure bot has window focus
-	;PureClick(126, 700, 2, 250, "#0126") ; click on BS home button twice to clear error and go home.
 	BS1HomeButton()
 	SetLog("Waiting " & Round ($iWaitTime / 1000) & " seconds before starting CoC", $COLOR_GREEN)
 	If _SleepStatus($iWaitTime) Then Return False ; Wait for server to see log off
 
-	;$RunApp = StringReplace(_WinAPI_GetProcessFileName(WinGetProcess($Title)), "Frontend", "RunApp")
-	;Run($RunApp & " Android com.supercell.clashofclans com.supercell.clashofclans.GameApp")
 	SendAdbCommand("shell am start -W -S -n com.supercell.clashofclans/.GameApp") ; "-S" not really required, but doesn't hurt restarting app
 
 	If $debugSetlog = 1 Then setlog("CoC Restarted, Waiting for completion", $COLOR_PURPLE)

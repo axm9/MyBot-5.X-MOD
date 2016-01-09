@@ -20,7 +20,7 @@ Func DropTrophy()
 	Local $iCount, $RandomEdge, $RandomXY
 	Local $itxtMaxTrophyNeedCheck
 
-	$itxtMaxTrophyNeedCheck = $itxtMaxTrophy ; $itxtMaxTrophy = 1800
+	$itxtMaxTrophyNeedCheck = $itxtMaxTrophy
 
 	If Number($iTrophyCurrent) > Number($itxtMaxTrophyNeedCheck) Then
 		If $iChkTrophyAtkDead = 1 Then
@@ -30,7 +30,7 @@ Func DropTrophy()
 					$iTrophyCurrent = getTrophyMainScreen($aTrophies[0], $aTrophies[1])
 					SetLog("Trophy Count : " & $iTrophyCurrent, $COLOR_GREEN)
 					If Number($iTrophyCurrent) > Number($itxtMaxTrophyNeedCheck) Then
-						$itxtMaxTrophyNeedCheck = $itxtdropTrophy ; $itxtMinTrophy = 1650
+						$itxtMaxTrophyNeedCheck = $itxtdropTrophy
 						SetLog("Dropping Trophies to " & $itxtdropTrophy, $COLOR_BLUE)
 						If _Sleep($iDelayDropTrophy2) Then ExitLoop
 						$dropSuccessful = True

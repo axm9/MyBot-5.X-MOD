@@ -58,7 +58,6 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 		;close battle
 		For $i = 1 To 30
-			;_CaptureRegion()
 			If _ColorCheck(_GetPixelColor($aWonOneStar[0], $aWonOneStar[1], True), Hex($aWonOneStar[2], 6), $aWonOneStar[3]) = True Then ExitLoop ;exit if not 'no star'
 			If _Sleep($iDelayalgorithm_AllTroops2) Then Return
 		Next
@@ -120,8 +119,6 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		EndIf
 	EndIf
 
-	;############################################# LSpell Attack ############################################################
-	; DropLSpell()
 	;########################################################################################################################
 	Local $nbSides = 0
 	Switch $iChkDeploySettings[$iMatchMode]

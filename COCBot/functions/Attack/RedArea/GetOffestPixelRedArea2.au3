@@ -33,6 +33,5 @@ Func GetOffestPixelRedArea2($pixel, $eVectorType, $offset = 3)
 	; debugRedArea($nameFunc&" OUT")
 	Return $pixelOffest
 
-
 EndFunc   ;==>GetOffestPixelRedArea2
 

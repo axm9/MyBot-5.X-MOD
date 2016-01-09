@@ -72,9 +72,7 @@ Func checkAttackDisable($iSource, $Result = "")
 	; Find and wait for the confirmation of exit "okay" button
 	Local $i = 0 ; Reset Loop counter
 	While 1
-		;ControlFocus($Title, "", "") ; grab window focus
 		checkObstacles()
-		;PureClickP($aBSBackButton, 1, 0, "#0116") ; Hit BS Back button for the confirm exit dialog to appear, add 60 to location for 860x780
 		BS1BackButton()
 		If _Sleep(1000) Then Return False
 		Local $offColors[3][3] = [[0x000000, 144, 0], [0xFFFFFF, 54, 17], [0xCBE870, 54, 10]] ; 2nd Black opposite button, 3rd pixel white "O" center top, 4th pixel White "0" bottom center

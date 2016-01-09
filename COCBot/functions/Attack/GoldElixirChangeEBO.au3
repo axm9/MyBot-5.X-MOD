@@ -46,8 +46,7 @@ Func GoldElixirChangeEBO()
 			$z = 60 * 3 * 1000
 		EndIf
 	EndIf
-
-
+	
 	;CALCULATE TWO STARS REACH
 	If $ichkEndTwoStars = 1 And _CheckPixel($aWonTwoStar, True) Then
 		SetLog("Two Star Reach, exit", $COLOR_GREEN)
@@ -61,8 +60,6 @@ Func GoldElixirChangeEBO()
 		$exitOneStar = 1
 		$z = 0
 	EndIf
-
-
 
 	;MAIN LOOP
 	While TimerDiff($iBegin) < $z
@@ -197,15 +194,15 @@ EndFunc   ;==>GoldElixirChangeEBO
 Func OverallDamage($OverallDamage = 30, $SetLog = True)
 
 	Local $Damage = Number(getOcrOverAllDamage(780, 527 + $bottomOffsetY ))
-
+	
 	If $SetLog = True Then
 		SetLog("Overall Damage: " & $Damage & "%")
 	EndIf
-
+	
 	If $Damage >= $OverallDamage Then
 		Return True
 	Else
 		Return False
 	EndIf
-
+	
 EndFunc   ;==>OverallDamage

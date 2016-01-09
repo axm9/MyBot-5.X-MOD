@@ -53,10 +53,7 @@ Func TrainIt($troopKind, $howMuch = 1, $iSleep = 400)
 	EndIf
 EndFunc   ;==>TrainIt
 
-;
 ; Support functions to TrainIt that take troop name and generate the proper variable name
-;
-
 Func GetTrainPos($troopKind)
 	;If $debugSetlog = 1 Then SetLog("Func GetTrainPos " & $troopKind, $COLOR_PURPLE)
 	For $i = 0 To UBound($TroopName) - 1

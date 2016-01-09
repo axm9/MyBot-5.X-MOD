@@ -10,7 +10,7 @@ Func GetXPosOfArmySlot($slotNumber, $xOffsetFor11Slot)
 			$SlotComp = 2
 	EndSwitch
 
-	If $atkTroops[11][0] = -1 Then ;And _ColorCheck(_GetPixelColor(10, 575, True), Hex(0x040A06, 6), 20) Then ; check color to verify if exists > 12 slots
+	If $atkTroops[11][0] = -1 Then
 		Return $xOffsetFor11Slot + $SlotComp + ($slotNumber * 72)
 	Else
 		Return $xOffsetFor11Slot + $SlotComp + ($slotNumber * 72) - 30

@@ -1,4 +1,3 @@
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: IsTrainPage & IsAttackPage & IsMainPage & IsMainChatOpenPage & IsClanInfoPage & IsLaunchAttackPage &
 ;                  IsEndBattlePage & IsReturnHomeBattlePage
@@ -12,12 +11,10 @@
 ; Example .......:
 ; ===============================================================================================================================
 
-
 Func IsTrainPage()
 	Local $i = 0
 
 	While $i < 30
-		;If $DebugSetlog = 1 Then SetLog( "TrainPage:(" & _GetPixelColor(717, 120, True) & ",Expected:E0070A)(" & _GetPixelColor(762, 328, True) & ",Expected:F18439)", $COLOR_ORANGE)
 		If _ColorCheck(_GetPixelColor(717, 120 + $midOffsetY, True), Hex(0xE0070A, 6), 10) And _ColorCheck(_GetPixelColor(762, 328 + $midOffsetY, True), Hex(0xF18439, 6), 10) Then ExitLoop
 		If _Sleep($iDelayIsTrainPage1) Then ExitLoop
 		$i += 1
@@ -106,7 +103,6 @@ Func IsMainChatOpenPage() ;main page open chat
 
 EndFunc   ;==>IsMainChatOpenPage
 
-
 Func IsClanInfoPage()
 	Local $result
 
@@ -130,7 +126,6 @@ Func IsClanInfoPage()
 	EndIf
 
 EndFunc   ;==>IsClanInfoPage
-
 
 Func IsLaunchAttackPage()
 	Local $result
@@ -167,10 +162,6 @@ Func IsEndBattlePage()
 EndFunc   ;==>IsEndBattlePage
 
 Func IsReturnHomeBattlePage($useReturnValue = False, $makeDebugImageScreenshot = True)
-	; $makeDebugImageScreenshot = false
-	;    used to check, at end of algorithm_allTroops, if battle already end and then can bypass test
-	;    for goldelixirchange and activate heroes
-
 	Local $result
 
 	$result = _ColorCheck(_GetPixelColor($aReturnHomeButton[0], $aReturnHomeButton[1], True), Hex($aReturnHomeButton[2], 6), $aReturnHomeButton[3])

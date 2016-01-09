@@ -75,7 +75,7 @@ Func chkShareAttack()
 		For $i = $lblShareMinGold To $txtShareMessage
 			GUICtrlSetState($i, $GUI_ENABLE)
 		Next
-	Else;If GUICtrlRead($chkUnbreakable) = $GUI_UNCHECKED Then
+	Else
 		For $i = $lblShareMinGold To $txtShareMessage
 			GUICtrlSetState($i, $GUI_DISABLE)
 		Next

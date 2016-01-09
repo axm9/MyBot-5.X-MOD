@@ -306,9 +306,7 @@ EndFunc   ;==>ThSnipeWait
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
-
 	For $i = 0 To $DelayInSec
-
 		If _Sleep(5) Then Return True
 		If $Restart = True Then Return True
 		If $CheckHeroes = True And ($checkQPower = True Or $checkKPower = True) Then CheckHeroesHealth() ;Check Heroes Health and activate their abilities if health is not green
@@ -318,7 +316,6 @@ Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 			If $Restart = True Then Return True
 
 			;Activate King and Queen powers to restore health before exit if they are deployed
-
 			If $checkQPower = True Then
 				SetLog("Activating Queen's power to restore some health before EndBattle", $COLOR_BLUE)
 				SelectDropTroop($Queen)
@@ -341,15 +338,12 @@ Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 			Return True ;exit if you get a star
 
 		Else
-
 			If $i <> 0 Then
 				If _Sleep(1000) Then Return True
 				If $Restart = True Then Return True
 			EndIf
-
 		EndIf
 		;end check for one star
-
 	Next
 
 	Return False ; Continue

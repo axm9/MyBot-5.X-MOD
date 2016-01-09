@@ -14,10 +14,8 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func _SleepStatus($iDelay, $iSleep = True, $bDirection = True)
-	;
-	; $bDirection: True equals count down display, False equals count up display
-	;
+Func _SleepStatus($iDelay, $iSleep = True, $bDirection = True)	;
+	; $bDirection: True equals count down display, False equals count up display	;
 	Local $iCurTime, $iMinCalc, $iSecCalc, $iTime, $iBegin, $sString
 	Local $iDelayMinCalc, $iDelaySecCalc, $iDelaySecCalc
 	Local Const $Font = "Verdana"

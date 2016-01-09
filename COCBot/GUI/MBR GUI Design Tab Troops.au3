@@ -131,20 +131,6 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 			GUICtrlSetState($txtNumRageSpell, $GUI_DISABLE)
 			GUICtrlSetOnEvent(-1, "lblTotalCountSpell")
 		$lblTimesRageS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-#cs		$y +=25
-		GUICtrlCreateIcon ($pIconLib, $eIcnJumpSpell, $x - 10, $y - 5, 24, 24)
-		$lblJumpSpell = GUICtrlCreateLabel("Jump:", $x + 20, $y, -1, -1)
-		$txtNumJumpS = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
-			GUICtrlSetTip(-1, "Enter the No. of Jump Spells to make.")
-			GUICtrlSetLimit(-1, 2)
-		$lblTimesJumpS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-		$y +=25
-		GUICtrlCreateIcon ($pIconLib, $eIcnFreezeSpell, $x - 10, $y - 5, 24, 24)
-		$lblFreezeSpell = GUICtrlCreateLabel("Freeze:", $x + 20, $y, -1, -1)
-		$txtFreezeS = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
-			GUICtrlSetTip(-1, "Enter the No. of Freeze Spells to make.")
-			GUICtrlSetLimit(-1, 2)
-#ce		$lblFreezeS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
 		$y +=25
 		GUICtrlCreateIcon ($pIconLib, $eIcnPoisonSpell, $x - 10, $y - 5, 24, 24)
 		$lblPoisonSpell = GUICtrlCreateLabel($sTxtPoison & ":", $x + 20, $y, -1, -1)
@@ -154,13 +140,6 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 			GUICtrlSetState($txtNumPoisonSpell, $GUI_DISABLE)
 			GUICtrlSetOnEvent(-1, "lblTotalCountSpell")
 		$lblTimesPoisonS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-#cs		$y +=25
-		GUICtrlCreateIcon ($pIconLib, $eIcnEarthquakeSpell, $x - 10, $y - 5, 24, 24)
-		$lblEarthquakeSpell = GUICtrlCreateLabel("Earthquake:", $x + 20, $y, -1, -1)
-		$txtNumEarthquakeS = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
-			GUICtrlSetTip(-1, "Enter the No. of Poison Spells to make.")
-			GUICtrlSetLimit(-1, 2)
-#ce		$lblTimesEarthquakeS = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
 		$y +=25
 		GUICtrlCreateIcon ($pIconLib, $eIcnHasteSpell, $x - 10, $y - 5, 24, 24)
 		$lblHasteSpell = GUICtrlCreateLabel($sTxtHaste & ":", $x + 20, $y, -1, -1)
@@ -315,9 +294,6 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 
 	$x += 155
 	$y = 330
-
-
-
 
 	$grpBoosterOptions = GUICtrlCreateGroup(GetTranslated(1,30, "Boost Options"), $x - 20, $y - 20, 145, 195)
 		$y -= 5

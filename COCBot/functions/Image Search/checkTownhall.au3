@@ -14,9 +14,6 @@
 ; ===============================================================================================================================
 
 Func LoadTHImage()
-	; Load variables array $THimages0 - $THImages4
-	; $THImagesX[0]= numbers of n files
-	; $THImagesX[1..n] = name of file 1..n
 	Local $x
 	Local $path = @ScriptDir & "\images\TH\"
     Local $useImages
@@ -32,7 +29,6 @@ Func LoadTHImage()
 		Assign("THImages" & $t, StringSplit("", ""))
 		;put in a temp array the list of files matching condition "*T*.bmp"
 		$x = _FileListToArrayRec(@ScriptDir & "\images\TH\" & $THText[$t] & "\", $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
-		;_ArrayDisplay($x)
 		;assign value at THimages0... THImages4 if $x it's not empty
 		If UBound($x) Then Assign("THImages" & $t, $x)
 		;code to debug in console if need
@@ -51,7 +47,6 @@ Func LoadTHImage()
 			Local $tempvect = Eval("THImagesStat" & $t)
 			$tempvect[$i] = IniRead($statChkTownHall, $THText[$t], Execute("$THImages" & $t & "[" & $i & "]"), "0")
 			Assign("THImagesStat" & $t, $tempvect)
-			;SetLog ( "-$THImagesStat"& $t &"[" & $i & "] = " & Execute("$THImages"& $t &"[" & $i & "]") & " - " &  Execute("$THImagesStat"& $t &"[" & $i & "]") )
 		Next
 
 	Next
@@ -63,7 +58,6 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0)
 	Local $hTimer = TimerInit()
 	Local $count = 0
 
-
 	; calculate max number of files into folders
 	Local $max = 0, $tolerance
 	For $i = 0 To UBound($THText) - 1
@@ -71,11 +65,9 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0)
 	Next
 	If $limit > 0 And $max > 0 And $limit <= $max Then $max = $limit
 
-;~ 	ConsoleWrite ("max value =  " & $max &  @CRLF)
 	Local $found = False
 	For $i = 1 To $max
 		_CaptureRegion(0,0,$DEFAULT_WIDTH,$DEFAULT_HEIGHT,true)
-		;For $t = 0 To UBound($THText) - 1		  ; check from th6 to th11
 		For $t = UBound($THText) - 1 To 0 Step -1 ; check from th11 to th6
 			If Int(Execute("$THImages" & $t & "[0]")) >= $i Then
 				$count += 1
@@ -122,7 +114,6 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0)
 						$found = True
 						$ImageInfo = String("TH" & $THText[$t] & "-" & $i)
 						SaveStatChkTownHall()
-						;If $debugImageSave = 1 Then CaptureTHwithInfo($THx, $THy, $ImageInfo)
 						Return $THText[$t]
 					Else
 						ContinueLoop
@@ -132,34 +123,6 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0)
 			If $found Then ExitLoop ;if found = true exit from second for...
 		Next
 	Next
-
-;~ 	If $found = False Then
-;~ 		$tolerance = 5 + Number(StringMid(Execute("$THImages" & $t & "[" & $i & "]"), StringInStr(Execute("$THImages" & $t & "[" & $i & "]"), "T") + 1, StringInStr(Execute("$THImages" & $t & "[" & $i & "]"), ".bmp") - StringInStr(Execute("$THImages" & $t & "[" & $i & "]"), "T") - 1))
-;~ 		SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
-;~ 		For $t = (UBound($THText) - 1) To 0 Step -1
-;~ 			_CaptureRegion()
-;~ 			For $i = $max To 1 Step -1
-;~ 				If Int(Execute("$THImages" & $t & "[0]")) >= $i Then
-;~ 					$THLocation = _ImageSearch(@ScriptDir & "\images\TH\" & $THText[$t] & "\" & Execute("$THImages" & $t & "[" & $i & "]"), 1, $THx, $THy, $tolerance) ; Getting TH Location
-;~ 					If $THLocation = 1 Then
-;~ 						;add in stats-----
-;~ 						Local $tempvect = Eval("THImagesStat" & $t)
-;~ 						$tempvect[$i] += 1
-;~ 						Assign("THImagesStat" & $t, $tempvect)
-;~ 						If isInsideDiamondXY($THx, $THy) = True Then
-;~ 							$found = True
-;~ 							$ImageInfo = String("TH" & $THText[$t] & "-" & $i)
-;~ 							If $debugImageSave = 1 Then CaptureTHwithInfo($THx, $THy, $ImageInfo)
-;~ 							Return $THText[$t]
-;~ 						Else
-;~ 							ContinueLoop
-;~ 						EndIf
-;~ 					EndIf
-;~ 				EndIf
-;~ 				If $found Then ExitLoop
-;~ 			Next
-;~ 		Next
-;~ 	EndIf
 
 	ConsoleWrite("THLOCATION = <" & $THLocation & ">")
 	If $THLocation = 0 Then
@@ -186,25 +149,3 @@ Func SaveStatChkTownHall()
 		Next
 	EndIf
 EndFunc   ;==>SaveStatChkTownHall
-
-;~ Func CaptureTHwithInfo($THx, $THy, $ImageInfo)
-;~ 	local $EditedImage
-
-;~ 	$EditedImage = $hBitmap
-
-;~ 	Local $hGraphic = _GDIPlus_ImageGetGraphicsContext($EditedImage)
-;~ 	Local $hPen = _GDIPlus_PenCreate(0xFFFF0000, 2) ;create a pencil Color FF0000/RED
-
-;~ 	_GDIPlus_GraphicsDrawRect($hGraphic, $THx - 5, $THy - 5, 10, 10, $hPen)
-;~ 	_GDIPlus_GraphicsDrawString($hGraphic, $ImageInfo, 401, 63,"Arial",15)
-
-;~ 	Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
-;~ 	Local $Time = @HOUR & "." & @MIN & "." & @SEC
-;~ 	Local $filename = string("THDetected_" & $Date & "_" & $Time & "_" & $ImageInfo & ".jpg")
-
-;~ 	If $debugBuildingPos = 1 and $debugsetlog = 1 Then Setlog(" _GDIPlus_ImageSaveToFile", $COLOR_PURPLE)
-;~ 	_GDIPlus_ImageSaveToFile($EditedImage, $dirTemp & $filename)
-;~ 	_GDIPlus_BrushDispose($hPen)
-
-;~ EndFunc   ;==>CaptureTHwithInfo
-

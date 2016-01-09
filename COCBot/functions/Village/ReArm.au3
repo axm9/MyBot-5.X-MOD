@@ -15,7 +15,6 @@
 ; ===============================================================================================================================
 
 Func ReArm()
-
 	If $ichkTrap = 0 Then Return ; If re-arm is not enable in GUI return and skip this code
 	If $ineedRearm = False Then Return ; If re-arm is not needed skip this code
 	Local $y = 562 + $bottomOffsetY  ; Add 60 y pixel for 860x780 window
@@ -32,8 +31,6 @@ Func ReArm()
 	If _Sleep($iDelayReArm2) Then Return
 	If IsMainPage() Then Click($TownHallPos[0], $TownHallPos[1] + 5, 1, 0, "#0225")
 	If _Sleep($iDelayReArm3) Then Return
-
-	;If $debugSetlog = 1 Then DebugImageSave("ReArmView")
 
 	;Traps
 	Local $offColors[3][3] = [[0x0F0F0F, 24, 34], [0xF6EF57, 70,5], [0xF4F5F2, 79, 0]] ; 2nd pixel brown wrench, 3rd pixel gold, 4th pixel edge of button
@@ -83,7 +80,6 @@ Func ReArm()
 	EndIf
 
 	If Number($iTownHallLevel) > 9 Then
-
 		;Inferno
 		Local $offColors[3][3] = [[0x202523, 19, 20], [0x202523, 70, 7], [0xF3F5F1, 79, 0]]; inferno, dark, edge
 		Global $InfernoPixel = _MultiPixelSearch2(525, $y, 720, $y + 38, 1, 1, Hex(0xF3F5F1, 6), $offColors, 30)
@@ -105,7 +101,6 @@ Func ReArm()
 				If _Sleep($iDelayReArm5) Then Return
 			EndIf
 		EndIf
-
 	EndIf
 
 	ClickP($aAway, 1, 0, "#0234") ; Click away

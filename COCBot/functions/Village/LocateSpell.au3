@@ -13,6 +13,7 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func LocateSpellFactory()
 	Local $stext, $MsgBox, $iStupid = 0, $iSilly = 0,  $sErrorText = ""
 
@@ -108,10 +109,7 @@ Func LocateSpellFactory()
 	WEnd
 
 	ClickP($aAway, 2, 200, "#0208")
-
 EndFunc   ;==>LocateSpellFactory
-
-
 
 Func LocateDarkSpellFactory()
 	Local $stext, $MsgBox, $iStupid = 0, $iSilly = 0,  $sErrorText = ""

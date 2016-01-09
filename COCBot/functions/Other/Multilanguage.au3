@@ -63,6 +63,7 @@ Func GetTranslated($iSection = -1, $iKey = -1, $sText = "")
 		Return $sLanguageText
 	EndIf
 EndFunc   ;==>GetTranslated
+
 ;DetectLanguage()
 Func DetectLanguage()
 	$firstBotStart = IniRead($config, "other", "detectLanguage", "1")
@@ -995,7 +996,7 @@ Func DetectLanguage()
 			SetLog("Language file "&$langName&".ini found in "&$dirLanguages)
 			$sLanguage = $langName
 			IniWrite($config, "other", "language", $sLanguage)
-		Else;otherwise, use english if the language isn't available yet
+		Else ;otherwise, use english if the language isn't available yet
 			SetLog("Language file for "&$langName&" not found! Defaulting to English", $COLOR_RED)
 			$sLanguage = IniRead($config, "other", "language", $sDefaultLanguage)
 		EndIf
@@ -1003,6 +1004,5 @@ Func DetectLanguage()
 		;read the selected language from profile ini
 		$sLanguage = IniRead($config, "other", "language", $sDefaultLanguage)
 	EndIf
-
 
 EndFunc   ;==>DetectLanguage

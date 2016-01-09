@@ -13,9 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-
 Func UpgradeHeroes()
-
 	If $ichkUpgradeKing = 0 And $ichkUpgradeQueen = 0 And $ichkUpgradeWarden = 0 Then Return
 	If _Sleep(500) Then Return
 	checkMainScreen(False)

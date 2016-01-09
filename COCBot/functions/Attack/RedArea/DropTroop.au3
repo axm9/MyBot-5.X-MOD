@@ -6,7 +6,6 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1
 	debugRedArea($nameFunc & " IN ")
 	debugRedArea("troop : [" & $troop & "] / nbSides : [" & $nbSides & "] / number : [" & $number & "] / slotsPerEdge [" & $slotsPerEdge & "]")
 
-
 	If ($iChkRedArea[$iMatchMode]) Then
 		If $slotsPerEdge = 0 Or $number < $slotsPerEdge Then $slotsPerEdge = $number
 		If _Sleep($iDelayDropTroop1) Then Return
@@ -16,7 +15,6 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1
 		If $nbSides < 1 Then Return
 		Local $nbTroopsLeft = $number
 		If ($iChkSmartAttack[$iMatchMode][0] = 0 And $iChkSmartAttack[$iMatchMode][1] = 0 And $iChkSmartAttack[$iMatchMode][2] = 0) Then
-
 			If $nbSides = 4 Then
 				Local $edgesPixelToDrop = GetPixelDropTroop($troop, $number, $slotsPerEdge)
 
@@ -30,11 +28,8 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1
 				Return
 			EndIf
 
-
 			For $i = 0 To $nbSides - 1
-
 				If $nbSides = 1 Or ($nbSides = 3 And $i = 2) Then
-
 					Local $nbTroopsPerEdge = Round($nbTroopsLeft / ($nbSides - $i))
 					If ($number > 0 And $nbTroopsPerEdge = 0) Then $nbTroopsPerEdge = 1
 					Local $edgesPixelToDrop = GetPixelDropTroop($troop, $nbTroopsPerEdge, $slotsPerEdge)
@@ -73,7 +68,6 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1
 				EndIf
 			Next
 			DropOnPixel($troop, $listEdgesPixelToDrop, $nbTroopsPerEdge, $slotsPerEdge)
-
 		EndIf
 	Else
 		DropOnEdges($troop, $nbSides, $number, $slotsPerEdge)
@@ -89,13 +83,8 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 	debugRedArea("troop : [" & $troop & "] / nbSides : [" & $nbSides & "] / number : [" & $number & "] / slotsPerEdge [" & $slotsPerEdge & "]")
 	Local $listInfoPixelDropTroop[0]
 
-
 	If ($iChkRedArea[$iMatchMode]) Then
 		If $slotsPerEdge = 0 Or $number < $slotsPerEdge Then $slotsPerEdge = $number
-		;If _Sleep($iDelayDropTroop1) Then Return
-		;SelectDropTroop($troop) ;Select Troop
-		;If _Sleep($iDelayDropTroop2) Then Return
-
 		If $nbSides < 1 Then Return
 		Local $nbTroopsLeft = $number
 		Local $nbTroopsPerEdge = Round($nbTroopsLeft / $nbSides)
@@ -104,7 +93,6 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 			If $nbSides = 4 Then
 				ReDim $listInfoPixelDropTroop[UBound($listInfoPixelDropTroop) + 4]
 				Local $listInfoPixelDropTroop = GetPixelDropTroop($troop, $number, $slotsPerEdge)
-
 			Else
 				For $i = 0 To $nbSides - 1
 					If $nbSides = 1 Or ($nbSides = 3 And $i = 2) Then
@@ -119,9 +107,6 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 					EndIf
 				Next
 			EndIf
-
-
-
 		Else
 			Local $listEdgesPixelToDrop[0]
 
@@ -165,9 +150,7 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 				EndIf
 
 				$listInfoPixelDropTroop[UBound($listInfoPixelDropTroop) - 1] = _FindPixelCloser($arrPixelToSearch, $pixel, 1)
-
 			Next
-
 		EndIf
 	Else
 		DropOnEdges($troop, $nbSides, $number, $slotsPerEdge)

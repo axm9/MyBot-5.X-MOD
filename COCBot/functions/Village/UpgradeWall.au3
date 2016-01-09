@@ -68,10 +68,7 @@ Func UpgradeWall()
 
 EndFunc   ;==>UpgradeWall
 
-
 Func UpgradeWallGold()
-
-	;Click($WallxLOC, $WallyLOC)
 	If _Sleep($iDelayUpgradeWallGold1) Then Return
 
 	Local $offColors[3][3] = [[0xD6714B, 47, 37], [0xF0E850, 70, 0], [0xF4F8F2, 79, 0]] ; 2nd pixel brown hammer, 3rd pixel gold, 4th pixel edge of button
@@ -107,8 +104,6 @@ Func UpgradeWallGold()
 EndFunc   ;==>UpgradeWallGold
 
 Func UpgradeWallElixir()
-
-	;Click($WallxLOC, $WallyLOC)
 	If _Sleep($iDelayUpgradeWallElixir1) Then Return
 
 	Local $offColors[3][3] = [[0xBC5B31, 38, 32], [0xF84CF9, 72, 0], [0xF5F9F2, 79, 0]] ; 2nd pixel brown hammer, 3rd pixel gold, 4th pixel edge of button

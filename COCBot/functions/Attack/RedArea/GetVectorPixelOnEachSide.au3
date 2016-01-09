@@ -16,8 +16,6 @@ Func GetVectorPixelOnEachSide($arrPixel, $vectorDirection)
 		$pixelSearch[$vectorDirection] = $min + $posSide * 3
 		Local $arrPixelCloser = _FindPixelCloser($arrPixel, $pixelSearch, 1)
 		$vectorPixelEachSide[1] = $arrPixelCloser[0]
-
-
 	EndIf
 	Return $vectorPixelEachSide
 EndFunc   ;==>GetVectorPixelOnEachSide

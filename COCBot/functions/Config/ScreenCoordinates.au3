@@ -26,7 +26,6 @@ Global $aAttackButton[2]     = [ 60, 614 + $bottomOffsetY]               ; Attac
 Global $aFindMatchButton[4]  = [140, 540 + $bottomOffsetY, 0xD84400, 10] ; Find Multiplayer Match Button, Attack Screen 860x780
 Global $aIsAttackShield[4]   = [250, 415 + $midOffsetY, 0xE8E8E0, 10] ; Attack window, white shield verification window
 Global $aAway[2]             = [  1,  40]               ; Away click, moved from 1,1 to prevent scroll window from top
-;Global $aBreakShield[4]     = [513, 416, 0x5DAC10, 50] ; Break Shield Button, Attack Screen ;the 0x5DAC10 color value matches open grass use with caution
 Global $aNoShield[4]  	  	  = [448,  20, 0x43484B, 10] ; Main Screen, charcoal pixel center of shield when no shield is present
 Global $aHaveShield[4]  	  = [455,  23, 0xEEF4F8, 10] ; Main Screen, Silver pixel center of shield
 Global $aHavePerGuard[4]  	  = [455,  23, 0x010102, 10] ; Main Screen, black pixel in sword outline center of shield
@@ -83,23 +82,6 @@ Global $aWardenHealth         = [ -1, 568 + $bottomOffsetY, 0x472b63, 15] ; Atta
 Global $aWonOneStarAtkRprt[4] 		  = [325, 180 + $midOffsetY, 0xC8CaC4, 30] ; Center of 1st Star reached attacked village
 Global $aWonTwoStarAtkRprt[4] 		  = [398, 180 + $midOffsetY, 0xD0D6D0, 30] ; Center of 2nd Star reached attacked village
 Global $aWonThreeStarAtkRprt[4] 	  = [534, 180 + $midOffsetY, 0xC8CAC7, 30] ; Center of 3rd Star reached attacked village
-
-#cs (kaganus) These variables arent used anywhere????
-Global $SomeXCancelBtn[4]    = [819,  55, 0xD80400,     20]
-Global $EndBattleBtn[4]      = [71,  530 + $bottomOffsetY, 0xC00000,     20]
-Global $Attacked[4]          = [235, 209, 0x9E3826,     20]
-Global $AttackedBtn[2]       = [429, 493 + $midOffsetY]
-Global $HasClanMessage[4]    = [ 31, 313 + $midOffsetY, 0xF80B09,     20]
-Global $OpenChatBtn[2]       = [ 10, 334 + $midOffsetY]
-Global $IsClanTabSelected[4] = [204,  20, 0x6F6C4F,     20]
-Global $IsClanMessage[4]     = [ 26, 320, 0xE70400,     20]
-
-Global $ClanRequestTextArea[2]      = [430, 140]
-Global $ConfirmClanTroopsRequest[2] = [524,228]
-Global $CampFull[4]  	            = [328, 535 + $midOffsetY, 0xD03840,     20]
-
-;Global $DropTrophiesStartPoint = [34, 310]
-#ce
 
 Global $TrainBarb[4]        = [ 220, 310 + $midOffsetY, 0xFFC721,     40] ;  Done
 Global $TrainArch[4]        = [ 301, 315 + $midOffsetY, 0x882852,     40] ;  Done 882858
@@ -182,11 +164,6 @@ Global Const $aSearchLimit[6] = [  19, 565, 104, 580, 0xD9DDCF, 10] ; (kaganus) 
 
 ;inattackscreen
 Global Const $aIsAttackPage[4]        = [  70, 548 + $bottomOffsetY, 0xC80000, 20] ; red button "end battle" 860x780
-
-; Bluestacks Menu - replaced with shortcut keys due removal or BS menu bar
-;Global Const $aBSBackButton[4] = [ 50, 700 + $bottomOffsetY, 0x000000, 10] ; Bluestacks V0.9. - V0.10. back button
-;Global Const $aBSHomeButton[4] = [125, 700 + $bottomOffsetY, 0x000000, 10] ; Bluestacks V0.9. - V0.10. Home button
-;Global Const $aBSExitButton[4] = [820, 700 + $bottomOffsetY, 0x000000, 10] ; Bluestacks V0.9. - V0.10. Exit button
 
 ;CheckImageType (Normal, Snow, etc)
 Global Const $aImageTypeN1[4] = [237, 161, 0xD5A849, 30]; Sand on Forest Edge 'Lane' 860x780

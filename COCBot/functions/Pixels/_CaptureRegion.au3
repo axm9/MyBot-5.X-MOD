@@ -45,8 +45,6 @@ Func _CaptureRegion2($iLeft = 0, $iTop = 0, $iRight = $DEFAULT_WIDTH, $iBottom =
 		_WinAPI_SelectObject($hMemDC, $hHBitmap)
 		_WinAPI_BitBlt($hMemDC, 0, 0, $iW, $iH, $hDC_Capture, $iLeft, $iTop, 0x00CC0020)
 
-		;Global $hBitmap = _GDIPlus_BitmapCreateFromHBITMAP($hHBitmap)
-
 		_WinAPI_DeleteDC($hMemDC)
 		_WinAPI_SelectObject($hMemDC, $hObjectOld)
 		_WinAPI_ReleaseDC($HWnD, $hDC_Capture)

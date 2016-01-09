@@ -21,10 +21,10 @@ Func Unbreakable()
 	; Set absolute minimum loot required to still farm for more loot in Farm Minimum setting, and Save Minimum setting loot that will atttact enemy attackers
 	;
 	Local $x, $y, $i, $iTime, $iCount
-; temp disable
-Setlog("unbreakable disabled,  work in progress")
-Return
-;
+	; temp disable
+	Setlog("unbreakable disabled,  work in progress")
+	Return
+	;
 	Switch $iUnbreakableMode
 		Case 2
 			If (Number($iGoldCurrent) > Number($iUnBrkMaxGold)) And (Number($iElixirCurrent) > Number($iUnBrkMaxElixir)) And (Number($iDarkCurrent) > Number($iUnBrkMaxDark)) Then
@@ -151,32 +151,6 @@ Return
 	Else
 		If $debugSetlog = 1 Then Setlog("No personal guard to cancel", $COLOR_GREEN)
 	EndIf
-
-#comments-start  REMOVE OLD SHIELD BREAK CODE
-	PrepareSearch() ; Break Shield
-	If _Sleep($iDelayUnbreakable3) Then Return
-
-	$i = 0
-	While _CheckPixel($aSurrenderButton, True) = False
-	If _Sleep($iDelayUnbreakable1) Then Return ; wait for clouds to disappear and the end battle button to appear
-	If $i > 45 Then
-	Setlog("Excess Cloud Watching Time, Try again", $COLOR_RED)
-	Return
-	EndIf
-	$i += 1
-	WEnd
-
-	SetLog("Returning Home For Defense", $COLOR_BLUE)
-	If _Sleep($iDelayUnbreakable1) Then Return
-
-	$i = 0
-	While _CheckPixel($aSurrenderButton, True) = True
-	PureClickP($aSurrenderButton, 1, 0, "#0114") ;Click End Battle
-	If _Sleep($iDelayUnbreakable1) Then Return ; wait for button to disappear
-	If $i > 15 Then ExitLoop
-	$i += 1
-	WEnd
-#comments-end
 
 	ClickP($aAway, 2, $iDelayUnbreakable8, "#0115") ;clear screen selections
 	If _Sleep($iDelayUnbreakable1) Then Return True

@@ -1,4 +1,3 @@
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: GetDPI_Ratio
 ; Description ...: Returns the current user DPI setting for display.
@@ -49,12 +48,10 @@ EndFunc
 
 Func GUISetFont_DPI($isize, $iweight = "", $iattribute = "", $sfontname = "")
     GUISetFont($isize / $iDPI_Ratio, $iweight, $iattribute, $sfontname)
-EndFunc
-
-
+EndFunc	
 
 Func SetDPI()
-; This uses undocumented dll function from MS and does work reliably in all OS so it was removed from main bot code
+	; This uses undocumented dll function from MS and does work reliably in all OS so it was removed from main bot code
 	_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 600)
 		$stext = "My Bot needs to change your DPI settinng to continue!" & @CRLF & @CRLF & _
 		"You will be required to reboot your PC when done"& @CRLF & @CRLF & "Please close other programs and save you work NOW!" & @CRLF& @CRLF & _
@@ -73,5 +70,4 @@ Func SetDPI()
 		  Setlog("Your DPI has not been changed due some unknown error, Return= "&$aRet, $COLOR_MAROON)
 		EndIf
 	EndIf
-  EndFunc
-
+EndFunc

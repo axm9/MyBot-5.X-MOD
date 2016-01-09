@@ -1,4 +1,3 @@
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: checkMainScreen
 ; Description ...: Checks whether the pixel, located in the eyes of the builder in mainscreen, is available

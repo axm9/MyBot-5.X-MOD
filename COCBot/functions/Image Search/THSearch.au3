@@ -34,10 +34,8 @@ Func THSearch($bReTest = False)
 	_WinAPI_DeleteObject($hBitmapFirst)
 	$hBitmapFirst = _CaptureRegion2()
 	$result = DllCall($hFuncLib, "str", "getLocationTownHallWithLevel", "ptr", $hBitmapFirst)
-	;$result = DllCall($hFuncLib, "str", "getLocationTownHallWithLevelDebug", "ptr", $hBitmapFirst, "int", 1)
 	If $debugsetlog = 1 Then SetLog("Calculated  (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds) :")
 	If $debugsetlog = 1 Then Setlog("TownHall search $result[0] = " & $result[0], $COLOR_PURPLE) ;Debug
-
 
 	$listPixelByLevel = StringSplit($result[0], "~") ; split each building into array
 	If $listPixelByLevel[0] > 1 Then ; check for more than 1 bldg and proper split a part
@@ -49,7 +47,6 @@ Func THSearch($bReTest = False)
 			Next
 		EndIf
 	EndIf
-
 
 	For $i = 0 To $NumTownHall - 1
 		If $NumTownHall > 1 Then
@@ -81,7 +78,6 @@ Func THSearch($bReTest = False)
 			$THx = $aTownHallLocal[0]
 			$THy = $aTownHallLocal[1]
 			$ImageInfo = "C# DLL"
-			;If $debugImageSave = 1 Then CaptureTHwithInfo($THx, $THy, $ImageInfo)
 			If $debugsetlog = 1 Then SetLog("TownHall: [" & $aTownHallLocal[0] & "," & $aTownHallLocal[1] & "], Level: " & $aTownHallLocal[2], $COLOR_BLUE)
 			Return $THText[Number($level) - 6]
 		Else
@@ -97,12 +93,4 @@ Func THSearch($bReTest = False)
 		If $debugsetlog = 1 Then SetLog(" == TownHall Not Found ==", $COLOR_RED)
 		Return "-"
 	EndIf
-
-;~ 	If $bReTest = False Then
-;~ 		$aTownHall = $aTownHallLocal
-;~ 		Return
-;~ 	Else
-;~ 		Return $aTownHallLocal
-;~ 	EndIf
-
 EndFunc   ;==>THSearch

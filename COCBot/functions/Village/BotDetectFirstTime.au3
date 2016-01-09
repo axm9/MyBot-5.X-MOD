@@ -139,7 +139,6 @@ Func BotDetectFirstTime()
 			$i += 1
 		WEnd
 		SetLog("Verifying your Mines/Extractors/Drills ...wait ...")
-		;$PixelMineHere = GetLocationItem("getLocationMineExtractor")
 		$PixelMineHere = GetLocationMine()
 		If UBound($PixelMineHere) > 0 Then
 			SetLog("Total No. of Gold Mines: " & UBound($PixelMineHere))
@@ -152,7 +151,6 @@ Func BotDetectFirstTime()
 			EndIf
 		Next
 		If _Sleep($iDelayBotDetectFirstTime1) Then Return
-		;$PixelElixirHere = GetLocationItem("getLocationElixirExtractor")
 		$PixelElixirHere = GetLocationElixir()
 		If UBound($PixelElixirHere) > 0 Then
 			SetLog("Total No. of Elixir Collectors: " & UBound($PixelElixirHere))
@@ -165,7 +163,6 @@ Func BotDetectFirstTime()
 			EndIf
 		Next
 		If _Sleep($iDelayBotDetectFirstTime1) Then Return
-		;$PixelDarkElixirHere = GetLocationItem("getLocationDarkElixirExtractor")
 		$PixelDarkElixirHere = GetLocationDarkElixir()
 		If UBound($PixelDarkElixirHere) > 0 Then
 			SetLog("Total No. of Dark Elixir Drills: " & UBound($PixelDarkElixirHere))

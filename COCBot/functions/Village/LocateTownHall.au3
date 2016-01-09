@@ -13,8 +13,8 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func LocateTownHall($bLocationOnly = False)
 
+Func LocateTownHall($bLocationOnly = False)
 	Local $stext, $MsgBox, $Success, $sLocMsg
 	Local	$iStupid = 0, $iSilly = 0, $sErrorText = ""
 

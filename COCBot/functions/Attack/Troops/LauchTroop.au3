@@ -30,7 +30,6 @@ Func LauchTroop($troopKind, $nbSides, $waveNb, $maxWaveNb, $slotsPerEdge = 0)
 	Next
 
 	If ($troop = -1) Or ($troopNb = 0) Then
-		;if $waveNb > 0 Then SetLog("Skipping wave of " & $name & " (" & $troopKind & ") : nothing to drop" )
 		Return False; nothing to do => skip this wave
 	EndIf
 

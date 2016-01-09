@@ -134,8 +134,6 @@ Func SetTime()
 	Local $time = _TicksToTime(Int(TimerDiff($sTimer) + $iTimePassed), $hour, $min, $sec)
 	If GUICtrlRead($tabMain, 1) = $tabStats Then GUICtrlSetData($lblresultruntime, StringFormat("%02i:%02i:%02i", $hour, $min, $sec))
 	If GUICtrlGetState($lblResultGoldNow) <> $GUI_ENABLE + $GUI_SHOW Then GUICtrlSetData($lblResultRuntimeNow, StringFormat("%02i:%02i:%02i", $hour, $min, $sec))
-	;If $pEnabled = 1 And $pRemote = 1 And StringFormat("%02i", $sec) = "50" Then _RemoteControl()
-	;If $pEnabled = 1 And $ichkDeleteOldPushes = 1 And Mod($min + 1, 30) = 0 And $sec = "0" Then _DeleteOldPushes() ; check every 30 min if must to delete old pushbullet messages, increase delay time for anti ban pushbullet
 EndFunc   ;==>SetTime
 
 Func tabMain()
@@ -239,10 +237,7 @@ Func _DonateBtn($FirstControl, $LastControl)
 	Next
 EndFunc   ;==>_DonateBtn
 
-;---------------------------------------------------
-;~ If FileExists($sProfilePath & "\profile.ini") Then
-	_GUICtrlComboBox_SetCurSel($cmbProfile, Int($sCurrProfile) - 1)
-;~ EndIf
+_GUICtrlComboBox_SetCurSel($cmbProfile, Int($sCurrProfile) - 1)
 If FileExists($config) Or FileExists($building) Then
 	readConfig()
 	applyConfig()

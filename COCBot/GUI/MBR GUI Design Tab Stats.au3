@@ -461,12 +461,10 @@ $txtTip = GetTranslated(11,94, "The amount of Trophy gained from TH Snipe bases 
 GUICtrlSetTip(-1, $txtTip)
 $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnGreenLight, $x - 15, $y - 4, 16, 16)
-;GUICtrlCreateLabel("Success:", $x - 15, $y - 2, -1, 17)
 $lblNbrOfTSSuccess = GUICtrlCreateLabel("0", $x + 8, $y - 2, 25, 17, $SS_RIGHT)
 $txtTip = GetTranslated(11,95, "The number of successful TH Snipes")
 GUICtrlSetTip(-1, $txtTip)
 GUICtrlCreateIcon($pIconLib, $eIcnRedLight, $x + 35, $y - 4, 16, 16)
-;GUICtrlCreateLabel("Fail:", $x + 50, $y - 2, -1, 17)
 $lblNbrOfTSFailed = GUICtrlCreateLabel("0", $x + 58, $y - 2, 25, 17, $SS_RIGHT)
 $txtTip = GetTranslated(11,96, "The number of failed TH Snipe attempt")
 GUICtrlSetTip(-1, $txtTip)

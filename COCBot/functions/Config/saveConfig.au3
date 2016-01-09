@@ -13,10 +13,8 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-
 Func saveConfig() ;Saves the controls settings to the config
 	;General Settings--------------------------------------------------------------------------
-
 	If $ichkExtraAlphabets = 1 Then	 FileOpen($config, $FO_UTF16_LE + $FO_OVERWRITE)
 
 	Local $frmBotPos = WinGetPos($sBotTitle)
@@ -1285,7 +1283,6 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "SnipeWhileTrain", "SWTtiles", GUICtrlRead($txtSWTTiles))
 
 	;Multilanguage
-
 	IniWrite($config, "other", "language", $sLanguage)
 
 	If $ichkExtraAlphabets = 1 Then	FileClose($config)

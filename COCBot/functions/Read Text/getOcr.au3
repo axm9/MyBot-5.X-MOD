@@ -149,7 +149,6 @@ Func getOcrOverAllDamage($x_start, $y_start);  -> Get the Overall Damage %
 	Return getOcrAndCapture("coc-overalldamage", $x_start, $y_start, 50, 20, True)
 EndFunc   ;==>getOcrOverAllDamage
 
-
 Func getOcrAndCapture($language, $x_start, $y_start, $width, $height, $removeSpace = False)
 	Local $hBmp = _CaptureRegion2($x_start, $y_start, $x_start + $width, $y_start + $height)
 	Local $result = getOcr($hBmp, $language)

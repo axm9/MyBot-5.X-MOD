@@ -18,13 +18,8 @@ Func chkWalls()
 		$ichkWalls = 1
 		GUICtrlSetState($UseGold, $GUI_ENABLE)
 		GUICtrlSetState($sldMaxNbWall, $GUI_ENABLE)
-		;GUICtrlSetState($sldToleranceWall, $GUI_ENABLE)
-		;GUICtrlSetState($btnFindWalls, $GUI_ENABLE)
-		;		GUICtrlSetState($UseElixir, $GUI_ENABLE)
-		;		GUICtrlSetState($UseElixirGold, $GUI_ENABLE)
 		GUICtrlSetState($cmbWalls, $GUI_ENABLE)
 		GUICtrlSetState($txtWallMinGold, $GUI_ENABLE)
-		;		GUICtrlSetState($txtWallMinElixir, $GUI_ENABLE)
 
 		cmbWalls()
 	Else
@@ -36,8 +31,6 @@ Func chkWalls()
 		GUICtrlSetState($txtWallMinGold, $GUI_DISABLE)
 		GUICtrlSetState($txtWallMinElixir, $GUI_DISABLE)
 		GUICtrlSetState($sldMaxNbWall, $GUI_DISABLE)
-		;GUICtrlSetState($sldToleranceWall, $GUI_DISABLE)
-		;GUICtrlSetState($btnFindWalls, $GUI_DISABLE)
 
 	EndIf
 EndFunc   ;==>chkWalls
@@ -122,7 +115,6 @@ Func btnchkbxUpgrade()
 EndFunc   ;==>btnchkbxUpgrade
 
 Func btnResetUpgrade()
-	; Reset Condition $aUpgrades[4][4] = [[-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""]]
 	For $i = 0 To 5
 		$aUpgrades[$i][3] = "" ;Clear Upgrade Type
 		GUICtrlSetData($txtUpgradeX[$i], "") ; Clear GUI X position

@@ -232,9 +232,6 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 
 	Local $x = 30, $y = 450
 	$grpRoyalAbilities = GUICtrlCreateGroup(GetTranslated(3,54, "Hero Abilities"), $x - 20, $y - 20, 450, 75)
-		;GUICtrlCreatePic (@ScriptDir & "\Icons\KingAbility.jpg", $x, $y - 3, 30, 47)
-		;GUICtrlCreatePic (@ScriptDir & "\Icons\QueenAbility.jpg", $x + 30, $y - 3, 30, 47)
-		;GUICtrlCreatePic (@ScriptDir & "\Icons\QueenAbility.jpg", $x + 60, $y - 3, 30, 47) ;change with Warden Icon
 		GUICtrlCreateIcon($pIconLib, $eIcnKingAbility, $x, $y-2, 24, 24)
 		GUICtrlCreateIcon($pIconLib, $eIcnQueenAbility, $x+ 30, $y-2, 24, 24)
 		GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x+ 15, $y + 25, 24, 24)
@@ -269,7 +266,6 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 		$lblWardenAbilitiesSec = GUICtrlCreateLabel(GetTranslated(3,62, -1), $x + 293, $y, -1, -1)
 			GUICtrlSetState(-1, $GUI_DISABLE+$GUI_HIDE)
 			GUICtrlSetColor (-1,$COLOR_RED)
-
 
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")

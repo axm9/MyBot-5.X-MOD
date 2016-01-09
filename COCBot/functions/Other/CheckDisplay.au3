@@ -13,10 +13,8 @@
 ; Link ..........: https://www.autoitscript.com/forum/topic/154885-autoit-and-dpi-awareness/
 ; Example .......: No
 ; ===============================================================================================================================
-;
 
 #include <WinAPIGdi.au3>
-
 Func CheckDisplay()
 
 	Local $aPos, $sBSDisplaySize
@@ -63,9 +61,7 @@ Func CheckDisplay()
 				If ($aMonitorData[$i][3] < $iDisplaySizeMin) Or ($aMonitorData[$i][4] < $iDisplaySizeMin) Then
 					SetLog(_PadStringCenter(" ERROR!! Display size too small = " & $sBSDisplaySize & " ", 53, "+"), $COLOR_RED)
 					SetLog(_PadStringCenter(" Visit MyBot.run forums for more information ", 53, "+"), $COLOR_RED)
-					;SetLog(_PadStringCenter(" Sorry - Bot start button disabled", 53, "+"), $COLOR_RED)
 					Setlog(" ")
-					; GUICtrlSetState($btnStart, $GUI_DISABLE)
 				Else
 					ConsoleWrite("Display Check Pass!" & @CRLF)
 					If $Debugsetlog = 1 Then SetLog(_PadStringCenter(" Display size= " & $sBSDisplaySize & " ", 50, "+"), $COLOR_Blue)
@@ -83,5 +79,3 @@ Func CheckDisplay()
 	Return $bDisplayDPI And $bDisplayFound
 
 EndFunc   ;==>CheckDisplay
-;
-

@@ -1,4 +1,3 @@
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: VillageSearch
 ; Description ...: Searches for a village that until meets conditions
@@ -41,7 +40,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	If $Restart = True Then Return ; exit func
 	For $x = 0 To $iModeCount - 1
 		If $x = $iCmbSearchMode Or $iCmbSearchMode = 2 Then
-
 			If Not ($Is_SearchLimit) Then SetLog(_PadStringCenter(" Searching For " & $sModeText[$x] & " ", 54, "="), $COLOR_BLUE)
 
 			Local $MeetGxEtext = "", $MeetGorEtext = "", $MeetGplusEtext = "", $MeetDEtext = "", $MeetTrophytext = "", $MeetTHtext = "", $MeetTHOtext = "", $MeetWeakBasetext = "", $EnabledAftertext = ""
@@ -113,7 +111,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	EndIf
 
 	If $Is_SearchLimit = True Then $Is_SearchLimit = False
-
 
 	While 1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;### Main Search Loop ###;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 		if $debugVillageSearchImages=1 Then DebugImageSave("villagesearch")
@@ -261,7 +258,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		; Return Home on Search limit
 		If SearchLimit($iSkipped + 1) Then Return True
 
-
 		Local $i = 0
 		While $i < 100
 			If _Sleep($iDelayVillageSearch2) Then Return
@@ -362,7 +358,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	EndIf
 
 	$Is_ClientSyncError = False
-
 EndFunc   ;==>VillageSearch
 
 Func IsSearchModeActive($pMode)
@@ -386,7 +381,7 @@ EndFunc   ;==>IsSearchModeActive
 	Else
 		Return False
 	EndIf
- EndFunc   ;==>IsWeakBase
+EndFunc   ;==>IsWeakBase
 
 Func SearchLimit($iSkipped)
 	If $iChkRestartSearchLimit = 1 And $iSkipped >= Number($iRestartSearchlimit) Then
