@@ -38,27 +38,13 @@ Func DropTrophy()
 						PrepareSearch()
 
 						If _Sleep($iDelayDropTrophy2) Then ExitLoop
-						$iCount = 0
-						;While getGoldVillageSearch(48, 69) = "" ; Loops until gold is readable
-						;	If _Sleep($iDelayDropTrophy1) Then ExitLoop (2)
-						;	$iCount += 1
-						;	If $iCount >= 35 Then ExitLoop (2) ; or Return
-						;WEnd
-						
-						$iAimGold[$DB] = $iMinGold[$DB]
-						$iAimElixir[$DB] = $iMinElixir[$DB]
-						$iAimGoldPlusElixir[$DB] = $iMinGoldPlusElixir[$DB]
-						$SearchCount = 0
 						GetResources()
-
-						Local $G = (Number($searchGold) >= Number($iAimGold[$DB]))
-						Local $E = (Number($searchElixir) >= Number($iAimElixir[$DB]))
-						Local $GPE = ((Number($searchElixir) + Number($searchGold)) >= Number($iAimGoldPlusElixir[$DB]))
-						If ($G = True And $E = True) Or $GPE = True Then
+						If CompareResources($DB) Then
 							SetLog("Found [G]: " & _NumberFormat($searchGold) & " [E]: " & _NumberFormat($searchElixir) & " [T]: " & _NumberFormat($searchTrophy), $COLOR_BLACK, "Lucida Console")
 							If checkDeadBase() Then
 								SetLog(_PadStringCenter(" Dead Base Found!! ", 50, "~"), $COLOR_GREEN)
-								PrepareAttack($DB)
+								$iMatchMode = $DB
+								PrepareAttack($iMatchMode)
 								Attack()
 								$FirstStart = True   ;reset barracks upon return when attacked a Dead Base with 70%~100% troops capacity
 								ReturnHome($TakeLootSnapShot)

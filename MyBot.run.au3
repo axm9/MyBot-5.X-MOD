@@ -141,12 +141,6 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot2) Then Return
 			checkMainScreen(False)
 			If $Restart = True Then ContinueLoop
-			;If $iChkUseCCBalanced = 1 then
-			;    ProfileReport()
-			;    If _Sleep($iDelayRunBot2) Then Return
-			;    checkMainScreen(False)
-			;    If $Restart = True Then ContinueLoop
-			;EndIf
 			If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 			If _Sleep($iDelayRunBot3) Then Return
 			VillageReport()
@@ -222,6 +216,11 @@ Func runBot() ;Bot that runs everything in order
 			UpgradeWall()
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
+			If Number($iTrophyCurrent) > Number($itxtMaxTrophy) Then
+				DropTrophy()
+			EndIf
+			If _Sleep($iDelayRunBot3) Then Return
+			If $Restart = True Then ContinueLoop
 			Idle()
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
@@ -243,9 +242,6 @@ Func runBot() ;Bot that runs everything in order
 		Else ;When error occours directly goes to attack
 			If $Is_SearchLimit = False Then
 				SetLog("Restarted after Out of Sync Error: Attack Now", $COLOR_RED)
-;				$iNbrOfOoS += 1
-;				UpdateStats()
-;				PushMsg("OutOfSync")
 			Else
 				If $debugsetlog = 1 Then Setlog("return from searchLimit, restart searches (" & $CurCamp & "/" & $TotalCamp &")",$COLOR_PURPLE)
 				;OPEN ARMY OVERVIEW WITH NEW BUTTON
@@ -272,11 +268,11 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot3) Then Return
 			checkMainScreen(True)
 			If $Restart = True Then ContinueLoop
-				If Number($iTrophyCurrent) > Number($itxtMaxTrophy) And $CommandStop = -1 Then
-					DropTrophy()
-				Else
-					AttackMain()
-				EndIf
+			If Number($iTrophyCurrent) > Number($itxtMaxTrophy) And $CommandStop = -1 Then
+				DropTrophy()
+			Else
+				AttackMain()
+			EndIf
 			If $OutOfGold = 1 Then
 				Setlog("Switching to Halt Attack, Stay Online/Collect mode ...", $COLOR_RED)
 				$ichkBotStop = 1 ; set halt attack variable

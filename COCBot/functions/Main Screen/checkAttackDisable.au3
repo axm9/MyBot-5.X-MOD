@@ -34,6 +34,7 @@ Func checkAttackDisable($iSource, $Result = "")
 					$ineedRearm = True
 					If _CheckPixel($aSurrenderButton, $bCapturePixel) Then ; village search requires end battle 1s, so check for surrender/endbattle button
 						ReturnHome(False, False) ;If End battle is available
+						Collect()
 					Else
 						CloseCoC()
 					EndIf
@@ -91,6 +92,7 @@ Func checkAttackDisable($iSource, $Result = "")
 			Setlog("Can not find Okay button to exit CoC, Forcefully Closing CoC", $COLOR_RED)
 			if $debugImageSave= 1 Then  DebugImageSave("CheckAttackDisableFailedButtonCheck_")
 			$ineedRearm = True
+			Collect()
 			CloseCoC()
 			ExitLoop
 		EndIf

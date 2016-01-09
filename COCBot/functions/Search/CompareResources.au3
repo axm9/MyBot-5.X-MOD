@@ -45,24 +45,10 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 			$THLO = 1
 	EndSwitch
 
-
 	$SearchTHLResult = 0
-	;   Local $YourTHNumHere
-	;   For $i = 0 To 4
-	;		If $YourTH = $THText[$i] Then $YourTHNumHere = $i
-	;	Next
-	;	if $YourTH < 7 then
-	;		$YourTHNumHere = 0
-	;	endif
 	If $THL > -1 And $THL <= $YourTH And $searchTH <> "-" Then $SearchTHLResult = 1
 
-
-
 	If $iChkMeetOne[$pMode] = 1 Then
-		;		If $iChkWeakBase[$pMode] = 1 Then
-		;			If $bIsWeakBase Then Return True
-		;		EndIf
-
 		If $iCmbMeetGE[$pMode] = 0 Then
 			If $G = True And $E = True Then Return True
 		EndIf

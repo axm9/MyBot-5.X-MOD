@@ -105,7 +105,7 @@ Func TestLoots($GoldStart = 0, $ElixirStart = 0)
 		Local $ElixirPerc = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
 		Setlog ("Gold loot % = " & $GoldPerc)
 		Setlog ("Elixir loot % " & $ElixirPerc)
-		If $CurCamp > $iMinTroopToAttackDB And ($GoldPerc < $ipercentTSSuccess Or $ElixirPerc < $ipercentTSSuccess) And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 		
+		If $CurCamp > $iMinTroopToAttackDB And ($GoldPerc < $ipercentTSSuccess Or $ElixirPerc < $ipercentTSSuccess) And ($GoldEnd > 100000 Or $ElixirEnd > 100000) Then 		
 			Setlog ("Loot is mostly in collectors! Change to DB attack.")
 			$iMatchMode = $DB
 		EndIf
