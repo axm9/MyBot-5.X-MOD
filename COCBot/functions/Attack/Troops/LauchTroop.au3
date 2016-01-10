@@ -60,13 +60,19 @@ Func LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 			$waveNb = $listInfoDeploy[$i][2]
 			$maxWaveNb = $listInfoDeploy[$i][3]
 			$slotsPerEdge = $listInfoDeploy[$i][4]
+			
 			If $debugSetlog =1 Then SetLog("**ListInfoDeploy row " & $i & ": USE "  &$troopKind & " SIDES " &  $nbSides & " WAVE " & $waveNb & " XWAVE " & $maxWaveNb & " SLOTXEDGE " & $slotsPerEdge, $COLOR_PURPLE)
+			
 			If (IsNumber($troopKind)) Then
 				For $j = 0 To UBound($atkTroops) - 1 ; identify the position of this kind of troop
 					If $atkTroops[$j][0] = $troopKind Then
 						$troop = $j
 						If $MilkAtt = 1 and $troopKind = $eGobl Then ;if gobs set max troops to $NbTrpMilk
-							$troopNb = $NbTrpMilk / $maxWaveNb
+							If $atkTroops[$j][1]> $NbTrpMilk Then
+								$troopNb = Ceiling($NbTrpMilk / $maxWaveNb)
+							Else
+								$troopNb = Ceiling($atkTroops[$j][1] / $maxWaveNb)
+							EndIf
 						Else
 							$troopNb = Ceiling($atkTroops[$j][1] / $maxWaveNb)
 						EndIf

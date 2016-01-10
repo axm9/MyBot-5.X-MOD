@@ -335,16 +335,15 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	If $OptBullyMode = 0 And $OptTrophyMode = 0 And $iChkMeetTH[$iMatchMode] = 0 And $iChkMeetTHO[$iMatchMode] = 0 And $chkATH = 1 Then
 		$searchTH = checkTownHallADV2()
 
-		 If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
-		   If _Sleep($iDelayVillageSearch5) Then Return
-		   SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
-		   $searchTH = checkTownhallADV2()
-		 EndIf
+		If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
+			If _Sleep($iDelayVillageSearch5) Then Return
+			SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
+			$searchTH = checkTownhallADV2()
+		EndIf
 
-
-		 If $searchTH = "-" Then ; retry with c# search, matching could not have been caused by heroes that partially hid the townhall
-		   If _Sleep($iDelayVillageSearch4) Then Return
-		   If $debugImageSave = 1 Then DebugImageSave("VillageSearch_NoTHFound2try_", False)
+		If $searchTH = "-" Then ; retry with c# search, matching could not have been caused by heroes that partially hid the townhall
+			If _Sleep($iDelayVillageSearch4) Then Return
+			If $debugImageSave = 1 Then DebugImageSave("VillageSearch_NoTHFound2try_", False)
 			THSearch()
 		EndIf
 

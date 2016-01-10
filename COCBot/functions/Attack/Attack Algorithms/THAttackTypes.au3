@@ -106,8 +106,8 @@ Func TestLoots($GoldStart = 0, $ElixirStart = 0)
 		Local $ElixirPerc = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
 		Setlog ("Gold loot % = " & $GoldPerc)
 		Setlog ("Elixir loot % " & $ElixirPerc)
-		If $CurCamp > $iMinTroopToAttackDB And ($GoldPerc < $ipercentTSSuccess Or $ElixirPerc < $ipercentTSSuccess) And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 		
-			Setlog ("Loot is mostly in collectors! Change to DB attack.")
+		If $GoldPerc < $ipercentTSSuccess Or $ElixirPerc < $ipercentTSSuccess Then
+			Setlog ("Loot is mostly in collectors!")
 			RaidCollectors()
 		EndIf
 	EndIf
@@ -117,6 +117,7 @@ Func RaidCollectors()
 	; temporarily store original settings
 	$tempMatchMode = $iMatchMode
 	$tempChkRedArea = $iChkRedArea[$DB]
+	$tempSmartDeploy = $iCmbSmartDeploy[$DB]
 	$tempChkAttackGold = $iChkSmartAttack[$DB][0]
 	$tempChkAttackElixir = $iChkSmartAttack[$DB][1]
 	$tempChkAttackDark = $iChkSmartAttack[$DB][2]
@@ -125,23 +126,32 @@ Func RaidCollectors()
 	; change settings to dead base attack deploying near collectors
 	$iMatchMode = $DB
 	$iChkRedArea[$DB] = 1
+	$iCmbSmartDeploy[$DB] = 0 ; Sides, then Troops
 	$iChkSmartAttack[$DB][0] = 1
 	$iChkSmartAttack[$DB][1] = 1
 	$iChkSmartAttack[$DB][2] = 1
-	$iChkDeploySettings[$DB] = 3
+	$iChkDeploySettings[$DB] = 3		
 	
+	$GoldEnd = getGoldVillageSearch(48, 69)
+	$ElixirEnd = getElixirVillageSearch(48, 69 + 29)	
 	; attack dead base
-	PrepareAttack($iMatchMode)
-	Attack()	
+	If $CurCamp > $iMinTroopToAttackDB And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 	
+		Setlog ("Attacking collectors!")
+		PrepareAttack($iMatchMode)
+		Attack()
+	EndIf
 	
 	; wait until there's loot change
 	While GoldElixirChangeEBO()
 		If _Sleep($iDelayReturnHome1) Then Return
 	WEnd
 	
+	DEDropSmartSpell()
+	
 	; reset original settings
 	$iMatchMode = $tempMatchMode
 	$iChkRedArea[$DB] = $tempChkRedArea
+	$iCmbSmartDeploy[$DB] = $tempSmartDeploy
 	$iChkSmartAttack[$DB][0] = $tempChkAttackGold
 	$iChkSmartAttack[$DB][1] = $tempChkAttackElixir
 	$iChkSmartAttack[$DB][2] = $tempChkAttackDark

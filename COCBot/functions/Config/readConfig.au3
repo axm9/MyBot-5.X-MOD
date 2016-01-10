@@ -112,6 +112,9 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iCmbTH[$DB] = IniRead($config, "search", "DBTHLevel", "0")
 		$iCmbWeakMortar[$DB] = IniRead($config, "search", "DBWeakMortar", "5")
 		$iCmbWeakWizTower[$DB] = IniRead($config, "search", "DBWeakWizTower", "4")
+		
+		$ichkDBLightSpell = IniRead($config, "search", "DBLightSpell", "0")
+		$itxtDBLightMinDark = IniRead($config, "search", "DBLightMinDark", "1000")
 
 		$iChkEnableAfter[$LB] = IniRead($config, "search", "ABEnableAfter", "0")
 		$iCmbMeetGE[$LB] = IniRead($config, "search", "ABMeetGE", "2")
@@ -142,9 +145,6 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$iChkRestartSearchLimit = IniRead($config, "search", "ChkRestartSearchLimit", "0")
 		$iRestartSearchlimit =  IniRead($config, "search", "RestartSearchLimit", "15")
-
-		$iDeadBase75percent =  IniRead($config, "search", "Enable75PercentDeadBase", "0")
-		$iDeadBase75percentStartLevel =  IniRead($config, "search", "Enable75PercentDeadBaseStartLevel", "6")
 
 		;Attack Basics Settings-------------------------------------------------------------------------
 		$iChkDeploySettings[$DB] = IniRead($config, "attack", "DBDeploy", "3")

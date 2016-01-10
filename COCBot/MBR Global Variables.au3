@@ -255,6 +255,14 @@ Global $iChkSearchReduction
 Global $ReduceCount, $ReduceGold, $ReduceElixir, $ReduceGoldPlusElixir, $ReduceDark, $ReduceTrophy ; Reducing values
 Global $iChkEnableAfter[$iModeCount], $iCmbMeetGE[$iModeCount], $iChkMeetDE[$iModeCount], $iChkMeetTrophy[$iModeCount], $iChkMeetTH[$iModeCount],$iChkMeetTHO[$iModeCount],  $iChkMeetOne[$iModeCount], $iCmbTH[$iModeCount], $iChkWeakBase[$iModeCount]
 Global $chkDBMeetTHO, $chkABMeetTHO, $chkATH
+
+; smart zap
+Global $ichkDBLightSpell = 0
+Global $itxtDBLightMinDark = 1000
+global $iTrainLightSpell = 0
+global $iLightSpellUsed = 0
+global $iDEFromZap = 0
+
 Global $THLocation
 Global $THx = 0, $THy = 0
 Global $DESLoc
@@ -815,5 +823,3 @@ Global $aLanguage[1][1] ;undimmed language array
 
 ;images
 Global $iDetectedImageType = 0
-Global $iDeadBase75percent = 0
-Global $iDeadBase75percentStartLevel = 0

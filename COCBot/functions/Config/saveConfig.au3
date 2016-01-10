@@ -125,6 +125,13 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "search", "DBTHLevel", _GUICtrlComboBox_GetCurSel($cmbDBTH))
 	IniWrite($config, "search", "DBWeakMortar", _GUICtrlComboBox_GetCurSel($cmbDBWeakMortar))
 	IniWrite($config, "search", "DBWeakWizTower", _GUICtrlComboBox_GetCurSel($cmbDBWeakWizTower))
+	
+	If GUICtrlRead($chkDBLightSpell) = $GUI_CHECKED Then
+		IniWrite($config, "search", "DBLightSpell", "1")
+	Else
+		IniWrite($config, "search", "DBLightSpell", "0")
+	EndIf
+	IniWrite($config, "search", "DBLightMinDark", GUICtrlRead($txtDBLightMinDark))
 
 	;any base
 	If GUICtrlRead($chkABEnableAfter) = $GUI_CHECKED Then
@@ -200,14 +207,6 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "search", "ChkRestartSearchLimit", 0)
 	EndIf
 	IniWrite($config, "search", "RestartSearchLimit", GUICtrlRead($TxtRestartSearchlimit))
-
-	If GUICtrlRead($chkenable75percent) = $GUI_CHECKED Then
-		IniWrite($config, "search", "Enable75PercentDeadBase", 1)
-	Else
-		IniWrite($config, "search", "Enable75PercentDeadBase", 0)
-	EndIf
-
-	IniWrite($config, "search", "Enable75PercentDeadBaseStartLevel", _GUICtrlComboBox_GetCurSel($cmbenable75percent))
 
 	;Attack Basic Settings-------------------------------------------------------------------------
 	IniWrite($config, "attack", "DBDeploy", _GUICtrlComboBox_GetCurSel($cmbDBDeploy))

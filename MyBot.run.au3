@@ -181,6 +181,11 @@ Func runBot() ;Bot that runs everything in order
 			checkMainScreen(False) ; required here due to many possible exits
 			If $Restart = True Then ContinueLoop
 			Train()
+			If _Sleep($iDelayRunBot3) Then Return
+			If $Restart = True Then ContinueLoop
+			If $iTrainLightSpell = 1 Then
+                CookDrillZapSpell() 
+            EndIf
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False)
 			If $Restart = True Then ContinueLoop
@@ -214,11 +219,6 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
 			UpgradeWall()
-			If _Sleep($iDelayRunBot3) Then Return
-			If $Restart = True Then ContinueLoop
-			If Number($iTrophyCurrent) > Number($itxtMaxTrophy) Then
-				DropTrophy()
-			EndIf
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
 			Idle()
@@ -290,7 +290,7 @@ EndFunc   ;==>runBot
 Func Idle() ;Sequence that runs until Full Army
 	Local $TimeIdle = 0 ;In Seconds
 	If $debugSetlog = 1 Then SetLog("Func Idle ", $COLOR_PURPLE)
-	If $iTrophyCurrent >= ($itxtMaxTrophy + 100) And $CommandStop = -1 Then DropTrophy()
+	If Number($iTrophyCurrent) >= Number($itxtMaxTrophy) And $CommandStop = -1 Then DropTrophy()
 	While $fullArmy = False
 		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 		If _Sleep($iDelayIdle1) Then Return

@@ -165,16 +165,24 @@ $tabSearch = GUICtrlCreateTabItem(GetTranslated(2,1, "Search"))
 			$txtTip = GetTranslated(2,45, "Just meet only ONE of the above conditions, then Attack.")
 			GUICtrlSetTip(-1, $txtTip)
 		$y += 21
-		$chkenable75percent = GUICtrlCreateCheckbox(GetTranslated(2,99, "Collectors of"), $x, $y, -1, -1)
-			$txtTip = GetTranslated(2,100, "Enable this option to search for a deadbase with 75% full collectors (default is 90%+ full)")
+		
+		$chkDBLightSpell = GUICtrlCreateCheckbox("Use", $x, $y, -1, -1)
+			$txtTip = "Check this to drop lightning spells on DE drills"
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetOnEvent(-1, "chkenable75percent")
-		$cmbenable75percent = GUICtrlCreateCombo("", $x + 80, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-			$txtTip = GetTranslated(2,101, "Set the Min. level of the elixir collectors to detect.")
+			GUICtrlSetOnEvent(-1, "chkDBLightSpell")	
+		$picDBLightSpell = GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x + 40, $y, 20, 20)	
+			GUICtrlSetTip(-1, $txtTip)	
+		$lblDBLightMinDark = GUICtrlCreateLabel("Min DE:", $x + 80, $y + 3, -1, -1)
+			$txtTip = "Input the min dark elixer you want to drill zap"
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, "Lvl 6|Lvl 7|Lvl 8|Lvl 9|Lvl10|Lvl11|Lvl12", "Lvl12")
+		$txtDBLightMinDark = GUICtrlCreateInput("1000", $x + 120, $y, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 4)
+			GUICtrlSetOnEvent(-1, "txtDBLightMinDark")
 			GUICtrlSetState(-1, $GUI_DISABLE)
-		$lblenable75percent = GUICtrlCreateLabel(GetTranslated(2,102, "at 75% is DB"), $x + 135,$y+4,-1,-1)
+		$picDBLightMinDark = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 160, $y + 1, 16, 16)
+			GUICtrlSetTip(-1, $txtTip)
+		$y += 21
 
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 

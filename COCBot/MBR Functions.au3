@@ -149,6 +149,9 @@
 #include "functions\Search\SearchTownHallloc.au3"
 #include "functions\Search\SnipeWhileTrain.au3"
 
+#include "functions\SmartZap\DEDrillSearch.au3"
+#include "functions\SmartZap\DEDropSmartSpell.au3"
+
 #include "functions\Village\_TrainMoveBtn.au3"
 #include "functions\Village\BoostBarracks.au3"
 #include "functions\Village\BotDetectFirstTime.au3"
@@ -157,6 +160,7 @@
 #include "functions\Village\CheckArmyCamp.au3"
 #include "functions\Village\CheckImageType.au3"
 #include "functions\Village\Collect.au3"
+#include "functions\Village\CookDrillZapSpell.au3"
 #include "functions\Village\DonateCC.au3"
 #include "functions\Village\DropTrophy.au3"
 #include "functions\Village\GetTownHallLevel.au3"

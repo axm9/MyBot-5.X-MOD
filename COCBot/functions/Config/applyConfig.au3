@@ -70,7 +70,8 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	Else
 		GUICtrlSetState($chkAlertSearch, $GUI_UNCHECKED)
 	EndIf
-
+	
+	; Dead base filters
 	If $iChkEnableAfter[$DB] = 1 Then
 		GUICtrlSetState($chkDBEnableAfter, $GUI_CHECKED)
 	Else
@@ -131,8 +132,17 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	_GUICtrlComboBox_SetCurSel($cmbDBTH, $iCmbTH[$DB])
 	$iMaxTH[$DB] = $THText[$iCmbTH[$DB]]
 	_GUICtrlComboBox_SetCurSel($cmbDBWeakMortar, $iCmbWeakMortar[$DB])
-	_GUICtrlComboBox_SetCurSel($cmbDBWeakWizTower, $iCmbWeakWizTower[$DB])
+	_GUICtrlComboBox_SetCurSel($cmbDBWeakWizTower, $iCmbWeakWizTower[$DB])	
+	
+	If $ichkDBLightSpell = 1 Then
+		GUICtrlSetState($chkDBLightSpell, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkDBLightSpell, $GUI_UNCHECKED)
+	EndIf
+	chkDBLightSpell()	
+	GUICtrlSetData($txtDBLightMinDark, $itxtDBLightMinDark)
 
+	; Live base filters
 	If $iChkEnableAfter[$LB] = 1 Then
 		GUICtrlSetState($chkABEnableAfter, $GUI_CHECKED)
 	Else
@@ -216,15 +226,6 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	EndIf
 	GUICtrlSetData($txtRestartSearchlimit, $iRestartSearchlimit)
 	ChkRestartSearchLimit()
-
-	If $iDeadBase75percent = 1 Then
-		GUICtrlSetState($chkenable75percent, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkenable75percent, $GUI_UNCHECKED)
-	EndIf
-
-	_GUICtrlComboBox_SetCurSel($cmbenable75percent, $iDeadBase75percentStartLevel)
-	chkenable75percent()
 
 	;Attack Settings-------------------------------------------------------------------------
 	_GUICtrlComboBox_SetCurSel($cmbDBDeploy, $iChkDeploySettings[$DB])

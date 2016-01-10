@@ -322,7 +322,7 @@ $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnElixir, $x - 15, $y - 4, 16, 16)
 GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
 $lblTotalElixirGain[$DB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
-$txtTip = GetTranslated(11,75, "The amount of Gold gained from Dead Bases attacked by the Bot.")
+$txtTip = GetTranslated(11,75, "The amount of Elixr gained from Dead Bases attacked by the Bot.")
 GUICtrlSetTip(-1, $txtTip)
 $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnDark, $x - 15, $y - 4, 16, 16)
@@ -334,7 +334,7 @@ $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnTrophy, $x - 15, $y - 4, 16, 16)
 GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
 $lblTotalTrophyGain[$DB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
-$txtTip = GetTranslated(11,76, "The amount of Elixir gained from Dead Bases attacked by the Bot.")
+$txtTip = GetTranslated(11,76, "The amount of Trophy gained from Dead Bases attacked by the Bot.")
 GUICtrlSetTip(-1, $txtTip)
 $y += 17
 $lblNbrOfDetectedMines[$DB] = GUICtrlCreateLabel("0", $x - 18, $y - 2, 18, 17, $SS_RIGHT)
@@ -432,7 +432,7 @@ $y = 405
 $grpStatsTS = GUICtrlCreateGroup(GetTranslated(11,90, "TH Snipe"), $x - 20, $y - 20, 111, 120)
 GUICtrlCreateLabel(GetTranslated(11,72, "Attacked") & ":", $x - 15, $y - 2, -1, 17)
 $lblAttacked[$TS] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
-$txtTip = "The No. of Dead Base that were attacked by the Bot."
+$txtTip = "The No. of bases that were sniped by the Bot."
 GUICtrlSetTip(-1, $txtTip)
 
 $y += 17

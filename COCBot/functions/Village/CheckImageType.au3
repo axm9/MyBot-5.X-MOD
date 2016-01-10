@@ -20,14 +20,14 @@ Func CheckImageType()
 
 	If _ColorCheck(_GetPixelColor($aImageTypeN1[0], $aImageTypeN1[1], True), Hex($aImageTypeN1[2], 6), $aImageTypeN1[3]) And _
 			_ColorCheck(_GetPixelColor($aImageTypeN2[0], $aImageTypeN2[1], True), Hex($aImageTypeN2[2], 6), $aImageTypeN2[3]) Then
-		$iDetectedImageType = 0; Normal Theme
+		$iDetectedImageType = 0 ; Normal Theme
 		Setlog("Normal Theme detected")
 	ElseIf _ColorCheck(_GetPixelColor($aImageTypeS1[0], $aImageTypeS1[1], True), Hex($aImageTypeS1[2], 6), $aImageTypeS1[3]) And _
 			_ColorCheck(_GetPixelColor($aImageTypeS2[0], $aImageTypeS2[1], True), Hex($aImageTypeS2[2], 6), $aImageTypeS2[3]) Then
-		$iDetectedImageType = 1;Snow Theme
+		$iDetectedImageType = 1 ; Snow Theme
 		Setlog("Snow Theme detected")
 	Else
-		$iDetectedImageType = 0; Default to Normal Theme
+		$iDetectedImageType = 0 ; Default to Normal Theme
 		Setlog("Default Theme detected")
 	EndIf
 

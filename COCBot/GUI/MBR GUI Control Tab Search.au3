@@ -42,7 +42,7 @@ Func cmbSearchMode()
 			For $i = $cmbABMeetGE To $chkABMeetOne
 				GUICtrlSetState($i, $GUI_DISABLE)
 			Next
-			For $i = $cmbDBMeetGE To $chkDBMeetOne
+			For $i = $cmbDBMeetGE To $txtDBLightMinDark
 				If $i = $cmbDBTH And GUICtrlRead($chkDBMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbDBWeakMortar Or $i = $cmbDBWeakWizTower) And GUICtrlRead($chkDBWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
@@ -57,7 +57,7 @@ Func cmbSearchMode()
 			For $i = $cmbDBMeetGE To $chkDBMeetOne
 				GUICtrlSetState($i, $GUI_DISABLE)
 			Next
-			For $i = $cmbABMeetGE To $chkABMeetOne
+			For $i = $cmbABMeetGE To $txtDBLightMinDark
 				If $i = $cmbABTH And GUICtrlRead($chkABMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
@@ -74,7 +74,7 @@ Func cmbSearchMode()
 				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
 			Next
-			For $i = $cmbDBMeetGE To $chkDBMeetOne
+			For $i = $cmbDBMeetGE To $txtDBLightMinDark
 				If $i = $cmbDBTH And GUICtrlRead($chkDBMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbDBWeakMortar Or $i = $cmbDBWeakWizTower) And GUICtrlRead($chkDBWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
@@ -218,6 +218,18 @@ Func chkABWeakBase()
 	EndIf
 EndFunc   ;==>chkABWeakBase
 
+Func chkDBLightSpell()
+	If GUICtrlRead($chkDBLightSpell) = $GUI_CHECKED Then
+		$ichkDBLightSpell = 1
+		$iTrainLightSpell = 1
+		GUICtrlSetState($txtDBLightMinDark, $GUI_ENABLE)
+	Else
+		$ichkDBLightSpell = 0
+		$iTrainLightSpell = 0
+		GUICtrlSetState($txtDBLightMinDark, $GUI_DISABLE)
+	EndIf
+EndFunc   ;==>chkDBLightSpell
+
 Func chkRestartSearchLimit()
 	If GUICtrlRead($ChkRestartSearchLimit) = $GUI_CHECKED Then
 		GUICtrlSetState($txtRestartSearchlimit, $GUI_ENABLE)
@@ -225,11 +237,3 @@ Func chkRestartSearchLimit()
 		GUICtrlSetState($txtRestartSearchlimit, $GUI_DISABLE)
 	EndIf
 EndFunc   ;==>chkRestartSearchLimit
-
-Func chkenable75percent()
-	If GUICtrlRead($chkenable75percent) = $GUI_CHECKED Then
-		GUICtrlSetState($cmbenable75percent, $GUI_ENABLE)
-	Else
-		GUICtrlSetState($cmbenable75percent, $GUI_DISABLE)
-	EndIf
-EndFunc   ;==>chkenable75percent

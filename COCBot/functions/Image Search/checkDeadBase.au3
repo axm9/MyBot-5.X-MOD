@@ -176,59 +176,7 @@ Func ZombieSearch2($limit = 0, $tolerancefix = 0)
 
 	_CaptureRegion(0, 0, $DEFAULT_WIDTH, $DEFAULT_HEIGHT, True)
 
-	;CHECK ELIXIR EXTRACTORS 75%
-	If $iDeadBase75percent = 1 Then
-		For $i = 1 To $max
-			For $t = $iDeadBase75percentStartLevel To $maxElixirLevel - 1
-				If Int(Execute("$ElixirImages" & $t & "_75percent" & "[0]")) >= $i Then
-					$count += 1
-					If $tolerancefix > 0 Then
-						$Tolerance = $tolerancefix
-					Else
-						$Tolerance = Number(StringMid(Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), StringInStr(Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), "T") + 1, StringInStr(Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), ".bmp") - StringInStr(Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), "T") - 1))
-					EndIf
-					ConsoleWrite("Examine image 75% n." & $i)
-					ConsoleWrite(" for ElixirImage " & $t & "_75percent")
-					ConsoleWrite(" - image name: " & Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"))
-					ConsoleWrite(" - tolerance: <" & StringMid(Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), StringInStr(Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), "T") + 1, StringInStr(Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), ".BMP") - StringInStr(Execute("$ElixirImages" & $t & "[" & $i & "]"), "T") - 1) & ">")
-					ConsoleWrite(" - tolerancecalc: " & $Tolerance)
-					ConsoleWrite(@CRLF)
-					$ElixirLocation = _ImageSearch(@ScriptDir & "\images\ELIXIR75PERCENT\" & $t + 6 & "\" & Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), 1, $ElixirLocationx, $ElixirLocationy, $Tolerance) ; Getting Elixir Location
-					ConsoleWrite("Imagesearch return: ")
-					ConsoleWrite("- ElixirLocation : " & $ElixirLocation)
-					ConsoleWrite("- ElixirLocationx : " & $ElixirLocationx)
-					ConsoleWrite("- TElixirLocationy : " & $ElixirLocationy)
-					ConsoleWrite(@CRLF)
-
-					If $ElixirLocation = 1 Then
-						;add in stats-----
-						Local $tempvect = Eval("ElixirImagesStat" & $t & "_75percent")
-						$tempvect[$i] += 1
-						Assign("ElixirImagesStat" & $t & "_75percent", $tempvect)
-						;------------------
-						If $debugBuildingPos = 1 Then
-							Setlog("#*# ZombieSearch2: ", $COLOR_TEAL)
-							Setlog("  - Position (" & $ElixirLocationx & "," & $ElixirLocationy & ")", $COLOR_TEAL)
-							Setlog("  - Elixir Collector 75% level " & $t + 6, $COLOR_TEAL)
-							Setlog("  - Image Match " & Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), $COLOR_TEAL)
-							Setlog("  - IsInsidediamond: " & isInsideDiamondXY($ElixirLocationx, $ElixirLocationy), $COLOR_TEAL)
-							SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
-							SetLog("  - Images checked: " & $count, $COLOR_TEAL)
-						EndIf
-						If isInsideDiamondXY($ElixirLocationx, $ElixirLocationy) = True Then
-							$ZombieFound = True
-							ExitLoop (2)
-						Else
-							ContinueLoop
-						EndIf
-					EndIf
-				EndIf
-			Next
-		Next
-	EndIf
-
-
-	; CHECK ELIXIR EXTRACTORS 100%
+	; CHECK ELIXIR EXTRACTORS
 	If $ZombieFound = False Then
 		For $i = 1 To $max
 			For $t = 0 To $maxElixirLevel - 1

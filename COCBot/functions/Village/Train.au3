@@ -1004,7 +1004,7 @@ Func Train()
 	ClickP($aAway, 2, $iDelayTrain5, "#0504"); Click away twice with 250ms delay
 	$FirstStart = False
 
-	;;;;;; Protect Army cost stats from being missed up by DC and other errors ;;;;;;;
+	;;;;;; Protect Army cost stats from being messed up by DC and other errors ;;;;;;;
 	If _Sleep($iDelayTrain4) Then Return
 	VillageReport(True, True)
 
