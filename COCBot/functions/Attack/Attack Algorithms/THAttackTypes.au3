@@ -24,6 +24,7 @@ Func AttackTHParseCSV($test=False)
 	Local $f , $line, $acommand, $command, $isTownHallDestroyed = false
 	Local $GoldStart = getGoldVillageSearch(48, 69)
 	Local $ElixirStart = getElixirVillageSearch(48, 69 + 29)
+	Local $DarkStart = getDarkElixirVillageSearch(48, 69 + 57)
  	If FileExists($dirTHSnipesAttacks & "\" &$scmbAttackTHType & ".csv") Then
 		$f = FileOpen($dirTHSnipesAttacks & "\" &$scmbAttackTHType & ".csv", 0)
 		; Read in lines of text until the EOF is reached
@@ -92,28 +93,46 @@ Func AttackTHParseCSV($test=False)
 		SetLog("Cannot found THSnipe attack file " & $dirTHSnipesAttacks & "\" &$scmbAttackTHType & ".csv" , $color_red)
 	EndIf
 
-	If $isTownHallDestroyed = True Then TestLoots($GoldStart, $ElixirStart)
+	If $isTownHallDestroyed = True Then TestLoots($GoldStart, $ElixirStart, $DarkStart)
 	While GoldElixirChangeEBO()
 		If _Sleep($iDelayReturnHome1) Then Return
 	WEnd
 EndFunc   ;==>waitMainScreen
 
-Func TestLoots($GoldStart = 0, $ElixirStart = 0)
+Func TestLoots($GoldStart = 0, $ElixirStart = 0, $DarkStart = 0)
 	If $ichkAttackIfDB = 1 Then
+		Local $raidCollector = False, $atkGold = 0, $atkElixir = 0, $atkDark = 0
 		Local $GoldEnd = getGoldVillageSearch(48, 69)
 		Local $ElixirEnd = getElixirVillageSearch(48, 69 + 29)
-		Local $GoldPerc = 100 * ($GoldStart - $GoldEnd) / $GoldStart
-		Local $ElixirPerc = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
-		Setlog ("Gold loot % = " & $GoldPerc)
-		Setlog ("Elixir loot % " & $ElixirPerc)
-		If $GoldPerc < $ipercentTSSuccess Or $ElixirPerc < $ipercentTSSuccess Then
-			Setlog ("Loot is mostly in collectors!")
-			RaidCollectors()
+		Local $DarkEnd = getDarkElixirVillageSearch(48, 69 + 57)		
+		Local $GoldPercent = 100 * ($GoldStart - $GoldEnd) / $GoldStart
+		Local $ElixirPercent = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
+		Local $DarkPercent = 100 * ($DarkStart - $DarkEnd) / $DarkStart
+		Setlog ("Gold loot % = " & $GoldPercent)
+		Setlog ("Elixir loot % " & $ElixirPercent)
+		Setlog ("Dark Elixir loot % " & $DarkPercent)
+		If $GoldPercent < $ipercentTSSuccess And $GoldEnd > 100000 Then 
+			$atkGold = 1
+			$raidCollector = True
+		EndIf
+		If $ElixirPercent < $ipercentTSSuccess And $ElixirEnd > 100000 Then 
+			$atkElixir = 1
+			$raidCollector = True
+		EndIf
+		If $DarkPercent < $ipercentTSSuccess And $DarkEnd > 1000 Then 
+			$atkDark = 1
+			$raidCollector = True
+		EndIf
+		
+		If ($raidCollector = True) Then
+			RaidCollectors($atkGold, $atkElixir, $atkDark)
 		EndIf
 	EndIf
 EndFunc   ;==>AttackTHParseCSV
 
-Func RaidCollectors()
+Func RaidCollectors($atkGold = 1, $atkElixir = 1, $atkDark = 1)
+	Setlog ("Loot is mostly in collectors!")
+	
 	; temporarily store original settings
 	$tempMatchMode = $iMatchMode
 	$tempChkRedArea = $iChkRedArea[$DB]
@@ -127,15 +146,15 @@ Func RaidCollectors()
 	$iMatchMode = $DB
 	$iChkRedArea[$DB] = 1
 	$iCmbSmartDeploy[$DB] = 0 ; Sides, then Troops
-	$iChkSmartAttack[$DB][0] = 1
-	$iChkSmartAttack[$DB][1] = 1
-	$iChkSmartAttack[$DB][2] = 1
-	$iChkDeploySettings[$DB] = 3		
+	$iChkSmartAttack[$DB][0] = $atkGold
+	$iChkSmartAttack[$DB][1] = $atkElixir
+	$iChkSmartAttack[$DB][2] = $atkDark
+	$iChkDeploySettings[$DB] = 3 ; attack all sides
 	
 	$GoldEnd = getGoldVillageSearch(48, 69)
 	$ElixirEnd = getElixirVillageSearch(48, 69 + 29)	
-	; attack dead base
-	If $CurCamp > $iMinTroopToAttackDB And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 	
+	; attack dead base if have enough troops
+	If $CurCamp > $iMinTroopToAttackDB Then 	
 		Setlog ("Attacking collectors!")
 		PrepareAttack($iMatchMode)
 		Attack()
