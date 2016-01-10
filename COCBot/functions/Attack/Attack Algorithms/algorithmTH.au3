@@ -162,8 +162,8 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 0 ;UL
 			For $num = 0 To $iAtEachSpot - 1
 				For $ii = $THi - 1 To $THi - 1 + ($iNbOfSpots - 1)
-					$aThx = 25 + $ii * 19
-					$aThy = 314 - $ii * 14
+                    $aThx = 62 + ($ii * 18)
+                    $aThy = 342 - ($ii * 13)
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 1, $aThx + 1, 1), Random($aThy - 1, $aThy + 1, 1), 1, 0, "#0019")
 					If _Sleep(Random(20, 40,1)) Then Return
@@ -172,8 +172,8 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 1 ;LL
 			For $num = 0 To $iAtEachSpot - 1
 				For $ii = $THi To $THi + ($iNbOfSpots - 1)
-					$aThx = 25 + $ii * 19
-					$aThy = 314 + $ii * 14
+                    $aThx = 59 + $ii * 18
+                    $aThy = 372 + $ii * 13
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 1, $aThx + 1, 1), Random($aThy - 1, $aThy + 1, 1), 1, 0, "#0020")
 					If _Sleep(Random(20, 40,1)) Then Return
@@ -182,8 +182,8 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 2 ;UR
 			For $num = 0 To $iAtEachSpot - 1
 				For $ii = $THi To $THi + ($iNbOfSpots - 1)
-					$aThx = 830 - $ii * 19
-					$aThy = 314 - $ii * 14
+                    $aThx = 801 - $ii * 18
+                    $aThy = 342 - $ii * 13
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 1, $aThx + 1, 1), Random($aThy - 1, $aThy + 1, 1), 1, 0, "#0021")
 					If _Sleep(Random(20, 40,1)) Then Return
@@ -192,8 +192,8 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 3 ;LR
 			For $num = 0 To $iAtEachSpot - 1
 				For $ii = $THi + 1 To $THi + 1 + ($iNbOfSpots - 1)
-					$aThx = 830 - $ii * 19
-					$aThy = 314 + $ii * 14
+                    $aThx = 802 - $ii * 18
+                    $aThy = 372 + $ii * 13
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 1, $aThx + 1, 1), Random($aThy - 1, $aThy + 1, 1), 1, 0, "#0022")
 					If _Sleep(Random(20, 40,1)) Then Return

@@ -101,7 +101,7 @@ EndFunc   ;==>waitMainScreen
 
 Func TestLoots($GoldStart = 0, $ElixirStart = 0, $DarkStart = 0)
 	If $ichkAttackIfDB = 1 Then
-		Local $raidCollector = False, $atkGold = 0, $atkElixir = 0, $atkDark = 0
+		Local $raidCollector = 0, $atkGold = 0, $atkElixir = 0, $atkDark = 0
 		Local $GoldEnd = getGoldVillageSearch(48, 69)
 		Local $ElixirEnd = getElixirVillageSearch(48, 69 + 29)
 		Local $DarkEnd = getDarkElixirVillageSearch(48, 69 + 57)		
@@ -113,18 +113,18 @@ Func TestLoots($GoldStart = 0, $ElixirStart = 0, $DarkStart = 0)
 		Setlog ("Dark Elixir loot % " & $DarkPercent)
 		If $GoldPercent < $ipercentTSSuccess And $GoldEnd > 100000 Then 
 			$atkGold = 1
-			$raidCollector = True
+			$raidCollector += 1
 		EndIf
 		If $ElixirPercent < $ipercentTSSuccess And $ElixirEnd > 100000 Then 
 			$atkElixir = 1
-			$raidCollector = True
+			$raidCollector += 1
 		EndIf
 		If $DarkPercent < $ipercentTSSuccess And $DarkEnd > 1000 Then 
 			$atkDark = 1
-			$raidCollector = True
+			$raidCollector += 1
 		EndIf
 		
-		If ($raidCollector = True) Then
+		If ($raidCollector > 1) Then
 			RaidCollectors($atkGold, $atkElixir, $atkDark)
 		EndIf
 	EndIf
@@ -144,11 +144,12 @@ Func RaidCollectors($atkGold = 1, $atkElixir = 1, $atkDark = 1)
 
 	; change settings to dead base attack deploying near collectors
 	$iMatchMode = $DB
-	$iChkRedArea[$DB] = 1
+	$iChkRedArea[$DB] = 1 ; smart attack
 	$iCmbSmartDeploy[$DB] = 0 ; Sides, then Troops
-	$iChkSmartAttack[$DB][0] = $atkGold
-	$iChkSmartAttack[$DB][1] = $atkElixir
-	$iChkSmartAttack[$DB][2] = $atkDark
+	; test smart attack without dropping near collectors
+	;$iChkSmartAttack[$DB][0] = $atkGold
+	;$iChkSmartAttack[$DB][1] = $atkElixir
+	;$iChkSmartAttack[$DB][2] = $atkDark
 	$iChkDeploySettings[$DB] = 3 ; attack all sides
 	
 	$GoldEnd = getGoldVillageSearch(48, 69)
