@@ -42,7 +42,7 @@ Func DropTrophy()
 						If $CurCamp > $iMinTroopToAttackDB And CompareResources($DB) And checkDeadBase() Then
 							SetLog("Dead Base Found!", $COLOR_GREEN, "Lucida Console")
 							$iMatchMode = $DB
-							RaidCollectors()
+							RaidCollectors($searchGold, $searchElixir)
 							$FirstStart = True   ;reset barracks upon return when attacked a Dead Base with 70%~100% troops capacity
 							ReturnHome($TakeLootSnapShot)
 							$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained

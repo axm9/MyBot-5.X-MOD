@@ -137,8 +137,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			If CheckZoomOut() = False Then Return
 		EndIf
 
+		$isDeadBase = False
 		Local $noMatchTxt = ""
-		Local $dbBase = False
 		Local $match[$iModeCount]
 		Local $isModeActive[$iModeCount]
 		For $i = 0 To $iModeCount - 1
@@ -176,11 +176,11 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 
 		If _Sleep($iDelayRespond) Then Return
 		If $match[$DB] Or $match[$LB] Then
-			$dbBase = checkDeadBase()
+			$isDeadBase = checkDeadBase()
 		EndIf
 
 		If _Sleep($iDelayRespond) Then Return
-		If $match[$DB] And $dbBase Then
+		If $match[$DB] And $isDeadBase Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      " & "Dead Base Found! ", $COLOR_GREEN, "Lucida Console", 7.5)
 			$logwrited = True
@@ -191,7 +191,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				_WinAPI_DeleteObject($hBitmap)
 			EndIf
 			ExitLoop
-		ElseIf $match[$LB] And Not $dbBase Then
+		ElseIf $match[$LB] And Not $isDeadBase Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      " & "Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
 			$logwrited = True
@@ -212,7 +212,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If _Sleep($iDelayRespond) Then Return
 		If $OptTrophyMode = 1 Then ;Enables Triple Mode Settings ;---compare resources
 			If SearchTownHallLoc() Then ; check this base if outside TH found to snipe
-				If Not $dbBase And CompareResourcesForSnipe() Then ; check if base is not dead and has enough resources to snipe		
+				If Not $isDeadBase And CompareResourcesForSnipe() Then ; check if base is not dead and has enough resources to snipe		
 					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 					SetLog("      " & "TH outside found & resource requirement met for snipe", $COLOR_GREEN, "Lucida Console", 7.5)	
 					$iMatchMode = $TS
@@ -225,14 +225,14 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		EndIf
 
 		If _Sleep($iDelayRespond) Then Return
-		If $match[$DB] And Not $dbBase Then
+		If $match[$DB] And Not $isDeadBase Then
 			$noMatchTxt &= ", Not a " & $sModeText[$DB]
 			If $debugDeadBaseImage = 1 Then
 				_CaptureRegion()
 				_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\SkippedZombies\" & $Date & " at " & $Time & ".png")
 				_WinAPI_DeleteObject($hBitmap)
 			EndIf
-		ElseIf $match[$LB] And $dbBase Then
+		ElseIf $match[$LB] And $isDeadBase Then
 			$noMatchTxt &= ", Not a " & $sModeText[$LB]
 		EndIf
 

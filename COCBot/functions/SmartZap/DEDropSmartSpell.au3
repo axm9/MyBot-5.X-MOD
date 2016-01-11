@@ -23,15 +23,6 @@ Func DEDropSmartSpell()
 
 	; Check match mode and if DE zap is checked, exit.
 	If $iCmbSearchMode = 1 Or $ichkDBLightSpell <> 1 Or $iMatchMode <> $DB Then Return False
-	
-	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
-	
-	; Get Dark Elixir value, if no DE value exists, exit.
-	$searchDark = checkDE()
-	If $searchDark = False Then Return False
-
-	; Get Drill locations and info
-	$aDarkDrills = DEDrillSearch()
 
 	$numSpells = 0
 	;Select Lightning Spell and update number of spells left
@@ -44,6 +35,15 @@ Func DEDropSmartSpell()
 	Next
 	If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: "&$numSpells, $COLOR_PURPLE)
 	If $numSpells = 0 Then Return False
+	
+	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
+	
+	; Get Dark Elixir value, if no DE value exists, exit.
+	$searchDark = checkDE()
+	If $searchDark = False Then Return False
+
+	; Get Drill locations and info
+	$aDarkDrills = DEDrillSearch()
 
 	; Offset the zap criteria for th8 and lower
 	Local $drillLvlOffset = 0

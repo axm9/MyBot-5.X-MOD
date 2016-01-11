@@ -153,7 +153,7 @@
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$txtMinTroopAttackDB = GUICtrlCreateInput("100", $x + 170, $y, 25, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetLimit(-1, 2)
+			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetState(-1, $GUI_DISABLE)
         
 		$y += 30

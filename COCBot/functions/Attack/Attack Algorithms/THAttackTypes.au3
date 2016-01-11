@@ -101,7 +101,7 @@ EndFunc   ;==>waitMainScreen
 
 Func TestLoots($GoldStart = 0, $ElixirStart = 0, $DarkStart = 0)
 	If $ichkAttackIfDB = 1 Then
-		Local $raidCollector = 0, $atkGold = 0, $atkElixir = 0, $atkDark = 0
+		Local $raidCollectors = 0, $atkGold = 0, $atkElixir = 0, $atkDark = 0
 		Local $GoldEnd = getGoldVillageSearch(48, 69)
 		Local $ElixirEnd = getElixirVillageSearch(48, 69 + 29)
 		Local $DarkEnd = getDarkElixirVillageSearch(48, 69 + 57)		
@@ -113,67 +113,92 @@ Func TestLoots($GoldStart = 0, $ElixirStart = 0, $DarkStart = 0)
 		Setlog ("Dark Elixir loot % " & $DarkPercent)
 		If $GoldPercent < $ipercentTSSuccess And $GoldEnd > 100000 Then 
 			$atkGold = 1
-			$raidCollector += 1
+			$raidCollectors += 1
 		EndIf
 		If $ElixirPercent < $ipercentTSSuccess And $ElixirEnd > 100000 Then 
 			$atkElixir = 1
-			$raidCollector += 1
+			$raidCollectors += 1
 		EndIf
 		If $DarkPercent < $ipercentTSSuccess And $DarkEnd > 1000 Then 
 			$atkDark = 1
-			$raidCollector += 1
+			$raidCollectors += 1
 		EndIf
 		
-		If ($raidCollector > 1) Then
-			RaidCollectors($atkGold, $atkElixir, $atkDark)
+		If ($raidCollectors <> 0) Then
+			RaidCollectors($GoldEnd, $ElixirEnd)
+			;RaidCollectorsSmart($atkGold, $atkElixir, $atkDark)
 		EndIf
 	EndIf
 EndFunc   ;==>AttackTHParseCSV
 
-Func RaidCollectors($atkGold = 1, $atkElixir = 1, $atkDark = 1)
+Func RaidCollectors($GoldEnd = 0, $ElixirEnd = 0)
+	Setlog ("Loot is mostly in collectors!")
+	
+	; temporarily store original setting
+	$tempMatchMode = $iMatchMode
+
+	; change settings to dead base attack deploying
+	$iMatchMode = $DB
+	
+	; attack dead base if have enough troops and there's Gold and Elixir to raid
+	If $CurCamp > $iMinTroopToAttackDB And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 	
+		Setlog ("Attacking collectors!")
+		PrepareAttack($iMatchMode)
+		Attack()
+		; wait until there's loot change
+		While GoldElixirChangeEBO()
+			If _Sleep($iDelayReturnHome1) Then Return
+		WEnd
+	EndIf	
+	
+	; Zap DE drill if needed
+	DEDropSmartSpell()
+	
+	; reset original setting
+	$iMatchMode = $tempMatchMode
+EndFunc   ;==>RaidCollectors
+
+Func RaidCollectorsSmart($atkGold = 1, $atkElixir = 1, $atkDark = 1)
 	Setlog ("Loot is mostly in collectors!")
 	
 	; temporarily store original settings
 	$tempMatchMode = $iMatchMode
+	$tempDeployMode = $iChkDeploySettings[$DB]
 	$tempChkRedArea = $iChkRedArea[$DB]
 	$tempSmartDeploy = $iCmbSmartDeploy[$DB]
 	$tempChkAttackGold = $iChkSmartAttack[$DB][0]
 	$tempChkAttackElixir = $iChkSmartAttack[$DB][1]
 	$tempChkAttackDark = $iChkSmartAttack[$DB][2]
-	$tempDeployMode = $iChkDeploySettings[$DB]
 
 	; change settings to dead base attack deploying near collectors
 	$iMatchMode = $DB
-	$iChkRedArea[$DB] = 1 ; smart attack
-	$iCmbSmartDeploy[$DB] = 0 ; Sides, then Troops
-	; test smart attack without dropping near collectors
-	;$iChkSmartAttack[$DB][0] = $atkGold
-	;$iChkSmartAttack[$DB][1] = $atkElixir
-	;$iChkSmartAttack[$DB][2] = $atkDark
 	$iChkDeploySettings[$DB] = 3 ; attack all sides
+	$iChkRedArea[$DB] = 1 ; smart attack
+	$iCmbSmartDeploy[$DB] = 1 ; Troops, then Sides
+	; smart attack dropping near collectors
+	$iChkSmartAttack[$DB][0] = $atkGold
+	$iChkSmartAttack[$DB][1] = $atkElixir 
+	$iChkSmartAttack[$DB][2] = $atkDark
 	
-	$GoldEnd = getGoldVillageSearch(48, 69)
-	$ElixirEnd = getElixirVillageSearch(48, 69 + 29)	
-	; attack dead base if have enough troops
-	If $CurCamp > $iMinTroopToAttackDB Then 	
+	; attack dead base if have enough troops and there's gold or elixir to raid
+	If $CurCamp > $iMinTroopToAttackDB And ($atkGold = 1 Or $atkElixir = 1) Then 	
 		Setlog ("Attacking collectors!")
 		PrepareAttack($iMatchMode)
 		Attack()
-	EndIf
-	
-	; wait until there's loot change
-	While GoldElixirChangeEBO()
-		If _Sleep($iDelayReturnHome1) Then Return
-	WEnd
+		; wait until there's loot change
+		While GoldElixirChangeEBO()
+			If _Sleep($iDelayReturnHome1) Then Return
+		WEnd
+	EndIf	
 	
 	DEDropSmartSpell()
 	
 	; reset original settings
 	$iMatchMode = $tempMatchMode
+	$iChkDeploySettings[$DB] = $tempDeployMode
 	$iChkRedArea[$DB] = $tempChkRedArea
 	$iCmbSmartDeploy[$DB] = $tempSmartDeploy
 	$iChkSmartAttack[$DB][0] = $tempChkAttackGold
 	$iChkSmartAttack[$DB][1] = $tempChkAttackElixir
 	$iChkSmartAttack[$DB][2] = $tempChkAttackDark
-	$iChkDeploySettings[$DB] = $tempDeployMode
-EndFunc   ;==>RaidCollectors
+EndFunc   ;==>RaidCollectorsSmart

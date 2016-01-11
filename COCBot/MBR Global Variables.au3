@@ -179,6 +179,7 @@ Global $iChkAttackNow, $iAttackNowDelay, $bBtnAttackNowPressed = False
 Global $PushToken = ""
 
 Global Enum $DB, $LB, $TS, $TB, $DT
+Global $isDeadBase = False
 Global $iModeCount = 2
 Global $iMatchMode ; 0 Dead / 1 Live / 2 TH Snipe / 3 TH Bully / 4 Drop Trophy
 Global $sModeText[5]
@@ -259,9 +260,9 @@ Global $chkDBMeetTHO, $chkABMeetTHO, $chkATH
 ; smart zap
 Global $ichkDBLightSpell = 0
 Global $itxtDBLightMinDark = 1000
-global $iTrainLightSpell = 0
-global $iLightSpellUsed = 0
-global $iDEFromZap = 0
+Global $iTrainLightSpell = 0
+Global $iLightSpellUsed = 0
+Global $iDEFromZap = 0
 
 Global $THLocation
 Global $THx = 0, $THy = 0

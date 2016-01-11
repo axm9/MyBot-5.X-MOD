@@ -326,6 +326,11 @@ Func Idle() ;Sequence that runs until Full Army
 		$iCollectCounter = $iCollectCounter + 1
 		If $CommandStop = -1 Then
 			Train()
+			If _Sleep($iDelayRunBot3) Then Return
+			If $Restart = True Then ContinueLoop
+			If $iTrainLightSpell = 1 Then
+                CookDrillZapSpell() 
+            EndIf
 			If $Restart = True Then ExitLoop
 			If _Sleep($iDelayIdle1) Then ExitLoop
 			checkMainScreen(False)
@@ -334,6 +339,11 @@ Func Idle() ;Sequence that runs until Full Army
 		If $CommandStop = 0 And $bTrainEnabled = True Then
 			If Not ($fullArmy) Then
 				Train()
+				If _Sleep($iDelayRunBot3) Then Return
+				If $Restart = True Then ContinueLoop
+				If $iTrainLightSpell = 1 Then
+					CookDrillZapSpell() 
+				EndIf
 				If $Restart = True Then ExitLoop
 				If _Sleep($iDelayIdle1) Then ExitLoop
 				checkMainScreen(False)
