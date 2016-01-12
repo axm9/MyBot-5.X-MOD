@@ -134,16 +134,18 @@ EndFunc   ;==>AttackTHParseCSV
 Func RaidCollectors($GoldEnd = 0, $ElixirEnd = 0)
 	Setlog ("Loot is mostly in collectors!")
 	
-	; temporarily store original setting
+	; temporarily store original settings
 	$tempMatchMode = $iMatchMode
+	$tempDeployMode = $iChkDeploySettings[$DB]
 
 	; change settings to dead base attack deploying
 	$iMatchMode = $DB
+	$iChkDeploySettings[$DB] = 4 ; FF deployment
 	
 	; attack dead base if have enough troops and there's Gold and Elixir to raid
 	If $CurCamp > $iMinTroopToAttackDB And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 	
 		Setlog ("Attacking collectors!")
-		PrepareAttack($iMatchMode)
+		PrepareAttack($DB)
 		Attack()
 		; wait until there's loot change
 		While GoldElixirChangeEBO()
@@ -154,8 +156,9 @@ Func RaidCollectors($GoldEnd = 0, $ElixirEnd = 0)
 	; Zap DE drill if needed
 	DEDropSmartSpell()
 	
-	; reset original setting
+	; reset original settings
 	$iMatchMode = $tempMatchMode
+	$iChkDeploySettings[$DB] = $tempDeployMode
 EndFunc   ;==>RaidCollectors
 
 Func RaidCollectorsSmart($atkGold = 1, $atkElixir = 1, $atkDark = 1)
@@ -183,7 +186,7 @@ Func RaidCollectorsSmart($atkGold = 1, $atkElixir = 1, $atkDark = 1)
 	; attack dead base if have enough troops and there's gold or elixir to raid
 	If $CurCamp > $iMinTroopToAttackDB And ($atkGold = 1 Or $atkElixir = 1) Then 	
 		Setlog ("Attacking collectors!")
-		PrepareAttack($iMatchMode)
+		PrepareAttack($DB)
 		Attack()
 		; wait until there's loot change
 		While GoldElixirChangeEBO()

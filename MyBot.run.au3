@@ -268,7 +268,7 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot3) Then Return
 			checkMainScreen(True)
 			If $Restart = True Then ContinueLoop
-			If Number($iTrophyCurrent) > Number($itxtMaxTrophy) And $CommandStop = -1 Then
+			If Number($iTrophyCurrent) > Number($itxtMaxTrophy) Then
 				DropTrophy()
 			Else
 				AttackMain()
@@ -290,7 +290,7 @@ EndFunc   ;==>runBot
 Func Idle() ;Sequence that runs until Full Army
 	Local $TimeIdle = 0 ;In Seconds
 	If $debugSetlog = 1 Then SetLog("Func Idle ", $COLOR_PURPLE)
-	If Number($iTrophyCurrent) >= Number($itxtMaxTrophy) And $CommandStop = -1 Then DropTrophy()
+	If Number($iTrophyCurrent) >= Number($itxtMaxTrophy) Then DropTrophy()
 	While $fullArmy = False
 		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 		If _Sleep($iDelayIdle1) Then Return

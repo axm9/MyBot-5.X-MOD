@@ -21,8 +21,8 @@ Func DEDropSmartSpell()
 	Local $searchDark, $aDarkDrills, $oldDark, $Spell, $numSpells, $testX, $testY, $tempTestX, $tempTestY, $strikeGain, $smartZapGain, $expectedDE
 	Local $error = 5 ;5pixel error margin for de drill search
 
-	; Check match mode and if DE zap is checked, exit.
-	If $iCmbSearchMode = 1 Or $ichkDBLightSpell <> 1 Or $iMatchMode <> $DB Then Return False
+	; Check if DE zap is enabled
+	If $ichkDBLightSpell <> 1 Or $iMatchMode <> $DB Then Return False
 
 	$numSpells = 0
 	;Select Lightning Spell and update number of spells left

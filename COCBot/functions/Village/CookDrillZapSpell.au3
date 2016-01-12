@@ -17,17 +17,10 @@ Func CookDrillZapSpell()
 	Local $Spellslot
 	Local $NextPos = _PixelSearch(749, 311 + $midOffsetY, 787, 322 + $midOffsetY, Hex(0xF08C40, 6), 5)
 	Local $PrevPos = _PixelSearch(70, 311 + $midOffsetY, 110, 322 + $midOffsetY, Hex(0xF08C40, 6), 5)
-	Local $tempCounter = 0
 	Local $tempElixir = ""
 	
 	; Read Resource Values For spell cost Stats
 	VillageReport(True, True)
-	$tempCounter = 0
-	While ($iElixirCurrent = "" Or ($iDarkCurrent = "" And $iDarkStart <> "")) And $tempCounter < 5
-		$tempCounter += 1
-		If _Sleep(100) Then Return
-		VillageReport(True, True)
-	WEnd
 	$tempElixir = $iElixirCurrent
 
 	If WaitforPixel(28, 505 + $bottomOffsetY, 30, 507 + $bottomOffsetY, Hex(0xE4A438, 6), 5, 10) Then
@@ -80,16 +73,9 @@ Func CookDrillZapSpell()
 	ClickP($aAway, 2, $iDelayTrain5, "#0291"); Click away twice with 250ms delay
 	$FirstStart = False
 	
+	; Read Resource Values For spell cost Stats
 	If _Sleep($iDelayTrain4) Then Return
 	VillageReport(True, True)
-
-	$tempCounter = 0
-	While ($iElixirCurrent = "" Or ($iDarkCurrent = "" And $iDarkStart <> "")) And $tempCounter < 30
-		$tempCounter += 1
-		If _Sleep(100) Then Return
-		VillageReport(True, True)
-	WEnd
-
 	If $tempElixir <> "" And $iElixirCurrent <> "" Then
 		$tempElixirSpent = ($tempElixir - $iElixirCurrent)
 		$iTrainCostElixir += $tempElixirSpent

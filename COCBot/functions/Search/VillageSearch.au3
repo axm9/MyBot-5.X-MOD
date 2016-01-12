@@ -208,6 +208,18 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				EndIf
 			EndIf
 		EndIf
+		
+		; check dead base for DE zap
+		If $ichkDBLightSpell = 1 Then
+			If checkDeadBase() And ($searchDark > $itxtDBLightMinDark Or (CompareResources($DB) And $CurCamp > $iMinTroopToAttackDB)) Then
+				SetLog("Dead Base Found!", $COLOR_GREEN, "Lucida Console")
+				RaidCollectors($searchGold, $searchElixir)
+				$FirstStart = True   ;reset barracks upon return when attacked a Dead Base with 70%~100% troops capacity
+				ReturnHome($TakeLootSnapShot)
+				$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
+				ExitLoop
+			EndIf
+		EndIf
 
 		If _Sleep($iDelayRespond) Then Return
 		If $OptTrophyMode = 1 Then ;Enables Triple Mode Settings ;---compare resources
