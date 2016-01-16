@@ -143,7 +143,7 @@ EndIf
 Global $config = $sProfilePath & "\" & $sCurrProfile & "\config.ini"
 Global $statChkTownHall = $sProfilePath & "\" & $sCurrProfile & "\stats_chktownhall.ini"
 Global $statChkDeadBase = $sProfilePath & "\" & $sCurrProfile & "\stats_chkelixir.ini"
-Global $statHourlyLoots = $sProfilePath & "\" & $sCurrProfile & "\Loots\" & "\stats_hourly_loots" &@YEAR & "-" & @MON & "-" & @MDAY & "_" & @HOUR & "." & @MIN & ".ini"
+Global $statHourlyLoots = $sProfilePath & "\" & $sCurrProfile & "\Loots\" & "\stats_hourly_loots.log"
 Global $building = $sProfilePath & "\" & $sCurrProfile & "\building.ini"
 Global $dirLogs = $sProfilePath & "\" & $sCurrProfile & "\Logs\"
 Global $dirLoots = $sProfilePath & "\" & $sCurrProfile & "\Loots\"
