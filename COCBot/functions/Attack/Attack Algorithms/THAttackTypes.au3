@@ -132,7 +132,8 @@ Func TestLoots($GoldStart = 0, $ElixirStart = 0, $DarkStart = 0)
 EndFunc   ;==>AttackTHParseCSV
 
 Func RaidCollectors($GoldEnd = 0, $ElixirEnd = 0)
-	Setlog ("Loot is mostly in collectors!")
+	Local $attackUsed = False
+	Setlog ("Loot is mostly in collectors!")	
 	
 	; temporarily store original settings
 	$tempMatchMode = $iMatchMode
@@ -144,9 +145,10 @@ Func RaidCollectors($GoldEnd = 0, $ElixirEnd = 0)
 	
 	; attack dead base if have enough troops and there's Gold and Elixir to raid
 	If $CurCamp > $iMinTroopToAttackDB And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 	
-		Setlog ("Attacking collectors!")
+		Setlog ("Attacking collectors!")		
 		PrepareAttack($DB)
 		Attack()
+		$attackUsed = True
 		; wait until there's loot change
 		While GoldElixirChangeEBO()
 			If _Sleep($iDelayReturnHome1) Then Return
@@ -154,11 +156,12 @@ Func RaidCollectors($GoldEnd = 0, $ElixirEnd = 0)
 	EndIf	
 	
 	; Zap DE drill if needed
-	DEDropSmartSpell()
+	If  DEDropSmartSpell() <> False Then $attackUsed = True
 	
 	; reset original settings
 	$iMatchMode = $tempMatchMode
 	$iChkDeploySettings[$DB] = $tempDeployMode
+	Return $attackUsed
 EndFunc   ;==>RaidCollectors
 
 Func RaidCollectorsSmart($atkGold = 1, $atkElixir = 1, $atkDark = 1)

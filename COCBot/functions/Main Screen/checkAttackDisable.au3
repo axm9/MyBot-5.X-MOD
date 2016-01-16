@@ -36,6 +36,7 @@ Func checkAttackDisable($iSource, $Result = "")
 						ReturnHome(False, False) ;If End battle is available
 						Collect()
 					Else
+						Collect()
 						CloseCoC()
 					EndIf
 				Else

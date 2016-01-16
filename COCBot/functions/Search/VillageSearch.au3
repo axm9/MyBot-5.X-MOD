@@ -208,18 +208,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				EndIf
 			EndIf
 		EndIf
-		
-		; check dead base for DE zap
-		If $ichkAttackIfDB = 1 Then
-			If ($searchDark > $itxtDBLightMinDark Or (CompareResources($DB) And $CurCamp > $iMinTroopToAttackDB)) And checkDeadBase() Then
-				SetLog("Dead Base Found!", $COLOR_GREEN, "Lucida Console")
-				RaidCollectors($searchGold, $searchElixir)
-				$FirstStart = True   ;reset barracks upon return when attacked a Dead Base with 70%~100% troops capacity
-				ReturnHome($TakeLootSnapShot)
-				$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
-				ExitLoop
-			EndIf
-		EndIf
 
 		If _Sleep($iDelayRespond) Then Return
 		If $OptTrophyMode = 1 Then ;Enables Triple Mode Settings ;---compare resources
@@ -232,6 +220,18 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 					ExitLoop	
 				Else					
 					$noMatchTxt &= ", TH outside found but resource requirement not met for snipe"
+				EndIf
+			EndIf
+		EndIf
+		
+		; check dead base for DE zap
+		If $ichkAttackIfDB = 1 Then
+			If ((CompareResources($DB) And $CurCamp > $iMinTroopToAttackDB) Or $searchDark > $itxtDBLightMinDark) And checkDeadBase() Then
+				SetLog("Dead Base Found!", $COLOR_GREEN, "Lucida Console")
+				If RaidCollectors($searchGold, $searchElixir) = True Then
+					ReturnHome($TakeLootSnapShot)
+					$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
+					ExitLoop
 				EndIf
 			EndIf
 		EndIf

@@ -29,19 +29,25 @@ Func DEDropSmartSpell()
 	For $i = 0 To UBound($atkTroops) - 1
 		If $atkTroops[$i][0] = $eLSpell Then
 			$Spell = $i
-			$numSpells = $atkTroops[$i][1]
+			$numSpells = $atkTroops[$i][1]			
+			If $numSpells = 0 Then Return False
 			SelectDropTroop($Spell)
 		EndIf
 	Next
 	If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: "&$numSpells, $COLOR_PURPLE)
-	If $numSpells = 0 Then Return False
 	
 	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
 	
 	; Get Dark Elixir value, if no DE value exists, exit.
 	$searchDark = checkDE()
 	If $searchDark = False Then Return False
+	If ($searchDark < Number($itxtDBLightMinDark)) Then
+		SetLog ("Dark Elixir is below minimum value")
+		Return False
+	EndIf
 
+	$iZapVillageFound += 1
+	
 	; Get Drill locations and info
 	$aDarkDrills = DEDrillSearch()
 
@@ -77,7 +83,7 @@ Func DEDropSmartSpell()
 
 	While $numSpells > 0 And $aDarkDrills[0][3] <> -1 And $spellAdjust <> -1
 		If ($searchDark < Number($itxtDBLightMinDark) - $smartZapGain) Then
-			SetLog ("Dark Elixir is below minimum value")
+			SetLog ("Remaining Dark Elixir is below minimum value")
         Return
 		EndIf
 

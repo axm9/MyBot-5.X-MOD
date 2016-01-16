@@ -302,7 +302,6 @@ Func UpdateStats()
 	Local $iAttackedCount = 0
 
 	For $i = 0 To $iModeCount + 1
-
 		If $iOldAttackedVillageCount[$i] <> $iAttackedVillageCount[$i] Then
 			GUICtrlSetData($lblAttacked[$i], _NumberFormat($iAttackedVillageCount[$i], True))
 			$iOldAttackedVillageCount[$i] = $iAttackedVillageCount[$i]
@@ -328,8 +327,16 @@ Func UpdateStats()
 			GUICtrlSetData($lblTotalTrophyGain[$i], _NumberFormat($iTotalTrophyGain[$i], True))
 			$iOldTotalTrophyGain[$i] = $iTotalTrophyGain[$i]
 		EndIf
-
 	Next
+	
+	GUICtrlSetData($lblZapFound, _NumberFormat($iZapVillageFound, True))
+	GUICtrlSetData($lblZapUsed, _NumberFormat($iLightSpellUsed, True))
+	GUICtrlSetData($lblZapDEGain, _NumberFormat($iDEFromZap, True))
+	If $iLightSpellUsed <> 0 Then
+		GUICtrlSetData($lblZapDEPerLightning, _NumberFormat(Round($iDEFromZap / $iLightSpellUsed), True))
+	Else
+		GUICtrlSetData($lblZapDEPerLightning, 0)
+	EndIf
 
 	If $iOldAttackedCount <> $iAttackedCount Then
 		GUICtrlSetData($lblresultvillagesattacked, _NumberFormat($iAttackedCount, True))

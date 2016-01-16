@@ -41,11 +41,11 @@ Func DropTrophy()
 						GetResources()
 						If checkDeadBase() And ($searchDark > $itxtDBLightMinDark Or CompareResources($DB)) Then
 							SetLog("Dead Base Found!", $COLOR_GREEN, "Lucida Console")
-							RaidCollectors($searchGold, $searchElixir)
-							$FirstStart = True   ;reset barracks upon return when attacked a Dead Base with 70%~100% troops capacity
-							ReturnHome($TakeLootSnapShot)
-							$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
-							ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
+							If RaidCollectors($searchGold, $searchElixir) = True Then
+								ReturnHome($TakeLootSnapShot)
+								$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
+								ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
+							EndIf
 						Else
 							SetLog("Not a dead base", $COLOR_BLACK, "Lucida Console")
 							PrepareAttack($DT)
@@ -143,7 +143,7 @@ Func DropTrophy()
 					EndIf
 				WEnd
 			Else
-				Setlog("Drop Trophies: Army is < 70% capacity")
+				Setlog("Drop Trophies: Army is < 30% capacity")
 				Setlog("You have selected the option to attack dead bases while dropping trophies")
 			EndIf
 

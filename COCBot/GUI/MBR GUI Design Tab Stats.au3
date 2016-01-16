@@ -311,7 +311,6 @@ GUICtrlCreateLabel(GetTranslated(11,72, "Attacked") & ":", $x - 15, $y - 2, -1, 
 $lblAttacked[$DB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
 $txtTip = GetTranslated(11,73, "The No. of Dead Base that were attacked by the Bot.")
 GUICtrlSetTip(-1, $txtTip)
-
 $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnGold, $x - 15, $y - 4, 16, 16)
 GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
@@ -352,7 +351,6 @@ GUICtrlCreateLabel(GetTranslated(11,72, "Attacked") & ":", $x - 15, $y - 2, -1, 
 $lblAttacked[$LB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
 $txtTip = GetTranslated(11,79, "The No. of Live Base that were attacked by the Bot.")
 GUICtrlSetTip(-1, $txtTip)
-
 $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnGold, $x - 15, $y - 4, 16, 16)
 GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
@@ -388,43 +386,32 @@ GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 $x += 108 + 5
 $y = 405
-$grpStatsTB = GUICtrlCreateGroup(GetTranslated(11,84, "TH Bully"), $x - 20, $y - 20, 111, 120)
-GUICtrlCreateLabel(GetTranslated(11,72, "Attacked") & ":", $x - 15, $y - 2, -1, 17)
-$lblAttacked[$TB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
-$txtTip = GetTranslated(11,85, "The No. of TH Bully bases that were attacked by the Bot.")
-GUICtrlSetTip(-1, $txtTip)
-
-$y += 17
-GUICtrlCreateIcon($pIconLib, $eIcnGold, $x - 15, $y - 4, 16, 16)
-GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
-$lblTotalGoldGain[$TB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
-$txtTip = GetTranslated(11,86, "The amount of Gold gained from TH Bully bases attacked by the Bot.")
+$grpStatsTB = GUICtrlCreateGroup(GetTranslated(11,84, "DE Zap"), $x - 20, $y - 20, 111, 120)
+GUICtrlCreateLabel("found:", $x - 15, $y - 2, -1, 17)
+$lblZapFound = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
+$txtTip = GetTranslated(11,85, "The No. of bases found that has enough DE drills to Zap")
 GUICtrlSetTip(-1, $txtTip)
 $y += 17
-GUICtrlCreateIcon($pIconLib, $eIcnElixir, $x - 15, $y - 4, 16, 16)
-GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
-$lblTotalElixirGain[$TB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
-$txtTip = GetTranslated(11,87, "The amount of Elixir gained from TH Bully bases attacked by the Bot.")
+GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x - 15, $y - 4, 15, 15)
+GUICtrlCreateLabel(GetTranslated(11,86, "used") & ":", $x + 3, $y - 2, -1, 17)
+$lblZapUsed = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
+$txtTip = GetTranslated(11,87, "The N0. of Lightning spells used for DE zapping.")
 GUICtrlSetTip(-1, $txtTip)
 $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnDark, $x - 15, $y - 4, 16, 16)
 GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
-$lblTotalDElixirGain[$TB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
-$txtTip = GetTranslated(11,88, "The amount of Dark Elixir gained from TH Bully bases attacked by the Bot.")
+$lblZapDEGain = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
+$txtTip = GetTranslated(11,88, "The amount of Dark Elixir gained from DE zapping.")
 GUICtrlSetTip(-1, $txtTip)
 $y += 17
-GUICtrlCreateIcon($pIconLib, $eIcnTrophy, $x - 15, $y - 4, 16, 16)
-GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
-$lblTotalTrophyGain[$TB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
-$txtTip = GetTranslated(11,89, "The amount of Trophy gained from TH Bully bases attacked by the Bot.")
+GUICtrlCreateIcon($pIconLib, $eIcnDark, $x - 15, $y - 4, 16, 16)
+GUICtrlCreateLabel("/", $x + 1, $y - 2, -1, 17)
+GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x + 9, $y - 4, 15, 15)
+GUICtrlCreateLabel(":", $x + 26, $y - 2, -1, 17)
+$lblZapDEPerLightning = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
+$txtTip = GetTranslated(11,89, "The amount of Dark Elixir gained per Lightning spell used.")
 GUICtrlSetTip(-1, $txtTip)
 $y += 17
-$lblNbrOfDetectedMines[$TB] = GUICtrlCreateLabel("0", $x - 18, $y - 2, 18, 17, $SS_RIGHT)
-GUICtrlCreateIcon($pIconLib, $eIcnMine, $x + 1, $y - 4, 16, 16)
-$lblNbrOfDetectedCollectors[$TB] = GUICtrlCreateLabel("0", $x + 18, $y - 2, 18, 17, $SS_RIGHT)
-GUICtrlCreateIcon($pIconLib, $eIcnCollector, $x + 37, $y - 4, 16, 16)
-$lblNbrOfDetectedDrills[$TB] = GUICtrlCreateLabel("0", $x + 54, $y - 2, 18, 17, $SS_RIGHT)
-GUICtrlCreateIcon($pIconLib, $eIcnDrill, $x + 73, $y - 4, 16, 16)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 $x += 108 + 5
@@ -434,7 +421,6 @@ GUICtrlCreateLabel(GetTranslated(11,72, "Attacked") & ":", $x - 15, $y - 2, -1, 
 $lblAttacked[$TS] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
 $txtTip = "The No. of bases that were sniped by the Bot."
 GUICtrlSetTip(-1, $txtTip)
-
 $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnGold, $x - 15, $y - 4, 16, 16)
 GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)

@@ -141,9 +141,9 @@ If $CmdLine[0] > 1 Then
 EndIf
 
 Global $config = $sProfilePath & "\" & $sCurrProfile & "\config.ini"
-Global $statChkTownHall = $sProfilePath & "\" & $sCurrProfile & "\stats_chktownhall.INI"
-Global $statChkDeadBase = $sProfilePath & "\" & $sCurrProfile & "\stats_chkelixir.INI"
-Global $statChkDeadBase75percent = $sProfilePath & "\" & $sCurrProfile & "\stats_chkelixir75percent.INI"
+Global $statChkTownHall = $sProfilePath & "\" & $sCurrProfile & "\stats_chktownhall.ini"
+Global $statChkDeadBase = $sProfilePath & "\" & $sCurrProfile & "\stats_chkelixir.ini"
+Global $statHourlyLoots = $sProfilePath & "\" & $sCurrProfile & "\Loots\" & "\stats_hourly_loots" &@YEAR & "-" & @MON & "-" & @MDAY & "_" & @HOUR & "." & @MIN & ".ini"
 Global $building = $sProfilePath & "\" & $sCurrProfile & "\building.ini"
 Global $dirLogs = $sProfilePath & "\" & $sCurrProfile & "\Logs\"
 Global $dirLoots = $sProfilePath & "\" & $sCurrProfile & "\Loots\"
@@ -227,6 +227,7 @@ Global $BSrpos[2] ; Inside Android window positions relative to the window, [x,y
 Global $iFreeBuilderCount, $iTotalBuilderCount, $iGemAmount ; builder and gem amounts
 Global $iGoldStart, $iElixirStart, $iDarkStart, $iTrophyStart ; stats at the start
 Global $iGoldTotal, $iElixirTotal, $iDarkTotal, $iTrophyTotal ; total stats
+Global $iLootGain[3][24] = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]] ; hourly raided loot stats G/E/DE
 Global $iGoldCurrent, $iElixirCurrent, $iDarkCurrent, $iTrophyCurrent ; current stats
 Global $iGoldLast, $iElixirLast, $iDarkLast, $iTrophyLast ; loot and trophy gain from last raid
 Global $iGoldLastBonus, $iElixirLastBonus, $iDarkLastBonus ; bonus loot from last raid
@@ -242,6 +243,7 @@ Global $iAttackedVillageCount[$iModeCount + 2] ; number of attack villages for D
 Global $iTotalGoldGain[$iModeCount + 2], $iTotalElixirGain[$iModeCount + 2], $iTotalDarkGain[$iModeCount + 2], $iTotalTrophyGain[$iModeCount + 2] ; total resource gains for DB, LB, TB, TS
 Global $iNbrOfDetectedMines[$iModeCount + 2], $iNbrOfDetectedCollectors[$iModeCount + 2], $iNbrOfDetectedDrills[$iModeCount + 2] ; number of mines, collectors, drills detected for DB, LB, TB
 Global $lblAttacked[$iModeCount + 2], $lblTotalGoldGain[$iModeCount + 2], $lblTotalElixirGain[$iModeCount + 2], $lblTotalDElixirGain[$iModeCount + 2], $lblTotalTrophyGain[$iModeCount + 2]
+Global $lblZapFound, $lblZapUsed, $lblZapDEGain, $lblZapDEPerLightning
 Global $lblNbrOfDetectedMines[$iModeCount + 2], $lblNbrOfDetectedCollectors[$iModeCount + 2], $lblNbrOfDetectedDrills[$iModeCount + 2]
 
 ;Search Settings
@@ -261,6 +263,7 @@ Global $chkDBMeetTHO, $chkABMeetTHO, $chkATH
 Global $ichkDBLightSpell = 0
 Global $itxtDBLightMinDark = 1000
 Global $iTrainLightSpell = 0
+Global $iZapVillageFound = 0
 Global $iLightSpellUsed = 0
 Global $iDEFromZap = 0
 

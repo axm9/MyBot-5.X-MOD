@@ -232,6 +232,7 @@ Func btnStop()
 			$bSearchMode = False
 		EndIf
 		SetLog(_PadStringCenter(" Bot Stop ", 50, "="), $COLOR_ORANGE)
+		SaveStatHourlyLoots()
 	EndIf
 EndFunc   ;==>btnStop
 

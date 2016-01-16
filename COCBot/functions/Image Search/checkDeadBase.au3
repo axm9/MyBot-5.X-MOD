@@ -246,9 +246,6 @@ Func ZombieSearch2($limit = 0, $tolerancefix = 0)
 
 		Return True
 	EndIf
-
-
-
 EndFunc   ;==>ZombieSearch2
 
 Func SaveStatChkDeadBase()
@@ -260,15 +257,5 @@ Func SaveStatChkDeadBase()
 			Next
 		Next
 	EndIf
-	FileClose($statChkDeadBase75percent)
-	FileOpen($statChkDeadBase75percent, $FO_UTF16_LE + $FO_OVERWRITE)
-	If FileExists($statChkDeadBase75percent) Then
-		For $t = 0 To $maxElixirLevel
-			For $i = 1 To UBound(Eval("ElixirImages" & $t & "_75percent")) - 1
-				IniWrite($statChkDeadBase75percent, $t, Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), Execute("$ElixirImagesStat" & $t & "_75percent" & "[" & $i & "]"))
-			Next
-		Next
-	EndIf
-	FileClose($statChkDeadBase75percent)
-
+	FileClose($statChkDeadBase)
 EndFunc   ;==>SaveStatChkDeadBase

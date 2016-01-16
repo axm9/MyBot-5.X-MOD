@@ -131,7 +131,7 @@ Local $x = 30, $y = 265
 			$txtTip = GetTranslated(7,51, "Use Heroes to drop Trophies if Heroes are available.")
 			GUICtrlSetTip(-1, $txtTip)
 		$chkTrophyAtkDead = GUICtrlCreateCheckbox(GetTranslated(7,52, "Atk Dead Bases"), $x + 100, $y + 20, -1, -1)
-			$txtTip = GetTranslated(7,53, "Attack a Deadbase found on the first search while dropping Trophies.")
+			$txtTip = GetTranslated(7,53, "Attack a Deadbase found on search while dropping Trophies.")
 			GUICtrlSetTip(-1, $txtTip)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 

@@ -15,7 +15,7 @@
 
 Func saveConfig() ;Saves the controls settings to the config
 	;General Settings--------------------------------------------------------------------------
-	If $ichkExtraAlphabets = 1 Then	 FileOpen($config, $FO_UTF16_LE + $FO_OVERWRITE)
+	If $ichkExtraAlphabets = 1 Then	FileOpen($config, $FO_UTF16_LE + $FO_OVERWRITE)
 
 	Local $frmBotPos = WinGetPos($sBotTitle)
 

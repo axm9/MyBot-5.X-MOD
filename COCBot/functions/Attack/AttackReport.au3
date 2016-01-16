@@ -179,12 +179,15 @@ Func AttackReport()
 	If $FirstAttack = 0 Then $FirstAttack = 1
 	$iGoldTotal += $iGoldLast + $iGoldLastBonus
 	$iTotalGoldGain[$iMatchMode] += $iGoldLast + $iGoldLastBonus
+	$iLootGain[0][Int(@HOUR)] += $iGoldLast + $iGoldLastBonus
 	$iElixirTotal += $iElixirLast + $iElixirLastBonus
 	$iTotalElixirGain[$iMatchMode] += $iElixirLast + $iElixirLastBonus
+	$iLootGain[1][Int(@HOUR)] += $iElixirLast + $iElixirLastBonus
 	If $iDarkStart <> "" Then
 		$iDarkTotal += $iDarkLast + $iDarkLastBonus
 		$iTotalDarkGain[$iMatchMode] += $iDarkLast + $iDarkLastBonus
-	EndIf
+		$iLootGain[2][Int(@HOUR)] += $iDarkLast + $iDarkLastBonus
+	EndIf	
 	$iTrophyTotal += $iTrophyLast
 	$iTotalTrophyGain[$iMatchMode] += $iTrophyLast
 	If $iMatchMode = $TS Then
@@ -196,5 +199,23 @@ Func AttackReport()
 	EndIf
 	$iAttackedVillageCount[$iMatchMode] += 1
 	UpdateStats()
-
 EndFunc   ;==>AttackReport
+
+Func SaveStatHourlyLoots()
+	FileOpen($statHourlyLoots, $FO_UTF16_LE + $FO_OVERWRITE)	
+	If FileExists($statHourlyLoots) Then
+		; gold stat
+		For $i = 0 To 23
+			IniWrite($statHourlyLoots, "gold", $i, $iLootGain[0][$i])
+		Next
+		; elixir stat
+		For $i = 0 To 23
+			IniWrite($statHourlyLoots, "elixit", $i, $iLootGain[1][$i])
+		Next
+		; dark stat
+		For $i = 0 To 23
+			IniWrite($statHourlyLoots, "dark", $i, $iLootGain[2][$i])
+		Next
+	EndIf
+	FileClose($statHourlyLoots)
+EndFunc   ;==>SaveStatChkDeadBase
