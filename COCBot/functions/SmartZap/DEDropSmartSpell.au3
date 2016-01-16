@@ -76,7 +76,7 @@ Func DEDropSmartSpell()
 	If $debugsetlog = 1 Then SetLog("Levels of drills: " & $aDarkDrills[0][3] & " " & $aDarkDrills[1][3] & " " & $aDarkDrills[2][3] & " " & $aDarkDrills[3][3], $COLOR_PURPLE)
 
 	While $numSpells > 0 And $aDarkDrills[0][3] <> -1 And $spellAdjust <> -1
-		If ($searchDark < Number($itxtDBLightMinDark)) Then
+		If ($searchDark < Number($itxtDBLightMinDark) - $iDEFromZap) Then
 			SetLog ("Dark Elixir is below minimum value")
         Return
 		EndIf
