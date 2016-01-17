@@ -387,7 +387,7 @@ GUICtrlCreateGroup("", -99, -99, 1, 1)
 $x += 108 + 5
 $y = 405
 $grpStatsTB = GUICtrlCreateGroup(GetTranslated(11,84, "DE Zap"), $x - 20, $y - 20, 111, 120)
-GUICtrlCreateLabel("found:", $x - 15, $y - 2, -1, 17)
+GUICtrlCreateLabel("Found:", $x - 15, $y - 2, -1, 17)
 $lblZapFound = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
 $txtTip = GetTranslated(11,85, "The No. of bases found that has enough DE drills to Zap")
 GUICtrlSetTip(-1, $txtTip)

@@ -36,7 +36,6 @@ Func checkAttackDisable($iSource, $Result = "")
 						ReturnHome(False, False) ;If End battle is available
 						Collect()
 					Else
-						Collect()
 						CloseCoC()
 					EndIf
 				Else
@@ -91,7 +90,6 @@ Func checkAttackDisable($iSource, $Result = "")
 			Setlog("Can not find Okay button to exit CoC, Forcefully Closing CoC", $COLOR_RED)
 			if $debugImageSave= 1 Then  DebugImageSave("CheckAttackDisableFailedButtonCheck_")
 			$ineedRearm = True
-			Collect()
 			CloseCoC()
 			ExitLoop
 		EndIf

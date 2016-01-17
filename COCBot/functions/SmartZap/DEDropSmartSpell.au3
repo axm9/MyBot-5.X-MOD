@@ -84,7 +84,7 @@ Func DEDropSmartSpell()
 	While $numSpells > 0 And $aDarkDrills[0][3] <> -1 And $spellAdjust <> -1
 		If ($searchDark < Number($itxtDBLightMinDark) - $smartZapGain) Then
 			SetLog ("Remaining Dark Elixir is below minimum value")
-        Return
+			Return True
 		EndIf
 
 		CheckHeroesHealth()
@@ -178,8 +178,8 @@ Func DEDropSmartSpell()
 		; Sort array by the assumed capacity available, and if all drills removed from array, then exit while loop
 		_ArraySort($aDarkDrills, 1, 0, 0, 3)
 		If $debugsetlog = 1 Then SetLog("DE Left in Collectors: " & $aDarkDrills[0][3]&" "& $aDarkDrills[1][3]&" "& $aDarkDrills[2][3]&" "& $aDarkDrills[3][3], $COLOR_PURPLE)
-
 	WEnd
+	Return True
 EndFunc
 
 ; Checks the value of DE on opponents base. Returns value if there is DE, otherwise returns false.

@@ -199,6 +199,7 @@ Func AttackReport()
 	EndIf
 	$iAttackedVillageCount[$iMatchMode] += 1
 	UpdateStats()
+	SaveStatHourlyLoots()
 EndFunc   ;==>AttackReport
 
 Func SaveStatHourlyLoots()

@@ -156,7 +156,7 @@ Func RaidCollectors($GoldEnd = 0, $ElixirEnd = 0)
 	EndIf	
 	
 	; Zap DE drill if needed
-	If  DEDropSmartSpell() <> False Then $attackUsed = True
+	If DEDropSmartSpell() <> False Then $attackUsed = True
 	
 	; reset original settings
 	$iMatchMode = $tempMatchMode

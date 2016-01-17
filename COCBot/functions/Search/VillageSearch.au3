@@ -231,7 +231,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				If RaidCollectors($searchGold, $searchElixir) = True Then
 					ReturnHome($TakeLootSnapShot)
 					$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
-					ExitLoop
+					Return
 				EndIf
 			EndIf
 		EndIf
