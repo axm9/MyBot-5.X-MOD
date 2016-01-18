@@ -29,12 +29,12 @@ Func DEDropSmartSpell()
 	For $i = 0 To UBound($atkTroops) - 1
 		If $atkTroops[$i][0] = $eLSpell Then
 			$Spell = $i
-			$numSpells = $atkTroops[$i][1]			
-			If $numSpells = 0 Then Return False
+			$numSpells = $atkTroops[$i][1]
 			SelectDropTroop($Spell)
 		EndIf
 	Next
 	If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: "&$numSpells, $COLOR_PURPLE)
+	If $numSpells = 0 Then Return False
 	
 	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
 	

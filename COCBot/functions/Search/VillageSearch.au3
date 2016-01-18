@@ -226,7 +226,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		
 		; check dead base for DE zap
 		If $ichkAttackIfDB = 1 Then
-			If ((CompareResources($DB) And $CurCamp > $iMinTroopToAttackDB) Or $searchDark > $itxtDBLightMinDark) And checkDeadBase() Then
+			If ((Number($searchGold) > 100000 And Number($searchElixir) > 100000 And $CurCamp > $iMinTroopToAttackDB) Or Number($searchDark) > $itxtDBLightMinDark) And checkDeadBase() = True Then
 				SetLog("Dead Base Found!", $COLOR_GREEN, "Lucida Console")
 				If RaidCollectors($searchGold, $searchElixir) = True Then
 					ReturnHome($TakeLootSnapShot)
