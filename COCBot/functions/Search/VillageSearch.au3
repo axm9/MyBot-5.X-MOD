@@ -232,6 +232,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 					ReturnHome($TakeLootSnapShot)
 					$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
 					Return
+				Else
+					SelectDropTroop($atkTroops[0][0])
 				EndIf
 			EndIf
 		EndIf

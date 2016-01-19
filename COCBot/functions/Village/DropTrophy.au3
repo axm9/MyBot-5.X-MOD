@@ -39,12 +39,14 @@ Func DropTrophy()
 
 						If _Sleep($iDelayDropTrophy2) Then ExitLoop
 						GetResources()
-						If checkDeadBase() And ($searchDark > $itxtDBLightMinDark Or CompareResources($DB)) Then
+						If ((Number($searchGold) > 100000 And Number($searchElixir) > 100000 And $CurCamp > $iMinTroopToAttackDB) Or Number($searchDark) > $itxtDBLightMinDark) And checkDeadBase() = True Then
 							SetLog("Dead Base Found!", $COLOR_GREEN, "Lucida Console")
 							If RaidCollectors($searchGold, $searchElixir) = True Then
 								ReturnHome($TakeLootSnapShot)
 								$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
 								ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
+							Else
+								SelectDropTroop($atkTroops[0][0])
 							EndIf
 						Else
 							SetLog("Not a dead base", $COLOR_BLACK, "Lucida Console")
