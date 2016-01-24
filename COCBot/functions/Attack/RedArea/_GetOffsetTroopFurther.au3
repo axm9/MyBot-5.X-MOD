@@ -1,3 +1,19 @@
+; #FUNCTION# ====================================================================================================================
+; Name ..........: _GetOffsetTroopFurther
+; Description ...:
+; Syntax ........: _GetOffsetTroopFurther($pixel, $eVectorType, $offset)
+; Parameters ....: $pixel               - a pointer value.
+;                  $eVectorType         - an unknown value.
+;                  $offset              - an object.
+; Return values .: None
+; Author ........: didipe
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
 
 Func _GetOffsetTroopFurther($pixel, $eVectorType, $offset)
 	debugRedArea("_GetOffsetTroopFurther IN")
@@ -42,8 +58,6 @@ Func _GetOffsetTroopFurther($pixel, $eVectorType, $offset)
 		$xOffset = Floor($yOffset)
 	EndIf
 
-
-
 	Local $y = $yMin
 	Local $found = False
 	For $x = $xMin To $xMax Step $xStep
@@ -70,8 +84,8 @@ Func _GetOffsetTroopFurther($pixel, $eVectorType, $offset)
 		If ($found) Then ExitLoop
 	Next
 	; Not select pixel in menu of troop
-	If $pixelOffset[1] > 547 Then
-		$pixelOffset[1] = 547
+	If $pixelOffset[1] > 547 + $bottomOffsetY Then
+		$pixelOffset[1] = 547 + $bottomOffsetY
 	EndIf
 	debugRedArea("$pixelOffset x : [" + $pixelOffset[0] + "] / y : [" + $pixelOffset[1] + "]")
 

@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -16,7 +16,6 @@
 ;~ -------------------------------------------------------------
 ;~ Language Variables used a lot
 ;~ -------------------------------------------------------------
-
 $sTxtNothing = GetTranslated(8,4, "None")
 $sTxtBarbarians = GetTranslated(8,5, "Barbarian")
 $sTxtArchers = GetTranslated(8,6, "Archer")
@@ -58,7 +57,6 @@ $sTxtStatus = GetTranslated(8,53, "Status: Red=not programmed, Yellow=programmed
 ;~ -------------------------------------------------------------
 ; Upgrades Tab
 ;~ -------------------------------------------------------------
-
 $tabUpgrades = GUICtrlCreateTabItem(GetTranslated(8,1, "Upgrade"))
 Local $x = 30, $y = 150
 	$Laboratory = GUICtrlCreateGroup(GetTranslated(8,89, "Laboratory"), $x - 20, $y - 20, 270, 70)

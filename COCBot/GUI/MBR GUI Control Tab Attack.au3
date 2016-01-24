@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -77,3 +77,15 @@ Func chkABRandomSpeedAtk()
 		GUICtrlSetState($cmbABWaveDelay, $GUI_ENABLE)
 	EndIf
 EndFunc   ;==>chkABRandomSpeedAtk
+
+Func chkDBLightSpell()
+	If GUICtrlRead($chkDBLightSpell) = $GUI_CHECKED Then
+		$ichkDBLightSpell = 1
+		$iTrainLightSpell = 1
+		GUICtrlSetState($txtDBLightMinDark, $GUI_ENABLE)
+	Else
+		$ichkDBLightSpell = 0
+		$iTrainLightSpell = 0
+		GUICtrlSetState($txtDBLightMinDark, $GUI_DISABLE)
+	EndIf
+EndFunc   ;==>chkDBLightSpell

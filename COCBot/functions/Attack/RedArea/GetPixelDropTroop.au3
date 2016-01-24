@@ -1,3 +1,19 @@
+; #FUNCTION# ====================================================================================================================
+; Name ..........: GetPixelDropTroop
+; Description ...:
+; Syntax ........: GetPixelDropTroop($troop, $number, $slotsPerEdge)
+; Parameters ....: $troop               - a dll struct value.
+;                  $number              - a general number value.
+;                  $slotsPerEdge        - a string value.
+; Return values .: None
+; Author ........:
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
 
 Func GetPixelDropTroop($troop, $number, $slotsPerEdge)
 	Local $newPixelTopLeft
@@ -10,7 +26,6 @@ Func GetPixelDropTroop($troop, $number, $slotsPerEdge)
 		$newPixelBottomLeft = $PixelBottomLeftFurther
 		$newPixelTopRight = $PixelTopRightFurther
 		$newPixelBottomRight = $PixelBottomRightFurther
-
 	Else
 		$newPixelTopLeft = $PixelTopLeft
 		$newPixelBottomLeft = $PixelBottomLeft
@@ -34,8 +49,8 @@ Func GetPixelDropTroop($troop, $number, $slotsPerEdge)
 		$newPixelBottomLeft = GetVectorPixelToDeploy($newPixelBottomLeft, 1, $slotsPerEdge)
 		$newPixelTopRight = GetVectorPixelToDeploy($newPixelTopRight, 1, $slotsPerEdge)
 		$newPixelBottomRight = GetVectorPixelToDeploy($newPixelBottomRight, 0, $slotsPerEdge)
-
 	EndIf
+	
 	Local $edgesPixelToDrop[4] = [$newPixelBottomRight, $newPixelTopLeft, $newPixelBottomLeft, $newPixelTopRight]
 	Return $edgesPixelToDrop
 EndFunc   ;==>GetPixelDropTroop

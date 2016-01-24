@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: summoner
 ; Modified ......: KnowJack (June2015) Sardo 2015-08
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -160,7 +160,6 @@ Func Laboratory()
 
 	ClickP($aAway, 2,  $iDelayLaboratory4,"#0359")
 	Return False
-
 EndFunc   ;==>Laboratory
 
 Func LabUpgrade()
@@ -228,7 +227,6 @@ Func LabUpgrade()
 	EndSelect
 	ClickP($aAway, 2, $iDelayLabUpgrade3,"#0205")
 	Return False
-
 EndFunc   ;==>Laboratory
 
 Func DebugRegionSave($sTxtName = "Unknown", $iLeft = 0, $iTop = 0, $iRight = $DEFAULT_WIDTH, $iBottom = $DEFAULT_HEIGHT)
@@ -242,9 +240,8 @@ Func DebugRegionSave($sTxtName = "Unknown", $iLeft = 0, $iTop = 0, $iRight = $DE
 		$sName = $sTxtName
 	EndIf
 	_CaptureRegion($iLeft, $iTop, $iRight, $iBottom)
-	_GDIPlus_ImageSaveToFile($hBitmap, $dirloots & $sName & $Date & " at " & $Time & ".png")
+	_GDIPlus_ImageSaveToFile($hBitmap, $dirTempDebug& $sName & $Date & " at " & $Time & ".png")
 	If _Sleep($iDelayLaboratory2) Then Return
-
 EndFunc   ;==>DebugRegionSave
 
 Func LabTroopImages1() ; Debug function to record pixel values for page 1 of lab troop window
@@ -278,4 +275,3 @@ Func LabTroopImages2() ; Debug function to record pixel values for page 2 of lab
 		SetLog("_GetPixelColor(+8, +59): " & _GetPixelColor($aLabTroops[$i][0] + 8, $aLabTroops[$i][1] + 59, True), $COLOR_PURPLE)
 	Next
 EndFunc   ;==>LabTroopImages2
-

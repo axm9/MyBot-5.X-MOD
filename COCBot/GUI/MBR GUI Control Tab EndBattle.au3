@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -68,7 +68,6 @@ Func chkDESideEB()
 		Next
 	EndIf
 EndFunc		;==>chkDESideEB
-
 
 Func chkShareAttack()
 	If GUICtrlRead($chkShareAttack) = $GUI_CHECKED Then

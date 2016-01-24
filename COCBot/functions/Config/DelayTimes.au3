@@ -4,8 +4,10 @@
 ; Syntax ........: $iDelayXXXXXXYYY  : XXXX = function name using the delay, YYY = delay value or position of delay in file
 ; Author ........: Sardo (Aug 2015)
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
 
@@ -16,8 +18,8 @@ Global Const $iDelayRunBot3 = 200
 Global Const $iDelayRunBot4 = 1500
 Global Const $iDelayRunBot5 = 500
 Global Const $iDelayRunBot6 = 100
-Global Const $iDelayIdle1 = 1000
-Global Const $iDelayIdle2 = 3000
+Global Const $iDelayIdle1 = 300
+Global Const $iDelayIdle2 = 2000
 Global Const $iDelayAttackMain1 = 1000
 Global Const $iDelayAttackMain2 = 1500
 
@@ -140,7 +142,6 @@ Global Const $iDelaycheckObstacles3 = 5000
 Global Const $iDelaycheckObstacles4 = 120000
 Global Const $iDelaycheckObstacles5 = 500 ; click
 
-
 ;isGemOpen
 Global Const $iDelayisGemOpen1 = 350
 
@@ -220,7 +221,6 @@ Global Const $iDelayBoostHeroes2 = 2000
 Global Const $iDelayBoostHeroes3 = 500
 Global Const $iDelayBoostHeroes4 = 600
 
-
 ;BotCommand
 Global Const $iDelayBotCommand1 = 500
 
@@ -235,6 +235,7 @@ Global Const $iDelaycheckArmyCamp2 = 1000
 Global Const $iDelaycheckArmyCamp3 = 2000
 Global Const $iDelaycheckArmyCamp4 = 500
 Global Const $iDelaycheckArmyCamp5 = 250
+Global Const $iDelaycheckArmyCamp6 = 10
 
 ;CheckFullArmy
 Global Const $iDelayCheckFullArmy1 = 100
@@ -254,16 +255,19 @@ Global Const $iDelayDonateCC3 = 50 ; click
 ;DonateTroopType
 Global Const $iDelayDonateTroopType1 = 250
 
+;DonateWindow
+Global Const $iDelayDonateWindow1 = 250
+
 ;DropTrophy
 Global Const $iDelayDropTrophy1 = 1000
 Global Const $iDelayDropTrophy2 = 2000
 Global Const $iDelayDropTrophy3 = 1500
+Global Const $iDelayDropTrophy4 = 250
 
 ;GetTownHallLevel
 Global Const $iDelayGetTownHallLevel1 = 1000
 Global Const $iDelayGetTownHallLevel2 = 1500
 Global Const $iDelayGetTownHallLevel3 = 200 ; click
-
 
 ;Laboratory
 Global Const $iDelayLaboratory1 = 750
@@ -398,3 +402,17 @@ Global Const $iDelayClanLevel1 = 100
 
 ;CheckImageType
 Global Const $iDelayImageType1 = 100
+
+;SpecialButtonClick = ClickOkay(), ClickRemove()
+Global Const $iSpecialClick1 = 200
+Global Const $iSpecialClick2 = 100
+
+;AttackCSV
+Global Const $iDelayAttackCSV1 = $iDelayVillageSearch5
+Global Const $iDelayAttackCSV2 = $iDelayVillageSearch4
+Global Const $iDelayAttackCSV3 = 10
+
+;PersonalShield
+Global Const $iPersonalShield1 = 1000
+Global Const $iPersonalShield2 = 500
+Global Const $iPersonalShield3 = 100

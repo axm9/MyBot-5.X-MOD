@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015), kaganus (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -18,7 +18,6 @@
 ;~ -------------------------------------------------------------
 Global $LastControlToHide = GUICtrlCreateDummy()
 Global $iPrevState[$LastControlToHide + 1]
-;~ -------------------------------------------------------------
 
 ;~ -------------------------------------------------------------
 ;~ Stats Tab
@@ -311,6 +310,7 @@ GUICtrlCreateLabel(GetTranslated(11,72, "Attacked") & ":", $x - 15, $y - 2, -1, 
 $lblAttacked[$DB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
 $txtTip = GetTranslated(11,73, "The No. of Dead Base that were attacked by the Bot.")
 GUICtrlSetTip(-1, $txtTip)
+
 $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnGold, $x - 15, $y - 4, 16, 16)
 GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
@@ -321,7 +321,7 @@ $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnElixir, $x - 15, $y - 4, 16, 16)
 GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
 $lblTotalElixirGain[$DB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
-$txtTip = GetTranslated(11,75, "The amount of Elixr gained from Dead Bases attacked by the Bot.")
+$txtTip = GetTranslated(11,75, "The amount of Elixir gained from Dead Bases attacked by the Bot.")
 GUICtrlSetTip(-1, $txtTip)
 $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnDark, $x - 15, $y - 4, 16, 16)
@@ -351,6 +351,7 @@ GUICtrlCreateLabel(GetTranslated(11,72, "Attacked") & ":", $x - 15, $y - 2, -1, 
 $lblAttacked[$LB] = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
 $txtTip = GetTranslated(11,79, "The No. of Live Base that were attacked by the Bot.")
 GUICtrlSetTip(-1, $txtTip)
+
 $y += 17
 GUICtrlCreateIcon($pIconLib, $eIcnGold, $x - 15, $y - 4, 16, 16)
 GUICtrlCreateLabel(GetTranslated(11,74, "gain") & ":", $x + 3, $y - 2, -1, 17)
@@ -411,6 +412,9 @@ GUICtrlCreateLabel(":", $x + 26, $y - 2, -1, 17)
 $lblZapDEPerLightning = GUICtrlCreateLabel("0", $x + 2, $y - 2, 80, 17, $SS_RIGHT)
 $txtTip = GetTranslated(11,89, "The amount of Dark Elixir gained per Lightning spell used.")
 GUICtrlSetTip(-1, $txtTip)
+$y += 34
+$lblNbrOfDetectedDrillsForZap = GUICtrlCreateLabel("0", $x - 18, $y - 2, 18, 17, $SS_RIGHT)
+GUICtrlCreateIcon($pIconLib, $eIcnDrill, $x + 1, $y - 4, 16, 16)
 $y += 17
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 

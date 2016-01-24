@@ -6,12 +6,13 @@
 ; Return values .: None
 ; Author ........: Code Monkey #6
 ; Modified ......: kaganus (Jun/Aug 2015), Sardo 2015-07, KnowJack(Aug 2015) , The Master (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func VillageSearch() ;Control for searching a village that meets conditions
 	Local $Result
 	Local $logwrited = False
@@ -32,7 +33,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		Next
 	EndIf
 
-	_WinAPI_EmptyWorkingSet(WinGetProcess($Title))
+	_WinAPI_EmptyWorkingSet(WinGetProcess($Title)) ; Reduce Working Set of Android Process
+	_WinAPI_EmptyWorkingSet(@AutoItPID) ; Reduce Working Set of Bot
 
 	If _Sleep($iDelayVillageSearch1) Then Return
 	$Result = getAttackDisable(346, 182) ; Grab Ocr for TakeABreak check
@@ -64,13 +66,11 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			If $iChkMeetTH[$x] = 1 Then $iAimTHtext[$x] = " [TH]:" & StringFormat("%2s", $iMaxTH[$x]) ;$icmbTH
 			If $iChkMeetTHO[$x] = 1 Then $iAimTHtext[$x] &= ", Out"
 
-
 			If $iCmbMeetGE[$x] = 2 Then
 				If Not ($Is_SearchLimit) Then SetLog("Aim: [G+E]:" & StringFormat("%7s", $iAimGoldPlusElixir[$x]) & " [D]:" & StringFormat("%5s", $iAimDark[$x]) & " [T]:" & StringFormat("%2s", $iAimTrophy[$x]) & $iAimTHtext[$x] & " for: " & $sModeText[$x], $COLOR_GREEN, "Lucida Console", 7.5)
 			Else
 				If Not ($Is_SearchLimit) Then SetLog("Aim: [G]:" & StringFormat("%7s", $iAimGold[$x]) & " [E]:" & StringFormat("%7s", $iAimElixir[$x]) & " [D]:" & StringFormat("%5s", $iAimDark[$x]) & " [T]:" & StringFormat("%2s", $iAimTrophy[$x]) & $iAimTHtext[$x] & " for: " & $sModeText[$x], $COLOR_GREEN, "Lucida Console", 7.5)
 			EndIf
-
 		EndIf
 	Next
 
@@ -89,7 +89,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If $chkATH = 1 Then $chkATHText = " Attack TH Outside "
 		If $OptTrophyMode = 1 Then $OptTrophyModeText = "THSnipe Combo, " & $THaddtiles & " Tile(s), "
 		If ($OptTrophyMode = 1 Or $chkATH = 1) And Not ($Is_SearchLimit) Then SetLog($OptTrophyModeText & $chkATHText & $txtAttackTHType)
-		SetLog("Aim: [G]:" & StringFormat("%7s", $iMinGoldTH) & " [E]:" & StringFormat("%7s", $iMinElixirTH) & " [D]:" & StringFormat("%5s", $iMinDETH), $COLOR_GREEN, "Lucida Console", 7.5)
+		SetLog("Aim: [G]:" & StringFormat("%7s", $iMinGold[$TS]) & " [E]:" & StringFormat("%7s", $iMinElixir[$TS]) & " [D]:" & StringFormat("%5s", $iMinDark[$TS]), $COLOR_GREEN, "Lucida Console", 7.5)
 	EndIf
 
 	If Not ($Is_SearchLimit) Then
@@ -113,7 +113,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	If $Is_SearchLimit = True Then $Is_SearchLimit = False
 
 	While 1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;### Main Search Loop ###;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-		if $debugVillageSearchImages=1 Then DebugImageSave("villagesearch")
+		If $debugVillageSearchImages = 1 Then DebugImageSave("villagesearch")
 		$logwrited = False
 		$bBtnAttackNowPressed = False
 		If $iVSDelay > 0 And $iMaxVSDelay > 0 Then ; Check if village delay values are set
@@ -128,7 +128,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		Local $Time = @HOUR & "." & @MIN & "." & @SEC
 
 		If $Restart = True Then Return ; exit func
-		GetResources(True) ;Reads Resource Values
+		GetResources(False) ; Reads Resource Values
 		If $Restart = True Then Return ; exit func
 
 		If Mod(($iSkipped + 1), 100) = 0 Then
@@ -154,7 +154,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			$isModeActive[$LB] = True
 			$match[$LB] = CompareResources($LB)
 		ElseIf $iCmbSearchMode = 2 Then
-			For $i = 0 To $iModeCount - 1
+			For $i = 0 To $iModeCount - 2
 				$isModeActive[$i] = IsSearchModeActive($i)
 				If $isModeActive[$i] Then
 					$match[$i] = CompareResources($i)
@@ -163,7 +163,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		EndIf
 
 		If _Sleep($iDelayRespond) Then Return
-		For $i = 0 To $iModeCount - 1
+		For $i = 0 To $iModeCount - 2
 			If ($match[$i] And $iChkWeakBase[$i] = 1 And $iChkMeetOne[$i] <> 1) Or ($isModeActive[$i] And Not $match[$i] And $iChkWeakBase[$i] = 1 And $iChkMeetOne[$i] = 1) Then
 				If IsWeakBase($i) Then
 					$match[$i] = True
@@ -210,24 +210,24 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		EndIf
 
 		If _Sleep($iDelayRespond) Then Return
-		If $OptTrophyMode = 1 Then ;Enables Triple Mode Settings ;---compare resources
-			If SearchTownHallLoc() Then ; check this base if outside TH found to snipe
-				If Not $isDeadBase And CompareResourcesForSnipe() Then ; check if base is not dead and has enough resources to snipe		
+		If $OptTrophyMode = 1 Then ;Enables Combo Mode Settings
+			If IsSearchModeActive($TS) And SearchTownHallLoc() Then ; attack this base anyway because outside TH found to snipe
+				If CompareResources($TS) Then
 					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 					SetLog("      " & "TH outside found & resource requirement met for snipe", $COLOR_GREEN, "Lucida Console", 7.5)	
-					$iMatchMode = $TS
 					$logwrited = True
-					ExitLoop	
+					$iMatchMode = $TS
+					ExitLoop
 				Else					
 					$noMatchTxt &= ", TH outside found but resource requirement not met for snipe"
 				EndIf
 			EndIf
 		EndIf
 		
-		; check dead base for DE zap
+		; check dead base for DE zap and greedy mode
 		If $ichkAttackIfDB = 1 Then
-			If ((Number($searchGold) > 100000 And Number($searchElixir) > 100000 And $CurCamp > $iMinTroopToAttackDB) Or Number($searchDark) > $itxtDBLightMinDark) And checkDeadBase() = True Then
-				SetLog("Dead Base Found!", $COLOR_GREEN, "Lucida Console")
+			If (($CurCamp > $iMinTroopToAttackDB And CompareResources($DB)) Or ($ichkDBLightSpell = 1 And $numSpells > 0 And Number($searchDark) > $itxtDBLightMinDark)) And checkDeadBase() Then
+				SetLog("Dead Base found for greedy mode!", $COLOR_GREEN, "Lucida Console")
 				If RaidCollectors($searchGold, $searchElixir) = True Then
 					ReturnHome($TakeLootSnapShot)
 					$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
@@ -264,7 +264,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			SetLog($GetResourcesTXT, $COLOR_BLACK, "Lucida Console", 7.5)
 		EndIf
 
-
 		If $bBtnAttackNowPressed = True Then ExitLoop
 
 		; th snipe stop condition
@@ -286,11 +285,13 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				$Is_ClientSyncError = True
 				checkMainScreen()
 				If $Restart Then
+					$iNbrOfOoS += 1
+					UpdateStats()
 					SetLog("Couldn't locate Next button", $COLOR_RED)
 					PushMsg("OoSResources")
 				Else
 					SetLog("Have strange problem Couldn't locate Next button, Restarting CoC and Bot...", $COLOR_RED)
-					$Is_ClientSyncError = False  ; disable fast OOS restart if not simple error and restarting CoC
+					$Is_ClientSyncError = False ; disable fast OOS restart if not simple error and try restarting CoC
 					CloseCoC(True)
 				EndIf
 				Return
@@ -352,13 +353,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
 			If _Sleep($iDelayVillageSearch5) Then Return
 			SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
-			$searchTH = checkTownhallADV2()
-		EndIf
-
-		If $searchTH = "-" Then ; retry with c# search, matching could not have been caused by heroes that partially hid the townhall
-			If _Sleep($iDelayVillageSearch4) Then Return
-			If $debugImageSave = 1 Then DebugImageSave("VillageSearch_NoTHFound2try_", False)
-			THSearch()
+			$searchTH = THSearch()
 		EndIf
 
 		If SearchTownHallLoc() = False And $searchTH <> "-" Then
@@ -384,11 +379,11 @@ Func IsWeakBase($pMode)
 	_WinAPI_DeleteObject($hBitmapFirst)
 	$hBitmapFirst = _CaptureRegion2()
 	Local $resultHere = DllCall($hFuncLib, "str", "CheckConditionForWeakBase", "ptr", $hBitmapFirst, "int", ($iCmbWeakMortar[$pMode] + 1), "int", ($iCmbWeakWizTower[$pMode] + 1), "int", 10)
-	If @error Then  ; detect if DLL error and return weakbase not found
+	If @error Then ; detect if DLL error and return weakbase not found
 		SetLog("Weakbase search DLL error", $COLOR_RED)
 		Return False
 	EndIf
-	If $debugsetlog = 1 Then Setlog("Weakbase result= " &  $resultHere[0], $COLOR_PURPLE)  ;debug
+	If $debugsetlog = 1 Then Setlog("Weakbase result= " & $resultHere[0], $COLOR_PURPLE) ;debug
 	If $resultHere[0] = "Y" Then
 		Return True
 	Else
@@ -402,17 +397,17 @@ Func SearchLimit($iSkipped)
 		While _CheckPixel($aSurrenderButton, $bCapturePixel) = False
 			If _Sleep($iDelaySWHTSearchLimit1) Then Return
 			$Wcount += 1
-			If $DebugSetLog = 1 Then setlog("wait surrender button " & $Wcount, $COLOR_PURPLE)
+			If $debugsetlog = 1 Then setlog("wait surrender button " & $Wcount, $COLOR_PURPLE)
 			If $Wcount >= 50 Or isProblemAffect(True) Then
 				checkMainScreen()
-				$Is_ClientSyncError = False  ; reset OOS flag for long restart
-				$Restart = True  ; set force runbot restart flag
+				$Is_ClientSyncError = False ; reset OOS flag for long restart
+				$Restart = True ; set force runbot restart flag
 				Return True
 			EndIf
 		WEnd
 		ReturnHome(False, False) ;If End battle is available
-		$Restart = True  ; set force runbot restart flag
-		$Is_ClientSyncError = True  ; set OOS flag for fast restart
+		$Restart = True ; set force runbot restart flag
+		$Is_ClientSyncError = True ; set OOS flag for fast restart
 		Return True
 	Else
 		Return False

@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -16,7 +16,6 @@
 ;~ -------------------------------------------------------------
 ; Attack Basics Tab
 ;~ -------------------------------------------------------------
-
 $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 	Local $x = 30, $y = 150
 	$grpDeadBaseDeploy = GUICtrlCreateGroup(GetTranslated(3,2, "DeadBase Deploy"), $x - 20, $y - 20, 225, 295);95)
@@ -43,8 +42,8 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 		$y += 22
 		$chkDBRandomSpeedAtk = GUICtrlCreateCheckbox(GetTranslated(3,28, "Randomize delay for Units & Waves"), $x, $y, -1, -1)
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetOnEvent(-1, "chkDBRandomSpeedAtk")
-		$y = 250
+			GUICtrlSetOnEvent(-1, "chkDBRandomSpeedAtk")			
+		$y = 245
 		$chkDBSmartAttackRedArea = GUICtrlCreateCheckbox(GetTranslated(3,29, "Use Smart Attack: Near Red Line."), $x, $y, -1, -1)
 			$txtTip = GetTranslated(3,30, "Use Smart Attack to detect the outer 'Red Line' of the village to attack. And drop your troops close to it.")
 			GUICtrlSetTip(-1, $txtTip)
@@ -75,22 +74,26 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
  			GUICtrlSetTip(-1, $txtTip)
 		$picDBAttackNearDarkElixirDrill = GUICtrlCreateIcon($pIconLib, $eIcnDrill, $x + 20 , $y - 3, 24, 24)
  			GUICtrlSetTip(-1, $txtTip)
-	Local $x = 30, $y = 335
-		$y -= 15
-		$chkDBAttMilk = GUICtrlCreateCheckbox( "Milking with", $x, $y, -1, -1)
-			$txtTip = "Use Gobelins Power to try Milking."
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetState(-1, $GUI_CHECKED)
-			GUICtrlSetOnEvent(-1, "chkDBAttMilk")
-		$txtDBAttMilk = GUICtrlCreateInput("90", $x + 80, $y + 3, 25, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-			$txtTip = "Number of troops used for milking attack"
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetLimit(-1, 5)
-			_GUICtrlEdit_SetReadOnly(-1, False)
-		$lblDBAttMilkDB = GUICtrlCreateLabel("Gobs", $x + 108, $y + 3)
-		$y += 15
+	Local $x = 30, $y = 310
 		$lblUseInBattleDB = GUICtrlCreateLabel(GetTranslated(3,68, "Use in battle") & ":", $x, $y + 5, -1, -1)
-		$y +=27
+		$y += 25
+		$picDBLightSpell = GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x, $y, 20, 20)
+			$txtTip = "Drop lightning spells on DE drills"
+			GUICtrlSetTip(-1, $txtTip)
+		$chkDBLightSpell = GUICtrlCreateCheckbox("", $x + 25, $y + 2, 17, 17)
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetOnEvent(-1, "chkDBLightSpell")	
+		$lblDBLightMinDark = GUICtrlCreateLabel("Min DE:", $x + 50, $y + 4, -1, -1)
+			$txtTip = "Input the min dark elixer you want to drill zap"
+			GUICtrlSetTip(-1, $txtTip)
+		$txtDBLightMinDark = GUICtrlCreateInput("1000", $x + 90, $y, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 4)
+			GUICtrlSetOnEvent(-1, "txtDBLightMinDark")
+			GUICtrlSetState(-1, $GUI_DISABLE)
+		$picDBLightMinDark = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 127, $y + 1, 16, 16)
+			GUICtrlSetTip(-1, $txtTip)
+		$y +=28
 			GUICtrlCreateIcon($pIconLib, $eIcnKing, $x , $y, 24, 24)
 			$txtTip = GetTranslated(3,41, "Use your King when Attacking..")
 			GUICtrlSetTip(-1, $txtTip)
@@ -144,7 +147,7 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 		$chkABRandomSpeedAtk = GUICtrlCreateCheckbox(GetTranslated(3,28, -1), $x, $y, -1, -1)
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "chkABRandomSpeedAtk")
-	$y = 250
+		$y = 245
 		$chkABSmartAttackRedArea = GUICtrlCreateCheckbox(GetTranslated(3,29, -1), $x, $y, -1, -1)
 			$txtTip = GetTranslated(3,30, -1)
 			GUICtrlSetTip(-1, $txtTip)

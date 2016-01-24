@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: Sardo (2015-06)
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -55,7 +55,7 @@ Func CheckVersionHTML()
 	EndIf
 
 	;search version into downloaded page
-	Local $f, $line, $line2, $Casesense = 0, $chkvers = False, $chkmsg = False, $chkmsg2 = False, $i = 0
+	Local $f, $f2, $line, $line2, $Casesense = 0, $chkvers = False, $chkmsg = False, $chkmsg2 = False, $i = 0
 	$lastversion = ""
 	If FileExists($versionfile) Then
 		$f = FileOpen($versionfile, 0)
@@ -91,7 +91,6 @@ Func CheckVersionHTML()
 		FileDelete($versionfile)
 	EndIf
 EndFunc   ;==>CheckVersionHTML
-
 
 Func VersionNumFromVersionTXT($versionTXT)
 	; remove all after a space from $versionTXT, example "v.4.0.1 MOD" ==> "v.4.0.1"

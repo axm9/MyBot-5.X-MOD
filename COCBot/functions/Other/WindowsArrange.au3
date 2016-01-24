@@ -7,7 +7,7 @@
 ; Author ........: Sardo (2015-06) (2015-09)
 ; Modified ......:
 ;
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -15,6 +15,7 @@
 ; ===============================================================================================================================
 
 Func WindowsArrange($position, $offsetX = 0, $offsetY = 0)
+	WinGetAndroidHandle()
 	Local $BSHandle, $BOTHandle
 	Local $BSPos = WinGetPos($Title)
 	Local $BOTPos = WinGetPos($sBotTitle)
@@ -79,39 +80,40 @@ Func DisposeWindows()
 	EndIf
 EndFunc
 
+; WinMove2 resizes Window without triggering a change event in target process.
 ; Replacement for WinMove ( "title", "text", x, y [, width [, height [, speed]]] )
 ; Parameter [, speed] is not supported!
 Func WinMove2($WinTitle, $WinText, $x = -1, $y = -1, $w = -1, $h = -1, $s = 0)
-   If $s <> 0 And $debugSetlog = 1 Then SetLog("WinMove2(" & $WinTitle & "," & $WinText & "," & $x & "," & $y & "," & $w & "," & $h & "," & $s & "): speed parameter '" & $s & "' is not supported!", $COLOR_RED);
-   Local $hWnd = WinGetHandle($WinTitle, $WinText)
-   Local $aPos = WinGetPos($hWnd)
-
-   If @error <> 0 Or Not IsArray($aPos) Then
-	  SetError(1, @extended, -1)
-	  Return 0
-   EndIF
-   If $x = -1 Or $y = -1 Or $w = -1 Or $h = -1 Then
-	  If $x = -1 Then $x = $aPos[0]
-	  If $y = -1 Then $y = $aPos[1]
-	  If $w = -1 Then $w = $aPos[2]
-	  If $h = -1 Then $h = $aPos[3]
-   EndIf
-
-   Local $NoMove = $x = $aPos[0] And $y = $aPos[1]
-   Local $NoResize = $w = $aPos[2] And $h = $aPos[3]
-   
-   _WinAPI_SetWindowPos($hWnd, 0, $x, $y, $w, $h, BitOr(($NoMove ? BitOr($SWP_NOMOVE, $SWP_NOREPOSITION) : 0), $SWP_NOACTIVATE, $SWP_NOSENDCHANGING, $SWP_NOZORDER)) ; resize window without sending changing message to window
-
-   ; check width and height if it got changed...
-   $aPos = WinGetPos($hWnd)
-   If @error <> 0 Or Not IsArray($aPos) Then
-	  SetError(1, @extended, -1)
-	  Return 0
-   EndIf
-   If $w <> $aPos[2] or $h <>$aPos[3] Then
-	  If $debugSetlog = 1 Then SetLog("Window " & $WinTitle & "(" & $hWnd & ") got resized again to " & $aPos[2] & " x " & $aPos[3] & ", restore now " & $w & " x " & $y, $COLOR_ORANGE);
-	  _WinAPI_SetWindowPos($hWnd, 0, $x, $y, $w, $h, BitOr($SWP_NOMOVE, $SWP_NOREPOSITION, $SWP_NOACTIVATE, $SWP_NOSENDCHANGING, $SWP_NOZORDER)) ; resize window without sending changing message to window
-   EndIf
-
-   Return $hWnd
+	If $s <> 0 And $debugSetlog = 1 Then SetLog("WinMove2(" & $WinTitle & "," & $WinText & "," & $x & "," & $y & "," & $w & "," & $h & "," & $s & "): speed parameter '" & $s & "' is not supported!", $COLOR_RED);
+	Local $hWnd = WinGetHandle($WinTitle, $WinText)
+	Local $aPos = WinGetPos($hWnd)
+	
+	If @error <> 0 Or Not IsArray($aPos) Then
+		SetError(1, @extended, -1)
+		Return 0
+	EndIF
+	If $x = -1 Or $y = -1 Or $w = -1 Or $h = -1 Then
+		If $x = -1 Then $x = $aPos[0]
+		If $y = -1 Then $y = $aPos[1]
+		If $w = -1 Then $w = $aPos[2]
+		If $h = -1 Then $h = $aPos[3]
+	EndIf
+	
+	Local $NoMove = $x = $aPos[0] And $y = $aPos[1]
+	Local $NoResize = $w = $aPos[2] And $h = $aPos[3]
+	
+	_WinAPI_SetWindowPos($hWnd, 0, $x, $y, $w, $h, BitOr(($NoMove ? BitOr($SWP_NOMOVE, $SWP_NOREPOSITION) : 0), $SWP_NOACTIVATE, $SWP_NOSENDCHANGING, $SWP_NOZORDER)) ; resize window without sending changing message to window
+	
+	; check width and height if it got changed...
+	$aPos = WinGetPos($hWnd)
+	If @error <> 0 Or Not IsArray($aPos) Then
+		SetError(1, @extended, -1)
+		Return 0
+	EndIf
+	If $w <> $aPos[2] or $h <>$aPos[3] Then
+		If $debugSetlog = 1 Then SetLog("Window " & $WinTitle & "(" & $hWnd & ") got resized again to " & $aPos[2] & " x " & $aPos[3] & ", restore now " & $w & " x " & $y, $COLOR_ORANGE);
+		_WinAPI_SetWindowPos($hWnd, 0, $x, $y, $w, $h, BitOr($SWP_NOMOVE, $SWP_NOREPOSITION, $SWP_NOACTIVATE, $SWP_NOSENDCHANGING, $SWP_NOZORDER)) ; resize window without sending changing message to window
+	EndIf
+	
+	Return $hWnd
 EndFunc

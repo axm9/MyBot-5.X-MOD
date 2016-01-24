@@ -8,7 +8,7 @@
 ; Modified ......:
 ;
 ; Needs..........: include <Date.au3> <File.au3> <FileConstants.au3> <MsgBoxConstants.au3>
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -18,27 +18,26 @@
 Func Deletefiles($Folder, $Filter,$daydiff= 120,$type=0)
 	Local $FileListName =  _FileListToArray ($Folder, $Filter, 1); list files to an array.
 	Local $x , $t, $tmin =0
-	If NOT ( (Not IsArray($FileListName)) Or (@error = 1))  Then
-		For $x = $FileListname[0] To 1 Step -1
-			Local $FileDate = FileGetTime($Folder &  $FileListName[$x])
-			If IsArray($FileDate) Then
-				Local $Date = $FileDate[0] & '/' & $FileDate[1] & '/' & $FileDate[2] & ' ' & $FileDate[3] & ':' & $FileDate[4] & ':' & $FileDate[5]
-				If _DateDiff('D', $Date, _NowCalc()) < $DayDiff Then ContinueLoop
-				if $type = 0 then
-					FileDelete( $Folder & $FileListName[$x])
-				else
-					FileRecycle($Folder & $FileListName[$x])
-				EndIf
-			Else
-				Return False
-			EndIf
-		Next
-	Else
-		Return False
-	EndIf
+		If NOT ( (Not IsArray($FileListName)) Or (@error = 1))  Then
+			For $x = $FileListname[0] To 1 Step -1
+			   Local $FileDate = FileGetTime($Folder &  $FileListName[$x])
+			   If IsArray($FileDate) Then
+				  Local $Date = $FileDate[0] & '/' & $FileDate[1] & '/' & $FileDate[2] & ' ' & $FileDate[3] & ':' & $FileDate[4] & ':' & $FileDate[5]
+				  If _DateDiff('D', $Date, _NowCalc()) < $DayDiff Then ContinueLoop
+				  if $type = 0 then
+					 FileDelete( $Folder & $FileListName[$x])
+				  else
+					 FileRecycle($Folder & $FileListName[$x])
+				  EndIf
+			   Else
+				  Return False
+			   EndIf
+			Next
+		Else
+			Return False
+		EndIf
 	Return True
 EndFunc
-
 
 
 

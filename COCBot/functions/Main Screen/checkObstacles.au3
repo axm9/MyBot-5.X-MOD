@@ -6,17 +6,16 @@
 ; Return values .: Returns True when there is something blocking
 ; Author ........: Hungle (2014)
 ; Modified ......: KnowJack (2015), Sardo 2015-08, The Master 2015-10
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-;
+
 Func checkObstacles() ;Checks if something is in the way for mainscreen
 	Local $x, $y
 	$MinorObstacle = False
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	; Detect All Reload Button errors => 1- Another device, 2- Take a break, 3- Connection lost or error, 4- Out of sync, 5- Inactive, 6- Maintenance
 	$Message = _PixelSearch($aIsReloadError[0], $aIsReloadError[1], $aIsReloadError[0] + 3, $aIsReloadError[1] + 11, Hex($aIsReloadError[2], 6), $aIsReloadError[3])
 	If IsArray($Message) Then
@@ -58,9 +57,6 @@ Func checkObstacles() ;Checks if something is in the way for mainscreen
 				SetLog("Connection lost, Reloading CoC...", $COLOR_RED)
 			Case _CheckPixel($aIsCheckOOS, $bNoCapturePixel) ; Check OoS
 				SetLog("Out of Sync Error, Reloading CoC...", $COLOR_RED)
-				$Is_ClientSyncError = $fullarmy  ; If $fullarmy=true, set $Is_ClientSyncError=true for quick attack restart, if not full $Is_ClientSyncError=false
-				$iNbrOfOoS += 1
-				UpdateStats()
 			Case _CheckPixel($aIsMaintenance, $bNoCapturePixel) ; Check OoS
 				SetLog("Maintenance Break, waiting...", $COLOR_RED)
 				If _SleepStatus($iDelaycheckObstacles4) Then Return ; 2 Minutes
@@ -128,6 +124,13 @@ Func checkObstacles() ;Checks if something is in the way for mainscreen
 			Return True
 		EndIf
 	EndIf
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	If IsPostDefenseSummaryPage() Then
+		$Message = _PixelSearch(23, 566 + $bottomOffsetY, 36, 580 + $bottomOffsetY, Hex(0xE0E1CE, 6), 10)
+		If IsArray($Message) Then
+			PureClick(67, 602 + $bottomOffsetY, 1, 0, "#0138");Check if Return Home button available
+			If _Sleep($iDelaycheckObstacles2) Then Return
+			Return True
+		EndIf
+	EndIf
 	Return False
 EndFunc   ;==>checkObstacles

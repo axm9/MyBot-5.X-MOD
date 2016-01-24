@@ -7,12 +7,13 @@
 ; Return values .: None
 ; Author ........:
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func _Sleep($iDelay, $iSleep = True)
 	If $iDeleteAllPushesNow = True Then PushMsg("DeleteAllPBMessages") ; only when button is pushed, and only when on a sleep cyle
 	If $iMakeScreenshotNow = True Then
@@ -30,4 +31,3 @@ Func _Sleep($iDelay, $iSleep = True)
 	WEnd
 	Return False
 EndFunc   ;==>_Sleep
-

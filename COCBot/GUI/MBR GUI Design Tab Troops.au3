@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -16,7 +16,6 @@
 ;~ -------------------------------------------------------------
 ;~ Language Variables used a lot
 ;~ -------------------------------------------------------------
-
 $sTxtBarbarians = GetTranslated(1,17, "Barbarians")
 $sTxtArchers = GetTranslated(1,18, "Archers")
 $sTxtGiants = GetTranslated(1,19, "Giants")
@@ -158,7 +157,6 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 			GUICtrlSetData(-1, "0|2|4|6|7|8|9|10|11", "0")
 			GUICtrlSetOnEvent(-1, "lblTotalCountSpell")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
-
 
 	Local $x = 30, $y = 210
 	$grpTroops = GUICtrlCreateGroup(GetTranslated(1,39, "Troops"), $x - 20, $y - 20, 145, 115)

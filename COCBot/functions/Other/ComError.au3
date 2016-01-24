@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: Sardo (aug-2015)
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -17,7 +17,6 @@ Global $oMyError = ObjEvent("AutoIt.Error","BotComError")    ; Initialize a COM 
 
 ; This is my custom defined error handler
 Func BotComError()
-
 	SetError(0,0,0)
 	If $debugsetlog=1 Then
 	  Setlog  ("We intercepted a COM Error !"                      ,$COLOR_RED)
@@ -31,5 +30,4 @@ Func BotComError()
 	  Setlog  ("err.helpcontext is: "  &  $oMyError.helpcontext    ,$COLOR_RED)
 	EndIf
 	SetError(0,0,0)
-
 Endfunc

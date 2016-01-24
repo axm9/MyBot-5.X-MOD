@@ -6,7 +6,7 @@
 ; Return values .: False if regular farming is needed to refill storage
 ; Author ........: KnowJack (Jul/Aug 2015) updated for COC changes, added early Take-A-Break Detection
 ; Modified ......: Sardo (2015-08), MonkeyHunter (2015-12)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -14,17 +14,13 @@
 ; ===============================================================================================================================
 
 Func Unbreakable()
-	;
 	; Special mode to complete unbreakable achievement
 	; Need to set max/min trophy on Misc tab to range where base can win defenses
 	; Enable mode with checkbox, and set desired time to be offline getting defense wins before base is reset.
 	; Set absolute minimum loot required to still farm for more loot in Farm Minimum setting, and Save Minimum setting loot that will atttact enemy attackers
-	;
+	
 	Local $x, $y, $i, $iTime, $iCount
-	; temp disable
-	Setlog("unbreakable disabled,  work in progress")
-	Return
-	;
+
 	Switch $iUnbreakableMode
 		Case 2
 			If (Number($iGoldCurrent) > Number($iUnBrkMaxGold)) And (Number($iElixirCurrent) > Number($iUnBrkMaxElixir)) And (Number($iDarkCurrent) > Number($iUnBrkMaxDark)) Then
@@ -41,14 +37,14 @@ Func Unbreakable()
 	EndSwitch
 
 	Select
-		Case $iChkTrophyAtkDead = 1 ; If attack dead bases during trophy drop is enabled then make sure we have at least 70% full army
-			If ($CurCamp <= ($TotalCamp * 30 / 100)) Then
-				SetLog("Oops, wait for 30% troops due attack dead base checked", $COLOR_RED)
+		Case $iChkTrophyAtkDead = 1 ; If attack dead bases during trophy drop is enabled then make sure we have enough troops
+			If ($CurCamp <= Number($iMinTroopToAttackDB)) Then
+				SetLog("Oops, wait for " & $iMinTroopToAttackDB & " troops due attack dead base checked", $COLOR_RED)
 				Return True ; no troops then cycle again
 			EndIf
 		Case $iChkTrophyAtkDead = 0 ; no deadbase attacks, then only a few troops needed to enable drop trophy to work
-			If ($CurCamp <= ($TotalCamp * 20 / 100)) Then
-				SetLog("Oops, wait for 20% troops for use in trophy drop", $COLOR_RED)
+			If ($CurCamp <= ($TotalCamp * Number($itxtminArmyCapacityTHSnipe) / 100)) Then
+				SetLog("Oops, wait for " & $itxtminArmyCapacityTHSnipe & " % troops for use in trophy drop", $COLOR_RED)
 				Return True ; no troops then cycle again
 			EndIf
 		Case Else
@@ -94,62 +90,11 @@ Func Unbreakable()
 		$iCount += 1
 	WEnd
 	If $Restart = True Then Return True ; Check Restart Flag to see if drop trophy used all the troops and need to train more.
-	;begin new code for Dec CoC Update to break shield and stop personal break time
-	If $debugSetlog = 1 Then Setlog("Have shield pixel color: " & _GetPixelColor($aHaveShield, $bCapturePixel), $COLOR_PURPLE)
-	If _CheckPixel($aHaveShield, $bCapturePixel) Then  ; check for shield
-		If IsMainPage() Then PureClickP($aRemoveShldButton)
-		If _Sleep($iDelayUnbreakable1) Then Return True ; wait for break shield confirm button
-		While 1 ; wait window with cancel shield button
-			Local $offColors[3][3] = [[0x000000, 144, 0], [0xFFFFFF, 54, 17], [0xCBE870, 54, 10]] ; 2nd Black opposite button, 3rd pixel white "O" center top, 4th pixel White "0" bottom center
-			Global $ButtonPixel = _MultiPixelSearch(438, 372 + $midOffsetY, 590, 404 + $midOffsetY, 1, 1, Hex(0x000000, 6), $offColors, 20) ; first vertical black pixel of Okay, adjust down 30 pixel for 860x780
-			If $debugSetlog = 1 Then Setlog("Shield btn chk-#1: " & _GetPixelColor(441, 374, True) & ", #2: " & _GetPixelColor(441 + 144, 374, True) & ", #3: " & _GetPixelColor(441 + 54, 374 + 17, True) & ", #4: " & _GetPixelColor(441 + 54, 374 + 10, True), $COLOR_PURPLE)
-			If IsArray($ButtonPixel) Then
-				If $debugSetlog = 1 Then
-					Setlog("ButtonPixel = " & $ButtonPixel[0] & ", " & $ButtonPixel[1], $COLOR_PURPLE) ;Debug
-					Setlog("Pixel color found #1: " & _GetPixelColor($ButtonPixel[0], $ButtonPixel[1], True) & ", #2: " & _GetPixelColor($ButtonPixel[0] + 144, $ButtonPixel[1], True) & ", #3: " & _GetPixelColor($ButtonPixel[0] + 54, $ButtonPixel[1] + 17, True) & ", #4: " & _GetPixelColor($ButtonPixel[0] + 54, $ButtonPixel[1] + 27, True), $COLOR_PURPLE)
-				EndIf
-				PureClick($ButtonPixel[0] + 75, $ButtonPixel[1] + 25, 2, 50) ; Click Okay Button
-				ExitLoop
-			EndIf
-			If $i > 15 Then
-				Setlog("Can not find Okay button to break shield, giving up", $COLOR_RED)
-				If $debugImageSave = 1 Then DebugImageSave("UnbreakableShieldButtonnCheck_")
-				SetError(1, @extended, False)
-				Return True
-			EndIf
-			$i += 1
-		WEnd
-	Else
-		If $debugSetlog = 1 Then Setlog("No shield to cancel", $COLOR_GREEN)
-	EndIf
 
-
-	If $debugSetlog = 1 Then Setlog("Have guard pixel color: " & _GetPixelColor($aHavePerGuard, $bCapturePixel), $COLOR_PURPLE)
-	If _CheckPixel($aHavePerGuard, $bCapturePixel) Then ; check for personal guard timer
-		If IsMainPage() Then PureClickP($aRemoveShldButton)
-		If _Sleep($iDelayUnbreakable1) Then Return True ; wait for break guard confirm button
-	While 1 ; look for cancel guard button
-		Local $offColors[3][3] = [[0x000000, 144, 0], [0xFFFFFF, 54, 17], [0xCBE870, 54, 10]] ; 2nd Black opposite button, 3rd pixel white "O" center top, 4th pixel White "0" bottom center
-		Global $ButtonPixel = _MultiPixelSearch(438, 372 + $midOffsetY, 590, 404 + $midOffsetY, 1, 1, Hex(0x000000, 6), $offColors, 20) ; first vertical black pixel of Okay, adjust down 30 pixel for 860x780
-		If $debugSetlog = 1 Then Setlog("Guard btn chk-#1: " & _GetPixelColor(441, 374, True) & ", #2: " & _GetPixelColor(441 + 144, 374, True) & ", #3: " & _GetPixelColor(441 + 54, 374 + 17, True) & ", #4: " & _GetPixelColor(441 + 54, 374 + 10, True), $COLOR_PURPLE)
-		If IsArray($ButtonPixel) Then
-			If $debugSetlog = 1 Then
-				Setlog("ButtonPixel = " & $ButtonPixel[0] & ", " & $ButtonPixel[1], $COLOR_PURPLE) ;Debug
-				Setlog("Pixel color found #1: " & _GetPixelColor($ButtonPixel[0], $ButtonPixel[1], True) & ", #2: " & _GetPixelColor($ButtonPixel[0] + 144, $ButtonPixel[1], True) & ", #3: " & _GetPixelColor($ButtonPixel[0] + 54, $ButtonPixel[1] + 17, True) & ", #4: " & _GetPixelColor($ButtonPixel[0] + 54, $ButtonPixel[1] + 27, True), $COLOR_PURPLE)
-			EndIf
-			PureClick($ButtonPixel[0] + 75, $ButtonPixel[1] + 25, 2, 50) ; Click Okay Button
-			ExitLoop
-		EndIf
-		If $i > 15 Then
-			Setlog("Can not find Okay button to end Personal Guard, giving up", $COLOR_RED)
-			If $debugImageSave = 1 Then DebugImageSave("UnbreakableGuardButtonnCheck_")
-			SetError(1, @extended, False)
-			Return True
-		EndIf
-		$i += 1
-		WEnd
-	Else
-		If $debugSetlog = 1 Then Setlog("No personal guard to cancel", $COLOR_GREEN)
+	BreakPersonalShield() ; break personal Shield and Personal Guard
+	If @error Then
+		If @extended <> "" Then Setlog("PersonalShield button problem: " & @extended, $COLOR_RED)
+		Return True ; return to runbot and try again
 	EndIf
 
 	ClickP($aAway, 2, $iDelayUnbreakable8, "#0115") ;clear screen selections
@@ -225,5 +170,4 @@ Func Unbreakable()
 	If _Sleep($iDelayUnbreakable1) Then Return True
 
 	Return True
-
 EndFunc   ;==>Unbreakable

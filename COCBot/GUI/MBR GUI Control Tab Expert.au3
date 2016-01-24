@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -15,7 +15,7 @@
 
 Func sldTrainITDelay()
 	$isldTrainITDelay = GUICtrlRead($sldTrainITDelay)
-	GUICtrlSetData($lbltxtTrainITDelay, "delay " & $isldTrainITDelay & " ms.")
+	GUICtrlSetData($lbltxtTrainITDelay, GetTranslated(10,32, "delay")&" " & $isldTrainITDelay & " ms.")
 EndFunc   ;==>sldTrainITDelay
 
 Func chkScreenshotType()
@@ -69,8 +69,12 @@ EndFunc   ;==>chkAutoStart
 Func chkDisposeWindows()
 	If GUICtrlRead($chkDisposeWindows) = $GUI_CHECKED Then
 		GUICtrlSetState($cmbDisposeWindowsCond, $GUI_ENABLE)
+		GUICtrlSetState($txtWAOffsetx, $GUI_ENABLE)
+		GUICtrlSetState($txtWAOffsety, $GUI_ENABLE)
 	Else
 		GUICtrlSetState($cmbDisposeWindowsCond, $GUI_DISABLE)
+		GUICtrlSetState($txtWAOffsetx, $GUI_DISABLE)
+		GUICtrlSetState($txtWAOffsety, $GUI_DISABLE)
 	EndIf
 EndFunc   ;==>chkDisposeWindows
 

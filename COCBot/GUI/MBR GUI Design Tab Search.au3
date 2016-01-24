@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -16,7 +16,6 @@
 ;~ -------------------------------------------------------------
 ;~ Search Tab
 ;~ -------------------------------------------------------------
-
 $tabSearch = GUICtrlCreateTabItem(GetTranslated(2,1, "Search"))
 	Local $x = 30, $y = 150
 	$grpSearchMode = GUICtrlCreateGroup(GetTranslated(2,57,"Search Mode"), $x - 20, $y - 20, 225, 55) ;search mode
@@ -42,27 +41,10 @@ $tabSearch = GUICtrlCreateTabItem(GetTranslated(2,1, "Search"))
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$lblRestartSearchLimit = GUICtrlCreateLabel( GetTranslated(2,13,"searches."), $x + 117, $y + 5, -1, -1)
-
-
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	Local $x = 30, $y = 210
 	$grpDeadBaseConditions = GUICtrlCreateGroup(GetTranslated(2,14, "DeadBase Conditions  ( full collectors )"), $x - 20, $y - 20, 225, 255)
-		$chkDBEnableAfter = GUICtrlCreateCheckbox(GetTranslated(2,15, "Delay Start"), $x, $y, -1, -1)
-			$txtTip = GetTranslated(2,16, "Search for a Dead Base after this No. of searches, start searching for Live Bases first..")
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetOnEvent(-1, "chkDBEnableAfter")
-			GUICtrlSetState(-1, $GUI_HIDE)
-		$txtDBEnableAfter = GUICtrlCreateInput("150", $x + 80, $y, 50, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-			$txtTip = GetTranslated(2,17, "No. of searches to wait before activating this mode.")
-			GUICtrlSetLimit(-1, 3)
-			GUICtrlSetTip(-1, $txtTip)
-			_GUICtrlEdit_SetReadOnly(-1, True)
-			GUICtrlSetState(-1, $GUI_HIDE)
-		$lblDBEnableAfter = GUICtrlCreateLabel(GetTranslated(2,18, "search(es)."), $x + 132, $y + 4, -1, -1)
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetState(-1, $GUI_HIDE)
-		$y += 21
 		$cmbDBMeetGE = GUICtrlCreateCombo("", $x , $y + 10, 65, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			$txtTip = GetTranslated(2,19, "Search for a base that meets the values set for Gold And/Or/Plus Elixir.") & @CRLF & GetTranslated(2,20, "AND: Both conditions must meet, Gold and Elixir.") & @CRLF & GetTranslated(2,21, "OR: One condition must meet, Gold or Elixir.") & @CRLF & GetTranslated(2,22, "+ (PLUS): Total amount of Gold + Elixir must meet.")
 			GUICtrlSetData(-1, GetTranslated(2,23, "G And E") &"|" & GetTranslated(2,24, "G Or E") & "|" & GetTranslated(2,25, "G + E"), GetTranslated(2,23, "G And E"))
@@ -164,45 +146,13 @@ $tabSearch = GUICtrlCreateTabItem(GetTranslated(2,1, "Search"))
 		$chkDBMeetOne = GUICtrlCreateCheckbox(GetTranslated(2,44, "Meet One Then Attack"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(2,45, "Just meet only ONE of the above conditions, then Attack.")
 			GUICtrlSetTip(-1, $txtTip)
-		$y += 21
-		
-		$chkDBLightSpell = GUICtrlCreateCheckbox("Use", $x, $y, -1, -1)
-			$txtTip = "Check this to drop lightning spells on DE drills"
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetOnEvent(-1, "chkDBLightSpell")	
-		$picDBLightSpell = GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x + 40, $y, 20, 20)	
-			GUICtrlSetTip(-1, $txtTip)	
-		$lblDBLightMinDark = GUICtrlCreateLabel("Min DE:", $x + 80, $y + 3, -1, -1)
-			$txtTip = "Input the min dark elixer you want to drill zap"
-			GUICtrlSetTip(-1, $txtTip)
-		$txtDBLightMinDark = GUICtrlCreateInput("1000", $x + 120, $y, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetLimit(-1, 4)
-			GUICtrlSetOnEvent(-1, "txtDBLightMinDark")
-			GUICtrlSetState(-1, $GUI_DISABLE)
-		$picDBLightMinDark = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 160, $y + 1, 16, 16)
-			GUICtrlSetTip(-1, $txtTip)
-		$y += 21
-
+		$y += 25		
+        $btnConfigureCollectors = GUICtrlCreateButton(GetTranslated(2,100, "Configure Collectors..."), $x, $y, 180,20)
+			GUICtrlSetOnEvent(-1, "btnConfigureCollectors")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	Local $x = 260, $y = 210
 	$grpLiveBaseConditions = GUICtrlCreateGroup(GetTranslated(2,46,"LiveBase Conditions"), $x - 20, $y - 20, 220, 255)
-		$chkABEnableAfter = GUICtrlCreateCheckbox(GetTranslated(2,15, -1), $x, $y, -1, -1)
-			$txtTip = GetTranslated(2,58, "Search for a Live Base after this No. of searches, start searching for Dead Bases first..")
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetOnEvent(-1, "chkABEnableAfter")
-			GUICtrlSetState(-1, $GUI_HIDE)
-		$txtABEnableAfter = GUICtrlCreateInput("150", $x + 80, $y, 50, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-			$txtTip = GetTranslated(2,17, -1)
-			GUICtrlSetLimit(-1, 3)
-			GUICtrlSetTip(-1, $txtTip)
-			_GUICtrlEdit_SetReadOnly(-1, True)
-			GUICtrlSetState(-1, $GUI_HIDE)
-		$lblABEnableAfter = GUICtrlCreateLabel(GetTranslated(2,18, -1), $x + 132, $y + 4, -1, -1)
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetState(-1, $GUI_HIDE)
-		$y += 21
 		$cmbABMeetGE = GUICtrlCreateCombo("", $x , $y + 10, 65, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			$txtTip = GetTranslated(2,19, -1) & @CRLF & GetTranslated(2,20, -1) & @CRLF & GetTranslated(2,21, -1) & @CRLF & GetTranslated(2,22, -1)
 			GUICtrlSetData(-1, GetTranslated(2,23, -1) & "|" & GetTranslated(2,24, -1) & "|" & GetTranslated(2,25, -1), GetTranslated(2,25, -1))
@@ -375,4 +325,3 @@ $tabSearch = GUICtrlCreateTabItem(GetTranslated(2,1, "Search"))
 			GUICtrlSetTip(-1, $txtTip)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
-

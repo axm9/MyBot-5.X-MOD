@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -318,7 +318,6 @@ Func SetComboTroopComp()
 			For $i = 0 To UBound($TroopDarkName) - 1
 				GUICtrlSetData(Eval("txtNum" & $TroopDarkName[$i]), Eval($TroopDarkName[$i] & "Comp"))
 			Next
-
 	EndSwitch
 	lblTotalCount()
 EndFunc   ;==>SetComboTroopComp
@@ -367,5 +366,4 @@ Func lblTotalCount()
 		GUICtrlSetState($txtNumPoisonSpell, $GUI_ENABLE)
 		GUICtrlSetState($txtNumHasteSpell, $GUI_ENABLE)
 	EndIf
-
 EndFunc   ;==>lblTotalCountSpell

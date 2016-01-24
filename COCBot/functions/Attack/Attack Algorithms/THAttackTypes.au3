@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: AtoZ (2015)
 ; Modified ......: Barracoda (July 2015), TheMaster 2015-10
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -14,90 +14,94 @@
 ; ================================================================
 
 Func SwitchAttackTHType()
-	$THusedKing= 0
-	$THusedQueen=0
+	$THusedKing = 0
+	$THusedQueen = 0
 	AttackTHParseCSV()
 EndFunc   ;==>SwitchAttackTHType
 
-Func AttackTHParseCSV($test=False)
-	If $debugsetlog=1 Then Setlog("AttackTHParseCSV start",$COLOR_PURPLE)
-	Local $f , $line, $acommand, $command, $isTownHallDestroyed = false
+Func AttackTHParseCSV($test = False)
+	If $debugsetlog = 1 Then Setlog("AttackTHParseCSV start", $COLOR_PURPLE)
+	Local $f , $line, $acommand, $command, $isTownHallDestroyed = False
 	Local $GoldStart = getGoldVillageSearch(48, 69)
 	Local $ElixirStart = getElixirVillageSearch(48, 69 + 29)
 	Local $DarkStart = getDarkElixirVillageSearch(48, 69 + 57)
- 	If FileExists($dirTHSnipesAttacks & "\" &$scmbAttackTHType & ".csv") Then
-		$f = FileOpen($dirTHSnipesAttacks & "\" &$scmbAttackTHType & ".csv", 0)
+	If FileExists($dirTHSnipesAttacks & "\" & $scmbAttackTHType & ".csv") Then
+		$f = FileOpen($dirTHSnipesAttacks & "\" & $scmbAttackTHType & ".csv", 0)
 		; Read in lines of text until the EOF is reached
 		While 1
 			$line = FileReadLine($f)
 			If @error = -1 Then ExitLoop
-			$acommand = StringSplit($line,"|")
-			If $acommand[0] >=8 Then
-				$command = StringStripWS (StringUpper( $acommand[1] ),2)
+			$acommand = StringSplit($line, "|")
+			If $acommand[0] >= 8 Then
+				$command = StringStripWS(StringUpper($acommand[1]), 2)
 				Select
-					Case $command = "TROOP"  or $command = ""
-						;Setlog("<<<<discard line>>>>")
+					Case $command = "TROOP" Or $command = ""
+						; discard line
 					Case $command = "TEXT"
-						If $test = True Then
-							Setlog(">> SETLOG(""" & $acommand[8] & """)")
+						If $debugSetLog = 1 Then Setlog(">> SETLOG(""" & $acommand[8] & """)")
+						SetLog($acommand[8], $COLOR_BLUE)
+					Case StringInStr(StringUpper("-Barb-Arch-Giant-Gobl-Wall-Ball-Wiza-Heal-Drag-Pekk-Mini-Hogs-Valk-Gole-Witc-Lava-"), "-" & $command & "-") > 0
+						If $debugSetLog = 1 Then Setlog(">> AttackTHGrid($e" & $command & ", Random (" & Int($acommand[2]) & "," & Int($acommand[3]) & ",1), Random(" & Int($acommand[4]) & "," & Int($acommand[5]) & ",1), Random(" & Int($acommand[6]) & "," & Int($acommand[7]) & ",1) )")
+
+						Local $iNbOfSpots
+						If Int($acommand[2]) = Int($acommand[3]) Then
+							$iNbOfSpots = Int($acommand[2])
 						Else
-							SetLog($acommand[8] ,$COLOR_BLUE)
+							$iNbOfSpots = Random(Int($acommand[2]), Int($acommand[3]), 1)
 						EndIf
-					Case StringInStr(StringUpper("-Barb-Arch-Giant-Gobl-Wall-Ball-Wiza-Heal-Drag-Pekk-Mini-Hogs-Valk-Gole-Witc-Lava-"), "-" & $command & "-") >0
-						If $test = True Then
-							Setlog(">> AttackTHGrid($e" &$command&", Random (" &  Int($acommand[2])&"," & int($acommand[3])&",1), Random("& int($acommand[4])&"," & int($acommand[5])&",1), Random(" & int($acommand[6]) &"," & int($acommand[7])& ",1) )" )
+
+						Local $iAtEachSpot
+						If Int($acommand[4]) = Int($acommand[5]) Then
+							$iAtEachSpot = Int($acommand[4])
 						Else
- 							AttackTHGrid(Eval("e" &$command ) , Random ( Int($acommand[2]), Int($acommand[3]),1), Random( int($acommand[4]), int($acommand[5]),1), Random( int($acommand[6]) , int($acommand[7]),1) )
+							$iAtEachSpot = Random(Int($acommand[4]), Int($acommand[5]), 1)
 						EndIf
+
+						Local $Sleep
+						If Int($acommand[6]) = Int($acommand[7]) Then
+							$Sleep = Int($acommand[6])
+						Else
+							$Sleep = Random(Int($acommand[6]), Int($acommand[7]), 1)
+						EndIf
+
+						AttackTHGrid(Eval("e" & $command), $iNbOfSpots, $iAtEachSpot, $Sleep, 0)
 					Case $command = "WAIT"
-						If $test = True Then
-							Setlog(">> ThSnipeWait(" &int($acommand[7])  & ") " )
-						Else
-							$isTownHallDestroyed = ThSnipeWait( Int($acommand[7]) )
+						If $debugSetLog = 1 Then Setlog(">> GoldElixirChangeThSnipes(" & Int($acommand[7]) & ") ")
+						If CheckOneStar(Int($acommand[7]) / 2000) Then ; Use seconds not ms , Half of time to check One start and the other halft for check the Resources
+							$isTownHallDestroyed = True
+							ExitLoop
 						EndIf
-					Case StringInStr(StringUpper("-King-Queen-Castle-"), "-" & $command & "-") >0
-						If $test = True Then
-							Setlog(">> AttackTHGrid($e"&$command & ")" )
-						Else
-							AttackTHGrid( Eval("e"&$command ) )
-						EndIf
-					Case StringInStr(StringUpper("-HSpell-RSpell-"), "-" & $command & "-") >0
-						If $test = True Then
-							Setlog(">> SpellTHGrid($e"&$command & ")" )
-						Else
-							SpellTHGrid( Eval("e"& $command ) )
-						EndIf
-					Case StringInStr(StringUpper("-LSpell-"), "-" & $command & "-") >0
-						If $test = True Then
-							Setlog(">> CastSpell($e"&$command & ",$THx, $THy)" )
-						Else
-							CastSpell(Eval("e"&$command) ,$THx, $THy )
-						EndIf
+						GoldElixirChangeThSnipes(Int($acommand[7]) / 2000)
+					Case StringInStr(StringUpper("-King-Queen-Castle-"), "-" & $command & "-") > 0
+						If $debugSetLog = 1 Then Setlog(">> AttackTHGrid($e" & $command & ")")
+						AttackTHGrid(Eval("e" & $command))
+					Case StringInStr(StringUpper("-HSpell-RSpell-"), "-" & $command & "-") > 0
+						If $debugSetLog = 1 Then Setlog(">> SpellTHGrid($e" & $command & ")")
+						SpellTHGrid(Eval("e" & $command))
+					Case StringInStr(StringUpper("-LSpell-"), "-" & $command & "-") > 0
+						If $debugSetLog = 1 Then Setlog(">> CastSpell($e" & $command & ",$THx, $THy)")
+						CastSpell(Eval("e" & $command), $THx, $THy)
 					Case Else
-						Setlog("attack row bad, discard: " & $line,$COLOR_RED)
+						Setlog("attack row bad, discard: " & $line, $COLOR_RED)
 				EndSelect
-				If $acommand[8] <> "" And $command <> "TEXT"  And $command <>"TROOP" Then
-					If $test = True Then
-						Setlog(">> SETLOG(""" & $acommand[8] & """)")
-					Else
-						SETLOG( $acommand[8] ,$COLOR_BLUE)
-					EndIf
+				If $acommand[8] <> "" And $command <> "TEXT" And $command <> "TROOP" Then
+					If $debugSetLog = 1 Then Setlog(">> SETLOG(""" & $acommand[8] & """)")
+					SETLOG($acommand[8], $COLOR_BLUE)
 				EndIf
 			Else
-				if StringStripWS( $acommand[1],2  ) <>"" Then  Setlog("attack row error, discard: " & $line,$COLOR_RED)
+				If StringStripWS($acommand[1], 2) <> "" Then Setlog("attack row error, discard: " & $line, $COLOR_RED)
 			EndIf
-			If $isTownHallDestroyed = True Then ExitLoop
+			If $debugSetLog = 1 Then Setlog(">> CheckOneStar()")
+			If CheckOneStar() Then ExitLoop
 		WEnd
 		FileClose($f)
 	Else
-		SetLog("Cannot found THSnipe attack file " & $dirTHSnipesAttacks & "\" &$scmbAttackTHType & ".csv" , $color_red)
+		SetLog("Cannot found THSnipe attack file " & $dirTHSnipesAttacks & "\" & $scmbAttackTHType & ".csv", $color_red)
 	EndIf
 
 	If $isTownHallDestroyed = True Then TestLoots($GoldStart, $ElixirStart, $DarkStart)
-	While GoldElixirChangeEBO()
-		If _Sleep($iDelayReturnHome1) Then Return
-	WEnd
-EndFunc   ;==>waitMainScreen
+	GoldElixirChangeThSnipes(5)
+EndFunc   ;==>AttackTHParseCSV
 
 Func TestLoots($GoldStart = 0, $ElixirStart = 0, $DarkStart = 0)
 	If $ichkAttackIfDB = 1 Then
@@ -164,8 +168,9 @@ Func RaidCollectors($GoldEnd = 0, $ElixirEnd = 0)
 	Return $attackUsed
 EndFunc   ;==>RaidCollectors
 
-Func RaidCollectorsSmart($atkGold = 1, $atkElixir = 1, $atkDark = 1)
-	Setlog ("Loot is mostly in collectors!")
+Func RaidCollectorsSmart($atkGold = 1, $atkElixir = 1, $atkDark = 1, $GoldEnd = 0, $ElixirEnd = 0)
+	Local $attackUsed = False
+	Setlog ("Loot is mostly in collectors!")	
 	
 	; temporarily store original settings
 	$tempMatchMode = $iMatchMode
@@ -187,17 +192,19 @@ Func RaidCollectorsSmart($atkGold = 1, $atkElixir = 1, $atkDark = 1)
 	$iChkSmartAttack[$DB][2] = $atkDark
 	
 	; attack dead base if have enough troops and there's gold or elixir to raid
-	If $CurCamp > $iMinTroopToAttackDB And ($atkGold = 1 Or $atkElixir = 1) Then 	
-		Setlog ("Attacking collectors!")
+	If $CurCamp > $iMinTroopToAttackDB And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 	
+		Setlog ("Attacking collectors!")		
 		PrepareAttack($DB)
 		Attack()
+		$attackUsed = True
 		; wait until there's loot change
 		While GoldElixirChangeEBO()
 			If _Sleep($iDelayReturnHome1) Then Return
 		WEnd
 	EndIf	
 	
-	DEDropSmartSpell()
+	; Zap DE drill if needed
+	If DEDropSmartSpell() <> False Then $attackUsed = True
 	
 	; reset original settings
 	$iMatchMode = $tempMatchMode
@@ -207,4 +214,6 @@ Func RaidCollectorsSmart($atkGold = 1, $atkElixir = 1, $atkDark = 1)
 	$iChkSmartAttack[$DB][0] = $tempChkAttackGold
 	$iChkSmartAttack[$DB][1] = $tempChkAttackElixir
 	$iChkSmartAttack[$DB][2] = $tempChkAttackDark
+	
+	Return $attackUsed
 EndFunc   ;==>RaidCollectorsSmart

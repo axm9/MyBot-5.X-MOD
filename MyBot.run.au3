@@ -3,7 +3,7 @@
 ; Description ...: This file contens the Sequence that runs all MBR Bot
 ; Author ........:  (2014)
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -11,25 +11,24 @@
 ; ===============================================================================================================================
 
 #RequireAdmin
-#AutoIt3Wrapper_UseX64=n
+#AutoIt3Wrapper_UseX64=7n
 #include <WindowsConstants.au3>
 #include <WinAPI.au3>
 
-#pragma compile(Icon, "Icons\MyBot.ico")
+#pragma compile(Icon, "Images\MyBot.ico")
 #pragma compile(FileDescription, Clash of Clans Bot - A Free Clash of Clans bot - https://mybot.run)
 #pragma compile(ProductName, My Bot)
 
-#pragma compile(ProductVersion, 5.0)
-#pragma compile(FileVersion, 5.0.2)
-#pragma compile(LegalCopyright, © https://mybot.run)
-
-Global $sBotDll = @ScriptDir & "\MBRPlugin.dll"
+#pragma compile(ProductVersion, 5.1)
+#pragma compile(FileVersion, 5.1.2)
+#pragma compile(LegalCopyright, Â© https://mybot.run)
+#pragma compile(Out, MyBot.run.exe)
 
 If @AutoItX64 = 1 Then
 	MsgBox(0, "", "Don't Run/Compile the Script as (x64)! try to Run/Compile the Script as (x86) to get the bot to work." & @CRLF & _
 			"If this message still appears, try to re-install AutoIt.")
 	Exit
- EndIf
+EndIf
 
 If Not FileExists(@ScriptDir & "\License.txt") Then
 	$license = InetGet("http://www.gnu.org/licenses/gpl-3.0.txt", @ScriptDir & "\License.txt")
@@ -38,29 +37,48 @@ EndIf
 
 #include "COCBot\MBR Global Variables.au3"
 
-$sBotVersion = "v5.0.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
+$sBotVersion = "v5.1.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & " " & $DEFAULT_WIDTH & "x" & $DEFAULT_HEIGHT & " "
 
+Opt("WinTitleMatchMode", 3) ; Window Title exact match mode
 #include "COCBot\functions\Main Screen\Android.au3"
 
-If $CmdLine[0] < 2 Then
-   DetectRunningAndroid()
-   If Not $FoundRunningAndroid Then DetectInstalledAndroid()
+If $aCmdLine[0] < 2 Then
+	DetectRunningAndroid()
+	If Not $FoundRunningAndroid Then DetectInstalledAndroid()
 EndIf
 ; Update Bot title
 $sBotTitle = $sBotTitle & "(" & ($AndroidInstance <> "" ? $AndroidInstance : $Android) & ")"
 $sBotTitle = $sBotTitle & " Modded by McSlither"
 
-Local $cmdLineHelp = "Please specify as first command line parameter a different Profile (01-06). With second a different Android Emulator and with third an Android Instance. Supported Emulators are BlueStacks, BlueStacks2 and Droid4X. Only Droid4X supports running different instances at the same time."
-If _Singleton($sBotTitle, 1) = 0 Then
-	MsgBox(0, $sBotTitle, "Bot for " & $Android & ($AndroidInstance <> "" ? " (instance " & $AndroidInstance & ")" : "") & " is already running." & @CRLF & @CRLF & $cmdLineHelp)
+If $bBotLaunchOption_Restart = True Then
+   If CloseRunningBot($sBotTitle) = True Then
+	  ; wait for Mutexes to get disposed
+	  Sleep(1000) ; slow systems
+   EndIf
+EndIF
+
+Local $cmdLineHelp = "With the first command line parameter, specify the Profile(01-06). " & _
+					 "With the second, specify the name of the Emulator and with the third, an Android Instance (only for Droid4x & MEmu). " & _
+					 "Supported Emulators are BlueStacks, BlueStacks2, Droid4X and MEmu. " & _
+					 @CRLF&"Example: this command will start the bot with BlueStacks2 and profile 01: "&@CRLF &"MyBot.run.exe BlueStacks2 01"
+
+$hMutex_BotTitle = _Singleton($sBotTitle, 1)
+If $hMutex_BotTitle = 0 Then
+	MsgBox(0, $sBotTitle, "My Bot for " & $Android & ($AndroidInstance <> "" ? " (instance " & $AndroidInstance & ")" : "") & " is already running." & @CRLF & @CRLF & $cmdLineHelp)
 	Exit
 EndIf
 
-If _Singleton(StringReplace($sProfilePath & "\" & $sCurrProfile, "\", "-"), 1) = 0 Then
-	MsgBox(0, $sBotTitle, "Bot with Profile " & $sCurrProfile & " is already running in " & $sProfilePath & "\" & $sCurrProfile & "." & @CRLF & @CRLF & $cmdLineHelp)
+$hMutex_Profile = _Singleton(StringReplace($sProfilePath & "\" & $sCurrProfile, "\", "-"), 1)
+If $hMutex_Profile = 0 Then
+   _WinAPI_CloseHandle($hMutex_BotTitle)
+	MsgBox(0, $sBotTitle, "My Bot with Profile " & $sCurrProfile & " is already running in " & $sProfilePath & "\" & $sCurrProfile & "." & @CRLF & @CRLF & $cmdLineHelp)
 	Exit
 EndIf
+
+$hMutex_MyBot = _Singleton("MyBot.run", 1)
+$OnlyInstance = $hMutex_MyBot <> 0 ; And False
+SetDebugLog("My Bot is " & ($OnlyInstance ? "" : "not ") & "the only running instance")
 
 ;multilanguage
 #include "COCBot\functions\Other\Multilanguage.au3"
@@ -72,22 +90,26 @@ DetectLanguage()
 
 CheckPrerequisites() ; check for VC2010, .NET software and MyBot Files and Folders
 
-DirCreate($sTemplates)
 DirCreate($sProfilePath & "\" & $sCurrProfile)
 DirCreate($dirLogs)
 DirCreate($dirLoots)
+DirCreate($dirStats)
 DirCreate($dirTemp)
+DirCreate($dirTempDebug)
 FileMove(@ScriptDir & "\*.ini", $sProfilePath & "\" & $sCurrProfile, $FC_OVERWRITE + $FC_CREATEPATH)
 DirCopy(@ScriptDir & "\Logs", $sProfilePath & "\" & $sCurrProfile & "\Logs", $FC_OVERWRITE + $FC_CREATEPATH)
 DirCopy(@ScriptDir & "\Loots", $sProfilePath & "\" & $sCurrProfile & "\Loots", $FC_OVERWRITE + $FC_CREATEPATH)
+DirCopy(@ScriptDir & "\Stats", $sProfilePath & "\" & $sCurrProfile & "\Stats", $FC_OVERWRITE + $FC_CREATEPATH)
 DirCopy(@ScriptDir & "\Temp", $sProfilePath & "\" & $sCurrProfile & "\Temp", $FC_OVERWRITE + $FC_CREATEPATH)
 DirRemove(@ScriptDir & "\Logs", 1)
 DirRemove(@ScriptDir & "\Loots", 1)
+DirRemove(@ScriptDir & "\Stats", 1)
 DirRemove(@ScriptDir & "\Temp", 1)
 
 If $ichkDeleteLogs = 1 Then DeleteFiles($dirLogs, "*.*", $iDeleteLogsDays, 0)
 If $ichkDeleteLoots = 1 Then DeleteFiles($dirLoots, "*.*", $iDeleteLootsDays, 0)
 If $ichkDeleteTemp = 1 Then DeleteFiles($dirTemp, "*.*", $iDeleteTempDays, 0)
+If $ichkDeleteTemp = 1 Then DeleteFiles($dirTempDebug, "*.*", $iDeleteTempDays, 0)
 FileChangeDir($LibDir)
 
 ;MBRfunctions.dll & debugger
@@ -95,21 +117,18 @@ MBRFunc(True) ; start MBRFunctions dll
 debugMBRFunctions($debugSearchArea, $debugRedArea, $debugOcr) ; set debug levels
 
 If $FoundRunningAndroid Then
-   SetLog("Found running " & $Android & " " & $AndroidVersion, $COLOR_GREEN)
+	SetLog("Found running " & $Android & " " & $AndroidVersion, $COLOR_GREEN)
 EndIf
 If $FoundInstalledAndroid Then
-   SetLog("Found installed " & $Android & " " & $AndroidVersion, $COLOR_GREEN)
+	SetLog("Found installed " & $Android & " " & $AndroidVersion, $COLOR_GREEN)
 EndIf
 SetLog("Android Emulator Configuration: " & $Android & ($AndroidInstance <> "" ? " (instance " & $AndroidInstance & ")" : ""), $COLOR_GREEN)
 
 AdlibRegister("PushBulletRemoteControl", $PBRemoteControlInterval)
 AdlibRegister("PushBulletDeleteOldPushes", $PBDeleteOldPushesInterval)
 
-CheckDisplay()  ; verify display size and DPI (Dots Per Inch) setting
+CheckDisplay() ; verify display size and DPI (Dots Per Inch) setting
 
-LoadTHImage() ; Load TH images
-LoadElixirImage() ; Load Elixir images
-LoadElixirImage75Percent(); Load Elixir images full at 75%
 CheckVersion() ; check latest version on mybot.run site
 
 ;AutoStart Bot if request
@@ -135,8 +154,7 @@ Func runBot() ;Bot that runs everything in order
 		If _Sleep($iDelayRunBot1) Then Return
 		checkMainScreen()
 		If $Restart = True Then ContinueLoop
-
-		If $Is_ClientSyncError = False and $Is_SearchLimit=false Then
+		If $Is_ClientSyncError = False And $Is_SearchLimit = False Then
 			If BotCommand() Then btnStop()
 			If _Sleep($iDelayRunBot2) Then Return
 			checkMainScreen(False)
@@ -144,18 +162,22 @@ Func runBot() ;Bot that runs everything in order
 			If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 			If _Sleep($iDelayRunBot3) Then Return
 			VillageReport()
-			If $OutOfGold = 1 And ($iGoldCurrent >= $itxtRestartGold) Then ; check if enough gold to begin searching again
+			If $OutOfGold = 1 And (Number($iGoldCurrent) >= Number($itxtRestartGold)) Then ; check if enough gold to begin searching again
 				$OutOfGold = 0 ; reset out of gold flag
 				Setlog("Switching back to normal after no gold to search ...", $COLOR_RED)
 				$ichkBotStop = 0 ; reset halt attack variable
-				$icmbBotCond = _GUICtrlComboBox_GetCurSel($cmbBotCond)  ; Restore User GUI halt condition after modification for out of gold
+				$icmbBotCond = _GUICtrlComboBox_GetCurSel($cmbBotCond) ; Restore User GUI halt condition after modification for out of gold
+				$bTrainEnabled = True
+				$bDonationEnabled = True
 				ContinueLoop ; Restart bot loop to reset $CommandStop
 			EndIf
-			If $OutOfElixir = 1 And ($iElixirCurrent >= $itxtRestartElixir) And ($iDarkCurrent >= $itxtRestartDark) Then ; check if enough elixir to begin searching again
+			If $OutOfElixir = 1 And (Number($iElixirCurrent) >= Number($itxtRestartElixir)) And (Number($iDarkCurrent) >= Number($itxtRestartDark)) Then ; check if enough elixir to begin searching again
 				$OutOfElixir = 0 ; reset out of gold flag
 				Setlog("Switching back to normal setting after no elixir to train ...", $COLOR_RED)
 				$ichkBotStop = 0 ; reset halt attack variable
-				$icmbBotCond = _GUICtrlComboBox_GetCurSel($cmbBotCond)  ; Restore User GUI halt condition after modification for out of elixir
+				$icmbBotCond = _GUICtrlComboBox_GetCurSel($cmbBotCond) ; Restore User GUI halt condition after modification for out of elixir
+				$bTrainEnabled = True
+				$bDonationEnabled = True
 				ContinueLoop ; Restart bot loop to reset $CommandStop
 			EndIf
 			If _Sleep($iDelayRunBot5) Then Return
@@ -183,9 +205,7 @@ Func runBot() ;Bot that runs everything in order
 			Train()
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
-			If $iTrainLightSpell = 1 Then
-                CookDrillZapSpell() 
-            EndIf
+			If $iTrainLightSpell = 1 Then CookDrillZapSpell()
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False)
 			If $Restart = True Then ContinueLoop
@@ -240,39 +260,16 @@ Func runBot() ;Bot that runs everything in order
 			EndIf
 
 		Else ;When error occours directly goes to attack
-			If $Is_SearchLimit = False Then
-				SetLog("Restarted after Out of Sync Error: Attack Now", $COLOR_RED)
+			If $Is_SearchLimit = True Then
+				SetLog("Restarted due search limit", $COLOR_BLUE)
 			Else
-				If $debugsetlog = 1 Then Setlog("return from searchLimit, restart searches (" & $CurCamp & "/" & $TotalCamp &")",$COLOR_PURPLE)
-				;OPEN ARMY OVERVIEW WITH NEW BUTTON
-				If WaitforPixel(28, 505 + $bottomOffsetY, 30, 507 + $bottomOffsetY, Hex(0xE4A438, 6), 5, 10) Then
-					If $debugSetlog = 1 Then SetLog("Click $aArmyTrainButton", $COLOR_GREEN)
-					Click($aArmyTrainButton[0], $aArmyTrainButton[1], 1, 0, "#0293") ; Button Army Overview
-				EndIf
-
-				If _Sleep($iDelayTrain1) Then Return ; wait for window to open
-				If Not (IsTrainPage()) Then Return ; exit if I'm not in train page
-
-				if not (  int($CurCamp) = int($TotalCamp) ) Then
-					checkArmyCamp()
-					if int($CurCamp) = int($TotalCamp) then
-							;now army camps full.. train for next raid
-							train()
-							ContinueLoop
-					EndIf
-				Else
-					checkArmyCamp()
-				EndIf
+				SetLog("Restarted after Out of Sync Error: Attack Now", $COLOR_BLUE)
 			EndIf
-			ClickP($aAway, 2, $iDelayTrain5, "#0291"); Exit from Army Camp
 			If _Sleep($iDelayRunBot3) Then Return
-			checkMainScreen(True)
-			If $Restart = True Then ContinueLoop
-			If Number($iTrophyCurrent) > Number($itxtMaxTrophy) Then
-				DropTrophy()
-			Else
-				AttackMain()
-			EndIf
+			;  OCR read current Village Trophies when OOS restart maybe due PB or else DropTrophy skips one attack cycle after OOS
+			$iTrophyCurrent = getTrophyMainScreen($aTrophies[0], $aTrophies[1])
+			If $debugsetlog = 1 Then SetLog("Runbot Trophy Count: " & $iTrophyCurrent, $COLOR_PURPLE)
+			AttackMain()
 			If $OutOfGold = 1 Then
 				Setlog("Switching to Halt Attack, Stay Online/Collect mode ...", $COLOR_RED)
 				$ichkBotStop = 1 ; set halt attack variable
@@ -289,8 +286,6 @@ EndFunc   ;==>runBot
 
 Func Idle() ;Sequence that runs until Full Army
 	Local $TimeIdle = 0 ;In Seconds
-	If $debugSetlog = 1 Then SetLog("Func Idle ", $COLOR_PURPLE)
-	If Number($iTrophyCurrent) >= Number($itxtMaxTrophy) Then DropTrophy()
 	While $fullArmy = False
 		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 		If _Sleep($iDelayIdle1) Then Return
@@ -318,8 +313,8 @@ Func Idle() ;Sequence that runs until Full Army
 		If $iCollectCounter > $COLLECTATCOUNT Then ; This is prevent from collecting all the time which isn't needed anyway
 			Collect()
 			If _Sleep($iDelayIdle1) Then Return
-			DonateCC()
-			If $Restart = True Then ExitLoop
+ 			DonateCC()
+ 			If $Restart = True Then ExitLoop
 			If _Sleep($iDelayIdle1) Or $RunState = False Then ExitLoop
 			$iCollectCounter = 0
 		EndIf
@@ -328,9 +323,7 @@ Func Idle() ;Sequence that runs until Full Army
 			Train()
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
-			If $iTrainLightSpell = 1 Then
-                CookDrillZapSpell() 
-            EndIf
+			If $iTrainLightSpell = 1 Then CookDrillZapSpell()
 			If $Restart = True Then ExitLoop
 			If _Sleep($iDelayIdle1) Then ExitLoop
 			checkMainScreen(False)
@@ -341,9 +334,7 @@ Func Idle() ;Sequence that runs until Full Army
 				Train()
 				If _Sleep($iDelayRunBot3) Then Return
 				If $Restart = True Then ContinueLoop
-				If $iTrainLightSpell = 1 Then
-					CookDrillZapSpell() 
-				EndIf
+				If $iTrainLightSpell = 1 Then CookDrillZapSpell()
 				If $Restart = True Then ExitLoop
 				If _Sleep($iDelayIdle1) Then ExitLoop
 				checkMainScreen(False)
@@ -365,22 +356,26 @@ Func Idle() ;Sequence that runs until Full Army
 		If $Restart = True Then ExitLoop
 		$TimeIdle += Round(TimerDiff($hTimer) / 1000, 2) ;In Seconds
 
-		If $canRequestCC = true then	RequestCC()
+		If $canRequestCC = True Then RequestCC()
 
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
-		If $OutOfGold = 1 Or $OutOfElixir = 1 Then Return
-		;snipe while train
-		If $iChkSnipeWhileTrain = 1 Then SnipeWhileTrain()
+		If $OutOfGold = 1 Or $OutOfElixir = 1 Then Return  ; Halt mode due low resources, only 1 idle loop
+		If $iChkSnipeWhileTrain = 1 Then SnipeWhileTrain()  ;snipe while train
 	WEnd
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
-	;launch profilereport() only if option balance D/R it's activated
-	If $iChkUseCCBalanced = 1 Then
+	If $iChkUseCCBalanced = 1 Then ;launch profilereport() only if option balance D/R it's activated
 		ProfileReport()
 		If _Sleep($iDelayAttackMain1) Then Return
 		checkMainScreen(False)
 		If $Restart = True Then Return
+	EndIf
+	If Number($iTrophyCurrent) > Number($iTxtMaxTrophy) Then ;If current trophy above max trophy, try drop first
+		DropTrophy()
+		$Is_ClientSyncError = False ; reset OOS flag to prevent looping.
+		If _Sleep($iDelayAttackMain1) Then Return
+		Return ; return to runbot, refill armycamps
 	EndIf
 	PrepareSearch()
 	If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
@@ -389,7 +384,6 @@ Func AttackMain() ;Main control for attack functions
 	If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
 	If $Restart = True Then Return
 	PrepareAttack($iMatchMode)
-	If $Restart = True Then Return
 	If $Restart = True Then Return
 	Attack()
 	If $Restart = True Then Return
@@ -400,5 +394,9 @@ EndFunc   ;==>AttackMain
 
 Func Attack() ;Selects which algorithm
 	SetLog(" ====== Start Attack ====== ", $COLOR_GREEN)
-	algorithm_AllTroops()
+	If ($iMatchMode = $DB And $ichkUseAttackDBCSV = 1) Or ($iMatchMode = $LB And $ichkUseAttackABCSV = 1) Then
+		Algorithm_AttackCSV()
+	Else
+		algorithm_AllTroops()
+	EndIf
 EndFunc   ;==>Attack

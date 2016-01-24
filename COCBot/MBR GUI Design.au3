@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -20,13 +20,11 @@ $frmBot = GUICreate($sBotTitle, 470, 650)
 	GUISetIcon($pIconLib, $eIcnGUI)
 	TraySetIcon($pIconLib, $eIcnGUI)
 $tabMain = GUICtrlCreateTab(5, 85, 461, 425, $TCS_MULTILINE)
-	GUICtrlSetOnEvent(-1, "tabMain")
-	GUICtrlCreatePic (@ScriptDir & "\Icons\logo.jpg", 0, 0, 470, 80)
+	GUICtrlCreatePic (@ScriptDir & "\Images\logo.jpg", 0, 0, 470, 80)
 
 ;~ ------------------------------------------------------
 ;~ Header Menu
 ;~ ------------------------------------------------------
-
 $DonateMenu = GUICtrlCreateMenu("&Paypal Donate?")
 $DonateConfig = GUICtrlCreateMenuItem("Support the development", $DonateMenu)
 GUICtrlSetOnEvent(-1, "")
@@ -39,6 +37,7 @@ GUICtrlSetOnEvent(-1, "")
 #include "GUI\MBR GUI Design Tab Troops.au3"
 #include "GUI\MBR GUI Design Tab Search.au3"
 #include "GUI\MBR GUI Design Tab Attack.au3"
+#include "GUI\MBR GUI Design Tab AttackCSV.au3"
 #include "GUI\MBR GUI Design Tab Advanced.au3"
 #include "GUI\MBR GUI Design Tab EndBattle.au3"
 #include "GUI\MBR GUI Design Tab Donate.au3"
@@ -47,6 +46,7 @@ GUICtrlSetOnEvent(-1, "")
 #include "GUI\MBR GUI Design Tab Notify.au3"
 #include "GUI\MBR GUI Design Tab Expert.au3"
 #include "GUI\MBR GUI Design Tab Stats.au3" ; includes '$LastControlToHide" on GUI
+#include "GUI\MBR GUI Design Collectors.au3"
 
 ;~ -------------------------------------------------------------
 ;~ About Us Tab
@@ -91,7 +91,7 @@ Local $x = 30, $y = 150
 						"the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General " & @CRLF & _
 						"Public License for more details. The license can be found in the main code folder location."  & @CRLF & _
 						"Copyright (C) 2015 MyBot.run"
-		$lbltxtWarn = GUICtrlCreateEdit($txtWarn, $x - 5, $y, 410, 56, BITOR($WS_VISIBLE, $ES_AUTOVSCROLL, $ES_READONLY, $SS_LEFT, $ES_CENTER),0)
+		$lbltxtWarn1 = GUICtrlCreateEdit($txtWarn, $x - 5, $y, 410, 56, BITOR($WS_VISIBLE, $ES_AUTOVSCROLL, $ES_READONLY, $SS_LEFT, $ES_CENTER),0)
 			GUICtrlSetColor(-1, 0x000053)
 			GUICtrlSetBkColor(-1, $COLOR_WHITE)
 			GUICtrlSetFont(-1, 6, $FW_BOLD)
@@ -102,7 +102,6 @@ GUICtrlCreateTabItem("")
 ;~ Bottom status bar
 ;~ -------------------------------------------------------------
 GUISetState(@SW_SHOW)
-
 $statLog = _GUICtrlStatusBar_Create($frmBot)
 _ArrayConcatenate($G, $y)
 _GUICtrlStatusBar_SetSimple($statLog)
@@ -110,5 +109,3 @@ _GUICtrlStatusBar_SetText($statLog, "Status : Idle")
 $tiAbout = TrayCreateItem("About")
 TrayCreateItem("")
 $tiExit = TrayCreateItem("Exit")
-
-;~ -------------------------------------------------------------

@@ -6,12 +6,13 @@
 ; Return values .: None
 ; Author ........: Code Monkey #19
 ; Modified ......: KnowJack (June 2015) Sardo 2015-08
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func LocateBarrack($ArmyCamp = False)
 	Local $choice = "Barrack"
 	Local $stext, $MsgBox, $iCount, $iStupid = 0, $iSilly = 0, $sErrorText = "", $sLocMsg = "", $sInfo, $sArmyInfo
@@ -35,8 +36,9 @@ Func LocateBarrack($ArmyCamp = False)
 		If $MsgBox = 1 Then
 			WinActivate($HWnD)
 			If $ArmyCamp Then
-				$ArmyPos[0] = FindPos()[0]
-				$ArmyPos[1] = FindPos()[1]
+			    Local $aPos = FindPos()
+				$ArmyPos[0] = $aPos[0]
+				$ArmyPos[1] = $aPos[1]
 				If _Sleep($iDelayLocateBarrack1) Then Return
 				If isInsideDiamond($ArmyPos) = False Then
 					$iStupid += 1
@@ -110,8 +112,9 @@ Func LocateBarrack($ArmyCamp = False)
 				Local $TEMPbarrackPos[4][2]
 				For $i = 0 To ($numBarracksAvaiables - 1)
 					Setlog("Click in Barrack nº " & $i + 1 & " and wait please...")
-					$TEMPbarrackPos[$i][0] = FindPos()[0]
-					$TEMPbarrackPos[$i][1] = FindPos()[1]
+					Local $aPos = FindPos()
+					$TEMPbarrackPos[$i][0] = $aPos[0]
+					$TEMPbarrackPos[$i][1] = $aPos[1]
 					If isInsideDiamondXY($TEMPbarrackPos[$i][0], $TEMPbarrackPos[$i][1]) Then
 						If _Sleep($iDelayLocateBarrack2) Then Return
 						Local $TrainPos = _PixelSearch(512, 585 + $bottomOffsetY, 641, 588 + $bottomOffsetY, Hex(0x7895C2, 6), 10) ;Finds Train Troops button
@@ -312,7 +315,4 @@ Func LocateBarrack2()
 
 	EndIf
 	If _Sleep($iDelayBotDetectFirstTime3) Then Return
-
 EndFunc   ;==>LocateBarrack2
-
-

@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: ProMac (2015), HungLe (2015)
 ; Modified ......: Sardo 2015-08, KnowJack (Aug 2105)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......: checkwall.au3
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -14,7 +14,6 @@
 ; ===============================================================================================================================
 
 Func UpgradeWall()
-
 	If $ichkWalls = 1 Then
 		SetLog("Checking Upgrade Walls", $COLOR_BLUE)
 		If SkipWallUpgrade() Then Return
@@ -65,7 +64,6 @@ Func UpgradeWall()
 	EndIf
 	If _Sleep($iDelayUpgradeWall1) Then Return
 	checkMainScreen(False) ; Check for errors during function
-
 EndFunc   ;==>UpgradeWall
 
 Func UpgradeWallGold()
@@ -100,7 +98,6 @@ Func UpgradeWallGold()
 		Pushmsg("NowUpgradeGoldButton")
 		Return False
 	EndIf
-
 EndFunc   ;==>UpgradeWallGold
 
 Func UpgradeWallElixir()
@@ -131,16 +128,13 @@ Func UpgradeWallElixir()
 		Pushmsg("NowUpgradeElixirButton")
 		Return False
 	EndIf
-
 EndFunc   ;==>UpgradeWallElixir
 
 Func SkipWallUpgrade() ; Dynamic Upgrades
-
 	If _Sleep(500) Then Return
 	checkMainScreen(False)
 	If $Restart = True Then Return
 	$iUseStorage = IniRead($config, "other", "use-storage", "0") ; Reset Variable to User Selection
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 	;;;;;;;;;;;;;;;;;;;;##### Verify Builders available For Building Upgrades, If builder is available then buildings upgrade have priority #####;;;;;;;;;;;;;;;;;;;;
 	Local $iUpgradeAction = 0
@@ -154,7 +148,7 @@ Func SkipWallUpgrade() ; Dynamic Upgrades
 		$TotalBuilders = $aGetBuilders[1]
 	EndIf
 	If $debugSetlog = 1 Then Setlog("No. of Free/Total Builders: " & $iFreeBuilderCount & "/" & $TotalBuilders, $COLOR_PURPLE)
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	
 	For $iz = 0 To 5
 		If $ichkbxUpgrade[$iz] = 1 Then $iUpgradeAction += 1
 	Next
@@ -198,7 +192,6 @@ Func SkipWallUpgrade() ; Dynamic Upgrades
 			EndSwitch
 		EndIf
 	EndIf
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;##### Verify the Upgrade troop kind in Laboratory , if is elixir Spell/Troop , the Lab have priority #####;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	If $ichkLab = 1 And $icmbLaboratory >= 1 And $icmbLaboratory <= 15 Then
@@ -221,5 +214,4 @@ Func SkipWallUpgrade() ; Dynamic Upgrades
 				$iUseStorage = 0
 		EndSwitch
 	EndIf
-
 EndFunc   ;==>SkipWallUpgrade

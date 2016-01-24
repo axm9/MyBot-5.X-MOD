@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -17,12 +17,10 @@
 ;~ This dummy is used in btnStart and btnStop to disable/enable all labels, text, buttons etc. on all tabs.
 ;~ -------------------------------------------------------------
 Global $FirstControlToHide = GUICtrlCreateDummy()
-;~ -------------------------------------------------------------
 
 ;~ -------------------------------------------------------
 ;~ General Tab
 ;~ -------------------------------------------------------
-
 $tabGeneral = GUICtrlCreateTabItem(GetTranslated(0,1, "Log"))
 Local $x = 30, $y = 150, $w = 450, $h = 170, $i
 	$txtLog = _GUICtrlRichEdit_Create($frmBot, _PadStringCenter(" " & GetTranslated(0,2, "BOT LOG") & " ", 71, "="), $x - 20, $y - 20, $w, $h + 85, BitOR($ES_MULTILINE, $ES_READONLY, $WS_VSCROLL, 8912), $WS_EX_STATICEDGE)

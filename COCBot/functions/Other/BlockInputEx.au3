@@ -173,6 +173,7 @@ Global $i_MouseHookGetAncestorHwnd = 1
 ; Link ..........; http://www.autoitscript.com/forum/index.php?s=&showtopic=87735
 ; Example .......; Yes
 ; ===============================================================================================================================
+
 Func _BlockInputEx($iBlockMode = -1, $sExclude = "", $sInclude = "", $hWindows = "", $iBlockAllInput = 0)
 	  $BlockInputPause=$iBlockMode
 	If $iBlockMode < -1 Or $iBlockMode > 3 Then Return SetError(1, 0, 0) ;Only -1 to 3 modes are supported.

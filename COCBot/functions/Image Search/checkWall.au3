@@ -6,15 +6,12 @@
 ; Return values .:
 ; Author ........: Didipe
 ; Modified ......: ProMac (oct 2015)
-; Remarks .......: This file is part of ClashGameBot. Copyright 2015
-;                  ClashGameBot is distributed under the terms of the GNU GPL
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-
 
 Func CheckWall()
 	If _Sleep(500) Then Return
@@ -76,7 +73,4 @@ Func CheckWall()
 		Next
 	EndIf
 	Return False
-
 EndFunc   ;==>CheckWall
-
-

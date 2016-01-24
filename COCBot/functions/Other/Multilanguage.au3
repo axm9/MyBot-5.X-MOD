@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: Sardo (2015-11), Hervidero (2015-11)
 ; Modified ......:
-; Remarks .......: This file is part of MyBot Copyright 2015
+; Remarks .......: This file is part of MyBot Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -64,15 +64,13 @@ Func GetTranslated($iSection = -1, $iKey = -1, $sText = "")
 	EndIf
 EndFunc   ;==>GetTranslated
 
-;DetectLanguage()
 Func DetectLanguage()
 	$firstBotStart = IniRead($config, "other", "detectLanguage", "1")
 	If $firstBotStart = "1" Then
-		IniWrite($config, "other", "detectLanguage", "0");bot will only detect language on first start, after first detect, bot will use value in config
+		IniWrite($config, "other", "detectLanguage", "0") ;bot will only detect language on first start, after first detect, bot will use value in config
 		$OSLang = @OSLang
 		If $debugSetLog Then SetLog("Detected language code: " & $OSLang)
-		Switch $OSLang;get language
-
+		Switch $OSLang ;get language
 			Case Hex(0x0004, 4)
 				$decimalCode = '4'
 				$countryCode = 'zh-CHS'
@@ -986,23 +984,20 @@ Func DetectLanguage()
 				$countryCode = 'zh-CHT'
 				$langName = 'Chinese'
 			Case Else
-				SetLog("Your computer's language wasn't recongnized.")
+				SetLog("Your computer's language was not recognized.")
 				$langName = "NONE"
 		EndSwitch
-		$tempLang = IniRead($sGUILanguages, "languages", $countryCode, "")
-		If $tempLang <> "" Then $langName = $tempLang
 		SetLog("Detected System Locale: " & $langName, $COLOR_BLUE)
-		If FileExists($dirLanguages&"/"&$langName&".ini") Then;if language file found
-			SetLog("Language file "&$langName&".ini found in "&$dirLanguages)
+		If FileExists($dirLanguages & "/" & $langName & ".ini") Then;if language file found
+			SetLog("Language file " & $langName & ".ini found in " & $dirLanguages)
 			$sLanguage = $langName
 			IniWrite($config, "other", "language", $sLanguage)
-		Else ;otherwise, use english if the language isn't available yet
-			SetLog("Language file for "&$langName&" not found! Defaulting to English", $COLOR_RED)
-			$sLanguage = IniRead($config, "other", "language", $sDefaultLanguage)
+		Else;otherwise, use english if the language isn't available yet
+			SetLog("Language file for " & $langName & " not found! Defaulting to English", $COLOR_RED)
+			$sLanguage = $sDefaultLanguage
 		EndIf
 	Else
 		;read the selected language from profile ini
 		$sLanguage = IniRead($config, "other", "language", $sDefaultLanguage)
 	EndIf
-
 EndFunc   ;==>DetectLanguage

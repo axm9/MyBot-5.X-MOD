@@ -8,6 +8,12 @@
 ; Remarks .......:
 ; Note ..........:
 ; Author(s) .....: Melba23, based on some original code by photonbuddy & YellowLab, and KaFu (default font data)
+;
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
 ; ====================================================================================================================
 
 ;#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6 -w- 7
@@ -108,8 +114,8 @@ $g_aEMB_Settings[7] = 500
 ; Author ........: Melba23
 ; Example........; Yes
 ;=====================================================================================================================
-Func _ExtMsgBoxSet($iStyle = -1, $iJust = -1, $iBkCol = -1, $iCol = -1, $iFont_Size = -1, $sFont_Name = -1, $iWidth = -1, $iWidth_Abs = -1)
 
+Func _ExtMsgBoxSet($iStyle = -1, $iJust = -1, $iBkCol = -1, $iCol = -1, $iFont_Size = -1, $sFont_Name = -1, $iWidth = -1, $iWidth_Abs = -1)
 	; Set global EMB variables to required values
 	Switch $iStyle
 		Case Default
@@ -215,7 +221,6 @@ Func _ExtMsgBoxSet($iStyle = -1, $iJust = -1, $iBkCol = -1, $iCol = -1, $iFont_S
 	EndIf
 
 	Return 1
-
 EndFunc   ;==>_ExtMsgBoxSet
 
 ; #FUNCTION# =========================================================================================================
@@ -273,8 +278,8 @@ EndFunc   ;==>_ExtMsgBoxSet
 ; Author ........: Melba23, based on some original code by photonbuddy & YellowLab
 ; Example........; Yes
 ;=====================================================================================================================
-Func _ExtMsgBox($vIcon, $vButton, $sTitle, $sText, $iTimeOut = 0, $hWin = "", $iVPos = 0, $bMain = True)
 
+Func _ExtMsgBox($vIcon, $vButton, $sTitle, $sText, $iTimeOut = 0, $hWin = "", $iVPos = 0, $bMain = True)
 	; Set default sizes for message box
 	Local $iMsg_Width_Max = $g_aEMB_Settings[6], $iMsg_Width_Min = 150, $iMsg_Width_Abs = $g_aEMB_Settings[7]
 	Local $iMsg_Height_Min = 100
@@ -446,18 +451,11 @@ Func _ExtMsgBox($vIcon, $vButton, $sTitle, $sText, $iTimeOut = 0, $hWin = "", $i
 	; Size title
 	Local $aTitleSize = _StringSize($sTitle, $g_aEMB_Settings[10], Default, Default, $g_aEMB_Settings[11])
 
-	;ConsoleWrite(142 & " - " & $aTitleSize[2] & @CRLF)
-	;ConsoleWrite(80 & " - " & $iMsg_Width - 70 & @CRLF)
-	;ConsoleWrite(500 & " - " & $g_aEMB_Settings[7] & @CRLF)
-	;ConsoleWrite(83 & " - " & $g_aEMB_Settings[12] & @CRLF)
-
 	; Check if title wider than text
 	If $aTitleSize[2] > ($iMsg_Width - 70) Then ; Assume icon reduction of 50 regardless of icon setting
 		; Adjust dialog width up to absolute dialog width value
 		$iDialog_Width = (($aTitleSize[2] < ($g_aEMB_Settings[7] - $g_aEMB_Settings[12])) ? ($aTitleSize[2] + $g_aEMB_Settings[12]) : ($g_aEMB_Settings[7]))
 	EndIf
-
-	;ConsoleWrite($iDialog_Width & @CRLF)
 
 	Local $iMsg_Height = $iLabel_Height + 35
 	; Increase height if buttons present
@@ -699,7 +697,6 @@ Func _ExtMsgBox($vIcon, $vButton, $sTitle, $sText, $iTimeOut = 0, $hWin = "", $i
 	GUIDelete($hMsgGUI)
 
 	Return $iRet_Value
-
 EndFunc   ;==>_ExtMsgBox
 
 ; #INTERNAL_USE_ONLY#============================================================================================================
@@ -712,8 +709,8 @@ EndFunc   ;==>_ExtMsgBox
 ; Author ........: KaFu
 ; Remarks .......: Used internally by ExtMsgBox UDF
 ; ===============================================================================================================================
-Func __EMB_GetDefaultFont()
 
+Func __EMB_GetDefaultFont()
 	; Fill array with standard default data
 	Local $aDefFontData[2] = [9, "Tahoma"]
 
@@ -747,7 +744,4 @@ Func __EMB_GetDefaultFont()
 	$aDefFontData[1] = DllStructGetData($tFont, 14)
 
 	Return $aDefFontData
-
 EndFunc   ;==>__EMB_GetDefaultFont
-
-

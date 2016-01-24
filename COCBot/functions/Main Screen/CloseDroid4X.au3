@@ -6,7 +6,7 @@
 ; Return values .: @error = 1 if failure
 ; Author ........: cosote
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -14,7 +14,6 @@
 ; ===============================================================================================================================
 
 Func CloseDroid4X()
-
 	Local $iIndex, $bOops = False, $process_killed
 	Local $aServiceList[0] = [] ; ["BstHdAndroidSv", "BstHdLogRotatorSvc", "BstHdUpdaterSvc", "bthserv"]
 
@@ -54,29 +53,27 @@ Func CloseDroid4X()
 	If $bOops Then
 		SetError(1, @extended, -1)
 	EndIf
-
 EndFunc   ;==>CloseDroid4X
 
 Func KillDroid4XProcess()
-
 	Local $iIndex, $iCount, $bOops = False
 	Local $aFileNames[2][2] = [['Droid4X.exe', 0], ['adb.exe', 0]]
 
 	For $iIndex = 0 To UBound($aFileNames) - 1
-	   $iCount = 0
-	   While ProcessExists($aFileNames[$iIndex][0]) And $iCount < 3
-		 $aFileNames[$iIndex][1] = ProcessExists($aFileNames[$iIndex][0]) ; Find the PID for each file name that is running
-		 If $debugsetlog = 1 Then Setlog($aFileNames[$iIndex][0] & " PID = " & $aFileNames[$iIndex][1], $COLOR_PURPLE)
-		 If $aFileNames[$iIndex][1] > 0 Then ; If it is running, then kill it
-			ShellExecute(@WindowsDir & "\System32\taskkill.exe", " -pid " & $aFileNames[$iIndex][1], "", Default, @SW_HIDE)
-			If _Sleep(5000) Then Return ; Give OS time to work
-		 EndIf
-		 If ProcessExists($aFileNames[$iIndex][1]) Then ; If it is still running, then force kill it
-			If $debugsetlog = 1 Then Setlog($aFileNames[$iIndex][0] & " 1st Kill failed, trying again", $COLOR_PURPLE)
-			ShellExecute(@WindowsDir & "\System32\taskkill.exe", "-f -t -pid " & $aFileNames[$iIndex][1], "", Default, @SW_HIDE)
-			If _Sleep(5000) Then Return ; Give OS time to work
-		 EndIf
-		 $iCount += 1
+		$iCount = 0
+		While ProcessExists($aFileNames[$iIndex][0]) And $iCount < 3
+			$aFileNames[$iIndex][1] = ProcessExists($aFileNames[$iIndex][0]) ; Find the PID for each file name that is running
+			If $debugsetlog = 1 Then Setlog($aFileNames[$iIndex][0] & " PID = " & $aFileNames[$iIndex][1], $COLOR_PURPLE)
+			If $aFileNames[$iIndex][1] > 0 Then ; If it is running, then kill it
+				ShellExecute(@WindowsDir & "\System32\taskkill.exe", " -pid " & $aFileNames[$iIndex][1], "", Default, @SW_HIDE)
+				If _Sleep(5000) Then Return ; Give OS time to work
+			EndIf
+			If ProcessExists($aFileNames[$iIndex][1]) Then ; If it is still running, then force kill it
+				If $debugsetlog = 1 Then Setlog($aFileNames[$iIndex][0] & " 1st Kill failed, trying again", $COLOR_PURPLE)
+				ShellExecute(@WindowsDir & "\System32\taskkill.exe", "-f -t -pid " & $aFileNames[$iIndex][1], "", Default, @SW_HIDE)
+				If _Sleep(5000) Then Return ; Give OS time to work
+			EndIf
+			$iCount += 1
 	    WEnd
 		If ProcessExists($aFileNames[$iIndex][0]) Then
 		   $bOops = True
@@ -84,7 +81,4 @@ Func KillDroid4XProcess()
 	Next
 
 	Return $bOops
-
 EndFunc   ;==>KillDroid4XProcess
-
-

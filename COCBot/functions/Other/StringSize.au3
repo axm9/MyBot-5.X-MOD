@@ -57,8 +57,8 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: Yes
 ;=====================================================================================================================
-Func _StringSize($sText, $iSize = 8.5, $iWeight = 400, $iAttrib = 0, $sName = "", $iMaxWidth = 0, $hWnd = 0)
 
+Func _StringSize($sText, $iSize = 8.5, $iWeight = 400, $iAttrib = 0, $sName = "", $iMaxWidth = 0, $hWnd = 0)
 	; Set parameters passed as Default
 	If $iSize = Default Then $iSize = 8.5
 	If $iWeight = Default Then $iWeight = 400
@@ -228,7 +228,6 @@ Func _StringSize($sText, $iSize = 8.5, $iWeight = 400, $iAttrib = 0, $sName = ""
 	If $hLabel Then GUICtrlDelete($hLabel)
 
 	Return $avSize_Info
-
 EndFunc ;==>_StringSize
 
 ; #INTERNAL_USE_ONLY#============================================================================================================
@@ -242,14 +241,13 @@ EndFunc ;==>_StringSize
 ; Modified.......:
 ; Remarks .......: This function is used internally by _StringSize
 ; ===============================================================================================================================
-Func _StringSize_Error_Close($iExtCode, $hDC = 0, $hFont = 0, $hLabel = 0)
 
+Func _StringSize_Error_Close($iExtCode, $hDC = 0, $hFont = 0, $hLabel = 0)
 	If $hFont <> 0 Then DllCall("gdi32.dll", "bool", "DeleteObject", "handle", $hFont)
 	If $hDC <> 0 Then DllCall("user32.dll", "int", "ReleaseDC", "hwnd", 0, "handle", $hDC)
 	If $hLabel Then GUICtrlDelete($hLabel)
 
 	Return $iExtCode
-
 EndFunc ;=>_StringSize_Error_Close
 
 ; #INTERNAL_USE_ONLY#============================================================================================================
@@ -263,8 +261,8 @@ EndFunc ;=>_StringSize_Error_Close
 ; Modified.......:
 ; Remarks .......: This function is used internally by _StringSize
 ; ===============================================================================================================================
-Func _StringSize_DefaultFontName()
 
+Func _StringSize_DefaultFontName()
 	; Get default system font data
 	Local $tNONCLIENTMETRICS = DllStructCreate("uint;int;int;int;int;int;byte[60];int;int;byte[60];int;int;byte[60];byte[60];byte[60]")
 	DLLStructSetData($tNONCLIENTMETRICS, 1, DllStructGetSize($tNONCLIENTMETRICS))
@@ -275,5 +273,4 @@ Func _StringSize_DefaultFontName()
 	Else
 		Return "Tahoma"
 	EndIf
-
 EndFunc ;=>_StringSize_DefaultFontName

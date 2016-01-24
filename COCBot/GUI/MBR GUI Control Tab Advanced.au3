@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -92,12 +92,13 @@ Func chkSnipeMode()
 	If GUICtrlRead($chkTrophyMode) = $GUI_CHECKED Then
 		$OptTrophyMode = 1
 		GUICtrlSetState($txtTHaddtiles, $GUI_ENABLE)
-		GUICtrlSetState($chkTSMeetGold, $GUI_ENABLE)
-		GUICtrlSetState($chkTSMeetElixir, $GUI_ENABLE)
-		GUICtrlSetState($chkTSMeetDE, $GUI_ENABLE)
+		GUICtrlSetState($cmbTSMeetGE, $GUI_ENABLE)
 		GUICtrlSetState($chkTSAttackIfDB, $GUI_ENABLE)
 		GUICtrlSetState($txtTSMinGold, $GUI_ENABLE)
 		GUICtrlSetState($txtTSMinElixir, $GUI_ENABLE)
+		GUICtrlSetState($txtTSMinGoldPlusElixir, $GUI_ENABLE)
+		GUICtrlSetState($lblTSMinGPE, $GUI_ENABLE)
+		GUICtrlSetState($chkTSMeetDE, $GUI_ENABLE)
 		GUICtrlSetState($txtTSMinDarkElixir, $GUI_ENABLE)
 		GUICtrlSetState($txtTSSuccessPercent, $GUI_ENABLE)
 		GUICtrlSetState($txtMinTroopAttackDB, $GUI_ENABLE)
@@ -111,12 +112,13 @@ Func chkSnipeMode()
 	Else
 		$OptTrophyMode = 0
 		GUICtrlSetState($txtTHaddtiles, $GUI_DISABLE)
-		GUICtrlSetState($chkTSMeetGold, $GUI_DISABLE)
-		GUICtrlSetState($chkTSMeetElixir, $GUI_DISABLE)
-		GUICtrlSetState($chkTSMeetDE, $GUI_DISABLE)
+		GUICtrlSetState($cmbTSMeetGE, $GUI_DISABLE)
 		GUICtrlSetState($chkTSAttackIfDB, $GUI_DISABLE)
 		GUICtrlSetState($txtTSMinGold, $GUI_DISABLE)
 		GUICtrlSetState($txtTSMinElixir, $GUI_DISABLE)
+		GUICtrlSetState($txtTSMinGoldPlusElixir, $GUI_DISABLE)
+		GUICtrlSetState($lblTSMinGPE, $GUI_DISABLE)
+		GUICtrlSetState($chkTSMeetDE, $GUI_DISABLE)
 		GUICtrlSetState($txtTSMinDarkElixir, $GUI_DISABLE)
 		GUICtrlSetState($txtTSSuccessPercent, $GUI_DISABLE)
 		GUICtrlSetState($txtMinTroopAttackDB, $GUI_DISABLE)
@@ -131,21 +133,27 @@ Func chkSnipeMode()
 	chkTSAttackIfDB()
 EndFunc   ;==>chkSnipeMode
 
-Func chkTSMeetGold()
-	If GUICtrlRead($chkTSMeetGold) = $GUI_CHECKED Then
-		_GUICtrlEdit_SetReadOnly($txtTSMinGold, False)
+Func cmbTSGoldElixir()
+	If _GUICtrlComboBox_GetCurSel($cmbTSMeetGE) < 2 Then
+		GUICtrlSetState($txtTSMinGold, $GUI_SHOW)
+		GUICtrlSetState($picTSMinGold, $GUI_SHOW)
+		GUICtrlSetState($txtTSMinElixir, $GUI_SHOW)
+		GUICtrlSetState($picTSMinElixir, $GUI_SHOW)
+		GUICtrlSetState($txtTSMinGoldPlusElixir, $GUI_HIDE)
+		GUICtrlSetState($picTSMinGPEGold, $GUI_HIDE)
+		GUICtrlSetState($lblTSMinGPE, $GUI_HIDE)
+		GUICtrlSetState($picTSMinGPEElixir, $GUI_HIDE)
 	Else
-		_GUICtrlEdit_SetReadOnly($txtTSMinGold, True)
+		GUICtrlSetState($txtTSMinGold, $GUI_HIDE)
+		GUICtrlSetState($picTSMinGold, $GUI_HIDE)
+		GUICtrlSetState($txtTSMinElixir, $GUI_HIDE)
+		GUICtrlSetState($picTSMinElixir, $GUI_HIDE)
+		GUICtrlSetState($txtTSMinGoldPlusElixir, $GUI_SHOW)
+		GUICtrlSetState($picTSMinGPEGold, $GUI_SHOW)
+		GUICtrlSetState($lblTSMinGPE, $GUI_SHOW)
+		GUICtrlSetState($picTSMinGPEElixir, $GUI_SHOW)
 	EndIf
-EndFunc   ;==>chkTSMeetGold
-
-Func chkTSMeetElixir()
-	If GUICtrlRead($chkTSMeetElixir) = $GUI_CHECKED Then
-		_GUICtrlEdit_SetReadOnly($txtTSMinElixir, False)
-	Else
-		_GUICtrlEdit_SetReadOnly($txtTSMinElixir, True)
-	EndIf
-EndFunc   ;==>chkTSMeetElixir
+EndFunc   ;==>cmbTSGoldElixir
 
 Func chkTSMeetDE()
 	If GUICtrlRead($chkTSMeetDE) = $GUI_CHECKED Then

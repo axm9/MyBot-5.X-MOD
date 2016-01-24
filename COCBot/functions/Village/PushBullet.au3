@@ -8,7 +8,7 @@
 ; Modified ......: Sardo and Didipe (2015-05) rewrite code
 ;				   kgns (2015-06) $pushLastModified addition
 ;				   Sardo (2015-06) compliant with new pushbullet syntax (removed title)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -19,7 +19,6 @@
 #include <String.au3>
 
 Func _RemoteControl()
-
     If $pEnabled = 0 Or $pRemote = 0 Then Return
 	$oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
 	$access_token = $PushToken
@@ -40,7 +39,6 @@ Func _RemoteControl()
 		$pushLastModified = Number($modified[0]) ; modified date of the newest push that we received
 		$pushLastModified -= 120 ; back 120 seconds to avoid loss of messages
 	EndIf
-
 
 	Local $findstr = StringRegExp(StringUpper($Result), '"BODY":"BOT')
 	If $findstr = 1 Then
@@ -146,11 +144,9 @@ Func _RemoteControl()
 			EndIf
 		Next
 	EndIf
-
 EndFunc   ;==>_RemoteControl
 
 Func _PushBullet($pMessage = "")
-
     If $pEnabled = 0 Or $PushToken = "" Then Return
 	$oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
 	$access_token = $PushToken
@@ -169,7 +165,6 @@ Func _PushBullet($pMessage = "")
 	Local $Time = @HOUR & "." & @MIN
 	Local $pPush = '{"type": "note", "body": "' & $pMessage & "\n" & $Date & "__" & $Time & '"}'
 	$oHTTP.Send($pPush)
-
 EndFunc   ;==>_PushBullet
 
 Func _Push($pMessage)
@@ -184,11 +179,9 @@ Func _Push($pMessage)
 	Local $Time = @HOUR & "." & @MIN
 	Local $pPush = '{"type": "note", "body": "' & $pMessage & "\n" & $Date & "__" & $Time & '"}'
 	$oHTTP.Send($pPush)
-
 EndFunc   ;==>_Push
 
 Func _PushFile($File, $Folder, $FileType, $body)
-
     If $pEnabled = 0 Or $PushToken = "" Then Return
 
 	If FileExists($sProfilePath & "\" & $sCurrProfile & '\' & $Folder & '\' & $File) Then
@@ -211,7 +204,7 @@ Func _PushFile($File, $Folder, $FileType, $body)
 		Local $file_url = _StringBetween($Result, 'file_url":"', '"')
 
 		If IsArray($upload_url) And IsArray($awsaccesskeyid) And IsArray($acl) And IsArray($key) And IsArray($signature) And IsArray($policy) Then
-			$Result = RunWait(@ScriptDir & "\curl\curl.exe -i -X POST " & $upload_url[0] & ' -F awsaccesskeyid="' & $awsaccesskeyid[0] & '" -F acl="' & $acl[0] & '" -F key="' & $key[0] & '" -F signature="' & $signature[0] & '" -F policy="' & $policy[0] & '" -F content-type="' & $FileType & '" -F file=@"' & $sProfilePath & "\" & $sCurrProfile & '\' & $Folder & '\' & $File & '"', "", @SW_HIDE)
+			$Result = RunWait($pCurl & " -i -X POST " & $upload_url[0] & ' -F awsaccesskeyid="' & $awsaccesskeyid[0] & '" -F acl="' & $acl[0] & '" -F key="' & $key[0] & '" -F signature="' & $signature[0] & '" -F policy="' & $policy[0] & '" -F content-type="' & $FileType & '" -F file=@"' & $sProfilePath & "\" & $sCurrProfile & '\' & $Folder & '\' & $File & '"', "", @SW_HIDE)
 
 			$oHTTP.Open("Post", "https://api.pushbullet.com/v2/pushes", False)
 			$oHTTP.SetCredentials($access_token, "", 0)
@@ -226,11 +219,9 @@ Func _PushFile($File, $Folder, $FileType, $body)
 		SetLog("Pushbullet: Unable to send file " & $File, $COLOR_RED)
 		_Push($iOrigPushB & " | Unable to Upload File" & "\n" & "Occured an error type 2 uploading file to PushBullet server...")
 	EndIf
-
 EndFunc   ;==>_PushFile
 
 Func ReportPushBullet()
-
     If $pEnabled = 0 Then Return
 	If $iAlertPBVillage = 1 Then
 		_PushBullet($iOrigPushB & " | My Village:" & "\n" & " [G]: " & _NumberFormat($iGoldCurrent) & " [E]: " & _NumberFormat($iElixirCurrent) & " [D]: " & _NumberFormat($iDarkCurrent) & "  [T]: " & _NumberFormat($iTrophyCurrent) & " [FB]: " & _NumberFormat($iFreeBuilderCount))
@@ -241,12 +232,10 @@ Func ReportPushBullet()
 	EndIf
 	If _Sleep($iDelayReportPushBullet1) Then Return
 	checkMainScreen(False)
-
 EndFunc   ;==>ReportPushBullet
 
 
 Func _DeletePush($token)
-
     If $pEnabled = 0 Or $PushToken = "" Then Return
 	$oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
 	$access_token = $token
@@ -254,11 +243,9 @@ Func _DeletePush($token)
 	$oHTTP.SetCredentials($access_token, "", 0)
 	$oHTTP.SetRequestHeader("Content-Type", "application/json")
 	$oHTTP.Send()
-
 EndFunc   ;==>_DeletePush
 
 Func _DeleteMessage($iden)
-
     If $pEnabled = 0 Or $PushToken = "" Then Return
 	$oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
 	$access_token = $PushToken
@@ -267,11 +254,9 @@ Func _DeleteMessage($iden)
 	$oHTTP.SetRequestHeader("Content-Type", "application/json")
 	$oHTTP.Send()
 	$iden = ""
-
 EndFunc   ;==>_DeleteMessage
 
 Func PushMsg($Message, $Source = "")
-
     If $pEnabled = 0 Then Return
 	Local $hBitmap_Scaled
 	Switch $Message
@@ -363,7 +348,6 @@ Func PushMsg($Message, $Source = "")
 				EndIf
 			EndIf
 	EndSwitch
-
 EndFunc   ;==>PushMsg
 
 Func _DeleteOldPushes()
@@ -407,7 +391,6 @@ Func _DeleteOldPushes()
 	If $msgdeleted > 0 Then
 		setlog("Pushbullet: removed " & $msgdeleted & " messages older than " & $icmbHoursPushBullet & " h ", $COLOR_GREEN)
 	EndIf
-
 EndFunc   ;==>_DeleteOldPushes
 
 Func _GetDateFromUnix($nPosix)
@@ -444,5 +427,4 @@ Func _GetDateFromUnix($nPosix)
 		$nMon += 1
 	Next
 	Return $nYear & "-" & $nMon & "-" & $nDay & " " & $nHour & ":" & $nMin & ":" & StringFormat("%02i", $nSec)
-
 EndFunc   ;==>_GetDateFromUnix

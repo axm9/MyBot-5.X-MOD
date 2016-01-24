@@ -1,4 +1,3 @@
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: BotCommand
 ; Description ...: There are Commands to Shutdown, Sleep, Halt Attack and Halt Training mode
@@ -7,12 +6,13 @@
 ; Return values .: None
 ; Author ........: Code Monkey #17
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func BotCommand()
 	If $iChkBotStop = 1 Then
 		If $icmbBotCond = 13 And $icmbHoursStop <> 0 Then $TimeToStop = $icmbHoursStop * 3600000 ; 3600000 = 1 Hours

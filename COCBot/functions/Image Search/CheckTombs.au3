@@ -6,7 +6,7 @@
 ; Return values .: False if regular farming is needed to refill storage
 ; Author ........: barracoda/KnowJack (2015)
 ; Modified ......: sardo 2015-06 2015-08
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -14,7 +14,6 @@
 ; ===============================================================================================================================
 
 Func CheckTombs()
-
 	Local $TombX, $TombY
 	If $ichkTombstones <> 1 Then Return False
 	$tomb = @ScriptDir & "\images\tomb.png"
@@ -27,6 +26,7 @@ Func CheckTombs()
 			$TombX = 0
 			$TombY = 0
 			$TombLoc = _ImageSearch($tomb, 1, $TombX, $TombY, $TombTol) ; Getting Tree Location
+;			If $TombLoc = 1 And $TombX > 35 And $TombY < 610 Then
 			If $TombLoc = 1 And isInsideDiamondXY($TombX, $TombY) Then
 				SetLog("Found tombstone ,  Removing...", $COLOR_GREEN)
 				If $DebugSetLog = 1 Then SetLog("Tombstone found (" & $TombX & "," & $TombY & ") tolerance:" & $TombTol, $COLOR_PURPLE)
@@ -41,5 +41,4 @@ Func CheckTombs()
 	If $DebugSetLog = 1 Then SetLog("Cannot find tombstones, Yard is clean!", $COLOR_PURPLE)
 	If _Sleep($iDelayCheckTombs1) Then Return
 	checkMainScreen(False) ; check for screen errors while function was running
-
 EndFunc   ;==>CheckTombs

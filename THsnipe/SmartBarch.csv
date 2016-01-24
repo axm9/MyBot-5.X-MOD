@@ -1,9 +1,0 @@
-TROOP |S1|S2|Q1|Q2|DEL1 |DEL2 |LOG_TEXT                              |NOTES
-Text  |  |  |  |  |     |     |Sniping TH with Barch            	 |,,,,,
-Barb  | 4| 4| 1| 1| 1800| 2000|                                      |deploys 4 barbarians to take out traps waits 2 seconds for bombs to go off,,,,,
-Arch  | 4| 4| 1| 1|  800| 1000|                                      |deploys 4 archers,,,,,
-WAIT  |  |  |  |  |     |30000|                                      |wait for 30 seconds,,,,,
-Text  |  |  |  |  |     |     |Oh Shit! Seems like a trapped TH!     |,,,,,
-WAIT  |  |  |  |  |     |20000|                                      |wait for 20 seconds to make sure,,,,,
-Text  |  |  |  |  |     |     |~Finished Attacking, waiting to end   |,,,,,
-WAIT  |  |  |  |  |     |10000|										 |,,,,,

@@ -3,13 +3,12 @@
 ; Description ...: Gets complete value of gold/Elixir/DarkElixir/Trophy/Gem xxx,xxx
 ; Author ........: Didipe (2015)
 ; Modified ......: ProMac (2015), Hervidero (2015-12)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-
 
 Func getNameBuilding($x_start, $y_start); getNameBuilding(242,520) -> Gets complete name and level of the buildings - to use in future features
 	Return getOcrAndCapture("coc-build", $x_start, $y_start, 377, 27)
@@ -76,7 +75,7 @@ Func getLabUpgrdResourceRed($x_start, $y_start) ; -> Gets complete value of Elix
 EndFunc   ;==>getLabUpgrdResourceRed
 
 Func getChatString($x_start, $y_start, $language) ; -> Get string chat request - Latin Alphabetic - EN "DonateCC.au3"
-	Return getOcrAndCapture($language, $x_start, $y_start, 200, 18)
+	Return getOcrAndCapture($language, $x_start, $y_start, 280, 18)
 EndFunc   ;==>getChatString
 
 Func getBuilders($x_start, $y_start);  -> Gets Builders number - main screen --> getBuilders(324,23)  coc-profile
@@ -111,6 +110,10 @@ EndFunc   ;==>getArmyTroopKind
 
 Func getArmyCampCap($x_start, $y_start);  -> Gets army camp capacity --> train.au3
 	Return getOcrAndCapture("coc-army", $x_start, $y_start, 66, 14, True)
+EndFunc   ;==>getArmyCampCap
+
+Func getCastleDonateCap($x_start, $y_start);  -> Gets army camp capacity --> train.au3
+	Return getOcrAndCapture("coc-army", $x_start, $y_start, 30, 14, True)
 EndFunc   ;==>getArmyCampCap
 
 Func getBarracksTroopQuantity($x_start, $y_start);  -> Gets quantity of troops in training --> train.au3
@@ -148,6 +151,10 @@ EndFunc   ;==>getOcrDonationTroopsDetection
 Func getOcrOverAllDamage($x_start, $y_start);  -> Get the Overall Damage %
 	Return getOcrAndCapture("coc-overalldamage", $x_start, $y_start, 50, 20, True)
 EndFunc   ;==>getOcrOverAllDamage
+
+Func getOcrGuardShield($x_start, $y_start);  -> Get the Overall Damage %
+	Return getOcrAndCapture("coc-guardshield", $x_start, $y_start, 68, 15)
+EndFunc   ;==>getOcrGuardShield
 
 Func getOcrAndCapture($language, $x_start, $y_start, $width, $height, $removeSpace = False)
 	Local $hBmp = _CaptureRegion2($x_start, $y_start, $x_start + $width, $y_start + $height)

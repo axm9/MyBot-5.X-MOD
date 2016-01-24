@@ -1,13 +1,27 @@
-; TogglePause
+; #FUNCTION# ====================================================================================================================
+; Name ..........: TogglePause
+; Description ...:
+; Syntax ........: TogglePause()
+; Parameters ....:
+; Return values .: None
+; Author ........:
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
 
-HotKeySet("{PAUSE}", "TogglePause")
+If $OnlyInstance Then HotKeySet("{PAUSE}", "TogglePause")
 
 Func TogglePause()
 	TogglePauseImpl("Button")
 EndFunc
 
 Func TogglePauseImpl($Source)
-   Local $BlockInputPausePrev
+   	SetRedrawBotWindow(True)
+   	Local $BlockInputPausePrev
 	$TPaused = NOT $TPaused
 	If $TPaused and $Runstate = True Then
 		TrayTip($sBotTitle, "", 1)
@@ -18,8 +32,8 @@ Func TogglePauseImpl($Source)
 			AdlibUnRegister("SetTime")
 		EndIf
 		PushMsg("Pause", $Source)
-		 If $BlockInputPause>0 Then	 $BlockInputPausePrev=$BlockInputPause
-		 If $BlockInputPause>0 Then  _BlockInputEx(0,"","",$HWnD)
+		If $BlockInputPause>0 Then $BlockInputPausePrev=$BlockInputPause
+		If $BlockInputPause>0 Then _BlockInputEx(0,"","",$HWnD)
 		GUICtrlSetState($btnPause, $GUI_HIDE)
 		GUICtrlSetState($btnResume, $GUI_SHOW)
 	ElseIf $TPaused = False And $Runstate = True Then
@@ -31,10 +45,11 @@ Func TogglePauseImpl($Source)
 			AdlibRegister("SetTime", 1000)
 		EndIf
 		PushMsg("Resume", $Source)
-		 If $BlockInputPausePrev>0 Then  _BlockInputEx($BlockInputPausePrev,"","",$HWnD)
-		 If $BlockInputPausePrev>0 Then $BlockInputPausePrev=0
+		If $BlockInputPausePrev>0 Then _BlockInputEx($BlockInputPausePrev,"","",$HWnD)
+		If $BlockInputPausePrev>0 Then $BlockInputPausePrev=0
 		GUICtrlSetState($btnPause, $GUI_SHOW)
 		GUICtrlSetState($btnResume, $GUI_HIDE)
+		ZoomOut()
 	EndIf
 	Local $counter = 0
 	While $TPaused ; Actual Pause loop
@@ -46,6 +61,5 @@ Func TogglePauseImpl($Source)
 		EndIf
 	WEnd
 	; everything below this WEnd is executed when unpaused!
-	ZoomOut()
 	If _Sleep($iDelayTogglePause2) Then Return
 EndFunc

@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: (2014)
 ; Modified ......: HungLe (may-2015) Sardo 2015-08
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......: checkMainscreen, isProblemAffect
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -129,7 +129,7 @@ Func _DecodeDebug($message)
 			Return $separator & "Away"
 		Case "#0389", "#0390", "#0391", "#0392", "#0393", "#0394", "#0395", "#0501", "#0502", "#0503", "#0504", "#0467", "#0505", "#0931", "#0932", "#0933"
 			Return $separator & "Away"
-			; ATTACK TH
+		; ATTACK TH
 		Case "#0001"
 			Return $separator & "AtkTH - Select Barbarian"
 		Case "#0002", "#0006"
@@ -152,12 +152,12 @@ Func _DecodeDebug($message)
 			Return $separator & "AtkTH - Arcer Top Left"
 		Case "#0155"
 			Return $separator & "Attack - Next Button"
-			;COLLECT
+		;COLLECT
 		Case "#0331"
 			Return $separator & "Collect resources"
 		Case "#0330"
 			Return $separator & "Collect resources*"
-			;TRAIN
+		;TRAIN
 		Case "#0266"
 			Return $separator & "Train - TrainIT Selected Troop"
 		Case "#0269"
@@ -206,8 +206,7 @@ Func _DecodeDebug($message)
 			Return $separator & "Train - Select Prev Barrack/SP"
 		Case "#0340"
 			Return $separator & "Train - Click Next Barrack/SP"
-
-			;DONATE
+		;DONATE
 		Case "#0168"
 			Return $separator & "Donate - Open Chat"
 		Case "#0169"
@@ -217,20 +216,20 @@ Func _DecodeDebug($message)
 		Case "#0173"
 			Return $separator & "Donate - Click Chat"
 		Case "#0174"
-			Return $separator & "Donate - Donate Selected Troop"
+			Return $separator & "Donate - Click Donate Button"
 		Case "#0175"
 			Return $separator & "Donate - Donate Selected Troop"
-			;TEST LANGUAGE
+		;TEST LANGUAGE
 		Case "#0144"
 			Return $separator & "ChkLang - Config Button"
 		Case "#0145", "#0146", "#0147", "#0148"
 			Return $separator & "ChkLang - Close Page"
-			;PROFILE REPORT
+		;PROFILE REPORT
 		Case "#0222"
 			Return $separator & "Profile - Profile Button"
 		Case "#0223"
 			Return $separator & "Profile - Close Page"
-			;REARM
+		;REARM
 		Case "#0225"
 			Return $separator & "Rearm - Click Town Hall"
 		Case "#0326", "#0228"
@@ -243,7 +242,7 @@ Func _DecodeDebug($message)
 			Return $separator & "Rearm - Click Inferno Button"
 		Case "#0232"
 			Return $separator & "Rearm - Inferno Button"
-			;REQUEST CC
+		;REQUEST CC
 		Case "#0250"
 			Return $separator & "Request - Click Castle Clan"
 		Case "#0253"
@@ -253,8 +252,8 @@ Func _DecodeDebug($message)
 		Case "#0256"
 			Return $separator & "Request - Click Send Request"
 		Case "#0334"
-			Return $separator & "Request - Click Train Button"
-			;RETURN HOME
+			Return $separator & "Request - Click Train Button"			
+		;RETURN HOME
 		Case "#0099"
 			Return $separator & "Return Home - End Battle"
 		Case "#0100"
@@ -262,8 +261,8 @@ Func _DecodeDebug($message)
 		Case "#0101"
 			Return $separator & "Return Home - Return Home Button"
 		Case "#0396"
-			Return $separator & "Reach Limit - Return home, Press End Battle "
-			;DETECT CLAN LEVEL
+			Return $separator & "Reach Limit - Return home, Press End Battle "			
+		;DETECT CLAN LEVEL
 		Case "#0468"
 			Return $separator & "Clan Level - Open Chat"
 		Case "#0469"
@@ -274,22 +273,18 @@ Func _DecodeDebug($message)
 			Return $separator & "Clan Level - Close Chat"
 		Case "#0473"
 			Return $separator & "Clan Level - Close Clan Info Page"
-
+		;ATTACK
 		Case "#0149"
 			Return $separator & "Prepare Search - Press Attack Button"
 		Case "#0150"
 			Return $separator & "Prepare Search - Press Find a Match Button"
-
-		 ;AllTroops
+		;SURRENDER
 		Case "#0030"
 			Return $separator & "Attack - press surrender"
 		Case "#0031"
 			Return $separator & "Attack - press confirm surrender"
-
-
 		Case "#0000"
 			Return $separator & " "
-
 		Case Else
 			Return ""
 	EndSwitch

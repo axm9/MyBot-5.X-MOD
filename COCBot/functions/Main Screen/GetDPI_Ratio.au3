@@ -6,7 +6,7 @@
 ; Return values .: Ratio of DPI to standard 96 DPI display
 ; Author ........: Spiff59 (AutoIt Forums posted 9/23/2013)
 ; Modified ......: KnowJack
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......: None
 ; Link ..........: https://www.autoitscript.com/forum/topic/154885-autoit-and-dpi-awareness/
@@ -18,15 +18,14 @@ Global $iDPI_Ratio = 1
 Func GetDPI_Ratio()
     Local $hWnd = 0
     Local $hDC = DllCall("user32.dll", "long", "GetDC", "long", $hWnd)
-	 If @error Then Return SetError(1, @extended, 0)
+	If @error Then Return SetError(1, @extended, 0)
     Local $aRet = DllCall("gdi32.dll", "long", "GetDeviceCaps", "long", $hDC[0], "long", 90)
-	 If @error Then Return SetError(2, @extended, 0)
+	If @error Then Return SetError(2, @extended, 0)
     $hDC = DllCall("user32.dll", "long", "ReleaseDC", "long", $hWnd, "long", $hDC)
-	 If @error Then Return SetError(3, @extended, 0)
+	If @error Then Return SetError(3, @extended, 0)
     If $aRet[0] = 0 Then $aRet[0] = 96
     Return $aRet[0] / 96
 EndFunc
-
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: GUISetFont_DPI
@@ -39,7 +38,7 @@ EndFunc
 ; Return values .: None
 ; Author ........: Spiff59 (AutoIt Forums posted 9/23/2013)
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......: None
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki https://www.autoitscript.com/forum/topic/154885-autoit-and-dpi-awareness/
@@ -48,7 +47,7 @@ EndFunc
 
 Func GUISetFont_DPI($isize, $iweight = "", $iattribute = "", $sfontname = "")
     GUISetFont($isize / $iDPI_Ratio, $iweight, $iattribute, $sfontname)
-EndFunc	
+EndFunc
 
 Func SetDPI()
 	; This uses undocumented dll function from MS and does work reliably in all OS so it was removed from main bot code

@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -54,7 +54,6 @@ $grpOnLoadBot = GUICtrlCreateGroup(GetTranslated(10,2, "When Bot Loads"), $x - 2
 		GUICtrlSetState(-1, $GUI_DISABLE)
 	$lblDeleteLootsDays = GUICtrlCreateLabel(GetTranslated(10,7, "days"), $x + 150, $y + 4, 38, 15)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
-
 
 Local $x = 30, $y = 265
 $grpOnStartBot = GUICtrlCreateGroup(GetTranslated(10,12, "When Bot Starts"), $x - 20, $y - 20, 205, 118)
@@ -131,7 +130,6 @@ $grpDebug = GUICtrlCreateGroup(GetTranslated(10,34, "Debug"), $x - 20, $y - 20, 
 		GUICtrlSetState(-1, $GUI_DISABLE)
 		GUICtrlSetState(-1, $GUI_HIDE)
 		GUICtrlSetOnEvent(-1, "chkdebugBuildingPos")
-
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 Local $x = 30, $y = 477
@@ -438,7 +436,6 @@ $grpScheduler = GUICtrlCreateGroup(GetTranslated(10,48, "Clan Castle Scheduler")
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 Local $x = 240, $y = 377
-
 $grpScheduler2 = GUICtrlCreateGroup(GetTranslated(10,53, "Boost Barracks Scheduler"), $x - 20, $y - 20, 240, 85)
 	$chkBoostBarracksHours = GUICtrlCreateCheckbox(GetTranslated(10,54, "Boost during these hours of day"), $x-8, $y-7)
 	GUICtrlSetOnEvent(-1, "chkBoostBarracksHours")
@@ -547,4 +544,3 @@ $y += 19
 		GUICtrlSetOnEvent(-1, "chkScreenshotHideName")
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
-

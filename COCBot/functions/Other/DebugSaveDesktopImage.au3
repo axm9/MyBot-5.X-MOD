@@ -5,12 +5,13 @@
 ; Parameters ....:
 ; Return values .: None
 ; Author ........: KnowJack (Aug 2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func DebugSaveDesktopImage($sName = "Unknown_")
 	Local $iDesktopLeft = 0, $iDesktopTop = 0
 	Local $iDesktopWidth = @DesktopWidth, $iDesktopHeight = @DesktopHeight
@@ -19,6 +20,6 @@ Func DebugSaveDesktopImage($sName = "Unknown_")
 	$Date = @MDAY & "." & @MON & "." & @YEAR
 	$Time = @HOUR & "." & @MIN & "." & @SEC
 	$SaveFileName = $sName & $Date & "_at_" & $Time & ".png"
-	_ScreenCapture_SaveImage($dirtemp & $SaveFileName, $hDesktopBitmap)
+	_ScreenCapture_SaveImage($dirTempDebug & $SaveFileName, $hDesktopBitmap)
 	_WinAPI_DeleteObject($hDesktopBitmap)
 EndFunc   ;==>DebugSaveDesktopImage

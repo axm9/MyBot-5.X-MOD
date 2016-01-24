@@ -3,7 +3,7 @@
 ; Description ...: Pixel and Locate Image functions
 ; Author ........: HungLe (april-2015)
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -33,7 +33,6 @@ Func GetListPixel($listPixel)
 		Return -1;
 	EndIf
 EndFunc   ;==>GetListPixel
-
 
 Func GetLocationItem($functionName)
 	If $debugSetLog = 1 or $debugBuildingPos = 1 Then

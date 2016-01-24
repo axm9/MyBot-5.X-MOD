@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: Samota
 ; Modified ......: Sardo (2015-06) : add exit for minimum resource left
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:v
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -46,7 +46,7 @@ Func GoldElixirChangeEBO()
 			$z = 60 * 3 * 1000
 		EndIf
 	EndIf
-	
+
 	;CALCULATE TWO STARS REACH
 	If $ichkEndTwoStars = 1 And _CheckPixel($aWonTwoStar, True) Then
 		SetLog("Two Star Reach, exit", $COLOR_GREEN)
@@ -140,7 +140,6 @@ Func GoldElixirChangeEBO()
 			;SetLog("Gold & Elixir & DE change detected, waiting... .", $COLOR_GREEN)
 			ExitLoop
 		EndIf
-
 	WEnd ; END MAIN LOOP
 
 	;Priority Check... Exit To protect Hero Health
@@ -187,22 +186,18 @@ Func GoldElixirChangeEBO()
 		SetLog("Gold & Elixir & DE change detected, waiting...", $COLOR_GREEN)
 		Return True
 	EndIf
-
 EndFunc   ;==>GoldElixirChangeEBO
 
-
 Func OverallDamage($OverallDamage = 30, $SetLog = True)
-
 	Local $Damage = Number(getOcrOverAllDamage(780, 527 + $bottomOffsetY ))
-	
+
 	If $SetLog = True Then
 		SetLog("Overall Damage: " & $Damage & "%")
 	EndIf
-	
+
 	If $Damage >= $OverallDamage Then
 		Return True
 	Else
 		Return False
 	EndIf
-	
 EndFunc   ;==>OverallDamage

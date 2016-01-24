@@ -6,7 +6,7 @@
 ; Return values .: True if compaired resources match the search conditions, False if not
 ; Author ........: (2014)
 ; Modified ......: AtoZ, Hervidero (2015), kaganus (June 2015, August 2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......: VillageSearch, GetResources
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -14,7 +14,6 @@
 ; ===============================================================================================================================
 
 Func CompareResources($pMode) ;Compares resources and returns true if conditions meet, otherwise returns false
-
 	If $iChkSearchReduction = 1 Then
 		If ($iChkEnableAfter[$pMode] = 0 And $SearchCount <> 0 And Mod($SearchCount, $ReduceCount) = 0) Or ($iChkEnableAfter[$pMode] = 1 And $SearchCount - $iEnableAfterCount[$pMode] > 0 And Mod($SearchCount - $iEnableAfterCount[$pMode], $ReduceCount) = 0) Then
 			If $iAimGold[$pMode] - $ReduceGold >= 0 Then $iAimGold[$pMode] -= $ReduceGold
@@ -32,6 +31,20 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 	EndIf
 
 	Local $G = (Number($searchGold) >= Number($iAimGold[$pMode])), $E = (Number($searchElixir) >= Number($iAimElixir[$pMode])), $D = (Number($searchDark) >= Number($iAimDark[$pMode])), $T = (Number($searchTrophy) >= Number($iAimTrophy[$pMode])), $GPE = ((Number($searchGold) + Number($searchElixir)) >= Number($iAimGoldPlusElixir[$pMode]))
+	
+	If $pMode = $TS Then
+		SetLog("aim gold: " & $iAimGold[$pMode] & ", min gold: " & $iMinGold[$pMode])
+		SetLog("aim elixir: " & $iAimElixir[$pMode] & ", min elixir: " & $iMinElixir[$pMode])
+		SetLog("aim gold+elixir: " & $iAimGoldPlusElixir[$pMode] & ", min gold+elixir: " & $iMinGoldPlusElixir[$pMode])
+		SetLog("aim dark: " & $iAimDark[$pMode] & ", min dark: " & $iMinDark[$pMode])
+		SetLog("meet one: " & $iChkMeetOne[$pMode])
+		SetLog("found gold: " & $searchGold)
+		SetLog("found elixir: " & $searchElixir)
+		SetLog("found dark: " & $searchDark)
+		SetLog("GE mode: " & $iCmbMeetGE[$pMode])
+		SetLog("Dark mode: " & $iChkMeetDE[$pMode])		
+	EndIf
+	
 	Local $THL = -1, $THLO = -1
 
 	For $i = 0 To 5 ;add th11
@@ -49,20 +62,29 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 	If $THL > -1 And $THL <= $YourTH And $searchTH <> "-" Then $SearchTHLResult = 1
 
 	If $iChkMeetOne[$pMode] = 1 Then
+		SetLog("check if met 1 condition")
 		If $iCmbMeetGE[$pMode] = 0 Then
+			SetLog("check gold and elixir")
 			If $G = True And $E = True Then Return True
 		EndIf
 
+		If $iCmbMeetGE[$pMode] = 1 Then
+			SetLog("check gold or elixir")
+			If $G = True Or $E = True Then Return True
+		EndIf
+
+		If $iCmbMeetGE[$pMode] = 2 Then
+			SetLog("check gold + elixir")
+			If $GPE = True Then Return True
+		EndIf
+
 		If $iChkMeetDE[$pMode] = 1 Then
+			SetLog("check dark")
 			If $D = True Then Return True
 		EndIf
 
 		If $iChkMeetTrophy[$pMode] = 1 Then
 			If $T = True Then Return True
-		EndIf
-
-		If $iCmbMeetGE[$pMode] = 1 Then
-			If $G = True Or $E = True Then Return True
 		EndIf
 
 		If $iChkMeetTH[$pMode] = 1 Then
@@ -73,14 +95,19 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 			If $THLO = 1 Then Return True
 		EndIf
 
-		If $iCmbMeetGE[$pMode] = 2 Then
-			If $GPE = True Then Return True
-		EndIf
-
 		Return False
 	Else
+		SetLog("check if met all conditions")
 		If $iCmbMeetGE[$pMode] = 0 Then
 			If $G = False Or $E = False Then Return False
+		EndIf
+
+		If $iCmbMeetGE[$pMode] = 1 Then
+			If $G = False And $E = False Then Return False
+		EndIf
+
+		If $iCmbMeetGE[$pMode] = 2 Then
+			If $GPE = False Then Return False
 		EndIf
 
 		If $iChkMeetDE[$pMode] = 1 Then
@@ -91,10 +118,6 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 			If $T = False Then Return False
 		EndIf
 
-		If $iCmbMeetGE[$pMode] = 1 Then
-			If $G = False And $E = False Then Return False
-		EndIf
-
 		If $iChkMeetTH[$pMode] = 1 Then
 			If $THL = -1 Or $THL > $iCmbTH[$pMode] Then Return False
 		EndIf
@@ -102,17 +125,6 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 		If $iChkMeetTHO[$pMode] = 1 Then
 			If $THLO <> 1 Then Return False
 		EndIf
-
-		If $iCmbMeetGE[$pMode] = 2 Then
-			If $GPE = False Then Return False
-		EndIf
 	EndIf
 	Return True
 EndFunc   ;==>CompareResources
-
-Func CompareResourcesForSnipe() ;Compares resources and returns true if conditions meet, otherwise returns false	
-	Local $G = (Number($searchGold) >= $iMinGoldTH), $E = (Number($searchElixir) >= $iMinElixirTH), $D = (Number($searchDark) >= $iMinDETH)	
-
-	If $G = True Or $E = True Or $D = True Then Return True
-	Return False
-EndFunc   ;==>CompareResourcesForSnipe

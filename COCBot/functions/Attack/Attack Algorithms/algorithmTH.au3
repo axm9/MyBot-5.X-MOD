@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: AtoZ (2015)
 ; Modified ......: Barracoda (July 2015), TheMaster 2015-10
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -14,6 +14,13 @@
 ; ================================================================
 
 Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random(800, 900, 1), $waveNb = 0)
+	#cs ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+		$troopKind : The Type of Troop
+		$iNbOfSpots : The Number of spots troops are deployed in , $iAtEachSpot : The Number of troops to deploy at each spot , $troopNb ( Troop number ) = $iNbOfSpots * $iAtEachSpot
+		$Sleep : delay in ms => 1000ms = 1 sec
+		$waveNb : 0 => "Only"  , 1 => "First" , 2 => "Second"  , 3 => "Third"  , 4 => "Last"
+	#ce ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 	Local $aThx, $aThy, $num
 	Local $TroopCountBeg
 	Local $THtroop = -1
@@ -96,7 +103,6 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 				EndIf
 			EndIf
 		EndIf
-		;End CC
 	EndIf
 
 	; All Barracks Troops
@@ -116,12 +122,10 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 		If $waveNb = 4 Then $waveName = "Last"
 		SetLog("Dropping " & $waveName & " wave of " & $troopNb & " " & $name, $COLOR_GREEN)
 	EndIf
-	;End All Barracks Troops
 
 	SelectDropTroop($THtroop) ;Select Troop to be Droped
-
 	If _Sleep($iDelayAttackTHGrid1) Then Return
-	
+
 	;Top TH
 	If $THy < 250 And ($THx > 390 And $THx < 470) Then 
 		DeployCornerTHCustom(425, 50, $iAtEachSpot, $iNbOfSpots)
@@ -152,50 +156,49 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 		SelectDropTroop(0)
 		If _Sleep($Sleep) Then Return
 	EndIf
-
 EndFunc   ;==>AttackTHGrid
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; TH Deploy Types ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; TH Deploy Types ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 	Switch $THside
 		Case 0 ;UL
 			For $num = 0 To $iAtEachSpot - 1
-				For $ii = $THi - 1 To $THi - 1 + ($iNbOfSpots - 1)
-                    $aThx = 62 + ($ii * 18)
-                    $aThy = 342 - ($ii * 13)
+				For $i = $THi - 1 To $THi - 1 + Ceiling(($iNbOfSpots - 1) / 2)
+					$aThx = 25 + $i * 19
+					$aThy = 314 - $i * 14
 					If CheckOneStar(0, False, False) Then Return
-					If IsAttackPage() Then Click(Random($aThx - 1, $aThx + 1, 1), Random($aThy - 1, $aThy + 1, 1), 1, 0, "#0019")
+					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0019")
 					If _Sleep(Random(20, 40,1)) Then Return
 				Next
 			Next
 		Case 1 ;LL
 			For $num = 0 To $iAtEachSpot - 1
-				For $ii = $THi To $THi + ($iNbOfSpots - 1)
-                    $aThx = 59 + $ii * 18
-                    $aThy = 372 + $ii * 13
+				For $i = $THi To $THi + ($iNbOfSpots - 1)
+					$aThx = 25 + $i * 19
+					$aThy = 314 + $i * 14
 					If CheckOneStar(0, False, False) Then Return
-					If IsAttackPage() Then Click(Random($aThx - 1, $aThx + 1, 1), Random($aThy - 1, $aThy + 1, 1), 1, 0, "#0020")
+					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0020")
 					If _Sleep(Random(20, 40,1)) Then Return
 				Next
 			Next
 		Case 2 ;UR
 			For $num = 0 To $iAtEachSpot - 1
-				For $ii = $THi To $THi + ($iNbOfSpots - 1)
-                    $aThx = 801 - $ii * 18
-                    $aThy = 342 - $ii * 13
+				For $i = $THi To $THi + ($iNbOfSpots - 1)
+					$aThx = 830 - $i * 19
+					$aThy = 314 - $i * 14
 					If CheckOneStar(0, False, False) Then Return
-					If IsAttackPage() Then Click(Random($aThx - 1, $aThx + 1, 1), Random($aThy - 1, $aThy + 1, 1), 1, 0, "#0021")
+					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0021")
 					If _Sleep(Random(20, 40,1)) Then Return
 				Next
 			Next
 		Case 3 ;LR
 			For $num = 0 To $iAtEachSpot - 1
-				For $ii = $THi + 1 To $THi + 1 + ($iNbOfSpots - 1)
-                    $aThx = 802 - $ii * 18
-                    $aThy = 372 + $ii * 13
+				For $i = $THi + 1 To $THi + 1 + ($iNbOfSpots - 1)
+					$aThx = 830 - $i * 19
+					$aThy = 314 + $i * 14
 					If CheckOneStar(0, False, False) Then Return
-					If IsAttackPage() Then Click(Random($aThx - 1, $aThx + 1, 1), Random($aThy - 1, $aThy + 1, 1), 1, 0, "#0022")
+					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0022")
 					If _Sleep(Random(20, 40,1)) Then Return
 				Next
 			Next
@@ -214,7 +217,6 @@ EndFunc   ;==>DeployCornerTHCustom
 
 Func SpellTHGrid($S)
 	If ($S = $eHSpell And $ichkUseHSpellsTH = 1) Or ($S = $eLSpell And $ichkUseLSpellsTH = 1) Or ($S = $eRSpell And $ichkUseRSpellsTH = 1) Then
-
 		If _Sleep(10) Then Return
 		If $Restart = True Then Return
 		If CheckOneStar(0, False, True) Then Return
@@ -243,7 +245,6 @@ Func CastSpell($THSpell, $x, $y)
 	Local $name = ""
 
 	If ($THSpell = $eHSpell And $ichkUseHSpellsTH = 1) Or ($THSpell = $eLSpell And $ichkUseLSpellsTH = 1) Or ($THSpell = $eRSpell And $ichkUseRSpellsTH = 1) Then
-
 		If _Sleep(10) Then Return
 		If $Restart = True Then Return
 		If CheckOneStar(0, False, True) Then Return
@@ -265,23 +266,6 @@ Func CastSpell($THSpell, $x, $y)
 		EndIf
 	EndIf
 EndFunc   ;==>CastSpell
-
-Func ThSnipeWait($delay)
-	Local $ts, $td
-	Setlog("Waiting for " & $delay/1000 & " seconds or until the destruction of the town hall")
-
-	$ts = TimerInit() 
-	$td = 0
-
-	While $td < $delay 
-		_Sleep(1000)
-		If CheckOneStar() Then
-			Return True
-		EndIf
-		$td = TimerDiff($ts)
-	WEnd
-	Return False
-EndFunc   ;==>ThSnipeWait
 
 Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 	For $i = 0 To $DelayInSec
@@ -314,14 +298,12 @@ Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 			EndIf
 
 			Return True ;exit if you get a star
-
 		Else
 			If $i <> 0 Then
 				If _Sleep(1000) Then Return True
 				If $Restart = True Then Return True
 			EndIf
 		EndIf
-		;end check for one star
 	Next
 
 	Return False ; Continue

@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -31,10 +31,8 @@ Func chkWalls()
 		GUICtrlSetState($txtWallMinGold, $GUI_DISABLE)
 		GUICtrlSetState($txtWallMinElixir, $GUI_DISABLE)
 		GUICtrlSetState($sldMaxNbWall, $GUI_DISABLE)
-
 	EndIf
 EndFunc   ;==>chkWalls
-
 
 Func chkSaveWallBldr()
 	If GUICtrlRead($chkSaveWallBldr) = $GUI_CHECKED Then
@@ -115,6 +113,7 @@ Func btnchkbxUpgrade()
 EndFunc   ;==>btnchkbxUpgrade
 
 Func btnResetUpgrade()
+	; Reset Condition $aUpgrades[4][4] = [[-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""]]
 	For $i = 0 To 5
 		$aUpgrades[$i][3] = "" ;Clear Upgrade Type
 		GUICtrlSetData($txtUpgradeX[$i], "") ; Clear GUI X position
@@ -173,7 +172,6 @@ Func chkUpgradeKing()
 EndFunc   ;==>ichkUpgradeKing
 
 Func chkUpgradeQueen()
-
 	If GUICtrlRead($chkUpgradeQueen) = $GUI_CHECKED Then
 		$ichkUpgradeQueen = 1
 	Else
@@ -192,7 +190,6 @@ Func chkUpgradeQueen()
 EndFunc   ;==>chkUpgradeQueen
 
 Func chkUpgradeWarden()
-
 	If GUICtrlRead($chkUpgradeWarden) = $GUI_CHECKED Then
 		$ichkUpgradeWarden = 1
 	Else

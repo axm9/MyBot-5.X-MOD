@@ -6,12 +6,13 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func chkSearchReduction()
 	If GUICtrlRead($chkSearchReduction) = $GUI_CHECKED Then
 		_GUICtrlEdit_SetReadOnly($txtSearchReduceCount, False)
@@ -33,64 +34,36 @@ EndFunc   ;==>chkSearchReduction
 Func cmbSearchMode()
 	Switch _GUICtrlComboBox_GetCurSel($cmbSearchMode)
 		Case 0
-			For $i = $chkABEnableAfter To $lblABEnableAfter
-				GUICtrlSetState($i, $GUI_HIDE)
-			Next
-			For $i = $chkDBEnableAfter To $lblDBEnableAfter
-				GUICtrlSetState($i, $GUI_HIDE)
-			Next
 			For $i = $cmbABMeetGE To $chkABMeetOne
 				GUICtrlSetState($i, $GUI_DISABLE)
 			Next
-			For $i = $cmbDBMeetGE To $txtDBLightMinDark
+			For $i = $cmbDBMeetGE To $chkDBMeetOne
 				If $i = $cmbDBTH And GUICtrlRead($chkDBMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbDBWeakMortar Or $i = $cmbDBWeakWizTower) And GUICtrlRead($chkDBWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
 			Next
 		Case 1
-			For $i = $chkABEnableAfter To $lblABEnableAfter
-				GUICtrlSetState($i, $GUI_HIDE)
-			Next
-			For $i = $chkDBEnableAfter To $lblDBEnableAfter
-				GUICtrlSetState($i, $GUI_HIDE)
-			Next
 			For $i = $cmbDBMeetGE To $chkDBMeetOne
 				GUICtrlSetState($i, $GUI_DISABLE)
-			Next
-			For $i = $cmbABMeetGE To $txtDBLightMinDark
-				If $i = $cmbABTH And GUICtrlRead($chkABMeetTH) = $GUI_UNCHECKED Then $i += 1
-				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
-				GUICtrlSetState($i, $GUI_ENABLE)
-			Next
-		Case 2
-			For $i = $chkABEnableAfter To $lblABEnableAfter
-				GUICtrlSetState($i, $GUI_SHOW)
-			Next
-			For $i = $chkDBEnableAfter To $lblDBEnableAfter
-				GUICtrlSetState($i, $GUI_SHOW)
 			Next
 			For $i = $cmbABMeetGE To $chkABMeetOne
 				If $i = $cmbABTH And GUICtrlRead($chkABMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
 			Next
-			For $i = $cmbDBMeetGE To $txtDBLightMinDark
+		Case 2
+			For $i = $cmbABMeetGE To $chkABMeetOne
+				If $i = $cmbABTH And GUICtrlRead($chkABMeetTH) = $GUI_UNCHECKED Then $i += 1
+				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
+				GUICtrlSetState($i, $GUI_ENABLE)
+			Next
+			For $i = $cmbDBMeetGE To $chkDBMeetOne
 				If $i = $cmbDBTH And GUICtrlRead($chkDBMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbDBWeakMortar Or $i = $cmbDBWeakWizTower) And GUICtrlRead($chkDBWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
 			Next
 	EndSwitch
 EndFunc   ;==>cmbSearchMode
-
-Func chkDBEnableAfter()
-	If GUICtrlRead($chkDBEnableAfter) = $GUI_CHECKED Then
-		_GUICtrlEdit_SetReadOnly($txtDBEnableAfter, False)
-		GUICtrlSetState($chkABEnableAfter, $GUI_UNCHECKED)
-		_GUICtrlEdit_SetReadOnly($txtABEnableAfter, True)
-	Else
-		_GUICtrlEdit_SetReadOnly($txtDBEnableAfter, True)
-	EndIf
-EndFunc   ;==>chkDBEnableAfter
 
 Func cmbDBGoldElixir()
 	If _GUICtrlComboBox_GetCurSel($cmbDBMeetGE) < 2 Then
@@ -150,16 +123,6 @@ Func chkDBWeakBase()
 	EndIf
 EndFunc   ;==>chkDBWeakBase
 
-Func chkABEnableAfter()
-	If GUICtrlRead($chkABEnableAfter) = $GUI_CHECKED Then
-		_GUICtrlEdit_SetReadOnly($txtABEnableAfter, False)
-		GUICtrlSetState($chkDBEnableAfter, $GUI_UNCHECKED)
-		_GUICtrlEdit_SetReadOnly($txtDBEnableAfter, True)
-	Else
-		_GUICtrlEdit_SetReadOnly($txtABEnableAfter, True)
-	EndIf
-EndFunc   ;==>chkABEnableAfter
-
 Func cmbABGoldElixir()
 	If _GUICtrlComboBox_GetCurSel($cmbABMeetGE) < 2 Then
 		GUICtrlSetState($txtABMinGold, $GUI_SHOW)
@@ -218,18 +181,6 @@ Func chkABWeakBase()
 	EndIf
 EndFunc   ;==>chkABWeakBase
 
-Func chkDBLightSpell()
-	If GUICtrlRead($chkDBLightSpell) = $GUI_CHECKED Then
-		$ichkDBLightSpell = 1
-		$iTrainLightSpell = 1
-		GUICtrlSetState($txtDBLightMinDark, $GUI_ENABLE)
-	Else
-		$ichkDBLightSpell = 0
-		$iTrainLightSpell = 0
-		GUICtrlSetState($txtDBLightMinDark, $GUI_DISABLE)
-	EndIf
-EndFunc   ;==>chkDBLightSpell
-
 Func chkRestartSearchLimit()
 	If GUICtrlRead($ChkRestartSearchLimit) = $GUI_CHECKED Then
 		GUICtrlSetState($txtRestartSearchlimit, $GUI_ENABLE)
@@ -237,3 +188,7 @@ Func chkRestartSearchLimit()
 		GUICtrlSetState($txtRestartSearchlimit, $GUI_DISABLE)
 	EndIf
 EndFunc   ;==>chkRestartSearchLimit
+
+Func btnConfigureCollectors()
+	OpenGUI2()
+EndFunc

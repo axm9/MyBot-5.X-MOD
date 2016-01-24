@@ -1,6 +1,23 @@
+; #FUNCTION# ====================================================================================================================
+; Name ..........: DropTroop
+; Description ...:
+; Syntax ........: DropTroop($troop, $nbSides, $number[, $slotsPerEdge = 0[, $indexToAttack = -1]])
+; Parameters ....: $troop               - a dll struct value.
+;                  $nbSides             - a general number value.
+;                  $number              - a general number value.
+;                  $slotsPerEdge        - [optional] a string value. Default is 0.
+;                  $indexToAttack       - [optional] an integer value. Default is -1.
+; Return values .: None
+; Author ........: didipe
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
 
 Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1)
-
 	If isProblemAffect(True) Then Return
 	$nameFunc = "[DropTroop]"
 	debugRedArea($nameFunc & " IN ")
@@ -17,7 +34,6 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1
 		If ($iChkSmartAttack[$iMatchMode][0] = 0 And $iChkSmartAttack[$iMatchMode][1] = 0 And $iChkSmartAttack[$iMatchMode][2] = 0) Then
 			If $nbSides = 4 Then
 				Local $edgesPixelToDrop = GetPixelDropTroop($troop, $number, $slotsPerEdge)
-
 				For $i = 0 To $nbSides - 3
 					Local $nbTroopsPerEdge = Round($nbTroopsLeft / ($nbSides - $i * 2))
 					If ($number > 0 And $nbTroopsPerEdge = 0) Then $nbTroopsPerEdge = 1
@@ -74,7 +90,6 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1
 	EndIf
 
 	debugRedArea($nameFunc & " OUT ")
-
 EndFunc   ;==>DropTroop
 
 Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
@@ -109,7 +124,6 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 			EndIf
 		Else
 			Local $listEdgesPixelToDrop[0]
-
 			Local $nbTroopsPerEdge = Round($number / UBound($PixelNearCollector))
 			If ($number > 0 And $nbTroopsPerEdge = 0) Then $nbTroopsPerEdge = 1
 			Local $maxElementNearCollector = UBound($PixelNearCollector) - 1
@@ -118,7 +132,7 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 			If ($troop = $eArch Or $troop = $eWiza Or $troop = $eMini or $troop = $eBarb) Then
 				$troopFurther = True
 			EndIf
-			Local $centerPixel[2] = [430, 313]
+			Local $centerPixel[2] = [430, 338]
 			For $i = $startIndex To $maxElementNearCollector
 				$pixel = $PixelNearCollector[$i]
 				ReDim $listInfoPixelDropTroop[UBound($listInfoPixelDropTroop) + 1]
@@ -148,7 +162,6 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 						$arrPixelToSearch = $PixelTopRight
 					EndIf
 				EndIf
-
 				$listInfoPixelDropTroop[UBound($listInfoPixelDropTroop) - 1] = _FindPixelCloser($arrPixelToSearch, $pixel, 1)
 			Next
 		EndIf
@@ -159,5 +172,4 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 	Local $infoDropTroop[6] = [$troop, $listInfoPixelDropTroop, $nbTroopsPerEdge, $slotsPerEdge, $number, $name]
 	Return $infoDropTroop
 	debugRedArea($nameFunc & " OUT ")
-
 EndFunc   ;==>DropTroop2

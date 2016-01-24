@@ -5,9 +5,9 @@
 ; Syntax ........: AttackReport()
 ; Parameters ....: None
 ; Return values .: None
-; Author ........: Hervidero (2015-feb-10), Sardo (may-2015)
+; Author ........: Hervidero (2015-feb-10), Sardo (may-2015), Hervidero (2015-12)
 ; Modified ......: Sardo (may-2015), Hervidero (may-2015), Knowjack (July 2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -63,7 +63,7 @@ Func AttackReport()
 			$iTrophyLast = -$iTrophyLast
 		EndIf
 		$iDarkLast = ""
-		SetLog("Loot: [G]: " & _NumberFormat($iGoldLast) & " [E]: " & _NumberFormat($iElixirLast) & " [DE]: " & _NumberFormat($iDarkLast) & " [T]: " & $iTrophyLast, $COLOR_GREEN)
+		SetLog("Loot: [G]: " & _NumberFormat($iGoldLast) & " [E]: " & _NumberFormat($iElixirLast) & " [T]: " & $iTrophyLast, $COLOR_GREEN)
 	EndIf
 
 	If $iTrophyLast >= 0 Then
@@ -187,7 +187,7 @@ Func AttackReport()
 		$iDarkTotal += $iDarkLast + $iDarkLastBonus
 		$iTotalDarkGain[$iMatchMode] += $iDarkLast + $iDarkLastBonus
 		$iLootGain[2][Int(@HOUR)] += $iDarkLast + $iDarkLastBonus
-	EndIf	
+	EndIf
 	$iTrophyTotal += $iTrophyLast
 	$iTotalTrophyGain[$iMatchMode] += $iTrophyLast
 	If $iMatchMode = $TS Then

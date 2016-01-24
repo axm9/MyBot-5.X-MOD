@@ -1,4 +1,3 @@
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: SearchTownHallLoc
 ; Description ...:
@@ -7,39 +6,40 @@
 ; Return values .: None
 ; Author ........: Code Monkey #5
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
 Func SearchTownHallLoc()
 	If $searchTH <> "-" Then
- 		If isInsideDiamondXY($THx,$THy)=False Then Return False
+ 		If isInsideDiamondXY($THx,$THy) = False Then Return False
+		If isOutsideEllipse($THx, $THy) = False Then Return False
 
 		For $i=0 to 20
 			If $Thx<114+$i*19+ceiling(($THaddtiles-2)/2*19) And $Thy<359-$i*14+ceiling(($THaddtiles-2)/2*14) Then
 				$THi=$i
 				$THside=0
-				If ($THx < 250 And $THy > 270) Or ($THy < 250 And $THx > 370) Then Return True
+				Return True
 			EndIf
 			If $Thx<117+$i*19+ceiling(($THaddtiles-2)/2*19) And $Thy>268+$i*14-floor(($THaddtiles-2)/2*14) Then
 				$THi=$i
 				$THside=1
-				If ($THx < 250 And $THy < 390) Or ($THy > 450 And $THx > 370) Then Return True
+				Return True
 			EndIf
 			If $Thx>743-$i*19-floor(($THaddtiles-2)/2*19) And $Thy<358-$i*14+ceiling(($THaddtiles-2)/2*14) Then
 				$THi=$i
 				$THside=2
-				If ($THx > 600 And $THy > 270) Or ($THy < 250 And $THx < 490) Then Return True
+				Return True
 			EndIf
 			If $Thx>742-$i*19-floor(($THaddtiles-2)/2*19) And $Thy>268+$i*14-floor(($THaddtiles-2)/2*14) Then
 				$THi=$i
 				$THside=3
-				If ($THx > 600 And $THy < 390) Or ($THy > 450 And $THx < 490) Then Return True
+				Return True
 			EndIf
 		Next
 	EndIf
 	Return False
 EndFunc ;--- SearchTownHallLoc
-

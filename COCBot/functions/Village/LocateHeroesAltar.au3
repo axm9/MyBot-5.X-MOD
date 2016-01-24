@@ -1,4 +1,3 @@
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: LocateQueenAltar & LocateKingAltar & LocateWardenAltar
 ; Description ...:
@@ -7,7 +6,7 @@
 ; Return values .: None
 ; Author ........: ProMac 2015
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -18,26 +17,30 @@ Func LocateQueenAltar()
 	Local $stext, $MsgBox, $iSilly = 0, $iStupid = 0, $sErrorText = "", $sInfo
 
 	$RunState = True
-	WinActivate($Title)
+	WinGetAndroidHandle()
+	WinActivate($HWnD)
 	checkMainScreen(False)
 
 	If _GetPixelColor($aTopLeftClient[0], $aTopLeftClient[1], True) <> Hex($aTopLeftClient[2], 6) And _GetPixelColor($aTopRightClient[0], $aTopRightClient[1], True) <> Hex($aTopRightClient[2], 6) Then
 		Zoomout()
+		$bDisableBreakCheck = True  ; stop early PB log off when locating upgrades
 		Collect()
+		$bDisableBreakCheck = False  ; restore flag
 	EndIf
 
 	SetLog("Locating Queen Altar...", $COLOR_BLUE)
 	While 1
-		ClickP($aTopLeftClient)
 		_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 500)
 		$stext = $sErrorText & @CRLF & "Click OK then click on your Queen Altar" & @CRLF & @CRLF & _
 				"Do not move mouse after clicking location" & @CRLF & @CRLF & "Make sure the building name is visible for me!" & @CRLF
 		$MsgBox = _ExtMsgBox(0, "Ok|Cancel", "Locate Queen Altar", $stext, 15, $frmBot)
 		If $MsgBox = 1 Then
-			$HWnD = WinGetHandle($Title)
+		    WinGetAndroidHandle()
 			WinActivate($HWnD)
-			$QueenAltarPos[0] = FindPos()[0]
-			$QueenAltarPos[1] = FindPos()[1]
+			ClickP($aTopLeftClient)
+			Local $aPos = FindPos()
+			$QueenAltarPos[0] = $aPos[0]
+			$QueenAltarPos[1] = $aPos[1]
 			If isInsideDiamond($QueenAltarPos) = False Then
 				$iStupid += 1
 				Select
@@ -137,15 +140,17 @@ Func LocateQueenAltar()
 
 	IniWrite($building, "other", "xQueenAltarPos", $QueenAltarPos[0])
 	IniWrite($building, "other", "yQueenAltarPos", $QueenAltarPos[1])
-
 EndFunc   ;==>LocateQueenAltar
 
 Func LocateKingAltar()
 	Local $stext, $MsgBox, $iSilly = 0, $iStupid = 0, $sErrorText = "", $sInfo
 	$RunState = True
+	WinGetAndroidHandle()
 	WinActivate($Title)
 	checkMainScreen(False)
+	$bDisableBreakCheck = True  ; stop early PB log off when locating upgrades
 	Collect()
+	$bDisableBreakCheck = False  ; restore flag
 
 	SetLog("Locating King Altar...", $COLOR_BLUE)
 	While 1
@@ -155,10 +160,11 @@ Func LocateKingAltar()
 				"Do not move mouse after clicking location" & @CRLF & @CRLF & "Make sure the building name is visible for me!" & @CRLF
 		$MsgBox = _ExtMsgBox(0, "Ok|Cancel", "Locate King Altar", $stext, 15, $frmBot)
 		If $MsgBox = 1 Then
-			$HWnD = WinGetHandle($Title)
+			WinGetAndroidHandle()
 			WinActivate($HWnD)
-			$KingAltarPos[0] = FindPos()[0]
-			$KingAltarPos[1] = FindPos()[1]
+			Local $aPos = FindPos()
+			$KingAltarPos[0] = $aPos[0]
+			$KingAltarPos[1] = $aPos[1]
 			If isInsideDiamond($KingAltarPos) = False Then
 				$iStupid += 1
 				Select
@@ -259,7 +265,6 @@ Func LocateKingAltar()
 	IniWrite($building, "other", "yKingAltarPos", $KingAltarPos[1])
 EndFunc   ;==>LocateKingAltar
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 Func LocateWardenAltar()
 	Local $stext, $MsgBox, $iSilly = 0, $iStupid = 0, $sErrorText = "", $sInfo
 
@@ -269,12 +274,15 @@ Func LocateWardenAltar()
 	EndIf
 
 	$RunState = True
-	WinActivate($Title)
+	WinGetAndroidHandle()
+	WinActivate($HWnD)
 	checkMainScreen(False)
 
 	If _GetPixelColor($aTopLeftClient[0], $aTopLeftClient[1], True) <> Hex($aTopLeftClient[2], 6) And _GetPixelColor($aTopRightClient[0], $aTopRightClient[1], True) <> Hex($aTopRightClient[2], 6) Then
 		Zoomout()
+		$bDisableBreakCheck = True  ; stop early PB log off when locating upgrades
 		Collect()
+		$bDisableBreakCheck = False  ; restore flag
 	EndIf
 
 	SetLog("Locating Grand Warden Altar... work in progress!", $COLOR_BLUE)
@@ -285,10 +293,11 @@ Func LocateWardenAltar()
 				"Do not move mouse after clicking location" & @CRLF & @CRLF & "Make sure the building name is visible for me!" & @CRLF
 		$MsgBox = _ExtMsgBox(0, "Ok|Cancel", "Locate Grand Warden Altar", $stext, 15, $frmBot)
 		If $MsgBox = 1 Then
-			$HWnD = WinGetHandle($Title)
+			WinGetAndroidHandle()
 			WinActivate($HWnD)
-			$WardenAltarPos[0] = FindPos()[0]
-			$WardenAltarPos[1] = FindPos()[1]
+			Local $aPos = FindPos()
+			$WardenAltarPos[0] = $aPos[0]
+			$WardenAltarPos[1] = $aPos[1]
 			If isInsideDiamond($WardenAltarPos) = False Then
 				$iStupid += 1
 				Select

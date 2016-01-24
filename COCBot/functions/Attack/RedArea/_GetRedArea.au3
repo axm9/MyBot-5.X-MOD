@@ -1,3 +1,17 @@
+; #FUNCTION# ====================================================================================================================
+; Name ..........: _GetRedArea
+; Description ...:  See strategy below
+; Syntax ........: _GetRedArea()
+; Parameters ....:
+; Return values .: None
+; Author ........:
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
 ; Strategy :
 ; 			Search red area
 ;			Split the result in 4 sides (global var) : Top Left / Bottom Left / Top Right / Bottom Right
@@ -5,6 +19,7 @@
 ;			Get pixel next the "out zone" , indeed the red color is very different and more uncertain
 ;			Sort each sides
 ;			Add each sides in one array (not use, but it can help to get closer pixel of all the red area)
+
 Func _GetRedArea()
 	$nameFunc = "[_GetRedArea] "
 	debugRedArea($nameFunc & " IN")
@@ -33,7 +48,6 @@ Func _GetRedArea()
 
 	ReDim $PixelRedArea[UBound($PixelTopLeft) + UBound($PixelBottomLeft) + UBound($PixelTopRight) + UBound($PixelBottomRight)]
 	ReDim $PixelRedAreaFurther[UBound($PixelTopLeft) + UBound($PixelBottomLeft) + UBound($PixelTopRight) + UBound($PixelBottomRight)]
-
 
 	$count = 0
 	ReDim $PixelTopLeftFurther[UBound($PixelTopLeft)]
@@ -66,7 +80,6 @@ Func _GetRedArea()
 	Next
 	debugRedArea("PixelTopLeftFurther " + UBound($PixelTopLeftFurther))
 
-
 	If UBound($PixelTopLeft) < 10 Then
 		$PixelTopLeft = _GetVectorOutZone($eVectorLeftTop)
 		$PixelTopLeftFurther = $PixelTopLeft
@@ -88,5 +101,3 @@ Func _GetRedArea()
 
 	debugRedArea($nameFunc & " OUT ")
 EndFunc   ;==>_GetRedArea
-
-

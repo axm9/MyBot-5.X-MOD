@@ -8,14 +8,15 @@
 ; Return values .: None
 ; Author ........: KnowJack (June-2015)
 ; Modified ......:
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func _SleepStatus($iDelay, $iSleep = True, $bDirection = True)	;
-	; $bDirection: True equals count down display, False equals count up display	;
+
+Func _SleepStatus($iDelay, $iSleep = True, $bDirection = True)
+	; $bDirection: True equals count down display, False equals count up display
 	Local $iCurTime, $iMinCalc, $iSecCalc, $iTime, $iBegin, $sString
 	Local $iDelayMinCalc, $iDelaySecCalc, $iDelaySecCalc
 	Local Const $Font = "Verdana"
