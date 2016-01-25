@@ -175,8 +175,8 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 1 ;LL
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi To $THi + ($iNbOfSpots - 1)
-					$aThx = 59 + $ii * 18
-                    $aThy = 372 + $ii * 13
+					$aThx = 59 + $i * 18
+                    $aThy = 372 + $i * 13
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0020")
 					If _Sleep(Random(20, 40,1)) Then Return
@@ -185,8 +185,8 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 2 ;UR
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi To $THi + ($iNbOfSpots - 1)
-					$aThx = 801 - $ii * 18
-					$aThy = 342 - $ii * 13
+					$aThx = 801 - $i * 18
+					$aThy = 342 - $i * 13
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0021")
 					If _Sleep(Random(20, 40,1)) Then Return
@@ -195,8 +195,8 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 3 ;LR
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi + 1 To $THi + 1 + ($iNbOfSpots - 1)
-					$aThx = 802 - $ii * 18
-					$aThy = 372 + $ii * 13
+					$aThx = 802 - $i * 18
+					$aThy = 372 + $i * 13
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0022")
 					If _Sleep(Random(20, 40,1)) Then Return
