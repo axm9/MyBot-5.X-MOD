@@ -72,7 +72,7 @@ Func _RemoteControl()
 						SetLog("Pushbullet: Your request has been received from ' " & $iOrigPushB & ". Help has been sent", $COLOR_GREEN)
 						_DeleteMessage($iden[$x])
 					Case "BOT " & StringUpper($iOrigPushB) & " PAUSE"
-						If $TPaused = False And $Runstate = True Then
+						If $TPaused = False And $RunState = True Then
 							TogglePauseImpl("Push")
 						Else
 							SetLog("Pushbullet: Your bot is currently paused, no action was taken", $COLOR_GREEN)
@@ -80,7 +80,7 @@ Func _RemoteControl()
 						EndIf
 						_DeleteMessage($iden[$x])
 					Case "BOT " & StringUpper($iOrigPushB) & " RESUME"
-						If $TPaused = True And $Runstate = True Then
+						If $TPaused = True And $RunState = True Then
 							TogglePauseImpl("Push")
 						Else
 							SetLog("Pushbullet: Your bot is currently resumed, no action was taken", $COLOR_GREEN)
@@ -123,7 +123,7 @@ Func _RemoteControl()
 					Case "BOT " & StringUpper($iOrigPushB) & " STOP"
 						_DeleteMessage($iden[$x])
 						SetLog("Your request has been received. Bot is now stopped", $COLOR_GREEN)
-						If $Runstate = True Then
+						If $RunState = True Then
 							_Push($iOrigPushB & " | Request to Stop..." & "\n" & "Your bot is now stopping...")
 							btnStop()
 						Else

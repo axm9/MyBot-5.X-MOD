@@ -35,10 +35,10 @@ Func IsAttackPage()
 	Local $result = _ColorCheck($colorRead, Hex($aIsAttackPage[2], 6), $aIsAttackPage[3])
 
 	If $result Then
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Attack Window OK**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Attack Window OK**", $COLOR_ORANGE)
 		Return True
 	Else
-		If $DebugSetlog = 1 Or $DebugClick = 1 then
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then
 			SetLog("**Attack Window FAIL**", $COLOR_ORANGE)
 			SetLog("expected in (" & $aIsAttackPage & "," &$aIsAttackPage &")  = " & Hex($aIsAttackPage[2],6) & " - Found " & $colorRead , $COLOR_ORANGE)
 		EndIf
@@ -52,10 +52,10 @@ Func IsAttackWhileShieldPage()
 	Local $result = _CheckPixel($aIsAttackShield, $bCapturePixel)
 
 	If $result Then
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Attack Shield Window Open**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Attack Shield Window Open**", $COLOR_ORANGE)
 		Return True
 	Else
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Attack Shield Window not open**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Attack Shield Window not open**", $COLOR_ORANGE)
 		If $debugImageSave = 1 Then	DebugImageSave("IsAttackWhileShieldPage_")
 		Return False
 	EndIf
@@ -65,10 +65,10 @@ Func IsMainPage()
 	Local $result = _CheckPixel($aIsMain, $bCapturePixel)
 
 	If $result Then
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Main Window OK**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Main Window OK**", $COLOR_ORANGE)
 		Return True
 	Else
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Main Window FAIL**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Main Window FAIL**", $COLOR_ORANGE)
 		If $debugImageSave= 1 Then DebugImageSave("IsMainPage_")
 		Return False
 	EndIf
@@ -78,10 +78,10 @@ Func IsMainChatOpenPage() ;main page open chat
 	Local $result = _ColorCheck(_GetPixelColor($aChatTab[0], $aChatTab[1], True), Hex($aChatTab[2], 6), $aChatTab[3])
 
 	If $result Then
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Chat Open Window OK**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Chat Open Window OK**", $COLOR_ORANGE)
 		Return True
 	Else
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Chat Open Window FAIL** " & $aChatTab[0] &"," & $aChatTab[1] & " " & _GetPixelColor($aChatTab[0], $aChatTab[1], True), $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Chat Open Window FAIL** " & $aChatTab[0] &"," & $aChatTab[1] & " " & _GetPixelColor($aChatTab[0], $aChatTab[1], True), $COLOR_ORANGE)
 		If $debugImageSave= 1 Then DebugImageSave("IsMainChatOpenPage_")
 		Return False
 	EndIf
@@ -91,16 +91,16 @@ Func IsClanInfoPage()
 	Local $result = _ColorCheck(_GetPixelColor($aPerkBtn[0], $aPerkBtn[1], True), Hex($aPerkBtn[2], 6), $aPerkBtn[3])
 
 	If $result Then
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Clan Info Window OK**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Clan Info Window OK**", $COLOR_ORANGE)
 		Return True
 	Else
-		$result = _ColorCheck(_GetPixelColor(214, 106, True), Hex(0xFFFFFF, 6), 1) and  _ColorCheck(_GetPixelColor(815, 58, True), Hex(0xD80402, 6), 5) ; If are not in a clan
+		$result = _ColorCheck(_GetPixelColor(214, 106, True), Hex(0xFFFFFF, 6), 1) And  _ColorCheck(_GetPixelColor(815, 58, True), Hex(0xD80402, 6), 5) ; If are not in a clan
 		If $result Then
-			If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Clan Info Window OK**", $COLOR_ORANGE)
+			If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Clan Info Window OK**", $COLOR_ORANGE)
 			SetLog("Join a Clan to donate and receive troops!", $COLOR_ORANGE)
 			Return True
 		Else
-			If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Clan Info Window FAIL**", $COLOR_ORANGE)
+			If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Clan Info Window FAIL**", $COLOR_ORANGE)
 			If $debugImageSave= 1 Then DebugImageSave("IsClanInfoPage_")
 			Return False
 		EndIf
@@ -113,11 +113,11 @@ Func IsLaunchAttackPage()
 	Local $resultnoshield = _ColorCheck($colorReadnoshield, Hex($aFindMatchButton[2], 6), $aFindMatchButton[3])
 	Local $resultwithshield = _ColorCheck($colorReadwithshield, Hex($aFindMatchButton2[2], 6), $aFindMatchButton2[3])
 
-	If $resultnoshield or $resultwithshield Then
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Launch Attack Window OK**", $COLOR_ORANGE)
+	If $resultnoshield Or $resultwithshield Then
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Launch Attack Window OK**", $COLOR_ORANGE)
 		Return True
 	Else
-		If $DebugSetlog = 1 Or $DebugClick = 1 then
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then
 			SetLog("**Launch Attack Window FAIL**", $COLOR_ORANGE)
 			SetLog("expected in (" & $aFindMatchButton[0] & "," &$aFindMatchButton[1] &")  = " & Hex($aFindMatchButton[2],6) & " or " & Hex($aFindMatchButton2[2],6) & " - Found " & $colorReadnoshield & " or " & $colorReadwithshield , $COLOR_ORANGE)
 		EndIf
@@ -131,25 +131,25 @@ Func IsEndBattlePage()
 	Local $result = _ColorCheck(_GetPixelColor($aConfirmSurrender[0], $aConfirmSurrender[1], True), Hex($aConfirmSurrender[2], 6), $aConfirmSurrender[3])
 
 	If $result Then
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**End Battle Window OK**", $COLOR_ORANGE)
+		If ($DebugSetlog = 1 Or $DebugClick = 1) And $writelog = True Then SetLog("**End Battle Window OK**", $COLOR_ORANGE)
 		Return True
 	Else
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**End Battle Window FAIL**", $COLOR_ORANGE)
-		If $debugImageSave= 1 Then DebugImageSave("IsEndBattlePage_")
+		If ($DebugSetlog = 1 Or $DebugClick = 1) And $writeLog = True Then SetLog("**End Battle Window FAIL**", $COLOR_ORANGE)
+		if $debugImageSave= 1 And $writelog = True Then DebugImageSave("IsEndBattlePage_")
 		Return False
 	EndIf
 EndFunc   ;==>IsEndBattlePage
 
 Func IsReturnHomeBattlePage($useReturnValue = False, $makeDebugImageScreenshot = True)
-	; used to check, at end of algorithm_allTroops, If battle already end and then can bypass test for goldelixirchange and activate heroes
+	; used to check, at end of algorithm_allTroops, if battle already end and then can bypass test for goldelixirchange and activate heroes
 	Local $result = _ColorCheck(_GetPixelColor($aReturnHomeButton[0], $aReturnHomeButton[1], True), Hex($aReturnHomeButton[2], 6), $aReturnHomeButton[3])
 
 	If $result Then
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Return Home Battle Window OK**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Return Home Battle Window OK**", $COLOR_ORANGE)
 		Return True
 	Else
-		If ( $DebugSetlog = 1 Or $DebugClick = 1 ) and ($makeDebugImageScreenshot = True) then SetLog("**Return Home Battle Window FAIL**", $COLOR_ORANGE)
-		If $debugImageSave= 1 and $makeDebugImageScreenshot = True Then DebugImageSave("IsReturnHomeBattlePage_")
+		If ( $DebugSetlog = 1 Or $DebugClick = 1 ) And ($makeDebugImageScreenshot = True) Then SetLog("**Return Home Battle Window FAIL**", $COLOR_ORANGE)
+		If $debugImageSave= 1 And $makeDebugImageScreenshot = True Then DebugImageSave("IsReturnHomeBattlePage_")
 		If $useReturnValue = True Then
 			Return False
 	    Else
@@ -159,16 +159,16 @@ Func IsReturnHomeBattlePage($useReturnValue = False, $makeDebugImageScreenshot =
 EndFunc   ;==>IsReturnHomeBattlePage
 
 Func IsPostDefenseSummaryPage()
-	;check for loot lost summary screen after base defense when log on and base is being attacked.
+	; check for loot lost summary screen after base defense when log on and base is being attacked.
 	Local $GoldSpot = _GetPixelColor(330, 201 + $midOffsetY, $bCapturePixel) ; Gold Emblem
 	Local $ElixirSpot = _GetPixelColor(334, 233 + $midOffsetY, $bCapturePixel)  ; Elixir Emblem
 	Local $result = _ColorCheck($GoldSpot, Hex(0xF6E851, 6), 20) And _ColorCheck($ElixirSpot, Hex(0xE835E8, 6), 20)
 
 	If $result Then
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Post Defense Page visible**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Post Defense Page visible**", $COLOR_ORANGE)
 		Return True
 	Else
-		If $DebugSetlog = 1 Or $DebugClick = 1 then SetLog("**Post Defense Page not visible**", $COLOR_ORANGE)
+		If $DebugSetlog = 1 Or $DebugClick = 1 Then SetLog("**Post Defense Page not visible**", $COLOR_ORANGE)
 		If $debugImageSave = 1 Then
 			DebugImageSave("IsPostDefenseSummaryPage_")
 		EndIf

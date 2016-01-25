@@ -23,7 +23,7 @@ Func TogglePauseImpl($Source)
    	SetRedrawBotWindow(True)
    	Local $BlockInputPausePrev
 	$TPaused = NOT $TPaused
-	If $TPaused and $Runstate = True Then
+	If $TPaused And $RunState = True Then
 		TrayTip($sBotTitle, "", 1)
 		TrayTip($sBotTitle, "was Paused!", 1, $TIP_ICONEXCLAMATION)
 		Setlog("Bot was Paused!",$COLOR_RED)
@@ -32,11 +32,11 @@ Func TogglePauseImpl($Source)
 			AdlibUnRegister("SetTime")
 		EndIf
 		PushMsg("Pause", $Source)
-		If $BlockInputPause>0 Then $BlockInputPausePrev=$BlockInputPause
-		If $BlockInputPause>0 Then _BlockInputEx(0,"","",$HWnD)
+		If $BlockInputPause > 0 Then $BlockInputPausePrev=$BlockInputPause
+		If $BlockInputPause > 0 Then _BlockInputEx(0,"","",$HWnD)
 		GUICtrlSetState($btnPause, $GUI_HIDE)
 		GUICtrlSetState($btnResume, $GUI_SHOW)
-	ElseIf $TPaused = False And $Runstate = True Then
+	ElseIf $TPaused = False And $RunState = True Then
 		TrayTip($sBotTitle, "", 1)
 		TrayTip($sBotTitle, "was Resumed.", 1, $TIP_ICONASTERISK)
 		Setlog("Bot was Resumed.",$COLOR_GREEN)
@@ -45,8 +45,8 @@ Func TogglePauseImpl($Source)
 			AdlibRegister("SetTime", 1000)
 		EndIf
 		PushMsg("Resume", $Source)
-		If $BlockInputPausePrev>0 Then _BlockInputEx($BlockInputPausePrev,"","",$HWnD)
-		If $BlockInputPausePrev>0 Then $BlockInputPausePrev=0
+		If $BlockInputPausePrev > 0 Then _BlockInputEx($BlockInputPausePrev,"","",$HWnD)
+		If $BlockInputPausePrev > 0 Then $BlockInputPausePrev=0
 		GUICtrlSetState($btnPause, $GUI_SHOW)
 		GUICtrlSetState($btnResume, $GUI_HIDE)
 		ZoomOut()

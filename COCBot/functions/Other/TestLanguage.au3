@@ -15,7 +15,7 @@
 ; ===============================================================================================================================
 
 Func TestLanguage()
-	If $Runstate Then
+	If $RunState Then
 		; test "builder" word top of sceen
 		If getOcrLanguage(324,6) = "english"  Then
 			Setlog("Language setting is English: Correct.", $COLOR_BLUE)

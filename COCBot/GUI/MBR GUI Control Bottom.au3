@@ -259,7 +259,6 @@ Func btnPause()
 EndFunc   ;==>btnPause
 
 Func btnResume()
-	Send("{PAUSE}")
     TogglePause()
 EndFunc   ;==>btnResume
 
