@@ -73,11 +73,10 @@ EndFunc   ;==>GoldElixirChange
 
 Func GoldElixirChangeThSnipes($x)
 	Local $Gold1, $Gold2
-	Local $GoldChange, $ElixirChange
 	Local $Elixir1, $Elixir2
 	SetLog("Checking if the Gold & Elixir are changing...", $COLOR_BLUE)
 
-	For $y = 0 to $x
+	For $y = 0 To $x
 		$Gold1 = getGoldVillageSearch(48, 69)
 		$Elixir1 = getElixirVillageSearch(48, 69 + 29)
 		Local $iBegin = TimerInit()
@@ -97,10 +96,6 @@ Func GoldElixirChangeThSnipes($x)
 			EndIf
 
 			$Elixir2 = getElixirVillageSearch(48, 69 + 29)
-			If $Gold2 <> "" Or $Elixir2 <> "" Then
-				$GoldChange = $Gold2
-				$ElixirChange = $Elixir2
-			EndIf
 			If ($Gold2 = "" And $Elixir2 = "") Then
 				If _Sleep($iDelayGoldElixirChange1) Then Return
 
@@ -111,12 +106,12 @@ Func GoldElixirChangeThSnipes($x)
 			EndIf
 		WEnd
 		If ($Gold1 = $Gold2 And $Elixir1 = $Elixir2) Or ($Gold2 = "" And $Elixir2 = "") Then
-			ExitLoop
+			SetLog("No Gold or Elixir change detected...", $COLOR_RED)
+			$y += 1
 		Else
 			SetLog("Gold & Elixir change detected, waiting...", $COLOR_GREEN)
-			ContinueLoop
+			$y = 0
 		EndIf
-		$x +=1
-		If Sleep(1000) then return
+		If Sleep(1000) Then Return
 	Next
 EndFunc   ;==>GoldElixirChangeThSnipes

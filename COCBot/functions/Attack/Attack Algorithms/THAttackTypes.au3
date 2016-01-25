@@ -99,7 +99,7 @@ Func AttackTHParseCSV($test = False)
 	EndIf
 
 	If $isTownHallDestroyed = True Then TestLoots($GoldStart, $ElixirStart, $DarkStart)
-	GoldElixirChangeThSnipes(5) ; check for resource change after TH snipe
+	GoldElixirChangeThSnipes($iDelayReturnHome1) ; check for resource change after TH snipe
 EndFunc   ;==>AttackTHParseCSV
 
 Func ThSnipeWait($delay)

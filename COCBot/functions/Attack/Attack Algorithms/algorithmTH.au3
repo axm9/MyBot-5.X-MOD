@@ -16,9 +16,10 @@
 Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random(800, 900, 1), $waveNb = 0)
 	#cs ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 		$troopKind : The Type of Troop
-		$iNbOfSpots : The Number of spots troops are deployed in , $iAtEachSpot : The Number of troops to deploy at each spot , $troopNb ( Troop number ) = $iNbOfSpots * $iAtEachSpot
+		$iNbOfSpots : The Number of spots troops are deployed in
+		$iAtEachSpot : The Number of troops to deploy at each spot , $troopNb ( Troop number ) = $iNbOfSpots * $iAtEachSpot
 		$Sleep : delay in ms => 1000ms = 1 sec
-		$waveNb : 0 => "Only"  , 1 => "First" , 2 => "Second"  , 3 => "Third"  , 4 => "Last"
+		$waveNb : 0 => "Only" , 1 => "First" , 2 => "Second" , 3 => "Third" , 4 => "Last"
 	#ce ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 	Local $aThx, $aThy, $num
@@ -164,7 +165,7 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 	Switch $THside
 		Case 0 ;UL
 			For $num = 0 To $iAtEachSpot - 1
-				For $i = $THi - 1 To $THi - 1 + Ceiling(($iNbOfSpots - 1) / 2)
+				For $i = $THi - 1 To $THi - 1 + ($iNbOfSpots - 1)
 					$aThx = 62 + ($i * 18)
 					$aThy = 342 - ($i * 13)
 					If CheckOneStar(0, False, False) Then Return
