@@ -32,19 +32,6 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 
 	Local $G = (Number($searchGold) >= Number($iAimGold[$pMode])), $E = (Number($searchElixir) >= Number($iAimElixir[$pMode])), $D = (Number($searchDark) >= Number($iAimDark[$pMode])), $T = (Number($searchTrophy) >= Number($iAimTrophy[$pMode])), $GPE = ((Number($searchGold) + Number($searchElixir)) >= Number($iAimGoldPlusElixir[$pMode]))
 	
-	If $pMode = $TS Then
-		SetLog("aim gold: " & $iAimGold[$pMode] & ", min gold: " & $iMinGold[$pMode])
-		SetLog("aim elixir: " & $iAimElixir[$pMode] & ", min elixir: " & $iMinElixir[$pMode])
-		SetLog("aim gold+elixir: " & $iAimGoldPlusElixir[$pMode] & ", min gold+elixir: " & $iMinGoldPlusElixir[$pMode])
-		SetLog("aim dark: " & $iAimDark[$pMode] & ", min dark: " & $iMinDark[$pMode])
-		SetLog("meet one: " & $iChkMeetOne[$pMode])
-		SetLog("found gold: " & $searchGold)
-		SetLog("found elixir: " & $searchElixir)
-		SetLog("found dark: " & $searchDark)
-		SetLog("GE mode: " & $iCmbMeetGE[$pMode])
-		SetLog("Dark mode: " & $iChkMeetDE[$pMode])		
-	EndIf
-	
 	Local $THL = -1, $THLO = -1
 
 	For $i = 0 To 5 ;add th11
@@ -62,24 +49,19 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 	If $THL > -1 And $THL <= $YourTH And $searchTH <> "-" Then $SearchTHLResult = 1
 
 	If $iChkMeetOne[$pMode] = 1 Then
-		SetLog("check if met 1 condition")
 		If $iCmbMeetGE[$pMode] = 0 Then
-			SetLog("check gold and elixir")
 			If $G = True And $E = True Then Return True
 		EndIf
 
 		If $iCmbMeetGE[$pMode] = 1 Then
-			SetLog("check gold or elixir")
 			If $G = True Or $E = True Then Return True
 		EndIf
 
 		If $iCmbMeetGE[$pMode] = 2 Then
-			SetLog("check gold + elixir")
 			If $GPE = True Then Return True
 		EndIf
 
 		If $iChkMeetDE[$pMode] = 1 Then
-			SetLog("check dark")
 			If $D = True Then Return True
 		EndIf
 
@@ -97,7 +79,6 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 
 		Return False
 	Else
-		SetLog("check if met all conditions")
 		If $iCmbMeetGE[$pMode] = 0 Then
 			If $G = False Or $E = False Then Return False
 		EndIf
