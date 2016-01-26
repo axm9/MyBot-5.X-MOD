@@ -66,7 +66,7 @@ Func AttackTHParseCSV($test = False)
 
 						AttackTHGrid(Eval("e" & $command), $iNbOfSpots, $iAtEachSpot, $Sleep, 0)
 					Case $command = "WAIT"
-						If $debugSetLog = 1 Then Setlog(">> GoldElixirChangeThSnipes(" & Int($acommand[7]) & ") ")
+						If $debugSetLog = 1 Then Setlog(">> ThSnipeWait(" & Int($acommand[7]) & ") ")
 						If ThSnipeWait(Int($acommand[7])) Then ; Use seconds not ms , Half of time to check One start and the other halft for check the Resources
 							$isTownHallDestroyed = True
 							ExitLoop
@@ -99,7 +99,10 @@ Func AttackTHParseCSV($test = False)
 	EndIf
 
 	If $isTownHallDestroyed = True Then TestLoots($GoldStart, $ElixirStart, $DarkStart)
-	GoldElixirChangeThSnipes($iDelayReturnHome1) ; check for resource change after TH snipe
+	; check for resource change after TH snipe
+	While GoldElixirChangeEBO()
+		If _Sleep($iDelayReturnHome1) Then Return
+	WEnd
 EndFunc   ;==>AttackTHParseCSV
 
 Func ThSnipeWait($delay)
