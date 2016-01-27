@@ -211,7 +211,7 @@ Func ZombieSearch2($limit = 0, $tolerancefix = 0)
 
 	;CHECK ELIXIR COLLECTORS 50%
 	For $i = 1 To $max50
-		For $t = 0 To $maxElixirLevel - 1
+		For $t = 0 To $maxElixirLevel
 			If Int(Execute("$ElixirImages" & $t & "_50percent" & "[0]")) >= $i Then
 				$count += 1
 				If $tolerancefix > 0 Then
@@ -262,7 +262,7 @@ Func ZombieSearch2($limit = 0, $tolerancefix = 0)
 	;CHECK ELIXIR COLLECTORS 75%
 	If $ZombieFound = False Then
 		For $i = 1 To $max75
-			For $t = 0 To $maxElixirLevel - 1
+			For $t = 0 To $maxElixirLevel
 				If Int(Execute("$ElixirImages" & $t & "_75percent" & "[0]")) >= $i Then
 					$count += 1
 					If $tolerancefix > 0 Then
@@ -315,7 +315,7 @@ Func ZombieSearch2($limit = 0, $tolerancefix = 0)
 	; CHECK ELIXIR COLLECTORS 100%
 	If $ZombieFound = False Then
 		For $i = 1 To $max100
-			For $t = 0 To $maxElixirLevel - 1
+			For $t = 0 To $maxElixirLevel
 				If Int(Execute("$ElixirImages" & $t & "[0]")) >= $i Then
 					$count += 1
 					If $tolerancefix > 0 Then

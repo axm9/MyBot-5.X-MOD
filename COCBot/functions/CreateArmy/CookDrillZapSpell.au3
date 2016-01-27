@@ -37,7 +37,7 @@ Func CookDrillZapSpell()
 		$iBarrHere = 0
 		While Not (isSpellFactory())
 			If Not (IsTrainPage()) Then Return
-			If IsArray($NextPos) Then _TrainMoveBtn(+1) ;click prev button
+			If IsArray($NextPos) Then _TrainMoveBtn(-1) ; click prev button
 			$iBarrHere += 1
 			If _Sleep($iDelayTrain3) Then ExitLoop
 			If $iBarrHere = 8 Then ExitLoop

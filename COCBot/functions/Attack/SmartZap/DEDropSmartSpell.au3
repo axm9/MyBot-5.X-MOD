@@ -90,27 +90,48 @@ Func DEDropSmartSpell()
 		; If you have all five spells, drop lightning on any level de drill
 		If $numSpells > (4 - $spellAdjust) Then
 			If $debugsetlog = 1 Then SetLog("First condition: Attack any drill.", $COLOR_PURPLE)
-			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
-			$numSpells -= 1
-			$iLightSpellUsed += 1
-			If _Sleep(3500) Then Return
+			If $aDarkDrills[0][4] >= 2 Then ; remove drills that has already been zapped twice
+				For $i = 0 To UBound($aDarkDrills) - 2
+					$aDarkDrills[0][$i] = -1
+				Next
+			Else				
+				Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
+				$numSpells -= 1
+				$iLightSpellUsed += 1
+				$aDarkDrills[0][4] += 1
+				If _Sleep(3500) Then Return
+			EndIf
 		; elseif, 4 spells remaining and collector is high enough, drop lightning
 		ElseIf $numSpells > (3 - $spellAdjust) and $aDarkDrills[0][2] > (3-$drillLvlOffset) Then
 			If $debugsetlog = 1 Then SetLog("Second condition: Attack Lvl4+ drills if you have 4 spells", $COLOR_PURPLE)
-			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
-			$numSpells -= 1
-			$iLightSpellUsed += 1
-			If _Sleep(3500) Then Return
+			If $aDarkDrills[0][4] >= 2 Then ; remove drills that has already been zapped twice
+				For $i = 0 To UBound($aDarkDrills) - 2
+					$aDarkDrills[0][$i] = -1
+				Next
+			Else
+				Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
+				$numSpells -= 1
+				$iLightSpellUsed += 1
+				$aDarkDrills[0][4] += 1
+				If _Sleep(3500) Then Return
+			EndIf
 		; elseif the collector is higher than lvl 4 and collector is more than 30% full
 		ElseIf ($aDarkDrills[0][3]/$DrillLevelHold[$aDarkDrills[0][2] - 1]) > 0.3 and $aDarkDrills[0][2] > (4 - $drillLvlOffset) Then
 			If $debugsetlog = 1 Then SetLog("Third condition: Attack Lvl5+ drills if you have less than 4 spells", $COLOR_PURPLE)
-			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
-			$numSpells -= 1
-			$iLightSpellUsed += 1
-			If _Sleep(3500) Then Return
+			If $aDarkDrills[0][4] >= 2 Then ; remove drills that has already been zapped twice
+				For $i = 0 To UBound($aDarkDrills) - 2
+					$aDarkDrills[0][$i] = -1
+				Next
+			Else
+				Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
+				$numSpells -= 1
+				$iLightSpellUsed += 1
+				$aDarkDrills[0][4] += 1
+				If _Sleep(3500) Then Return
+			EndIf
 		Else
 			If $debugsetlog = 1 Then SetLog("No suitable drills. Removing current drill from list.", $COLOR_PURPLE)
-			For $i = 0 To UBound($aDarkDrills) - 1
+			For $i = 0 To UBound($aDarkDrills) - 2
 				$aDarkDrills[0][$i] = -1
 			Next
 		EndIf
@@ -131,7 +152,7 @@ Func DEDropSmartSpell()
 
 		; If change in DE is less than expected, remove the Drill from list. else, subtract change from assumed total
 		If $strikeGain < $expectedDE and $expectedDE <> -1 Then
-			For $i = 0 To UBound($aDarkDrills) - 1
+			For $i = 0 To UBound($aDarkDrills) - 2
 				$aDarkDrills[0][$i] = -1
 			Next
 			If $debugsetlog = 1 Then SetLog("Gained: "&$strikeGain&" Expected: "& $expectedDE, $COLOR_PURPLE)
@@ -167,7 +188,7 @@ Func DEDropSmartSpell()
 			If $debugsetlog = 1 Then SetLog("testX: "&$testX&" testY: "&$testY, $COLOR_PURPLE)
 			; Test Phase, if test error is greater than expected, or test error is default value.
 			If ($testX > $error or $testY > $error) and ($testX <> -1 or $testY <> -1) Then
-				For $i = 0 To UBound($aDarkDrills) - 1
+				For $i = 0 To UBound($aDarkDrills) - 2
 					$aDarkDrills[0][$i] = -1
 				Next
 				If $debugsetlog = 1 Then SetLog("Removing drill since it wasn't found.", $COLOR_PURPLE)

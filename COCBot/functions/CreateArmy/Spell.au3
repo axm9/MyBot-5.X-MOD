@@ -24,7 +24,7 @@ Func BrewSpells()
 			$iBarrHere = 0
 			While Not (isSpellFactory())
 				If Not (IsTrainPage()) Then Return
-				_TrainMoveBtn(+1) ;click Next button
+				_TrainMoveBtn(+1) ; click Next button
 				$iBarrHere += 1
 				If _Sleep($iDelayTrain3) Then ExitLoop
 				If $iBarrHere = 8 Then ExitLoop

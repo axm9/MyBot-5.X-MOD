@@ -52,7 +52,7 @@ Func _TrainMoveBtn($direction)
 		If $direction = +1 And IsArray($NextPos) Then
 			Click($NextPos[0], $NextPos[1], 1, $iDelayTrainMoveBtn1, "#0338")
 		Else
-			If $debugSetlog = 1 And Not (IsArray($NextPos)) Then Setlog("CANNOT FIND PREV BUTTON", $COLOR_RED)
+			If $debugSetlog = 1 And Not (IsArray($NextPos)) Then Setlog("CANNOT FIND NEXT BUTTON", $COLOR_RED)
 
 		EndIf
 	Else
