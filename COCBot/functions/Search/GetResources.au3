@@ -93,12 +93,6 @@ Func GetResources($bLog = True, $pMatchMode = -1) ;Reads resources
 		If $OptTrophyMode = 1 Or ($OptBullyMode = 1 And $SearchCount >= $ATBullyMode) Or ($iCmbSearchMode <> $LB And ($iChkMeetTH[$DB] = 1 Or $iChkMeetTHO[$DB] = 1)) Or ($iCmbSearchMode <> $DB And ($iChkMeetTH[$LB] = 1 Or $iChkMeetTHO[$LB] = 1)) Then
 			; CODE TO DETECT TOWNHALL ONLY WITH AUTOIT IMAGESEARCH
 			$searchTH = checkTownHallADV2()
-			;2nd attempt
-			If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
-				If _Sleep($iDelayGetResources5) Then Return
-				SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
-				$searchTH = THSearch()
-			EndIf
 
 			If SearchTownHallLoc() = False And $searchTH <> "-" Then
 				$THLoc = "In"

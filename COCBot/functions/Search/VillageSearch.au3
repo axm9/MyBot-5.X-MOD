@@ -350,12 +350,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	If $OptBullyMode = 0 And $OptTrophyMode = 0 And $iChkMeetTH[$iMatchMode] = 0 And $iChkMeetTHO[$iMatchMode] = 0 And $chkATH = 1 Then
 		$searchTH = checkTownHallADV2()
 
-		If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
-			If _Sleep($iDelayVillageSearch5) Then Return
-			SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
-			$searchTH = THSearch()
-		EndIf
-
 		If SearchTownHallLoc() = False And $searchTH <> "-" Then
 			SetLog("Checking Townhall location: TH is inside, skip Attack TH")
 		ElseIf $searchTH <> "-" Then

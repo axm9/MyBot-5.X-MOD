@@ -177,15 +177,6 @@ Func InitBlueStacksX($bCheckOnly = False, $bAdjustResolution = False)
 
     $__BlueStacks_Version = RegRead($HKLM & "\SOFTWARE\BlueStacks\", "Version")
 	$__BlueStacks_Path = RegRead($HKLM & "\SOFTWARE\BlueStacks\", "InstallDir")
-	Local $BootParameter = RegRead($HKLM & "\SOFTWARE\BlueStacks\Guests\Android\", "BootParameters")
-	Local $OEMFeatures, $ShowsSystemBar = False
-	Local $aRegExResult = StringRegExp($BootParameter, "OEMFEATURES=(\d+)", $STR_REGEXPARRAYGLOBALMATCH)
-    If Not @error Then
-		; get last match!
-		$OEMFeatures = $aRegExResult[UBound($aRegExResult) - 1]
-		$ShowsSystemBar = BitAND($OEMFeatures, 0x000001) = 0
-    EndIf
-
     If @error <> 0 Then
 		$__BlueStacks_Path = @ProgramFilesDir & "\BlueStacks\"
 		SetError(0, 0, 0)
@@ -204,25 +195,21 @@ Func InitBlueStacksX($bCheckOnly = False, $bAdjustResolution = False)
     Next
 
     If Not $bCheckOnly Then
+	   Local $BootParameter = RegRead($HKLM & "\SOFTWARE\BlueStacks\Guests\Android\", "BootParameters")
+	   Local $OEMFeatures
+	   Local $aRegExResult = StringRegExp($BootParameter, "OEMFEATURES=(\d+)", $STR_REGEXPARRAYGLOBALMATCH)
+	   If Not @error Then
+		  ; get last match!
+		  $OEMFeatures = $aRegExResult[UBound($aRegExResult) - 1]
+		  $AndroidHasSystemBar = BitAND($OEMFeatures, 0x000001) = 0
+	   EndIf
+
 		; update global variables
 		$AndroidProgramPath = $__BlueStacks_Path & "HD-Frontend.exe"
 		$AndroidAdbPath = $__BlueStacks_Path & "HD-Adb.exe"
 		$AndroidVersion = $__BlueStacks_Version
 		SetDebugLog($Android & " OEM Features: " & $OEMFeatures)
-		SetDebugLog($Android & " System Bar is " & ($ShowsSystemBar ? "" : "not ") & "available")
-		If $bAdjustResolution Then
-			If $ShowsSystemBar Then
-				$Values[1][2] = $AndroidAppConfig[$AndroidConfig][6] + $__BlueStacks_SystemBar
-				$Values[3][2] = $AndroidAppConfig[$AndroidConfig][8] + $__BlueStacks_SystemBar
-			Else
-				$Values[1][2] = $AndroidAppConfig[$AndroidConfig][6]
-				$Values[3][2] = $AndroidAppConfig[$AndroidConfig][8]
-			EndIf
-		EndIf
-		$AndroidClientWidth = $Values[0][2]
-		$AndroidClientHeight = $Values[1][2]
-		$AndroidWindowWidth =  $Values[2][2]
-		$AndroidWindowHeight = $Values[3][2]
+		SetDebugLog($Android & " System Bar is " & ($AndroidHasSystemBar ? "" : "not ") & "available")
 	
 		For $i = 0 To UBound($Values) -1
 			If $Values[$i][1] <> $Values[$i][2] Then
@@ -242,14 +229,20 @@ Func InitBlueStacks($bCheckOnly = False)
 	If $bInstalled And StringInStr($__BlueStacks_Version, "0.8.") <> 1 _
 					And StringInStr($__BlueStacks_Version, "0.9.") <> 1 _
 					And StringInStr($__BlueStacks_Version, "0.10.") <> 1 _
+				  And StringInStr($__BlueStacks_Version, "0.11.") <> 1 _ ; user reported that version exists - ha ;)
 	Then
 		If Not $bCheckOnly Then
-			SetLog("BlueStacks supported version 0.8.x - 0.10.x not found", $COLOR_RED)
+		 SetLog("BlueStacks supported version 0.8.x - 0.11.x not found", $COLOR_RED)
 			SetError(1, @extended, False)
 		EndIf
 		Return False
 	EndIF
 	
+	If Not $bCheckOnly Then
+		; BS 1 always has system bar
+		$AndroidHasSystemBar = True
+	EndIF
+
 	Return $bInstalled
 EndFunc
 
@@ -425,6 +418,24 @@ EndFunc
 
 Func GetBlueStacks2ProgramParameter($bAlternative = False)
 	Return "Android"
+EndFunc
+
+Func BlueStacksBotStartEvent()
+	Return AndroidCloseSystemBar()
+EndFunc
+
+Func BlueStacksBotStopEvent()
+	Return AndroidOpenSystemBar()
+EndFunc
+
+Func BlueStacks2BotStartEvent()
+	If $AndroidHasSystemBar Then Return AndroidCloseSystemBar()
+	Return False
+EndFunc
+
+Func BlueStacks2BotStopEvent()
+	If $AndroidHasSystemBar Then Return AndroidOpenSystemBar()
+	Return False
 EndFunc
 
 Func waitMainScreenMini()

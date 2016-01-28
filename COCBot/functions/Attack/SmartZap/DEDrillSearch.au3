@@ -18,7 +18,7 @@ Func DEDrillSearch($bReTest = False)
 	
 	Local Const $DrillLevelSteal[6] = [59, 102, 172, 251, 343, 479] ; Amount of DE available from Drill at each level (1-6) with 1 average (lvl4) lightning spell
 	Local Const $DrillLevelHold[6] = [120, 225, 405, 630, 960, 1350] ; Total Amount of DE available from Drill at each level (1-6) by attack
-	Local $aDrills[4][5] = [[-1, -1, -1, -1, 0],[-1, -1, -1, -1, 0],[-1, -1, -1, -1, 0],[-1, -1, -1, -1, 0]] ; [XCoord, YCoord, Level, AvailDE, #Zapped]
+	Local $aDrills[4][5] = [[-1, -1, -1, -1, 0], [-1, -1, -1, -1, 0], [-1, -1, -1, -1, 0], [-1, -1, -1, -1, 0]] ; [XCoord, YCoord, Level, AvailDE, #Zapped]
 	Local $pixel[2], $result, $listPixelByLevel, $pixelWithLevel, $level, $pixelStr
 	Local $NumDEDrill = 0
 

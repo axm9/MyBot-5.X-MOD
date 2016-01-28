@@ -41,6 +41,9 @@ Func Initiate()
 			$sTimer = TimerInit()
 		EndIf
 
+	    AndroidBotStartEvent() ; signal android that bot is now running
+	    If Not $RunState Then Return
+
 		If Not $bSearchMode Then
 			AdlibRegister("SetTime", 1000)
 			If $restarted = 1 Then
@@ -180,6 +183,7 @@ Func btnStart()
 			GUICtrlSetState($i, $GUI_DISABLE)
 		Next
 
+		$RunState = True
 	    SetRedrawBotWindow(True)
 
 	    WinGetAndroidHandle()
@@ -208,7 +212,6 @@ EndFunc   ;==>btnStart
 
 Func btnStop()
 	If $RunState Then ; Or BitOr(GUICtrlGetState($btnStop), $GUI_SHOW) Then ; $btnStop check added for strange $RunState inconsistencies
-		$RunState = False
 		GUICtrlSetState($chkBackground, $GUI_ENABLE)
 		GUICtrlSetState($btnStart, $GUI_SHOW)
 		GUICtrlSetState($btnStop, $GUI_HIDE)
@@ -236,6 +239,9 @@ Func btnStop()
 			If $i = $divider Then ContinueLoop ; exclude divider
 			GUICtrlSetState($i, $iPrevState[$i])
 		Next
+
+		AndroidBotStopEvent() ; signal android that bot is now stoppting
+		$RunState = False
 
 		_BlockInputEx(0, "", "", $HWnD)
 		If Not $bSearchMode Then
