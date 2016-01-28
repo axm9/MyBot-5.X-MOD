@@ -79,7 +79,7 @@ Func DropTrophy()
 
 			If $iChkTrophyAtkDead = 1 Then				
 				; make sure we have enough army troops or lightnings spells
-				If ($CurCamp >= ($TotalCamp * $DTArmyPercent)) Or $numSpells > 0 Then
+				If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) Or $numSpells > 0 Then
 					$SearchCount = 0
 					GetResources(False, $DT) ; no log, use $DT matchmode (DropThrophy)
 					SetLog("Identification of your troops:", $COLOR_BLUE)
