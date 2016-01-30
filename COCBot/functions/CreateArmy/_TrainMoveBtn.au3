@@ -43,7 +43,7 @@ Func _TrainMoveBtn($direction)
 	EndIf
 
 	If $i = 9 Then
-		;if unknow position move with arrows
+		;if unknown position move with arrows
 		If $direction = -1 And IsArray($PrevPos) Then
 			Click($PrevPos[0], $PrevPos[1], 1, $iDelayTrainMoveBtn1, "#0337")
 		Else

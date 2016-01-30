@@ -138,6 +138,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		EndIf
 
 		$isDeadBase = False
+		Local $zapBaseMatch = $ichkDBLightSpell = 1 And $numSpells > 0 And Number($searchDark) > Number($itxtDBLightMinDark)
 		Local $noMatchTxt = ""
 		Local $match[$iModeCount]
 		Local $isModeActive[$iModeCount]
@@ -175,25 +176,41 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		Next
 
 		If _Sleep($iDelayRespond) Then Return
-		If $match[$DB] Or $match[$LB] Then
+		If $match[$DB] Or $match[$LB] Or $zapBaseMatch Then
 			$isDeadBase = checkDeadBase()
+			$zapBaseMatch = $zapBaseMatch And $isDeadBase
 		EndIf
 
 		If _Sleep($iDelayRespond) Then Return
 		If $match[$DB] And $isDeadBase Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-			SetLog("      " & "Dead Base Found! ", $COLOR_GREEN, "Lucida Console", 7.5)
+			SetLog("      Dead Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
 			$logwrited = True
-			$iMatchMode = $DB
-			If $debugDeadBaseImage = 1 Then
-				_CaptureRegion()
-				_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
-				_WinAPI_DeleteObject($hBitmap)
+			; check for outside collectors if enabled
+			If $ichkDBMeetCollOutside = 1 Then
+				If AreCollectorsOutside($iDBMinCollOutsidePercent) Then
+					SetLog("Collectors are outside.", $COLOR_GREEN, "Lucida Console", 7.5)
+					$iMatchMode = $DB
+					If $debugDeadBaseImage = 1 Then
+						_CaptureRegion()
+						_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
+						_WinAPI_DeleteObject($hBitmap)
+					EndIf
+					ExitLoop
+				EndIf
+				SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
+			Else
+				$iMatchMode = $DB
+				If $debugDeadBaseImage = 1 Then
+					_CaptureRegion()
+					_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
+					_WinAPI_DeleteObject($hBitmap)
+				EndIf
+				ExitLoop
 			EndIf
-			ExitLoop
 		ElseIf $match[$LB] And Not $isDeadBase Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-			SetLog("      " & "Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
+			SetLog("      Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
 			$logwrited = True
 			$iMatchMode = $LB
 			ExitLoop
@@ -201,7 +218,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			If $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
 				If $SearchTHLResult = 1 Then
 					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-					SetLog("      " & "Not a match, but TH Bully Level Found! ", $COLOR_GREEN, "Lucida Console", 7.5)
+					SetLog("      Not a match, but TH Bully Level Found! ", $COLOR_GREEN, "Lucida Console", 7.5)
 					$logwrited = True
 					$iMatchMode = $iTHBullyAttackMode
 					ExitLoop
@@ -210,31 +227,32 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		EndIf
 
 		If _Sleep($iDelayRespond) Then Return
-		If $OptTrophyMode = 1 Then ;Enables Combo Mode Settings
+		If $OptTrophyMode = 1 Then ; Enables Combo Mode Settings
 			If IsSearchModeActive($TS) And SearchTownHallLoc() Then ; attack this base anyway because outside TH found to snipe
 				If CompareResources($TS) Then
 					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-					SetLog("      " & "TH outside found & resource requirement met for snipe", $COLOR_GREEN, "Lucida Console", 7.5)	
+					SetLog("      TH outside found & enough resources for snipe", $COLOR_GREEN, "Lucida Console", 7.5)	
 					$logwrited = True
 					$iMatchMode = $TS
 					ExitLoop
 				Else					
-					$noMatchTxt &= ", TH outside found but resource requirement not met for snipe"
+					$noMatchTxt &= ", TH outside found but not enought resources for snipe"
 				EndIf
 			EndIf
 		EndIf
 		
-		; check dead base for DE zap and greedy mode
-		If $ichkAttackIfDB = 1 Then
-			If (($CurCamp > $iMinTroopToAttackDB And CompareResources($DB)) Or ($ichkDBLightSpell = 1 And $numSpells > 0 And Number($searchDark) > $itxtDBLightMinDark)) And checkDeadBase() Then
-				SetLog("Dead Base found for greedy mode!", $COLOR_GREEN, "Lucida Console")
-				If RaidCollectors($searchGold, $searchElixir) = True Then
-					ReturnHome($TakeLootSnapShot)
-					$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
-					Return
-				Else
-					SelectDropTroop($atkTroops[0][0])
-				EndIf
+		; DE drill Zap if it's a match
+		If $zapBaseMatch Then
+			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+			SetLog("      Dead Base found for DE zap!", $COLOR_GREEN, "Lucida Console")	
+			$logwrited = True
+			$isDeadBase = True
+			If DEDropSmartSpell() = True Then
+				ReturnHome($TakeLootSnapShot)
+				$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
+				Return
+			Else ; select first troop type if lightning spell weren't used
+				SelectDropTroop($atkTroops[0][0])
 			EndIf
 		EndIf
 
@@ -276,7 +294,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			If _Sleep($iDelayVillageSearch2) Then Return
 			$i += 1
 			If ( _ColorCheck(_GetPixelColor($NextBtn[0], $NextBtn[1], True), Hex($NextBtn[2], 6), $NextBtn[3])) And IsAttackPage() Then
-				ClickP($NextBtn, 1, 0, "#0155") ;Click Next
+				ClickP($NextBtn, 1, 0, "#0155") ; Click Next
 				ExitLoop
 			Else
 				If $debugsetlog = 1 Then SetLog("Wait to see Next Button... " & $i, $COLOR_PURPLE)
@@ -384,6 +402,57 @@ Func IsWeakBase($pMode)
 		Return False
 	EndIf
 EndFunc   ;==>IsWeakBase
+
+Func AreCollectorsOutside($percent)
+	SetLog("Locating Mines, Collectors & Drills", $COLOR_BLUE)	
+	;reset variables
+	Global $PixelMine[0]
+	Global $PixelElixir[0]
+	Global $PixelDarkElixir[0]
+	Global $PixelNearCollector[0]
+	Local $colOutside = 0
+	Local $hTimer = TimerInit()
+	_WinAPI_DeleteObject($hBitmapFirst)
+	$hBitmapFirst = _CaptureRegion2()
+	
+	$PixelMine = GetLocationMine()
+	If (IsArray($PixelMine)) Then
+		_ArrayAdd($PixelNearCollector, $PixelMine)
+	EndIf
+	$PixelElixir = GetLocationElixir()
+	If (IsArray($PixelElixir)) Then
+		_ArrayAdd($PixelNearCollector, $PixelElixir)
+	EndIf
+	$PixelDarkElixir = GetLocationDarkElixir()
+	If (IsArray($PixelDarkElixir)) Then
+		_ArrayAdd($PixelNearCollector, $PixelDarkElixir)
+	EndIf
+	Local $colNbr = UBound($PixelNearCollector)
+	SetLog("Located (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds) :")
+	SetLog("[" & UBound($PixelMine) & "] Gold Mines")
+	SetLog("[" & UBound($PixelElixir) & "] Elixir Collectors")
+	SetLog("[" & UBound($PixelDarkElixir) & "] Dark Elixir Drill/s")
+	$iNbrOfDetectedMines[$iMatchMode] += UBound($PixelMine)
+	$iNbrOfDetectedCollectors[$iMatchMode] += UBound($PixelElixir)
+	$iNbrOfDetectedDrills[$iMatchMode] += UBound($PixelDarkElixir)
+	UpdateStats()
+	
+	For $i = 0 To $colNbr - 1
+		Local $arrPixel = $PixelNearCollector[$i]
+		If UBound($arrPixel) > 0 Then
+			If isOutsideEllipse($arrPixel[0], $arrPixel[1], 160, 120) Then 
+				If $debugsetlog = 1 Then SetLog("Collector (" & $arrPixel[0] & ", " & $arrPixel[1] & ") is outside")
+				$colOutside += 1
+			EndIf
+		EndIf
+		If ($colOutside / $colNbr) * 100 > $percent Then 
+			If $debugsetlog = 1 Then SetLog("More than " & $percent & " of the collectors are outside.")
+			Return True
+		EndIf
+	Next
+	;Return False
+	Return True
+EndFunc   ;==>AreCollectorsOutside
 
 Func SearchLimit($iSkipped)
 	If $iChkRestartSearchLimit = 1 And $iSkipped >= Number($iRestartSearchlimit) Then

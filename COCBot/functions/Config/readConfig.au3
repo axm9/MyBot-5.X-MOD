@@ -103,6 +103,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkMeetTHO[$DB] = IniRead($config, "search", "DBMeetTHO", "0")
 		$iChkWeakBase[$DB] = IniRead($config, "search", "DBWeakBase", "0")
 		$iChkMeetOne[$DB] = IniRead($config, "search", "DBMeetOne", "0")
+		$ichkDBMeetCollOutside = IniRead($config, "search", "DBMeetCollOutside", "0")
 
 		$iEnableAfterCount[$DB] = IniRead($config, "search", "DBEnableAfterCount", "150")
 		$iMinGold[$DB] = IniRead($config, "search", "DBsearchGold", "80000")
@@ -113,6 +114,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iCmbTH[$DB] = IniRead($config, "search", "DBTHLevel", "0")
 		$iCmbWeakMortar[$DB] = IniRead($config, "search", "DBWeakMortar", "5")
 		$iCmbWeakWizTower[$DB] = IniRead($config, "search", "DBWeakWizTower", "4")
+		$iDBMinCollOutsidePercent = IniRead($config, "search", "DBMinCollOutsidePercent", "50")
 
 		$iChkEnableAfter[$LB] = IniRead($config, "search", "ABEnableAfter", "0")
 		$iCmbMeetGE[$LB] = IniRead($config, "search", "ABMeetGE", "2")

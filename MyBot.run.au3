@@ -52,10 +52,10 @@ $sBotTitle = $sBotTitle & "(" & ($AndroidInstance <> "" ? $AndroidInstance : $An
 $sBotTitle = $sBotTitle & " Modded by McSlither"
 
 If $bBotLaunchOption_Restart = True Then
-   If CloseRunningBot($sBotTitle) = True Then
-	  ; wait for Mutexes to get disposed
-	  Sleep(1000) ; slow systems
-   EndIf
+	If CloseRunningBot($sBotTitle) = True Then
+		; wait for Mutexes to get disposed
+		Sleep(1000) ; slow systems
+	EndIf
 EndIF
 
 Local $cmdLineHelp = "With the first command line parameter, specify the Profile(01-06). " & _
@@ -112,7 +112,7 @@ If $ichkDeleteTemp = 1 Then DeleteFiles($dirTemp, "*.*", $iDeleteTempDays, 0)
 If $ichkDeleteTemp = 1 Then DeleteFiles($dirTempDebug, "*.*", $iDeleteTempDays, 0)
 FileChangeDir($LibDir)
 
-;MBRfunctions.dll & debugger
+; MBRfunctions.dll & debugger
 MBRFunc(True) ; start MBRFunctions dll
 debugMBRFunctions($debugSearchArea, $debugRedArea, $debugOcr) ; set debug levels
 

@@ -37,14 +37,23 @@ Func SnipeWhileTrain()
 			$tempSnipeWhileTrain[9] = $iMinElixir[$TS]
 			$tempSnipeWhileTrain[10] = $iMinGoldPlusElixir[$TS]
 			$tempSnipeWhileTrain[11] = $iMinDark[$TS]
+			$tempSnipeWhileTrain[12] = $ichkDBMeetCollOutside
+			$tempSnipeWhileTrain[13] = $iDBMinCollOutsidePercent
 
-			;change values to snipe while train
+			; change values to snipe while train
 			$iChkMeetTrophy[$DB] = 1
 			$iChkMeetTrophy[$LB] = 1
 			$iMinTrophy[$DB] = 99
 			$iMinTrophy[$LB] = 99
+			; if greedy mode enabled and have enough troops, search for dead bases with 75% of collectors outside
+			If $ichkAttackIfDB = 1 And $CurCamp > $iMinTroopToAttackDB Then	
+				$iChkMeetOne[$DB] = 1
+				$ichkDBMeetCollOutside = 1
+				$iDBMinCollOutsidePercent = 75
+			Else
+				$iChkMeetOne[$DB] = 0
+			EndIf
 			$iChkMeetOne[$LB] = 0
-			$iChkMeetOne[$DB] = 0
 			$OptTrophyMode = 1
 			$THaddtiles = $itxtSWTtiles
 			$iMinGold[$TS] = 120000
@@ -52,7 +61,7 @@ Func SnipeWhileTrain()
 			$iMinGoldPlusElixir[$TS] = 250000
 			$iMinDark[$TS] = 1000
 
-			;used to Change back values
+			; used to Change back values
 			$SnipeChangedSettings = True
 
 			; go to search for Search Limit times
@@ -87,6 +96,8 @@ Func SWHTrainRevertNormal()
 		$iMinElixir[$TS] = $tempSnipeWhileTrain[9]
 		$iMinGoldPlusElixir[$TS] = $tempSnipeWhileTrain[10]
 		$iMinDark[$TS] = $tempSnipeWhileTrain[11]
+		$ichkDBMeetCollOutside = $tempSnipeWhileTrain[12]
+		$iDBMinCollOutsidePercent = $tempSnipeWhileTrain[13]
 		$Is_ClientSyncError = False
 	EndIf
 	$SnipeChangedSettings = False

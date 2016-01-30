@@ -18,8 +18,8 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 	SetSlotSpecialTroops()
 
 	If _Sleep($iDelayalgorithm_AllTroops1) Then Return
-
-	If $iMatchMode = $TS Then
+	
+	If $iMatchMode = $TS Then ; TH snipe if TH is outside
 		SwitchAttackTHType()
 		If $zoomedin = True Then
 			ZoomOut()
@@ -29,17 +29,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		EndIf
 	EndIf
 
-	If $iMatchMode = $TS Then ; Exit attacking if trophy hunting and not bullymode
-		If ($THusedKing = 0 and $THusedQueen = 0) Then
-			Setlog("Wait few sec before close attack")
-			If _Sleep(Random(2, 5, 1) * 1000) Then Return ;wait 2-5 second before exit if king and queen are not dropped
-		Else
-			SetLog("King and/or Queen dropped, close attack")
-		EndIf
-
-		CloseBattle()
-		Return
-	EndIf
+	If $iMatchMode = $TS Then Return ; Exit attacking if greedy mode didn't detect dead base		
 
 	If ($iChkRedArea[$iMatchMode]) Then
 		SetLog("Calculating Smart Attack Strategy", $COLOR_BLUE)
@@ -52,11 +42,12 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 		If ($iChkSmartAttack[$iMatchMode][0] = 1 Or $iChkSmartAttack[$iMatchMode][1] = 1 Or $iChkSmartAttack[$iMatchMode][2] = 1) Then
 			SetLog("Locating Mines, Collectors & Drills", $COLOR_BLUE)
-			$hTimer = TimerInit()
+			;reset variables
 			Global $PixelMine[0]
 			Global $PixelElixir[0]
 			Global $PixelDarkElixir[0]
 			Global $PixelNearCollector[0]
+			$hTimer = TimerInit()
 			; If drop troop near gold mine
 			If ($iChkSmartAttack[$iMatchMode][0] = 1) Then
 				$PixelMine = GetLocationMine()
@@ -104,8 +95,8 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		Case 3 ;All sides ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			SetLog("Attacking on all sides", $COLOR_BLUE)
 			$nbSides = 4
-		Case 4 ;FFF ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			SetLog("Attacking four finger fight style", $COLOR_BLUE)
+		Case 4 ;FF ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			SetLog("Attacking with Four Finger style", $COLOR_BLUE)
 			$nbSides = 5
 		Case 5 ;DE Side - Live Base only ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			SetLog("Attacking on Dark Elixir Side.", $COLOR_BLUE)
@@ -176,17 +167,14 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 	If _Sleep($iDelayalgorithm_AllTroops4) Then Return
 	SetLog("Dropping left over troops", $COLOR_BLUE)
-	For $x = 0 To 1
-		PrepareAttack($iMatchMode, True) ;Check remaining quantities
-		For $i = $eBarb To $eLava ; lauch all remaining troops
-			;If $i = $eBarb Or $i = $eArch Then
-			LauchTroop($i, $nbSides, 0, 1)
-			CheckHeroesHealth()
-			If _Sleep($iDelayalgorithm_AllTroops5) Then Return
-		Next
+	PrepareAttack($iMatchMode, True) ; Check remaining quantities
+	For $i = $eBarb To $eLava ; lauch all remaining troops
+		LauchTroop($i, $nbSides, 0, 1)
+		CheckHeroesHealth()
+		If _Sleep($iDelayalgorithm_AllTroops5) Then Return
 	Next
 
-	;Activate KQ's power
+	; Activate KQ's power
 	If ($checkKPower Or $checkQPower) And $iActivateKQCondition = "Manual" Then
 		SetLog("Waiting " & $delayActivateKQ / 1000 & " seconds before activating Hero abilities", $COLOR_BLUE)
 		If _Sleep($delayActivateKQ) Then Return

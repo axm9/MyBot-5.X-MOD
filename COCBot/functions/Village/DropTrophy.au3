@@ -76,28 +76,32 @@ Func DropTrophy()
 			If $Restart = True Then Return
 
 			If _Sleep($iDelayDropTrophy4) Then ExitLoop
-
+			
+			GetResources(False, $DT) ; no log, use $DT matchmode (DropThrophy)
+			SetLog("Identification of your troops:", $COLOR_BLUE)
+			PrepareAttack($DT) ; ==== Troops :checks for type, slot, and quantity ===
+			If $Restart = True Then Return
+			
 			If $iChkTrophyAtkDead = 1 Then				
 				; make sure we have enough army troops or lightnings spells
-				If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) Or $numSpells > 0 Then
-					$SearchCount = 0
-					GetResources(False, $DT) ; no log, use $DT matchmode (DropThrophy)
-					SetLog("Identification of your troops:", $COLOR_BLUE)
-					PrepareAttack($DT) ; ==== Troops: checks for type, slot, and quantity ===
-					If $Restart = True Then Return
-					
-					If (CompareResources($DB) Or ($ichkDBLightSpell = 1 And Number($searchDark) > $itxtDBLightMinDark)) And checkDeadBase() Then						
-						SetLog("      Dead Base Found!", $COLOR_GREEN, "Lucida Console")
-						If RaidCollectors($searchGold, $searchElixir) = True Then
-							ReturnHome($TakeLootSnapShot)
-							$Is_ClientSyncError = False ; reset OOS flag to get new new army
-							$Is_SearchLimit = False ; reset search limit flag to get new new army
-							$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
-							ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
+				If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) Or $numSpells > 0 Then					
+					If (CompareResources($DB) Or ($ichkDBLightSpell = 1 And Number($searchDark) > $itxtDBLightMinDark)) And checkDeadBase() Then
+						SetLog("Dead Base Found on Drop Trophy!", $COLOR_GREEN, "Lucida Console", 7.5)
+						; change settings to dead base attack
+						$isDeadBase = True
+						If $ichkDBMeetCollOutside = 1 Then
+							If AreCollectorsOutside($iDBMinCollOutsidePercent) Then
+								SetLog("Collectors are outside.", $COLOR_GREEN, "Lucida Console", 7.5)
+								GreedyAttack()
+								ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
+							Else
+								SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
+							EndIf
 						Else
-							SelectDropTroop($atkTroops[0][0])
-							SetLog("      Not a Dead Base, resuming Drop Trophy.", $COLOR_BLACK, "Lucida Console", 7.5)
+							GreedyAttack()
 						EndIf
+					Else
+						SetLog("Not a Dead Base, resuming Drop Trophy.", $COLOR_BLACK, "Lucida Console", 7.5)
 					EndIf
 				Else
 					SetLog("Not enough troops (" & $itxtDTArmyMin & "%) to attack dead base, resuming Drop Trophy.", $COLOR_ORANGE)
@@ -105,11 +109,6 @@ Func DropTrophy()
 			Else
 				; Normal Drop Trophy, no check for Dead Base
 				$SearchCount = 0
-				GetResources(False, $DT)
-
-				SetLog("Identification of your troops:", $COLOR_BLUE)
-				PrepareAttack($DT) ; ==== Troops :checks for type, slot, and quantity ===
-				If $Restart = True Then Return
 			EndIf
 
 			If _Sleep($iDelayDropTrophy4) Then ExitLoop
@@ -227,6 +226,23 @@ Func DropTrophy()
 
 	If $DebugSetlog = 1 Then SetLog("Drop Trophy END", $COLOR_PURPLE)
 EndFunc   ;==>DropTrophy
+
+Func GreedyAttack()	
+	$SearchCount = 0
+	$iMatchMode = $DB
+	If $debugDeadBaseImage = 1 Then
+		_CaptureRegion()
+		_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
+		_WinAPI_DeleteObject($hBitmap)
+	EndIf
+	
+	Attack()
+	ReturnHome($TakeLootSnapShot)
+	$Is_ClientSyncError = False ; reset OOS flag to get new new army
+	$Is_SearchLimit = False ; reset search limit flag to get new new army
+	$ReStart = True  ; Set restart flag after dead base attack to ensure troops are trained
+	If $DebugSetlog = 1 Then SetLog("Drop Trophy END: Dead Base was attacked, reset army and return to Village.", $COLOR_PURPLE)
+EndFunc
 
 Func SetTrophyLoss()
 	Local $sTrophyLoss

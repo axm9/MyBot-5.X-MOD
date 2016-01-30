@@ -127,7 +127,7 @@ Func IsLaunchAttackPage()
 	EndIf
 EndFunc   ;==>IsLaunchAttackPage
 
-Func IsEndBattlePage()
+Func IsEndBattlePage($writelog = True)
 	Local $result = _ColorCheck(_GetPixelColor($aConfirmSurrender[0], $aConfirmSurrender[1], True), Hex($aConfirmSurrender[2], 6), $aConfirmSurrender[3])
 
 	If $result Then

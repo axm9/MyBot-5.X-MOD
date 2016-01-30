@@ -123,6 +123,14 @@ Func chkDBWeakBase()
 	EndIf
 EndFunc   ;==>chkDBWeakBase
 
+Func chkDBMeetCollOutside()
+	If GUICtrlRead($chkDBMeetCollOutside) = $GUI_CHECKED Then
+		_GUICtrlEdit_SetReadOnly($txtDBMinCollOutsidePercent, False)
+	Else
+		_GUICtrlEdit_SetReadOnly($txtDBMinCollOutsidePercent, True)
+	EndIf
+EndFunc   ;==>chkDBMeetCollOutside
+
 Func cmbABGoldElixir()
 	If _GUICtrlComboBox_GetCurSel($cmbABMeetGE) < 2 Then
 		GUICtrlSetState($txtABMinGold, $GUI_SHOW)

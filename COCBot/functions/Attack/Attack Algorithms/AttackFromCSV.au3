@@ -58,7 +58,6 @@ Global $InternalArea[8][3] = [[73, 336, "LEFT"], _
 		[432 + (783 - 432) / 2, 336 + (603 - 336) / 2, "BOTTOM-RIGHT"] _
 		]
 
-
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: Algorithm_AttackCSV
 ; Description ...:
@@ -73,8 +72,8 @@ Global $InternalArea[8][3] = [[73, 336, "LEFT"], _
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-Func Algorithm_AttackCSV($testattack = False)
 
+Func Algorithm_AttackCSV($testattack = False)
 	;00 read attack file SIDE row and valorize variables
 	ParseAttackCSV_Read_SIDE_variables()
 
@@ -85,6 +84,7 @@ Func Algorithm_AttackCSV($testattack = False)
 	Next
 
 	Local $hTimerTOTAL = TimerInit()
+	
 	;02.01 - REDAREA -----------------------------------------------------------------------------------------------------------------------------------------
 	Local $hTimer = TimerInit()
 	_WinAPI_DeleteObject($hBitmapFirst)
@@ -185,7 +185,6 @@ Func Algorithm_AttackCSV($testattack = False)
 	$PixelBottomRightUPDropLine = GetListPixel($tempvectstr2)
 	Setlog("> Drop Lines located in  " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
 
-
 	; 03 - TOWNHALL ------------------------------------------------------------------------
 	If $searchTH = "" Then
 		If $attackcsv_locate_townhall = 1 Then
@@ -209,13 +208,9 @@ Func Algorithm_AttackCSV($testattack = False)
 		Setlog("> Townhall has already been located in while searching for an image", $COLOR_BLUE)
 	EndIf
 
-	_CaptureRegion() ;
-
+	_CaptureRegion()
 
 	;04 - MINES, COLLECTORS, DRILLS -----------------------------------------------------------------------------------------------------------------------
-
-	;_CaptureRegion()
-
 	;reset variables
 	Global $PixelMine[0]
 	Global $PixelElixir[0]
@@ -224,7 +219,6 @@ Func Algorithm_AttackCSV($testattack = False)
 	Local $PixelNearCollectorBottomLeftSTR = ""
 	Local $PixelNearCollectorTopRightSTR = ""
 	Local $PixelNearCollectorBottomRightSTR = ""
-
 
 	;04.01 If drop troop near gold mine
 	If $attackcsv_locate_mine = 1 Then
@@ -263,7 +257,6 @@ Func Algorithm_AttackCSV($testattack = False)
 		Setlog("> Mines detection not needed, skip", $COLOR_BLUE)
 	EndIf
 
-
 	;04.02  If drop troop near elisir
 	If $attackcsv_locate_elixir = 1 Then
 		;SetLog("Locating elixir")
@@ -300,7 +293,6 @@ Func Algorithm_AttackCSV($testattack = False)
 	Else
 		Setlog("> Elixir collectors detection not needed, skip", $COLOR_BLUE)
 	EndIf
-
 
 	;04.03 If drop troop near drill
 	If $attackcsv_locate_drill = 1 Then
@@ -339,7 +331,6 @@ Func Algorithm_AttackCSV($testattack = False)
 		Setlog("> Drills detection not needed, skip", $COLOR_BLUE)
 	EndIf
 
-
 	If StringLen($PixelNearCollectorTopLeftSTR) > 0 Then $PixelNearCollectorTopLeftSTR = StringLeft($PixelNearCollectorTopLeftSTR, StringLen($PixelNearCollectorTopLeftSTR) - 1)
 	If StringLen($PixelNearCollectorTopRightSTR) > 0 Then $PixelNearCollectorTopRightSTR = StringLeft($PixelNearCollectorTopRightSTR, StringLen($PixelNearCollectorTopRightSTR) - 1)
 	If StringLen($PixelNearCollectorBottomLeftSTR) > 0 Then $PixelNearCollectorBottomLeftSTR = StringLeft($PixelNearCollectorBottomLeftSTR, StringLen($PixelNearCollectorBottomLeftSTR) - 1)
@@ -349,27 +340,18 @@ Func Algorithm_AttackCSV($testattack = False)
 	$PixelNearCollectorBottomLeft = GetListPixel3($PixelNearCollectorBottomLeftSTR)
 	$PixelNearCollectorBottomRight = GetListPixel3($PixelNearCollectorBottomRightSTR)
 
-
 	; 05 - DARKELIXIRSTORAGE ------------------------------------------------------------------------
 	If $attackcsv_locate_dark_storage = 1 Then
 		$hTimer = TimerInit()
 		Local $PixelDarkElixir = GetLocationDarkElixirStorageWithLevel()
 		CleanRedArea($PixelDarkElixir)
-		;SetLog("Locating Dark Elixir Storage")
-		;SetLog("Located  (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds) :")
-		;Setlog($PixelDarkElixir)
 		Local $pixel = StringSplit($PixelDarkElixir, "#", 2)
 		If UBound($pixel) >= 2 Then
 			Local $pixellevel = $pixel[0]
 			Local $pixelpos = StringSplit($pixel[1], "-", 2)
 			If UBound($pixelpos) >= 2 Then
-				;SetLog("level " & $pixellevel & " (" & $pixelpos[0] & "," & $pixelpos[1] & ")")
 				Local $temp = [$pixelpos[0], $pixelpos[1]]
 				$darkelixirStoragePos = $temp
-;~ 			   If $makeIMGCSV = 1 Then
-;~ 				  Local $hPen = _GDIPlus_PenCreate(0xFFFFCC00, 2) ;create a pencil Color FF0000/RED
-;~ 				  _GDIPlus_GraphicsDrawRect($hGraphic, $pixelpos[0] - 15, $pixelpos[1] - 15, 30, 30, $hPen)
-;~ 			   EndIf
 			EndIf
 		EndIf
 		Setlog("> Dark Elixir Storage located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
@@ -385,5 +367,4 @@ Func Algorithm_AttackCSV($testattack = False)
 	; 07 - LAUNCH PARSE FUNCTION -------------------------------------------------------------
 	SetSlotSpecialTroops()
 	ParseAttackCSV($testattack)
-
 EndFunc   ;==>Algorithm_AttackCSV

@@ -98,11 +98,7 @@ Func AttackTHParseCSV($test = False)
 		SetLog("Cannot found THSnipe attack file " & $dirTHSnipesAttacks & "\" & $scmbAttackTHType & ".csv", $color_red)
 	EndIf
 
-	If $isTownHallDestroyed = True Then TestLoots($GoldStart, $ElixirStart, $DarkStart)
-	; check for resource change after TH snipe
-	While GoldElixirChangeEBO()
-		If _Sleep($iDelayReturnHome1) Then Return
-	WEnd
+	If $isTownHallDestroyed = True And $ichkAttackIfDB = 1 Then TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 EndFunc   ;==>AttackTHParseCSV
 
 Func ThSnipeWait($delay)
@@ -118,117 +114,43 @@ Func ThSnipeWait($delay)
 	Return False
 EndFunc   ;==>ThSnipeWait
 
-Func TestLoots($GoldStart = 0, $ElixirStart = 0, $DarkStart = 0)
-	If $ichkAttackIfDB = 1 Then
-		Local $raidCollectors = 0, $atkGold = 0, $atkElixir = 0, $atkDark = 0
-		Local $GoldEnd = getGoldVillageSearch(48, 69)
-		Local $ElixirEnd = getElixirVillageSearch(48, 69 + 29)
-		Local $DarkEnd = getDarkElixirVillageSearch(48, 69 + 57)		
-		Local $GoldPercent = 100 * ($GoldStart - $GoldEnd) / $GoldStart
-		Local $ElixirPercent = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
-		Local $DarkPercent = 100 * ($DarkStart - $DarkEnd) / $DarkStart
-		Setlog ("Gold loot % = " & $GoldPercent)
-		Setlog ("Elixir loot % " & $ElixirPercent)
-		Setlog ("Dark Elixir loot % " & $DarkPercent)
-		If $GoldPercent < $ipercentTSSuccess And $GoldEnd > 100000 Then 
-			$atkGold = 1
-			$raidCollectors += 1
-		EndIf
-		If $ElixirPercent < $ipercentTSSuccess And $ElixirEnd > 100000 Then 
-			$atkElixir = 1
-			$raidCollectors += 1
-		EndIf
-		If $DarkPercent < $ipercentTSSuccess And $DarkEnd > 1000 Then 
-			$atkDark = 1
-			$raidCollectors += 1
-		EndIf
+Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
+	Local $GoldEnd = getGoldVillageSearch(48, 69)
+	Local $ElixirEnd = getElixirVillageSearch(48, 69 + 29)
+	Local $DarkEnd = getDarkElixirVillageSearch(48, 69 + 57)		
+	Local $GoldPercent = 100 * ($GoldStart - $GoldEnd) / $GoldStart
+	Local $ElixirPercent = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
+	Local $DarkPercent = 100 * ($DarkStart - $DarkEnd) / $DarkStart
+	Setlog ("Gold loot % = " & $GoldPercent)
+	Setlog ("Elixir loot % " & $ElixirPercent)
+	Setlog ("Dark Elixir loot % " & $DarkPercent)
+	If $GoldPercent < $ipercentTSSuccess And $ElixirPercent < $ipercentTSSuccess And ($GoldEnd + $ElixirEnd) > 220000 Then
+		SetLog("Gold & Elixir are mostly in collectors.", $COLOR_GREEN, "Lucida Console", 7.5)
+		; change settings to dead base attack
+		$isDeadBase = True
 		
-		If ($raidCollectors <> 0) Then
-			RaidCollectors($GoldEnd, $ElixirEnd)
-			;RaidCollectorsSmart($atkGold, $atkElixir, $atkDark)
+		If $ichkDBMeetCollOutside = 1 Then ; check for outside collectors if enabled
+			If AreCollectorsOutside($iDBMinCollOutsidePercent) Then ; attack dead base if collectors are outside
+				SetLog("Collectors are outside.", $COLOR_GREEN, "Lucida Console", 7.5)
+				$iMatchMode = $DB
+				If $debugDeadBaseImage = 1 Then
+					_CaptureRegion()
+					_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
+					_WinAPI_DeleteObject($hBitmap)
+				EndIf
+			EndIf
+			SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
+		Else
+			$iMatchMode = $DB
+			If $debugDeadBaseImage = 1 Then
+				_CaptureRegion()
+				_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
+				_WinAPI_DeleteObject($hBitmap)
+			EndIf
 		EndIf
+	ElseIf $DarkPercent < $ipercentTSSuccess And $DarkEnd > Number($itxtDBLightMinDark) Then 
+		SetLog("Dark Elixir is mostly in drills.", $COLOR_GREEN, "Lucida Console", 7.5)
+		; indicate dead base for Zap
+		$isDeadBase = True
 	EndIf
-EndFunc   ;==>AttackTHParseCSV
-
-Func RaidCollectors($GoldEnd = 0, $ElixirEnd = 0)
-	Local $attackUsed = False
-	Setlog ("Loot is mostly in collectors!")	
-	
-	; temporarily store original settings
-	$tempMatchMode = $iMatchMode
-	$tempDeployMode = $iChkDeploySettings[$DB]
-
-	; change settings to dead base attack deploying
-	$iMatchMode = $DB
-	$iChkDeploySettings[$DB] = 4 ; FF deployment
-	
-	; attack dead base if have enough troops and there's Gold and Elixir to raid
-	If $CurCamp > $iMinTroopToAttackDB And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 	
-		Setlog ("Attacking collectors!")		
-		PrepareAttack($DB)
-		Attack()
-		$attackUsed = True
-		; wait until there's loot change
-		While GoldElixirChangeEBO()
-			If _Sleep($iDelayReturnHome1) Then Return
-		WEnd
-	EndIf	
-	
-	; Zap DE drill if needed
-	If DEDropSmartSpell() <> False Then $attackUsed = True
-	
-	; reset original settings
-	$iMatchMode = $tempMatchMode
-	$iChkDeploySettings[$DB] = $tempDeployMode
-	Return $attackUsed
-EndFunc   ;==>RaidCollectors
-
-Func RaidCollectorsSmart($atkGold = 1, $atkElixir = 1, $atkDark = 1, $GoldEnd = 0, $ElixirEnd = 0)
-	Local $attackUsed = False
-	Setlog ("Loot is mostly in collectors!")	
-	
-	; temporarily store original settings
-	$tempMatchMode = $iMatchMode
-	$tempDeployMode = $iChkDeploySettings[$DB]
-	$tempChkRedArea = $iChkRedArea[$DB]
-	$tempSmartDeploy = $iCmbSmartDeploy[$DB]
-	$tempChkAttackGold = $iChkSmartAttack[$DB][0]
-	$tempChkAttackElixir = $iChkSmartAttack[$DB][1]
-	$tempChkAttackDark = $iChkSmartAttack[$DB][2]
-
-	; change settings to dead base attack deploying near collectors
-	$iMatchMode = $DB
-	$iChkDeploySettings[$DB] = 3 ; attack all sides
-	$iChkRedArea[$DB] = 1 ; smart attack
-	$iCmbSmartDeploy[$DB] = 1 ; Troops, then Sides
-	; smart attack dropping near collectors
-	$iChkSmartAttack[$DB][0] = $atkGold
-	$iChkSmartAttack[$DB][1] = $atkElixir 
-	$iChkSmartAttack[$DB][2] = $atkDark
-	
-	; attack dead base if have enough troops and there's gold or elixir to raid
-	If $CurCamp > $iMinTroopToAttackDB And $GoldEnd > 100000 And $ElixirEnd > 100000 Then 	
-		Setlog ("Attacking collectors!")		
-		PrepareAttack($DB)
-		Attack()
-		$attackUsed = True
-		; wait until there's loot change
-		While GoldElixirChangeEBO()
-			If _Sleep($iDelayReturnHome1) Then Return
-		WEnd
-	EndIf	
-	
-	; Zap DE drill if needed
-	If DEDropSmartSpell() <> False Then $attackUsed = True
-	
-	; reset original settings
-	$iMatchMode = $tempMatchMode
-	$iChkDeploySettings[$DB] = $tempDeployMode
-	$iChkRedArea[$DB] = $tempChkRedArea
-	$iCmbSmartDeploy[$DB] = $tempSmartDeploy
-	$iChkSmartAttack[$DB][0] = $tempChkAttackGold
-	$iChkSmartAttack[$DB][1] = $tempChkAttackElixir
-	$iChkSmartAttack[$DB][2] = $tempChkAttackDark
-	
-	Return $attackUsed
-EndFunc   ;==>RaidCollectorsSmart
+EndFunc   ;==>CheckLootIfDB

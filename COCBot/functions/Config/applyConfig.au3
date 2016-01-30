@@ -116,11 +116,19 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkDBMeetOne, $GUI_UNCHECKED)
 	EndIf
 
+	If $ichkDBMeetCollOutside = 1 Then
+		GUICtrlSetState($chkDBMeetCollOutside, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkDBMeetCollOutside, $GUI_UNCHECKED)
+	EndIf
+	chkDBMeetCollOutside()
+
 	GUICtrlSetData($txtDBMinGold, $iMinGold[$DB])
 	GUICtrlSetData($txtDBMinElixir, $iMinElixir[$DB])
 	GUICtrlSetData($txtDBMinGoldPlusElixir, $iMinGoldPlusElixir[$DB])
 	GUICtrlSetData($txtDBMinDarkElixir, $iMinDark[$DB])
 	GUICtrlSetData($txtDBMinTrophy, $iMinTrophy[$DB])
+	GUICtrlSetData($txtDBMinCollOutsidePercent, $iDBMinCollOutsidePercent)
 
 	_GUICtrlComboBox_SetCurSel($cmbDBTH, $iCmbTH[$DB])
 	$iMaxTH[$DB] = $THText[$iCmbTH[$DB]]

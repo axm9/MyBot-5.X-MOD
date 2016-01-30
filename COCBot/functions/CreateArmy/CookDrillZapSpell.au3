@@ -14,56 +14,42 @@
 ; ===============================================================================================================================
 
 Func CookDrillZapSpell()
-	Local $Spellslot
-	Local $NextPos = _PixelSearch(749, 311 + $midOffsetY, 787, 322 + $midOffsetY, Hex(0xF08C40, 6), 5)
-	Local $PrevPos = _PixelSearch(70, 311 + $midOffsetY, 110, 322 + $midOffsetY, Hex(0xF08C40, 6), 5)
-	Local $tempElixir = ""
-	
-	; Read Resource Values For spell cost Stats
-	VillageReport(True, True)
-	$tempElixir = $iElixirCurrent
-
-	If WaitforPixel(28, 505 + $bottomOffsetY, 30, 507 + $bottomOffsetY, Hex(0xE4A438, 6), 5, 10) Then
-		If $debugSetlog = 1 Then SetLog("Click $aArmyTrainButton", $COLOR_GREEN)
-		If IsMainPage() Then Click($aArmyTrainButton[0], $aArmyTrainButton[1], 1, 0, "#0293") ; Button Army Overview
-		EndIf
-	If _Sleep($iDelayRunBot6) Then Return ; wait for window to open
-	If Not (IsTrainPage()) Then Return ; exit if I'm not in train page
-
-	_Sleep($iDelayTrain3)
-	Click(751,350,7,300)
-
 	If $iTrainLightSpell = 1 Then
+		Local $tempElixir = ""
+		
+		; Read Resource Values For spell cost Stats
+		VillageReport(True, True)
+		$tempElixir = $iElixirCurrent
+
+		If WaitforPixel(28, 505 + $bottomOffsetY, 30, 507 + $bottomOffsetY, Hex(0xE4A438, 6), 5, 10) Then
+			If $debugSetlog = 1 Then SetLog("Click $aArmyTrainButton", $COLOR_GREEN)
+			If IsMainPage() Then Click($aArmyTrainButton[0], $aArmyTrainButton[1], 1, 0, "#0293") ; Army Overview Button
+		EndIf
+		If _Sleep($iDelayRunBot6) Then Return ; wait for window to open
+		If Not (IsTrainPage()) Then Return ; exit if I'm not in train page
+		
 		$iBarrHere = 0
 		While Not (isSpellFactory())
 			If Not (IsTrainPage()) Then Return
-			If IsArray($NextPos) Then _TrainMoveBtn(-1) ; click prev button
+			_TrainMoveBtn(-1) ; click prev button
 			$iBarrHere += 1
 			If _Sleep($iDelayTrain3) Then ExitLoop
 			If $iBarrHere = 8 Then ExitLoop
 		WEnd
 		If isSpellFactory() Then
 			Local $x = 0
-			If $iTrainLightSpell = 1 Then
-				$Spellslot = 0
-			EndIf
-			If $Spellslot <> -1 Then
-				While 1
-					_CaptureRegion()
-					If _Sleep($iDelayTrain2) Then Return
-					If _ColorCheck(_GetPixelColor(200, 346 + $midOffsetY, True), Hex(0x414141, 6), 20) Then
-						Setlog("Spell Factory Full", $COLOR_RED)
-						ExitLoop
-					Else
-						GemClick(252 + ($Spellslot * 105), 354 + $midOffsetY, 1, $iDelayTrain6, "#0290")
-						$x = $x + 1
-					EndIf
-					If $x = 1 Then
-						ExitLoop
-					EndIf
-				WEnd
-				If $x <> 0 Then SetLog("Created 1 Lightning Spell", $COLOR_BLUE)
-			EndIf
+			While 1
+				_CaptureRegion()
+				If _Sleep($iDelayTrain2) Then Return
+				If _ColorCheck(_GetPixelColor(200, 346 + $midOffsetY, True), Hex(0x414141, 6), 20) Then
+					Setlog("Spell Factory Full", $COLOR_RED)
+					ExitLoop
+				Else
+					GemClick(252 + ($Spellslot * 105), 354 + $midOffsetY, 1, $iDelayTrain6, "#0290")
+					$x = $x + 1
+				EndIf
+			WEnd
+			If $x <> 0 Then SetLog("Created " & $x & " Lightning Spell(s)", $COLOR_BLUE)
 		Else
 			SetLog("Spell Factory not found...", $COLOR_BLUE)
 		EndIf

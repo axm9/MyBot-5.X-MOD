@@ -146,7 +146,20 @@ $tabSearch = GUICtrlCreateTabItem(GetTranslated(2,1, "Search"))
 		$chkDBMeetOne = GUICtrlCreateCheckbox(GetTranslated(2,44, "Meet One Then Attack"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(2,45, "Just meet only ONE of the above conditions, then Attack.")
 			GUICtrlSetTip(-1, $txtTip)
-		$y += 25		
+		$y += 20
+		$chkDBMeetCollOutside = GUICtrlCreateCheckbox("Collectors outside", $x, $y, -1, -1)
+			$txtTip = "Search for bases that has their collectors outside."
+			GUICtrlSetOnEvent(-1, "chkDBMeetCollOutside")
+			GUICtrlSetTip(-1, $txtTip)
+		GUICtrlCreateLabel("Min: ", $x + 110, $y + 3, -1, -1)
+		$txtDBMinCollOutsidePercent = GUICtrlCreateInput("50", $x + 130, $y, 30, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			$txtTip = "Set the Min. % of collectors outside to search for on a village to attack."
+			GUICtrlSetTip(-1, $txtTip)
+			_GUICtrlEdit_SetReadOnly(-1, True)
+			GUICtrlSetLimit(-1, 3)
+		GUICtrlCreateLabel("%", $x + 162, $y + 3, -1, -1)
+			GUICtrlSetTip(-1, $txtTip)
+		$y += 22		
         $btnConfigureCollectors = GUICtrlCreateButton(GetTranslated(2,100, "Configure Collectors..."), $x, $y, 180,20)
 			GUICtrlSetOnEvent(-1, "btnConfigureCollectors")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)

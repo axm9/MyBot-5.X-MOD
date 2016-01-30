@@ -1,9 +1,9 @@
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: PrepareAttack
-; Description ...: Checks the troops when in battle, checks for type, slot, and quantity.  Saved in $atkTroops[SLOT][TYPE/QUANTITY] variable
+; Description ...: Checks the troops when in battle, checks for type, slot, and quantity. Saved in $atkTroops[SLOT][TYPE/QUANTITY] variable
 ; Syntax ........: PrepareAttack($pMatchMode[, $Remaining = False])
-; Parameters ....: $pMatchMode          - a pointer value.
-;                  $Remaining           - [optional] Flag for when checking remaining troops. Default is False.
+; Parameters ....: $pMatchMode	- a pointer value.
+;                  $Remaining	- [optional] Flag for when checking remaining troops. Default is False.
 ; Return values .: None
 ; Author ........:
 ; Modified ......:

@@ -35,9 +35,6 @@ Func checkAttackDisable($iSource, $Result = "")
 					$ineedRearm = True
 					If _CheckPixel($aSurrenderButton, $bCapturePixel) Then ; village search requires end battle 1s, so check for surrender/endbattle button
 						ReturnHome(False, False) ;If End battle is available
-						Collect()
-					Else
-						CloseCoC()
 					EndIf
 				Else
 					If $debugSetlog = 1 Then Setlog("wrong text string", $COLOR_PURPLE)

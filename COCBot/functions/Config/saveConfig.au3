@@ -106,6 +106,12 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "search", "DBMeetOne", 0)
 	EndIf
 
+	If GUICtrlRead($chkDBMeetCollOutside) = $GUI_CHECKED Then
+		IniWrite($config, "search", "DBMeetCollOutside", 1)
+	Else
+		IniWrite($config, "search", "DBMeetCollOutside", 0)
+	EndIf
+
 	IniWrite($config, "search", "DBsearchGold", GUICtrlRead($txtDBMinGold))
 	IniWrite($config, "search", "DBsearchElixir", GUICtrlRead($txtDBMinElixir))
 	IniWrite($config, "search", "DBsearchGoldPlusElixir", GUICtrlRead($txtDBMinGoldPlusElixir))
@@ -114,6 +120,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "search", "DBTHLevel", _GUICtrlComboBox_GetCurSel($cmbDBTH))
 	IniWrite($config, "search", "DBWeakMortar", _GUICtrlComboBox_GetCurSel($cmbDBWeakMortar))
 	IniWrite($config, "search", "DBWeakWizTower", _GUICtrlComboBox_GetCurSel($cmbDBWeakWizTower))
+	IniWrite($config, "search", "DBMinCollOutsidePercent", GUICtrlRead($txtDBMinCollOutsidePercent))
 
 	; Any Base
 	IniWrite($config, "search", "ABMeetGE", _GUICtrlComboBox_GetCurSel($cmbABMeetGE))
