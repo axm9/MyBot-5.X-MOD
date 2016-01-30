@@ -105,7 +105,7 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
 				Case $btnAttackNowTS
 					btnAttackNowTS()
 				Case $CheckVersionConfig
-					CheckMODVersion()
+					If CheckMODVersion() Then MsgBox(0, "", "Your Greedy MOD is up-of-date!")
 				Case $DownloadLatestConfig
 					ShellExecute("https://github.com/McSlither/MyBot-5.X-MOD/archive/master.zip")
 				Case $btnDeletePBMessages

@@ -125,11 +125,13 @@ Func CheckMODVersion()
 	FileDelete($tempJson)
 	
 	If $lastModified And $lastPushed Then
-		If Number($lastModified) + 100 < Number($lastPushed) Then
+		If Number($lastModified) + 1000 < Number($lastPushed) Then ; check if latest upload timestamp is within 10mins of last modified timestamp of local bot
 			MsgBox(0, "", "A new MOD has been recently (@" & $lastPushedDatetime & ") uploaded, your version might be out-of-date." & @CRLF & _
 			"You can download the newest version in the 'Update MOD' menu.")
+			Return False
 		EndIf
 	EndIf
+	Return True
 EndFunc
 
 Func VersionNumFromVersionTXT($versionTXT)
