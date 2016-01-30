@@ -437,6 +437,8 @@ Func AreCollectorsOutside($percent)
 	$iNbrOfDetectedDrills[$iMatchMode] += UBound($PixelDarkElixir)
 	UpdateStats()
 	
+	Local $minColOutside = Round($colNbr * $percent / 100)
+	
 	For $i = 0 To $colNbr - 1
 		Local $arrPixel = $PixelNearCollector[$i]
 		If UBound($arrPixel) > 0 Then
@@ -445,7 +447,7 @@ Func AreCollectorsOutside($percent)
 				$colOutside += 1
 			EndIf
 		EndIf
-		If ($colOutside / $colNbr) * 100 > $percent Then 
+		If $colOutside >= $minColOutside Then 
 			If $debugsetlog = 1 Then SetLog("More than " & $percent & " of the collectors are outside.")
 			Return True
 		EndIf

@@ -45,14 +45,12 @@ Func SnipeWhileTrain()
 			$iChkMeetTrophy[$LB] = 1
 			$iMinTrophy[$DB] = 99
 			$iMinTrophy[$LB] = 99
-			; if greedy mode enabled and have enough troops, search for dead bases with 75% of collectors outside
-			If $ichkAttackIfDB = 1 And $CurCamp > $iMinTroopToAttackDB Then	
-				$iChkMeetOne[$DB] = 1
+			; if greedy mode enabled, bot should only attack dead bases with 75% of collectors outside in SWT mode
+			If $ichkAttackIfDB = 1 Then	
 				$ichkDBMeetCollOutside = 1
 				$iDBMinCollOutsidePercent = 75
-			Else
-				$iChkMeetOne[$DB] = 0
 			EndIf
+			$iChkMeetOne[$DB] = 0
 			$iChkMeetOne[$LB] = 0
 			$OptTrophyMode = 1
 			$THaddtiles = $itxtSWTtiles

@@ -99,6 +99,7 @@ Func DropTrophy()
 							EndIf
 						Else
 							GreedyAttack()
+							ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
 						EndIf
 					Else
 						SetLog("Not a Dead Base, resuming Drop Trophy.", $COLOR_BLACK, "Lucida Console", 7.5)
