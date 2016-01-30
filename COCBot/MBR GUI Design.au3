@@ -29,6 +29,11 @@ $DonateMenu = GUICtrlCreateMenu("&Paypal Donate?")
 $DonateConfig = GUICtrlCreateMenuItem("Support the development", $DonateMenu)
 GUICtrlSetOnEvent(-1, "")
 
+$UpdateMenu = GUICtrlCreateMenu("&Update MOD")
+$CheckVersionConfig = GUICtrlCreateMenuItem("Check Version", $UpdateMenu)
+$DownloadLatestConfig = GUICtrlCreateMenuItem("Download Latest", $UpdateMenu)
+GUICtrlSetOnEvent(-1, "")
+
 ;~ ------------------------------------------------------
 ;~ Tab Files
 ;~ ------------------------------------------------------

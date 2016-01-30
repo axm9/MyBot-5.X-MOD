@@ -104,8 +104,10 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
 					btnAttackNowLB()
 				Case $btnAttackNowTS
 					btnAttackNowTS()
-				Case $DonateConfig
-					ShellExecute("https://www.paypal.com/us/cgi-bin/webscr?cmd=_send-money&nav=1&email=mc_slither@hotmail.com")
+				Case $CheckVersionConfig
+					CheckMODVersion()
+				Case $DownloadLatestConfig
+					ShellExecute("https://github.com/McSlither/MyBot-5.X-MOD/archive/master.zip")
 				Case $btnDeletePBMessages
 					If $RunState Then
 						btnDeletePBMessages() ; call with flag when bot is running to execute on _sleep() idle

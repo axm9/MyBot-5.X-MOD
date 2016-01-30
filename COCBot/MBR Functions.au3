@@ -158,6 +158,7 @@
 #include "functions\Other\UpdateStats.au3"
 #include "functions\Other\CheckVersion.au3"
 #include "functions\Other\CloseRunningBot.au3"
+#include "functions\Other\JSON.au3"
 
 #include "functions\Other\ComError.au3"
 #include "functions\Other\IsPage.au3"

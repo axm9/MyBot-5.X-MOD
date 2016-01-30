@@ -18,7 +18,7 @@ Func DEDropSmartSpell()
 	Local Const $DrillLevelSteal[6] = [59, 102, 172, 251, 343, 479] ; Amount of DE available from Drill at each level (1-6) with 1 average (lvl4) lightning spell
 	Local Const $DrillLevelHold[6] = [120, 225, 405, 630, 960, 1350] ; Total Amount of DE available from Drill at each level (1-6) by attack
 	Local Const $strikeOffsets = [3, 5]
-	Local $searchDark, $aDarkDrills, $oldDark, $Spell, $strikeGain, $smartZapGain, $expectedDE
+	Local $searchDark, $aDarkDrills, $numDEDrill = 0, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
 
 	; Check if DE zap is enabled and target is dead base
 	If $ichkDBLightSpell <> 1 Or $isDeadBase <> True Then Return False
@@ -48,6 +48,13 @@ Func DEDropSmartSpell()
 	
 	; Get Drill locations and info
 	$aDarkDrills = DEDrillSearch()
+	For $i = 0 To 3
+		If $aDarkDrills[$i][3] <> -1 Then $numDEDrill += 1
+	Next
+	If $numDEDrill > 0 And (Number($searchDark) / $numDEDrill) < 400 Then
+		SetLog("DE drills contain less than 400 DE/drill, not worth zapping", $COLOR_RED)
+		Return False
+	EndIf
 
 	; Offset the zap criteria for th8 and lower
 	Local $drillLvlOffset = 0
@@ -100,7 +107,7 @@ Func DEDropSmartSpell()
 			$aDarkDrills[0][4] += 1
 			If _Sleep(3500) Then Return True
 		; else if the collector is level 5+ and collector is more than 30% full
-		ElseIf ($aDarkDrills[0][3]/$DrillLevelHold[$aDarkDrills[0][2] - 1]) > 0.3 And $aDarkDrills[0][2] >= (5 - $drillLvlOffset) Then
+		ElseIf $aDarkDrills[0][2] >= (5 - $drillLvlOffset) And ($aDarkDrills[0][3]/$DrillLevelHold[$aDarkDrills[0][2] - 1]) > 0.3 Then
 			If $debugsetlog = 1 Then SetLog("Third condition: Attack level 5+ drills if it's more than 30% full", $COLOR_PURPLE)
 			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
 			$numSpells -= 1

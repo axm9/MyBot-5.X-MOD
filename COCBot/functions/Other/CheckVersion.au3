@@ -33,6 +33,8 @@ Func CheckVersion()
 			SetLog(" ")
 			_PrintLogVersion($lastmessage)
 		EndIf
+		
+		CheckMODVersion()
 	EndIf
 EndFunc   ;==>CheckVersion
 
@@ -45,10 +47,10 @@ Func CheckVersionHTML()
 		$hDownload = InetGet("https://raw.githubusercontent.com/MyBotRun/MyBot/master/LastVersion.txt", $versionfile, 0, 1)
 
 		; Wait for the download to complete by monitoring when the 2nd index value of InetGetInfo returns True.
-		Local $i=0
+		Local $i = 0
 		Do
 			Sleep($iDelayCheckVersionHTML1)
-			$i +=1
+			$i += 1
 		Until InetGetInfo($hDownload, $INET_DOWNLOADCOMPLETE) or $i > 25
 
 		InetClose($hDownload)
@@ -69,10 +71,10 @@ Func CheckVersionHTML()
 			$hDownload = InetGet("https://raw.githubusercontent.com/MyBotRun/MyBot/master/LastVersion_" & $sLanguage & ".txt", $versionfilelocalized, 0, 1)
 
 			; Wait for the download to complete by monitoring when the 2nd index value of InetGetInfo returns True.
-			Local $i=0
+			Local $i = 0
 			Do
 				Sleep($iDelayCheckVersionHTML1)
-				$i +=1
+				$i += 1
 			Until InetGetInfo($hDownload, $INET_DOWNLOADCOMPLETE) or $i > 25
 
 			InetClose($hDownload)
@@ -91,6 +93,44 @@ Func CheckVersionHTML()
 		FileDelete($versionfile)
 	EndIf
 EndFunc   ;==>CheckVersionHTML
+
+Func CheckMODVersion()
+	Local $botFile = @ScriptDir & "\MyBot.run.exe"
+	Local $lastModified, $lastPushed, $lastPushedDatetime
+	If FileExists($botFile) Then
+		$lastModified = FileGetTime($botFile, $FT_MODIFIED, $FT_STRING)
+	EndIf
+
+	Local $tempJson = @ScriptDir & "\Temp.json"
+	$hDownload = InetGet("https://api.github.com/repos/McSlither/MyBot-5.X-MOD", $tempJson, 0, 1)
+	; Wait for the download to complete by monitoring when the 2nd index value of InetGetInfo returns True.
+	Local $i = 0
+	Do
+		Sleep($iDelayCheckVersionHTML1)
+		$i += 1
+	Until InetGetInfo($hDownload, $INET_DOWNLOADCOMPLETE) or $i > 25
+	InetClose($hDownload)
+
+	Local $file = FileOpen($tempJson, 0)
+	Local $fileContent = FileRead($file)
+	Local $decodedArray = _JSONDecode($fileContent)
+	For $i = 0 To Ubound($decodedArray) - 1
+		If $decodedArray[$i][0] = "pushed_at" Then 
+			$lastPushedDatetime = $decodedArray[$i][1]
+			$lastPushed = StringRegExpReplace($lastPushedDatetime, "[^[:digit:]]", "")
+			ExitLoop
+		EndIf
+	Next
+	FileClose($file)
+	FileDelete($tempJson)
+	
+	If $lastModified And $lastPushed Then
+		If Number($lastModified) + 100 < Number($lastPushed) Then
+			MsgBox(0, "", "A new MOD has been recently (@" & $lastPushedDatetime & ") uploaded, your version might be out-of-date." & @CRLF & _
+			"You can download the newest version in the 'Update MOD' menu.")
+		EndIf
+	EndIf
+EndFunc
 
 Func VersionNumFromVersionTXT($versionTXT)
 	; remove all after a space from $versionTXT, example "v.4.0.1 MOD" ==> "v.4.0.1"
