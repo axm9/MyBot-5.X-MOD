@@ -45,7 +45,7 @@ Func CookDrillZapSpell()
 					Setlog("Spell Factory Full", $COLOR_RED)
 					ExitLoop
 				Else
-					GemClick(252 + ($Spellslot * 105), 354 + $midOffsetY, 1, $iDelayTrain6, "#0290")
+					GemClick(252, 354 + $midOffsetY, 1, $iDelayTrain6, "#0290")
 					$x = $x + 1
 				EndIf
 			WEnd
