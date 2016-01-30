@@ -71,7 +71,7 @@ Func DEDropSmartSpell()
 	ElseIf $iTownHallLevel = 5 Then
 		$maxSpellNbr = 1
 	EndIf
-	If $debugsetlog = 1 Then SetLog("Max number of spell is : " & $maxSpellNbr, $COLOR_PURPLE)
+	If $debugsetlog = 1 Then SetLog("Max number of spell is: " & $maxSpellNbr, $COLOR_PURPLE)
 
 	; Sort by remaining DE
 	_ArraySort($aDarkDrills, 1, 0, 0, 3)

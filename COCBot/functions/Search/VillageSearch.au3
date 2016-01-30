@@ -450,8 +450,7 @@ Func AreCollectorsOutside($percent)
 			Return True
 		EndIf
 	Next
-	;Return False
-	Return True
+	Return False
 EndFunc   ;==>AreCollectorsOutside
 
 Func SearchLimit($iSkipped)
