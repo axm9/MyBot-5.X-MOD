@@ -116,17 +116,21 @@ Func CheckMODVersion()
 	Local $decodedArray = _JSONDecode($fileContent)
 	For $i = 0 To Ubound($decodedArray) - 1
 		If $decodedArray[$i][0] = "pushed_at" Then 
-			$lastPushedDatetime = $decodedArray[$i][1]
-			$lastPushed = StringRegExpReplace($lastPushedDatetime, "[^[:digit:]]", "")
+			$lastPushedDatetime = $decodedArray[$i][1]			
 			ExitLoop
 		EndIf
 	Next
 	FileClose($file)
 	FileDelete($tempJson)
 	
+	; convert UTC time to local time
+	Local $utcPushedTime = _Date_Time_EncodeSystemTime(StringMid($lastPushedDatetime, 6, 2), StringMid($lastPushedDatetime, 9, 2), StringMid($lastPushedDatetime, 1, 4), StringMid($lastPushedDatetime, 12, 2), StringMid($lastPushedDatetime, 15, 2), StringMid($lastPushedDatetime, 18, 2))
+	Local $localPushedTime = _Date_Time_SystemTimeToTzSpecificLocalTime(DllStructGetPtr($utcPushedTime))
+	$lastPushed = StringRegExpReplace(_Date_Time_SystemTimeToDateTimeStr($localPushedTime, 1), "[^[:digit:]]", "")
+	
 	If $lastModified And $lastPushed Then
-		If Number($lastModified) + 1000 < Number($lastPushed) Then ; check if latest upload timestamp is within 10mins of last modified timestamp of local bot
-			MsgBox(0, "", "A new MOD has been recently (@" & $lastPushedDatetime & ") uploaded, your version might be out-of-date." & @CRLF & _
+		If Number($lastModified) + 500 < Number($lastPushed) Then ; check if last modified timestamp of local bot is within 5 mins of latest upload timestamp
+			MsgBox(0, "", "A new MOD has been recently (" & _Date_Time_SystemTimeToDateTimeStr($localPushedTime, 1) & ") uploaded, your version might be out-of-date." & @CRLF & _
 			"You can download the newest version in the 'Update MOD' menu.")
 			Return False
 		EndIf
