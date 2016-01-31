@@ -45,10 +45,11 @@ Func SnipeWhileTrain()
 			$iChkMeetTrophy[$LB] = 1
 			$iMinTrophy[$DB] = 99
 			$iMinTrophy[$LB] = 99
-			; if greedy mode enabled, bot should only attack dead bases with 75% of collectors outside in SWT mode
-			If $ichkAttackIfDB = 1 Then	
+			; if greedy mode enabled, bot should only attack dead bases with 70% of collectors outside in SWT mode
+			If $ichkAttackIfDB = 1 Then					
+				If $debugSetlog = 1 Then setlog("Min collector outside set to 70% during snipe while train mode" & $Wcount, $COLOR_PURPLE)
 				$ichkDBMeetCollOutside = 1
-				$iDBMinCollOutsidePercent = 75
+				$iDBMinCollOutsidePercent = 70
 			EndIf
 			$iChkMeetOne[$DB] = 0
 			$iChkMeetOne[$LB] = 0

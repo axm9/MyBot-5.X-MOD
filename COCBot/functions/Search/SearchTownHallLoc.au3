@@ -16,7 +16,7 @@
 Func SearchTownHallLoc()
 	If $searchTH <> "-" Then
  		If isInsideDiamondXY($THx,$THy) = False Then Return False
-		If isOutsideEllipse($THx, $THy) = False Then Return False
+		If isOutsideEllipse($THx, $THy, $THEllipseWidth, $THEllipseHeigth) = False Then Return False
 
 		For $i=0 to 20
 			If $Thx<114+$i*19+ceiling(($THaddtiles-2)/2*19) And $Thy<359-$i*14+ceiling(($THaddtiles-2)/2*14) Then

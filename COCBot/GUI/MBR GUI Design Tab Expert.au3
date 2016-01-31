@@ -109,7 +109,6 @@ Local $x = 30, $y = 435
 $grpDebug = GUICtrlCreateGroup(GetTranslated(10,34, "Debug"), $x - 20, $y - 20, 205, 40)
 	$chkDebugClick = GUICtrlCreateCheckbox(GetTranslated(10,40, "Coord."), $x, $y-5, -1, -1)
 		GUICtrlSetTip(-1, GetTranslated(10,35, "Debug: Write the clicked (x,y) coordinates to the log."))
-	;$y += 20
 	$chkDebugSetlog = GUICtrlCreateCheckbox(GetTranslated(10,41, "L"), $x +55 , $y-5, -1, -1)
 		GUICtrlSetTip(-1, GetTranslated(10,36, "Debug: Enables debug SetLog messages in code for Troubleshooting."))
 		GUICtrlSetState(-1, $GUI_DISABLE)

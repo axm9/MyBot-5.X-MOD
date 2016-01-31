@@ -447,7 +447,7 @@ Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be 
 	For $i = 0 To $colNbr - 1
 		Local $arrPixel = $PixelNearCollector[$i]
 		If UBound($arrPixel) > 0 Then
-			If isOutsideEllipse($arrPixel[0], $arrPixel[1], 160, 120) Then 
+			If isOutsideEllipse($arrPixel[0], $arrPixel[1], $CollectorsEllipseWidth, $CollectorsEllipseHeigth) Then 
 				If $debugsetlog = 1 Then SetLog("Collector (" & $arrPixel[0] & ", " & $arrPixel[1] & ") is outside")
 				$colOutside += 1
 			EndIf
@@ -457,6 +457,7 @@ Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be 
 			Return True
 		EndIf
 	Next
+	If $debugsetlog = 1 Then SetLog($colOutside & " collectors are outside (" & $colNbr & " collectors found).")
 	Return False
 EndFunc   ;==>AreCollectorsOutside
 

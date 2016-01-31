@@ -313,6 +313,9 @@ Global $iZapVillageFound = 0
 Global $iLightSpellUsed = 0
 Global $iDEFromZap = 0
 
+; Collectors outside constants
+Global Const $CenterX = 425, $CenterY = 330, $THEllipseWidth = 200, $THEllipseHeigth = 150, $CollectorsEllipseWidth = 150, $CollectorsEllipseHeigth = 112.5
+
 Global $THLocation
 Global $THx = 0, $THy = 0
 Global $DESLoc
