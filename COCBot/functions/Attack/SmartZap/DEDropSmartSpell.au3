@@ -161,6 +161,7 @@ Func DEDropSmartSpell()
 		_ArraySort($aDarkDrills, 1, 0, 0, 3)
 		If $debugsetlog = 1 Then SetLog("DE Left in Collectors: " & $aDarkDrills[0][3]&" "& $aDarkDrills[1][3]&" "& $aDarkDrills[2][3]&" "& $aDarkDrills[3][3], $COLOR_PURPLE)
 	WEnd
+	SelectDropTroop(0)
 	Return True
 EndFunc
 

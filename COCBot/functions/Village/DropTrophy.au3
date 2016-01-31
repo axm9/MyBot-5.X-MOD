@@ -103,8 +103,8 @@ Func DropTrophy()
 										ReturnHome($TakeLootSnapShot)
 										$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
 										ExitLoop
-									Else ; select first troop type if lightning spell was not used
-										SelectDropTroop($atkTroops[0][0])
+									Else ; select first troop type for drop trophy
+										SelectDropTroop(0)
 									EndIf
 								EndIf
 							EndIf
@@ -114,6 +114,8 @@ Func DropTrophy()
 						EndIf
 					Else
 						SetLog("Not a Dead Base, resuming Drop Trophy.", $COLOR_BLACK, "Lucida Console", 7.5)
+						; select first troop type for drop trophy
+						SelectDropTroop(0)
 					EndIf
 				Else
 					SetLog("Not enough troops (" & $itxtDTArmyMin & "%) to attack dead base, resuming Drop Trophy.", $COLOR_ORANGE)

@@ -206,8 +206,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 							ReturnHome($TakeLootSnapShot)
 							$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
 							Return
-						Else ; select first troop type if lightning spell was not used
-							SelectDropTroop($atkTroops[0][0])
+						Else ; select first troop type for drop trophy
+							SelectDropTroop(0)
 						EndIf
 					EndIf
 				EndIf
@@ -263,8 +263,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				ReturnHome($TakeLootSnapShot)
 				$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
 				Return
-			Else ; select first troop type if lightning spell weren't used
-				SelectDropTroop($atkTroops[0][0])
+			Else ; select first troop type for drop trophy
+				SelectDropTroop(0)
 			EndIf
 		EndIf
 
