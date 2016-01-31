@@ -178,8 +178,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If _Sleep($iDelayRespond) Then Return
 		If $match[$DB] Or $match[$LB] Or $zapBaseMatch Then
 			$isDeadBase = checkDeadBase()
-			$zapBaseMatch = $zapBaseMatch And $isDeadBase
 		EndIf
+		$zapBaseMatch = $zapBaseMatch And $isDeadBase
 
 		If _Sleep($iDelayRespond) Then Return
 		If $match[$DB] And $isDeadBase Then
