@@ -223,7 +223,7 @@ Global $iChkAttackNow, $iAttackNowDelay, $bBtnAttackNowPressed = False
 Global $PushToken = ""
 
 Global Enum $DB, $LB, $TS, $TB, $DT ; DeadBase, LiveBase, TownhallSnipe, TownhallBully, DropTrophy
-Global $isDeadBase = False
+Global $isDeadBase = False, $zapBaseMatch = False
 Global $iModeCount = 3
 Global $iMatchMode ; 0 Dead / 1 Live / 2 TH Snipe / 3 TH Bully / 4 Drop Trophy
 Global $sModeText[5]
@@ -312,7 +312,6 @@ Global $iTrainLightSpell = 0
 Global $iZapVillageFound = 0
 Global $iLightSpellUsed = 0
 Global $iDEFromZap = 0
-Global $numSpells = 0
 
 Global $THLocation
 Global $THx = 0, $THy = 0

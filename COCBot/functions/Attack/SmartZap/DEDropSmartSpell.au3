@@ -20,19 +20,19 @@ Func DEDropSmartSpell()
 	Local Const $strikeOffsets = [3, 5]
 	Local $searchDark, $aDarkDrills, $numDEDrill = 0, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
 
-	; Check if DE zap is enabled and target is dead base
-	If $ichkDBLightSpell <> 1 Or $isDeadBase <> True Then Return False
+	; Check if target is DE zap match
+	If Not($zapBaseMatch) Then Return False
 
 	; Select Lightning Spell and update number of spells left
 	For $i = 0 To UBound($atkTroops) - 1
 		If $atkTroops[$i][0] = $eLSpell Then
 			$Spell = $i
-			$numSpells = $atkTroops[$i][1]
+			$CurLightningSpell = $atkTroops[$i][1]
 			SelectDropTroop($Spell)
 		EndIf
 	Next
-	If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: " & $numSpells, $COLOR_PURPLE)
-	If $numSpells = 0 Then Return False
+	If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: " & $CurLightningSpell, $COLOR_PURPLE)
+	If $CurLightningSpell = 0 Then Return False
 	
 	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
 	
@@ -84,25 +84,25 @@ Func DEDropSmartSpell()
 	_ArraySort($aDarkDrills, 1, 0, 0, 3)
 	If $debugsetlog = 1 Then SetLog("Levels of drills: " & $aDarkDrills[0][3] & " " & $aDarkDrills[1][3] & " " & $aDarkDrills[2][3] & " " & $aDarkDrills[3][3], $COLOR_PURPLE)
 
-	While $numSpells > 0 And $aDarkDrills[0][3] <> -1 And $maxSpellNbr <> 0
+	While $CurLightningSpell > 0 And $aDarkDrills[0][3] <> -1 And $maxSpellNbr <> 0
 		If ($searchDark < Number($itxtDBLightMinDark) - $smartZapGain) Then
 			SetLog ("Remaining Dark Elixir is below minimum value")
 			Return True
 		EndIf
 		
 		; If you have most of your spells, drop lightning on level 3+ de drill
-		If $numSpells/$maxSpellNbr >= 0.7 And $aDarkDrills[0][2] >= (3 - $drillLvlOffset) Then
+		If $CurLightningSpell/$maxSpellNbr >= 0.7 And $aDarkDrills[0][2] >= (3 - $drillLvlOffset) Then
 			If $debugsetlog = 1 Then SetLog("First condition: Attack level 3+ drill if you have most of spells.", $COLOR_PURPLE)
 			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
-			$numSpells -= 1
+			$CurLightningSpell -= 1
 			$iLightSpellUsed += 1
 			$aDarkDrills[0][4] += 1
 			If _Sleep(3500) Then Return True
 		; else if you have half of your spells, drop lightning on level 4+ de drill
-		ElseIf $numSpells/$maxSpellNbr >= 0.4 And $numSpells/$maxSpellNbr <= 0.7 And $aDarkDrills[0][2] >= (4 - $drillLvlOffset) Then
+		ElseIf $CurLightningSpell/$maxSpellNbr >= 0.4 And $CurLightningSpell/$maxSpellNbr <= 0.7 And $aDarkDrills[0][2] >= (4 - $drillLvlOffset) Then
 			If $debugsetlog = 1 Then SetLog("Second condition: Attack level 4+ drills if you have half of spells", $COLOR_PURPLE)
 			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
-			$numSpells -= 1
+			$CurLightningSpell -= 1
 			$iLightSpellUsed += 1
 			$aDarkDrills[0][4] += 1
 			If _Sleep(3500) Then Return True
@@ -110,7 +110,7 @@ Func DEDropSmartSpell()
 		ElseIf $aDarkDrills[0][2] >= (5 - $drillLvlOffset) And ($aDarkDrills[0][3]/$DrillLevelHold[$aDarkDrills[0][2] - 1]) > 0.3 Then
 			If $debugsetlog = 1 Then SetLog("Third condition: Attack level 5+ drills if it's more than 30% full", $COLOR_PURPLE)
 			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
-			$numSpells -= 1
+			$CurLightningSpell -= 1
 			$iLightSpellUsed += 1
 			$aDarkDrills[0][4] += 1
 			If _Sleep(3500) Then Return True

@@ -24,8 +24,9 @@ Func getArmySpellCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		If _Sleep($iDelaycheckArmyCamp5) Then Return
 	EndIf
 
-	If $iTotalCountSpell > 0 Then ; only use this code if the user had input spells to brew ... and assign the spells quantity
-		$CurLightningSpell = 0 ; reset Global variables
+	If $iTotalCountSpell > 0 Or $ichkDBLightSpell = 1 Then ; only use this code if the user had input spells to brew ... and assign the spells quantity
+		; reset Global variables
+		$CurLightningSpell = 0
 		$CurHealSpell = 0
 		$CurRageSpell = 0
 		$CurJumpSpell = 0
@@ -34,7 +35,7 @@ Func getArmySpellCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		$CurHasteSpell = 0
 		$CurEarthSpell = 0
 
-		For $i = 0 To 4 ; 5 visible slots in ArmyoverView window
+		For $i = 0 To 4 ; 5 visible slots in ArmyOverView window
 			If $debugSetlog = 1 Then Setlog(" Slot : " & $i + 1, $COLOR_PURPLE)
 			Local $FullTemp = getOcrSpellDetection(125 + (62 * $i), 450 + $midOffsetY)
 			If $debugSetlog = 1 Then Setlog(" getOcrSpellDetection: " & $FullTemp, $COLOR_PURPLE)

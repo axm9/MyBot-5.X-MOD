@@ -138,8 +138,9 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 					_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
 					_WinAPI_DeleteObject($hBitmap)
 				EndIf
+			Else
+				SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
 			EndIf
-			SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
 		Else
 			$iMatchMode = $DB
 			If $debugDeadBaseImage = 1 Then
@@ -148,9 +149,12 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 				_WinAPI_DeleteObject($hBitmap)
 			EndIf
 		EndIf
-	ElseIf $DarkPercent < $ipercentTSSuccess And $DarkEnd > Number($itxtDBLightMinDark) Then 
+	EndIf	
+	If $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DarkPercent < $ipercentTSSuccess And $DarkEnd > $itxtDBLightMinDark Then 
 		SetLog("Dark Elixir is mostly in drills.", $COLOR_GREEN, "Lucida Console", 7.5)
-		; indicate dead base for Zap
+		; indicate dead base for Zap		
 		$isDeadBase = True
+		$zapBaseMatch = True
+		If $zapBaseMatch Then SetLog("Drills can be zapped!", $COLOR_GREEN, "Lucida Console")	
 	EndIf
 EndFunc   ;==>CheckLootIfDB

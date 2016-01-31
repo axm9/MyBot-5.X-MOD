@@ -138,7 +138,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		EndIf
 
 		$isDeadBase = False
-		Local $zapBaseMatch = $ichkDBLightSpell = 1 And $numSpells > 0 And Number($searchDark) > Number($itxtDBLightMinDark)
+		$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $searchDark > $itxtDBLightMinDark
 		Local $noMatchTxt = ""
 		Local $match[$iModeCount]
 		Local $isModeActive[$iModeCount]
@@ -197,8 +197,20 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 						_WinAPI_DeleteObject($hBitmap)
 					EndIf
 					ExitLoop
+				Else
+					SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
+					If $zapBaseMatch Then ; collectors not outside but drills can still be zapped
+						SetLog("      Drills can be zapped!", $COLOR_GREEN, "Lucida Console")	
+						$logwrited = True
+						If DEDropSmartSpell() = True Then
+							ReturnHome($TakeLootSnapShot)
+							$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
+							Return
+						Else ; select first troop type if lightning spell was not used
+							SelectDropTroop($atkTroops[0][0])
+						EndIf
+					EndIf
 				EndIf
-				SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
 			Else
 				$iMatchMode = $DB
 				If $debugDeadBaseImage = 1 Then
@@ -403,12 +415,11 @@ Func IsWeakBase($pMode)
 	EndIf
 EndFunc   ;==>IsWeakBase
 
-Func AreCollectorsOutside($percent)
+Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be zapped
 	SetLog("Locating Mines, Collectors & Drills", $COLOR_BLUE)	
-	;reset variables
+	; reset variables
 	Global $PixelMine[0]
 	Global $PixelElixir[0]
-	Global $PixelDarkElixir[0]
 	Global $PixelNearCollector[0]
 	Local $colOutside = 0
 	Local $hTimer = TimerInit()
@@ -423,18 +434,12 @@ Func AreCollectorsOutside($percent)
 	If (IsArray($PixelElixir)) Then
 		_ArrayAdd($PixelNearCollector, $PixelElixir)
 	EndIf
-	$PixelDarkElixir = GetLocationDarkElixir()
-	If (IsArray($PixelDarkElixir)) Then
-		_ArrayAdd($PixelNearCollector, $PixelDarkElixir)
-	EndIf
 	Local $colNbr = UBound($PixelNearCollector)
-	SetLog("Located (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds) :")
+	SetLog("Located collectors in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds:")
 	SetLog("[" & UBound($PixelMine) & "] Gold Mines")
 	SetLog("[" & UBound($PixelElixir) & "] Elixir Collectors")
-	SetLog("[" & UBound($PixelDarkElixir) & "] Dark Elixir Drill/s")
 	$iNbrOfDetectedMines[$iMatchMode] += UBound($PixelMine)
 	$iNbrOfDetectedCollectors[$iMatchMode] += UBound($PixelElixir)
-	$iNbrOfDetectedDrills[$iMatchMode] += UBound($PixelDarkElixir)
 	UpdateStats()
 	
 	Local $minColOutside = Round($colNbr * $percent / 100)

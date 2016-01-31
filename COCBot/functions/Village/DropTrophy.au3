@@ -82,13 +82,14 @@ Func DropTrophy()
 			PrepareAttack($DT) ; ==== Troops :checks for type, slot, and quantity ===
 			If $Restart = True Then Return
 			
-			If $iChkTrophyAtkDead = 1 Then				
-				; make sure we have enough army troops or lightnings spells
-				If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) Or $numSpells > 0 Then					
-					If (CompareResources($DB) Or ($ichkDBLightSpell = 1 And Number($searchDark) > $itxtDBLightMinDark)) And checkDeadBase() Then
+			If $iChkTrophyAtkDead = 1 Then
+				; make sure we have enough army troops or zap enabled
+				If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) Or ($ichkDBLightSpell = 1 And $CurLightningSpell > 0) Then					
+					If (CompareResources($DB) Or $searchDark > $itxtDBLightMinDark) And checkDeadBase() Then
 						SetLog("Dead Base Found on Drop Trophy!", $COLOR_GREEN, "Lucida Console", 7.5)
 						; change settings to dead base attack
 						$isDeadBase = True
+						$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $searchDark > $itxtDBLightMinDark
 						If $ichkDBMeetCollOutside = 1 Then
 							If AreCollectorsOutside($iDBMinCollOutsidePercent) Then
 								SetLog("Collectors are outside.", $COLOR_GREEN, "Lucida Console", 7.5)
@@ -96,6 +97,16 @@ Func DropTrophy()
 								ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
 							Else
 								SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
+								If $zapBaseMatch Then ; collectors not outside but drills can still be zapped
+									SetLog("Drills can be zapped!", $COLOR_GREEN, "Lucida Console")	
+									If DEDropSmartSpell() = True Then
+										ReturnHome($TakeLootSnapShot)
+										$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
+										ExitLoop
+									Else ; select first troop type if lightning spell was not used
+										SelectDropTroop($atkTroops[0][0])
+									EndIf
+								EndIf
 							EndIf
 						Else
 							GreedyAttack()
