@@ -83,13 +83,12 @@ Func DropTrophy()
 			If $Restart = True Then Return
 			
 			If $iChkTrophyAtkDead = 1 Then
-				; make sure we have enough army troops or zap enabled
-				If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) Or ($ichkDBLightSpell = 1 And $CurLightningSpell > 0) Then					
-					If (CompareResources($DB) Or $searchDark > $itxtDBLightMinDark) And checkDeadBase() Then
+				$isDeadBase = checkDeadBase()
+				$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And Number($searchDark) > Number($itxtDBLightMinDark) And $isDeadBase
+				If $isDeadBase Then
+					; check if we have enough troops and resource requirement is met
+					If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) And CompareResources($DB) Then	
 						SetLog("Dead Base Found on Drop Trophy!", $COLOR_GREEN, "Lucida Console", 7.5)
-						; change settings to dead base attack
-						$isDeadBase = True
-						$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $searchDark > $itxtDBLightMinDark
 						If $ichkDBMeetCollOutside = 1 Then
 							If AreCollectorsOutside($iDBMinCollOutsidePercent) Then
 								SetLog("Collectors are outside.", $COLOR_GREEN, "Lucida Console", 7.5)
@@ -97,29 +96,30 @@ Func DropTrophy()
 								ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
 							Else
 								SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
-								If $zapBaseMatch Then ; collectors not outside but drills can still be zapped
-									SetLog("Drills can be zapped!", $COLOR_GREEN, "Lucida Console")	
-									If DEDropSmartSpell() = True Then
-										ReturnHome($TakeLootSnapShot)
-										$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
-										ExitLoop
-									Else ; select first troop type for drop trophy
-										SelectDropTroop(0)
-									EndIf
-								EndIf
 							EndIf
 						Else
 							GreedyAttack()
 							ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
 						EndIf
 					Else
-						SetLog("Not a Dead Base, resuming Drop Trophy.", $COLOR_BLACK, "Lucida Console", 7.5)
-						; select first troop type for drop trophy
-						SelectDropTroop(0)
+						SetLog("Not enough troops (" & $itxtDTArmyMin & "%) to attack dead base, resuming Drop Trophy.", $COLOR_ORANGE)						
+					EndIf
+					
+					If $zapBaseMatch Then ; collectors not outside but drills can still be zapped
+						SetLog("Drills can be zapped!", $COLOR_GREEN, "Lucida Console")	
+						If DEDropSmartSpell() = True Then
+							ReturnHome($TakeLootSnapShot)
+							$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
+							ExitLoop
+						Else ; select first troop type for drop trophy
+							SelectDropTroop(0)
+						EndIf
 					EndIf
 				Else
-					SetLog("Not enough troops (" & $itxtDTArmyMin & "%) to attack dead base, resuming Drop Trophy.", $COLOR_ORANGE)
-				EndIf				
+					SetLog("Not a Dead Base, Drop Trophy.", $COLOR_BLACK, "Lucida Console", 7.5)
+					; select first troop type for drop trophy
+					SelectDropTroop(0)
+				EndIf
 			Else
 				; Normal Drop Trophy, no check for Dead Base
 				$SearchCount = 0

@@ -21,7 +21,16 @@ Func GetLocationMine()
 		Local $result = DllCall($hFuncLib, "str", "getLocationSnowMineExtractor", "ptr", $hBitmapFirst)
 		If $debugBuildingPos = 1 Then Setlog("#*# GetLocationSnowMine: " & $result[0] ,$COLOR_TEAL)
 	EndIf
-	Return GetListPixel($result[0])
+	; filter out false positive results
+	Local $found = GetListPixel($result[0])
+	For $i = 0 To Ubound($found) - 1
+		If Not(isInsideDiamond($arrPixel)) Then 
+			_ArrayDelete($found, $i)
+			$i -= 1
+		EndIf	
+		If $i = (Ubound($found) - 1) Then ExitLoop
+	Next
+	Return $found
 EndFunc   ;==>GetLocationMine
 
 Func GetLocationElixir()

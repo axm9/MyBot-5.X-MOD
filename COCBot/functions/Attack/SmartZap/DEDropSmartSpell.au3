@@ -18,7 +18,7 @@ Func DEDropSmartSpell()
 	Local Const $DrillLevelSteal[6] = [59, 102, 172, 251, 343, 479] ; Amount of DE available from Drill at each level (1-6) with 1 average (lvl4) lightning spell
 	Local Const $DrillLevelHold[6] = [120, 225, 405, 630, 960, 1350] ; Total Amount of DE available from Drill at each level (1-6) by attack
 	Local Const $strikeOffsets = [3, 5]
-	Local $searchDark, $aDarkDrills, $numDEDrill = 0, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
+	Local $searchDark, $aDarkDrills, $numDEDrill = 0, $DEperDrill= 0, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
 
 	; Check if target is DE zap match
 	If Not($zapBaseMatch) Then Return False
@@ -50,10 +50,13 @@ Func DEDropSmartSpell()
 	$aDarkDrills = DEDrillSearch()
 	For $i = 0 To 3
 		If $aDarkDrills[$i][3] <> -1 Then $numDEDrill += 1
-	Next
-	If $numDEDrill > 0 And (Number($searchDark) / $numDEDrill) < 400 Then
-		SetLog("DE drills contain less than 400 DE/drill, not worth zapping", $COLOR_RED)
-		Return False
+	Next	
+	If $numDEDrill > 0 Then
+		$DEperDrill = (Number($searchDark) / $numDEDrill)
+		If $DEperDrill < 300 Then
+			SetLog("DE drills contain less than 300 DE/drill, not worth zapping", $COLOR_RED)
+			Return False
+		EndIf
 	EndIf
 
 	; Offset the zap criteria for th8 and lower
@@ -98,16 +101,16 @@ Func DEDropSmartSpell()
 			$iLightSpellUsed += 1
 			$aDarkDrills[0][4] += 1
 			If _Sleep(3500) Then Return True
-		; else if you have half of your spells, drop lightning on level 4+ de drill
-		ElseIf $CurLightningSpell/$maxSpellNbr >= 0.4 And $CurLightningSpell/$maxSpellNbr <= 0.7 And $aDarkDrills[0][2] >= (4 - $drillLvlOffset) Then
+		; else if you have half of your spells and DE/frill is more than 400, drop lightning on level 4+ de drill
+		ElseIf $CurLightningSpell/$maxSpellNbr >= 0.4 And $CurLightningSpell/$maxSpellNbr <= 0.7 And $aDarkDrills[0][2] >= (4 - $drillLvlOffset) And $DEperDrill > 400 Then
 			If $debugsetlog = 1 Then SetLog("Second condition: Attack level 4+ drills if you have half of spells", $COLOR_PURPLE)
 			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
 			$CurLightningSpell -= 1
 			$iLightSpellUsed += 1
 			$aDarkDrills[0][4] += 1
 			If _Sleep(3500) Then Return True
-		; else if the collector is level 5+ and collector is more than 30% full
-		ElseIf $aDarkDrills[0][2] >= (5 - $drillLvlOffset) And ($aDarkDrills[0][3]/$DrillLevelHold[$aDarkDrills[0][2] - 1]) > 0.3 Then
+		; else if the collector is level 5+ and collector is more than 30% full and DE/frill is more than 500
+		ElseIf $aDarkDrills[0][2] >= (5 - $drillLvlOffset) And ($aDarkDrills[0][3]/$DrillLevelHold[$aDarkDrills[0][2] - 1]) > 0.3 And $DEperDrill > 500 Then
 			If $debugsetlog = 1 Then SetLog("Third condition: Attack level 5+ drills if it's more than 30% full", $COLOR_PURPLE)
 			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
 			$CurLightningSpell -= 1
@@ -154,8 +157,10 @@ Func DEDropSmartSpell()
 			Next
 		EndIf
 
-		$smartZapGain += $strikeGain
-		SetLog("DE from zap: " & $strikeGain & " Total DE from smartZap: " & $smartZapGain, $COLOR_FUCHSIA)
+		If $strikeGain > 0 Then
+			$smartZapGain += $strikeGain
+			SetLog("DE from zap: " & $strikeGain & " Total DE from smartZap: " & $smartZapGain, $COLOR_FUCHSIA)
+		EndIf
 
 		; Sort array by the assumed capacity available, and if all drills removed from array, then exit while loop
 		_ArraySort($aDarkDrills, 1, 0, 0, 3)

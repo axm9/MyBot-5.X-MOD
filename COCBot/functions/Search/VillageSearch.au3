@@ -37,8 +37,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	_WinAPI_EmptyWorkingSet(@AutoItPID) ; Reduce Working Set of Bot
 
 	If _Sleep($iDelayVillageSearch1) Then Return
-	$Result = getAttackDisable(346, 182) ; Grab Ocr for TakeABreak check
-	checkAttackDisable($iTaBChkAttack, $Result) ;last check to see If TakeABreak msg on screen for fast PC from PrepareSearch click
 	If $Restart = True Then Return ; exit func
 	For $x = 0 To $iModeCount - 1
 		If $x = $iCmbSearchMode Or $iCmbSearchMode = 2 Then
@@ -138,7 +136,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		EndIf
 
 		$isDeadBase = False
-		$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $searchDark > $itxtDBLightMinDark
+		$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And Number($searchDark) > Number($itxtDBLightMinDark)
 		Local $noMatchTxt = ""
 		Local $match[$iModeCount]
 		Local $isModeActive[$iModeCount]
@@ -416,7 +414,7 @@ Func IsWeakBase($pMode)
 EndFunc   ;==>IsWeakBase
 
 Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be zapped
-	SetLog("Locating Mines, Collectors & Drills", $COLOR_BLUE)	
+	SetLog("Locating Mines & Collectors", $COLOR_BLUE)	
 	; reset variables
 	Global $PixelMine[0]
 	Global $PixelElixir[0]
