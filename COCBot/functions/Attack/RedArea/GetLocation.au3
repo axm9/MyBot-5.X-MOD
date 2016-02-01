@@ -24,7 +24,7 @@ Func GetLocationMine()
 	; filter out false positive results
 	Local $found = GetListPixel($result[0])
 	For $i = 0 To Ubound($found) - 1
-		If Not(isInsideDiamond($arrPixel)) Then 
+		If Not(isInsideDiamond($found[$i])) Then 
 			_ArrayDelete($found, $i)
 			$i -= 1
 		EndIf	
