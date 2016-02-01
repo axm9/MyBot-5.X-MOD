@@ -163,6 +163,36 @@ Func BrewSpells()
 			EndIf
 		EndIf
 	Else
-		SetLog("Spell Factory is full ...", $COLOR_BLUE)
+		SetLog("Spell Factory is full...", $COLOR_BLUE)
 	EndIf
 EndFunc   ;==>BrewSpells
+
+Func CookDrillZapSpell()
+	If $iTrainLightSpell = 1 Then
+		$iBarrHere = 0
+		While Not (isSpellFactory())
+			If Not (IsTrainPage()) Then Return
+			_TrainMoveBtn(+1) ; click Next button
+			$iBarrHere += 1
+			If _Sleep($iDelayTrain3) Then ExitLoop
+			If $iBarrHere = 8 Then ExitLoop
+		WEnd
+		If isSpellFactory() Then
+			Local $x = 0
+			While 1
+				_CaptureRegion()
+				If _Sleep($iDelayTrain2) Then Return
+				If _ColorCheck(_GetPixelColor(200, 346 + $midOffsetY, True), Hex(0x414141, 6), 20) Then
+					Setlog("Spell Factory is full...", $COLOR_BLUE)
+					ExitLoop
+				Else
+					GemClick(252, 354 + $midOffsetY, 1, $iDelayTrain6, "#0290")
+					$x = $x + 1
+				EndIf
+			WEnd
+			If $x <> 0 Then SetLog("Created " & $x & " Lightning Spell(s)", $COLOR_BLUE)
+		Else
+			SetLog("Spell Factory not found...", $COLOR_BLUE)
+		EndIf
+	EndIf ; End Spell Factory
+EndFunc

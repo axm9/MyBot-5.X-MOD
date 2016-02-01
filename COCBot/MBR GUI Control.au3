@@ -143,31 +143,29 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
 EndFunc   ;==>GUIControl
 
 Func BotClose()
-   SetLog("Closing " & $sBotTitle & " ...")
-   If $RunState = True Then AndroidBotStopEvent() ; signal android that bot is now stoppting
-   SaveConfig()
-   ; Close Mutexes
-   If $hMutex_BotTitle <> 0 Then _WinAPI_CloseHandle($hMutex_BotTitle)
-   If $hMutex_Profile <> 0 Then _WinAPI_CloseHandle($hMutex_Profile)
-   If $hMutex_MyBot <> 0 Then _WinAPI_CloseHandle($hMutex_MyBot)
-   ; Clean up resources
-   _GDIPlus_ImageDispose($hBitmap)
-   _WinAPI_DeleteObject($hHBitmap)
-   _GDIPlus_Shutdown()
-   MBRFunc(False) ; close MBRFunctions dll
-   _GUICtrlRichEdit_Destroy($txtLog)
-   _GUICtrlRichEdit_Destroy($txtAtkLog)
-   Exit
+	SetLog("Closing " & $sBotTitle & " ...")
+	If $RunState = True Then AndroidBotStopEvent() ; signal android that bot is now stoppting
+	SaveConfig()
+	; Close Mutexes
+	If $hMutex_BotTitle <> 0 Then _WinAPI_CloseHandle($hMutex_BotTitle)
+	If $hMutex_Profile <> 0 Then _WinAPI_CloseHandle($hMutex_Profile)
+	If $hMutex_MyBot <> 0 Then _WinAPI_CloseHandle($hMutex_MyBot)
+	; Clean up resources
+	_GDIPlus_ImageDispose($hBitmap)
+	_WinAPI_DeleteObject($hHBitmap)
+	_GDIPlus_Shutdown()
+	MBRFunc(False) ; close MBRFunctions dll
+	_GUICtrlRichEdit_Destroy($txtLog)
+	_GUICtrlRichEdit_Destroy($txtAtkLog)
+	Exit
 EndFunc
 
 Func SetRedrawBotWindow($bEnableRedraw, $bCheckRedrawBotWindow = True, $bForceRedraw = False)
     ; speed up GUI changes by disabling window redraw
 	If $bRedrawBotWindow[0] = $bEnableRedraw Then
-	   ; nothing to do
-	   Return False
+		; nothing to do
+		Return False
     EndIF
-	; enable logging to debug GUI redraw
-	;SetDebugLog(($bEnableRedraw ? "Enable" : "Disable") & " MyBot Window Redraw")
 	_SendMessage($frmBot, $WM_SETREDRAW, $bEnableRedraw, 0)
 	$bRedrawBotWindow[0] = $bEnableRedraw
 	If $bEnableRedraw Then
@@ -175,8 +173,8 @@ Func SetRedrawBotWindow($bEnableRedraw, $bCheckRedrawBotWindow = True, $bForceRe
 		  CheckRedrawBotWindow($bForceRedraw)
 	   EndIf
     Else
-	  ; set dirty redraw flag
-	  $bRedrawBotWindow[1] = True
+		; set dirty redraw flag
+		$bRedrawBotWindow[1] = True
     EndIf
     Return True
 EndFunc

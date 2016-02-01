@@ -203,9 +203,6 @@ Func runBot() ;Bot that runs everything in order
 			checkMainScreen(False) ; required here due to many possible exits
 			If $Restart = True Then ContinueLoop
 			Train()
-			If _Sleep($iDelayRunBot3) Then Return
-			If $Restart = True Then ContinueLoop
-			If $iTrainLightSpell = 1 Then CookDrillZapSpell()
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False)
 			If $Restart = True Then ContinueLoop
@@ -321,9 +318,6 @@ Func Idle() ;Sequence that runs until Full Army
 		$iCollectCounter = $iCollectCounter + 1
 		If $CommandStop = -1 Then
 			Train()
-			If _Sleep($iDelayRunBot3) Then Return
-			If $Restart = True Then ContinueLoop
-			If $iTrainLightSpell = 1 Then CookDrillZapSpell()
 			If $Restart = True Then ExitLoop
 			If _Sleep($iDelayIdle1) Then ExitLoop
 			checkMainScreen(False)
@@ -332,9 +326,6 @@ Func Idle() ;Sequence that runs until Full Army
 		If $CommandStop = 0 And $bTrainEnabled = True Then
 			If Not ($fullArmy) Then
 				Train()
-				If _Sleep($iDelayRunBot3) Then Return
-				If $Restart = True Then ContinueLoop
-				If $iTrainLightSpell = 1 Then CookDrillZapSpell()
 				If $Restart = True Then ExitLoop
 				If _Sleep($iDelayIdle1) Then ExitLoop
 				checkMainScreen(False)

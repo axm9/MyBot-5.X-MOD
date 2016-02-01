@@ -85,7 +85,6 @@
 #include "functions\CreateArmy\BarracksStatus.au3"
 #include "functions\CreateArmy\CheckFullArmy.au3"
 #include "functions\CreateArmy\CheckArmyCamp.au3"
-#include "functions\CreateArmy\CookDrillZapSpell.au3"
 #include "functions\CreateArmy\getArmyCapacity.au3"
 #include "functions\CreateArmy\getArmyHeroCount.au3"
 #include "functions\CreateArmy\getArmySpellCapacity.au3"

@@ -177,7 +177,7 @@ Func Train()
 		$BarrackStatus[3] = False
 		$BarrackDarkStatus[0] = False
 		$BarrackDarkStatus[1] = False
-		SetLog("Your Army Camps are now Full", $COLOR_RED)
+		SetLog("Your Army Camps are now Full", $COLOR_BLUE)
 		If $pEnabled = 1 And $ichkAlertPBCampFull = 1 Then PushMsg("CampFull")
 	EndIf
 
@@ -968,7 +968,11 @@ Func Train()
 	If $debugSetlog = 1 Then SetLog("---=====================END TRAIN =======================================---", $COLOR_PURPLE)
 
 	If _Sleep($iDelayTrain4) Then Return
-	BrewSpells() ; Create Spells
+	If $ichkDBLightSpell = 1 Then ; if zap is enabled
+		CookDrillZapSpell() ; cook lightning only 
+	Else
+		BrewSpells() ; normal create spells
+	EndIf
 
 	If _Sleep($iDelayTrain4) Then Return
 	ClickP($aAway, 2, $iDelayTrain5, "#0504"); Click away twice with 250ms delay

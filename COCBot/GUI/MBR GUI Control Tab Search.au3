@@ -37,13 +37,13 @@ Func cmbSearchMode()
 			For $i = $cmbABMeetGE To $chkABMeetOne
 				GUICtrlSetState($i, $GUI_DISABLE)
 			Next
-			For $i = $cmbDBMeetGE To $chkDBMeetOne
+			For $i = $cmbDBMeetGE To $chkDBMeetCollOutside
 				If $i = $cmbDBTH And GUICtrlRead($chkDBMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbDBWeakMortar Or $i = $cmbDBWeakWizTower) And GUICtrlRead($chkDBWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
 			Next
 		Case 1
-			For $i = $cmbDBMeetGE To $chkDBMeetOne
+			For $i = $cmbDBMeetGE To $chkDBMeetCollOutside
 				GUICtrlSetState($i, $GUI_DISABLE)
 			Next
 			For $i = $cmbABMeetGE To $chkABMeetOne
@@ -57,7 +57,7 @@ Func cmbSearchMode()
 				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
 			Next
-			For $i = $cmbDBMeetGE To $chkDBMeetOne
+			For $i = $cmbDBMeetGE To $chkDBMeetCollOutside
 				If $i = $cmbDBTH And GUICtrlRead($chkDBMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbDBWeakMortar Or $i = $cmbDBWeakWizTower) And GUICtrlRead($chkDBWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)

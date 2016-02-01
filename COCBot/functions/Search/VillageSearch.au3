@@ -436,8 +436,8 @@ Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be 
 	SetLog("Located collectors in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds:")
 	SetLog("[" & UBound($PixelMine) & "] Gold Mines")
 	SetLog("[" & UBound($PixelElixir) & "] Elixir Collectors")
-	$iNbrOfDetectedMines[$iMatchMode] += UBound($PixelMine)
-	$iNbrOfDetectedCollectors[$iMatchMode] += UBound($PixelElixir)
+	$iNbrOfDetectedMines[$DB] += UBound($PixelMine)
+	$iNbrOfDetectedCollectors[$DB] += UBound($PixelElixir)
 	UpdateStats()
 	
 	Local $minColOutside = Round($colNbr * $percent / 100)
@@ -459,7 +459,7 @@ Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be 
 			Return True
 		EndIf
 	Next
-	If $debugsetlog = 1 Then SetLog($colOutside & " collectors are outside (" & $colNbr & " collectors found).")
+	If $debugsetlog = 1 Then SetLog($colOutside & " collectors found outside (out of " & $colNbr & ").")
 	Return False
 EndFunc   ;==>AreCollectorsOutside
 

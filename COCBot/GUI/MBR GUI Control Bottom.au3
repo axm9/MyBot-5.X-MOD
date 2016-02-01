@@ -211,7 +211,7 @@ Func btnStart()
 EndFunc   ;==>btnStart
 
 Func btnStop()
-	If $RunState Then ; Or BitOr(GUICtrlGetState($btnStop), $GUI_SHOW) Then ; $btnStop check added for strange $RunState inconsistencies
+	If $RunState Then
 		GUICtrlSetState($chkBackground, $GUI_ENABLE)
 		GUICtrlSetState($btnStart, $GUI_SHOW)
 		GUICtrlSetState($btnStop, $GUI_HIDE)
@@ -220,7 +220,7 @@ Func btnStop()
 		If $iTownHallLevel > 2 Then GUICtrlSetState($btnSearchMode, $GUI_ENABLE)
 		GUICtrlSetState($btnSearchMode, $GUI_SHOW)
 
-		; hide attack buttons if show
+		; hide attack buttons if shown
 		GUICtrlSetState($btnAttackNowDB, $GUI_HIDE)
 		GUICtrlSetState($btnAttackNowLB, $GUI_HIDE)
 		GUICtrlSetState($btnAttackNowTS, $GUI_HIDE)
@@ -243,6 +243,7 @@ Func btnStop()
 		AndroidBotStopEvent() ; signal android that bot is now stoppting
 		$RunState = False
 
+		SetLog(_PadStringCenter(" Bot Stop ", 50, "="), $COLOR_ORANGE)
 		_BlockInputEx(0, "", "", $HWnD)
 		If Not $bSearchMode Then
 			If Not $TPaused Then $iTimePassed += Int(TimerDiff($sTimer))
@@ -255,7 +256,6 @@ Func btnStop()
 		Else
 			$bSearchMode = False
 		EndIf
-		SetLog(_PadStringCenter(" Bot Stop ", 50, "="), $COLOR_ORANGE)
 		SetRedrawBotWindow(True) ; must be here at bottom, after SetLog, so Log refreshes. You could also use SetRedrawBotWindow(True, False) and let the events handle the refresh.
 	EndIf
 EndFunc   ;==>btnStop
