@@ -22,6 +22,31 @@ Func DEDropSmartSpell()
 
 	; Check if target is DE zap match
 	If Not($zapBaseMatch) Then Return False
+	
+	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
+	
+	; Get Dark Elixir value, if no DE value exists, exit.
+	$searchDark = checkDE()
+	If $searchDark = False Then Return False
+	If ($searchDark < Number($itxtDBLightMinDark)) Then
+		SetLog("Not enough Dark Elixir to Zap", $COLOR_RED)
+		Return False
+	EndIf
+	
+	; Get Drill locations and info
+	$aDarkDrills = DEDrillSearch()
+	For $i = 0 To 3
+		If $aDarkDrills[$i][3] <> -1 Then $numDEDrill += 1
+	Next	
+	If $numDEDrill > 0 Then
+		$DEperDrill = (Number($searchDark) / $numDEDrill)
+		SetLog("DE/drill: " & $DEperDrill)
+		If $DEperDrill < 300 Then
+			SetLog("DE drills contain less than 300 DE/drill, not worth zapping", $COLOR_RED)
+			Return False
+		EndIf
+	EndIf
+	$iZapVillageFound += 1
 
 	; Select Lightning Spell and update number of spells left
 	For $i = 0 To UBound($atkTroops) - 1
@@ -33,31 +58,6 @@ Func DEDropSmartSpell()
 	Next
 	If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: " & $CurLightningSpell, $COLOR_PURPLE)
 	If $CurLightningSpell = 0 Then Return False
-	
-	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
-	
-	; Get Dark Elixir value, if no DE value exists, exit.
-	$searchDark = checkDE()
-	If $searchDark = False Then Return False
-	If ($searchDark < Number($itxtDBLightMinDark)) Then
-		SetLog("Not enough Dark Elixir to Zap", $COLOR_RED)
-		Return False
-	EndIf
-
-	$iZapVillageFound += 1
-	
-	; Get Drill locations and info
-	$aDarkDrills = DEDrillSearch()
-	For $i = 0 To 3
-		If $aDarkDrills[$i][3] <> -1 Then $numDEDrill += 1
-	Next	
-	If $numDEDrill > 0 Then
-		$DEperDrill = (Number($searchDark) / $numDEDrill)
-		If $DEperDrill < 300 Then
-			SetLog("DE drills contain less than 300 DE/drill, not worth zapping", $COLOR_RED)
-			Return False
-		EndIf
-	EndIf
 
 	; Offset the zap criteria for th8 and lower
 	Local $drillLvlOffset = 0
@@ -126,9 +126,8 @@ Func DEDropSmartSpell()
 
 		$oldDark = $searchDark
 		If $debugsetlog = 1 Then SetLog("Finished If Statement.", $COLOR_PURPLE)
-		; In case proper color isn't detected for the DE
 		$searchDark = checkDE()
-		If $searchDark = False Then ExitLoop
+		If $searchDark = False Then ExitLoop ; In case proper color isn't detected for the DE
 
 		$strikeGain = $oldDark - $searchDark
 		$iDEFromZap += $strikeGain

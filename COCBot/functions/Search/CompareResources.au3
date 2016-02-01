@@ -34,7 +34,7 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 	
 	Local $THL = -1, $THLO = -1
 
-	For $i = 0 To 5 ;add th11
+	For $i = 0 To 5
 		If $searchTH = $THText[$i] Then $THL = $i
 	Next
 

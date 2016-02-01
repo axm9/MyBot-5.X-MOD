@@ -293,8 +293,8 @@ Global $iNbrOfDetectedDrillsForZap, $lblNbrOfDetectedDrillsForZap
 
 ; Search Settings
 Global $bSearchMode = False
-Global $Is_ClientSyncError = False ;If true means while searching Client Out Of Sync error occurred.
-Global $searchGold, $searchElixir, $searchDark, $searchTrophy, $searchTH ;Resources of bases when searching
+Global $Is_ClientSyncError = False ; If true means while searching Client Out Of Sync error occurred.
+Global $searchGold, $searchElixir, $searchDark, $searchTrophy, $searchTH ; Resources of bases when searching
 Global $SearchGold2 = 0, $SearchElixir2 = 0, $iStuck = 0, $iNext = 0
 Global $iCmbSearchMode
 Global $iMinGold[$iModeCount], $iMinElixir[$iModeCount], $iMinGoldPlusElixir[$iModeCount], $iMinDark[$iModeCount], $iMinTrophy[$iModeCount], $iMaxTH[$iModeCount], $iEnableAfterCount[$iModeCount], $iCmbWeakMortar[$iModeCount], $iCmbWeakWizTower[$iModeCount] ; Minimum Resources conditions
