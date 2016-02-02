@@ -18,7 +18,7 @@
 ; ===============================================================================================================================
 
 Func dropHeroes($x, $y, $KingSlot = -1, $QueenSlot = -1, $WardenSlot = -1) ;Drops for king and queen and Grand Warden
-	If $debugSetLog = 1 Then SetLog("dropHeroes KingSlot " &$KingSlot & " QueenSlot " & $QueenSlot & " WardenSlot " & $WardenSlot  , $Color_Purple)
+	If $debugSetLog = 1 Then SetLog("dropHeroes KingSlot " & $KingSlot & " QueenSlot " & $QueenSlot & " WardenSlot " & $WardenSlot  , $Color_Purple)
 	If _Sleep($iDelaydropHeroes1) Then Return
 	Local $dropKing = False
 	Local $dropQueen = False

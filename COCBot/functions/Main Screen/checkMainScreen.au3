@@ -45,7 +45,7 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 		WinGetAndroidHandle()
 		If _Sleep($iDelaycheckMainScreen1) Then Return
 		$Result = checkObstacles()
-		If $debugsetlog = 1 Then Setlog("CheckObstacles Result = "&$Result, $COLOR_PURPLE)
+		If $debugsetlog = 1 Then Setlog("CheckObstacles Result = " & $Result, $COLOR_PURPLE)
 
 		If ($Result = False And $MinorObstacle = True) Then
 			$MinorObstacle = False

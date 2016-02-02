@@ -18,9 +18,8 @@ Func waitMainScreen() ;Waits for main screen to popup
     Local $iCount
 	SetLog("Waiting for Main Screen")
 	$iCount = 0
-	For $i = 0 To 105 ;105*2000 = 3.5 Minutes
+	For $i = 0 To 105 ; 105*2000 = 3.5 Minutes
 	    If Not $RunState Then Return
-		If $debugsetlog = 1 Then Setlog("ChkObstl Loop = " & $i & "ExitLoop = " & $iCount, $COLOR_PURPLE) ; Debug stuck loop
 		$iCount += 1
 		WinGetAndroidHandle()
 		If $HWnD = 0 Then
@@ -36,7 +35,7 @@ Func waitMainScreen() ;Waits for main screen to popup
 			If $debugsetlog = 1 Then Setlog("Screen cleared, WaitMainScreen exit", $COLOR_PURPLE)
 			Return
 		EndIf
-		If ($i > 105) Or ($iCount > 120) Then ExitLoop  ; If CheckObstacles forces reset, limit total time to 4 minutes
+		If ($i > 105) Or ($iCount > 120) Then ExitLoop ; If CheckObstacles forces reset, limit total time to 4 minutes
 	Next
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -49,7 +48,6 @@ Func waitMainScreen() ;Waits for main screen to popup
 	While 1
 	    If Not $RunState Then Return
 		SetLog("Unable to load CoC, attempt to fix it...", $COLOR_RED)
-		If $debugsetlog = 1 Then Setlog("Restart Loop = " & $iCount, $COLOR_PURPLE) ; Debug stuck loop data
 		CloseAndroid() 	 ; BS must die!
 		If _Sleep(1000) Then Return
 		OpenAndroid(True) ; Open BS and restart CoC

@@ -307,6 +307,9 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				ClickP($NextBtn, 1, 0, "#0155") ; Click Next
 				ExitLoop
 			Else
+				$Result = getAttackDisable(346, 182) ; Grab Ocr for TakeABreak check
+				checkAttackDisable($iTaBChkAttack, $Result) ; check to see If TakeABreak msg on screen after next click
+				If $Restart = True Then Return ; exit func
 				If $debugsetlog = 1 Then SetLog("Wait to see Next Button... " & $i, $COLOR_PURPLE)
 			EndIf
 			If $i >= 99 Or isProblemAffect(True) Then ; if we can't find the next button or there is an error, then restart
@@ -450,16 +453,16 @@ Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be 
 		Local $arrPixel = $PixelNearCollector[$i]
 		If UBound($arrPixel) > 0 Then
 			If isOutsideEllipse($arrPixel[0], $arrPixel[1], $CollectorsEllipseWidth * $radiusAdjustment, $CollectorsEllipseHeigth * $radiusAdjustment) Then 
-				If $debugsetlog = 1 Then SetLog("Collector (" & $arrPixel[0] & ", " & $arrPixel[1] & ") is outside")
+				If $debugsetlog = 1 Then SetLog("Collector (" & $arrPixel[0] & ", " & $arrPixel[1] & ") is outside", $COLOR_PURPLE)
 				$colOutside += 1
 			EndIf
 		EndIf
 		If $colOutside >= $minColOutside Then 
-			If $debugsetlog = 1 Then SetLog("More than " & $percent & " of the collectors are outside.")
+			If $debugsetlog = 1 Then SetLog("More than " & $percent & "% of the collectors are outside", $COLOR_PURPLE)
 			Return True
 		EndIf
 	Next
-	If $debugsetlog = 1 Then SetLog($colOutside & " collectors found outside (out of " & $colNbr & ").")
+	If $debugsetlog = 1 Then SetLog($colOutside & " collectors found outside (out of " & $colNbr & ")", $COLOR_PURPLE)
 	Return False
 EndFunc   ;==>AreCollectorsOutside
 
@@ -469,7 +472,7 @@ Func SearchLimit($iSkipped)
 		While _CheckPixel($aSurrenderButton, $bCapturePixel) = False
 			If _Sleep($iDelaySWHTSearchLimit1) Then Return
 			$Wcount += 1
-			If $debugsetlog = 1 Then setlog("wait surrender button " & $Wcount, $COLOR_PURPLE)
+			If $debugsetlog = 1 Then SetLog("Wait for surrender button " & $Wcount, $COLOR_PURPLE)
 			If $Wcount >= 50 Or isProblemAffect(True) Then
 				checkMainScreen()
 				$Is_ClientSyncError = False ; reset OOS flag for long restart

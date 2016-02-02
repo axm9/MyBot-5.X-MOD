@@ -27,7 +27,7 @@ Func OpenBlueStacks($bRestart = False)
 	$PID = ShellExecute($__BlueStacks_Path & "HD-RunApp.exe", "-p com.supercell.clashofclans -a com.supercell.clashofclans.GameApp")  ;Start BS and CoC with command line
 	If _Sleep(1000) Then Return
 	$ErrorResult = ControlGetHandle("BlueStacks Error", "", "") ; Check for BS error window handle if it opens
-	If $debugsetlog = 1 Then Setlog("$PID= "&$PID & ", $ErrorResult = " &$ErrorResult, $COLOR_PURPLE)
+	If $debugsetlog = 1 Then Setlog("$PID = "&$PID & ", $ErrorResult = " &$ErrorResult, $COLOR_PURPLE)
 	If $PID = 0 Or $ErrorResult <> 0  Then  ; IF ShellExecute failed or BS opens error window = STOP
 		SetLog("Unable to load Clash of Clans, install/reinstall the game.", $COLOR_RED)
 		SetLog("Unable to continue........", $COLOR_MAROON)

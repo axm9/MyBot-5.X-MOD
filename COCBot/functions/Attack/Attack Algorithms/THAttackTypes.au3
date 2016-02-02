@@ -38,7 +38,7 @@ Func AttackTHParseCSV($test = False)
 					Case $command = "TROOP" Or $command = ""
 						; discard line
 					Case $command = "TEXT"
-						If $debugSetLog = 1 Then Setlog(">> SETLOG(""" & $acommand[8] & """)")
+						If $debugSetLog = 1 Then Setlog(">> SETLOG('" & $acommand[8] & "')")
 						SetLog($acommand[8], $COLOR_BLUE)
 					Case StringInStr(StringUpper("-Barb-Arch-Giant-Gobl-Wall-Ball-Wiza-Heal-Drag-Pekk-Mini-Hogs-Valk-Gole-Witc-Lava-"), "-" & $command & "-") > 0
 						If $debugSetLog = 1 Then Setlog(">> AttackTHGrid($e" & $command & ", Random (" & Int($acommand[2]) & "," & Int($acommand[3]) & ",1), Random(" & Int($acommand[4]) & "," & Int($acommand[5]) & ",1), Random(" & Int($acommand[6]) & "," & Int($acommand[7]) & ",1) )")
@@ -66,7 +66,7 @@ Func AttackTHParseCSV($test = False)
 
 						AttackTHGrid(Eval("e" & $command), $iNbOfSpots, $iAtEachSpot, $Sleep, 0)
 					Case $command = "WAIT"
-						If $debugSetLog = 1 Then Setlog(">> ThSnipeWait(" & Int($acommand[7]) & ") ")
+						If $debugSetLog = 1 Then Setlog(">> ThSnipeWait(" & Int($acommand[7]) & ")")
 						If ThSnipeWait(Int($acommand[7])) Then ; Use seconds not ms , Half of time to check One start and the other halft for check the Resources
 							$isTownHallDestroyed = True
 							ExitLoop
@@ -84,8 +84,8 @@ Func AttackTHParseCSV($test = False)
 						Setlog("attack row bad, discard: " & $line, $COLOR_RED)
 				EndSelect
 				If $acommand[8] <> "" And $command <> "TEXT" And $command <> "TROOP" Then
-					If $debugSetLog = 1 Then Setlog(">> SETLOG(""" & $acommand[8] & """)")
-					SETLOG($acommand[8], $COLOR_BLUE)
+					If $debugSetLog = 1 Then Setlog(">> SETLOG('" & $acommand[8] & "')")
+					Setlog($acommand[8], $COLOR_BLUE)
 				EndIf
 			Else
 				If StringStripWS($acommand[1], 2) <> "" Then Setlog("attack row error, discard: " & $line, $COLOR_RED)
@@ -114,16 +114,19 @@ Func ThSnipeWait($delay)
 	Return False
 EndFunc   ;==>ThSnipeWait
 
-Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
+Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)	
+	Setlog ("Checking loot for Greedy mode")
 	Local $GoldEnd = getGoldVillageSearch(48, 69)
 	Local $ElixirEnd = getElixirVillageSearch(48, 69 + 29)
 	Local $DarkEnd = getDarkElixirVillageSearch(48, 69 + 57)		
 	Local $GoldPercent = 100 * ($GoldStart - $GoldEnd) / $GoldStart
 	Local $ElixirPercent = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
 	Local $DarkPercent = 100 * ($DarkStart - $DarkEnd) / $DarkStart
-	Setlog ("Gold loot % = " & $GoldPercent)
-	Setlog ("Elixir loot % " & $ElixirPercent)
-	Setlog ("Dark Elixir loot % " & $DarkPercent)
+	If $debugSetLog = 1 Then 
+		Setlog ("Gold loot % = " & $GoldPercent)
+		Setlog ("Elixir loot % " & $ElixirPercent)
+		Setlog ("Dark Elixir loot % " & $DarkPercent)
+	EndIf
 	If $CurCamp > $iMinTroopToAttackDB And $GoldPercent < $ipercentTSSuccess And $ElixirPercent < $ipercentTSSuccess And ($GoldEnd + $ElixirEnd) > 200000 Then
 		SetLog("Gold & Elixir are mostly in collectors.", $COLOR_GREEN, "Lucida Console", 7.5)
 		; change settings to dead base attack

@@ -73,8 +73,6 @@ Func DonateCC($Check = False)
 		If _Sleep($iDelayDonateCC2) Then ExitLoop
 		$DonatePixel = _MultiPixelSearch(202, $y, 203, 660 + $bottomOffsetY, 1, 1, Hex(0xc0e460, 6), $offColors, 15)
 		If IsArray($DonatePixel) Then ; if Donate Button found
-			If $debugSetlog = 1 Then Setlog("$DonatePixel: (" & $DonatePixel[0] & "," & $DonatePixel[1] & ")", $COLOR_PURPLE)
-
 			;reset every run
 			$bDonate = False
 			$bSkipDonTroops = False
@@ -388,7 +386,7 @@ Func CheckDonateString($String, $ClanString) ;Checks if exact
 EndFunc   ;==>CheckDonateString
 
 Func DonateTroopType($Type, $Quant = 0, $Custom = False, $bDonateAll = False)
-	If $debugSetlog = 1 Then Setlog("$DonateTroopType Start: " & NameOfTroop($Type), $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("DonateTroopType Start: " & NameOfTroop($Type), $COLOR_PURPLE)
 
 	Local $Slot = -1, $YComp = 0, $sTextToAll = ""
 
@@ -571,7 +569,6 @@ Func DonateWindow($Open = True)
 	If IsArray($aDonationWindow) Then
 		$DonationWindowY = $aDonationWindow[1]
 		If _Sleep($iDelayDonateWindow1) Then Return
-		If $debugSetlog = 1 Then Setlog("$DonationWindowY: " & $DonationWindowY, $COLOR_PURPLE)
 	Else
 		SetLog("Could not find the Donate Window!", $COLOR_RED)
 		Return False
@@ -590,12 +587,10 @@ Func DonateWindowCap(ByRef $bSkipDonTroops, ByRef $bSkipDonSpells)
 
 		Local $aTempReadCCTroopsCap = StringSplit($sReadCCTroopsCap, "#")
 		If $aTempReadCCTroopsCap[0] >= 2 Then
-			;  Note - stringsplit always returns an array even if no values split!
-			If $debugSetlog = 1 Then Setlog("$aTempReadCCTroopsCap splitted :" & $aTempReadCCTroopsCap[1] & "/" & $aTempReadCCTroopsCap[2], $COLOR_PURPLE)
+			; Note - stringsplit always returns an array even if no values split!
 			If $aTempReadCCTroopsCap[2] > 0 Then
 				$iDonTroopsAv = $aTempReadCCTroopsCap[1]
 				$iDonTroopsLimit = $aTempReadCCTroopsCap[2]
-				;Setlog("Donate Troops: " & $iDonTroopsAv & "/" & $iDonTroopsLimit)
 			EndIf
 		Else
 			Setlog("Error reading the Castle Troop Capacity...", $COLOR_RED) ; log if there is read error
@@ -609,12 +604,10 @@ Func DonateWindowCap(ByRef $bSkipDonTroops, ByRef $bSkipDonSpells)
 		If $debugSetlog = 1 Then Setlog("$sReadCCSpellsCap: " & $sReadCCSpellsCap, $COLOR_PURPLE)
 		Local $aTempReadCCSpellsCap = StringSplit($sReadCCSpellsCap, "#")
 		If $aTempReadCCSpellsCap[0] >= 2 Then
-			;  Note - stringsplit always returns an array even if no values split!
-			If $debugSetlog = 1 Then Setlog("$aTempReadCCSpellsCap splitted :" & $aTempReadCCSpellsCap[1] & "/" & $aTempReadCCSpellsCap[2], $COLOR_PURPLE)
+			; Note - stringsplit always returns an array even if no values split!
 			If $aTempReadCCSpellsCap[2] > 0 Then
 				$iDonSpellsAv = $aTempReadCCSpellsCap[1]
 				$iDonSpellsLimit = $aTempReadCCSpellsCap[2]
-				;Setlog("Donate Spells: " & $iDonSpellsAv & "/" & $iDonSpellsLimit)
 			EndIf
 		Else
 			Setlog("Error reading the Castle Spells Capacity...", $COLOR_RED) ; log if there is read error
@@ -631,10 +624,6 @@ Func DonateWindowCap(ByRef $bSkipDonTroops, ByRef $bSkipDonSpells)
 	EndIf
 	If $bSkipDonSpells = False And $iDonTroopsAv < $iDonTroopsLimit And $iDonSpellsAv = $iDonSpellsLimit Then Setlog("Donate Troops: " & $iDonTroopsAv & "/" & $iDonTroopsLimit)
 	If $bSkipDonTroops = False And $iDonTroopsAv = $iDonTroopsLimit And $iDonSpellsAv < $iDonSpellsLimit Then Setlog("Donate Spells: " & $iDonSpellsAv & "/" & $iDonSpellsLimit)
-
-	If $debugSetlog = 1 Then Setlog("$bSkipDonTroops: " & $bSkipDonTroops, $COLOR_PURPLE)
-	If $debugSetlog = 1 Then Setlog("$bSkipDonSpells: " & $bSkipDonSpells, $COLOR_PURPLE)
-	If $debugSetlog = 1 Then Setlog("DonateCapWindow End", $COLOR_PURPLE)
 EndFunc   ;==>DonateWindowCap
 
 Func RemainingCCcapacity()
@@ -652,14 +641,14 @@ Func RemainingCCcapacity()
 	$aCapTroops = getOcrSpaceCastleDonate(110, $DonatePixel[1] - 33) ; when the request is troops+spell
 	$aCapSpells = getOcrSpaceCastleDonate(235, $DonatePixel[1] - 33) ; when the request is troops+spell
 
-	If $debugSetlog = 1 Then Setlog("$aCapTroops :" & $aCapTroops, $COLOR_PURPLE)
-	If $debugSetlog = 1 Then Setlog("$aCapSpells :" & $aCapSpells, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("$aCapTroops: " & $aCapTroops, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("$aCapSpells: " & $aCapSpells, $COLOR_PURPLE)
 
 	If Not (StringInStr($aCapTroops, "#") Or StringInStr($aCapSpells, "#")) Then; verify if the string is valid or it is just a number from request without spell
 		If $debugSetlog = 1 Then Setlog("Started single getOcrSpaceCastleDonate", $COLOR_PURPLE)
 		$aCapTroops = getOcrSpaceCastleDonate(139, $DonatePixel[1] - 33) ; when the Request don�t have Spell
 
-		If $debugSetlog = 1 Then Setlog("$aCapTroops :" & $aCapTroops, $COLOR_PURPLE)
+		If $debugSetlog = 1 Then Setlog("$aCapTroops: " & $aCapTroops, $COLOR_PURPLE)
 		$aCapSpells = -1
 	EndIf
 
@@ -669,8 +658,7 @@ Func RemainingCCcapacity()
 
 		; Local Variables to use
 		If $aTempCapTroops[0] >= 2 Then
-			;  Note - stringsplit always returns an array even if no values split!
-			If $debugSetlog = 1 Then Setlog("$aTempCapTroops splitted :" & $aTempCapTroops[1] & "/" & $aTempCapTroops[2], $COLOR_PURPLE)
+			; Note - stringsplit always returns an array even if no values split!
 			If $aTempCapTroops[2] > 0 Then
 				$iDonatedTroops = $aTempCapTroops[1]
 				$iCapTroopsTotal = $aTempCapTroops[2]
@@ -694,7 +682,6 @@ Func RemainingCCcapacity()
 			; Local Variables to use
 			If $aTempCapSpells[0] >= 2 Then
 				; Note - stringsplit always returns an array even if no values split!
-				If $debugSetlog = 1 Then Setlog("$aTempCapSpells splitted :" & $aTempCapSpells[1] & "/" & $aTempCapSpells[2], $COLOR_PURPLE)
 				If $aTempCapSpells[2] > 0 Then
 					$iDonatedSpells = $aTempCapSpells[1]
 					$iCapSpellsTotal = $aTempCapSpells[2]
@@ -729,9 +716,9 @@ EndFunc   ;==>RemainingCCcapacity
 Func DetectSlotTroop($Type)
 	If $Type >= $eBarb And $Type <= $eLava Then
 		For $Slot = 0 To 6
-			If $debugSetlog = 1 Then Setlog(" Slot : " & $Slot, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("Slot : " & $Slot, $COLOR_PURPLE)
 			Local $FullTemp = getOcrDonationTroopsDetection(358 + (68 * $Slot), $DonationWindowY + 38)
-			If $debugSetlog = 1 Then Setlog(" getOcrDonationTroopsDetection: " & $FullTemp, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("getOcrDonationTroopsDetection: " & $FullTemp, $COLOR_PURPLE)
 			If $FullTemp <> "" Then
 				If $Type = $eBarb And $FullTemp = "barbarian" Then
 					Return $Slot
@@ -782,9 +769,9 @@ Func DetectSlotTroop($Type)
 		Next
 
 		For $Slot = 7 To 13
-			If $debugSetlog = 1 Then Setlog(" Slot : " & $Slot, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("Slot : " & $Slot, $COLOR_PURPLE)
 			Local $FullTemp = getOcrDonationTroopsDetection(358 + (68 * ($Slot - 7)), $DonationWindowY + 127)
-			If $debugSetlog = 1 Then Setlog(" getOcrDonationTroopsDetection: " & $FullTemp, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("getOcrDonationTroopsDetection: " & $FullTemp, $COLOR_PURPLE)
 			If $FullTemp <> "" Then
 				If $Type = $eBarb And $FullTemp = "barbarian" Then
 					Return $Slot
@@ -837,9 +824,9 @@ Func DetectSlotTroop($Type)
 
 	If $Type >= $ePSpell And $Type <= $eHaSpell Then
 		For $Slot = 14 To 16
-			If $debugSetlog = 1 Then Setlog(" Slot : " & $Slot, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("Slot : " & $Slot, $COLOR_PURPLE)
 			Local $FullTemp = getOcrDonationTroopsDetection(358 + (68 * ($Slot - 14)), $DonationWindowY + 241 + 20)
-			If $debugSetlog = 1 Then Setlog(" getOcrDonationSpells: " & $FullTemp, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("getOcrDonationSpells: " & $FullTemp, $COLOR_PURPLE)
 			If $Type = $ePSpell And $FullTemp = "poison" Then
 				Return $Slot
 			EndIf

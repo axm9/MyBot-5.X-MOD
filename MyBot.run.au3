@@ -265,7 +265,7 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot3) Then Return
 			;  OCR read current Village Trophies when OOS restart maybe due PB or else DropTrophy skips one attack cycle after OOS
 			$iTrophyCurrent = getTrophyMainScreen($aTrophies[0], $aTrophies[1])
-			If $debugsetlog = 1 Then SetLog("Runbot Trophy Count: " & $iTrophyCurrent, $COLOR_PURPLE)
+			If $debugsetlog = 1 Then SetLog("Trophy Count: " & $iTrophyCurrent, $COLOR_PURPLE)
 			AttackMain()
 			If $OutOfGold = 1 Then
 				Setlog("Switching to Halt Attack, Stay Online/Collect mode ...", $COLOR_RED)

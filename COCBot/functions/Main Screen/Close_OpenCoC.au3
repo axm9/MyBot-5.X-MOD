@@ -98,7 +98,7 @@ Func WaitnOpenCoC($iWaitTime, $bFullRestart = False)
 	SendAdbCommand("shell am start -n com.supercell.clashofclans/.GameApp")
     If Not $RunState Then Return
 
-	If $debugSetlog = 1 Then setlog("CoC Restarted, Waiting for completion", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then SetLog("CoC Restarted, Waiting for completion", $COLOR_PURPLE)
 
 	If $bFullRestart = True Then
 		checkMainScreen() ; Use checkMainScreen to restart CoC, and waitMainScreen to handle Take A Break wait, or other errors.

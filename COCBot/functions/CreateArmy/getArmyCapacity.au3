@@ -15,7 +15,7 @@
 ; ===============================================================================================================================
 
 Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
-	If $debugSetlog = 1 Then SETLOG("Begin getArmyCapacity:", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Begin getArmyCapacity", $COLOR_PURPLE)
 
 	If IsTrainPage() = False And $bOpenArmyWindow = False Then ; check for train page
 		SetError(1)
@@ -37,7 +37,6 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	If $debugSetlog = 1 Then Setlog("OCR $sArmyInfo = " & $sArmyInfo, $COLOR_PURPLE)
 
 	While $iTried < 100 ; 30 - 40 sec
-
 		$iTried += 1
 		If _Sleep($iDelaycheckArmyCamp5) Then Return ; Wait 250ms before reading again
 		$sArmyInfo = getArmyCampCap(192, 144 + $midOffsetY) ; OCR read army trained and total
@@ -48,7 +47,7 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		If IsArray($aGetArmySize) Then
 			If $aGetArmySize[0] > 1 Then ; check if the OCR was valid and returned both values
 				If Number($aGetArmySize[2]) < 10 Or Mod(Number($aGetArmySize[2]), 5) <> 0 Then ; check to see if camp size is multiple of 5, or try to read again
-					If $debugSetlog = 1 Then Setlog(" OCR value is not valid camp size", $COLOR_PURPLE)
+					If $debugSetlog = 1 Then Setlog("OCR value is not valid camp size", $COLOR_PURPLE)
 					ContinueLoop
 				EndIf
 				$tmpCurCamp = Number($aGetArmySize[1])
@@ -64,7 +63,7 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	If $iTried <= 99 Then
 		$CurCamp = $tmpCurCamp
 		If $TotalCamp = 0 Then $TotalCamp = $tmpTotalCamp
-		If $debugSetlog = 1 Then Setlog("$CurCamp = " & $CurCamp & ", $TotalCamp = " & $TotalCamp, $COLOR_PURPLE)
+		If $debugSetlog = 1 Then Setlog("Current Camp = " & $CurCamp & ", Total Camp = " & $TotalCamp, $COLOR_PURPLE)
 	Else
 		Setlog("Army size read error, Troop numbers may not train correctly", $COLOR_RED) ; log if there is read error
 		$CurCamp = 0

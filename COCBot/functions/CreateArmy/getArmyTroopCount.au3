@@ -18,7 +18,7 @@ Global $SlotInArmyBarb = -1, $SlotInArmyArch = -1, $SlotInArmyGiant = -1, $SlotI
 Global $SlotInArmyMini = -1, $SlotInArmyHogs = -1, $SlotInArmyValk = -1, $SlotInArmyGole = -1, $SlotInArmyWitc = -1, $SlotInArmyLava = -1, $SlotInArmyDrag = -1, $SlotInArmyPekk = -1
 
 Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
-	If $debugSetlog = 1 Then SETLOG("Begin getArmyTroopCount:", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Begin getArmyTroopCount", $COLOR_PURPLE)
 
 	If IsTrainPage() = False And $bOpenArmyWindow = False Then ; check for train page
 		SetError(1)
@@ -35,7 +35,6 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 
 	_WinAPI_DeleteObject($hBitmapFirst)
 	Local $hBitmapFirst = _CaptureRegion2(120, 165 + $midOffsetY, 740, 220 + $midOffsetY)
-	If $debugSetlog = 1 Then SetLog("$hBitmapFirst made", $COLOR_PURPLE)
 	If _Sleep($iDelaycheckArmyCamp5) Then Return
 	If $debugSetlog = 1 Then SetLog("Calling MBRfunctions.dll/searchIdentifyTroopTrained ", $COLOR_PURPLE)
 
@@ -43,24 +42,15 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
 	If $debugSetlog = 1 Then
 		If IsArray($FullTemp) Then
-			SetLog("Dll return $FullTemp :" & $FullTemp[0], $COLOR_PURPLE)
+			SetLog("Dll return $FullTemp: " & $FullTemp[0], $COLOR_PURPLE)
 		Else
-			SetLog("Dll return $FullTemp : ERROR" & $FullTemp, $COLOR_PURPLE)
+			SetLog("Dll return $FullTemp: ERROR " & $FullTemp, $COLOR_PURPLE)
 		EndIf
 	EndIf
 
 	If IsArray($FullTemp) Then
 		$TroopTypeT = StringSplit($FullTemp[0], "|")
 	EndIf
-
-	If $debugSetlog = 1 Then
-		If IsArray($TroopTypeT) Then
-			SetLog("$Trooptype split # : " & $TroopTypeT[0], $COLOR_PURPLE)
-		Else
-			SetLog("$Trooptype split # : ERROR " & $TroopTypeT, $COLOR_PURPLE)
-		EndIf
-	EndIf
-	If $debugSetlog = 1 Then SetLog("Start the Loop", $COLOR_PURPLE)
 
 	For $i = 0 To UBound($TroopName) - 1 ; Reset the variables
 		Assign(("SlotInArmy" & $TroopName[$i]), -1)
@@ -80,7 +70,6 @@ Func getArmyTroopCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 			$TroopQ = "0"
 			If _sleep($iDelaycheckArmyCamp1) Then Return
 			Local $Troops = StringSplit($TroopTypeT[$i], "#", $STR_NOCOUNT)
-			If $debugSetlog = 1 Then SetLog("$TroopTypeT[$i] split : " & $i, $COLOR_PURPLE)
 
 			If IsArray($Troops) And $Troops[0] <> "" Then
 				If $Troops[0] = $eBarb Then

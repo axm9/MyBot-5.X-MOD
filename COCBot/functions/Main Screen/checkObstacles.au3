@@ -22,7 +22,6 @@ Func checkObstacles() ;Checks if something is in the way for mainscreen
 		_CaptureRegion()
 		If $debugsetlog = 1 Then SetLog("(Inactive=" & _GetPixelColor($aIsInactive[0], $aIsInactive[1]) & ")(DC=" & _GetPixelColor($aIsConnectLost[0], $aIsConnectLost[1]) & ")(OoS=" & _GetPixelColor($aIsCheckOOS[0], $aIsCheckOOS[1]) & ")", $COLOR_PURPLE)
 		If $debugsetlog = 1 Then SetLog("(Maintenance=" & _GetPixelColor($aIsMaintenance[0], $aIsMaintenance[1]) & ")(RateCoC=" & ")", $COLOR_PURPLE)
-		If $debugsetlog = 1 Then SetLog("33B5E5=>true, 282828=>false", $COLOR_PURPLE)
 		;;;;;;;##### 1- Another device #####;;;;;;;
 		If _ImageSearchArea($device, 0, 237, 321 + $midOffsetY, 293, 346 + $midOffsetY, $x, $y, 80) Then
 			If $sTimeWakeUp > 3600 Then

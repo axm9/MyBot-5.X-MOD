@@ -44,7 +44,7 @@ Func TrainClick($x, $y, $iTimes, $iSpeed, $aWatchSpot, $aLootSpot, $sdebugtxt = 
 			Next
 		Else
 			If isProblemAffect(True) Then checkMainScreen(False)
-			If $DebugSetlog = 1 Then SetLog("Full Check=" & _GetPixelColor($aWatchSpot[0], $aWatchSpot[1], True), $COLOR_PURPLE)
+			If $DebugSetlog = 1 Then SetLog("Full Check = " & _GetPixelColor($aWatchSpot[0], $aWatchSpot[1], True), $COLOR_PURPLE)
 			If _CheckPixel($aWatchSpot, True) = True Then Return ; Check to see if barrack full
 			If _CheckPixel($aLootSpot, True) = True Then  ; Check to see if out of Elixir
 				SetLog("Elixir Check Fail: Color = " & _GetPixelColor($aLootSpot[0], $aLootSpot[1], True), $COLOR_PURPLE)

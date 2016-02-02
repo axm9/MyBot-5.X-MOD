@@ -25,7 +25,6 @@ Func ReplayShare($last = 1)
 		ClickP($aAway,1,0,"#0235") ;Click Away
 		If _Sleep($iDelayReplayShare2) Then Return ;
 		SetLog("Share Replay: Opening Messages Page...", $COLOR_BLUE)
-		If $DebugSetlog = 1 Then Setlog("$last= " & $last, $COLOR_PURPLE)
 		ClickP($aMessageButton, 1, 0, "#0236") ;Click Messages Button
 		If _Sleep($iDelayReplayShare3) Then Return
 		Click(380, 94 + $midOffsetY,1,0,"#0237") ; Click Attack Log Tab, move down 30 pixels for 860x780
@@ -36,7 +35,6 @@ Func ReplayShare($last = 1)
 
 		; check if exist replay queue ----------------------------------------------------
 		Local $FileListQueueName = _FileListToArray($dirTemp, "Village*.png", 1); list files to an array.
-		If $DebugSetlog = 1 Then Setlog("Top share button pixel color 70D4E8 or BBBBBB: " & _GetPixelColor(500, 156 + $midOffsetY), $COLOR_PURPLE)
 		If _ColorCheck(_GetPixelColor(500, 156 + $midOffsetY), Hex(0x70D4E8, 6), 10) = True And Not (IsArray($FileListQueueName)) Then
 			;button replay blue, moved down 30 for 860x780
 			Setlog("Ok, sharing!")
@@ -114,13 +112,11 @@ Func ReplayShare($last = 1)
 				ClickP($aAway,1,0,"#0242") ;Click Away
 				If _Sleep($iDelayReplayShare2) Then Return ;
 				SetLog("Share Replay: Opening Messages Page...", $COLOR_BLUE)
-				If $DebugSetlog = 1 Then Setlog("$last= " & $last, $COLOR_PURPLE)
 				ClickP($aMessageButton, 1, 0, "#0243") ; Click Messages Button
 				If _Sleep($iDelayReplayShare3) Then Return
 				Click(380, 94 + $midOffsetY,1,0,"#0244") ; Click Attack Log Tab, moved down 30 for 860x780
 				If _Sleep($iDelayReplayShare3) Then Return
 				_CaptureRegion()
-				If $DebugSetlog = 1 Then Setlog("Top share button pixel color 70D4E8 or BBBBBB: " & _GetPixelColor(500, 156 + $midOffsetY), $COLOR_PURPLE)
 				If _ColorCheck(_GetPixelColor(500, 156 + $midOffsetY), Hex(0x70D4E8, 6), 10) = True Then
 					;button replay blue,, moved down 30 for 860x780
 					Setlog("Ok, sharing!")

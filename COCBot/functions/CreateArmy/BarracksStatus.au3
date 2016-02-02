@@ -128,10 +128,10 @@ Func BarracksStatus($showlog = false)
 	EndIf
 
 	If $debugSetlog = 1 Then
-	   Local $txt= ""
-		For $i = 0 to Ubound($Trainavailable) -1
-		   $txt &=  $Trainavailable[$i] & " "
+		Local $txt= ""
+		For $i = 0 to Ubound($Trainavailable) - 1
+		   $txt &= $Trainavailable[$i] & " "
 		Next
-		SetLog ("Trainavailable = " & $txt, $COLOR_PURPLE )
+		SetLog ("Train available = " & $txt, $COLOR_PURPLE)
 	EndIf
 EndFunc   ;==>BarracksStatus

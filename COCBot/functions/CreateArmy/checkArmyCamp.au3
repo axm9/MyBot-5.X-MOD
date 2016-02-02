@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 Func checkArmyCamp()
-	If $debugSetlog = 1 Then SETLOG("Begin checkArmyCamp:", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then SetLog("Check Army Camp", $COLOR_PURPLE)
 
 	GetArmyCapacity()
 	If _Sleep($iDelaycheckArmyCamp6) Then Return ; 10ms improve pause button response
@@ -33,7 +33,7 @@ Func checkArmyCamp()
 
 	; verify can make requestCC
 	$canRequestCC = _ColorCheck(_GetPixelColor($aRequestTroopsAO[0], $aRequestTroopsAO[1], True), Hex($aRequestTroopsAO[2], 6), $aRequestTroopsAO[5])
-	If $debugSetlog = 1 Then SETLOG("Can Request CC: " & $canRequestCC, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then SetLog("Can Request CC: " & $canRequestCC, $COLOR_PURPLE)
 
 	; call BarracksStatus() to read barracks num
 	If $FirstStart Then
@@ -45,8 +45,6 @@ Func checkArmyCamp()
 	If Not $fullArmy Then DeleteExcessTroops()
 
 	$FirstCampView = True
-
-	If $debugSetlog = 1 Then SETLOG("End checkArmyCamp:" & $canRequestCC, $COLOR_PURPLE)
 EndFunc   ;==>checkArmyCamp
 
 Func IsTroopToDonateOnly($pTroopType)
@@ -134,16 +132,13 @@ Func DeleteExcessTroops()
 	EndIf
 
 	SetLog("Troops in excess!...")
-	If $debugSetlog = 1 Then SetLog("Start-Loop Regular Troops Only To Donate ")
 	For $i = 0 To UBound($TroopName) - 1
 		If IsTroopToDonateOnly(Eval("e" & $TroopName[$i])) Then ; Will delete ONLY the Excess quantity of troop for donations , the rest is to use in Attack
-			If $debugSetlog = 1 Then SetLog("Troop :" & NameOfTroop(Eval("e" & $TroopName[$i])))
+			If $debugSetlog = 1 Then SetLog("Troop : " & NameOfTroop(Eval("e" & $TroopName[$i])))
 			If (Eval("Cur" & $TroopName[$i]) * -1) > Eval($TroopName[$i] & "Comp") Then ; verify if the exist excess of troops
 
 				$Delete = (Eval("Cur" & $TroopName[$i]) * -1) - Eval($TroopName[$i] & "Comp") ; existent troops - troops selected in GUI
-				If $debugSetlog = 1 Then SetLog("$Delete :" & $Delete)
 				$SlotTemp = Eval("SlotInArmy" & $TroopName[$i])
-				If $debugSetlog = 1 Then SetLog("$SlotTemp :" & $SlotTemp)
 
 				If _Sleep(250) Then Return
 				If _ColorCheck(_GetPixelColor(192 + (62 * $SlotTemp), 235 + $midOffsetY, True), Hex(0xD10400, 6), 10) Then ; Verify if existe the RED [-] button
@@ -155,16 +150,13 @@ Func DeleteExcessTroops()
 		EndIf
 	Next
 
-	If $debugSetlog = 1 Then SetLog("Start-Loop Dark Troops Only To Donate ")
 	For $i = 0 To UBound($TroopDarkName) - 1
 		If IsTroopToDonateOnly(Eval("e" & $TroopDarkName[$i])) Then ; Will delete ONLY the Excess quantity of troop for donations , the rest is to use in Attack
 			If $debugSetlog = 1 Then SetLog("Troop :" & NameOfTroop(Eval("e" & $TroopDarkName[$i])))
 			If (Eval("Cur" & $TroopDarkName[$i]) * -1) > Eval($TroopDarkName[$i] & "Comp") Then ; verify if the exist excess of troops
 
 				$Delete = (Eval("Cur" & $TroopDarkName[$i]) * -1) - Eval($TroopDarkName[$i] & "Comp") ; existent troops - troops selected in GUI
-				If $debugSetlog = 1 Then SetLog("$Delete :" & $Delete)
 				$SlotTemp = Eval("SlotInArmy" & $TroopDarkName[$i])
-				If $debugSetlog = 1 Then SetLog("$SlotTemp :" & $SlotTemp)
 
 				If _Sleep(250) Then Return
 				If _ColorCheck(_GetPixelColor(192 + (62 * $SlotTemp), 235 + $midOffsetY, True), Hex(0xD10400, 6), 10) Then ; Verify if existe the RED [-] button

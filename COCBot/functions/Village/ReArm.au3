@@ -36,10 +36,6 @@ Func ReArm()
 	Local $offColors[3][3] = [[0x080d0a, 30, 26], [0xF6EF57, 70,5], [0xf5f6f2, 79, 0]] ; 2nd pixel brown wrench, 3rd pixel gold, 4th pixel edge of button
 	Global $RearmPixel = _MultiPixelSearch2(375, $y, 575, $y + 58, 1, 1, Hex(0xf5f7f2, 6), $offColors, 30) ; first gray/white pixel of button
 	If IsArray($RearmPixel) Then
-		If $debugSetlog = 1 Then
-			Setlog("Traps ButtonPixel = " & $RearmPixel[0] & ", " & $RearmPixel[1], $COLOR_PURPLE) ;Debug
-			Setlog("Color #1: " & _GetPixelColor($RearmPixel[0], $RearmPixel[1], True) & ", #2: " & _GetPixelColor($RearmPixel[0] + 24, $RearmPixel[1] + 34, True) & ", #3: " & _GetPixelColor($RearmPixel[0] + 69, $RearmPixel[1] + 7, True) & ", #4: " & _GetPixelColor($RearmPixel[0] + 77, $RearmPixel[1], True), $COLOR_PURPLE)
-		EndIf
 		Click($RearmPixel[0] + 20, $RearmPixel[1] + 20, 1, 0, "#0326") ; Click RearmButton
 		If _Sleep($iDelayReArm4) Then Return
 		Click(515, 400, 1, 0, "#0226")
@@ -60,10 +56,6 @@ Func ReArm()
 		Local $XbowPixel = _MultiPixelSearch2(380, $y, 625, $y + 38, 1, 1, Hex(0xF3F5F1, 6), $offColors, 30)
 		If IsArray($XbowPixel) Then
 			Click($XbowPixel[0] + 20, $XbowPixel[1] + 20, 1, 0, "#0228") ; Click RearmButton
-			If $debugSetlog = 1 Then
-				Setlog("x-bow ButtonPixel = " & $XbowPixel[0] & ", " & $XbowPixel[1], $COLOR_PURPLE) ;Debug
-				Setlog("Color #1: " & _GetPixelColor($XbowPixel[0], $XbowPixel[1], True) & ", #2: " & _GetPixelColor($XbowPixel[0] + 19, $XbowPixel[1] + 20, True) & ", #3: " & _GetPixelColor($XbowPixel[0] + 70, $XbowPixel[1] + 7, True) & ", #4: " & _GetPixelColor($XbowPixel[0] + 77, $XbowPixel[1], True), $COLOR_PURPLE)
-			EndIf
 			If _Sleep($iDelayReArm4) Then Return
 			Click(515, 400, 1, 0, "#0229")
 			If _Sleep($iDelayReArm4) Then Return
@@ -84,10 +76,6 @@ Func ReArm()
 		Local $offColors[3][3] = [[0x0e0e0c, 16, 21], [0x000000, 67, 7], [0xF3F5F1, 79, 0]]; inferno, dark, edge
 		Global $InfernoPixel = _MultiPixelSearch2(475, $y, 675, $y + 38, 1, 1, Hex(0xF3F5F1, 6), $offColors, 30)
 		If IsArray($InfernoPixel) Then
-			If $debugSetlog = 1 Then
-				Setlog("Inferno ButtonPixel = " & $InfernoPixel[0] & ", " & $InfernoPixel[1], $COLOR_PURPLE) ;Debug
-				Setlog("Color #1: " & _GetPixelColor($InfernoPixel[0], $InfernoPixel[1], True) & ", #2: " & _GetPixelColor($InfernoPixel[0] + 19, $InfernoPixel[1] + 20, True) & ", #3: " & _GetPixelColor($InfernoPixel[0] + 70, $InfernoPixel[1] + 7, True) & ", #4: " & _GetPixelColor($InfernoPixel[0] + 77, $InfernoPixel[1], True), $COLOR_PURPLE)
-			EndIf
 			Click($InfernoPixel[0] + 20, $InfernoPixel[1] + 20, 1, 0, "#0231") ; Click InfernoButton
 			If _Sleep($iDelayReArm4) Then Return
 			Click(515, 400, 1, 0, "#0232")

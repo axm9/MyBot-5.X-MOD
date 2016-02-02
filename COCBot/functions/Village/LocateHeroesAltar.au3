@@ -76,7 +76,7 @@ Func LocateQueenAltar()
 			Return
 		EndIf
 
-		;get Queen info
+		; get Queen info
 		$sInfo = BuildingInfo(242, 520 + $bottomOffsetY); 860x780
 		If @error Then SetError(0, 0, 0)
 		Local $CountGetInfo = 0
@@ -87,7 +87,6 @@ Func LocateQueenAltar()
 			$CountGetInfo += 1
 			If $CountGetInfo = 50 Then Return
 		WEnd
-		If $debugSetlog = 1 Then SetLog($sInfo[1] & $sInfo[2])
 		If @error Then Return SetError(0, 0, 0)
 
 		If $sInfo[0] > 1 Or $sInfo[0] = "" Then
@@ -211,7 +210,6 @@ Func LocateKingAltar()
 			$CountGetInfo += 1
 			If $CountGetInfo = 50 Then Return
 		WEnd
-		If $debugSetlog = 1 Then SetLog($sInfo[1] & $sInfo[2])
 		If @error Then Return SetError(0, 0, 0)
 
 		If $sInfo[0] > 1 Or $sInfo[0] = "" Then
@@ -344,7 +342,6 @@ Func LocateWardenAltar()
 			$CountGetInfo += 1
 			If $CountGetInfo = 50 Then Return
 		WEnd
-		If $debugSetlog = 1 Then SetLog($sInfo[1] & $sInfo[2])
 		If @error Then Return SetError(0, 0, 0)
 
 		If $sInfo[0] > 1 Or $sInfo[0] = "" Then

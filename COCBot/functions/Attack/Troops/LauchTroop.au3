@@ -62,7 +62,7 @@ Func LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 			$waveNb = $listInfoDeploy[$i][2]
 			$maxWaveNb = $listInfoDeploy[$i][3]
 			$slotsPerEdge = $listInfoDeploy[$i][4]
-			If $debugSetlog = 1 Then SetLog("**ListInfoDeploy row " & $i & ": USE " & $troopKind & " SIDES " & $nbSides & " WAVE " & $waveNb & " XWAVE " & $maxWaveNb & " SLOTXEDGE " & $slotsPerEdge, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then SetLog("**ListInfoDeploy row " & $i & ": USE: " & $troopKind & ", SIDES: " & $nbSides & ", WAVE: " & $waveNb & ", XWAVE: " & $maxWaveNb & ", SLOTXEDGE: " & $slotsPerEdge, $COLOR_PURPLE)
 			If (IsNumber($troopKind)) Then
 				For $j = 0 To UBound($atkTroops) - 1 ; identify the position of this kind of troop
 					If $atkTroops[$j][0] = $troopKind Then
@@ -107,21 +107,19 @@ Func LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 						If $DeployHeroesPosition[0] <> -1 Then
 							$pixelRandomDrop[0] = $DeployHeroesPosition[0]
 							$pixelRandomDrop[1] = $DeployHeroesPosition[1]
-							If $debugSetlog = 1 Then SetLog("Deploy Heroes $DeployHeroesPosition")
 						Else
 							$pixelRandomDrop[0] = $BottomRight[2][0]
-							$pixelRandomDrop[1] = $BottomRight[2][1] ;
-							If $debugSetlog = 1 Then SetLog("Deploy Heroes $BottomRight")
+							$pixelRandomDrop[1] = $BottomRight[2][1]
 						EndIf
+						If $debugSetlog = 1 Then SetLog("Deploy Heroes position: (" & $pixelRandomDrop[0] & ", " & $pixelRandomDrop[1] & ")", $COLOR_PURPLE)
 						If $DeployCCPosition[0] <> -1 Then
 							$pixelRandomDropcc[0] = $DeployCCPosition[0]
 							$pixelRandomDropcc[1] = $DeployCCPosition[1]
-							If $debugSetlog = 1 Then SetLog("Deploy CC $DeployHeroesPosition")
 						Else
-							$pixelRandomDrop[0] = $BottomRight[2][0]
-							$pixelRandomDrop[1] = $BottomRight[2][1] ;
-							If $debugSetlog = 1 Then SetLog("Deploy CC $BottomRight")
+							$pixelRandomDropcc[0] = $BottomRight[2][0]
+							$pixelRandomDropcc[1] = $BottomRight[2][1]
 						EndIf
+						If $debugSetlog = 1 Then SetLog("Deploy CC position: (" & $pixelRandomDropcc[0] & ", " & $pixelRandomDropcc[1] & ")", $COLOR_PURPLE)
 
 						If ($infoPixelDropTroop[0] = "CC") Then
 							dropCC($pixelRandomDropcc[0], $pixelRandomDropcc[1], $CC)
@@ -173,21 +171,19 @@ Func LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 									If $DeployHeroesPosition[0] <> -1 Then
 										$pixelRandomDrop[0] = $DeployHeroesPosition[0]
 										$pixelRandomDrop[1] = $DeployHeroesPosition[1]
-										If $debugSetlog = 1 Then SetLog("Deploy Heroes $DeployHeroesPosition")
 									Else
 										$pixelRandomDrop[0] = $BottomRight[2][0]
 										$pixelRandomDrop[1] = $BottomRight[2][1] ;
-										If $debugSetlog = 1 Then SetLog("Deploy Heroes $BottomRight")
 									EndIf
+									If $debugSetlog = 1 Then SetLog("Deploy Heroes position: (" & $pixelRandomDrop[0] & ", " & $pixelRandomDrop[1] & ")", $COLOR_PURPLE)
 									If $DeployCCPosition[0] <> -1 Then
 										$pixelRandomDropcc[0] = $DeployCCPosition[0]
 										$pixelRandomDropcc[1] = $DeployCCPosition[1]
-										If $debugSetlog = 1 Then SetLog("Deploy CC $DeployHeroesPosition")
 									Else
-										$pixelRandomDrop[0] = $BottomRight[2][0]
-										$pixelRandomDrop[1] = $BottomRight[2][1] ;
-										If $debugSetlog = 1 Then SetLog("Deploy CC $BottomRight")
+										$pixelRandomDropcc[0] = $BottomRight[2][0]
+										$pixelRandomDropcc[1] = $BottomRight[2][1] ;
 									EndIf
+									If $debugSetlog = 1 Then SetLog("Deploy CC position: (" & $pixelRandomDropcc[0] & ", " & $pixelRandomDropcc[1] & ")", $COLOR_PURPLE)
 
 									If ($isCCDropped = False And $infoTroopListArrPixel[0] = "CC") Then
 										dropCC($pixelRandomDrop[0], $pixelRandomDrop[1], $CC)
@@ -199,7 +195,7 @@ Func LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 								Else
 									$infoListArrPixel = $infoTroopListArrPixel[1]
 									$listPixel = $infoListArrPixel[$i]
-									;infoPixelDropTroop : First element in array contains troop and list of array to drop troop
+									; infoPixelDropTroop : First element in array contains troop and list of array to drop troop
 									If _Sleep($iDelayLaunchTroop21) Then Return
 									SelectDropTroop($infoTroopListArrPixel[0]) ;Select Troop
 									If _Sleep($iDelayLaunchTroop23) Then Return

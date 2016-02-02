@@ -16,7 +16,7 @@
 
 Func CheckBaseQuick()
 	If IsMainPage() Then  ; check for main page
-		If $Debugsetlog = 1 Then Setlog("CheckBaseQuick now...", $COLOR_RED)
+		If $Debugsetlog = 1 Then Setlog("CheckBaseQuick now...", $COLOR_PURPLE)
 
 		RequestCC() ; fill CC
 		If _Sleep($iDelayRunBot1) Then Return

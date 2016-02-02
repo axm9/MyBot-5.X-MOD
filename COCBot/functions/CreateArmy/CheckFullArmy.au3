@@ -26,7 +26,6 @@ Func CheckOverviewFullArmy($bWindowOpen = False)
 		If _Sleep($iDelayCheckFullArmy2) Then Return
 		Local $j = 0
 		While Not _ColorCheck(_GetPixelColor($btnpos[0][0], $btnpos[0][1], True), Hex(0xE8E8E0, 6), 20)
-			If $debugSetlog = 1 Then Setlog("OverView TabColor=" & _GetPixelColor($btnpos[0][0], $btnpos[0][1], True), $COLOR_PURPLE)
 			If _Sleep($iDelayCheckFullArmy1) Then Return ; wait for Train Window to be ready.
 			$j += 1
 			If $j > 15 Then ExitLoop
@@ -74,10 +73,8 @@ Func CheckFullBarrack()
     ; Dont use this to check for full army it just means the barrack has stopped ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ; It could be that the remaining space is lower than the the Housing Space of troop being trained and thats why The barrack has stopped not full army ;;;;;;;;;
 	; Calling this function will not change the $fullarmy Variable it will only return true if barrack Has Stopped Training ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 	If _sleep(200) Then Return
 	Local $Pixel = _CheckPixel($aBarrackFull, True)
-	If $debugSetlog = 1 Then Setlog("Check Barrack Full color : " & _GetPixelColor($aBarrackFull[0], $aBarrackFull[1],True) & " Expected if Full : " & Hex($aBarrackFull[2],6), $COLOR_PURPLE)
 	If $debugSetlog = 1 Then Setlog("Checking for Full Normal or Dark Barrack [!]" & $Pixel , $COLOR_PURPLE)
 
 	If $Pixel Then

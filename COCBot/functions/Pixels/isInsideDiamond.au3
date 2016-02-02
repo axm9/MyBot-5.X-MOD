@@ -50,5 +50,13 @@ EndFunc   ;==>isInsideDiamond
 Func isOutsideEllipse($coordX, $coordY, $ellipseWidth = 200, $ellipseHeigth = 150)
 	Local $normalizedX = $coordX - $CenterX
 	Local $normalizedY = $coordY - $CenterY	
-	Return ($normalizedX * $normalizedX) / ($ellipseWidth * $ellipseWidth) + ($normalizedY * $normalizedY) / ($ellipseHeigth * $ellipseHeigth) > 1
+	Local $result = ($normalizedX * $normalizedX) / ($ellipseWidth * $ellipseWidth) + ($normalizedY * $normalizedY) / ($ellipseHeigth * $ellipseHeigth) > 1
+	If $debugSetlog = 1 Then 
+		If $result Then
+			Setlog("Coordinate Outside Ellipse (" & $ellipseWidth & ", " & $ellipseHeigth & ")", $COLOR_PURPLE)
+		Else
+			Setlog("Coordinate Inside Ellipse (" & $ellipseWidth & ", " & $ellipseHeigth & ")", $COLOR_PURPLE)
+		EndIf
+	EndIf
+	Return $result
 EndFunc ;--- IsInsideEllipse

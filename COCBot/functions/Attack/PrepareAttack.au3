@@ -15,7 +15,7 @@
 ; ===============================================================================================================================
 
 Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
-	If $debugSetlog = 1 Then SetLog("PrepareAttack",$COLOR_PURPLE)
+	If $debugSetlog = 1 Then SetLog("PrepareAttack", $COLOR_PURPLE)
 	If $Remaining Then
 		SetLog("Checking remaining unused troops for: " & $sModeText[$pMatchMode], $COLOR_BLUE)
 	Else

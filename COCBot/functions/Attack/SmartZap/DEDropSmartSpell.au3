@@ -125,7 +125,6 @@ Func DEDropSmartSpell()
 		EndIf
 
 		$oldDark = $searchDark
-		If $debugsetlog = 1 Then SetLog("Finished If Statement.", $COLOR_PURPLE)
 		$searchDark = checkDE()
 		If $searchDark = False Then ExitLoop ; In case proper color isn't detected for the DE
 
@@ -163,7 +162,7 @@ Func DEDropSmartSpell()
 
 		; Sort array by the assumed capacity available, and if all drills removed from array, then exit while loop
 		_ArraySort($aDarkDrills, 1, 0, 0, 3)
-		If $debugsetlog = 1 Then SetLog("DE Left in Collectors: " & $aDarkDrills[0][3]&" "& $aDarkDrills[1][3]&" "& $aDarkDrills[2][3]&" "& $aDarkDrills[3][3], $COLOR_PURPLE)
+		If $debugsetlog = 1 Then SetLog("DE Left in Collectors: " & $aDarkDrills[0][3] & " " & $aDarkDrills[1][3] & " " & $aDarkDrills[2][3] & " " & $aDarkDrills[3][3], $COLOR_PURPLE)
 	WEnd
 	SelectDropTroop(0)
 	Return True
@@ -178,10 +177,10 @@ Func checkDE()
 			$oldsearchDark = $searchDark
 			$searchDark = getDarkElixirVillageSearch(48, 69 + 57) ; Get updated Dark Elixir value
 			$icount += 1
-			If $debugsetlog = 1 Then Setlog("$searchDark= "&$searchDark&", $oldsearchDark= "&$oldsearchDark, $COLOR_PURPLE)
 			If $icount > 15 Then ExitLoop ; check couple of times in case troops are blocking image
 			If _Sleep(1000) Then Return
 		WEnd
+		If $debugsetlog = 1 Then Setlog("DE found = " & $searchDark , $COLOR_PURPLE)
 		Return $searchDark
 	Else
 		If $debugsetlog = 1 Then SetLog("No DE Detected.", $COLOR_PURPLE)

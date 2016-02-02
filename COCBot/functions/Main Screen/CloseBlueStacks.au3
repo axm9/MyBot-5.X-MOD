@@ -47,7 +47,7 @@ Func CloseBlueStacks()
 		   ServiceStop($aServiceList[$iIndex])
 		   If @error Then
 			   $bOops = True
-			   If $debugsetlog = 1 Then Setlog($aServiceList[$iIndex]&"errored trying to stop", $COLOR_MAROON)
+			   If $debugsetlog = 1 Then Setlog($aServiceList[$iIndex] & " errored trying to stop", $COLOR_MAROON)
 		   EndIf
 	   Next
 	   If $bOops Then
@@ -158,7 +158,7 @@ Func ServiceStop($sServiceName)
 	If $debugsetlog = 1 And $svcWaitIterations > 15 Then
 		SetLog("Failed to stop service " & $sServiceName, $COLOR_RED)
 	Else
-		If $debugsetlog = 1 Then SetLog($sServiceName & "Service stopped succesfully", $COLOR_GREEN)
+		If $debugsetlog = 1 Then SetLog($sServiceName & " Service stopped succesfully", $COLOR_GREEN)
 	EndIf
 EndFunc   ;==>ServiceStop
 

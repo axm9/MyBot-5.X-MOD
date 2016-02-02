@@ -38,7 +38,7 @@ EndFunc   ;==>isDarkBarrack
 
 Func isSpellFactory()
 	If _ColorCheck(_GetPixelColor($btnpos[7][0], $btnpos[7][1], True), Hex(0xE8E8E0, 6), 10) Then
-		If $debugSetlog = 1 Then SetLog("Spell Factory  selected", $COLOR_PURPLE)
+		If $debugSetlog = 1 Then SetLog("Spell Factory selected", $COLOR_PURPLE)
 		Return True ;Spell Factory
 	EndIf
 	Return False
@@ -46,7 +46,7 @@ EndFunc   ;==>isSpellFactory
 
 Func isDarkSpellFactory()
 	If _ColorCheck(_GetPixelColor($btnpos[8][0], $btnpos[8][1], True), Hex(0xE8E8E0, 6), 10) Then
-		If $debugSetlog = 1 Then SetLog("Dark Spell Factory  selected", $COLOR_PURPLE)
+		If $debugSetlog = 1 Then SetLog("Dark Spell Factory selected", $COLOR_PURPLE)
 		Return True ;dark Spell Factory
 	EndIf
 	Return False

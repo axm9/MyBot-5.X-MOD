@@ -22,8 +22,7 @@ Func BreakPersonalShield()
 		Return
 	EndIf
 
-	If $debugSetlog = 1 Then Setlog("Checking if Shield available", $COLOR_BLUE)
-	If $debugSetlog = 1 Then Setlog("Have shield pixel color: " & _GetPixelColor($aHaveShield, $bCapturePixel) & " :" & _CheckPixel($aHaveShield, $bCapturePixel), $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Checking if Shield available", $COLOR_PURPLE)
 	If _CheckPixel($aHaveShield, $bCapturePixel) Then ; check for shield
 		If IsMainPage() Then ; check for main page
 			PureClickP($aShieldInfoButton)
@@ -44,7 +43,7 @@ Func BreakPersonalShield()
 			Setlog("Shield removed", $COLOR_GREEN)
 		EndIf
 	Else
-		If $debugSetlog = 1 Then Setlog("No shield available", $COLOR_GREEN)
+		If $debugSetlog = 1 Then Setlog("No shield available", $COLOR_PURPLE)
 	EndIf
 
 	If _Sleep($iPersonalShield1) Then ; wait for break shield window
@@ -52,8 +51,7 @@ Func BreakPersonalShield()
 		Return
 	EndIf
 
-	If $debugSetlog = 1 Then Setlog("Checking if Personal Guard available", $COLOR_BLUE)
-	If $debugSetlog = 1 Then Setlog("Have guard pixel color: " & _GetPixelColor($aHavePerGuard, $bCapturePixel) & " :" & _CheckPixel($aHavePerGuard, $bCapturePixel), $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Checking if Personal Guard available", $COLOR_PURPLE)
 	If _CheckPixel($aHavePerGuard, $bCapturePixel) Then ; check for personal guard timer
 		If IsMainPage() Then
 			PureClickP($aShieldInfoButton)
@@ -74,7 +72,7 @@ Func BreakPersonalShield()
 			Setlog("Guard removed", $COLOR_GREEN)
 		EndIf
 	Else
-		If $debugSetlog = 1 Then Setlog("No guard available", $COLOR_GREEN)
+		If $debugSetlog = 1 Then Setlog("No guard available", $COLOR_PURPLE)
 	EndIf
 EndFunc   ;==>BreakPersonalShield
 
@@ -128,11 +126,11 @@ Func GetShieldTime()
 	EndSelect
 
 	$sTimeResult = getOcrGuardShield(484, 21) ; read Shield time
-	If $debugSetlog = 1 Then Setlog("OCR Shield Time= " & $sTimeResult, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("OCR Shield Time = " & $sTimeResult, $COLOR_PURPLE)
 	If $sTimeResult = "" Then ; try a 2nd time after a short delay if slow PC and null read
 		If _Sleep($iPersonalShield2) Then Return ; pause for slow PC
 		$sTimeResult = getOcrGuardShield(484, 21) ; read Shield time
-		If $debugSetlog = 1 Then Setlog("OCR2 Shield Time= " & $sTimeResult, $COLOR_PURPLE)
+		If $debugSetlog = 1 Then Setlog("OCR2 Shield Time = " & $sTimeResult, $COLOR_PURPLE)
 		If $sTimeResult = "" Then ; error if no read value
 			$aPBReturnResult[1] = '00:00:00'
 			Setlog("strange error, no shield value found?", $COLOR_RED)

@@ -19,7 +19,7 @@ Func ClanLevel()
 
 	;Verify if exist and active Clan Icon (2 swords) in mainscreen
 	If Not _ColorCheck(_GetPixelColor(19, 474 + $midOffsetY , true), Hex(0xE2A539, 6), 15) Then
-		SetLog("Please join a Clan ...", $COLOR_GREEN)
+		SetLog("Please join a Clan...", $COLOR_GREEN)
 		If $iChkRequest = 1 then
 			$canRequestCC = False
 			SetLog("Clan Requests Turned Off, be careful with your settings!", $COLOR_RED)
@@ -28,22 +28,22 @@ Func ClanLevel()
 		Return
 	EndIf
 
-	If $debugSetlog = 1 Then SetLog("Click $aOpenChat", $COLOR_GREEN)
-	If IsMainPage()  Then    ClickP($aOpenChat, 1, 0, "#0468") ; clicking clan tab
+	If $debugSetlog = 1 Then SetLog("Click OpenChat", $COLOR_PURPLE)
+	If IsMainPage() Then ClickP($aOpenChat, 1, 0, "#0468") ; clicking clan tab
 	
-	 ; Wait until find the Blackzone near the "i" icon , max 5 seconds
+	; Wait until find the Blackzone near the "i" icon , max 5 seconds
 	If WaitforPixel(299, 22, 300, 23, Hex(0x000000, 6), 5, $iDelayClanLevel1) Then
 		If _Sleep($iDelayDonateCC2) Then Return
 		If IsMainChatOpenPage() Then  Click (222,22) ; Click on Clan Chat Tab , confirm Clan Chat intead of Global Chat
 		If _Sleep($iDelayDonateCC2) Then Return
-		If $debugSetlog = 1 Then SetLog("Click $aClanTab", $COLOR_GREEN)
+		If $debugSetlog = 1 Then SetLog("Click ClanTab", $COLOR_PURPLE)
 		If IsMainChatOpenPage() Then ClickP($aClanTab, 1, 0, "#0469") ; click Clan Tab
 	EndIf
 
-	If $debugSetlog = 1 Then SetLog("Wait until find the Info icon , max 5 seconds", $COLOR_GREEN)
+	If $debugSetlog = 1 Then SetLog("Wait until find the Info icon, max 5 seconds", $COLOR_PURPLE)
 
 	If WaitforPixel(282, 55, 285, 57, Hex(0x3088c2, 6), 5, 10) Then
-		If $debugSetlog = 1 Then SetLog("Click $aClanInfo", $COLOR_GREEN)
+		If $debugSetlog = 1 Then SetLog("Click ClanInfo", $COLOR_PURPLE)
 		If IsMainChatOpenPage() Then ClickP($aClanInfo, 1, 0, "#0470") ; click Info
 	Else
 		SetLog("Please join a Clan ...", $COLOR_GREEN)
@@ -56,7 +56,7 @@ Func ClanLevel()
 
 	If _Sleep($iDelayDonateCC1) Then Return
 	$iClanLevel = ""
-	If $debugSetlog = 1 Then SetLog("Wait until find the Clan Perk Button, max 5 seconds", $COLOR_GREEN)
+	If $debugSetlog = 1 Then SetLog("Wait until find the Clan Perk Button, max 5 seconds", $COLOR_PURPLE)
 	; Wait until find the Clan Perk Button , max 5 seconds
 	If WaitforPixel(95, 243 + $midOffsetY, 98, 244 + $midOffsetY, Hex(0x7cd8e8, 6), 5, $iDelayClanLevel1) Then
 		$iClanLevel = getOcrClanLevel(87, 101 + $midOffsetY)

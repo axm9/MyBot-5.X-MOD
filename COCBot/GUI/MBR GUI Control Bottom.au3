@@ -16,7 +16,7 @@
 Func Initiate()
     WinGetAndroidHandle()
 	If $HWnD <> 0 And IsArray(ControlGetPos($Title, $AppPaneName, $AppClassInstance)) Then
-		SetLog(_PadStringCenter(" " & $sBotTitle & " Powered by MyBot.run ", 50, "~"), $COLOR_PURPLE)
+		SetLog(_PadStringCenter($sBotTitle, 50, "~"), $COLOR_PURPLE)
 		SetLog($Compiled & " running on " & @OSVersion & " " & @OSServicePack & " " & @OSArch)
 		If Not $bSearchMode Then
 			SetLog(_PadStringCenter(" Bot Start ", 50, "="), $COLOR_GREEN)
@@ -25,7 +25,7 @@ Func Initiate()
 		EndIf
 		SetLog(_PadStringCenter("  Current Profile: " & $sCurrProfile & " ", 73, "-"), $COLOR_BLUE)
 		If $DebugSetlog = 1 Or $DebugOcr = 1 Or $debugRedArea = 1 Or $debugImageSave = 1 Or $debugBuildingPos = 1 Then
-			SetLog(_PadStringCenter(" Warning Debug Mode Enabled! Setlog: " & $DebugSetlog &" OCR: "& $DebugOcr & " RedArea: " & $debugRedArea & " ImageSave: " & $debugImageSave & " BuildingPos: " & $debugBuildingPos, 55, "-"), $COLOR_RED)
+			SetLog(_PadStringCenter("Warning Debug Mode Enabled! Setlog: " & $DebugSetlog &" OCR: "& $DebugOcr & " RedArea: " & $debugRedArea & " ImageSave: " & $debugImageSave & " BuildingPos: " & $debugBuildingPos, 55, "-"), $COLOR_RED)
 		EndIf
 
 		$AttackNow = False

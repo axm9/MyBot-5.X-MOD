@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 Func getArmySpellCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
-	If $debugSetlog = 1 Then SETLOG("Begin getArmySpellCapacity:", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Begin getArmySpellCapacity", $COLOR_PURPLE)
 
 	If IsTrainPage() = False And $bOpenArmyWindow = False Then ; check for train page
 		SetError(1)

@@ -33,13 +33,13 @@ Func BotDetectFirstTime()
 			$pixel = $PixelTHHere[0]
 			$TownHallPos[0] = $pixel[0]
 			$TownHallPos[1] = $pixel[1]
-			If $debugSetlog = 1 Then SetLog("DLLc# Townhall: (" & $TownHallPos[0] & "," & $TownHallPos[1] & ")", $COLOR_RED)
+			If $debugSetlog = 1 Then SetLog("DLLc# Townhall: (" & $TownHallPos[0] & "," & $TownHallPos[1] & ")", $COLOR_PURPLE)
 		EndIf
 		If $TownHallPos[1] = "" Or $TownHallPos[1] = -1 Then
 			checkTownhallADV2()
 			$TownHallPos[0] = $THx
 			$TownHallPos[1] = $THy
-			If $debugSetlog = 1 Then SetLog("OldDDL Townhall: (" & $TownHallPos[0] & "," & $TownHallPos[1] & ")", $COLOR_RED)
+			If $debugSetlog = 1 Then SetLog("OldDDL Townhall: (" & $TownHallPos[0] & "," & $TownHallPos[1] & ")", $COLOR_PURPLE)
 		EndIf
 		SetLog("Townhall: (" & $TownHallPos[0] & "," & $TownHallPos[1] & ")", $COLOR_PURPLE)
 	EndIf

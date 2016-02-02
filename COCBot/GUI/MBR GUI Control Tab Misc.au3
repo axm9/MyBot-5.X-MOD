@@ -243,12 +243,12 @@ Func btnResetBuilding()
 			Local $stext = @CRLF & "Click OK to Delete and Reset all Building info," & @CRLF & @CRLF & _
 					"NOTE =>> Bot will exit and need to be restarted when complete" & @CRLF & @CRLF & "Or Click Cancel to exit" & @CRLF
 			Local $MsgBox = _ExtMsgBox(0, "Ok To Delete & Exit|Cancel and Return", "Delete Building Infomation?", $stext, 120, $frmBot)
-			If $DebugSetlog = 1 Then Setlog("$MsgBox= " & $MsgBox, $COLOR_PURPLE)
+			If $DebugSetlog = 1 Then Setlog("$MsgBox = " & $MsgBox, $COLOR_PURPLE)
 			If $MsgBox = 1 Then
 				Local $stext = @CRLF & "Are you 100% sure you want to delete Building information?" & @CRLF & @CRLF & _
 						"Click OK to Delete and then restart the bot (manually)" & @CRLF & @CRLF & "Or Click Cancel to exit" & @CRLF
 				Local $MsgBox = _ExtMsgBox(0, "Ok To Delete & Exit|Cancel and Return", "Really Delete Building Infomation?", $stext, 120, $frmBot)
-				If $DebugSetlog = 1 Then Setlog("$MsgBox= " & $MsgBox, $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("$MsgBox = " & $MsgBox, $COLOR_PURPLE)
 				If $MsgBox = 1 Then
 					Local $Result = FileDelete($building)
 					If $Result = 0 Then
@@ -256,7 +256,7 @@ Func btnResetBuilding()
 					Else
 						; File Deleted close the bot with taskkill so it does not save a new one
 						Local $BotProcess = WinGetProcess($frmBot)
-						If $DebugSetlog = 1 Then Setlog("$BotProcess= " & $BotProcess, $COLOR_PURPLE)
+						If $DebugSetlog = 1 Then Setlog("$BotProcess = " & $BotProcess, $COLOR_PURPLE)
 						ShellExecute(@WindowsDir & "\System32\taskkill.exe", "-f -t -PID " & $BotProcess, "", Default, @SW_HIDE)
 						Setlog("Error removing building.ini, please use manual method", $COLOR_RED)
 					EndIf

@@ -15,7 +15,7 @@
 ; ===============================================================================================================================
 
 Func SnipeWhileTrain()
-	If $DebugSetLog = 1 Then Setlog("SnipeWhileTrain function ", $COLOR_PURPLE)
+	If $DebugSetLog = 1 Then Setlog("Snipe While Train", $COLOR_PURPLE)
 	If $iChkSnipeWhileTrain = 1 And $CommandStop <> 0 And $CommandStop <> 3 Then
 		; Attempt only when $iminArmyCapacityTHSnipe % army full to prevent failure of TH snipe
 		If ($CurCamp <= ($TotalCamp * $itxtminArmyCapacityTHSnipe / 100)) Then
@@ -46,8 +46,8 @@ Func SnipeWhileTrain()
 			$iMinTrophy[$DB] = 99
 			$iMinTrophy[$LB] = 99
 			; if greedy mode enabled, bot should only attack dead bases with 75% of collectors outside in SWT mode
-			If $ichkAttackIfDB = 1 Then					
-				If $debugSetlog = 1 Then setlog("Min collector outside set to 75% during snipe while train mode" & $Wcount, $COLOR_PURPLE)
+			If $ichkAttackIfDB = 1 Then
+				If $debugSetlog = 1 Then setlog("Min collector outside set to 75% during snipe while train mode", $COLOR_PURPLE)
 				$ichkDBMeetCollOutside = 1
 				$iDBMinCollOutsidePercent = 75
 			EndIf
@@ -55,6 +55,7 @@ Func SnipeWhileTrain()
 			$iChkMeetOne[$LB] = 0
 			$OptTrophyMode = 1
 			$THaddtiles = $itxtSWTtiles
+			If $debugSetlog = 1 Then setlog("Min snipe resources changed to 120k/120k/1k during snipe while train mode", $COLOR_PURPLE)
 			$iMinGold[$TS] = 120000
 			$iMinElixir[$TS] = 120000
 			$iMinGoldPlusElixir[$TS] = 250000
@@ -109,7 +110,6 @@ Func SWHTSearchLimit($iSkipped)
 		While not(_CheckPixel($aSurrenderButton, $bCapturepixel))
 			If _Sleep($iDelaySWHTSearchLimit1) Then Return
 			$Wcount += 1
-			If $debugSetlog = 1 Then setlog("wait surrender button " & $Wcount, $COLOR_PURPLE)
 			If $Wcount >= 50 Then ExitLoop
 		WEnd
 
@@ -122,7 +122,6 @@ Func SWHTSearchLimit($iSkipped)
 		While Not (_CheckPixel($aIsMain, $bCapturepixel))
 			If _Sleep($iDelaySearchLimit2) Then Return
 			$mCcount += 1
-			If $debugSetlog = 1 Then setlog("Wait main screen " & $mCcount, $COLOR_PURPLE)
 			If $mCount >= 50 Then ExitLoop
 		WEnd
 

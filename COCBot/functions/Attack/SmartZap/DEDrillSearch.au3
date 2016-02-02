@@ -53,21 +53,8 @@ Func DEDrillSearch($bReTest = False)
 			If @error Then ContinueLoop
 			EndIf
 
-			If $debugsetlog = 1 Then
-				Setlog("Drill search UBound($pixelWithLevel) = " & UBound($pixelWithLevel), $COLOR_PURPLE) ;Debug
-				For $ii = 0 To UBound($pixelWithLevel) - 1
-					Setlog("Drill search $pixelWithLevel[" & $ii & "] = " & $pixelWithLevel[$ii], $COLOR_PURPLE) ;Debug
-				Next
-			EndIf
-
 			$level = $pixelWithLevel[1]
 			$pixelStr = StringSplit($pixelWithLevel[2], "-")
-			If $debugsetlog = 1 Then
-				Setlog("Drill search $level = " & $level, $COLOR_PURPLE) ;Debug
-				For $ii = 0 To UBound($pixelStr) - 1
-					Setlog("Drill search $pixelStr[" & $ii & "] = " & $pixelStr[$ii], $COLOR_PURPLE) ;Debug
-				Next
-			EndIf
 
 			Local $pixel[2] = [$pixelStr[1], $pixelStr[2]]
 			If isInsideDiamond($pixel)  Then

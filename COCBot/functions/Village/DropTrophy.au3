@@ -53,7 +53,7 @@ Func DropTrophy()
 	Local Const $iWaitTime = 3 ; wait time for base recheck during long drop times in minutes (3 minutes ~5-10 drop attacks)
 	Local $iDateCalc, $sWaitToDate
 	$sWaitToDate = _DateAdd('n', $iWaitTime, _NowCalc()) ; find delay time for checkbasequick
-	If $DebugSetlog = 1 Then SetLog("ChkBaseQuick delay time= " & $sWaitToDate & " Now= " & _NowCalc() & " Diff= " & _DateDiff('s', _NowCalc(), $sWaitToDate), $COLOR_PURPLE)
+	If $DebugSetlog = 1 Then SetLog("ChkBaseQuick delay time = " & $sWaitToDate & ", Now = " & _NowCalc() & ", Diff = " & _DateDiff('s', _NowCalc(), $sWaitToDate), $COLOR_PURPLE)
 
 	While Number($iTrophyCurrent) > Number($iTxtMaxTrophyNeedCheck)
 		$iTrophyCurrent = getTrophyMainScreen($aTrophies[0], $aTrophies[1])
@@ -226,7 +226,7 @@ Func DropTrophy()
 				If _Sleep($iDelayDropTrophy1) Then ExitLoop
 			EndIf
 			$iDateCalc = _DateDiff('s', _NowCalc(), $sWaitToDate)
-			If $DebugSetlog = 1 Then SetLog("ChkBaseQuick delay= " & $sWaitToDate & " Now= " & _NowCalc() & " Diff= " & $iDateCalc, $COLOR_PURPLE)
+			If $DebugSetlog = 1 Then SetLog("ChkBaseQuick delay = " & $sWaitToDate & ", Now = " & _NowCalc() & ", Diff = " & $iDateCalc, $COLOR_PURPLE)
 			If $iDateCalc <= 0 Then ; check length of time in drop trophy
 				Setlog(" Checking base during long drop cycle", $COLOR_BLUE)
 				CheckBaseQuick() ; check base during long drop times

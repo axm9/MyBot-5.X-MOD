@@ -21,7 +21,7 @@ Func openArmyOverview()
 	EndIf
 
 	If WaitforPixel(28, 505 + $bottomOffsetY, 30, 507 + $bottomOffsetY, Hex(0xE4A438, 6), 5, 10) Then
-		If $debugSetlog = 1 Then SetLog("Click $aArmyTrainButton", $COLOR_GREEN)
+		If $debugSetlog = 1 Then SetLog("Click ArmyTrainButton", $COLOR_GREEN)
 		Click($aArmyTrainButton[0], $aArmyTrainButton[1], 1, 0, "#0293") ; Button Army Overview
 	EndIf
 

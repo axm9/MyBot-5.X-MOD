@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 Func getArmyHeroCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
-	If $debugSetlog = 1 Then SETLOG("Begin getArmyTHeroCount:", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Begin getArmyTHeroCount", $COLOR_PURPLE)
 
 	If IsTrainPage() = False And $bOpenArmyWindow = False Then ; check for train page
 		SetError(1)

@@ -93,7 +93,6 @@ Func BoostBarracks()
 			If IsArray($Boost) Then
 				If $debugSetlog = 1 Then
 					Setlog("Button $Boost = " & $Boost[0] & ", " & $Boost[1], $COLOR_PURPLE) ;Debug
-					Setlog("Color #Butoon: " & _GetPixelColor($Boost[0], $Boost[1], True) & ", #Off 1: " & _GetPixelColor($Boost[0] + 68, $Boost[1] + 8, True) & ", #2: " & _GetPixelColor($Boost[0] + 58, $Boost[1] + 8, True) & ", #3: " & _GetPixelColor($Boost[0] + 35, $Boost[1] + 13, True), $COLOR_PURPLE)
 				EndIf
 
 				Click($Boost[0] + 25 , $Boost[1] + 25, 1, 0, "#0159")

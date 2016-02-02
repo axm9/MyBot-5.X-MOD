@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 Func getArmySpellCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
-	If $debugSetlog = 1 Then SETLOG("Begin getArmySpellCount:", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("Begin getArmySpellCount", $COLOR_PURPLE)
 
 	If IsTrainPage() = False And $bOpenArmyWindow = False Then ; check for train page
 		SetError(1)
@@ -36,43 +36,40 @@ Func getArmySpellCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		$CurEarthSpell = 0
 
 		For $i = 0 To 4 ; 5 visible slots in ArmyOverView window
-			If $debugSetlog = 1 Then Setlog(" Slot : " & $i + 1, $COLOR_PURPLE)
 			Local $FullTemp = getOcrSpellDetection(125 + (62 * $i), 450 + $midOffsetY)
-			If $debugSetlog = 1 Then Setlog(" getOcrSpellDetection: " & $FullTemp, $COLOR_PURPLE)
 			Local $Result = getOcrSpellQuantity(146 + (62 * $i), 414 + $midOffsetY)
 			Local $SpellQ = StringReplace($Result, "x", "")
-			If $debugSetlog = 1 Then Setlog(" getOcrSpellQuantity: " & $SpellQ, $COLOR_PURPLE)
 			If $FullTemp = "Lightning" Then
 				$CurLightningSpell = $SpellQ
-				Setlog(" - No. of LightningSpell: " & $SpellQ)
+				Setlog(" - No. of Lightning Spell: " & $SpellQ)
 			EndIf
 			If $FullTemp = "Heal" Then
 				$CurHealSpell = $SpellQ
-				Setlog(" - No. of HealSpell: " & $SpellQ)
+				Setlog(" - No. of Heal Spell: " & $SpellQ)
 			EndIf
 			If $FullTemp = "Rage" Then
 				$CurRageSpell = $SpellQ
-				Setlog(" - No. of RageSpell: " & $SpellQ)
+				Setlog(" - No. of Rage Spell: " & $SpellQ)
 			EndIf
 			If $FullTemp = "Jump" Then
 				$CurJumpSpell = $SpellQ
-				Setlog(" - No. of JumpSpell: " & $SpellQ)
+				Setlog(" - No. of Jump Spell: " & $SpellQ)
 			EndIf
 			If $FullTemp = "Freeze" Then
 				$CurFreezeSpell = $SpellQ
-				Setlog(" - No. of FreezeSpell: " & $SpellQ)
+				Setlog(" - No. of Freeze Spell: " & $SpellQ)
 			EndIf
 			If $FullTemp = "Poison" Then
 				$CurPoisonSpell = $SpellQ
-				Setlog(" - No. of PoisonSpell: " & $SpellQ)
+				Setlog(" - No. of Poison Spell: " & $SpellQ)
 			EndIf
 			If $FullTemp = "Haste" Then
 				$CurHasteSpell = $SpellQ
-				Setlog(" - No. of HasteSpell: " & $SpellQ)
+				Setlog(" - No. of Haste Spell: " & $SpellQ)
 			EndIf
 			If $FullTemp = "Earth" Then
 				$CurEarthSpell = $SpellQ
-				Setlog(" - No. of EarthquakeSpell: " & $SpellQ)
+				Setlog(" - No. of Earthquake Spell: " & $SpellQ)
 			EndIf
 			If $FullTemp = "" And $debugSetlog = 1 Then
 				Setlog(" - was not detected anything in slot: " & $i + 1, $COLOR_PURPLE)
