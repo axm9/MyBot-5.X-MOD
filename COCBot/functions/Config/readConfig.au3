@@ -225,6 +225,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iMinGoldPlusElixir[$TS] = IniRead($config, "advanced", "TSsearchGoldPlusElixir", "200000")
 		$iMinDark[$TS] = IniRead($config, "advanced", "TSsearchDark", "1000")		
 		$iChkMeetOne[$TS] = IniRead($config, "advanced", "TSMeetOne", "0")
+		$ichkTSSkipTrappedTH = IniRead($config, "advanced", "TSSkipTrappedTH", "0")
 		$ichkAttackIfDB = IniRead($config, "advanced", "TSAttackIfDB", "0")
 		$ipercentTSSuccess = IniRead($config, "advanced", "TSSuccessPercent", "5")
 		$iMinTroopToAttackDB = IniRead($config, "advanced", "TSMinDBAttack", "100")

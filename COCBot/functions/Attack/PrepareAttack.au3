@@ -55,7 +55,10 @@ Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
 			Else
 				$atkTroops[$i][1] = $aTemp[$i][1]
 			EndIf
-			If $troopKind <> -1 Then SetLog("-*-" & NameOfTroop($atkTroops[$i][0]) & " " & $atkTroops[$i][1], $COLOR_GREEN)
+			If $troopKind <> -1 Then 
+				SetLog("-*-" & NameOfTroop($atkTroops[$i][0]) & " " & $atkTroops[$i][1], $COLOR_GREEN)
+				If $atkTroops[$i][0] = $eLSpell Then $CurLightningSpell = $atkTroops[$i][1] ; set number of lightning spells to fix possible issue with Ocr Spell recognition
+			EndIf
 		EndIf
 	Next
 EndFunc   ;==>PrepareAttack

@@ -45,6 +45,8 @@ AtkLogHead()
 ;~ Control Tab Files
 ;~ ------------------------------------------------------
 #include "GUI\MBR GUI Control Bottom.au3"
+#include "GUI\MBR GUI Control Collectors.au3"
+#include "GUI\MBR GUI Control Defenses.au3"
 #include "GUI\MBR GUI Control Tab General.au3"
 #include "GUI\MBR GUI Control Tab Troops.au3"
 #include "GUI\MBR GUI Control Tab Search.au3"
@@ -58,7 +60,6 @@ AtkLogHead()
 #include "GUI\MBR GUI Control Tab Notify.au3"
 #include "GUI\MBR GUI Control Tab Expert.au3"
 #include "GUI\MBR GUI Control Tab Stats.au3"
-#include "GUI\MBR GUI Control Collectors.au3"
 
 ; Accelerator Key, more responsive than buttons in run-mode
 Local $aAccelKeys[1][2] = [["{ESC}", $btnStop]]

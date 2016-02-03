@@ -446,6 +446,12 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "advanced", "TSMeetOne", 0)
 	EndIf
+
+	If GUICtrlRead($chkTSSkipTrappedTH) = $GUI_CHECKED Then
+		IniWrite($config, "advanced", "TSSkipTrappedTH", 1)
+	Else
+		IniWrite($config, "advanced", "TSSkipTrappedTH", 0)
+	EndIf
 	
 	If GUICtrlRead($chkTSAttackIfDB) = $GUI_CHECKED Then
 		IniWrite($config, "advanced", "TSAttackIfDB", 1)

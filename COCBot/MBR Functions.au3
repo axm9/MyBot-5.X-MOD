@@ -185,6 +185,7 @@
 #include "functions\Search\VillageSearch.au3"
 #include "functions\Search\CheckZoomOut.au3"
 #include "functions\Search\SearchTownHallloc.au3"
+#include "functions\Search\CheckTrappedTH.au3"
 
 #include "functions\Village\BoostBarracks.au3"
 #include "functions\Village\BotDetectFirstTime.au3"

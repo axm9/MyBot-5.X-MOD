@@ -79,7 +79,7 @@ Func DropTrophy()
 			
 			GetResources(False, $DT) ; no log, use $DT matchmode (DropThrophy)
 			SetLog("Identification of your troops:", $COLOR_BLUE)
-			PrepareAttack($DT) ; ==== Troops :checks for type, slot, and quantity ===
+			PrepareAttack($DT) ; ==== Troops: checks for type, slot, and quantity ===
 			If $Restart = True Then Return
 			
 			If $iChkTrophyAtkDead = 1 Then
@@ -87,7 +87,8 @@ Func DropTrophy()
 				$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And Number($searchDark) > Number($itxtDBLightMinDark) And $isDeadBase
 				If $isDeadBase Then
 					; check if we have enough troops and resource requirement is met
-					If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) And CompareResources($DB) Then	
+					If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) And CompareResources($DB) Then							
+						SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 						SetLog("Dead Base Found on Drop Trophy!", $COLOR_GREEN, "Lucida Console", 7.5)
 						If $ichkDBMeetCollOutside = 1 Then
 							If AreCollectorsOutside($iDBMinCollOutsidePercent) Then
@@ -105,7 +106,8 @@ Func DropTrophy()
 						SetLog("Not enough troops (" & $itxtDTArmyMin & "%) to attack dead base, resuming Drop Trophy.", $COLOR_ORANGE)						
 					EndIf
 					
-					If $zapBaseMatch Then ; collectors not outside but drills can still be zapped
+					If $zapBaseMatch Then ; collectors not outside but drills can still be zapped					
+						SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 						SetLog("Drills can be zapped!", $COLOR_GREEN, "Lucida Console")	
 						If DEDropSmartSpell() = True Then
 							ReturnHome($TakeLootSnapShot)

@@ -240,13 +240,19 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If $OptTrophyMode = 1 Then ; Enables Combo Mode Settings
 			If IsSearchModeActive($TS) And SearchTownHallLoc() Then ; attack this base anyway because outside TH found to snipe
 				If CompareResources($TS) Then
-					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-					SetLog("      TH outside found & enough resources for snipe", $COLOR_GREEN, "Lucida Console", 7.5)	
-					$logwrited = True
-					$iMatchMode = $TS
-					ExitLoop
+					If $ichkTSSkipTrappedTH = 1 Then
+						If IsTHTrapped() Then
+							$noMatchTxt &= ", TH is trapped, skip snipe"
+						Else
+							THSnipeFound()
+							ExitLoop
+						EndIf
+					Else						
+						THSnipeFound()
+						ExitLoop
+					EndIf
 				Else					
-					$noMatchTxt &= ", TH outside found but not enought resources for snipe"
+					$noMatchTxt &= ", TH outside found but not enough resources for snipe"
 				EndIf
 			EndIf
 		EndIf
@@ -465,6 +471,13 @@ Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be 
 	If $debugsetlog = 1 Then SetLog($colOutside & " collectors found outside (out of " & $colNbr & ")", $COLOR_PURPLE)
 	Return False
 EndFunc   ;==>AreCollectorsOutside
+
+Func THSnipeFound()
+	SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+	SetLog("      TH outside found & enough resources for snipe", $COLOR_GREEN, "Lucida Console", 7.5)	
+	$logwrited = True
+	$iMatchMode = $TS	
+EndFunc
 
 Func SearchLimit($iSkipped)
 	If $iChkRestartSearchLimit = 1 And $iSkipped >= Number($iRestartSearchlimit) Then

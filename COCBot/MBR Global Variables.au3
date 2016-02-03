@@ -364,6 +364,7 @@ Global $KingSlotTH
 Global $QueenSlotTH
 ; Attack TH snipe
 Global $icmbDeployBtmTHType
+Global $ichkTSSkipTrappedTH = 0
 Global $ichkAttackIfDB = 0
 Global $ipercentTSSuccess = 5
 Global $iMinTroopToAttackDB = 100

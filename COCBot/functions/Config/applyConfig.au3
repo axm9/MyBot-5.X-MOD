@@ -441,6 +441,14 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	Else
 		GUICtrlSetState($chkTSMeetOne, $GUI_UNCHECKED)
 	EndIf
+	
+	If $ichkTSSkipTrappedTH = 1 Then
+		GUICtrlSetState($chkTSSkipTrappedTH, $GUI_CHECKED)
+		GUICtrlSetState($btnConfigureDef, $GUI_ENABLE)
+	Else
+		GUICtrlSetState($chkTSSkipTrappedTH, $GUI_UNCHECKED)
+		GUICtrlSetState($btnConfigureDef, $GUI_DISABLE)
+	EndIf
 
 	If $ichkAttackIfDB = 1 Then
 		GUICtrlSetState($chkTSAttackIfDB, $GUI_CHECKED)

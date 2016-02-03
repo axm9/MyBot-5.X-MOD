@@ -163,6 +163,20 @@ Func chkTSMeetDE()
 	EndIf
 EndFunc   ;==>chkTSMeetDE
 
+Func chkTSSkipTrappedTH()
+	If GUICtrlRead($chkTSSkipTrappedTH) = $GUI_CHECKED Then
+		$ichkTSSkipTrappedTH = 1
+		GUICtrlSetState($btnConfigureDef, $GUI_ENABLE)
+	Else
+		$ichkTSSkipTrappedTH = 0
+		GUICtrlSetState($btnConfigureDef, $GUI_DISABLE)
+	EndIf
+EndFunc   ;==>chkTSSkipTrappedTH
+
+Func btnConfigureDef()
+	OpenGUI3()
+EndFunc   ;==>btnConfigureDef
+
 Func chkTSAttackIfDB()
 	If GUICtrlRead($chkTSAttackIfDB) = $GUI_CHECKED Then
 		$ichkAttackIfDB = 1
@@ -189,11 +203,11 @@ Func LoadThSnipeAttacks()
 		$output = $output & StringLeft($NewFile, StringLen($NewFile) - 4) & "|"
 	WEnd
 	FileClose($FileSearch)
-	;remove last |
+	; remove last |
 	$output = StringLeft($output, StringLen($output) - 1)
-	;reset combo box
+	; reset combo box
 	_GUICtrlComboBox_ResetContent($cmbAttackTHType)
-	;set combo box
+	; set combo box
 	GUICtrlSetData($cmbAttackTHType, $output)
 
 	_GUICtrlComboBox_SetCurSel($cmbAttackTHType, _GUICtrlComboBox_FindStringExact($cmbAttackTHType, $scmbAttackTHType))
@@ -202,8 +216,4 @@ EndFunc   ;==>LoadThSnipeAttacks
 Func cmbAttackTHType()
 	Local $arrayattack = _GUICtrlComboBox_GetListArray($cmbAttackTHType)
 	$scmbAttackTHType = $arrayattack[_GUICtrlComboBox_GetCurSel($cmbAttackTHType) + 1]
-EndFunc
-
-Func btnTestTHcsv()
-	AttackTHParseCSV(True) ; launch attach th parse CSV only for test in log
 EndFunc
