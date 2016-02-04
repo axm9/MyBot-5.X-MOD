@@ -28,8 +28,12 @@ Global $DefImages0, $DefImages1, $DefImages2, $DefImages3, $DefImages4, $DefImag
 Global $defTolerance
 
 Func IsTHTrapped()
-	SetLog("Checking Trapped TH", $COLOR_BLUE)
-	$Defx = 0, $Defy = 0
+	SetLog("Checking Trapped TH", $COLOR_BLUE)	
+	Local $hTimer = TimerInit()
+	Local $defCount = 0
+	
+	$Defx = 0
+	$Defy = 0
 
 	$iLeft = $THx - 125
 	$iTop = $THy - 90
@@ -61,43 +65,57 @@ Func IsTHTrapped()
 				$defTolerance = $defToleranceArray[2] + $toleranceDefOffset
 
 				$DefLocation = _ImageSearchArea(@ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & Execute("$DefImages" & $t & "["& $i & "]"), 1, 0, 0, $iw, $ih, $Defx, $Defy, $defTolerance) ; Getting Defense Location
+				$defCount += 1
 
-				If $DefLocation = 1 Then
-					If $chkInfernoEnabled = 1 And $t = 0 Then
-						If ($Defx > 40 And $Defx < 210) And ($Defy > 30 And $Defy < 150) Then
-							SetLog("Inferno Tower found near TH...", $COLOR_RED)
-							Return True
+				If $DefLocation = 1 Then					
+					If $debugBuildingPos = 1 Then
+						Setlog("#*# IsTHTrapped: ", $COLOR_TEAL)
+						Setlog("  - Position (" & $Defx & "," & $Defy & ")", $COLOR_TEAL)
+						Setlog("  - Detected defense: " & $DefText[$t], $COLOR_TEAL)
+						Setlog("  - Image Match " & $ppath[$t] & "\" & Execute("$DefImages" & $t & "_50percent" & "[" & $i & "]"), $COLOR_TEAL)
+						Setlog("  - IsInsidediamond: " & isInsideDiamondXY($Defx, $Defy), $COLOR_TEAL)
+						SetLog("  - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+						SetLog("  - Images checked: " & $defCount, $COLOR_TEAL)
+					EndIf
+					If isInsideDiamondXY($Defx, $Defy) Then
+						If $chkInfernoEnabled = 1 And $t = 0 Then
+							If ($Defx > 40 And $Defx < 210) And ($Defy > 30 And $Defy < 150) Then
+								SetLog("Inferno Tower found near TH...", $COLOR_RED)
+								Return True
+							EndIf
+						ElseIf $chkTeslaEnabled = 1 And $t = 1 Then
+							If ($Defx > 58 And $Defx < 192) And ($Defy > 45 And $Defy < 135) Then
+								SetLog("Hidden Tesla found near TH...", $COLOR_RED)
+								Return True
+							EndIf
+						ElseIf $chkMortarEnabled = 1 And $t = 2 Then
+							If ($Defx > 5 And $Defx < 245) And ($Defy > 10 And $Defy < 170) Then
+								SetLog("Mortar found near TH...", $COLOR_RED)
+								Return True
+							EndIf
+						ElseIf $chkWizardEnabled = 1 And $t = 3 Then
+							If ($Defx > 53 And $Defx < 197) And ($Defy > 42 And $Defy < 138) Then
+								SetLog("Wizard Tower found near TH...", $COLOR_RED)
+								Return True
+							EndIf
+						ElseIf $chkAirEnabled = 1 And $t = 4 Then
+							If ($Defx > 15 And $Defx < 235) And ($Defy > 20 And $Defy < 160) Then
+								SetLog("Air Defense found near TH...", $COLOR_RED)
+								Return True
+							EndIf
+						ElseIf $chkArcherEnabled = 1 And $t = 5 Then
+							If ($Defx > 15 And $Defx < 235) And ($Defy > 20 And $Defy < 160) Then
+								SetLog("Archer Tower found near TH...", $COLOR_RED)
+								Return True
+							EndIf
+						ElseIf $chkCannonEnabled = 1 And $t = 6 Then
+							If ($Defx > 40 And $Defx < 210) And ($Defy > 30 And $Defy < 150) Then
+								SetLog("Cannon found near TH...", $COLOR_RED)
+								Return True
+							EndIf
 						EndIf
-					ElseIf $chkTeslaEnabled = 1 And $t = 1 Then
-						If ($Defx > 58 And $Defx < 192) And ($Defy > 45 And $Defy < 135) Then
-							SetLog("Hidden Tesla found near TH...", $COLOR_RED)
-							Return True
-						EndIf
-					ElseIf $chkMortarEnabled = 1 And $t = 2 Then
-						If ($Defx > 5 And $Defx < 245) And ($Defy > 10 And $Defy < 170) Then
-							SetLog("Mortar found near TH...", $COLOR_RED)
-							Return True
-						EndIf
-					ElseIf $chkWizardEnabled = 1 And $t = 3 Then
-						If ($Defx > 53 And $Defx < 197) And ($Defy > 42 And $Defy < 138) Then
-							SetLog("Wizard Tower found near TH...", $COLOR_RED)
-							Return True
-						EndIf
-					ElseIf $chkAirEnabled = 1 And $t = 4 Then
-						If ($Defx > 15 And $Defx < 235) And ($Defy > 20 And $Defy < 160) Then
-							SetLog("Air Defense found near TH...", $COLOR_RED)
-							Return True
-						EndIf
-					ElseIf $chkArcherEnabled = 1 And $t = 5 Then
-						If ($Defx > 15 And $Defx < 235) And ($Defy > 20 And $Defy < 160) Then
-							SetLog("Archer Tower found near TH...", $COLOR_RED)
-							Return True
-						EndIf
-					ElseIf $chkCannonEnabled = 1 And $t = 6 Then
-						If ($Defx > 40 And $Defx < 210) And ($Defy > 30 And $Defy < 150) Then
-							SetLog("Cannon found near TH...", $COLOR_RED)
-							Return True
-						EndIf
+					Else
+						ContinueLoop
 					EndIf
 				EndIf
 			Next
@@ -114,7 +132,6 @@ Func _CaptureTH($iLeft = $THx - 125, $iTop = $THy - 90, $iRight = $THx + 125, $i
 
 	If $ichkBackground = 1 Then
 		Local $iW = Number($iRight) - Number($iLeft), $iH = Number($iBottom) - Number($iTop)
-
 		Local $hDC_Capture = _WinAPI_GetWindowDC(ControlGetHandle($Title, "", "[CLASS:BlueStacksApp; INSTANCE:1]"))
 		Local $hMemDC = _WinAPI_CreateCompatibleDC($hDC_Capture)
 		$hHBitmap = _WinAPI_CreateCompatibleBitmap($hDC_Capture, $iW, $iH)
@@ -137,3 +154,19 @@ Func _CaptureTH($iLeft = $THx - 125, $iTop = $THy - 90, $iRight = $THx + 125, $i
 
 	If $ReturnBMP Then Return $hBitmap
 EndFunc   ;==>_CaptureTH
+
+Func LoadDefImage()
+	If $debugsetlog = 1 Then Setlog("Loading Defense images", $COLOR_PURPLE)
+	Local $x
+	Local $useimages = "*NORM*.bmp"
+
+	For $t = 0 To 6
+		; assign DefImages0... DefImages6 to an array empty with Defimagesx[0]=0
+		Assign("DefImages" & $t, StringSplit("", ""))
+		; put in a temp array the list of files matching condition "*T*.bmp or *NORM*.bmp"
+		$x = _FileListToArrayRec(@ScriptDir & "\images\Defense\" & $ppath[$t] & "\", $useimages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
+		; assign value at DefImages0... DefImages6 if $x it's not empty
+		If UBound($x) Then Assign("DefImages" & $t , $x)
+		If $debugsetlog = 1 Then Setlog("Def image:" & _ArrayToString($x), $COLOR_PURPLE)
+	Next
+EndFunc   ;==>LoadDefImage

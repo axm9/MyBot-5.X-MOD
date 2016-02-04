@@ -350,43 +350,43 @@ EndFunc   ;==>btnWalls
 Func btnAnalyzeVillage()
 	$debugBuildingPos= 1
 	$debugDeadBaseImage = 1
-	SETLOG("DEADBASE CHECK..................")
+	SetLog("DEADBASE CHECK..................")
 	$dbBase = checkDeadBase()
-	SETLOG("TOWNHALL CHECK..................")
+	SetLog("TOWNHALL CHECK..................")
     $searchTH = checkTownhallADV2()
-	SETLOG("TOWNHALL C# CHECK...............")
+	SetLog("TOWNHALL C# CHECK...............")
 	THSearch()
-	SETLOG("MINE CHECK C#...................")
+	SetLog("MINE CHECK C#...................")
 	$PixelMine = GetLocationMine()
 	SetLog("[" & UBound($PixelMine) & "] Gold Mines")
-	SETLOG("ELIXIR CHECK C#.................")
+	SetLog("ELIXIR CHECK C#.................")
 	$PixelElixir = GetLocationElixir()
 	SetLog("[" & UBound($PixelElixir) & "] Elixir Collectors")
-	SETLOG("DARK ELIXIR CHECK C#............")
+	SetLog("DARK ELIXIR CHECK C#............")
 	$PixelDarkElixir = GetLocationDarkElixir()
 	SetLog("[" & UBound($PixelDarkElixir) & "] Dark Elixir Drill/s")
-	SETLOG("DARK ELIXIR STORAGE CHECK C#....")
+	SetLog("DARK ELIXIR STORAGE CHECK C#....")
 	$BuildingToLoc = GetLocationDarkElixirStorage
     SetLog("[" & UBound($BuildingToLoc) & "] Dark Elixir Storage")
 	For $i = 0 To UBound($BuildingToLoc) - 1
 		$pixel = $BuildingToLoc[$i]
 		If $debugSetlog = 1 Then SetLog("- Dark Elixir Storage " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_PURPLE)
     Next
-	SETLOG("LOCATE BARRACKS C#..............")
+	SetLog("LOCATE BARRACKS C#..............")
 	Local $PixelBarrackHere = GetLocationItem("getLocationBarrack")
 	SetLog("Total No. of Barracks: " & UBound($PixelBarrackHere), $COLOR_PURPLE)
 	For $i = 0 To UBound($PixelBarrackHere) - 1
 		$pixel = $PixelBarrackHere[$i]
 		If $debugSetlog = 1 Then SetLog("- Barrack " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_PURPLE)
 	Next
-	SETLOG("LOCATE BARRACKS C#..............")
+	SetLog("LOCATE BARRACKS C#..............")
 	Local $PixelDarkBarrackHere = GetLocationItem("getLocationDarkBarrack")
 	SetLog("Total No. of Dark Barracks: " & UBound($PixelBarrackHere), $COLOR_PURPLE)
 	For $i = 0 To UBound($PixelDarkBarrackHere) - 1
 		$pixel = $PixelDarkBarrackHere[$i]
 		If $debugSetlog = 1 Then SetLog("- Dark Barrack " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_PURPLE)
     Next
-	SETLOG("WEAK BASE C#.....................")
+	SetLog("WEAK BASE C#.....................")
 	SetLog("DEAD BASE IS A WEAK BASE: " & IsWeakBase($DB) , $COLOR_PURPLE)
 	SetLog("LIVE BASE IS A WEAK BASE: " & IsWeakBase($LB) , $COLOR_PURPLE)
     Setlog("--------------------------------------------------------------", $COLOR_TEAL)
@@ -439,39 +439,65 @@ Func btnVillageStat()
 		GUICtrlSetState( $picResultTrophyNow , $GUI_ENABLE +$GUI_SHOW)
 		GUICtrlSetState( $picResultBuilderNow , $GUI_ENABLE +$GUI_SHOW)
 		GUICtrlSetState( $picResultGemNow , $GUI_ENABLE +$GUI_SHOW)
-		;hide stats pics
+		; hide stats pics
 		GUICtrlSetState( $picResultRuntimeNow , $GUI_ENABLE +$GUI_HIDE)
 		GUICtrlSetState( $picResultAttackedHourNow , $GUI_ENABLE +$GUI_HIDE)
 		GUICtrlSetState( $picResultSkippedHourNow , $GUI_ENABLE +$GUI_HIDE)
 	EndIf
 EndFunc   ;==>btnVillageStat
 
+Func btnTestVillage()
+	btnTestDeadBase()
+	btnTestTrap()
+EndFunc   ;==>btnTestDeadBase
+
 Func btnTestDeadBase()
-	local $test = 0
+	Local $test = 0
 	LoadTHImage()
 	LoadElixirImage()
 	LoadElixirImage75Percent()
 	LoadElixirImage50Percent()
 	Zoomout()
-	if $debugBuildingPos = 0 Then
-		$test =1
-		$debugBuildingPos=1
+	If $debugBuildingPos = 0 Then
+		$test = 1
+		$debugBuildingPos = 1
 	EndIf
-		SETLOG("DEADBASE CHECK..................")
+		SetLog("DEADBASE CHECK..................")
 		$dbBase = checkDeadBase()
-		SETLOG("TOWNHALL CHECK..................")
+		SetLog("TOWNHALL CHECK..................")
 		$searchTH = checkTownhallADV2()
-	If $test = 1 Then $debugBuildingPos=0
+	If $test = 1 Then $debugBuildingPos = 0
 EndFunc   ;==>btnTestDeadBase
+
+Func btnTestTrap()
+	LoadTHImage() ; Load TH images
+	LoadDefImage() ; Load defense images
+	Zoomout()
+	checkTownhallADV2()
+	$searchDef = IsTHTrapped()
+
+	Local $EditedImage = $hBitmap
+	Local $hGraphic = _GDIPlus_ImageGetGraphicsContext($EditedImage)
+	Local $hPen = _GDIPlus_PenCreate(0xFFFF0000, 2) ; create a pencil Color FF0000/RED
+
+	_GDIPlus_GraphicsDrawRect($hGraphic, $Defx , $Defy , 10, 10, $hPen)
+
+	Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
+	Local $Time = @HOUR & "." & @MIN & "." & @SEC
+ 	Local $filename = String($Date & "_" & $Time & " _trappedTH.png")
+	_GDIPlus_ImageSaveToFile($EditedImage, $dirTemp & $filename)
+	_GDIPlus_PenDispose($hPen)
+    _GDIPlus_GraphicsDispose($hGraphic)
+EndFunc   ;==>btnTestTrap
 
 Func btnTestDonate()
 	$RunState = True
-		SETLOG("DONATE TEST..................START")
+		SetLog("DONATE TEST..................START")
 		ZoomOut()
 		saveconfig()
 		readconfig()
 		applyconfig()
 		DonateCC()
-		SETLOG("DONATE TEST..................STOP")
+		SetLog("DONATE TEST..................STOP")
 	$RunState = False
 EndFunc   ;==>btnTestDonate

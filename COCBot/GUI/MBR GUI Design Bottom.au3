@@ -21,7 +21,7 @@ Local $btnColor = False
 
 ;~ Buttons
 Local $x = 15, $y = 525
-$grpButtons = GUICtrlCreateGroup("https://mybot.run" & GetTranslated(13,26, "- freeware bot -"), $x - 5, $y - 10, 190, 85)
+$grpButtons = GUICtrlCreateGroup("https://mybot.run" & GetTranslated(13,26, " - freeware bot - "), $x - 5, $y - 10, 190, 85)
 	$btnStart = GUICtrlCreateButton(GetTranslated(13,1, "Start Bot"), $x, $y + 2 +5, 90, 40-5)
 		GUICtrlSetOnEvent(-1, "btnStart")
 		IF $btnColor then GUICtrlSetBkColor(-1, 0x5CAD85)
@@ -68,10 +68,11 @@ $grpButtons = GUICtrlCreateGroup("https://mybot.run" & GetTranslated(13,26, "- f
 		GUICtrlSetState(-1, $GUI_HIDE)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-$btnTestVillage = GUICtrlCreateButton("TEST DB", 208 , $y - 15, -1, -1)
- 	GUICtrlSetOnEvent(-1, "btnTestDeadBase")
-	GUICtrlSetTip(-1, "Test if bot detect base as dead")
+$btnTestVillage = GUICtrlCreateButton("Test Village", 203 , $y - 15, -1, -1)
+	GUICtrlSetOnEvent(-1, "btnTestVillage")
+	GUICtrlSetTip(-1, "Test Village properties: dead base detection, Townhall location and level, defenses around TH")
 	GUICtrlSetState(-1, $GUI_HIDE)
+
 $pic2arrow = GUICtrlCreatePic(@ScriptDir & "\Images\2arrow.jpg", $x + 187, $y + 10, 50, 45)
 GUICtrlSetOnEvent(-1, "btnVillageStat")
 $lblVersion = GUICtrlCreateLabel($sBotVersion, 205, $y + 60, 60, 17, $SS_CENTER)
@@ -124,5 +125,4 @@ $grpVillage = GUICtrlCreateGroup(GetTranslated(13,21, "Village"), $x - 20, $y - 
 
 	$x = 290
 	$lblVillageReportTemp = GUICtrlCreateLabel(GetTranslated(13,22, "Village Report") & @CRLF & GetTranslated(13,23, "will appear here") & @CRLF & GetTranslated(13,24, "on first run."), $x + 27, $y + 5, 100, 45, BITOR($SS_CENTER, $BS_MULTILINE))
-		
 GUICtrlCreateGroup("", -99, -99, 1, 1)

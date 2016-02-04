@@ -53,8 +53,8 @@ Func LoadTHImage()
 EndFunc   ;==>LoadTHImage
 
 Func checkTownHallADV2($limit = 0, $tolerancefix = 0, $captureRegion=True)
-	;variable limit: limit number of searches, limit = 0 disable limit search
-	;variable tolearnce: set a fixed tolearnce, tolerance = 0 disable fixed tolerance
+	; variable limit: limit number of searches, limit = 0 disable limit search
+	; variable tolearnce: set a fixed tolearnce, tolerance = 0 disable fixed tolerance
 	Local $hTimer = TimerInit()
 	Local $count = 0
 
@@ -87,7 +87,7 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0, $captureRegion=True)
 						Setlog("  - TownHall detected level " & $THText[$t], $COLOR_TEAL)
 						Setlog("  - Image Match " & Execute("$THImages" & $t & "[" & $i & "]"), $COLOR_TEAL)
 						Setlog("  - IsInsidediamond: " & isInsideDiamondXY($THx, $THy), $COLOR_TEAL)
-						SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+						SetLog("  - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
 						SetLog("  - Images checked: " & $count, $COLOR_TEAL)
 					EndIf
 					If isInsideDiamondXY($THx, $THy) = True Then
@@ -114,7 +114,7 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0, $captureRegion=True)
 	If $THLocation = 0 Then
 		If $debugBuildingPos = 1 Then
 			Setlog("#*# checkTownhallADV2: NONE ", $COLOR_TEAL)
-			SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+			SetLog("  - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
 			SetLog("  - Images checked: " & $count, $COLOR_TEAL)
 		EndIf
 		If $debugBuildingPos = 1 And ($limit <> 0 Or $tolerancefix <> 0) Then Setlog("#*# checkTownhallADV2: limit= " & $limit & ", tolerancefix=" & $tolerancefix, $COLOR_TEAL)

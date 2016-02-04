@@ -239,7 +239,7 @@ Func ZombieSearch2($limit = 0, $tolerancefix = 0)
 						Setlog("  - Elixir Collector 50% level " & $t + 6, $COLOR_TEAL)
 						Setlog("  - Image Match " & Execute("$ElixirImages" & $t & "_50percent" & "[" & $i & "]"), $COLOR_TEAL)
 						Setlog("  - IsInsidediamond: " & isInsideDiamondXY($ElixirLocationx, $ElixirLocationy), $COLOR_TEAL)
-						SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+						SetLog("  - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
 						SetLog("  - Images checked: " & $count, $COLOR_TEAL)
 					EndIf
 					If isInsideDiamondXY($ElixirLocationx, $ElixirLocationy) = True Then
@@ -291,7 +291,7 @@ Func ZombieSearch2($limit = 0, $tolerancefix = 0)
 							Setlog("  - Elixir Collector 75% level " & $t + 6, $COLOR_TEAL)
 							Setlog("  - Image Match " & Execute("$ElixirImages" & $t & "_75percent" & "[" & $i & "]"), $COLOR_TEAL)
 							Setlog("  - IsInsidediamond: " & isInsideDiamondXY($ElixirLocationx, $ElixirLocationy), $COLOR_TEAL)
-							SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+							SetLog("  - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
 							SetLog("  - Images checked: " & $count, $COLOR_TEAL)
 						EndIf
 						If isInsideDiamondXY($ElixirLocationx, $ElixirLocationy) = True Then
@@ -337,14 +337,13 @@ Func ZombieSearch2($limit = 0, $tolerancefix = 0)
 					ConsoleWrite(@CRLF)
 
 					If $ElixirLocation = 1 Then
-
 						If $debugBuildingPos = 1 Then
 							Setlog("#*# ZombieSearch2: ", $COLOR_TEAL)
 							Setlog("  - Position (" & $ElixirLocationx & "," & $ElixirLocationy & ")", $COLOR_TEAL)
 							Setlog("  - Elixir Collector 100% level " & $t + 6, $COLOR_TEAL)
 							Setlog("  - Image Match " & Execute("$ElixirImages" & $t & "[" & $i & "]"), $COLOR_TEAL)
 							Setlog("  - IsInsidediamond: " & isInsideDiamondXY($ElixirLocationx, $ElixirLocationy), $COLOR_TEAL)
-							SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+							SetLog("  - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
 							SetLog("  - Images checked: " & $count, $COLOR_TEAL)
 						EndIf
 						If isInsideDiamondXY($ElixirLocationx, $ElixirLocationy) = True Then
@@ -368,7 +367,7 @@ Func ZombieSearch2($limit = 0, $tolerancefix = 0)
 	If $ZombieFound = False Then
 		If $debugBuildingPos = 1 Then
 			Setlog("#*# ZombieSearch2: NONE ", $COLOR_TEAL)
-			SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+			SetLog("  - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
 			SetLog("  - Images checked: " & $count, $COLOR_TEAL)
 			Setlog(" FOUND = " & $ZombieFound, $COLOR_TEAL)
 		EndIf
