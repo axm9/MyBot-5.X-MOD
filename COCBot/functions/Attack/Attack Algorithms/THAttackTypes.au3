@@ -134,7 +134,7 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 		
 		If $ichkDBMeetCollOutside = 1 Then ; check for outside collectors if enabled
 			If AreCollectorsOutside($iDBMinCollOutsidePercent) Then ; attack dead base if collectors are outside
-				SetLog("Collectors are outside.", $COLOR_GREEN, "Lucida Console", 7.5)
+				SetLog("Collectors are outside.", $COLOR_GREEN)
 				$iMatchMode = $DB
 				If $debugDeadBaseImage = 1 Then
 					_CaptureRegion()
@@ -142,7 +142,7 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 					_WinAPI_DeleteObject($hBitmap)
 				EndIf
 			Else
-				SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
+				SetLog("Collectors are not outside!", $COLOR_RED)
 			EndIf
 		Else
 			$iMatchMode = $DB
@@ -154,10 +154,10 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 		EndIf
 	EndIf	
 	If $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DarkPercent < $ipercentTSSuccess And Number($DarkEnd) > Number($itxtDBLightMinDark) Then 
-		SetLog("Dark Elixir is mostly in drills and can be zapped", $COLOR_GREEN, "Lucida Console", 7.5)
+		SetLog("Dark Elixir is mostly in drills and can be zapped", $COLOR_GREEN)
 		; indicate dead base for Zap		
 		$isDeadBase = True
 		$zapBaseMatch = True
 	EndIf
-	If Not($isDeadBase) Then SetLog("Got more than " & $ipercentTSSuccess & "% of the loot, base it not dead", $COLOR_RED, "Lucida Console", 7.5)
+	If Not($isDeadBase) Then SetLog("Greedy mode requirements not met", $COLOR_RED)
 EndFunc   ;==>CheckLootIfDB
