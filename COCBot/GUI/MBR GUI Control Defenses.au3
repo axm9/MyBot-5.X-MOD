@@ -17,57 +17,57 @@ Global $chkInfernoEnabled, $chkMortarEnabled, $chkWizardEnabled, $chkTeslaEnable
 
 Func chkInferno()
 	If GUICtrlRead($chkInferno) = $GUI_CHECKED Then
-		$chkInfernoEnabled = "1"
+		$chkInfernoEnabled = 1
 	Else
-		$chkInfernoEnabled = "0"
+		$chkInfernoEnabled = 0
 	EndIf
 EndFunc
 
 Func chkMortar()
 	If GUICtrlRead($chkMortar) = $GUI_CHECKED Then
-		$chkMortarEnabled = "1"
+		$chkMortarEnabled = 1
 	Else
-		$chkMortarEnabled = "0"
+		$chkMortarEnabled = 0
 	EndIf
 EndFunc
 
 Func chkWizard()
 	If GUICtrlRead($chkWizard) = $GUI_CHECKED Then
-		$chkWizardEnabled = "1"
+		$chkWizardEnabled = 1
 	Else
-		$chkWizardEnabled = "0"
+		$chkWizardEnabled = 0
 	EndIf
 EndFunc
 
 Func chkTesla()
 	If GUICtrlRead($chkTesla) = $GUI_CHECKED Then
-		$chkTeslaEnabled = "1"
+		$chkTeslaEnabled = 1
 	Else
-		$chkTeslaEnabled = "0"
+		$chkTeslaEnabled = 0
 	EndIf
 EndFunc
 
 Func chkAir()
 	If GUICtrlRead($chkAir) = $GUI_CHECKED Then
-		$chkAirEnabled = "1"
+		$chkAirEnabled = 1
 	Else
-		$chkAirEnabled = "0"
+		$chkAirEnabled = 0
 	EndIf
 EndFunc
 
 Func chkArcher()
 	If GUICtrlRead($chkArcher) = $GUI_CHECKED Then
-		$chkArcherEnabled = "1"
+		$chkArcherEnabled = 1
 	Else
-		$chkArcherEnabled = "0"
+		$chkArcherEnabled = 0
 	EndIf
 EndFunc
 
 Func chkCannon()
 	If GUICtrlRead($chkCannon) = $GUI_CHECKED Then
-		$chkCannonEnabled = "1"
+		$chkCannonEnabled = 1
 	Else
-		$chkCannonEnabled = "0"
+		$chkCannonEnabled = 0
 	EndIf
 EndFunc
 
@@ -76,14 +76,14 @@ Func sldDefTolerance()
 EndFunc
 
 Func readDefConfig()
-	$chkInfernoEnabled = IniRead($config,"def", "TrapInfernoEnabled", "0")
-	$chkMortarEnabled = IniRead($config,"def", "TrapMortarEnabled", "1")
-	$chkWizardEnabled = IniRead($config,"def", "TrapWizardEnabled", "0")
-	$chkTeslaEnabled = IniRead($config,"def", "TrapTeslaEnabled", "1")
-	$chkAirEnabled = IniRead($config,"def", "TrapAirEnabled", "0")
-	$chkArcherEnabled = IniRead($config,"def", "TrapArcherEnabled", "1")
-	$chkCannonEnabled = IniRead($config,"def", "TrapCannonEnabled", "0")
-	$toleranceDefOffset = IniRead($config, "def", "TrapDefTolerance", "0")
+	$chkInfernoEnabled = IniRead($config,"def", "TrapInfernoEnabled", 0)
+	$chkMortarEnabled = IniRead($config,"def", "TrapMortarEnabled", 1)
+	$chkWizardEnabled = IniRead($config,"def", "TrapWizardEnabled", 0)
+	$chkTeslaEnabled = IniRead($config,"def", "TrapTeslaEnabled", 1)
+	$chkAirEnabled = IniRead($config,"def", "TrapAirEnabled", 0)
+	$chkArcherEnabled = IniRead($config,"def", "TrapArcherEnabled", 1)
+	$chkCannonEnabled = IniRead($config,"def", "TrapCannonEnabled", 0)
+	$toleranceDefOffset = IniRead($config, "def", "TrapDefTolerance", 0)
 EndFunc
 
 Func saveDefConfig()
@@ -98,43 +98,43 @@ Func saveDefConfig()
 EndFunc
 
 Func applyDefConfig()
-	If $chkInfernoEnabled = "1" Then
+	If $chkInfernoEnabled = 1 Then
 		GUICtrlSetState($chkInferno, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($chkInferno, $GUI_UNCHECKED)
 	EndIf
 	
-	If $chkMortarEnabled = "1" Then
+	If $chkMortarEnabled = 1 Then
 		GUICtrlSetState($chkMortar, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($chkMortar, $GUI_UNCHECKED)
 	EndIf
 	
-	If $chkWizardEnabled = "1" Then
+	If $chkWizardEnabled = 1 Then
 		GUICtrlSetState($chkWizard, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($chkWizard, $GUI_UNCHECKED)
 	EndIf
 	
-	If $chkTeslaEnabled = "1" Then
+	If $chkTeslaEnabled = 1 Then
 		GUICtrlSetState($chkTesla, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($chkTesla, $GUI_UNCHECKED)
 	EndIf
 	
-	If $chkAirEnabled = "1" Then
+	If $chkAirEnabled = 1 Then
 		GUICtrlSetState($chkAir, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($chkAir, $GUI_UNCHECKED)
 	EndIf
 	
-	If $chkArcherEnabled = "1" Then
+	If $chkArcherEnabled = 1 Then
 		GUICtrlSetState($chkArcher, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($chkArcher, $GUI_UNCHECKED)
 	EndIf
 	
-	If $chkCannonEnabled = "1" Then
+	If $chkCannonEnabled = 1 Then
 		GUICtrlSetState($chkCannon, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($chkCannon, $GUI_UNCHECKED)

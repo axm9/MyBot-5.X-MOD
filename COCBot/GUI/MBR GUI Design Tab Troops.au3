@@ -63,35 +63,47 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x += 150
-	$grpBarrackMode = GUICtrlCreateGroup(GetTranslated(1,15, "Barrack Mode"), $x - 20, $y -20, 150, 123)
+	$grpBarrackMode = GUICtrlCreateGroup(GetTranslated(1,15, "Barrack Mode"), $x - 20, $y -20, 150, 156)
 		$lblBarrack1 = GUICtrlCreateLabel("1:", $x - 5, $y + 5, -1, -1)
 		$cmbBarrack1 = GUICtrlCreateCombo("", $x + 10, $y, 100, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			$txtTip = GetTranslated(1,16, "Set the Troops to make in Barrack")
 			GUICtrlSetTip(-1, $txtTip & " 1.")
-			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers &"|" & $sTxtDragons & "|" & $sTxtPekkas, $sTxtBarbarians)
+			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers &"|" & $sTxtDragons & "|" & $sTxtPekkas & "|N/A", $sTxtBarbarians)
 			GUICtrlSetState(-1, $GUI_DISABLE)
-		$y += 2
+		$y += 1
 		$lblBarrack2 = GUICtrlCreateLabel("2:", $x - 5, $y + 26, -1, -1)
 		$cmbBarrack2 = GUICtrlCreateCombo("", $x + 10, $y + 21, 100, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, $txtTip & " 2.")
-			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers &"|" & $sTxtDragons & "|" & $sTxtPekkas, $sTxtArchers)
+			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers &"|" & $sTxtDragons & "|" & $sTxtPekkas & "|N/A", $sTxtArchers)
 			GUICtrlSetState(-1, $GUI_DISABLE)
-		$y += 2
+		$y += 1
 		$lblBarrack3 = GUICtrlCreateLabel("3:", $x - 5, $y + 47, -1, -1)
 		$cmbBarrack3 = GUICtrlCreateCombo("", $x + 10, $y + 42, 100, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, $txtTip & " 3.")
-			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers &"|" & $sTxtDragons & "|" & $sTxtPekkas, $sTxtArchers)
+			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers &"|" & $sTxtDragons & "|" & $sTxtPekkas & "|N/A", $sTxtArchers)
 			GUICtrlSetState(-1, $GUI_DISABLE)
-		$y += 2
+		$y += 1
 		$lblBarrack4 = GUICtrlCreateLabel("4:", $x - 5, $y + 68, -1, -1)
 		$cmbBarrack4 = GUICtrlCreateCombo("", $x + 10, $y + 63, 100, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, $txtTip & " 4.")
-			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers &"|" & $sTxtDragons & "|" & $sTxtPekkas, $sTxtGoblins)
+			GUICtrlSetData(-1, $sTxtBarbarians & "|" & $sTxtArchers & "|" & $sTxtGiants & "|" & $sTxtGoblins & "|" & $sTxtWallBreakers & "|" & $sTxtBalloons & "|" & $sTxtWizards & "|" & $sTxtHealers &"|" & $sTxtDragons & "|" & $sTxtPekkas & "|N/A", $sTxtGoblins)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+		$y += 1
+		$lblDarkBarrack1 = GUICtrlCreateLabel("5:", $x - 5, $y + 89, -1, -1)
+		$cmbDarkBarrack1 = GUICtrlCreateCombo("", $x + 10, $y + 84, 100, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+			GUICtrlSetTip(-1, $txtTip & " 5. (Dark)")
+			GUICtrlSetData(-1, $sTxtMinions & "|" & $sTxtHogRiders & "|" & $sTxtValkyries & "|" & $sTxtGolems & "|" & $sTxtWitches & "|" & $sTxtLavaHounds & "|N/A", $sTxtMinions)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+		$y += 1
+		$lblDarkBarrack2 = GUICtrlCreateLabel("6:", $x - 5, $y + 110, -1, -1)
+		$cmbDarkBarrack2 = GUICtrlCreateCombo("", $x + 10, $y + 105, 100, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+			GUICtrlSetTip(-1, $txtTip & " 6. (Dark)")
+			GUICtrlSetData(-1, $sTxtMinions & "|" & $sTxtHogRiders & "|" & $sTxtValkyries & "|" & $sTxtGolems & "|" & $sTxtWitches & "|" & $sTxtLavaHounds & "|N/A", $sTxtMinions)
 			GUICtrlSetState(-1, $GUI_DISABLE)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	$y += 112
-	$grpRaidComp = GUICtrlCreateGroup(GetTranslated(1,27, "Army Strength"), $x - 20, $y - 15, 150, 52)
+	$y += 148
+	$grpRaidComp = GUICtrlCreateGroup(GetTranslated(1,27, "Army Strength"), $x - 20, $y - 15, 150, 48)
 		$y += 10
 		GUICtrlCreateIcon ($pIconLib, $eIcnBldgTarget, $x - 10, $y - 8, 24, 24)
 		$lblFullTroop = GUICtrlCreateLabel(GetTranslated(1,28, "'Full' Camps="),$x + 20, $y , -1, 17)
@@ -101,8 +113,8 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 			GUICtrlSetLimit(-1, 3)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	$y = 150
-	$x +=155
+	$y = 152
+	$x += 155
 	$grpSpells = GUICtrlCreateGroup(GetTranslated(1,54, "Spells"), $x - 20, $y - 20, 145, 175)
 		GUICtrlCreateIcon ($pIconLib, $eIcnLightSpell, $x - 10, $y - 5, 24, 24)
 		$lblLightningSpell = GUICtrlCreateLabel($sTxtLightning & ":", $x + 20, $y, -1, -1)
@@ -153,7 +165,7 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 		$lblTotal = GUICtrlCreateLabel(GetTranslated(1,61, "Spells Capacity") & ":", $x - 20 , $y + 4, -1, -1, $SS_RIGHT)
 		$txtTotalCountSpell = GUICtrlCreateCombo("", $x + 80, $y , 35, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, GetTranslated(1,62, "Enter the No. of Spells Capacity. Set to ZERO if you don´t want any Spells"))
-			GUICtrlSetBkColor (-1, $COLOR_MONEYGREEN) ;lime, moneygreen
+			GUICtrlSetBkColor (-1, $COLOR_MONEYGREEN) ; lime, moneygreen
 			GUICtrlSetData(-1, "0|2|4|6|7|8|9|10|11", "0")
 			GUICtrlSetOnEvent(-1, "lblTotalCountSpell")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
@@ -188,7 +200,7 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 		$lblTotal = GUICtrlCreateLabel(GetTranslated(1,42, "Total") & ":", $x + 45, $y, -1, -1, $SS_RIGHT)
 		$lblTotalCount = GUICtrlCreateLabel("100", $x + 80, $y, 30, 15, $SS_CENTER)
 			GUICtrlSetTip(-1, GetTranslated(1,43, "The total % of Troops should equal 100%."))
-			GUICtrlSetBkColor (-1, $COLOR_MONEYGREEN) ;lime, moneygreen
+			GUICtrlSetBkColor (-1, $COLOR_MONEYGREEN) ; lime, moneygreen
 		$lblPercentTotal = GUICtrlCreateLabel("%", $x + 112, $y, -1, -1)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
@@ -200,42 +212,42 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtGiants & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 2)
 		$lblTimesGiants = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnWallBreaker, $x - 10, $y - 5, 24, 24)
 		$lblWallBreakers = GUICtrlCreateLabel($sTxtWallBreakersShort & ":", $x + 20, $y, -1, -1)
 		$txtNumWall = GUICtrlCreateInput("4", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtWallBreakers & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 		$lblTimesWallBreakers = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnBalloon, $x - 10, $y - 5, 24, 24)
 		$lblBalloons = GUICtrlCreateLabel($sTxtBalloons & ":", $x + 20, $y, -1, -1)
 		$txtNumBall = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtBalloons & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 		$lblTimesBalloons = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnWizard, $x - 10, $y - 5, 24, 24)
 		$lblWizards = GUICtrlCreateLabel($sTxtWizards & ":", $x + 20, $y, -1, -1)
 		$txtNumWiza = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtWizards & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 		$lblTimesWizards = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnHealer, $x - 10, $y - 5, 24, 24)
 		$lblHealers = GUICtrlCreateLabel($sTxtHealers & ":", $x + 20, $y, -1, -1)
 		$txtNumHeal = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtHealers & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 		$lblTimesHealers = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnDragon, $x - 10, $y - 5, 24, 24)
 		$lblDragons = GUICtrlCreateLabel($sTxtDragons & ":", $x + 20, $y, -1, -1)
 		$txtNumDrag = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtDragons & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 		$lblTimesDragons = GUICtrlCreateLabel("x", $x + 112, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnPekka, $x - 10, $y - 5, 24, 24)
 		$lblPekka = GUICtrlCreateLabel($sTxtPekkasLong & ":", $x + 20, $y, -1, -1)
 		$txtNumPekk = GUICtrlCreateInput("0", $x + 80, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
@@ -245,43 +257,43 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x += 150
-	$y = 330
-	$grpDarkTroops = GUICtrlCreateGroup(GetTranslated(1,47, "Add. Dark Troops"), $x - 20, $y - 20, 150, 195)
+	$y = 358
+	$grpDarkTroops = GUICtrlCreateGroup(GetTranslated(1,47, "Add. Dark Troops"), $x - 20, $y - 20, 150, 168)
 		GUICtrlCreateIcon ($pIconLib, $eIcnMinion, $x - 10, $y - 5, 24, 24)
 		$lblMinion = GUICtrlCreateLabel($sTxtMinions & ":", $x + 18, $y, -1, -1)
 		$txtNumMini = GUICtrlCreateInput("0", $x + 85, $y - 3, 30, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtMinions & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 3)
 		$lblTimesMinions = GUICtrlCreateLabel("x", $x + 117, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnHogRider, $x - 10, $y - 5, 24, 24)
 		$lblHogRiders = GUICtrlCreateLabel($sTxtHogRiders & ":", $x + 18, $y, -1, -1)
 		$txtNumHogs = GUICtrlCreateInput("0", $x + 85, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtHogRiders & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 2)
 		$lblTimesHogRiders = GUICtrlCreateLabel("x", $x + 117, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnValkyrie, $x - 10, $y - 5, 24, 24)
 		$lblValkyries = GUICtrlCreateLabel($sTxtValkyries & ":", $x + 18, $y, -1, -1)
 		$txtNumValk = GUICtrlCreateInput("0", $x + 85, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtValkyries & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 2)
 		$lblTimesValkyries = GUICtrlCreateLabel("x", $x + 117, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnGolem, $x - 10, $y - 5, 24, 24)
 		$lblGolems = GUICtrlCreateLabel($sTxtGolems & ":", $x + 18, $y, -1, -1)
 		$txtNumGole = GUICtrlCreateInput("0", $x + 85, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtGolems & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 2)
 		$lblTimesGolems = GUICtrlCreateLabel("x", $x + 117, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnWitch, $x - 10, $y - 5, 24, 24)
 		$lblWitches = GUICtrlCreateLabel($sTxtWitches & ":", $x + 18, $y, -1, -1)
 		$txtNumWitc = GUICtrlCreateInput("0", $x + 85, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, $sTxtSetPerc3 & " " & $sTxtWitches & " " & $sTxtSetPerc2)
 			GUICtrlSetLimit(-1, 2)
 		$lblTimesWitches = GUICtrlCreateLabel("x", $x + 117, $y, -1, -1)
-		$y +=25
+		$y += 25
 		GUICtrlCreateIcon ($pIconLib, $eIcnLavaHound, $x - 10, $y - 5, 24, 24)
 		$lblLavaHounds = GUICtrlCreateLabel($sTxtLavaHounds & ":", $x + 18, $y, -1, -1)
 		$txtNumLava = GUICtrlCreateInput("0", $x + 85, $y - 3, 30, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))

@@ -124,16 +124,16 @@ Global Const $FullMini[4]   	= [ 255, 348 + $midOffsetY, 0xFFFFFF, 15] ; 0xC7F8F
 Global Const $FullHogs[4]   	= [ 364, 355 + $midOffsetY, 0xB2B2B2, 30] ; 0xD07C58 normal (lt brown shoulder)
 Global Const $FullValk[4]   	= [ 417, 317 + $midOffsetY, 0xB1B1B1, 30] ; 0xFF6E18 normal (lt orange hari curl)
 Global Const $FullGole[4]   	= [ 562, 339 + $midOffsetY, 0xC9C9C9, 30] ; 0xF07CD0 normal (pink eye)
-Global Const $FullWitc[4]   	= [ 638, 339 + $midOffsetY, 0xACACAC, 15] ; 0xF83DA4 normal (left pink eye) Need to fix
-	
+Global Const $FullWitc[4]   	= [ 638, 339 + $midOffsetY, 0xACACAC, 15] ; 0xF83DA4 normal (left pink eye) Need to fix	
 Global Const $FullLava[4]   	= [ 256, 458 + $midOffsetY, 0xB3B3B3, 30] ; 0xFF7000 normal (Orange line above DE drop)
-	
-Global Const $GemBarb[4]    	= [ 239, 372 + $midOffsetY, 0xE70A12, 30] ; Pixel location of middle of right side of zero text for troop training, and color when out of Elixir
+
+; Pixel location of middle of right side of zero text for troop training, and color when out of Elixir
+Global Const $GemBarb[4]    	= [ 239, 372 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemArch[4]    	= [ 346, 372 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemGiant[4]   	= [ 453, 372 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemGobl[4]    	= [ 559, 372 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemWall[4]    	= [ 666, 372 + $midOffsetY, 0xE70A12, 30]
-	
+Global Const $GemWall[4]    	= [ 666, 372 + $midOffsetY, 0xE70A12, 30]	
+
 Global Const $GemBall[4]    	= [ 239, 372 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemWiza[4]    	= [ 346, 372 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemHeal[4]    	= [ 453, 372 + $midOffsetY, 0xE70A12, 30]
@@ -144,8 +144,7 @@ Global Const $GemMini[4]    	= [ 239, 378 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemHogs[4]    	= [ 346, 379 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemValk[4]    	= [ 453, 372 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemGole[4]    	= [ 559, 378 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemWitc[4]    	= [ 666, 372 + $midOffsetY, 0xE70A12, 30]
-	
+Global Const $GemWitc[4]    	= [ 666, 372 + $midOffsetY, 0xE70A12, 30]	
 Global Const $GemLava[4]    	= [ 239, 372 + $midOffsetY, 0xE70A12, 30]
 	
 Global Const $aCloseChat[4] 	= [ 331, 330 + $midOffsetY, 0xF0A03B, 20]

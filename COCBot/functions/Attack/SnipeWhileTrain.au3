@@ -33,33 +33,38 @@ Func SnipeWhileTrain()
 			$tempSnipeWhileTrain[5] = $iChkMeetOne[$DB]
 			$tempSnipeWhileTrain[6] = $OptTrophyMode
 			$tempSnipeWhileTrain[7] = $THaddtiles
-			$tempSnipeWhileTrain[8] = $iMinGold[$TS]
-			$tempSnipeWhileTrain[9] = $iMinElixir[$TS]
-			$tempSnipeWhileTrain[10] = $iMinGoldPlusElixir[$TS]
-			$tempSnipeWhileTrain[11] = $iMinDark[$TS]
-			$tempSnipeWhileTrain[12] = $ichkDBMeetCollOutside
-			$tempSnipeWhileTrain[13] = $iDBMinCollOutsidePercent
+			$tempSnipeWhileTrain[8] = $iChkRedArea[$DB]
+			$tempSnipeWhileTrain[6] = $iChkRedArea[$DB]
+			$tempSnipeWhileTrain[10] = $iChkSmartAttack[$DB][0] 
+			$tempSnipeWhileTrain[11] = $iChkSmartAttack[$DB][1]
+			$tempSnipeWhileTrain[12] = $iChkSmartAttack[$DB][2]
+			$tempSnipeWhileTrain[13] = $ichkDBMeetCollOutside
+			$tempSnipeWhileTrain[14] = $iDBMinCollOutsidePercent
 
 			; change values to snipe while train
 			$iChkMeetTrophy[$DB] = 1
 			$iChkMeetTrophy[$LB] = 1
 			$iMinTrophy[$DB] = 99
 			$iMinTrophy[$LB] = 99
-			; if greedy mode enabled, bot should only attack dead bases with 75% of collectors outside in SWT mode
+			; if greedy mode enabled
 			If $ichkAttackIfDB = 1 Then
-				If $debugSetlog = 1 Then setlog("Min collector outside set to 75% during snipe while train mode", $COLOR_PURPLE)
+				Setlog("Min collector outside set to 75% during snipe while train mode", $COLOR_PURPLE)
+				; bot should only attack dead bases with 75% of collectors outside in SWT mode
 				$ichkDBMeetCollOutside = 1
 				$iDBMinCollOutsidePercent = 75
+				
+				Setlog("Smart Attack near collectors during snipe while train mode", $COLOR_PURPLE)
+				; smart attack dropping near collectors
+				$iChkDeploySettings[$DB] = 3
+				$iChkRedArea[$DB] = 1
+				$iChkSmartAttack[$DB][0] = 1
+				$iChkSmartAttack[$DB][1] = 1
+				$iChkSmartAttack[$DB][2] = 1
 			EndIf
 			$iChkMeetOne[$DB] = 0
 			$iChkMeetOne[$LB] = 0
 			$OptTrophyMode = 1
 			$THaddtiles = $itxtSWTtiles
-			If $debugSetlog = 1 Then setlog("Min snipe resources changed to 120k/120k/1k during snipe while train mode", $COLOR_PURPLE)
-			$iMinGold[$TS] = 120000
-			$iMinElixir[$TS] = 120000
-			$iMinGoldPlusElixir[$TS] = 250000
-			$iMinDark[$TS] = 1000
 
 			; used to Change back values
 			$SnipeChangedSettings = True
@@ -92,12 +97,13 @@ Func SWHTrainRevertNormal()
 		$iChkMeetOne[$DB] = $tempSnipeWhileTrain[5]
 		$OptTrophyMode = $tempSnipeWhileTrain[6]
 		$THaddtiles = $tempSnipeWhileTrain[7]
-		$iMinGold[$TS] = $tempSnipeWhileTrain[8]
-		$iMinElixir[$TS] = $tempSnipeWhileTrain[9]
-		$iMinGoldPlusElixir[$TS] = $tempSnipeWhileTrain[10]
-		$iMinDark[$TS] = $tempSnipeWhileTrain[11]
-		$ichkDBMeetCollOutside = $tempSnipeWhileTrain[12]
-		$iDBMinCollOutsidePercent = $tempSnipeWhileTrain[13]
+		$iChkDeploySettings[$DB] = $tempSnipeWhileTrain[8]
+		$iChkRedArea[$DB] = $tempSnipeWhileTrain[9]
+		$iChkSmartAttack[$DB][0] = $tempSnipeWhileTrain[1]
+		$iChkSmartAttack[$DB][1] = $tempSnipeWhileTrain[11]
+		$iChkSmartAttack[$DB][2] = $tempSnipeWhileTrain[12]
+		$ichkDBMeetCollOutside = $tempSnipeWhileTrain[13]
+		$iDBMinCollOutsidePercent = $tempSnipeWhileTrain[14]
 		$Is_ClientSyncError = False
 	EndIf
 	$SnipeChangedSettings = False

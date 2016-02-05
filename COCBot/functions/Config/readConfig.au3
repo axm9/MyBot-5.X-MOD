@@ -426,10 +426,10 @@ Func readConfig() ;Reads config and sets it to the variables
 		$sTxtBlacklist = StringReplace(IniRead($config, "donate", "txtBlacklist", "clan war|war|cw"), "|", @CRLF)
 		$aBlackList = StringSplit($sTxtBlacklist, @CRLF, $STR_ENTIRESPLIT)
 
-		; Extra Alphabets , Cyrillic.
+		; Extra Alphabets, Cyrillic.
 		$ichkExtraAlphabets = IniRead($config, "donate", "chkExtraAlphabets", "0")
 
-		;Troop Settings--------------------------------------------------------------------------
+		; Troop Settings--------------------------------------------------------------------------
 		$iCmbTroopComp = IniRead($config, "troop", "TroopComposition", "0")
 
 		For $i = 0 To UBound($TroopName) - 1
@@ -439,9 +439,13 @@ Func readConfig() ;Reads config and sets it to the variables
 			Assign($TroopDarkName[$i] & "Comp", IniRead($config, "troop", $TroopDarkName[$i], "0"))
 		Next
 
-		For $i = 0 To 3 ;Covers all 4 Barracks
+		For $i = 0 To 3 ; Covers all 4 Barracks
 			$barrackTroop[$i] = IniRead($config, "troop", "troop" & $i + 1, "0")
 		Next
+
+		; 2 Dark Barracks
+		$darkBarrackTroop[0] = IniRead($config, "troop", "darktroop1", "0")
+		$darkBarrackTroop[1] = IniRead($config, "troop", "darktroop1", "0")
 
 		$fulltroop = IniRead($config, "troop", "fullTroop", "100")
 

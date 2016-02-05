@@ -13,7 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Global $ppath[7] = ["inferno" , "tesla" , "mortar" , "wizard" ,  "air" , "archer" , "cannon"]
+Global $ppath[7] = ["inferno", "mortar", "wizard", "tesla", "air", "archer", "cannon"]
 Global $Defx = 0, $Defy = 0
 Global $DefText[7] ; Text of Defense Type
 $DefText[0] = "Inferno Tower"
@@ -31,6 +31,7 @@ Func IsTHTrapped()
 	SetLog("Checking Trapped TH", $COLOR_BLUE)	
 	Local $hTimer = TimerInit()
 	Local $defCount = 0
+	Local $chkDefEnabled[7] = [$chkInfernoEnabled, $chkMortarEnabled, $chkWizardEnabled, $chkTeslaEnabled, $chkAirEnabled, $chkArcherEnabled, $chkCannonEnabled]
 	
 	$Defx = 0
 	$Defy = 0
@@ -59,6 +60,7 @@ Func IsTHTrapped()
 	_CaptureTH($iLeft, $iTop, $iRight, $iBottom, False)
 	
 	For $t = 0 To 6
+		If $chkDefEnabled[$t] = 0 Then ContinueLoop ; skip trap detection if defense was not selected
 		If Execute("$DefImages" & $t & "[0]") > 0 Then
 			For $i = 1 To Execute("$DefImages" & $t & "[0]")
 				$defToleranceArray = StringSplit(Execute("$DefImages" & $t & "["& $i & "]") , "T")
@@ -83,19 +85,19 @@ Func IsTHTrapped()
 								SetLog("Inferno Tower found near TH...", $COLOR_RED)
 								Return True
 							EndIf
-						ElseIf $chkTeslaEnabled = 1 And $t = 1 Then
-							If ($Defx > 58 And $Defx < 192) And ($Defy > 45 And $Defy < 135) Then
-								SetLog("Hidden Tesla found near TH...", $COLOR_RED)
-								Return True
-							EndIf
-						ElseIf $chkMortarEnabled = 1 And $t = 2 Then
+						ElseIf $chkMortarEnabled = 1 And $t = 1 Then
 							If ($Defx > 5 And $Defx < 245) And ($Defy > 10 And $Defy < 170) Then
 								SetLog("Mortar found near TH...", $COLOR_RED)
 								Return True
 							EndIf
-						ElseIf $chkWizardEnabled = 1 And $t = 3 Then
+						ElseIf $chkWizardEnabled = 1 And $t = 2 Then
 							If ($Defx > 53 And $Defx < 197) And ($Defy > 42 And $Defy < 138) Then
 								SetLog("Wizard Tower found near TH...", $COLOR_RED)
+								Return True
+							EndIf
+						ElseIf $chkTeslaEnabled = 1 And $t = 3 Then
+							If ($Defx > 58 And $Defx < 192) And ($Defy > 45 And $Defy < 135) Then
+								SetLog("Hidden Tesla found near TH...", $COLOR_RED)
 								Return True
 							EndIf
 						ElseIf $chkAirEnabled = 1 And $t = 4 Then

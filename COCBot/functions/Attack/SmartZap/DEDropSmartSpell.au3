@@ -70,7 +70,7 @@ Func DEDropSmartSpell()
 
 	; Offset the number of max spells to align with townhall lvl
 	Local $maxSpellNbr = 0
-	If $iTownHallLevel = 10 Then
+	If $iTownHallLevel = 10 Or $iTownHallLevel = 11 Then
 		$maxSpellNbr = 5
 	ElseIf $iTownHallLevel = 9 Then
 		$maxSpellNbr = 4

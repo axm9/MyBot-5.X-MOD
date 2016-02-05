@@ -540,9 +540,9 @@ Global $ichkExtraAlphabets = 0 ; extra alphabets
 Global $DonBarb = 0, $DonArch = 0, $DonGiant = 0, $DonGobl = 0, $DonWall = 0, $DonBall = 0, $DonWiza = 0, $DonHeal = 0
 Global $DonMini = 0, $DonHogs = 0, $DonValk = 0, $DonGole = 0, $DonWitc = 0, $DonLava = 0, $DonDrag = 0, $DonPekk = 0
 
-;Troop Settings
-Global $icmbTroopComp ;Troop Composition
-Global $icmbTroopCap ;Troop Capacity
+; Troop Settings
+Global $icmbTroopComp ; Troop Composition
+Global $icmbTroopCap ; Troop Capacity
 Global $BarbComp = 30, $ArchComp = 60, $GoblComp = 10, $GiantComp = 4, $WallComp = 4, $WizaComp = 0, $MiniComp = 0, $HogsComp = 0
 Global $DragComp = 0, $BallComp = 0, $PekkComp = 0, $HealComp = 0, $ValkComp = 0, $GoleComp = 0, $WitcComp = 0, $LavaComp = 0
 Global $CurBarb = 0, $CurArch = 0, $CurGiant = 0, $CurGobl = 0, $CurWall = 0, $CurBall = 0, $CurWiza = 0, $CurHeal = 0
@@ -550,7 +550,7 @@ Global $CurMini = 0, $CurHogs = 0, $CurValk = 0, $CurGole = 0, $CurWitc = 0, $Cu
 Global $T[1] = [97]
 Global $ArmyComp
 
-;Spell Settings
+; Spell Settings
 Global $DonPois = 0, $DonEart = 0, $DonHast = 0
 Global $LightningSpellComp = 0, $HealSpellComp = 0, $RageSpellComp = 0, $PoisonSpellComp = 0, $HasteSpellComp = 0
 Global $CurLightningSpell = 0, $CurHealSpell = 0, $CurRageSpell = 0, $CurJumpSpell = 0, $CurFreezeSpell = 0, $CurPoisonSpell = 0, $CurHasteSpell = 0, $CurEarthSpell = 0
@@ -558,12 +558,13 @@ Global $iTotalCountSpell = 0
 Global $TotalSFactory = 0
 Global $CurSFactory = 0
 
-Global $barrackPos[4][2] ;Positions of each barracks
+Global $barrackPos[4][2] ; Positions of each barracks
 
-Global $barrackTroop[5] ;Barrack troop set
+Global $barrackTroop[4] ; Barrack troop set
+Global $darkBarrackTroop[2] ; Dark Barrack troop set
 Global $ArmyPos[2] = [-1, -1]
 
-;Other Settings
+; Other Settings
 Global $ichkWalls
 Global $icmbWalls
 Global $iUseStorage
@@ -819,10 +820,10 @@ Global $iValueTotalCampForced = 200
 
 Global $iMakeScreenshotNow = False
 
-Global $lastversion = "" ;latest version from GIT
-Global $lastmessage = "" ;message for last version
+Global $lastversion = "" ; latest version from GIT
+Global $lastmessage = "" ; message for last version
 Global $ichkVersion = 1
-Global $oldversmessage = "" ;warning message for old bot
+Global $oldversmessage = "" ; warning message for old bot
 
 ; BarracksStatus
 Global $numBarracks = 0
@@ -880,7 +881,7 @@ Global $darkelixirStoragePos
 ; Snipe While Train
 Global $isSnipeWhileTrain = False
 Global $SnipeChangedSettings = False
-Global $tempSnipeWhileTrain[14] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Global $tempSnipeWhileTrain[15] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 Global $iChkSnipeWhileTrain = 0
 Global $itxtSearchlimit = 10
 Global $itxtminArmyCapacityTHSnipe = 10

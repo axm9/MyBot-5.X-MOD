@@ -34,12 +34,11 @@ Func TrainClick($x, $y, $iTimes, $iSpeed, $aWatchSpot, $aLootSpot, $sdebugtxt = 
 					SetLog("Elixir Check Fail: Color = " & _GetPixelColor($aLootSpot[0], $aLootSpot[1], True), $COLOR_PURPLE)
 					$OutOfElixir = 1
 					If _Sleep($iDelayTrainClick1) Then Return
-					If IsGemOpen(True) = True Then ClickP($aAway) ;Click Away
+					If IsGemOpen(True) = True Then ClickP($aAway) ; Click Away
 					ExitLoop
 				EndIf
 
-				PureClick($x, $y) ;Click once.
-
+				PureClick($x, $y) ; Click once.
 				If _Sleep($iSpeed, False) Then ExitLoop
 			Next
 		Else
@@ -50,7 +49,7 @@ Func TrainClick($x, $y, $iTimes, $iSpeed, $aWatchSpot, $aLootSpot, $sdebugtxt = 
 				SetLog("Elixir Check Fail: Color = " & _GetPixelColor($aLootSpot[0], $aLootSpot[1], True), $COLOR_PURPLE)
 				$OutOfElixir = 1
 				If _Sleep($iDelayTrainClick1) Then Return
-				If IsGemOpen(True) = True Then ClickP($aAway) ;Click Away
+				If IsGemOpen(True) = True Then ClickP($aAway) ; Click Away
 				Return
 			EndIf
 
@@ -61,7 +60,7 @@ Func TrainClick($x, $y, $iTimes, $iSpeed, $aWatchSpot, $aLootSpot, $sdebugtxt = 
 				SetLog("Elixir Check Fail: Color = " & _GetPixelColor($aLootSpot[0], $aLootSpot[1], True), $COLOR_PURPLE)
 				$OutOfElixir = 1
 				If _Sleep($iDelayTrainClick1) Then Return
-				If IsGemOpen(True) = True Then ClickP($aAway) ;Click Away
+				If IsGemOpen(True) = True Then ClickP($aAway) ; Click Away
 				Return
 			EndIf
 		EndIf

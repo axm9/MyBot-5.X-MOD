@@ -1,4 +1,5 @@
 lib/debug
+Profiles/profile.ini
 Profiles/**/Logs
 Profiles/**/Loots
 Profiles/**/Stats
