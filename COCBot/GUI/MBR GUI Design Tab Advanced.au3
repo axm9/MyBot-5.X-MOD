@@ -44,29 +44,26 @@ $tabAttackAdv = GUICtrlCreateTabItem(GetTranslated(4,1, "Attack Adv."))
 
 	Local $x = 255, $y = 150
 	$grpTHSnipeWhileTrainOptions = GUICtrlCreateGroup(GetTranslated(4,13, "TH Snipe"), $x - 20, $y - 20, 225, 375)
-		$y -=5
+		$y -= 5
 		$ChkSnipeWhileTrain = GUICtrlCreateCheckbox(GetTranslated(4,14, "Snipe While Train"), $x - 10, $y, -1, -1)
 			$txtTip = GetTranslated(4,15, "Check this if you want the bot search TH outsite while train troops.")
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "chkSnipeWhileTrain")
-		$lblSWTTiles = GUICtrlCreateLabel(GetTranslated(4,16, "Add Tiles") & ":", $x + 67, $y + 4, 100, -1, $SS_RIGHT)
-			$txtTip = GetTranslated(4,17, "Add number of tiles from Base Edges")
+		$lblSearchlimit = GUICtrlCreateLabel(GetTranslated(4,16, "Search limit") & ":", $x - 10, $y + 4, 177, -1, $SS_RIGHT)
+			$txtTip = GetTranslated(4,17, "Maximum searches first to return to home.")
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_DISABLE)
-		$txtSWTTiles = GUICtrlCreateInput("1", $x + 170, $y, 25, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetLimit(-1, 2)
-			GUICtrlSetState(-1, $GUI_DISABLE)
-			
-		$y +=22
-		$lblSearchlimit = GUICtrlCreateLabel(GetTranslated(4,18, "Search limit") & ":", $x, $y + 4, -1, -1)
-			$txtTip = GetTranslated(4,19, "Maximum searches first to return to home.")
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetState(-1, $GUI_DISABLE)
-		$txtSearchlimit = GUICtrlCreateInput("15", $x + 60, $y + 2, 25, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtSearchlimit = GUICtrlCreateInput("15", $x + 170, $y + 2, 25, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetState(-1, $GUI_DISABLE)
+			
+		$y += 21
+		$chkSWTSmartAttack = GUICtrlCreateCheckbox(GetTranslated(4,18,"Smart Attack"), $x + 10 , $y, -1, -1)
+			$txtTip = GetTranslated(4,19, "Check if you want to use Smart Attack near collectors during SWT greedy deployment.")
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+			GUICtrlSetOnEvent(-1, "chkSWTSmartAttack")
 		$lblminArmyCapacityTHSnipe = GUICtrlCreateLabel(GetTranslated(4,20, "Min Army %") & ":", $x - 10, $y + 4, 177, -1, $SS_RIGHT)
 			$txtTip = GetTranslated(4,21, "Minimum Army Capacity to start Snipe.")
 			GUICtrlSetTip(-1, $txtTip)
@@ -76,12 +73,12 @@ $tabAttackAdv = GUICtrlCreateTabItem(GetTranslated(4,1, "Attack Adv."))
 			GUICtrlSetLimit(-1, 2)
 			GUICtrlSetState(-1, $GUI_DISABLE)
 			
-		$y +=22
+		$y += 22
 		$chkTrophyMode = GUICtrlCreateCheckbox(GetTranslated(4,22, "Snipe Combo"), $x-10, $y, -1, -1)
 			$txtTip = GetTranslated(4,23, "Adds the TH Snipe combination to the current search settings. (Example: Deadbase OR TH Snipe)")
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "chkSnipeMode")			
-		$y+= 25
+		$y += 25
 		$lblTHadd = GUICtrlCreateLabel(GetTranslated(4,24, "Add") & ":", $x - 10, $y + 5, -1, 17, $SS_RIGHT)
 		    $txtTip = GetTranslated(4,25, "Enter how many 'Grass' 1x1 tiles the TH may be from the Base edges to be seen as a TH Outside.") & @CRLF & GetTranslated(4,26, "If the TH is farther away then the No. of tiles set, the base will be skipped.")
 			GUICtrlSetTip(-1, $txtTip)
@@ -171,7 +168,7 @@ $tabAttackAdv = GUICtrlCreateTabItem(GetTranslated(4,1, "Attack Adv."))
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 2)
 			GUICtrlSetState(-1, $GUI_DISABLE)			
-		$y += 21	
+		$y += 21
 		$lblMinTroopAttackDB = GUICtrlCreateLabel(GetTranslated(4,44, "Min troops") & ":", $x + 67, $y + 4, 100, -1, $SS_RIGHT)
 			$txtTip = GetTranslated(4,45, "Min number of troop space to initiate a dead base attack")
 			GUICtrlSetTip(-1, $txtTip)

@@ -57,16 +57,14 @@ Func chkSnipeWhileTrain()
 		GUICtrlSetState($txtSearchlimit, $GUI_ENABLE)
 		GUICtrlSetState($lblminArmyCapacityTHSnipe, $GUI_ENABLE)
 		GUICtrlSetState($txtminArmyCapacityTHSnipe, $GUI_ENABLE)
-		GUICtrlSetState($lblSWTTiles, $GUI_ENABLE)
-		GUICtrlSetState($txtSWTTiles, $GUI_ENABLE)
+		GUICtrlSetState($chkSWTSmartAttack, $GUI_ENABLE)
 	Else
 		$iChkSnipeWhileTrain = 0
 		GUICtrlSetState($lblSearchlimit, $GUI_DISABLE)
 		GUICtrlSetState($txtSearchlimit, $GUI_DISABLE)
 		GUICtrlSetState($lblminArmyCapacityTHSnipe, $GUI_DISABLE)
 		GUICtrlSetState($txtminArmyCapacityTHSnipe, $GUI_DISABLE)
-		GUICtrlSetState($lblSWTTiles, $GUI_DISABLE)
-		GUICtrlSetState($txtSWTTiles, $GUI_DISABLE)
+		GUICtrlSetState($chkSWTSmartAttack, $GUI_DISABLE)
 	EndIf
 	GUICtrlSetState($ChkSnipeWhileTrain, $GUI_ENABLE)
 

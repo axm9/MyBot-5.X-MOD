@@ -1283,9 +1283,13 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "SnipeWhileTrain", "chkSnipeWhileTrain", 0)
 	EndIf
+	If GUICtrlRead($chkSWTSmartAttack) = $GUI_CHECKED Then
+		IniWrite($config, "SnipeWhileTrain", "chkSWTSmartAttack", 1)
+	Else
+		IniWrite($config, "SnipeWhileTrain", "chkSWTSmartAttack", 0)
+	EndIf
 	IniWrite($config, "SnipeWhileTrain", "txtSearchlimit", GUICtrlRead($txtSearchlimit))
 	IniWrite($config, "SnipeWhileTrain", "txtminArmyCapacityTHSnipe", GUICtrlRead($txtminArmyCapacityTHSnipe))
-	IniWrite($config, "SnipeWhileTrain", "SWTtiles", GUICtrlRead($txtSWTTiles))
 
 	;Multilanguage
 	IniWrite($config, "other", "language", $sLanguage)

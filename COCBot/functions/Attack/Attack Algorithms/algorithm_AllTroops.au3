@@ -38,46 +38,41 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		$hBitmapFirst = _CaptureRegion2()
 		_GetRedArea()
 
-		SetLog("Calculated  (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds) :")
-
 		If ($iChkSmartAttack[$iMatchMode][0] = 1 Or $iChkSmartAttack[$iMatchMode][1] = 1 Or $iChkSmartAttack[$iMatchMode][2] = 1) Then
-			SetLog("Locating Mines, Collectors & Drills", $COLOR_BLUE)
-			;reset variables
-			Global $PixelMine[0]
-			Global $PixelElixir[0]
-			Global $PixelDarkElixir[0]
 			Global $PixelNearCollector[0]
 			$hTimer = TimerInit()
-			; If drop troop near gold mine
-			If ($iChkSmartAttack[$iMatchMode][0] = 1) Then
+				
+			; check collectors and mines only if it was not done during collector outside detection
+			If $ichkDBMeetCollOutside = 0 And $iChkSmartAttack[$iMatchMode][0] = 1 Then
+				Global $PixelMine[0]
 				$PixelMine = GetLocationMine()
 				If (IsArray($PixelMine)) Then
 					_ArrayAdd($PixelNearCollector, $PixelMine)
+					$iNbrOfDetectedMines[$iMatchMode] += UBound($PixelMine)
+					SetLog("Found [" & UBound($PixelMine) & "] Gold Mines")
 				EndIf
 			EndIf
-			; If drop troop near elixir collector
-			If ($iChkSmartAttack[$iMatchMode][1] = 1) Then
+			If $ichkDBMeetCollOutside = 0 And $iChkSmartAttack[$iMatchMode][1] = 1 Then
+				Global $PixelElixir[0]
 				$PixelElixir = GetLocationElixir()
 				If (IsArray($PixelElixir)) Then
 					_ArrayAdd($PixelNearCollector, $PixelElixir)
+					$iNbrOfDetectedCollectors[$iMatchMode] += UBound($PixelElixir)
+					SetLog("Found [" & UBound($PixelElixir) & "] Elixir Collectors")
 				EndIf
 			EndIf
-			; If drop troop near dark elixir drill
-			If ($iChkSmartAttack[$iMatchMode][2] = 1) Then
+			If $iChkSmartAttack[$iMatchMode][2] = 1 Then					
+				Global $PixelDarkElixir[0]
 				$PixelDarkElixir = GetLocationDarkElixir()
 				If (IsArray($PixelDarkElixir)) Then
 					_ArrayAdd($PixelNearCollector, $PixelDarkElixir)
+					$iNbrOfDetectedDrills[$iMatchMode] += UBound($PixelDarkElixir)
+					SetLog("Found [" & UBound($PixelDarkElixir) & "] Dark Elixir Drills")
 				EndIf
 			EndIf
-			SetLog("Located (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds) :")
-			SetLog("[" & UBound($PixelMine) & "] Gold Mines")
-			SetLog("[" & UBound($PixelElixir) & "] Elixir Collectors")
-			SetLog("[" & UBound($PixelDarkElixir) & "] Dark Elixir Drill/s")
-			$iNbrOfDetectedMines[$iMatchMode] += UBound($PixelMine)
-			$iNbrOfDetectedCollectors[$iMatchMode] += UBound($PixelElixir)
-			$iNbrOfDetectedDrills[$iMatchMode] += UBound($PixelDarkElixir)
 			UpdateStats()
 		EndIf
+		SetLog("Calculated (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds)")
 	EndIf
 
 	;########################################################################################################################

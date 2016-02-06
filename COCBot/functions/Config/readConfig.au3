@@ -575,9 +575,9 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		;Snipe While Train
 		$iChkSnipeWhileTrain = IniRead($config, "SnipeWhileTrain", "chkSnipeWhileTrain", "0")
+		$iChkSWTSmartAttack = IniRead($config, "SnipeWhileTrain", "chkSWTSmartAttack", "1")
 		$itxtSearchlimit = IniRead($config, "SnipeWhileTrain", "txtSearchlimit", "15")
-		$itxtminArmyCapacityTHSnipe = IniRead($config, "SnipeWhileTrain", "txtminArmyCapacityTHSnipe", "35")
-		$itxtSWTtiles = IniRead($config, "SnipeWhileTrain", "SWTtiles", "1")
+		$itxtminArmyCapacityTHSnipe = IniRead($config, "SnipeWhileTrain", "txtminArmyCapacityTHSnipe", "30")
 
 		;AttackCSV
 		$KingAttackCSV[$DB] = IniRead($config, "attackCSV", "DBKingAtk", "0")

@@ -69,7 +69,7 @@ Func GUI3()
 
 	$y += 50
 	$lblTolerancedef = GUICtrlCreateLabel("-15" & _PadStringCenter(GetTranslated(16,18, "Tolerance"), 80, " ") & "15", 5, $y - 15)
-	$slddefTolerance = GUICtrlCreateSlider(5, $y, 290, 20, BITOR($TBS_TOOLTIPS, $TBS_AUTOTICKS)) ;,
+	$slddefTolerance = GUICtrlCreateSlider(5, $y, 240, 20, BITOR($TBS_TOOLTIPS, $TBS_AUTOTICKS))
 	$txtTip = GetTranslated(16,19, "Use this slider to adjust the tolerance of ALL images.") & @CRLF & GetTranslated(16,20, "If you want to adjust individual images, you must edit the files.")
 		GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
 		GUICtrlSetTip(-1, $txtTip)

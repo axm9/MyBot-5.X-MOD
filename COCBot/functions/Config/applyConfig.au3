@@ -1389,10 +1389,14 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($ChkSnipeWhileTrain, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($ChkSnipeWhileTrain, $GUI_UNCHECKED)
+	EndIf	
+	If $iChkSWTSmartAttack = 1 Then
+		GUICtrlSetState($chkSWTSmartAttack, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkSWTSmartAttack, $GUI_UNCHECKED)
 	EndIf
 	GUICtrlSetData($txtSearchlimit, $itxtSearchlimit)
 	GUICtrlSetData($txtminArmyCapacityTHSnipe, $itxtminArmyCapacityTHSnipe)
-	GUICtrlSetData($txtSWTTiles, $itxtSWTtiles)
 	ChkSnipeWhileTrain()
 
 	;multilanguage

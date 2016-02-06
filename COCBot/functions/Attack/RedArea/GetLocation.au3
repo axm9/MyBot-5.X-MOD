@@ -21,7 +21,7 @@ Func GetLocationMine()
 		Local $result = DllCall($hFuncLib, "str", "getLocationSnowMineExtractor", "ptr", $hBitmapFirst)
 		If $debugBuildingPos = 1 Then Setlog("#*# GetLocationSnowMine: " & $result[0] ,$COLOR_TEAL)
 	EndIf
-	; filter out false positive results
+	; filter out false positive results outside of village area
 	Local $found = GetListPixel($result[0])
 	For $i = 0 To Ubound($found) - 1
 		If Not(isInsideDiamond($found[$i])) Then 

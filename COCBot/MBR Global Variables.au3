@@ -869,9 +869,6 @@ Global $DEEndAq, $DEEndBk, $DEEndOneStar
 Global $SpellDP[2] = [0, 0]; Spell drop point for DE attack
 
 ; Attack SCV
-Global $PixelMine[0]
-Global $PixelElixir[0]
-Global $PixelDarkElixir[0]
 Global $PixelNearCollectorTopLeft[0]
 Global $PixelNearCollectorBottomLeft[0]
 Global $PixelNearCollectorTopRight[0]
@@ -881,11 +878,11 @@ Global $darkelixirStoragePos
 ; Snipe While Train
 Global $isSnipeWhileTrain = False
 Global $SnipeChangedSettings = False
-Global $tempSnipeWhileTrain[15] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Global $tempSnipeWhileTrain[14] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 Global $iChkSnipeWhileTrain = 0
+Global $iChkSWTSmartAttack = 1
 Global $itxtSearchlimit = 10
 Global $itxtminArmyCapacityTHSnipe = 10
-Global $itxtSWTtiles = 1
 
 Global $iChkRestartSearchLimit = 0
 Global $iRestartSearchlimit = 15
