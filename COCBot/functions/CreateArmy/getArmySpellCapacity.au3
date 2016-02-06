@@ -29,7 +29,7 @@ Func getArmySpellCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	Local $sSpellsInfo = ""
 
 	; Verify spell current and total capacity
-	If $iTotalCountSpell > 0 Then ; only use this code if the user had input spells to brew ... and assign the spells quantity
+	If $iTotalCountSpell > 0 Or $iTrainLightSpell = 1 Then ; only use this code if the user had input spells to brew or Zap is enabled... and assign the spells quantity
 		$sSpellsInfo = getArmyCampCap(184, 391 + $midOffsetY) ; OCR read Spells and total capacity
 
 		$iCount = 0 ; reset OCR loop counter
@@ -58,6 +58,7 @@ Func getArmySpellCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 			$TotalSFactory = $iTotalCountSpell
 		EndIf
 
+		$maxElixirSpellNbr = Int($TotalSFactory / 2)
 		SetLog("Total Spell(s) Capacity: " & $CurSFactory & "/" & $TotalSFactory)
 	EndIf
 

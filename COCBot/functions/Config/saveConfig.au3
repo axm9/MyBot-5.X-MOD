@@ -1473,6 +1473,8 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "attackCSV", "EnableScriptAB", 0)
 	EndIf
+	
+	savedefConfig()
 
 	If $hFile <> -1 Then FileClose($hFile)
 EndFunc   ;==>saveConfig

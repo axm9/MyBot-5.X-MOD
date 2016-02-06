@@ -145,8 +145,7 @@ EndFunc
 
 Func OpenGUI3()
 	GUI3()
-	readdefConfig()
-	applydefConfig()
+	applyDefConfig()
 	GUISetState(@SW_SHOW, $hdefGUI)
 	GUISetState(@SW_DISABLE, $frmBot)
 EndFunc

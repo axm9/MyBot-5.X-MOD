@@ -84,9 +84,9 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "chkDBLightSpell")	
 		$lblDBLightMinDark = GUICtrlCreateLabel("Min DE:", $x + 50, $y + 4, -1, -1)
-			$txtTip = "Input the min amount of dark elixer you want to zap"
+			$txtTip = "Input the min amount of dark elixer per drill you want to zap"
 			GUICtrlSetTip(-1, $txtTip)
-		$txtDBLightMinDark = GUICtrlCreateInput("1000", $x + 90, $y, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtDBLightMinDark = GUICtrlCreateInput("400", $x + 90, $y, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 4)
 			GUICtrlSetOnEvent(-1, "txtDBLightMinDark")

@@ -19,7 +19,7 @@ Func SnipeWhileTrain()
 	If $iChkSnipeWhileTrain = 1 And $CommandStop <> 0 And $CommandStop <> 3 Then
 		; Attempt only when $iminArmyCapacityTHSnipe % army full to prevent failure of TH snipe
 		If ($CurCamp <= ($TotalCamp * $itxtminArmyCapacityTHSnipe / 100)) Then
-			SetLog("army Capacity below " & $itxtminArmyCapacityTHSnipe & "%, not enough for Snipe While Train")
+			SetLog("Army Capacity below " & $itxtminArmyCapacityTHSnipe & "%, not enough for Snipe While Train")
 			Return False
 		EndIf
 

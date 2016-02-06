@@ -24,7 +24,7 @@ Func getArmySpellCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		If _Sleep($iDelaycheckArmyCamp5) Then Return
 	EndIf
 
-	If $iTotalCountSpell > 0 Or $ichkDBLightSpell = 1 Then ; only use this code if the user had input spells to brew ... and assign the spells quantity
+	If $iTotalCountSpell > 0 Or $ichkDBLightSpell = 1 Then ; only use this code if the user had input spells to brew or Zap is enabled... and assign the spells quantity
 		; reset Global variables
 		$CurLightningSpell = 0
 		$CurHealSpell = 0
@@ -78,7 +78,7 @@ Func getArmySpellCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	EndIf
 
 	If $bCloseArmyWindow = True Then
-		ClickP($aAway, 1, 0, "#0000") ;Click Away
+		ClickP($aAway, 1, 0, "#0000") ; Click Away
 		If _Sleep($iDelaycheckArmyCamp4) Then Return
 	EndIf
 EndFunc   ;==>getArmySpellCount

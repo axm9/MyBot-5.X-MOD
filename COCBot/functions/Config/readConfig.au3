@@ -168,7 +168,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkSmartAttack[$DB][2] = IniRead($config, "attack", "DBSmartAttackDarkElixirDrill", "0")
 
 		$ichkDBLightSpell = IniRead($config, "attack", "DBLightSpell", "0")
-		$itxtDBLightMinDark = IniRead($config, "attack", "DBLightMinDark", "1000")
+		$itxtDBLightMinDark = IniRead($config, "attack", "DBLightMinDark", "400")
 
 		$iChkRedArea[$LB] = IniRead($config, "attack", "ABSmartAttackRedArea", "1")
 		$iCmbSmartDeploy[$LB] = IniRead($config, "attack", "ABSmartAttackDeploy", "0")
@@ -614,6 +614,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$ichkEarthquakeSpell[$LB] = IniRead($config, "attackCSV", "ABEarthquakeSpell", "0")
 		$ichkHasteSpell[$DB] = IniRead($config, "attackCSV", "DBHasteSpell", "0")
 		$ichkHasteSpell[$LB] = IniRead($config, "attackCSV", "ABHasteSpell", "0")
+		readDefConfig()
 	Else
 		Return False
 	EndIf

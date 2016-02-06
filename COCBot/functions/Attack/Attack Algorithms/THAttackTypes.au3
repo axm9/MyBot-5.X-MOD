@@ -153,7 +153,7 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 			EndIf
 		EndIf
 	EndIf	
-	If $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DarkPercent < $ipercentTSSuccess And Number($DarkEnd) > Number($itxtDBLightMinDark) Then 
+	If $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DarkPercent < $ipercentTSSuccess And Number($DarkEnd) > 1000 Then 
 		SetLog("Dark Elixir is mostly in drills and can be zapped", $COLOR_GREEN)
 		; indicate dead base for Zap		
 		$isDeadBase = True

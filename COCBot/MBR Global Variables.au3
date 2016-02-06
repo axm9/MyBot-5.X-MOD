@@ -306,10 +306,15 @@ Global $iChkEnableAfter[$iModeCount], $iCmbMeetGE[$iModeCount], $iChkMeetDE[$iMo
 Global $chkDBMeetTHO, $chkABMeetTHO, $chkATH
 
 ; Smart zap
+Global Const $DrillLevelSteal[6] = [59, 102, 172, 251, 343, 479] ; Amount of DE available from Drill at each level (1-6) with 1 average (lvl4) lightning spell
+Global Const $DrillLevelHold[6] = [120, 225, 405, 630, 960, 1350] ; Total Amount of DE available from Drill at each level (1-6) by attack
+
 Global $ichkDBLightSpell = 0
-Global $itxtDBLightMinDark = 1000
+Global $itxtDBLightMinDark = 400
 Global $iTrainLightSpell = 0
 Global $iZapVillageFound = 0
+Global $numDEDrill = 0
+Global $DEperDrill = 0
 Global $iLightSpellUsed = 0
 Global $iDEFromZap = 0
 
@@ -557,6 +562,7 @@ Global $CurLightningSpell = 0, $CurHealSpell = 0, $CurRageSpell = 0, $CurJumpSpe
 Global $iTotalCountSpell = 0
 Global $TotalSFactory = 0
 Global $CurSFactory = 0
+Global $maxElixirSpellNbr = 0
 
 Global $barrackPos[4][2] ; Positions of each barracks
 

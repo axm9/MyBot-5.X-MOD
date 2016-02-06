@@ -163,7 +163,8 @@ EndFunc   ;==>chkTSMeetDE
 
 Func chkTSSkipTrappedTH()
 	If GUICtrlRead($chkTSSkipTrappedTH) = $GUI_CHECKED Then
-		$ichkTSSkipTrappedTH = 1
+		$ichkTSSkipTrappedTH = 1		
+		readDefConfig()
 		GUICtrlSetState($btnConfigureDef, $GUI_ENABLE)
 	Else
 		$ichkTSSkipTrappedTH = 0

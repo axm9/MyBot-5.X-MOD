@@ -1600,6 +1600,8 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkUseAttackABCSV, $GUI_UNCHECKED)
 	EndIf
 	chkUseAttackABCSV()
+	
+	applyDefConfig()
 
 	; Reenabling window redraw
 	If $bRedrawAtExit Then SetRedrawBotWindow(True)

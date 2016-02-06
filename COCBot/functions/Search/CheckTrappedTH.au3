@@ -35,7 +35,6 @@ Func IsTHTrapped()
 	
 	$Defx = 0
 	$Defy = 0
-
 	$iLeft = $THx - 125
 	$iTop = $THy - 90
 	$iRight = $THx + 125
@@ -54,30 +53,32 @@ Func IsTHTrapped()
 		$iBottom = 600
 	EndIf
 
-	$iw = $iRight - $iLeft
-	$ih = $iBottom - $iTop
-
 	_CaptureTH($iLeft, $iTop, $iRight, $iBottom, False)
 	
 	For $t = 0 To 6
-		If $chkDefEnabled[$t] = 0 Then ContinueLoop ; skip trap detection if defense was not selected
+		If $chkDefEnabled[$t] = 0 Then
+			If $debugsetlog = 1 Then Setlog("Skip detecting " & $ppath[$t], $COLOR_PURPLE)
+			ContinueLoop ; skip trap detection if defense was not selected
+		EndIf
 		If Execute("$DefImages" & $t & "[0]") > 0 Then
 			For $i = 1 To Execute("$DefImages" & $t & "[0]")
 				$defToleranceArray = StringSplit(Execute("$DefImages" & $t & "["& $i & "]") , "T")
 				$defTolerance = $defToleranceArray[2] + $toleranceDefOffset
-
-				$DefLocation = _ImageSearchArea(@ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & Execute("$DefImages" & $t & "["& $i & "]"), 1, 0, 0, $iw, $ih, $Defx, $Defy, $defTolerance) ; Getting Defense Location
+				
+				If $debugsetlog = 1 Then Setlog("Search for " & $ppath[$t] & " in rectangle (" & $iLeft & "," & $iTop & ") - (" & $iRight & "," & $iBottom & ")", $COLOR_PURPLE)
+				$DefLocation = _ImageSearchArea(@ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & Execute("$DefImages" & $t & "["& $i & "]"), 1, $iLeft, $iTop, $iRight, $iBottom, $Defx, $Defy, $defTolerance) ; Getting Defense Location
 				$defCount += 1
 
-				If $DefLocation = 1 Then					
+				If $DefLocation = 1 Then
 					If $debugBuildingPos = 1 Then
-						Setlog("#*# IsTHTrapped: ", $COLOR_TEAL)
-						Setlog("  - Position (" & $Defx & "," & $Defy & ")", $COLOR_TEAL)
-						Setlog("  - Detected defense: " & $DefText[$t], $COLOR_TEAL)
-						Setlog("  - Image Match " & $ppath[$t] & "\" & Execute("$DefImages" & $t & "_50percent" & "[" & $i & "]"), $COLOR_TEAL)
-						Setlog("  - IsInsidediamond: " & isInsideDiamondXY($Defx, $Defy), $COLOR_TEAL)
-						SetLog("  - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
-						SetLog("  - Images checked: " & $defCount, $COLOR_TEAL)
+						Setlog("#*# IsTHTrapped result: ", $COLOR_TEAL)
+						Setlog(" - TH Position (" & $THx & "," & $THy & ")", $COLOR_TEAL)
+						Setlog(" - Def Position (" & $Defx & "," & $Defy & ")", $COLOR_TEAL)
+						Setlog(" - Detected defense: " & $DefText[$t], $COLOR_TEAL)
+						Setlog(" - Image Match " & $ppath[$t] & "\" & Execute("$DefImages" & $t & "_50percent" & "[" & $i & "]"), $COLOR_TEAL)
+						Setlog(" - IsInsidediamond: " & isInsideDiamondXY($Defx, $Defy), $COLOR_TEAL)
+						SetLog(" - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+						SetLog(" - Images checked: " & $defCount, $COLOR_TEAL)
 					EndIf
 					If isInsideDiamondXY($Defx, $Defy) Then
 						If $chkInfernoEnabled = 1 And $t = 0 Then

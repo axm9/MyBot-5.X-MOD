@@ -72,8 +72,7 @@ Func _ImageSearchArea($findImage, $resultPosition, $x1, $y1, $right, $bottom, By
 		Return 1
 	EndIf
 
-	; Otherwise get the x,y location of the match and the size of the image to
-	; compute the centre of search
+	; Otherwise get the x,y location of the match and the size of the image to compute the centre of search
 	$array = StringSplit($result[0], "|")
 	If (UBound($array) >= 4) Then
 		$x = Int(Number($array[2]))

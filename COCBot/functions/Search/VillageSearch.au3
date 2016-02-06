@@ -135,8 +135,23 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			If CheckZoomOut() = False Then Return
 		EndIf
 
+		; check DE/drill for Zap
+		$numDEDrill = 0
+		$DEperDrill = 0
+		Switch $iTownHallLevel
+			Case 10, 11
+				$numDEDrill = 3
+			Case 8, 9 
+				$numDEDrill = 2
+			Case 7
+				$numDEDrill = 1
+		EndSwitch
+		If $numDEDrill = 0 Then
+			$DEperDrill = (Number($searchDark) / $numDEDrill)
+		EndIf
+		
 		$isDeadBase = False
-		$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And Number($searchDark) > Number($itxtDBLightMinDark)
+		$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DEperDrill >= Number($itxtDBLightMinDark)
 		Local $noMatchTxt = ""
 		Local $match[$iModeCount]
 		Local $isModeActive[$iModeCount]

@@ -15,12 +15,9 @@
 
 Func DEDrillSearch($bReTest = False)
 	If $ichkDBLightSpell <> 1 Then Return False
-	
-	Local Const $DrillLevelSteal[6] = [59, 102, 172, 251, 343, 479] ; Amount of DE available from Drill at each level (1-6) with 1 average (lvl4) lightning spell
-	Local Const $DrillLevelHold[6] = [120, 225, 405, 630, 960, 1350] ; Total Amount of DE available from Drill at each level (1-6) by attack
 	Local $aDrills[4][5] = [[-1, -1, -1, -1, 0], [-1, -1, -1, -1, 0], [-1, -1, -1, -1, 0], [-1, -1, -1, -1, 0]] ; [XCoord, YCoord, Level, AvailDE, #Zapped]
 	Local $pixel[2], $result, $listPixelByLevel, $pixelWithLevel, $level, $pixelStr
-	Local $NumDEDrill = 0
+	$numDEDrill = 0
 
 	ZoomOut()
 	; Checks the screen and stores the results as $result
@@ -33,8 +30,8 @@ Func DEDrillSearch($bReTest = False)
 
 	$listPixelByLevel = StringSplit($result[0], "~") ; split each building into array
 	If UBound($listPixelByLevel) > 1 Then ; check for more than 1 bldg and proper split a part
-		$NumDEDrill = UBound($listPixelByLevel) - 1
-		SetLog("Total No. of Dark Elixir Drills found = " & $NumDEDrill, $COLOR_FUCHSIA)
+		$numDEDrill = UBound($listPixelByLevel) - 1
+		SetLog("Total No. of Dark Elixir Drills found = " & $numDEDrill, $COLOR_FUCHSIA)
 		If $debugsetlog = 1 Then
 			For $ii = 0 To $listPixelByLevel[0]
 				Setlog("Drill search $listPixelByLevel[" & $ii & "] = " & $listPixelByLevel[$ii], $COLOR_PURPLE) ;Debug
@@ -42,10 +39,10 @@ Func DEDrillSearch($bReTest = False)
 		EndIf
 	EndIf
 
-	If $NumDEDrill <> 0 Then		
-		$iNbrOfDetectedDrillsForZap += $NumDEDrill
-		For $i = 0 To $NumDEDrill
-			If $NumDEDrill > 1 Then
+	If $numDEDrill <> 0 Then		
+		$iNbrOfDetectedDrillsForZap += $numDEDrill
+		For $i = 0 To $numDEDrill
+			If $numDEDrill > 1 Then
 				$pixelWithLevel = StringSplit($listPixelByLevel[$i], "#")
 				If @error Then ContinueLoop ; If the string delimiter is not found, then try next string.
 			Else
