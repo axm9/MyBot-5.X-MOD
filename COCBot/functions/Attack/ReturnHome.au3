@@ -60,7 +60,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 	$checkQPower = False
 	$checkWPower = False
 
-	If $iMatchMode = $TS And $icmbTroopComp <> 8 Then $FirstStart = True ;reset barracks upon return when TH sniping w/custom army
+	If $iMatchMode = $TS And $icmbTroopComp <> 9 Then $FirstStart = True ; reset barracks upon return when TH sniping w/custom army
 
 	SetLog("Returning Home", $COLOR_BLUE)
 	If $RunState = False Then Return

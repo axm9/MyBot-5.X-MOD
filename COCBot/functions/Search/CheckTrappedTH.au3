@@ -31,6 +31,7 @@ Func IsTHTrapped()
 	SetLog("Checking Trapped TH", $COLOR_BLUE)	
 	Local $hTimer = TimerInit()
 	Local $defCount = 0
+	Local $imageName
 	Local $chkDefEnabled[7] = [$chkInfernoEnabled, $chkMortarEnabled, $chkWizardEnabled, $chkTeslaEnabled, $chkAirEnabled, $chkArcherEnabled, $chkCannonEnabled]
 	
 	$Defx = 0
@@ -64,9 +65,9 @@ Func IsTHTrapped()
 			For $i = 1 To Execute("$DefImages" & $t & "[0]")
 				$defToleranceArray = StringSplit(Execute("$DefImages" & $t & "["& $i & "]") , "T")
 				$defTolerance = $defToleranceArray[2] + $toleranceDefOffset
-				
+				$imageName = Execute("$DefImages" & $t & "["& $i & "]")
 				If $debugsetlog = 1 Then Setlog("Search for " & $ppath[$t] & " in rectangle (" & $iLeft & "," & $iTop & ") - (" & $iRight & "," & $iBottom & ")", $COLOR_PURPLE)
-				$DefLocation = _ImageSearchArea(@ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & Execute("$DefImages" & $t & "["& $i & "]"), 1, $iLeft, $iTop, $iRight, $iBottom, $Defx, $Defy, $defTolerance) ; Getting Defense Location
+				$DefLocation = _ImageSearchArea(@ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & $imageName, 1, $iLeft, $iTop, $iRight, $iBottom, $Defx, $Defy, $defTolerance) ; Getting Defense Location
 				$defCount += 1
 
 				If $DefLocation = 1 Then
@@ -75,44 +76,51 @@ Func IsTHTrapped()
 						Setlog(" - TH Position (" & $THx & "," & $THy & ")", $COLOR_TEAL)
 						Setlog(" - Def Position (" & $Defx & "," & $Defy & ")", $COLOR_TEAL)
 						Setlog(" - Detected defense: " & $DefText[$t], $COLOR_TEAL)
-						Setlog(" - Image Match " & $ppath[$t] & "\" & Execute("$DefImages" & $t & "_50percent" & "[" & $i & "]"), $COLOR_TEAL)
+						Setlog(" - Image Match " & $ppath[$t] & "\" & $imageName, $COLOR_TEAL)
 						Setlog(" - IsInsidediamond: " & isInsideDiamondXY($Defx, $Defy), $COLOR_TEAL)
 						SetLog(" - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
 						SetLog(" - Images checked: " & $defCount, $COLOR_TEAL)
 					EndIf
 					If isInsideDiamondXY($Defx, $Defy) Then
 						If $chkInfernoEnabled = 1 And $t = 0 Then
-							If ($Defx > 40 And $Defx < 210) And ($Defy > 30 And $Defy < 150) Then
+							;If ($Defx > 40 And $Defx < 210) And ($Defy > 30 And $Defy < 150) Then
+							If Not(isOutsideEllipse($Defx, $Defy, 90, 67.5, $THx, $THy)) Then
 								SetLog("Inferno Tower found near TH...", $COLOR_RED)
 								Return True
 							EndIf
 						ElseIf $chkMortarEnabled = 1 And $t = 1 Then
-							If ($Defx > 5 And $Defx < 245) And ($Defy > 10 And $Defy < 170) Then
+							;If ($Defx > 5 And $Defx < 245) And ($Defy > 10 And $Defy < 170) Then
+							If Not(isOutsideEllipse($Defx, $Defy, 110, 82.5, $THx, $THy)) Then
 								SetLog("Mortar found near TH...", $COLOR_RED)
 								Return True
 							EndIf
 						ElseIf $chkWizardEnabled = 1 And $t = 2 Then
-							If ($Defx > 53 And $Defx < 197) And ($Defy > 42 And $Defy < 138) Then
+							;If ($Defx > 53 And $Defx < 197) And ($Defy > 42 And $Defy < 138) Then
+							If Not(isOutsideEllipse($Defx, $Defy, 70, 52.5, $THx, $THy)) Then
 								SetLog("Wizard Tower found near TH...", $COLOR_RED)
 								Return True
 							EndIf
 						ElseIf $chkTeslaEnabled = 1 And $t = 3 Then
-							If ($Defx > 58 And $Defx < 192) And ($Defy > 45 And $Defy < 135) Then
+							;If ($Defx > 58 And $Defx < 192) And ($Defy > 45 And $Defy < 135) Then
+							If Not(isOutsideEllipse($Defx, $Defy, 70, 52.5, $THx, $THy)) Then
 								SetLog("Hidden Tesla found near TH...", $COLOR_RED)
 								Return True
 							EndIf
 						ElseIf $chkAirEnabled = 1 And $t = 4 Then
-							If ($Defx > 15 And $Defx < 235) And ($Defy > 20 And $Defy < 160) Then
+							;If ($Defx > 15 And $Defx < 235) And ($Defy > 20 And $Defy < 160) Then
+							If Not(isOutsideEllipse($Defx, $Defy, 10, 75, $THx, $THy)) Then
 								SetLog("Air Defense found near TH...", $COLOR_RED)
 								Return True
 							EndIf
 						ElseIf $chkArcherEnabled = 1 And $t = 5 Then
-							If ($Defx > 15 And $Defx < 235) And ($Defy > 20 And $Defy < 160) Then
+							;If ($Defx > 15 And $Defx < 235) And ($Defy > 20 And $Defy < 160) Then
+							If Not(isOutsideEllipse($Defx, $Defy, 100, 75, $THx, $THy)) Then
 								SetLog("Archer Tower found near TH...", $COLOR_RED)
 								Return True
 							EndIf
 						ElseIf $chkCannonEnabled = 1 And $t = 6 Then
-							If ($Defx > 40 And $Defx < 210) And ($Defy > 30 And $Defy < 150) Then
+							;If ($Defx > 40 And $Defx < 210) And ($Defy > 30 And $Defy < 150) Then
+							If Not(isOutsideEllipse($Defx, $Defy, 90, 67.5, $THx, $THy)) Then
 								SetLog("Cannon found near TH...", $COLOR_RED)
 								Return True
 							EndIf
@@ -173,3 +181,41 @@ Func LoadDefImage()
 		If $debugsetlog = 1 Then Setlog("Def image:" & _ArrayToString($x), $COLOR_PURPLE)
 	Next
 EndFunc   ;==>LoadDefImage
+
+Func CaptureDefs()
+	SetLog("Capturing Defenses", $COLOR_BLUE)	
+	Local $hTimer = TimerInit()
+	Local $defCount = 0
+	Local $imageName
+	Local $chkDefEnabled[7] = [$chkInfernoEnabled, $chkMortarEnabled, $chkWizardEnabled, $chkTeslaEnabled, $chkAirEnabled, $chkArcherEnabled, $chkCannonEnabled]
+	
+	$Defx = 0
+	$Defy = 0
+	
+	For $t = 0 To 6
+		If $chkDefEnabled[$t] = 0 Then
+			If $debugsetlog = 1 Then Setlog("Skip detecting " & $ppath[$t], $COLOR_PURPLE)
+			ContinueLoop ; skip trap detection if defense was not selected
+		EndIf
+		If Execute("$DefImages" & $t & "[0]") > 0 Then
+			For $i = 1 To Execute("$DefImages" & $t & "[0]")
+				$defToleranceArray = StringSplit(Execute("$DefImages" & $t & "["& $i & "]") , "T")
+				$defTolerance = $defToleranceArray[2] + $toleranceDefOffset
+				$imageName = Execute("$DefImages" & $t & "["& $i & "]")
+				$DefLocation = _ImageSearch(@ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & $imageName, 1, $Defx, $Defy, $defTolerance) ; Getting Defense Location
+				$defCount += 1
+
+				If $DefLocation = 1 Then
+					Setlog(" - Def Position (" & $Defx & "," & $Defy & ")", $COLOR_TEAL)
+					Setlog(" - Detected defense: " & $DefText[$t], $COLOR_TEAL)
+					Setlog(" - Image Match " & $ppath[$t] & "\" & $imageName, $COLOR_TEAL)
+					Setlog(" - IsInsideDiamond: " & isInsideDiamondXY($Defx, $Defy), $COLOR_TEAL)
+				EndIf
+			Next
+		EndIf
+	Next	
+	
+	Setlog("#*# CaptureDefs result: ", $COLOR_TEAL)
+	SetLog(" - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+	SetLog(" - Images checked: " & $defCount, $COLOR_TEAL)
+EndFunc   ;==>CaptureDefs

@@ -417,8 +417,8 @@ Func Train()
 			If $FirstStart Then
 				If _Sleep($iDelayTrain2) Then Return
 				$icount = 0
-				If _ColorCheck(_GetPixelColor(187, 212, True), Hex(0xD30005, 6), 10) Then ; check if the existe more then 6 slots troops on train bar
-					While Not _ColorCheck(_GetPixelColor(573, 212, True), Hex(0xD80001, 6), 10) ; while until appears the Red icon to delete troops
+				If _ColorCheck(_GetPixelColor(187, 212, True), Hex(0xD30005, 6), 10) Then ; check if there are more then 6 slots troops on train bar
+					While Not _ColorCheck(_GetPixelColor(573, 212, True), Hex(0xD80001, 6), 10) ; until the Red icon to delete troops appears
 						_PostMessage_ClickDrag(550, 240, 170, 240, "left", 1000)
 						$icount += 1
 						If _Sleep($iDelayTrain2) Then Return
@@ -426,7 +426,7 @@ Func Train()
 					WEnd
 				EndIf
 				$icount = 0
-				While Not _ColorCheck(_GetPixelColor(599, 202 + $midOffsetY, True), Hex(0xD0D0C0, 6), 20) ; while not disappears  green arrow
+				While Not _ColorCheck(_GetPixelColor(599, 202 + $midOffsetY, True), Hex(0xD0D0C0, 6), 20) ; while green arrow doesn't disappear
 					If Not (IsTrainPage()) Then Return
 					Click(568, 177 + $midOffsetY, 10, 0, "#0273") ; Remove Troops in training
 					$icount += 1

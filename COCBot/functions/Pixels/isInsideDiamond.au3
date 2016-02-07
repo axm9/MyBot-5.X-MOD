@@ -20,7 +20,7 @@ Func isInsideDiamondXY($Coordx, $Coordy)
 EndFunc   ;==>isInsideDiamondXY
 
 Func isInsideDiamond($aCoords)
-	Local $Left = 15, $Right = 835, $Top = 30, $Bottom = 645 ; set the diamond shape 860x780
+	Local $Left = 50, $Right = 800, $Top = 50, $Bottom = 610 ; set the diamond shape 860x780
 	Local $aDiamond[2][2] = [[$Left, $Top], [$Right, $Bottom]]
 	Local $aMiddle = [($aDiamond[0][0] + $aDiamond[1][0]) / 2, ($aDiamond[0][1] + $aDiamond[1][1]) / 2]
 	Local $aSize = [$aMiddle[0] - $aDiamond[0][0], $aMiddle[1] - $aDiamond[0][1]]
@@ -47,9 +47,9 @@ Func isInsideDiamond($aCoords)
 	EndIf
 EndFunc   ;==>isInsideDiamond
 
-Func isOutsideEllipse($coordX, $coordY, $ellipseWidth = 200, $ellipseHeigth = 150)
-	Local $normalizedX = $coordX - $CenterX
-	Local $normalizedY = $coordY - $CenterY	
+Func isOutsideEllipse($coordX, $coordY, $ellipseWidth = 200, $ellipseHeigth = 150, $centerX = $CenterX, $centerY = $CenterY)
+	Local $normalizedX = $coordX - $centerX
+	Local $normalizedY = $coordY - $centerY	
 	Local $result = ($normalizedX * $normalizedX) / ($ellipseWidth * $ellipseWidth) + ($normalizedY * $normalizedY) / ($ellipseHeigth * $ellipseHeigth) > 1
 	If $debugSetlog = 1 Then 
 		If $result Then

@@ -23,7 +23,6 @@ Global $LEFT_BACK = "BOTTOM-LEFT-UP"
 Global $BACK_LEFT = "TOP-LEFT-DOWN"
 Global $BACK_RIGHT = "TOP-LEFT-UP"
 
-
 Global $PixelTopLeftDropLine
 Global $PixelTopRightDropLine
 Global $PixelBottomLeftDropLine
@@ -36,7 +35,6 @@ Global $PixelBottomLeftUPDropLine
 Global $PixelBottomLeftDOWNDropLine
 Global $PixelBottomRightUPDropLine
 Global $PixelBottomRightDOWNDropLine
-
 
 Global $ExternalArea[8][3] = [ _
 		[15, 336, "LEFT"], _
@@ -74,10 +72,10 @@ Global $InternalArea[8][3] = [[73, 336, "LEFT"], _
 ; ===============================================================================================================================
 
 Func Algorithm_AttackCSV($testattack = False)
-	;00 read attack file SIDE row and valorize variables
+	; 00 read attack file SIDE row and valorize variables
 	ParseAttackCSV_Read_SIDE_variables()
 
-	;01 - TROOPS ------------------------------------------------------------------------------------------------------------------------------------------
+	; 01 - TROOPS ------------------------------------------------------------------------------------------------------------------------------------------
 	debugAttackCSV("Troops to be used (purged from troops) ")
 	For $i = 0 To UBound($atkTroops) - 1 ; identify the position of this kind of troop
 		debugAttackCSV("SLOT n.: " & $i & " - Troop: " & NameOfTroop($atkTroops[$i][0]) & " (" & $atkTroops[$i][0] & ") - Quantity: " & $atkTroops[$i][1])
@@ -85,7 +83,7 @@ Func Algorithm_AttackCSV($testattack = False)
 
 	Local $hTimerTOTAL = TimerInit()
 	
-	;02.01 - REDAREA -----------------------------------------------------------------------------------------------------------------------------------------
+	; 02.01 - RED AREA -----------------------------------------------------------------------------------------------------------------------------------------
 	Local $hTimer = TimerInit()
 	_WinAPI_DeleteObject($hBitmapFirst)
 	$hBitmapFirst = _CaptureRegion2()
@@ -98,7 +96,7 @@ Func Algorithm_AttackCSV($testattack = False)
 	debugAttackCSV("	[" & UBound($PixelBottomLeft) & "] pixels BottomLeft")
 	debugAttackCSV("	[" & UBound($PixelBottomRight) & "] pixels BottomRight")
 
-	;02.02  - CLEAN REDAREA BAD POINTS -----------------------------------------------------------------------------------------------------------------------
+	; 02.02  - CLEAN RED AREA BAD POINTS -----------------------------------------------------------------------------------------------------------------------
 	CleanRedArea($PixelTopLeft)
 	CleanRedArea($PixelTopRight)
 	CleanRedArea($PixelBottomLeft)
@@ -109,14 +107,14 @@ Func Algorithm_AttackCSV($testattack = False)
 	debugAttackCSV("	[" & UBound($PixelBottomLeft) & "] pixels BottomLeft")
 	debugAttackCSV("	[" & UBound($PixelBottomRight) & "] pixels BottomRight")
 
-	;02.03 - MAKE FULL DROP LINE EDGE--------------------------------------------------------------------------------------------------------------------------
+	; 02.03 - MAKE FULL DROP LINE EDGE--------------------------------------------------------------------------------------------------------------------------
 	$PixelTopLeftDropLine = MakeDropLine($PixelTopLeft, StringSplit($InternalArea[0][0] - 30 & "-" & $InternalArea[0][1], "-", $STR_NOCOUNT), StringSplit($InternalArea[2][0] & "-" & $InternalArea[2][1] - 25, "-", $STR_NOCOUNT))
 	$PixelTopRightDropLine = MakeDropLine($PixelTopRight, StringSplit($InternalArea[2][0] & "-" & $InternalArea[2][1] - 25, "-", $STR_NOCOUNT), StringSplit($InternalArea[1][0] + 30 & "-" & $InternalArea[1][1], "-", $STR_NOCOUNT))
 	$PixelBottomLeftDropLine = MakeDropLine($PixelBottomLeft, StringSplit($InternalArea[0][0] - 30 & "-" & $InternalArea[0][1], "-", $STR_NOCOUNT), StringSplit($InternalArea[3][0] & "-" & $InternalArea[3][1] + 20, "-", $STR_NOCOUNT))
 	$PixelBottomRightDropLine = MakeDropLine($PixelBottomRight, StringSplit($InternalArea[3][0] & "-" & $InternalArea[3][1] + 20, "-", $STR_NOCOUNT), StringSplit($InternalArea[1][0] + 30 & "-" & $InternalArea[1][1], "-", $STR_NOCOUNT))
 
-	;02.04 - MAKE DROP LINE SLICE ----------------------------------------------------------------------------------------------------------------------------
-	;-- TOP LEFT
+	; 02.04 - MAKE DROP LINE SLICE ----------------------------------------------------------------------------------------------------------------------------
+	; -- TOP LEFT
 	Local $tempvectstr1 = ""
 	Local $tempvectstr2 = ""
 	For $i = 0 To UBound($PixelTopLeftDropLine) - 1
@@ -133,7 +131,7 @@ Func Algorithm_AttackCSV($testattack = False)
 	$PixelTopLeftDOWNDropLine = GetListPixel($tempvectstr1)
 	$PixelTopLeftUPDropLine = GetListPixel($tempvectstr2)
 
-	;-- TOP RIGHT
+	; -- TOP RIGHT
 	Local $tempvectstr1 = ""
 	Local $tempvectstr2 = ""
 	For $i = 0 To UBound($PixelTopRightDropLine) - 1
@@ -150,7 +148,7 @@ Func Algorithm_AttackCSV($testattack = False)
 	$PixelTopRightDOWNDropLine = GetListPixel($tempvectstr1)
 	$PixelTopRightUPDropLine = GetListPixel($tempvectstr2)
 
-	;-- BOTTOM LEFT
+	; -- BOTTOM LEFT
 	Local $tempvectstr1 = ""
 	Local $tempvectstr2 = ""
 	For $i = 0 To UBound($PixelBottomLeftDropLine) - 1
@@ -167,7 +165,7 @@ Func Algorithm_AttackCSV($testattack = False)
 	$PixelBottomLeftDOWNDropLine = GetListPixel($tempvectstr1)
 	$PixelBottomLeftUPDropLine = GetListPixel($tempvectstr2)
 
-	;-- BOTTOM RIGHT
+	; -- BOTTOM RIGHT
 	Local $tempvectstr1 = ""
 	Local $tempvectstr2 = ""
 	For $i = 0 To UBound($PixelBottomRightDropLine) - 1
@@ -195,11 +193,6 @@ Func Algorithm_AttackCSV($testattack = False)
 				SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
 				$searchTH = checkTownhallADV2()
 			EndIf
-			If $searchTH = "-" Then ; retry with c# search, matching could not have been caused by heroes that partially hid the townhall
-				If _Sleep($iDelayAttackCSV2) Then Return
-				If $debugImageSave = 1 Then DebugImageSave("VillageSearch_NoTHFound2try_", False)
-				THSearch()
-			EndIf
 			Setlog("> Townhall located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
 		Else
 			Setlog("> Townhall search not needed, skip")
@@ -210,8 +203,8 @@ Func Algorithm_AttackCSV($testattack = False)
 
 	_CaptureRegion()
 
-	;04 - MINES, COLLECTORS, DRILLS -----------------------------------------------------------------------------------------------------------------------
-	;reset variables
+	; 04 - MINES, COLLECTORS, DRILLS -----------------------------------------------------------------------------------------------------------------------
+	; reset variables
 	Global $PixelMine[0]
 	Global $PixelElixir[0]
 	Global $PixelDarkElixir[0]
@@ -220,9 +213,8 @@ Func Algorithm_AttackCSV($testattack = False)
 	Local $PixelNearCollectorTopRightSTR = ""
 	Local $PixelNearCollectorBottomRightSTR = ""
 
-	;04.01 If drop troop near gold mine
+	; 04.01 If drop troop near gold mine
 	If $attackcsv_locate_mine = 1 Then
-		;SetLog("Locating mines")
 		$hTimer = TimerInit()
 		$PixelMine = GetLocationMine()
 		CleanRedArea($PixelMine)
@@ -234,18 +226,14 @@ Func Algorithm_AttackCSV($testattack = False)
 				If isInsideDiamond($pixel) Then
 					If $pixel[0] <= $InternalArea[2][0] Then
 						If $pixel[1] <= $InternalArea[0][1] Then
-							;Setlog($str & " :  TOP LEFT SIDE")
 							$PixelNearCollectorTopLeftSTR &= $str & "|"
 						Else
-							;Setlog($str & " :  BOTTOM LEFT SIDE")
 							$PixelNearCollectorBottomLeftSTR &= $str & "|"
 						EndIf
 					Else
 						If $pixel[1] <= $InternalArea[0][1] Then
-							;Setlog($str & " :  TOP RIGHT SIDE")
 							$PixelNearCollectorTopRightSTR &= $str & "|"
 						Else
-							;Setlog($str & " :  BOTTOM RIGHT SIDE")
 							$PixelNearCollectorBottomRightSTR &= $str & "|"
 						EndIf
 					EndIf
@@ -257,9 +245,8 @@ Func Algorithm_AttackCSV($testattack = False)
 		Setlog("> Mines detection not needed, skip", $COLOR_BLUE)
 	EndIf
 
-	;04.02  If drop troop near elisir
+	; 04.02  If drop troop near elisir
 	If $attackcsv_locate_elixir = 1 Then
-		;SetLog("Locating elixir")
 		$hTimer = TimerInit()
 		$PixelElixir = GetLocationElixir()
 		CleanRedArea($PixelElixir)
@@ -271,18 +258,14 @@ Func Algorithm_AttackCSV($testattack = False)
 				If isInsideDiamond($pixel) Then
 					If $pixel[0] <= $InternalArea[2][0] Then
 						If $pixel[1] <= $InternalArea[0][1] Then
-							;Setlog($str & " :  TOP LEFT SIDE")
 							$PixelNearCollectorTopLeftSTR &= $str & "|"
 						Else
-							;Setlog($str & " :  BOTTOM LEFT SIDE")
 							$PixelNearCollectorBottomLeftSTR &= $str & "|"
 						EndIf
 					Else
 						If $pixel[1] <= $InternalArea[0][1] Then
-							;Setlog($str & " :  TOP RIGHT SIDE")
 							$PixelNearCollectorTopRightSTR &= $str & "|"
 						Else
-							;Setlog($str & " :  BOTTOM RIGHT SIDE")
 							$PixelNearCollectorBottomRightSTR &= $str & "|"
 						EndIf
 					EndIf
@@ -294,9 +277,8 @@ Func Algorithm_AttackCSV($testattack = False)
 		Setlog("> Elixir collectors detection not needed, skip", $COLOR_BLUE)
 	EndIf
 
-	;04.03 If drop troop near drill
+	; 04.03 If drop troop near drill
 	If $attackcsv_locate_drill = 1 Then
-		;SetLog("Locating drills")
 		$hTimer = TimerInit()
 		$PixelDarkElixir = GetLocationDarkElixir()
 		CleanRedArea($PixelDarkElixir)
@@ -308,18 +290,14 @@ Func Algorithm_AttackCSV($testattack = False)
 				If isInsideDiamond($pixel) Then
 					If $pixel[0] <= $InternalArea[2][0] Then
 						If $pixel[1] <= $InternalArea[0][1] Then
-							;Setlog($str & " :  TOP LEFT SIDE")
 							$PixelNearCollectorTopLeftSTR &= $str & "|"
 						Else
-							;Setlog($str & " :  BOTTOM LEFT SIDE")
 							$PixelNearCollectorBottomLeftSTR &= $str & "|"
 						EndIf
 					Else
 						If $pixel[1] <= $InternalArea[0][1] Then
-							;Setlog($str & " :  TOP RIGHT SIDE")
 							$PixelNearCollectorTopRightSTR &= $str & "|"
 						Else
-							;Setlog($str & " :  BOTTOM RIGHT SIDE")
 							$PixelNearCollectorBottomRightSTR &= $str & "|"
 						EndIf
 					EndIf

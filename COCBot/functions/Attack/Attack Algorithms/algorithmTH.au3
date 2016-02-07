@@ -91,14 +91,14 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 					If Number(Number($TroopsDonated) / Number($TroopsReceived)) >= (Number($iCmbCCDonated) / Number($iCmbCCReceived)) Then
 						SetLog("Dropping Clan Castle, donated (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") >= " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
 					Else
-						SetLog("Not Dropping Clan Castle, donated  (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") < " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
+						SetLog("Not Dropping Clan Castle, donated (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") < " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
 						Return
 					EndIf
 				Else
 					If Number(Number($TroopsDonated) / 1) >= (Number($iCmbCCDonated) / Number($iCmbCCReceived)) Then
 						SetLog("Dropping Clan Castle, donated (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") >= " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
 					Else
-						SetLog("Not Dropping Clan Castle, donated  (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") < " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
+						SetLog("Not Dropping Clan Castle, donated (" & $TroopsDonated & ") / received (" & $TroopsReceived & ") < " & $iCmbCCDonated & "/" & $iCmbCCReceived, $COLOR_BLUE)
 						Return
 					EndIf
 				EndIf
@@ -163,7 +163,7 @@ EndFunc   ;==>AttackTHGrid
 
 Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 	Switch $THside
-		Case 0 ;UL
+		Case 0 ; UL
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi - 1 To $THi - 1 + ($iNbOfSpots - 1)
 					$aThx = 62 + ($i * 18)
@@ -173,7 +173,7 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 					If _Sleep(Random(20, 40,1)) Then Return
 				Next
 			Next
-		Case 1 ;LL
+		Case 1 ; LL
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi To $THi + ($iNbOfSpots - 1)
 					$aThx = 59 + $i * 18
@@ -183,7 +183,7 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 					If _Sleep(Random(20, 40,1)) Then Return
 				Next
 			Next
-		Case 2 ;UR
+		Case 2 ; UR
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi To $THi + ($iNbOfSpots - 1)
 					$aThx = 801 - $i * 18
@@ -193,7 +193,7 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 					If _Sleep(Random(20, 40,1)) Then Return
 				Next
 			Next
-		Case 3 ;LR
+		Case 3 ; LR
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi + 1 To $THi + 1 + ($iNbOfSpots - 1)
 					$aThx = 802 - $i * 18
