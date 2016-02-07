@@ -124,19 +124,19 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 		SetLog("Dropping " & $waveName & " wave of " & $troopNb & " " & $name, $COLOR_GREEN)
 	EndIf
 
-	SelectDropTroop($THtroop) ;Select Troop to be Droped
+	SelectDropTroop($THtroop) ; Select Troop to be Droped
 	If _Sleep($iDelayAttackTHGrid1) Then Return
 
-	;Top TH
+	; Top TH
 	If $THy < 250 And ($THx > 390 And $THx < 470) Then 
 		DeployCornerTHCustom(425, 50, $iAtEachSpot, $iNbOfSpots)
-	;Right TH	
+	; Right TH	
 	ElseIf $THx > 600 And ($THy > 290 And $THy < 370) Then 
 		DeployCornerTHCustom(800, 330, $iAtEachSpot, $iNbOfSpots)		
-	;Bottom TH	
+	; Bottom TH	
 	ElseIf $THy > 450 And ($THx > 390 And $THx < 470) Then 
 		DeployCornerTHCustom(425, 610, $iAtEachSpot, $iNbOfSpots)	
-	;Left TH
+	; Left TH
 	ElseIf $THx < 250 And ($THy > 290 And $THy < 370) Then 
 		DeployCornerTHCustom(50, 330, $iAtEachSpot, $iNbOfSpots)	
 	Else  
@@ -165,7 +165,7 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 	Switch $THside
 		Case 0 ; UL
 			For $num = 0 To $iAtEachSpot - 1
-				For $i = $THi - 1 To $THi - 1 + ($iNbOfSpots - 1)
+				For $i = $THi To $THi + ($iNbOfSpots - 1)
 					$aThx = 62 + ($i * 18)
 					$aThy = 342 - ($i * 13)
 					If CheckOneStar(0, False, False) Then Return
@@ -176,8 +176,8 @@ Func DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 		Case 1 ; LL
 			For $num = 0 To $iAtEachSpot - 1
 				For $i = $THi To $THi + ($iNbOfSpots - 1)
-					$aThx = 59 + $i * 18
-                    $aThy = 372 + $i * 13
+					$aThx = 57 + $i * 18
+                    $aThy = 369 + $i * 13
 					If CheckOneStar(0, False, False) Then Return
 					If IsAttackPage() Then Click(Random($aThx - 5, $aThx + 5, 1), Random($aThy - 5, $aThy + 5, 1), 1, 0, "#0020")
 					If _Sleep(Random(20, 40,1)) Then Return

@@ -490,7 +490,7 @@ Func Train()
 			$brrDarkNum += 1
 			If $debugSetlog = 1 Then SetLog("====== Checking available Dark Barrack: " & $brrDarkNum & " ======", $COLOR_PURPLE)
 			
-			If ($fullarmy = True) Or $FirstStart Then ; Delete Troops That is being trained
+			If $FirstStart Then ; Delete Troops That is being trained
 				$icount = 0
 				If _ColorCheck(_GetPixelColor(187, 212, True), Hex(0xD30005, 6), 10) Then ; check if the existe more then 6 slots troops on train bar
 					While Not _ColorCheck(_GetPixelColor(573, 212, True), Hex(0xD80001, 6), 10) ; while until appears the Red icon to delete troops
@@ -1022,10 +1022,9 @@ Func Train()
 
 	If _Sleep($iDelayTrain4) Then Return
 	If $ichkDBLightSpell = 1 Then ; if zap is enabled
-		CookDrillZapSpell() ; cook lightning only 
-	Else
-		BrewSpells() ; normal create spells
+		CookDrillZapSpell() ; cook lightning 
 	EndIf
+	BrewSpells() ; normal create spells
 
 	If _Sleep($iDelayTrain4) Then Return
 	ClickP($aAway, 2, $iDelayTrain5, "#0504"); Click away twice with 250ms delay

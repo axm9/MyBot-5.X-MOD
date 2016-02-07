@@ -175,6 +175,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				EndIf
 			Next
 		EndIf
+		If IsSearchModeActive($TS) Then $match[$TS] = CompareResources($TS)
 
 		If _Sleep($iDelayRespond) Then Return
 		For $i = 0 To $iModeCount - 2
@@ -189,10 +190,12 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		Next
 
 		If _Sleep($iDelayRespond) Then Return
-		If $match[$DB] Or $match[$LB] Or $zapBaseMatch Then
+		If $match[$DB] Or $match[$LB] Or $match[$TS] Or $zapBaseMatch Then
 			$isDeadBase = checkDeadBase()
 		EndIf
 		$zapBaseMatch = $zapBaseMatch And $isDeadBase
+		; snipe dead base only if have enough troops to use for greedy attack
+		If $isDeadBase Then $match[$TS] = $match[$TS] And ($CurCamp > $iMinTroopToAttackDB)
 
 		If _Sleep($iDelayRespond) Then Return
 		If $match[$DB] And $isDeadBase Then
@@ -253,21 +256,17 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 
 		If _Sleep($iDelayRespond) Then Return
 		If $OptTrophyMode = 1 Then ; Enables Combo Mode Settings
-			If IsSearchModeActive($TS) And SearchTownHallLoc() Then ; attack this base anyway because outside TH found to snipe
-				If CompareResources($TS) Then
-					If $ichkTSSkipTrappedTH = 1 Then
-						If IsTHTrapped() Then
-							$noMatchTxt &= ", TH is trapped, skip snipe"
-						Else
-							THSnipeFound()
-							ExitLoop
-						EndIf
-					Else						
+			If $match[$TS] And SearchTownHallLoc() Then ; attack this if outside TH found and requirements are met for snipe
+				If $ichkTSSkipTrappedTH = 1 Then
+					If IsTHTrapped() Then
+						$noMatchTxt &= ", TH is trapped, skip snipe"
+					Else
 						THSnipeFound()
 						ExitLoop
 					EndIf
-				Else					
-					$noMatchTxt &= ", TH outside found but not enough resources for snipe"
+				Else						
+					THSnipeFound()
+					ExitLoop
 				EndIf
 			EndIf
 		EndIf
