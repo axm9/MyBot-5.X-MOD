@@ -29,7 +29,6 @@ Func Initiate()
 		EndIf
 
 		$AttackNow = False
-		$FirstStart = True
 		$Checkrearm = True
 
 		If $iDeleteAllPushes = 1 Then
