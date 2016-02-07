@@ -16,7 +16,7 @@
 
 Func DEDropSmartSpell()
 	Local Const $strikeOffsets = [1, 3]
-	Local $searchDark, $aDarkDrills, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
+	Local $searchDark, $aDarkDrills, $DEDrillChanged = False, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
 
 	; Check if target is DE zap match
 	If Not($zapBaseMatch) Then Return False
@@ -71,16 +71,19 @@ Func DEDropSmartSpell()
 	If $debugsetlog = 1 Then SetLog("Levels of drills: " & $aDarkDrills[0][3] & " " & $aDarkDrills[1][3] & " " & $aDarkDrills[2][3] & " " & $aDarkDrills[3][3], $COLOR_PURPLE)
 
 	While $CurLightningSpell > 0 And $aDarkDrills[0][3] <> -1 And $maxElixirSpellNbr <> 0
-		If $numDEDrill > 0 Then
-			$DEperDrill = (Number($searchDark) / $numDEDrill)
-			If $debugsetlog = 1 Then SetLog("DE/drill: " & $DEperDrill, $COLOR_PURPLE)
-			If $DEperDrill < Number($itxtDBLightMinDark) Then
-				SetLog("DE drills contain less than " & $itxtDBLightMinDark & " DE/drill, not worth zapping", $COLOR_RED)
-				Return False
+		If $DEDrillChanged Then ; if a DE drill has been removed, check remaining DE/drill number
+			If $numDEDrill > 0 Then
+				$DEperDrill = (Number($searchDark) / $numDEDrill)
+				If $debugsetlog = 1 Then SetLog("DE/drill: " & $DEperDrill, $COLOR_PURPLE)
+				If $DEperDrill < Number($itxtDBLightMinDark) Then
+					SetLog("DE drills contain less than " & $itxtDBLightMinDark & " DE/drill, not worth zapping", $COLOR_RED)
+					Return False
+				EndIf
+				$DEDrillChanged = False ; reset flag after check
+			Else
+				SetLog("No DE drills worth zapping left", $COLOR_RED)
+				ExitLoop
 			EndIf
-		Else
-			SetLog("No DE drills worth zapping left", $COLOR_RED)
-			ExitLoop
 		EndIf
 		
 		; If you have most of your spells, drop lightning on level 3+ de drill
@@ -113,6 +116,7 @@ Func DEDropSmartSpell()
 				$aDarkDrills[0][$i] = -1
 			Next
 			$numDEDrill -= 1
+			$DEDrillChanged = True
 		EndIf
 
 		$oldDark = $searchDark
@@ -133,6 +137,7 @@ Func DEDropSmartSpell()
 				$aDarkDrills[0][$i] = -1
 			Next
 			$numDEDrill -= 1
+			$DEDrillChanged = True
 			If $debugsetlog = 1 Then SetLog("Gained: " & $strikeGain & " Expected: " & $expectedDE, $COLOR_PURPLE)
 		Else
 			$aDarkDrills[0][3] -= $strikeGain
@@ -146,6 +151,7 @@ Func DEDropSmartSpell()
 				$aDarkDrills[0][$i] = -1
 			Next
 			$numDEDrill -= 1
+			$DEDrillChanged = True
 		EndIf
 
 		If $strikeGain > 0 Then

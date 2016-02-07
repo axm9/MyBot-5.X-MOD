@@ -934,6 +934,7 @@ Global $attackcsv_locate_gold_storage = 0
 Global $attackcsv_locate_elixir_storage = 0
 Global $attackcsv_locate_dark_storage = 0
 Global $attackcsv_locate_townhall = 0
+Global $attackcsv_use_red_line = 1
 
 ;collector GUI
 Global $hCollectorGUI
