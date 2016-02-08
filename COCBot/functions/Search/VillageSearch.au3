@@ -138,7 +138,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		; check DE/drill for Zap
 		$numDEDrill = 0
 		$DEperDrill = 0
-		Switch $iTownHallLevel
+		Local $targetTHLvl = $searchTH <> "-" ? Number($searchTH) : $iTownHallLevel ; use own TH lvl if target lvl can't be determined
+		Switch Number($targetTHLvl)
 			Case 10, 11
 				$numDEDrill = 3
 			Case 8, 9 

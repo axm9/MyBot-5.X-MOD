@@ -517,15 +517,15 @@ Func Train()
 				Case 0
 					TrainClick(220, 320 + $midOffsetY, 75, 10, $FullMini, $GemMini, "#0283") ; Minion
 				Case 1
-					TrainClick(220, 320 + $midOffsetY, 75, 10, $FullHogs, $GemHogs, "#0284") ; Hog Rider
-				Case 2
-					TrainClick(331, 320 + $midOffsetY, 75, 10, $FullValk, $GemValk, "#0285") ; Valkyrie
-				Case 3
-					TrainClick(432, 320 + $midOffsetY, 15, 10, $FullGole, $GemGole, "#0286") ; Golem
-				Case 4
-					TrainClick(546, 320 + $midOffsetY, 75, 10, $FullWitc, $GemWitc, "#0287") ; Witch
+					TrainClick(331, 320 + $midOffsetY, 75, 10, $FullHogs, $GemHogs, "#0284") ; Hog Rider
+				Case 2         
+					TrainClick(432, 320 + $midOffsetY, 75, 10, $FullValk, $GemValk, "#0285") ; Valkyrie
+				Case 3         
+					TrainClick(546, 320 + $midOffsetY, 15, 10, $FullGole, $GemGole, "#0286") ; Golem
+				Case 4         
+					TrainClick(647, 320 + $midOffsetY, 75, 10, $FullWitc, $GemWitc, "#0287") ; Witch
 				Case 5
-					TrainClick(647, 320 + $midOffsetY, 37, 10, $FullLava, $GemLava, "#0288") ; Lava Hound
+					TrainClick(220, 425 + $midOffsetY, 37, 10, $FullLava, $GemLava, "#0288") ; Lava Hound
 				Case 0
 					; do nothing since no Troop was selected
 			EndSwitch

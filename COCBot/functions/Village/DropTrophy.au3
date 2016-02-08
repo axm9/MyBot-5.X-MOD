@@ -58,189 +58,200 @@ Func DropTrophy()
 	While Number($iTrophyCurrent) > Number($iTxtMaxTrophyNeedCheck)
 		$iTrophyCurrent = getTrophyMainScreen($aTrophies[0], $aTrophies[1])
 		SetLog("Trophy Count : " & $iTrophyCurrent, $COLOR_GREEN)
-		If Number($iTrophyCurrent) > Number($iTxtMaxTrophyNeedCheck) Then
-			; Check for enough troops before starting base search to save search costs
-			; only 1 giant or hero needed to enable drop trophy to work
-			If ($CurCamp < 5) And ($iChkTrophyHeroes = 1 And ($BarbarianKingAvailable Or $ArcherQueenAvailable Or $GrandWardenAvailable)) = False Then
-				SetLog("No troops available to use on Drop Trophy", $COLOR_RED)
-				If $DebugSetlog = 1 Then SetLog("Drop Trophy END: Drop Trophy skipped, no army.", $COLOR_PURPLE)
-				ExitLoop ; no troops then cycle again
-			EndIf
-			$iTxtMaxTrophyNeedCheck = $itxtdropTrophy ; already checked above max trophy, so set target to min trophy value
-			SetLog("Dropping Trophies to " & $itxtdropTrophy, $COLOR_BLUE)
-			If _Sleep($iDelayDropTrophy4) Then ExitLoop
-			$bDropSuccessful = True
-			ZoomOut()
-			PrepareSearch()
-			If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
-			If $Restart = True Then Return
+		; Check for enough troops before starting base search to save search costs
+		; only 1 giant or hero needed to enable drop trophy to work
+		If ($CurCamp < 5 And ($iChkTrophyHeroes = 1 And ($BarbarianKingAvailable Or $ArcherQueenAvailable Or $GrandWardenAvailable))) = False Then
+			SetLog("No troops available to use on Drop Trophy", $COLOR_RED)
+			ExitLoop ; no troops then cycle again
+		EndIf
+		
+		$iTxtMaxTrophyNeedCheck = $itxtdropTrophy ; already checked above max trophy, so set target to min trophy value
+		SetLog("Dropping Trophies to " & $itxtdropTrophy, $COLOR_BLUE)
+		If _Sleep($iDelayDropTrophy4) Then ExitLoop
+		$bDropSuccessful = True
+		ZoomOut()
+		PrepareSearch()
+		If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
+		If $Restart = True Then Return
 
-			If _Sleep($iDelayDropTrophy4) Then ExitLoop
+		If _Sleep($iDelayDropTrophy4) Then ExitLoop
+		
+		GetResources(False, $DT) ; no log, use $DT matchmode (DropThrophy)
+		SetLog("Identification of your troops:", $COLOR_BLUE)
+		PrepareAttack($DT) ; ==== Troops: checks for type, slot, and quantity ===
+		If $Restart = True Then Return
+		
+		If $iChkTrophyAtkDead = 1 Then
+			$isDeadBase = checkDeadBase()
+			; check DE/drill for Zap
+			$numDEDrill = 0
+			$DEperDrill = 0
+			Local $targetTHLvl = $searchTH <> "-" ? Number($searchTH) : $iTownHallLevel ; use own TH lvl if target lvl can't be determined
+			Switch Number($targetTHLvl)
+				Case 10, 11
+					$numDEDrill = 3
+				Case 8, 9 
+					$numDEDrill = 2
+				Case 7
+					$numDEDrill = 1
+			EndSwitch
+			If $numDEDrill = 0 Then
+				$DEperDrill = (Number($searchDark) / $numDEDrill)
+			EndIf			
+			$zapBaseMatch =  $isDeadBase And $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DEperDrill >= Number($itxtDBLightMinDark)
 			
-			GetResources(False, $DT) ; no log, use $DT matchmode (DropThrophy)
-			SetLog("Identification of your troops:", $COLOR_BLUE)
-			PrepareAttack($DT) ; ==== Troops: checks for type, slot, and quantity ===
-			If $Restart = True Then Return
-			
-			If $iChkTrophyAtkDead = 1 Then
-				$isDeadBase = checkDeadBase()
-				$zapBaseMatch = $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And Number($searchDark) > Number($itxtDBLightMinDark) And $isDeadBase
-				If $isDeadBase Then
-					; check if we have enough troops and resource requirement is met
-					If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) And CompareResources($DB) Then							
-						SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-						SetLog("Dead Base Found on Drop Trophy!", $COLOR_GREEN, "Lucida Console", 7.5)
-						If $ichkDBMeetCollOutside = 1 Then
-							If AreCollectorsOutside($iDBMinCollOutsidePercent) Then
-								SetLog("Collectors are outside.", $COLOR_GREEN, "Lucida Console", 7.5)
-								GreedyAttack()
-								ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
-							Else
-								SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
-							EndIf
-						Else
+			If $isDeadBase Then
+				; check if we have enough troops and resource requirement is met
+				If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) And CompareResources($DB) Then							
+					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+					SetLog("Dead Base Found on Drop Trophy!", $COLOR_GREEN, "Lucida Console", 7.5)
+					If $ichkDBMeetCollOutside = 1 Then
+						If AreCollectorsOutside($iDBMinCollOutsidePercent) Then
+							SetLog("Collectors are outside.", $COLOR_GREEN, "Lucida Console", 7.5)
 							GreedyAttack()
 							ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
+						Else
+							SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
 						EndIf
 					Else
-						SetLog("Not enough troops (" & $itxtDTArmyMin & "%) to attack dead base, resuming Drop Trophy.", $COLOR_ORANGE)						
-					EndIf
-					
-					If $zapBaseMatch Then ; collectors not outside but drills can still be zapped					
-						SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-						SetLog("Drills can be zapped!", $COLOR_GREEN, "Lucida Console")	
-						If DEDropSmartSpell() = True Then
-							ReturnHome($TakeLootSnapShot)
-							$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
-							ExitLoop
-						Else ; select first troop type for drop trophy
-							SelectDropTroop(0)
-						EndIf
+						GreedyAttack()
+						ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
 					EndIf
 				Else
-					SetLog("Not a Dead Base, Drop Trophy.", $COLOR_BLACK, "Lucida Console", 7.5)
-					; select first troop type for drop trophy
-					SelectDropTroop(0)
+					SetLog("Not enough troops (" & $itxtDTArmyMin & "%) to attack dead base, resuming Drop Trophy.", $COLOR_ORANGE)						
+				EndIf
+				
+				If $zapBaseMatch Then ; collectors not outside but drills can still be zapped					
+					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+					SetLog("Drills can be zapped!", $COLOR_GREEN, "Lucida Console")	
+					If DEDropSmartSpell() = True Then
+						ReturnHome($TakeLootSnapShot)
+						$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
+						ExitLoop
+					Else ; select first troop type for drop trophy
+						SelectDropTroop(0)
+					EndIf
 				EndIf
 			Else
-				; Normal Drop Trophy, no check for Dead Base
-				$SearchCount = 0
-			EndIf
-
-			If _Sleep($iDelayDropTrophy4) Then ExitLoop
-
-			; Drop a Hero or Troop
-			If $iChkTrophyHeroes = 1 Then
-				$King = -1
-				$Queen = -1
-				$Warden = -1
-				For $i = 0 To UBound($atkTroops) - 1
-					If $atkTroops[$i][0] = $eKing Then
-						$King = $i
-					ElseIf $atkTroops[$i][0] = $eQueen Then
-						$Queen = $i
-					ElseIf $atkTroops[$i][0] = $eWarden Then
-						$Warden = $i
-					EndIf
-				Next
-
-				Local $corners[4][2] = [[425, 50], [800, 330], [425, 610], [50, 330]]
-				Local $iCorner = Random(0, 3, 1)
-				If $DebugSetlog = 1 Then Setlog("Hero Loc X:Y= " & $corners[$iCorner][0] & "|" & $corners[$iCorner][1], $COLOR_PURPLE)
-				If $King <> -1 Then
-					SetLog("Deploying King", $COLOR_BLUE)
-					Click(GetXPosOfArmySlot($King, 68), 595 + $bottomOffsetY, 1, 0, "#0177") ; Select King
-					If _Sleep($iDelayDropTrophy1) Then ExitLoop
-					Click($corners[$iCorner][0], $corners[$iCorner][1], 1, 0, "#0178") ; Drop King
-					If _Sleep($iDelayDropTrophy1) Then ExitLoop
-					SetTrophyLoss()
-					If IsAttackPage() Then SelectDropTroop($King) ; If King was not activated: Boost King before EndBattle to restore some health
-					ReturnHome(False, False) ; Return home no screenshot
-					If _Sleep($iDelayDropTrophy1) Then ExitLoop
-				EndIf
-				If $King = -1 And $Queen <> -1 Then
-					SetLog("Deploying Queen", $COLOR_BLUE)
-					Click(GetXPosOfArmySlot($Queen, 68), 595 + $bottomOffsetY, 1, 0, "#0179") ; Select Queen
-					If _Sleep($iDelayDropTrophy1) Then ExitLoop
-					Click($corners[$iCorner][0], $corners[$iCorner][1], 1, 0, "#0180") ; Drop Queen
-					If _Sleep($iDelayDropTrophy1) Then ExitLoop
-					SetTrophyLoss()
-					If IsAttackPage() Then SelectDropTroop($Queen) ; If Queen was not activated: Boost Queen before EndBattle to restore some health
-					ReturnHome(False, False) ; Return home no screenshot
-					If _Sleep($iDelayDropTrophy1) Then ExitLoop
-				EndIf
-				If $King = -1 And $Queen = -1 And $Warden <> -1 Then
-					SetLog("Deploying Warden", $COLOR_BLUE)
-					Click(GetXPosOfArmySlot($Warden, 68), 595 + $bottomOffsetY, 1, 0, "#0000") ; Select Warden
-					If _Sleep($iDelayDropTrophy1) Then ExitLoop
-					Click($corners[$iCorner][0], $corners[$iCorner][1], 1, 0, "#0000") ; Drop Warden
-					If _Sleep($iDelayDropTrophy1) Then ExitLoop
-					SetTrophyLoss()
-					If IsAttackPage() Then SelectDropTroop($Warden) ; If Warden was not activated: Boost Warden before EndBattle to restore some health
-					ReturnHome(False, False) ; Return home no screenshot
-					If _Sleep($iDelayDropTrophy1) Then ExitLoop
-				EndIf
-			EndIf
-			If ($Queen = -1 And $King = -1 And $Warden = -1) Or $iChkTrophyHeroes = 0 Then
-				$aRandomEdge = $Edges[Round(Random(0, 3))]
-				$iRandomXY = Round(Random(0, 4))
-				If $DebugSetlog = 1 Then Setlog("Troop Loc = " & $iRandomXY & ", X:Y= " & $aRandomEdge[$iRandomXY][0] & "|" & $aRandomEdge[$iRandomXY][1], $COLOR_PURPLE)
-				Select
-					Case $atkTroops[0][0] = $eBarb
-						Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0181") ;Drop one troop
-						$CurBarb += 1
-						$ArmyComp -= 1
-						SetLog("Deploying 1 Barbarian", $COLOR_BLUE)
-					Case $atkTroops[0][0] = $eArch
-						Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0182") ;Drop one troop
-						$CurArch += 1
-						$ArmyComp -= 1
-						SetLog("Deploying 1 Archer", $COLOR_BLUE)
-					Case $atkTroops[0][0] = $eGiant
-						Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0183") ;Drop one troop
-						$CurGiant += 1
-						$ArmyComp -= 5
-						SetLog("Deploying 1 Giant", $COLOR_BLUE)
-					Case $atkTroops[0][0] = $eWall
-						Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0184") ;Drop one troop
-						$CurWall += 1
-						$ArmyComp -= 2
-						SetLog("Deploying 1 WallBreaker", $COLOR_BLUE)
-					Case $atkTroops[0][0] = $eGobl
-						Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0185") ;Drop one troop
-						$CurGobl += 1
-						$ArmyComp -= 2
-						SetLog("Deploying 1 Goblin", $COLOR_BLUE)
-					Case $atkTroops[0][0] = $eMini
-						Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0186") ;Drop one troop
-						$CurMini += 1
-						$ArmyComp -= 2
-						SetLog("Deploying 1 Minion", $COLOR_BLUE)
-					Case Else
-						SetLog("You don´t have Tier 1/2 Troops, Stop dropping trophies.", $COLOR_BLUE) ; preventing of deploying Tier 2/3 expensive troops
-						$bDisableDropTrophy = True
-						$bDropSuccessful = False
-						ExitLoop
-				EndSelect
-				If $bDropSuccessful Then SetTrophyLoss()
-				If _Sleep($iDelayDropTrophy1) Then ExitLoop
-				ReturnHome(False, False) ;Return home no screenshot
-				If _Sleep($iDelayDropTrophy1) Then ExitLoop
-			EndIf
-			$iDateCalc = _DateDiff('s', _NowCalc(), $sWaitToDate)
-			If $DebugSetlog = 1 Then SetLog("ChkBaseQuick delay = " & $sWaitToDate & ", Now = " & _NowCalc() & ", Diff = " & $iDateCalc, $COLOR_PURPLE)
-			If $iDateCalc <= 0 Then ; check length of time in drop trophy
-				Setlog(" Checking base during long drop cycle", $COLOR_BLUE)
-				CheckBaseQuick() ; check base during long drop times
-				$sWaitToDate = _DateAdd('n', $iWaitTime, _NowCalc()) ; create new delay date/time
-				If $DebugSetlog = 1 Then SetLog("ChkBaseQuick new delay time= " & $sWaitToDate, $COLOR_PURPLE)
+				SetLog("Not a Dead Base, Drop Trophy.", $COLOR_BLACK, "Lucida Console", 7.5)
+				; select first troop type for drop trophy
+				SelectDropTroop(0)
 			EndIf
 		Else
-			SetLog("Trophy Drop Complete", $COLOR_BLUE)
+			; Normal Drop Trophy, no check for Dead Base
+			$SearchCount = 0
+		EndIf
+
+		If _Sleep($iDelayDropTrophy4) Then ExitLoop
+
+		; Drop a Hero or Troop
+		If $iChkTrophyHeroes = 1 Then
+			$King = -1
+			$Queen = -1
+			$Warden = -1
+			For $i = 0 To UBound($atkTroops) - 1
+				If $atkTroops[$i][0] = $eKing Then
+					$King = $i
+				ElseIf $atkTroops[$i][0] = $eQueen Then
+					$Queen = $i
+				ElseIf $atkTroops[$i][0] = $eWarden Then
+					$Warden = $i
+				EndIf
+			Next
+
+			Local $corners[4][2] = [[425, 50], [800, 330], [425, 610], [50, 330]]
+			Local $iCorner = Random(0, 3, 1)
+			If $DebugSetlog = 1 Then Setlog("Hero Loc X:Y= " & $corners[$iCorner][0] & "|" & $corners[$iCorner][1], $COLOR_PURPLE)
+			If $King <> -1 Then
+				SetLog("Deploying King", $COLOR_BLUE)
+				Click(GetXPosOfArmySlot($King, 68), 595 + $bottomOffsetY, 1, 0, "#0177") ; Select King
+				If _Sleep($iDelayDropTrophy1) Then ExitLoop
+				Click($corners[$iCorner][0], $corners[$iCorner][1], 1, 0, "#0178") ; Drop King
+				If _Sleep($iDelayDropTrophy1) Then ExitLoop
+				SetTrophyLoss()
+				If IsAttackPage() Then SelectDropTroop($King) ; If King was not activated: Boost King before EndBattle to restore some health
+				ReturnHome(False, False) ; Return home no screenshot
+				If _Sleep($iDelayDropTrophy1) Then ExitLoop
+			EndIf
+			If $King = -1 And $Queen <> -1 Then
+				SetLog("Deploying Queen", $COLOR_BLUE)
+				Click(GetXPosOfArmySlot($Queen, 68), 595 + $bottomOffsetY, 1, 0, "#0179") ; Select Queen
+				If _Sleep($iDelayDropTrophy1) Then ExitLoop
+				Click($corners[$iCorner][0], $corners[$iCorner][1], 1, 0, "#0180") ; Drop Queen
+				If _Sleep($iDelayDropTrophy1) Then ExitLoop
+				SetTrophyLoss()
+				If IsAttackPage() Then SelectDropTroop($Queen) ; If Queen was not activated: Boost Queen before EndBattle to restore some health
+				ReturnHome(False, False) ; Return home no screenshot
+				If _Sleep($iDelayDropTrophy1) Then ExitLoop
+			EndIf
+			If $King = -1 And $Queen = -1 And $Warden <> -1 Then
+				SetLog("Deploying Warden", $COLOR_BLUE)
+				Click(GetXPosOfArmySlot($Warden, 68), 595 + $bottomOffsetY, 1, 0, "#0000") ; Select Warden
+				If _Sleep($iDelayDropTrophy1) Then ExitLoop
+				Click($corners[$iCorner][0], $corners[$iCorner][1], 1, 0, "#0000") ; Drop Warden
+				If _Sleep($iDelayDropTrophy1) Then ExitLoop
+				SetTrophyLoss()
+				If IsAttackPage() Then SelectDropTroop($Warden) ; If Warden was not activated: Boost Warden before EndBattle to restore some health
+				ReturnHome(False, False) ; Return home no screenshot
+				If _Sleep($iDelayDropTrophy1) Then ExitLoop
+			EndIf
+		EndIf
+		If ($Queen = -1 And $King = -1 And $Warden = -1) Or $iChkTrophyHeroes = 0 Then
+			$aRandomEdge = $Edges[Round(Random(0, 3))]
+			$iRandomXY = Round(Random(0, 4))
+			If $DebugSetlog = 1 Then Setlog("Troop Loc = " & $iRandomXY & ", X:Y= " & $aRandomEdge[$iRandomXY][0] & "|" & $aRandomEdge[$iRandomXY][1], $COLOR_PURPLE)
+			Select
+				Case $atkTroops[0][0] = $eBarb
+					Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0181") ;Drop one troop
+					$CurBarb += 1
+					$ArmyComp -= 1
+					SetLog("Deploying 1 Barbarian", $COLOR_BLUE)
+				Case $atkTroops[0][0] = $eArch
+					Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0182") ;Drop one troop
+					$CurArch += 1
+					$ArmyComp -= 1
+					SetLog("Deploying 1 Archer", $COLOR_BLUE)
+				Case $atkTroops[0][0] = $eGiant
+					Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0183") ;Drop one troop
+					$CurGiant += 1
+					$ArmyComp -= 5
+					SetLog("Deploying 1 Giant", $COLOR_BLUE)
+				Case $atkTroops[0][0] = $eWall
+					Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0184") ;Drop one troop
+					$CurWall += 1
+					$ArmyComp -= 2
+					SetLog("Deploying 1 WallBreaker", $COLOR_BLUE)
+				Case $atkTroops[0][0] = $eGobl
+					Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0185") ;Drop one troop
+					$CurGobl += 1
+					$ArmyComp -= 2
+					SetLog("Deploying 1 Goblin", $COLOR_BLUE)
+				Case $atkTroops[0][0] = $eMini
+					Click($aRandomEdge[$iRandomXY][0], $aRandomEdge[$iRandomXY][1], 1, 0, "#0186") ;Drop one troop
+					$CurMini += 1
+					$ArmyComp -= 2
+					SetLog("Deploying 1 Minion", $COLOR_BLUE)
+				Case Else
+					SetLog("You don´t have Tier 1/2 Troops, Stop dropping trophies.", $COLOR_BLUE) ; preventing of deploying Tier 2/3 expensive troops
+					$bDisableDropTrophy = True
+					$bDropSuccessful = False
+					ExitLoop
+			EndSelect
+			If $bDropSuccessful Then SetTrophyLoss()
+			If _Sleep($iDelayDropTrophy1) Then ExitLoop
+			ReturnHome(False, False) ;Return home no screenshot
+			If _Sleep($iDelayDropTrophy1) Then ExitLoop
+		EndIf
+		$iDateCalc = _DateDiff('s', _NowCalc(), $sWaitToDate)
+		If $DebugSetlog = 1 Then SetLog("ChkBaseQuick delay = " & $sWaitToDate & ", Now = " & _NowCalc() & ", Diff = " & $iDateCalc, $COLOR_PURPLE)
+		If $iDateCalc <= 0 Then ; check length of time in drop trophy
+			Setlog(" Checking base during long drop cycle", $COLOR_BLUE)
+			CheckBaseQuick() ; check base during long drop times
+			$sWaitToDate = _DateAdd('n', $iWaitTime, _NowCalc()) ; create new delay date/time
+			If $DebugSetlog = 1 Then SetLog("ChkBaseQuick new delay time= " & $sWaitToDate, $COLOR_PURPLE)
 		EndIf
 	WEnd
-
-	If $DebugSetlog = 1 Then SetLog("Drop Trophy END", $COLOR_PURPLE)
+	SetLog("Trophy Drop Complete", $COLOR_BLUE)
 EndFunc   ;==>DropTrophy
 
 Func GreedyAttack()	

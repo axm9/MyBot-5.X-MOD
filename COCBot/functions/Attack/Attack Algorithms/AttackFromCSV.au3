@@ -245,7 +245,7 @@ Func Algorithm_AttackCSV($testattack = False)
 		Setlog("> Mines detection not needed, skip", $COLOR_BLUE)
 	EndIf
 
-	; 04.02  If drop troop near elisir
+	; 04.02  If drop troop near elixir
 	If $attackcsv_locate_elixir = 1 Then
 		$hTimer = TimerInit()
 		$PixelElixir = GetLocationElixir()

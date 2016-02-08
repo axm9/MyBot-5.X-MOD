@@ -85,10 +85,10 @@ Func GetResources($bLog = True, $pMatchMode = -1) ;Reads resources
 
 	Local $THString = ""
 	$searchTH = "-"
-	$THx=0
-	$THy=0
+	$THx = 0
+	$THy = 0
 
-	If $pMatchMode <> $DT Then ; skip TH search if $pMatchmode = $DT (DropThrophy)
+	If $pMatchMode <> $DT Or $iChkTrophyAtkDead = 1 Then ; skip TH search if $pMatchmode = $DT (DropThrophy)
 		If $OptTrophyMode = 1 Or ($OptBullyMode = 1 And $SearchCount >= $ATBullyMode) Or ($iCmbSearchMode <> $LB And ($iChkMeetTH[$DB] = 1 Or $iChkMeetTHO[$DB] = 1)) Or ($iCmbSearchMode <> $DB And ($iChkMeetTH[$LB] = 1 Or $iChkMeetTHO[$LB] = 1)) Then
 			; CODE TO DETECT TOWNHALL ONLY WITH AUTOIT IMAGESEARCH
 			$searchTH = checkTownHallADV2()
