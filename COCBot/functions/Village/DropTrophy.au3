@@ -60,7 +60,7 @@ Func DropTrophy()
 		SetLog("Trophy Count : " & $iTrophyCurrent, $COLOR_GREEN)
 		; Check for enough troops before starting base search to save search costs
 		; only 1 giant or hero needed to enable drop trophy to work
-		If ($CurCamp < 5 And ($iChkTrophyHeroes = 1 And ($BarbarianKingAvailable Or $ArcherQueenAvailable Or $GrandWardenAvailable))) = False Then
+		If ($CurCamp < 5) And ($iChkTrophyHeroes = 1 And ($BarbarianKingAvailable Or $ArcherQueenAvailable Or $GrandWardenAvailable)) = False Then
 			SetLog("No troops available to use on Drop Trophy", $COLOR_RED)
 			ExitLoop ; no troops then cycle again
 		EndIf
@@ -102,7 +102,7 @@ Func DropTrophy()
 			
 			If $isDeadBase Then
 				; check if we have enough troops and resource requirement is met
-				If ($CurCamp >= ($TotalCamp * $DTArmyPercent) / 100) And CompareResources($DB) Then							
+				If ($CurCamp >= ($TotalCamp * $DTArmyPercent / 100)) And CompareResources($DB) Then							
 					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 					SetLog("Dead Base Found on Drop Trophy!", $COLOR_GREEN, "Lucida Console", 7.5)
 					If $ichkDBMeetCollOutside = 1 Then
@@ -118,7 +118,7 @@ Func DropTrophy()
 						ExitLoop ; or Return, Will end function, no troops left to drop Trophies, will need to Train new Troops first
 					EndIf
 				Else
-					SetLog("Not enough troops (" & $itxtDTArmyMin & "%) to attack dead base, resuming Drop Trophy.", $COLOR_ORANGE)						
+					SetLog("Not enough troops (" & $itxtDTArmyMin & "%) or not enough resources to attack dead base", $COLOR_ORANGE)						
 				EndIf
 				
 				If $zapBaseMatch Then ; collectors not outside but drills can still be zapped					
