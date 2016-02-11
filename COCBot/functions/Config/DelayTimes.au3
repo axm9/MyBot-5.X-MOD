@@ -81,7 +81,6 @@ Global Const $iDelayPrepareAttack1 = 250
 Global Const $iDelayDropOnPixel1 = 50
 Global Const $iDelayDropOnPixel2 = 250 ; click
 
-
 ;DropTroop
 Global Const $iDelayDropTroop1 = 100
 Global Const $iDelayDropTroop2 = 300
@@ -416,3 +415,7 @@ Global Const $iDelayAttackCSV3 = 10
 Global Const $iPersonalShield1 = 1000
 Global Const $iPersonalShield2 = 500
 Global Const $iPersonalShield3 = 100
+
+;Star bonus
+Global Const $iDelayStarBonus100 = 100
+Global Const $iDelayStarBonus500 = 500

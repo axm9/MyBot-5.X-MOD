@@ -108,7 +108,6 @@ Func Unbreakable()
 	$i = 0
 	While 1
 		BS1BackButton()
-		;PureClickP($aBSBackButton, 1, 0, "#0116") ; Hit BS Back button for the confirm exit dialog to appear
 		If _Sleep($iDelayUnbreakable1) Then Return True
 		; New button search as old pixel check matched grass color sometimes
 		Local $offColors[3][3] = [[0x000000, 144, 0], [0xFFFFFF, 54, 17], [0xCBE870, 54, 10]] ; 2nd Black opposite button, 3rd pixel white "O" center top, 4th pixel White "0" bottom center

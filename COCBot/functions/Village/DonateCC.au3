@@ -115,7 +115,7 @@ Func DonateCC($Check = False)
 				If $ClanString = "" Or $ClanString = " " Then
 					SetLog("Unable to read Chat Request!", $COLOR_RED)
 					$bDonate = True
-					$y = $DonatePixel[1] + 30
+					$y = $DonatePixel[1] + 10
 					ContinueLoop
 				Else
 					If $ichkExtraAlphabets = 1 Then
@@ -147,7 +147,7 @@ Func DonateCC($Check = False)
 			; open Donate Window
 			If DonateWindow($bOpen) = False Then
 				$bDonate = True
-				$y = $DonatePixel[1] + 30
+				$y = $DonatePixel[1] + 10
 				ContinueLoop ; go to next button if donate window did not open
 			EndIf
 
@@ -158,7 +158,7 @@ Func DonateCC($Check = False)
 				DonateWindowCap($bSkipDonTroops, $bSkipDonSpells)
 				If $bSkipDonTroops And $bSkipDonSpells Then
 					$bDonate = True
-					$y = $DonatePixel[1] + 30
+					$y = $DonatePixel[1] + 10
 					ContinueLoop ; go to next button if already donated, maybe this is an impossible case..
 				EndIf
 
@@ -215,7 +215,7 @@ Func DonateCC($Check = False)
 				DonateWindowCap($bSkipDonTroops, $bSkipDonSpells)
 				If $bSkipDonTroops And $bSkipDonSpells Then
 					$bDonate = True
-					$y = $DonatePixel[1] + 30
+					$y = $DonatePixel[1] + 10
 					ContinueLoop ; go to next button if already donated max, maybe this is an impossible case..
 				EndIf
 
@@ -289,7 +289,7 @@ Func DonateCC($Check = False)
 			DonateWindow($bClose)
 
 			$bDonate = True
-			$y = $DonatePixel[1] + 30
+			$y = $DonatePixel[1] + 10
 			ClickP($aAway, 1, 0, "#0171")
 			If _Sleep($iDelayDonateCC2) Then ExitLoop
 		EndIf
@@ -624,6 +624,10 @@ Func DonateWindowCap(ByRef $bSkipDonTroops, ByRef $bSkipDonSpells)
 	EndIf
 	If $bSkipDonSpells = False And $iDonTroopsAv < $iDonTroopsLimit And $iDonSpellsAv = $iDonSpellsLimit Then Setlog("Donate Troops: " & $iDonTroopsAv & "/" & $iDonTroopsLimit)
 	If $bSkipDonTroops = False And $iDonTroopsAv = $iDonTroopsLimit And $iDonSpellsAv < $iDonSpellsLimit Then Setlog("Donate Spells: " & $iDonSpellsAv & "/" & $iDonSpellsLimit)
+
+	If $debugSetlog = 1 Then Setlog("SkipDonTroops: " & $bSkipDonTroops, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("SkipDonSpells: " & $bSkipDonSpells, $COLOR_PURPLE)
+	If $debugSetlog = 1 Then Setlog("DonateCapWindow End", $COLOR_PURPLE)
 EndFunc   ;==>DonateWindowCap
 
 Func RemainingCCcapacity()
@@ -716,7 +720,7 @@ EndFunc   ;==>RemainingCCcapacity
 Func DetectSlotTroop($Type)
 	If $Type >= $eBarb And $Type <= $eLava Then
 		For $Slot = 0 To 6
-			If $debugSetlog = 1 Then Setlog("Slot : " & $Slot, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("Slot: " & $Slot, $COLOR_PURPLE)
 			Local $FullTemp = getOcrDonationTroopsDetection(358 + (68 * $Slot), $DonationWindowY + 38)
 			If $debugSetlog = 1 Then Setlog("getOcrDonationTroopsDetection: " & $FullTemp, $COLOR_PURPLE)
 			If $FullTemp <> "" Then
@@ -769,7 +773,7 @@ Func DetectSlotTroop($Type)
 		Next
 
 		For $Slot = 7 To 13
-			If $debugSetlog = 1 Then Setlog("Slot : " & $Slot, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("Slot: " & $Slot, $COLOR_PURPLE)
 			Local $FullTemp = getOcrDonationTroopsDetection(358 + (68 * ($Slot - 7)), $DonationWindowY + 127)
 			If $debugSetlog = 1 Then Setlog("getOcrDonationTroopsDetection: " & $FullTemp, $COLOR_PURPLE)
 			If $FullTemp <> "" Then
@@ -824,7 +828,7 @@ Func DetectSlotTroop($Type)
 
 	If $Type >= $ePSpell And $Type <= $eHaSpell Then
 		For $Slot = 14 To 16
-			If $debugSetlog = 1 Then Setlog("Slot : " & $Slot, $COLOR_PURPLE)
+			If $debugSetlog = 1 Then Setlog("Slot: " & $Slot, $COLOR_PURPLE)
 			Local $FullTemp = getOcrDonationTroopsDetection(358 + (68 * ($Slot - 14)), $DonationWindowY + 241 + 20)
 			If $debugSetlog = 1 Then Setlog("getOcrDonationSpells: " & $FullTemp, $COLOR_PURPLE)
 			If $Type = $ePSpell And $FullTemp = "poison" Then

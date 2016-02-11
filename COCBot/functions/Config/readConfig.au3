@@ -614,6 +614,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$ichkEarthquakeSpell[$LB] = IniRead($config, "attackCSV", "ABEarthquakeSpell", "0")
 		$ichkHasteSpell[$DB] = IniRead($config, "attackCSV", "DBHasteSpell", "0")
 		$ichkHasteSpell[$LB] = IniRead($config, "attackCSV", "ABHasteSpell", "0")
+		readCollectorConfig()
 		readDefConfig()
 	Else
 		Return False

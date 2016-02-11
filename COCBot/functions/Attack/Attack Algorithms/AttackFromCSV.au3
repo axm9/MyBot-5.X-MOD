@@ -13,7 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Global $MAINSIDE = "DOWN-RIGHT"
+Global $MAINSIDE = "BOTTOM-RIGHT"
 Global $FRONT_LEFT = "BOTTOM-RIGHT-DOWN"
 Global $FRONT_RIGHT = "BOTTOM-RIGHT-UP"
 Global $RIGHT_FRONT = "TOP-RIGHT-DOWN"
@@ -204,6 +204,9 @@ Func Algorithm_AttackCSV($testattack = False)
 	_CaptureRegion()
 
 	; 04 - MINES, COLLECTORS, DRILLS -----------------------------------------------------------------------------------------------------------------------
+
+	;_CaptureRegion()
+
 	; reset variables
 	Global $PixelMine[0]
 	Global $PixelElixir[0]

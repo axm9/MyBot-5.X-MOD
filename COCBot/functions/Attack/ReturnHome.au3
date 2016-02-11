@@ -6,7 +6,7 @@
 ;                  $GoldChangeCheck     - [optional] an unknown value. Default is True.
 ; Return values .: None
 ; Author ........:
-; Modified ......: KnowJack (Jun/Aug2015)
+; Modified ......: KnowJack (Jun/Aug2015), MonkeyHunter (2106-01)
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
@@ -83,7 +83,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 			If _Sleep($iDelayReturnHome5) Then Return
 		WEnd
     Else
-		If $debugsetlog=1 Then Setlog("Battle already over.",$COLOR_PURPLE)
+		If $DebugSetLog = 1 Then Setlog("Battle already over.", $COLOR_PURPLE)
 	EndIf
 
 	If _Sleep($iDelayReturnHome2) Then Return ; short wait for return
@@ -139,8 +139,8 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 	$counter = 0
 	While 1
 		If _Sleep($iDelayReturnHome4) Then Return
-		_CaptureRegion()
-		If _ColorCheck(_GetPixelColor($aIsMain[0], $aIsMain[1]), Hex($aIsMain[2], 6), $aIsMain[3]) Then
+		If StarBonus() = True Then Setlog("Star Bonus window closed chief!", $COLOR_BLUE)  ; Check for Star Bonus window to fill treasury (2016-01) update
+		If IsMainPage() Then
 			_GUICtrlEdit_SetText($txtLog, _PadStringCenter(" BOT LOG ", 71, "="))
 			_GUICtrlRichEdit_SetFont($txtLog, 6, "Lucida Console")
 			_GUICtrlRichEdit_AppendTextColor($txtLog, "" & @CRLF, _ColorConvert($Color_Black))

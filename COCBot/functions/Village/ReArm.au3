@@ -34,7 +34,7 @@ Func ReArm()
 
 	;Traps
 	Local $offColors[3][3] = [[0x080d0a, 30, 26], [0xF6EF57, 70,5], [0xf5f6f2, 79, 0]] ; 2nd pixel brown wrench, 3rd pixel gold, 4th pixel edge of button
-	Global $RearmPixel = _MultiPixelSearch2(375, $y, 575, $y + 58, 1, 1, Hex(0xf5f7f2, 6), $offColors, 30) ; first gray/white pixel of button
+	Global $RearmPixel = _MultiPixelSearch2(340, $y, 575, $y + 58, 1, 1, Hex(0xf5f7f2, 6), $offColors, 30) ; first gray/white pixel of button
 	If IsArray($RearmPixel) Then
 		Click($RearmPixel[0] + 20, $RearmPixel[1] + 20, 1, 0, "#0326") ; Click RearmButton
 		If _Sleep($iDelayReArm4) Then Return
