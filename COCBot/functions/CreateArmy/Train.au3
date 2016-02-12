@@ -530,7 +530,7 @@ Func Train()
 					TrainClick(647, 320 + $midOffsetY, 75, 10, $FullWitc, $GemWitc, "#0287") ; Witch
 				Case 5
 					TrainClick(220, 425 + $midOffsetY, 37, 10, $FullLava, $GemLava, "#0288") ; Lava Hound
-				Case 0
+				Case 6
 					; do nothing since no Troop was selected
 			EndSwitch
 			If $OutOfElixir = 1 Then

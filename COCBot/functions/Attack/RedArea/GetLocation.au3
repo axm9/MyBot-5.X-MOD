@@ -33,6 +33,53 @@ Func GetLocationMine()
 	Return $found
 EndFunc   ;==>GetLocationMine
 
+Func GetLocationMineImgLocV6()
+	Global $goldmineImages
+	_CaptureRegion()
+	$sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
+	If $iDetectedImageType = 0 Then ; LOAD NORMAL goldmine image
+		Local $loadimage
+		Local $useimages = "*NORM*.png"
+		; assign goldmineImages an empty array with goldmineimagesx[0]=0
+		Assign("goldmineImages" , StringSplit("", ""))
+		; put in a temp array the list of files matching condition "*T*.bmp or *NORM*.bmp"
+		$loadimage = _FileListToArrayRec(@ScriptDir & "\images\Goldmine\" , $useimages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
+		; assign value at goldmineImages0 if $x it's not empty
+		If UBound($loadimage) Then Assign("goldmineImages" , $loadimage)
+	Else ; LOAD SNOW goldmine image		
+		Local $loadimage
+		Local $useimages = "*SNOW*.png"
+		; assign goldmineImages an empty array with goldmineimagesx[0]=0
+		Assign("goldmineImages" , StringSplit("", ""))
+		; put in a temp array the list of files matching condition "*T*.bmp or *NORM*.bmp"
+		$loadimage = _FileListToArrayRec(@ScriptDir & "\images\Goldmine\" , $useimages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
+		; assign value at goldmineImages0 if $x it's not empty
+		If UBound($loadimage) Then Assign("goldmineImages" , $loadimage)
+	EndIf
+	Local $igoldLocation[0]
+	If $goldmineImages[0] > 0  Then
+		For $nn = 1 To $goldmineImages[0]
+			$FFile = @ScriptDir & "\images\Goldmine\"  & $goldmineImages[$nn]
+			Local $goldTolerance = StringSplit ($goldmineImages[$nn] , "T")
+			Local $Tolerance = $goldTolerance[2]
+			Local $DefaultCocSearchArea = "70|70|720|540"
+			$res = DllCall($LibDir & "\ImgLocV6.dll", "str", "SearchTile", "handle", $sendHBitmap, "str", $FFile , "float", $Tolerance, "str" ,$DefaultCocSearchArea, "str",$DefaultCocDiamond )
+			$goldLocation = StringSplit($res[0],"|")
+			If $goldLocation[1] > 0 Then
+				Local $tempgoldLocation[$goldLocation[1]]
+				Local $yy =0
+				For $zz = 2 to (UBound($goldLocation)-2) Step +2
+					Local $itempgoldLocation = [$goldLocation[$zz] , $goldLocation[$zz+1]]
+					$tempgoldLocation[$yy] = $itempgoldLocation
+					$yy +=1
+				Next
+				_ArrayAdd($igoldLocation, $tempgoldLocation)
+			EndIf
+		Next
+	EndIf
+	Return $igoldLocation
+EndFunc   ;==>GetLocationMineImgLocV6
+
 Func GetLocationElixir()
 	If $iDetectedImageType = 0 Then
 		Local $result = DllCall($hFuncLib, "str", "getLocationElixirExtractor", "ptr", $hBitmapFirst)

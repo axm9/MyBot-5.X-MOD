@@ -16,9 +16,10 @@
 
 Func DEDropSmartSpell()
 	Local Const $strikeOffsets = [1, 3]
-	Local $searchDark, $aDarkDrills, $DEDrillChanged = False, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
+	Local $searchDark, $aDarkDrills, $DEDrillRemoved = False, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
 
 	; Check if target is DE zap match
+	$zapBaseMatch = $isDeadBase And $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DEperDrill >= Number($itxtDBLightMinDark)
 	If Not($zapBaseMatch) Then Return False
 	
 	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
@@ -36,7 +37,7 @@ Func DEDropSmartSpell()
 		$DEperDrill = (Number($searchDark) / $numDEDrill)
 		If $debugsetlog = 1 Then SetLog("DE/drill: " & $DEperDrill, $COLOR_PURPLE)
 		If $DEperDrill < Number($itxtDBLightMinDark) Then
-			SetLog("DE drills contain less than " & $itxtDBLightMinDark & " DE/drill, not worth zapping", $COLOR_RED)
+			SetLog("DE drills contain (" & $DEperDrill & ") less than " & $itxtDBLightMinDark & " DE/drill, not worth zapping", $COLOR_RED)
 			Return False
 		EndIf
 	Else
@@ -50,12 +51,12 @@ Func DEDropSmartSpell()
 		If $atkTroops[$i][0] = $eLSpell Then
 			$Spell = $i
 			$CurLightningSpell = $atkTroops[$i][1]
+			If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: " & $CurLightningSpell, $COLOR_PURPLE)
+			If $CurLightningSpell = 0 Then Return False
 			SelectDropTroop($Spell)
+			ExitLoop
 		EndIf
 	Next
-	If $debugsetlog = 1 Then SetLog("Max number of spell is: " & $maxElixirSpellNbr, $COLOR_PURPLE)
-	If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: " & $CurLightningSpell, $COLOR_PURPLE)
-	If $CurLightningSpell = 0 Then Return False
 
 	; Offset the zap criteria for th8 and lower
 	Local $drillLvlOffset = 0
@@ -71,15 +72,15 @@ Func DEDropSmartSpell()
 	If $debugsetlog = 1 Then SetLog("Levels of drills: " & $aDarkDrills[0][3] & " " & $aDarkDrills[1][3] & " " & $aDarkDrills[2][3] & " " & $aDarkDrills[3][3], $COLOR_PURPLE)
 
 	While $CurLightningSpell > 0 And $aDarkDrills[0][3] <> -1 And $maxElixirSpellNbr <> 0
-		If $DEDrillChanged Then ; if a DE drill has been removed, check remaining DE/drill number
+		If $DEDrillRemoved Then ; if a DE drill has been removed, check remaining DE/drill number
 			If $numDEDrill > 0 Then
 				$DEperDrill = (Number($searchDark) / $numDEDrill)
 				If $debugsetlog = 1 Then SetLog("DE/drill: " & $DEperDrill, $COLOR_PURPLE)
 				If $DEperDrill < Number($itxtDBLightMinDark) Then
-					SetLog("DE drills contain less than " & $itxtDBLightMinDark & " DE/drill, not worth zapping", $COLOR_RED)
-					Return False
+					SetLog("DE drills contain (" & $DEperDrill & ") less than " & $itxtDBLightMinDark & " DE/drill, not worth zapping", $COLOR_RED)
+					ExitLoop
 				EndIf
-				$DEDrillChanged = False ; reset flag after check
+				$DEDrillRemoved = False ; reset flag after check
 			Else
 				SetLog("No DE drills worth zapping left", $COLOR_RED)
 				ExitLoop
@@ -111,12 +112,12 @@ Func DEDropSmartSpell()
 			$aDarkDrills[0][4] += 1
 			If _Sleep(3500) Then Return True
 		Else
-			If $debugsetlog = 1 Then SetLog("No suitable drills. Removing current drill from list.", $COLOR_PURPLE)
+			If $debugsetlog = 1 Then SetLog("Not suitable drill. Removing current drill from list.", $COLOR_PURPLE)
 			For $i = 0 To 3
 				$aDarkDrills[0][$i] = -1
 			Next
 			$numDEDrill -= 1
-			$DEDrillChanged = True
+			$DEDrillRemoved = True
 		EndIf
 
 		$oldDark = $searchDark
@@ -137,7 +138,7 @@ Func DEDropSmartSpell()
 				$aDarkDrills[0][$i] = -1
 			Next
 			$numDEDrill -= 1
-			$DEDrillChanged = True
+			$DEDrillRemoved = True
 			If $debugsetlog = 1 Then SetLog("Gained: " & $strikeGain & " Expected: " & $expectedDE, $COLOR_PURPLE)
 		Else
 			$aDarkDrills[0][3] -= $strikeGain
@@ -151,7 +152,7 @@ Func DEDropSmartSpell()
 				$aDarkDrills[0][$i] = -1
 			Next
 			$numDEDrill -= 1
-			$DEDrillChanged = True
+			$DEDrillRemoved = True
 		EndIf
 
 		If $strikeGain > 0 Then
@@ -163,6 +164,7 @@ Func DEDropSmartSpell()
 		_ArraySort($aDarkDrills, 1, 0, 0, 3)
 		If $debugsetlog = 1 Then SetLog("DE Left in Collectors: " & $aDarkDrills[0][3] & " " & $aDarkDrills[1][3] & " " & $aDarkDrills[2][3] & " " & $aDarkDrills[3][3], $COLOR_PURPLE)
 	WEnd
+	SetLog("DE drill Zap finished, gained " & $smartZapGain & " DE", $COLOR_BLUE)
 	SelectDropTroop(0)
 	Return True
 EndFunc

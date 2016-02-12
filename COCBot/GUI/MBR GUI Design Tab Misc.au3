@@ -39,17 +39,14 @@ Local $x = 30, $y = 150
 
 Local $x = 30, $y = 205
 	$grpProfiles = GUICtrlCreateGroup(GetTranslated(7,26, "Switch Profiles"), $x - 20, $y - 20, 225, 45)
-		$y -=5
-		$cmbProfile = GUICtrlCreateCombo("01", $x - 3, $y, 40, 18, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		$txtTip = GetTranslated(7,28, "Use this to switch to a different profile")& @CRLF & GetTranslated(7,29, "Your profiles can be found in") & ": " & @CRLF & $sProfilePath
+		$cmbApplyProfile = GUICtrlCreateCombo("Custom", $x -3, $y -3, 100, 18, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+		$txtTip = GetTranslated(7,28, "Use this to switch to a different profile") & @CRLF & GetTranslated(7, 29, "Your profiles can be found in: ") & @CRLF & $sProfilePath
 		GUICtrlSetTip(-1, $txtTip)
-		GUICtrlSetData(-1, "02|03|04|05|06", "01")
-		GUICtrlSetOnEvent(-1, "cmbProfile")
-		$txtVillageName = GUICtrlCreateInput(GetTranslated(7,30, "MyVillage"), $x + 47, $y, 130, 20, BitOR($SS_CENTER, $ES_AUTOHSCROLL))
-		GUICtrlSetLimit (-1, 100, 0)
-		GUICtrlSetFont(-1, 9, 400, 1)
-		GUICtrlSetTip(-1, GetTranslated(7,31, "Your village/profile's name"))
-		GUICtrlSetOnEvent(-1, "txtVillageName")
+		GUICtrlSetData(-1, "TH Snipe | TH 8 (G + E) | TH 8 (G + E + DE) | TH 8 (DE) | TH 9 (G + E) | TH 9 (G + E + DE) | TH 9 (DE) | TH 10 (G + E) | TH 10 (G + E + DE) | TH 10 (DE)", "Custom")
+		$btnApplyProfile = GUICtrlCreateButton ("Apply", $x +120, $y -3, 65, 20)
+		$txtTip = "Apply your selected settings with this button."
+		GUICtrlSetTip(-1, $txtTip)
+		GUICtrlSetOnEvent(-1, "btnApplyProfile")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 Local $x = 260, $y = 205

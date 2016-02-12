@@ -103,6 +103,7 @@
 #include "functions\Image Search\checkWall.au3"
 #include "functions\Image Search\CheckTombs.au3"
 #include "functions\Image Search\THSearch.au3"
+#include "functions\Image Search\CheckLootcart.au3"
 
 #include "functions\Main Screen\BlueStacks1Shortcuts.au3"
 #include "functions\Main Screen\checkMainScreen.au3"
@@ -158,6 +159,8 @@
 #include "functions\Other\CheckVersion.au3"
 #include "functions\Other\CloseRunningBot.au3"
 #include "functions\Other\JSON.au3"
+#include "functions\Other\ApplyProfile.au3"
+#include "functions\Other\ProfileSwitch.au3"
 
 #include "functions\Other\ComError.au3"
 #include "functions\Other\IsPage.au3"

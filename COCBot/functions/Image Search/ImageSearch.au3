@@ -69,7 +69,7 @@ Func _ImageSearchArea($findImage, $resultPosition, $x1, $y1, $right, $bottom, By
 		If $result[0] = "0" Then Return 0
 	Else
 		SetLog("Error: Image Search not working...", $COLOR_RED)
-		Return 1
+		Return -1
 	EndIf
 
 	; Otherwise get the x,y location of the match and the size of the image to compute the centre of search

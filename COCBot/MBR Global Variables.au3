@@ -120,11 +120,18 @@ Global $AndroidClientWidth_Configured = 0 ; Android configured Screen Width
 Global $AndroidClientHeight_Configured = 0 ; Android configured Screen Height
 Global $AndroidLaunchWaitSec = 240 ; Seconds to wait for launching Android Simulator
 
-Global $HWnD ;Handle for Android window
+Global $HWnD ; Handle for Android window
 
 Global $iVillageName
 Global $sProfilePath = @ScriptDir & "\Profiles"
 Global $aTxtLogInitText[0][6] = [[]]
+
+; Profile Switch
+Global $icmbApplyProfile, $cmbApplyProfile
+Global $ichkGoldSwitchMax, $itxtMaxGoldAmount, $icmbGoldMaxProfile, $ichkGoldSwitchMin, $itxtMinGoldAmount, $icmbGoldMinProfile
+Global $ichkElixirSwitchMax, $itxtMaxElixirAmount, $icmbElixirMaxProfile, $ichkElixirSwitchMin, $itxtMinElixirAmount, $icmbElixirMinProfile
+Global $ichkDESwitchMax, $itxtMaxDEAmount, $icmbDEMaxProfile, $ichkDESwitchMin, $itxtMinDEAmount, $icmbDEMinProfile
+Global $ichkTrophySwitchMax, $itxtMaxTrophyAmount, $icmbTrophyMaxProfile, $ichkTrophySwitchMin, $itxtMinTrophyAmount, $icmbTrophyMinProfile
 
 Global $iMoveMouseOutBS = 0 ; If enabled moves mouse out of Android window when bot is running
 Global $DevMode = 0
@@ -290,6 +297,7 @@ Global $lblAttacked[$iModeCount + 1], $lblTotalGoldGain[$iModeCount + 1], $lblTo
 Global $lblZapFound, $lblZapUsed, $lblZapDEGain, $lblZapDEPerLightning
 Global $lblNbrOfDetectedMines[$iModeCount + 1], $lblNbrOfDetectedCollectors[$iModeCount + 1], $lblNbrOfDetectedDrills[$iModeCount + 1]
 Global $iNbrOfDetectedDrillsForZap, $lblNbrOfDetectedDrillsForZap
+Global $DefaultCocDiamond = "430,70|787,335|430,605|67,333"
 
 ; Search Settings
 Global $bSearchMode = False
@@ -580,7 +588,7 @@ Global $iVSDelay, $iMaxVSDelay
 Global $isldTrainITDelay
 Global $ichkTrap, $iChkCollect, $ichkTombstones
 Global $iCmbUnitDelay[$iModeCount], $iCmbWaveDelay[$iModeCount], $iChkRandomspeedatk[$iModeCount]
-Global $ineedRearm = False
+Global $ineedRearm = True
 Global $iTimeTroops = 0
 Global $iTimeGiant = 120
 Global $iTimeWall = 120

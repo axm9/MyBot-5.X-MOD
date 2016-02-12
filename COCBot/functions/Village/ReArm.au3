@@ -91,7 +91,8 @@ Func ReArm()
 		EndIf
 	EndIf
 
-	ClickP($aAway, 1, 0, "#0234") ; Click away
+	ClickP($aAway, 1, 0, "#0234") ; Click away	
+	checkLootcart()
 	$ineedRearm = False
 	If _Sleep($iDelayReArm5) Then Return
 	checkMainScreen(False) ; check for screen errors while running function

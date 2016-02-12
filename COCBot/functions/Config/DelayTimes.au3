@@ -125,6 +125,10 @@ Global Const $iDelaycheckDarkElix2 = 1000
 Global Const $iDelayCheckTombs1 = 500
 Global Const $iDelayCheckTombs2 = 2000
 
+;CheckLootcart
+Global Const $iDelayCheckLootcart1 = 500
+Global Const $iDelayCheckLootcart2 = 2000
+
 ;CheckWall
 Global Const $iDelayCheckWall1 = 500
 Global Const $iDelayCheckWall2 = 1000

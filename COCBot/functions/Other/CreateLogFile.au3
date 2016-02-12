@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 Func CreateLogFile()
-    if $hLogFileHandle<>"" Then
+    if $hLogFileHandle <> "" Then
 		FileClose($hLogFileHandle)
 		$hLogFileHandle = ""
 	EndIf
@@ -39,7 +39,7 @@ EndFunc   ;==>CreateLogFile
 ; ===============================================================================================================================
 
 Func CreateAttackLogFile()
-    If $hAttackLogFileHandle <>"" Then
+    If $hAttackLogFileHandle <> "" Then
 		FileClose($hAttackLogFileHandle)
 		$hAttackLogFileHandle=""
 	EndIf
