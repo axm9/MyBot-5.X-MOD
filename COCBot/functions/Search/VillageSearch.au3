@@ -148,7 +148,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				$numDEDrill = 1
 		EndSwitch
 		If $numDEDrill <> 0 Then
-			$DEperDrill = (Number($searchDark) / $numDEDrill)
+			$DEperDrill = Round(Number($searchDark) / $numDEDrill)
 		EndIf
 		
 		$isDeadBase = False

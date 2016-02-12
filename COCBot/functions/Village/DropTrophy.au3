@@ -96,7 +96,7 @@ Func DropTrophy()
 					$numDEDrill = 1
 			EndSwitch
 			If $numDEDrill <> 0 Then
-				$DEperDrill = (Number($searchDark) / $numDEDrill)
+				$DEperDrill = Round(Number($searchDark) / $numDEDrill)
 			EndIf			
 			$zapBaseMatch =  $isDeadBase And $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DEperDrill >= Number($itxtDBLightMinDark)
 			

@@ -19,7 +19,6 @@ Func DEDropSmartSpell()
 	Local $searchDark, $aDarkDrills, $DEDrillRemoved = False, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
 
 	; Check if target is DE zap match
-	$zapBaseMatch = $isDeadBase And $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DEperDrill >= Number($itxtDBLightMinDark)
 	If Not($zapBaseMatch) Then Return False
 	
 	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
@@ -34,7 +33,7 @@ Func DEDropSmartSpell()
 	; Get Drill locations and info
 	$aDarkDrills = DEDrillSearch()
 	If $numDEDrill > 0 Then
-		$DEperDrill = (Number($searchDark) / $numDEDrill)
+		$DEperDrill = Round(Number($searchDark) / $numDEDrill)
 		If $debugsetlog = 1 Then SetLog("DE/drill: " & $DEperDrill, $COLOR_PURPLE)
 		If $DEperDrill < Number($itxtDBLightMinDark) Then
 			SetLog("DE drills contain (" & $DEperDrill & ") less than " & $itxtDBLightMinDark & " DE/drill, not worth zapping", $COLOR_RED)
@@ -71,10 +70,10 @@ Func DEDropSmartSpell()
 	_ArraySort($aDarkDrills, 1, 0, 0, 3)
 	If $debugsetlog = 1 Then SetLog("Levels of drills: " & $aDarkDrills[0][3] & " " & $aDarkDrills[1][3] & " " & $aDarkDrills[2][3] & " " & $aDarkDrills[3][3], $COLOR_PURPLE)
 
-	While $CurLightningSpell > 0 And $aDarkDrills[0][3] <> -1 And $maxElixirSpellNbr <> 0
+	While $CurLightningSpell > 0 And $aDarkDrills[0][3] <> -1 And $numDEDrill > 0
 		If $DEDrillRemoved Then ; if a DE drill has been removed, check remaining DE/drill number
 			If $numDEDrill > 0 Then
-				$DEperDrill = (Number($searchDark) / $numDEDrill)
+				$DEperDrill = Round(Number($searchDark) / $numDEDrill)
 				If $debugsetlog = 1 Then SetLog("DE/drill: " & $DEperDrill, $COLOR_PURPLE)
 				If $DEperDrill < Number($itxtDBLightMinDark) Then
 					SetLog("DE drills contain (" & $DEperDrill & ") less than " & $itxtDBLightMinDark & " DE/drill, not worth zapping", $COLOR_RED)

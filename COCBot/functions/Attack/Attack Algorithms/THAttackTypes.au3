@@ -22,9 +22,6 @@ EndFunc   ;==>SwitchAttackTHType
 Func AttackTHParseCSV($test = False)
 	If $debugsetlog = 1 Then Setlog("AttackTHParseCSV start", $COLOR_PURPLE)
 	Local $f , $line, $acommand, $command, $isTownHallDestroyed = False
-	Local $GoldStart = getGoldVillageSearch(48, 69)
-	Local $ElixirStart = getElixirVillageSearch(48, 69 + 29)
-	Local $DarkStart = getDarkElixirVillageSearch(48, 69 + 57)
 	If FileExists($dirTHSnipesAttacks & "\" & $scmbAttackTHType & ".csv") Then
 		$f = FileOpen($dirTHSnipesAttacks & "\" & $scmbAttackTHType & ".csv", 0)
 		; Read in lines of text until the EOF is reached
@@ -67,7 +64,7 @@ Func AttackTHParseCSV($test = False)
 						AttackTHGrid(Eval("e" & $command), $iNbOfSpots, $iAtEachSpot, $Sleep, 0)
 					Case $command = "WAIT"
 						If $debugSetLog = 1 Then Setlog(">> ThSnipeWait(" & Int($acommand[7]) & ")")
-						If ThSnipeWait(Int($acommand[7])) Then ; Use seconds not ms , Half of time to check One start and the other halft for check the Resources
+						If ThSnipeWait(Int($acommand[7])) Then ; Use seconds not ms, Half of time to check One start and the other halft for check the Resources
 							$isTownHallDestroyed = True
 							ExitLoop
 						EndIf
@@ -98,7 +95,7 @@ Func AttackTHParseCSV($test = False)
 		SetLog("Cannot found THSnipe attack file " & $dirTHSnipesAttacks & "\" & $scmbAttackTHType & ".csv", $color_red)
 	EndIf
 
-	If $isTownHallDestroyed = True And $ichkAttackIfDB = 1 Then TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
+	If $isTownHallDestroyed And $ichkAttackIfDB = 1 Then TestLootForDB($searchGold, $searchElixir, $searchDark)
 EndFunc   ;==>AttackTHParseCSV
 
 Func ThSnipeWait($delay)
@@ -115,19 +112,18 @@ Func ThSnipeWait($delay)
 EndFunc   ;==>ThSnipeWait
 
 Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)	
-	Setlog ("Checking loot for Greedy mode")
+	Setlog ("Checking loot for Greedy mode", $COLOR_BLUE)
 	Local $GoldEnd = getGoldVillageSearch(48, 69)
 	Local $ElixirEnd = getElixirVillageSearch(48, 69 + 29)
 	Local $DarkEnd = getDarkElixirVillageSearch(48, 69 + 57)		
-	Local $GoldPercent = 100 * ($GoldStart - $GoldEnd) / $GoldStart
-	Local $ElixirPercent = 100 * ($ElixirStart - $ElixirEnd) / $ElixirStart
-	Local $DarkPercent = 100 * ($DarkStart - $DarkEnd) / $DarkStart
-	If $debugSetLog = 1 Then 
-		Setlog (" - Gold loot % = " & $GoldPercent, $COLOR_PURPLE)
-		Setlog (" - Elixir loot % = " & $ElixirPercent, $COLOR_PURPLE)
-		Setlog (" - Dark Elixir loot % = " & $DarkPercent, $COLOR_PURPLE)
-	EndIf
-	If $CurCamp > $iMinTroopToAttackDB And Round($GoldPercent) < $ipercentTSSuccess And Round($ElixirPercent) < $ipercentTSSuccess And CompareResources($DB) Then
+	Local $GoldPercent = Round(100 * ($GoldStart - $GoldEnd) / $GoldStart)
+	Local $ElixirPercent = Round(100 * ($ElixirStart - $ElixirEnd) / $ElixirStart)
+	Local $DarkPercent = Round(100 * ($DarkStart - $DarkEnd) / $DarkStart)
+	Setlog (" - Gold loot % = " & $GoldPercent, $COLOR_ORANGE)
+	Setlog (" - Elixir loot % = " & $ElixirPercent, $COLOR_ORANGE)
+	Setlog (" - Dark Elixir loot % = " & $DarkPercent, $COLOR_ORANGE)
+	
+	If $CurCamp > $iMinTroopToAttackDB And $GoldPercent <= $ipercentTSSuccess And $ElixirPercent <= $ipercentTSSuccess And CompareResources($DB) Then
 		SetLog("Gold & Elixir are mostly in collectors and can be raided", $COLOR_GREEN, "Lucida Console", 7.5)
 		; change settings to dead base attack
 		$isDeadBase = True
@@ -153,7 +149,7 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 			EndIf
 		EndIf
 	EndIf	
-	If $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And Round($DarkPercent) < $ipercentTSSuccess And Number($DarkEnd) > 1000 Then 
+	If $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DarkPercent <= $ipercentTSSuccess And Number($DarkEnd) >= 1000 Then 
 		SetLog("Dark Elixir is mostly in drills and can be zapped", $COLOR_GREEN)
 		; indicate dead base for Zap		
 		$isDeadBase = True
