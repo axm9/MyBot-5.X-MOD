@@ -14,7 +14,8 @@
 ; ===============================================================================================================================
 
 Func CheckHeroesHealth()
-	If $checkKPower Or $checkQPower or $checkWPower Then
+	If $checkKPower Or $checkQPower Or $checkWPower Then
+		Setlog(" Checking Heroes' Health started", $COLOR_BLUE)
 		Local $aKingHealthCopy = $aKingHealth ; copy ScreenCoordinates array to modify locally with dynamic X coordinate from slotposition
 		$aKingHealthCopy[0] = GetXPosOfArmySlot($King, 68)
 		Local $aQueenHealthCopy = $aQueenHealth ; copy ScreenCoordinates array to modify locally with dynamic X coordinate from slotposition
@@ -22,7 +23,6 @@ Func CheckHeroesHealth()
 		Local $aWardenHealthCopy = $aWardenHealth
 		$aWardenHealthCopy[0] = GetXPosOfArmySlot($Warden, 68)
 
-		If $debugSetlog = 1 Then Setlog(" CheckHeroesHealth started ")
 		Local $KingPixelColor = _GetPixelColor($aKingHealthCopy[0], $aKingHealthCopy[1], $bCapturePixel)
 		Local $QueenPixelColor = _GetPixelColor($aQueenHealthCopy[0], $aQueenHealthCopy[1], $bCapturePixel)
 		Local $WardenPixelColor = _GetPixelColor($aWardenHealthCopy[0], $aWardenHealthCopy[1], $bCapturePixel)

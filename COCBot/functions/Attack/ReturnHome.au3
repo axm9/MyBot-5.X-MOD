@@ -25,29 +25,29 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 		SetLog("Disabling Normal End Battle Options", $COLOR_GREEN)
 	EndIf
 	
-	If Not(IsReturnHomeBattlePage(True,False)) Then ; if already in return home battle page do not wait and try to activate Hero Ability and close battle
+	If Not(IsReturnHomeBattlePage(True, False)) Then ; if already in return home battle page do not wait and try to activate Hero Ability and close battle
 		If $GoldChangeCheck = True Then
 			SetLog("Checking if the battle has finished", $COLOR_BLUE)
 			While GoldElixirChangeEBO()
 				If _Sleep($iDelayReturnHome1) Then Return
 			WEnd
 		EndIf
-				
-		DEDropSmartSpell()
 		
 		; If Heroes were not activated: Hero Ability activation before End of Battle to restore health
 		If ($checkKPower = True Or $checkQPower = True) And $iActivateKQCondition = "Auto" Then
 			If _ColorCheck(_GetPixelColor($aRtnHomeCheck1[0], $aRtnHomeCheck1[1], True), Hex($aRtnHomeCheck1[2], 6), $aRtnHomeCheck1[3]) = False And _ColorCheck(_GetPixelColor($aRtnHomeCheck2[0], $aRtnHomeCheck2[1], True), Hex($aRtnHomeCheck2[2], 6), $aRtnHomeCheck2[3]) = False Then ; If not already at Return Homescreen
 				If $checkKPower = True Then
 					SetLog("Activating King's power to restore some health before EndBattle", $COLOR_BLUE)
-					If IsAttackPage() Then SelectDropTroop($King) ;If King was not activated: Boost King before EndBattle to restore some health
+					If IsAttackPage() Then SelectDropTroop($King) ; If King was not activated: Boost King before EndBattle to restore some health
 				EndIf
 				If $checkQPower = True Then
 					SetLog("Activating Queen's power to restore some health before EndBattle", $COLOR_BLUE)
-					If IsAttackPage() Then SelectDropTroop($Queen) ;If Queen was not activated: Boost Queen before EndBattle to restore some health
+					If IsAttackPage() Then SelectDropTroop($Queen) ; If Queen was not activated: Boost Queen before EndBattle to restore some health
 				EndIf
 			EndIf
 		EndIf
+		
+		If $zapBaseMatch Then DEDropSmartSpell()
 	Else
 		If $debugsetlog=1 Then Setlog("Battle already over",$COLOR_PURPLE)
 	EndIf

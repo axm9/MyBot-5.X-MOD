@@ -15,13 +15,9 @@
 ; ===============================================================================================================================
 
 Func DEDropSmartSpell()
-	Local Const $strikeOffsets = [1, 3]
-	Local $searchDark, $aDarkDrills, $DEDrillRemoved = False, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0
-
-	; Check if target is DE zap match
-	If Not($zapBaseMatch) Then Return False
-	
 	SetLog("Checking DE drills to Zap", $COLOR_BLUE)
+	Local Const $strikeOffsets = [1, 3]
+	Local $searchDark, $aDarkDrills, $DEDrillRemoved = False, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0	
 	
 	; Get Dark Elixir value, if no DE value exists, exit.
 	$searchDark = checkDE()
