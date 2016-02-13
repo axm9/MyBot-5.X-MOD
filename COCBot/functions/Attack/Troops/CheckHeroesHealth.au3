@@ -15,10 +15,11 @@
 
 Func CheckHeroesHealth()
 	If $checkKPower Or $checkQPower Or $checkWPower Then
-		Setlog(" Checking Heroes' Health started", $COLOR_BLUE)
-		Local $aKingHealthCopy = $aKingHealth ; copy ScreenCoordinates array to modify locally with dynamic X coordinate from slotposition
+		If $debugSetlog = 1 Then Setlog(" Checking Heroes' Health started", $COLOR_PURPLE)
+		; copy ScreenCoordinates array to modify locally with dynamic X coordinate from slotposition
+		Local $aKingHealthCopy = $aKingHealth
 		$aKingHealthCopy[0] = GetXPosOfArmySlot($King, 68)
-		Local $aQueenHealthCopy = $aQueenHealth ; copy ScreenCoordinates array to modify locally with dynamic X coordinate from slotposition
+		Local $aQueenHealthCopy = $aQueenHealth
 		$aQueenHealthCopy[0] = GetXPosOfArmySlot($Queen, 68)
 		Local $aWardenHealthCopy = $aWardenHealth
 		$aWardenHealthCopy[0] = GetXPosOfArmySlot($Warden, 68)
