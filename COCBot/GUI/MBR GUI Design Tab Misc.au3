@@ -36,29 +36,22 @@ Local $x = 30, $y = 150
 			GUICtrlSetData(-1, "-|1 " & GetTranslated(7,24, "Hour") & "|2 " & $sTxtHours & "|3 " & $sTxtHours & "|4 " & $sTxtHours & "|5 " & $sTxtHours & "|6 " & $sTxtHours & "|7 " & $sTxtHours & "|8 " & $sTxtHours & "|9 " & $sTxtHours & "|10 " & $sTxtHours & "|11 " & $sTxtHours & "|12 " & $sTxtHours& "|13 " & $sTxtHours & "|14 " & $sTxtHours & "|15 " & $sTxtHours & "|16 " & $sTxtHours & "|17 " & $sTxtHours & "|18 " & $sTxtHours & "|19 " & $sTxtHours & "|20 " & $sTxtHours & "|21 " & $sTxtHours & "|22 " & $sTxtHours & "|23 " & $sTxtHours & "|24 " & $sTxtHours, "-")
 			GUICtrlSetState (-1, $GUI_DISABLE)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
-
+	
 Local $x = 30, $y = 205
 	$grpProfiles = GUICtrlCreateGroup(GetTranslated(7,26, "Switch Profiles"), $x - 20, $y - 20, 225, 45)
-		$cmbApplyProfile = GUICtrlCreateCombo("Custom", $x -3, $y -3, 100, 18, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		$txtTip = GetTranslated(7,28, "Use this to switch to a different profile") & @CRLF & GetTranslated(7, 29, "Your profiles can be found in: ") & @CRLF & $sProfilePath
-		GUICtrlSetTip(-1, $txtTip)
-		GUICtrlSetData(-1, "TH Snipe | TH 8 (G + E) | TH 8 (G + E + DE) | TH 8 (DE) | TH 9 (G + E) | TH 9 (G + E + DE) | TH 9 (DE) | TH 10 (G + E) | TH 10 (G + E + DE) | TH 10 (DE)", "Custom")
-		$btnApplyProfile = GUICtrlCreateButton ("Apply", $x +120, $y -3, 65, 20)
-		$txtTip = "Apply your selected settings with this button."
-		GUICtrlSetTip(-1, $txtTip)
-		GUICtrlSetOnEvent(-1, "btnApplyProfile")
+		$lblProfie = GUICtrlCreateLabel("Switch in the Profiles tab", $x, $y, -1, -1, $SS_LEFT)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
-
+	
 Local $x = 260, $y = 205
 	$grpLanguages = GUICtrlCreateGroup(GetTranslated(7,32, "GUI Language"), $x - 20, $y - 20, 220, 45)
-		$y -=5
-		$cmbLanguage = GUICtrlCreateCombo("", $x - 3 , $y, 185, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+		$y -= 5
+		$cmbLanguage = GUICtrlCreateCombo("", $x - 3 , $y + 2, 185, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 		$txtTip = GetTranslated(7,33, "Use this to switch to a different GUI language")
 		GUICtrlSetTip(-1, $txtTip)
 
 		LoadLanguagesComboBox() ; full combo box languages reading from languages folders
 
-		GUICtrlSetData(-1, "English", "English") ;default set english language
+		GUICtrlSetData(-1, "English", "English") ; default set english language
 		GUICtrlSetOnEvent(-1, "cmbLanguage")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 

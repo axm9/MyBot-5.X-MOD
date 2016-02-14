@@ -108,7 +108,7 @@ Func _RemoteControl()
 						_DeleteMessage($iden[$x])
 					Case "BOT " & StringUpper($iOrigPushB) & " STATS"
 						SetLog("Pushbullet: Your request has been received. Statistics sent", $COLOR_GREEN)
-						_Push($iOrigPushB & " | Stats Village Report" & "\n" & "At Start\n[G]: " & _NumberFormat($iGoldStart) & " [E]: " & _NumberFormat($iElixirStart) & " [D]: " & _NumberFormat($iDarkStart) & " [T]: " & $iTrophyStart & "\n\nNow (Current Resources)\n[G]: " & _NumberFormat($iGoldCurrent) & " [E]: " & _NumberFormat($iElixirCurrent) & " [D]: " & _NumberFormat($iDarkCurrent) & " [T]: " & $iTrophyCurrent & " [GEM]: " & $iGemAmount & "\n \n [No. of Free Builders]: " & $iFreeBuilderCount & "\n [No. of Wall Up]: G: " & $iNbrOfWallsUppedGold & "/ E: " & $iNbrOfWallsUppedElixir & "\n\nAttacked: " & GUICtrlRead($lblresultvillagesattacked) & "\nSkipped: " & $iSkippedVillageCount)
+						_Push($iOrigPushB & " | Stats Village Report" & "\n" & "At Start\n[G]: " & _NumberFormat($iGoldStart) & " [E]: " & _NumberFormat($iElixirStart) & " [D]: " & _NumberFormat($iDarkStart) & " [T]: " & $iTrophyStart & "\n\nNow (Current Resources)\n[G]: " & _NumberFormat($iGoldCurrent) & " [E]: " & _NumberFormat($iElixirCurrent) & " [D]: " & _NumberFormat($iDarkCurrent) & " [T]: " & $iTrophyCurrent & " [GEM]: " & $iGemAmount & "\n \nHourly Stats: " & "\n[G]: " & $lblHourlyStatsGold & " [E]: " & $lblHourlyStatsElixir & " [D]: " & $lblHourlyStatsDark & " [T]: " & $lblHourlyStatsTrophy & "\n\n[No. of Free Builders]: " & $iFreeBuilderCount & "\n [No. of Wall Up]: G: " & $iNbrOfWallsUppedGold & "/ E: " & $iNbrOfWallsUppedElixir & "\n\nAttacked: " & GUICtrlRead($lblresultvillagesattacked) & "\nSkipped: " & $iSkippedVillageCount) & "\n\nLightning spell used: " & $lblZapUsed & "\nDE from Zap: " & $lblZapDEGain)
 						_DeleteMessage($iden[$x])
 					Case "BOT " & StringUpper($iOrigPushB) & " SCREENSHOT"
 						SetLog("Pushbullet: ScreenShot request received", $COLOR_GREEN)
@@ -117,17 +117,17 @@ Func _RemoteControl()
 					Case "BOT " & StringUpper($iOrigPushB) & " RESTART"
 						_DeleteMessage($iden[$x])
 						SetLog("Your request has been received. Bot and BS restarting...", $COLOR_GREEN)
-						_Push($iOrigPushB & " | Request to Restart..." & "\n" & "Your bot and BS are now restarting...")
+						_Push($iOrigPushB & " | Your bot and BS are now restarting...")
 						SaveConfig()
 						_Restart()
 					Case "BOT " & StringUpper($iOrigPushB) & " STOP"
 						_DeleteMessage($iden[$x])
 						SetLog("Your request has been received. Bot is now stopped", $COLOR_GREEN)
 						If $RunState = True Then
-							_Push($iOrigPushB & " | Request to Stop..." & "\n" & "Your bot is now stopping...")
+							_Push($iOrigPushB & " | Your bot is now stopping...")
 							btnStop()
 						Else
-							_Push($iOrigPushB & " | Request to Stop..." & "\n" & "Your bot is currently stopped, no action was taken")
+							_Push($iOrigPushB & " | Your bot is currently stopped, no action was taken")
 						EndIf
 					Case Else
 						Local $lenstr = StringLen("BOT " & StringUpper($iOrigPushB) & " ")
@@ -296,27 +296,27 @@ Func PushMsg($Message, $Source = "")
 		Case "SkypWalls"
 			If $pEnabled = 1 And $pWallUpgrade = 1 Then _Push($iOrigPushB & " | Cannot find Wall level " & $icmbWalls + 4 & "\n" & "Skip upgrade ...")
 		Case "AnotherDevice3600"
-			If $pEnabled = 1 And $pAnotherDevice = 1 Then _Push($iOrigPushB & " | 1. Another Device has connected" & "\n" & "Another Device has connected, waiting " & Floor(Floor($sTimeWakeUp / 60) / 60) & " hours " & Floor(Mod(Floor($sTimeWakeUp / 60), 60)) & " minutes " & Floor(Mod($sTimeWakeUp, 60)) & " seconds")
+			If $pEnabled = 1 And $pAnotherDevice = 1 Then _Push($iOrigPushB & " | Another Device has connected, waiting " & Floor(Floor($sTimeWakeUp / 60) / 60) & " hours " & Floor(Mod(Floor($sTimeWakeUp / 60), 60)) & " minutes " & Floor(Mod($sTimeWakeUp, 60)) & " seconds")
 		Case "AnotherDevice60"
-			If $pEnabled = 1 And $pAnotherDevice = 1 Then _Push($iOrigPushB & " | 2. Another Device has connected" & "\n" & "Another Device has connected, waiting " & Floor(Mod(Floor($sTimeWakeUp / 60), 60)) & " minutes " & Floor(Mod($sTimeWakeUp, 60)) & " seconds")
+			If $pEnabled = 1 And $pAnotherDevice = 1 Then _Push($iOrigPushB & " | Another Device has connected, waiting " & Floor(Mod(Floor($sTimeWakeUp / 60), 60)) & " minutes " & Floor(Mod($sTimeWakeUp, 60)) & " seconds")
 		Case "AnotherDevice"
-			If $pEnabled = 1 And $pAnotherDevice = 1 Then _Push($iOrigPushB & " | 3. Another Device has connected" & "\n" & "Another Device has connected, waiting " & Floor(Mod($sTimeWakeUp, 60)) & " seconds")
+			If $pEnabled = 1 And $pAnotherDevice = 1 Then _Push($iOrigPushB & " | Another Device has connected, waiting " & Floor(Mod($sTimeWakeUp, 60)) & " seconds")
 		Case "TakeBreak"
 			If $pEnabled = 1 And $pTakeAbreak = 1 Then _Push($iOrigPushB & " | Chief, we need some rest!" & "\n" & "Village must take a break..")
 		Case "CocError"
 			If $pEnabled = 1 And $pOOS = 1 Then _Push($iOrigPushB & " | CoC Has Stopped Error .....")
 		Case "Pause"
-			If $pEnabled = 1 And $pRemote = 1 And $Source = "Push" Then _Push($iOrigPushB & " | Request to Pause..." & "\n" & "Your request has been received. Bot is now paused")
+			If $pEnabled = 1 And $pRemote = 1 And $Source = "Push" Then _Push($iOrigPushB & " | Your request has been received. Bot is now paused")
 		Case "Resume"
-			If $pEnabled = 1 And $pRemote = 1 And $Source = "Push" Then _Push($iOrigPushB & " | Request to Resume..." & "\n" & "Your request has been received. Bot is now resumed")
+			If $pEnabled = 1 And $pRemote = 1 And $Source = "Push" Then _Push($iOrigPushB & " | Your request has been received. Bot is now resumed")
 		Case "OoSResources"
 			If $pEnabled = 1 And $pOOS = 1 Then _Push($iOrigPushB & " | Disconnected after " & StringFormat("%3s", $SearchCount) & " skip(s)" & "\n" & "Cannot locate Next button, Restarting Bot...")
 		Case "MatchFound"
 			If $pEnabled = 1 And $pMatchFound = 1 Then _Push($iOrigPushB & " | " & $sModeText[$iMatchMode] & " Match Found! after " & StringFormat("%3s", $SearchCount) & " skip(s)" & "\n" & "[G]: " & _NumberFormat($searchGold) & "; [E]: " & _NumberFormat($searchElixir) & "; [D]: " & _NumberFormat($searchDark) & "; [T]: " & $searchTrophy)
 		Case "UpgradeWithGold"
-			If $pEnabled = 1 And $pWallUpgrade = 1 Then _Push($iOrigPushB & " | Upgrade completed by using GOLD" & "\n" & "Complete by using GOLD ...")
+			If $pEnabled = 1 And $pWallUpgrade = 1 Then _Push($iOrigPushB & " | Wall Upgrade Completed by using GOLD ...")
 		Case "UpgradeWithElixir"
-			If $pEnabled = 1 And $pWallUpgrade = 1 Then _Push($iOrigPushB & " | Upgrade completed by using ELIXIR" & "\n" & "Complete by using ELIXIR ...")
+			If $pEnabled = 1 And $pWallUpgrade = 1 Then _Push($iOrigPushB & " | Wall Upgrade Completed by using ELIXIR ...")
 		Case "NoUpgradeWallButton"
 			If $pEnabled = 1 And $pWallUpgrade = 1 Then _Push($iOrigPushB & " | No Upgrade Gold Button" & "\n" & "Cannot find gold upgrade button ...")
 		Case "NoUpgradeElixirButton"

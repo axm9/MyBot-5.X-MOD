@@ -13,10 +13,6 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func btnApplyProfile()
-	ApplyProfile()
-EndFunc   ;==>btnApplyProfile
-
 Func btnLocateBarracks()
 	$RunState = True
 	While 1
