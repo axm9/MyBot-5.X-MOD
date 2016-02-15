@@ -446,12 +446,13 @@ Func btnVillageStat()
 EndFunc   ;==>btnVillageStat
 
 Func btnTestVillage()
-	btnTestDeadBase()
-	btnTestDefs()
+	testDeadBase()
+	testDefs()
 	checkLootcart()
-EndFunc   ;==>btnTestDeadBase
+	testFullDarkElixir()
+EndFunc   ;==>testDeadBase
 
-Func btnTestDeadBase()
+Func testDeadBase()
 	Local $test = 0
 	LoadTHImage()
 	LoadElixirImage()
@@ -467,9 +468,9 @@ Func btnTestDeadBase()
 		SetLog("TOWNHALL CHECK..................")
 		$searchTH = checkTownhallADV2()
 	If $test = 1 Then $debugBuildingPos = 0
-EndFunc   ;==>btnTestDeadBase
+EndFunc   ;==>testDeadBase
 
-Func btnTestTrap()
+Func testTrap()
 	LoadTHImage() ; Load TH images
 	LoadDefImage() ; Load defense images
 	Zoomout()
@@ -488,9 +489,9 @@ Func btnTestTrap()
 	_GDIPlus_ImageSaveToFile($EditedImage, $dirTemp & $filename)
 	_GDIPlus_PenDispose($hPen)
     _GDIPlus_GraphicsDispose($hGraphic)
-EndFunc   ;==>btnTestTrap
+EndFunc   ;==>testTrap
 
-Func btnTestDefs()
+Func testDefs()
 	LoadTHImage() ; Load TH images
 	LoadDefImage() ; Load defense images
 	Zoomout()
@@ -509,16 +510,24 @@ Func btnTestDefs()
 	_GDIPlus_ImageSaveToFile($EditedImage, $dirTemp & $filename)
 	_GDIPlus_PenDispose($hPen)
     _GDIPlus_GraphicsDispose($hGraphic)
-EndFunc   ;==>btnTestTrap
+EndFunc   ;==>testDefs
 
-Func btnTestDonate()
+Func testTestDonate()
 	$RunState = True
-		SetLog("DONATE TEST..................START")
-		ZoomOut()
-		saveconfig()
-		readconfig()
-		applyconfig()
-		DonateCC()
-		SetLog("DONATE TEST..................STOP")
+	SetLog("DONATE TEST..................START")
+	ZoomOut()
+	saveconfig()
+	readconfig()
+	applyconfig()
+	DonateCC()
+	SetLog("DONATE TEST..................STOP")
 	$RunState = False
-EndFunc   ;==>btnTestDonate
+EndFunc   ;==>testTestDonate
+
+Func testFullDarkElixir()
+	If isDarkElixirFull() Then ; Hex if color of dark elixir (black-ish)
+		SetLog("Dark Elixir Storage is full!", $COLOR_GREEN)
+	Else 
+		SetLog("Dark Elixir Storage is not full!", $COLOR_RED)
+	EndIf
+EndFunc   ;==>testFullDarkElixir

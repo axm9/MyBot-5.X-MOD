@@ -27,31 +27,31 @@ Func BotCommand()
 
 		Switch $icmbBotCond
 			Case 0
-				If isGoldFull() And isElixirFull() And $TrophyMax Then $MeetCondStop = True
+				If isGoldFull() And isElixirFull() And isDarkElixirFull() Then $MeetCondStop = True
 			Case 1
-				If (isGoldFull() And isElixirFull()) Or $TrophyMax Then $MeetCondStop = True
+				If (isGoldFull() And isElixirFull()) Or isDarkElixirFull() Then $MeetCondStop = True
 			Case 2
-				If (isGoldFull() Or isElixirFull()) And $TrophyMax Then $MeetCondStop = True
+				If (isGoldFull() Or isElixirFull()) And isDarkElixirFull() Then $MeetCondStop = True
 			Case 3
-				If isGoldFull() Or isElixirFull() Or $TrophyMax Then $MeetCondStop = True
+				If isGoldFull() Or isElixirFull() Or isDarkElixirFull() Then $MeetCondStop = True
 			Case 4
 				If isGoldFull() And isElixirFull() Then $MeetCondStop = True
 			Case 5
 				If isGoldFull() Or isElixirFull() Then $MeetCondStop = True
 			Case 6
-				If isGoldFull() And $TrophyMax Then $MeetCondStop = True
+				If isGoldFull() And isDarkElixirFull() Then $MeetCondStop = True
 			Case 7
-				If isElixirFull() And $TrophyMax Then $MeetCondStop = True
+				If isElixirFull() And isDarkElixirFull() Then $MeetCondStop = True
 			Case 8
-				If isGoldFull() Or $TrophyMax Then $MeetCondStop = True
+				If isGoldFull() Or isDarkElixirFull() Then $MeetCondStop = True
 			Case 9
-				If isElixirFull() Or $TrophyMax Then $MeetCondStop = True
+				If isElixirFull() Or isDarkElixirFull() Then $MeetCondStop = True
 			Case 10
 				If isGoldFull() Then $MeetCondStop = True
 			Case 11
 				If isElixirFull() Then $MeetCondStop = True
 			Case 12
-				If $TrophyMax Then $MeetCondStop = True
+				If isDarkElixirFull() Then $MeetCondStop = True
 			Case 13
 				If $UseTimeStop = -1 Then
 					$UseTimeStop = 1

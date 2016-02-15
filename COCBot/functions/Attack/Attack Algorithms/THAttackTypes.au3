@@ -123,7 +123,7 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 	Setlog (" - Elixir loot % = " & $ElixirPercent, $COLOR_ORANGE)
 	Setlog (" - Dark Elixir loot % = " & $DarkPercent, $COLOR_ORANGE)
 	
-	If $CurCamp > $iMinTroopToAttackDB And $GoldPercent <= $ipercentTSSuccess And $ElixirPercent <= $ipercentTSSuccess And CompareResources($DB) Then
+	If $CurCamp > $iMinTroopToAttackDB And ($GoldPercent <= $ipercentTSSuccess Or $ElixirPercent <= $ipercentTSSuccess) And CompareResources($DB) Then
 		SetLog("Gold & Elixir are mostly in collectors and can be raided", $COLOR_GREEN, "Lucida Console", 7.5)
 		; change settings to dead base attack
 		$isDeadBase = True

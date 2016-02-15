@@ -107,9 +107,11 @@ Func cmbBotCond()
 	If _GUICtrlComboBox_GetCurSel($cmbBotCond) = 13 Then
 		If _GUICtrlComboBox_GetCurSel($cmbHoursStop) = 0 Then _GUICtrlComboBox_SetCurSel($cmbHoursStop, 1)
 		GUICtrlSetState($cmbHoursStop, $GUI_ENABLE)
+		GUICtrlSetState($cmbHoursStop, $GUI_SHOW)
 	Else
 		_GUICtrlComboBox_SetCurSel($cmbHoursStop, 0)
 		GUICtrlSetState($cmbHoursStop, $GUI_DISABLE)
+		GUICtrlSetState($cmbHoursStop, $GUI_HIDE)
 	EndIf
 EndFunc   ;==>cmbBotCond
 
