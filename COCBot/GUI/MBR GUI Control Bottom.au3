@@ -475,41 +475,18 @@ Func testTrap()
 	LoadDefImage() ; Load defense images
 	Zoomout()
 	checkTownhallADV2()
-	$searchDef = IsTHTrapped()
-
-	Local $EditedImage = $hBitmap
-	Local $hGraphic = _GDIPlus_ImageGetGraphicsContext($EditedImage)
-	Local $hPen = _GDIPlus_PenCreate(0xFFFF0000, 2) ; create a pencil Color FF0000/RED
-
-	_GDIPlus_GraphicsDrawRect($hGraphic, $Defx , $Defy , 10, 10, $hPen)
-
-	Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
-	Local $Time = @HOUR & "." & @MIN & "." & @SEC
- 	Local $filename = String($Date & "_" & $Time & " _trappedTH.png")
-	_GDIPlus_ImageSaveToFile($EditedImage, $dirTemp & $filename)
-	_GDIPlus_PenDispose($hPen)
-    _GDIPlus_GraphicsDispose($hGraphic)
+	SetLog("TRAPPED TH CHECK..................")
+	$searchDef = IsTHTrapped()	
+	SetLog("Is TH trapped: " & $searchDef)
 EndFunc   ;==>testTrap
 
 Func testDefs()
 	LoadTHImage() ; Load TH images
 	LoadDefImage() ; Load defense images
 	Zoomout()
-	checkTownhallADV2()
+	checkTownhallADV2()	
+	SetLog("DEFENSES CHECK..................")
 	CaptureDefs(70, 70, 720, 540)
-
-	Local $EditedImage = $hBitmap
-	Local $hGraphic = _GDIPlus_ImageGetGraphicsContext($EditedImage)
-	Local $hPen = _GDIPlus_PenCreate(0xFFFF0000, 2) ; create a pencil Color FF0000/RED
-
-	_GDIPlus_GraphicsDrawRect($hGraphic, $Defx , $Defy , 10, 10, $hPen)
-
-	Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
-	Local $Time = @HOUR & "." & @MIN & "." & @SEC
- 	Local $filename = String($Date & "_" & $Time & " _trappedTH.png")
-	_GDIPlus_ImageSaveToFile($EditedImage, $dirTemp & $filename)
-	_GDIPlus_PenDispose($hPen)
-    _GDIPlus_GraphicsDispose($hGraphic)
 EndFunc   ;==>testDefs
 
 Func testTestDonate()

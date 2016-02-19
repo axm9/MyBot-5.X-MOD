@@ -14,7 +14,6 @@
 ; ===============================================================================================================================
 
 Global $ppath[7] = ["inferno", "mortar", "wizard", "tesla", "air", "archer", "cannon"]
-Global $Defx = 0, $Defy = 0
 Global $DefText[7] ; Text of Defense Type
 $DefText[0] = "Inferno Tower"
 $DefText[1] = "Wizard Tower"
@@ -25,17 +24,14 @@ $DefText[5] = "Archer Tower"
 $DefText[6] = "Cannon"
 
 Global $DefImages0, $DefImages1, $DefImages2, $DefImages3, $DefImages4, $DefImages5, $DefImages6
-Global $defTolerance
 
 Func IsTHTrapped()
 	SetLog("Checking Trapped TH", $COLOR_BLUE)	
 	Local $hTimer = TimerInit()
 	Local $defCount = 0
-	Local $imageName
 	Local $chkDefEnabled[7] = [$chkInfernoEnabled, $chkMortarEnabled, $chkWizardEnabled, $chkTeslaEnabled, $chkAirEnabled, $chkArcherEnabled, $chkCannonEnabled]
 	
-	$Defx = 0
-	$Defy = 0
+	Local $Defx = 0, $Defy = 0
 	$iLeft = $THx - 125
 	$iTop = $THy - 90
 	$iRight = $THx + 125
@@ -55,8 +51,9 @@ Func IsTHTrapped()
 	EndIf
 
 	_CaptureRegion()
-	$sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
-	Local $DefaultCocSearchArea = $iLeft & "|" & $iTop & "|" & $iRight & "|" & $iBottom
+	Local $sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
+	Local $customSearchArea = $iLeft & "|" & $iTop & "|" & $iRight & "|" & $iBottom
+	Local $customDiamond = $iLeft & "," & $iTop & "|" & $iRight & "," & $iTop & "|" & $iRight & "," & $iBottom & "|" & $iLeft & "," & $iBottom
 	
 	For $t = 0 To 6
 		If $chkDefEnabled[$t] = 0 Then
@@ -66,14 +63,14 @@ Func IsTHTrapped()
 		If Execute("$DefImages" & $t & "[0]") > 0 Then
 			If $debugsetlog = 1 Then Setlog("Checking for " & $ppath[$t], $COLOR_PURPLE)
 			For $i = 1 To Execute("$DefImages" & $t & "[0]")
-				$defToleranceArray = StringSplit(Execute("$DefImages" & $t & "["& $i & "]") , "T")
-				$Tolerance = $defToleranceArray[2] + ($tolerancedefOffset/100)
-				$imageName = Execute("$DefImages" & $t & "["& $i & "]")				
-				$FFile = @ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & $imageName		
+				Local $imageName = Execute("$DefImages" & $t & "["& $i & "]")
+				Local $FFile = @ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & $imageName
+				Local $defToleranceArray = StringSplit(Execute("$DefImages" & $t & "["& $i & "]") , "T")
+				Local $defTolerance = $defToleranceArray[2] + ($tolerancedefOffset/100)
 				If $debugsetlog = 1 Then Setlog("Check for image " & $imageName, $COLOR_PURPLE)
 				
-				$result = DllCall($LibDir & "\ImgLocV6.dll", "str", "SearchTile", "handle", $sendHBitmap, "str", $FFile , "float", $Tolerance, "str" ,$DefaultCocSearchArea, "str", $DefaultCocDiamond )
-				$DefLocation = StringSplit($result[0], "|")
+				Local $result = DllCall($LibDir & "\ImgLocV6.dll", "str", "SearchTile", "handle", $sendHBitmap, "str", $FFile , "float", $defTolerance, "str", $customSearchArea, "str", $customDiamond)
+				Local $DefLocation = StringSplit($result[0], "|")
 				$defCount += 1
 
 				If $DefLocation[1] > 0 Then					
@@ -89,6 +86,19 @@ Func IsTHTrapped()
 							Setlog(" - IsInsidediamond: " & isInsideDiamondXY($Defx, $Defy), $COLOR_TEAL)
 							SetLog(" - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
 							SetLog(" - Images checked: " & $defCount, $COLOR_TEAL)
+						EndIf
+						If $debugImageSave = 1 Then
+							Local $EditedImage = $hBitmap
+							Local $hGraphic = _GDIPlus_ImageGetGraphicsContext($EditedImage)
+							Local $hPen = _GDIPlus_PenCreate(0xFFFF0000, 2) ; create a pencil Color RED
+							_GDIPlus_GraphicsDrawRect($hGraphic, $Defx, $Defy, 10, 10, $hPen)
+
+							Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
+							Local $Time = @HOUR & "." & @MIN & "." & @SEC
+							Local $filename = String($Date & "_" & $Time & " _trappedTH.png")
+							_GDIPlus_ImageSaveToFile($EditedImage, $dirTemp & $filename)
+							_GDIPlus_PenDispose($hPen)
+							_GDIPlus_GraphicsDispose($hGraphic)
 						EndIf
 						If isInsideDiamondXY($Defx, $Defy) Then
 							If $chkInfernoEnabled = 1 And $t = 0 Then
@@ -190,19 +200,20 @@ Func LoadDefImage()
 	Next
 EndFunc   ;==>LoadDefImage
 
-Func CaptureDefs($iLeft = $THx - 125, $iTop = $THy - 90, $iRight = $THx + 125, $iBottom = $THy + 90)
+Func CaptureDefs($iLeft = 15, $iTop = 25, $iRight = 825, $iBottom = 625)
 	SetLog("Capturing Defenses", $COLOR_BLUE)	
 	Local $hTimer = TimerInit()
 	Local $defCount = 0
-	Local $DefaultCocSearchArea = $iLeft & "|" & $iTop & "|" & $iRight & "|" & $iBottom
-	Local $imageName
+	Local $customSearchArea = $iLeft & "|" & $iTop & "|" & $iRight & "|" & $iBottom
+	Local $customDiamond = $iLeft & "," & $iTop & "|" & $iRight & "," & $iTop & "|" & $iRight & "," & $iBottom & "|" & $iLeft & "," & $iBottom
 	Local $chkDefEnabled[7] = [$chkInfernoEnabled, $chkMortarEnabled, $chkWizardEnabled, $chkTeslaEnabled, $chkAirEnabled, $chkArcherEnabled, $chkCannonEnabled]
 	
-	$Defx = 0
-	$Defy = 0
+	Local $Defx = 0
+	Local $Defy = 0
 	
-	_CaptureRegion()
-	$sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
+	_CaptureRegion()	
+	$hBitmap = _GDIPlus_BitmapCreateFromFile($dirTemp & "full.bmp")
+	Local $sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
 	
 	For $t = 0 To 6
 		If $chkDefEnabled[$t] = 0 Then
@@ -212,13 +223,14 @@ Func CaptureDefs($iLeft = $THx - 125, $iTop = $THy - 90, $iRight = $THx + 125, $
 		If Execute("$DefImages" & $t & "[0]") > 0 Then
 			For $i = 1 To Execute("$DefImages" & $t & "[0]")
 				If $debugsetlog = 1 Then Setlog("Checking for " & $ppath[$t], $COLOR_PURPLE)
-				$defToleranceArray = StringSplit(Execute("$DefImages" & $t & "["& $i & "]") , "T")
-				$Tolerance = $defToleranceArray[2] + ($tolerancedefOffset/100)
-				$imageName = Execute("$DefImages" & $t & "["& $i & "]")
-				$FFile = @ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & Execute("$DefImages" & $t & "["& $i & "]")
+				Local $imageName = Execute("$DefImages" & $t & "["& $i & "]")
+				Local $FFile = @ScriptDir & "\images\Defense\" & $ppath[$t] & "\" & Execute("$DefImages" & $t & "["& $i & "]")
+				Local $defToleranceArray = StringSplit(Execute("$DefImages" & $t & "["& $i & "]") , "T")
+				Local $defTolerance = $defToleranceArray[2] + ($tolerancedefOffset/100)
 				If $debugsetlog = 1 Then Setlog("Check for image " & $imageName, $COLOR_PURPLE)
-				$result = DllCall($LibDir & "\ImgLocV6.dll", "str", "SearchTile", "handle", $sendHBitmap, "str", $FFile , "float", $Tolerance, "str" ,$DefaultCocSearchArea, "str", $DefaultCocDiamond )
-				$DefLocation = StringSplit($result[0], "|")
+				Local $result = DllCall($LibDir & "\ImgLocV6.dll", "str", "SearchTile", "handle", $hBitmap, "str", $FFile , "float", $defTolerance, "str" , $customSearchArea, "str", $customDiamond)
+				If $debugsetlog = 1 Then Setlog("ImgLocV6 result: ", $result, $COLOR_PURPLE)
+				Local $DefLocation = StringSplit($result[0], "|")
 				$defCount += 1
 
 				If $DefLocation[1] > 0 Then
@@ -235,6 +247,19 @@ Func CaptureDefs($iLeft = $THx - 125, $iTop = $THy - 90, $iRight = $THx + 125, $
 							SetLog(" - Calculated in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
 							SetLog(" - Images checked: " & $defCount, $COLOR_TEAL)
 							SetLog(" - Items found: " & Int(UBound($DefLocation) / 2), $COLOR_TEAL)
+						EndIf
+						If $debugImageSave = 1 Then
+							Local $EditedImage = $hBitmap
+							Local $hGraphic = _GDIPlus_ImageGetGraphicsContext($EditedImage)
+							Local $hPen = _GDIPlus_PenCreate(0xFFFF0000, 2) ; create a pencil Color RED
+							_GDIPlus_GraphicsDrawRect($hGraphic, $Defx, $Defy, 10, 10, $hPen)
+
+							Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
+							Local $Time = @HOUR & "." & @MIN & "." & @SEC
+							Local $filename = String($Date & "_" & $Time & " _trappedTH.png")
+							_GDIPlus_ImageSaveToFile($EditedImage, $dirTemp & $filename)
+							_GDIPlus_PenDispose($hPen)
+							_GDIPlus_GraphicsDispose($hGraphic)
 						EndIf
 					Next
 				EndIf

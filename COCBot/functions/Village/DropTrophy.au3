@@ -98,7 +98,7 @@ Func DropTrophy()
 			If $numDEDrill <> 0 Then
 				$DEperDrill = Round(Number($searchDark) / $numDEDrill)
 			EndIf			
-			$zapBaseMatch =  $isDeadBase And $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DEperDrill >= Number($itxtDBLightMinDark)
+			$zapBaseMatch = $isDeadBase And $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DEperDrill >= Number($itxtDBLightMinDark)
 			
 			If $isDeadBase Then
 				; check if we have enough troops and resource requirement is met

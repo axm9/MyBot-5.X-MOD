@@ -15,18 +15,18 @@
 
 Func checkLootcart()
 	SetLog("Checking for Lootcart", $COLOR_BLUE)
-	Local $LootcartX = 0, $lootcartY = 0, $LootcartLoc = 0, $Tolerance = 0.87, $DefaultCocSearchArea = "15|25|825|625"
+	Local $LootcartX = 0, $lootcartY = 0, $LootcartLoc = 0, $Tolerance = 0.87
 	Local $LootcartImg = @ScriptDir & "\images\Lootcart.png"
 	If Not (FileExists($LootcartImg)) Then 
-		SetLog("Cannot find Lootcart img " & $LootcartImg, $COLOR_RED)
+		SetLog("Cannot find Lootcart image " & $LootcartImg, $COLOR_RED)
 		Return False
 	EndIf
 	
 	_CaptureRegion()
-	$sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
+	Local $sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
 	If _Sleep($iDelayCheckLootcart1) Then Return	
 	
-	Local $result = DllCall($LibDir & "\ImgLocV6.dll", "str", "SearchTile", "handle", $sendHBitmap, "str", $LootcartImg , "float", $Tolerance, "str" ,$DefaultCocSearchArea, "str", $DefaultCocDiamond)
+	Local $result = DllCall($LibDir & "\ImgLocV6.dll", "str", "SearchTile", "handle", $sendHBitmap, "str", $LootcartImg , "float", $Tolerance, "str" ,$ExtendedCocSearchArea, "str", $ExtendedCocDiamond)
 	Local $iLootcartLoc = StringSplit($result[0],"|")
 	If $iLootcartLoc[1] > 0 Then
 		$LootcartX = $iLootcartLoc[2]

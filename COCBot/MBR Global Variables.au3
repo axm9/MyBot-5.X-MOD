@@ -296,7 +296,11 @@ Global $lblAttacked[$iModeCount + 1], $lblTotalGoldGain[$iModeCount + 1], $lblTo
 Global $lblZapFound, $lblZapUsed, $lblZapDEGain, $lblZapDEPerLightning
 Global $lblNbrOfDetectedMines[$iModeCount + 1], $lblNbrOfDetectedCollectors[$iModeCount + 1], $lblNbrOfDetectedDrills[$iModeCount + 1]
 Global $iNbrOfDetectedDrillsForZap, $lblNbrOfDetectedDrillsForZap
-Global $DefaultCocDiamond = "430,70|787,335|430,605|67,333"
+
+Global Const $DefaultCocSearchArea = "70|70|720|540"
+Global Const $DefaultCocDiamond = "430,70|787,335|430,605|67,333"
+Global Const $ExtendedCocSearchArea = "15|25|825|625"
+Global Const $ExtendedCocDiamond = "430,25|840,335|430,645|15,333"
 
 ; Search Settings
 Global $bSearchMode = False

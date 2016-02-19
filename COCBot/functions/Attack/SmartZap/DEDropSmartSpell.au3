@@ -44,11 +44,10 @@ Func DEDropSmartSpell()
 	; Select Lightning Spell and update number of spells left
 	For $i = 0 To UBound($atkTroops) - 1
 		If $atkTroops[$i][0] = $eLSpell Then
-			$Spell = $i
 			$CurLightningSpell = $atkTroops[$i][1]
 			If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: " & $CurLightningSpell, $COLOR_PURPLE)
 			If $CurLightningSpell = 0 Then Return False
-			SelectDropTroop($Spell)
+			SelectDropTroop($i)
 			ExitLoop
 		EndIf
 	Next

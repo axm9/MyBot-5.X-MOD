@@ -58,6 +58,7 @@ Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
 			If $troopKind <> -1 Then 
 				SetLog("-*-" & NameOfTroop($atkTroops[$i][0]) & " " & $atkTroops[$i][1], $COLOR_GREEN)
 				If $atkTroops[$i][0] = $eLSpell Then $CurLightningSpell = $atkTroops[$i][1] ; set number of lightning spells to fix possible issue with Ocr Spell recognition
+				$zapBaseMatch = $isDeadBase And $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DEperDrill >= Number($itxtDBLightMinDark) ; re-evaluate Zap base match based on new Lightning spell count
 			EndIf
 		EndIf
 	Next

@@ -143,7 +143,7 @@ Func CaptureTHwithInfo($THx, $THy, $ImageInfo)
 	$EditedImage = $hBitmap
 
 	Local $hGraphic = _GDIPlus_ImageGetGraphicsContext($EditedImage)
-	Local $hPen = _GDIPlus_PenCreate(0xFFFF0000, 2) ; create a pencil Color FF0000/RED
+	Local $hPen = _GDIPlus_PenCreate(0xFFFF0000, 2) ; create a pencil Color RED
 
 	_GDIPlus_GraphicsDrawRect($hGraphic, $THx - 5, $THy - 5, 10, 10, $hPen)
 	_GDIPlus_GraphicsDrawString($hGraphic, $ImageInfo, 401, 63, "Arial", 15)
