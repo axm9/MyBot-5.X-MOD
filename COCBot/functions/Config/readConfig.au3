@@ -124,6 +124,11 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkMeetTHO[$LB] = IniRead($config, "search", "ABMeetTHO", "0")
 		$iChkWeakBase[$LB] = IniRead($config, "search", "ABWeakBase", "0")
 		$iChkMeetOne[$LB] = IniRead($config, "search", "ABMeetOne", "0")
+		$ichkABNeedHeroes = IniRead($config, "search", "ABNeedHeroes", "0")
+		$ichkABNeedOneHero = IniRead($config, "search", "ABNeedOneHero", "0")
+		$ichkABNeedKing = IniRead($config, "search", "ABNeedkING", "0")
+		$ichkABNeedQueen = IniRead($config, "search", "ABNeedQueen", "0")
+		$ichkABNeedWarden = IniRead($config, "search", "ABNeedWarden", "0")
 
 		$iEnableAfterCount[$LB] = IniRead($config, "search", "ABEnableAfterCount", "150")
 		$iMinGold[$LB] = IniRead($config, "search", "ABsearchGold", "80000")

@@ -177,8 +177,6 @@ $tabAttackCSV = GUICtrlCreateTabItem(GetTranslated(14,1, "Attack Scripted"))
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "DuplicateABScript")
 
-
-
 	$x += 65
 	$y = 330
 		$lblABUseInBattleCSV = GUICtrlCreateLabel(GetTranslated(14,7, -1) & ":", $x -70, $y + 5, -1, -1)

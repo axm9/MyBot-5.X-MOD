@@ -161,6 +161,36 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "search", "ABMeetOne", 0)
 	EndIf
 
+	If GUICtrlRead($chkABNeedHeroes) = $GUI_CHECKED Then
+		IniWrite($config, "search", "ABNeedHeroes", 1)
+	Else
+		IniWrite($config, "search", "ABNeedHeroes", 0)
+	EndIf
+
+	If GUICtrlRead($chkABNeedOneHero) = $GUI_CHECKED Then
+		IniWrite($config, "search", "ABNeedOneHero", 1)
+	Else
+		IniWrite($config, "search", "ABNeedOneHero", 0)
+	EndIf
+
+	If GUICtrlRead($chkABNeedKing) = $GUI_CHECKED Then
+		IniWrite($config, "search", "ABNeedKing", 1)
+	Else
+		IniWrite($config, "search", "ABNeedKing", 0)
+	EndIf
+
+	If GUICtrlRead($chkABNeedQueen) = $GUI_CHECKED Then
+		IniWrite($config, "search", "ABNeedQueen", 1)
+	Else
+		IniWrite($config, "search", "ABNeedQueen", 0)
+	EndIf
+
+	If GUICtrlRead($chkABNeedWarden) = $GUI_CHECKED Then
+		IniWrite($config, "search", "ABNeedWarden", 1)
+	Else
+		IniWrite($config, "search", "ABNeedWarden", 0)
+	EndIf
+
 	IniWrite($config, "search", "ABsearchGold", GUICtrlRead($txtABMinGold))
 	IniWrite($config, "search", "ABsearchElixir", GUICtrlRead($txtABMinElixir))
 	IniWrite($config, "search", "ABsearchGoldPlusElixir", GUICtrlRead($txtABMinGoldPlusElixir))

@@ -267,7 +267,32 @@ $tabSearch = GUICtrlCreateTabItem(GetTranslated(2,1, "Search"))
 		$chkABMeetOne = GUICtrlCreateCheckbox(GetTranslated(2,44, "Meet One Then Attack"), $x, $y, -1, -1)
 			$txtTip = GetTranslated(2,45, -1)
 			GUICtrlSetTip(-1, $txtTip)
-		For $i = $cmbABMeetGE To $chkABMeetOne
+		$y += 21
+		$chkABNeedHeroes = GUICtrlCreateCheckbox("Attack if Heroes available", $x, $y, -1, -1)
+			$txtTip = "Attack Live Bases only if selected Heroes are available"
+			GUICtrlSetTip(-1, $txtTip)
+		$chkABNeedOneHero = GUICtrlCreateCheckbox("Any", $x + 150, $y, -1, -1)
+			$txtTip = "Attack Live Base if any of the Heroes is available"
+			GUICtrlSetTip(-1, $txtTip)
+		$y += 21
+		GUICtrlCreateIcon($pIconLib, $eIcnKing, $x, $y, 24, 24)
+			$txtTip = "Attack Live Base only if King is available"
+			GUICtrlSetTip(-1, $txtTip)
+		$chkABNeedKing = GUICtrlCreateCheckbox("", $x + 30, $y + 2, 17, 17)
+			GUICtrlSetTip(-1, $txtTip)
+		$x += 50
+		GUICtrlCreateIcon($pIconLib, $eIcnQueen, $x, $y, 24, 24)
+			$txtTip = "Attack Live Base only if Queen is available"
+			GUICtrlSetTip(-1, $txtTip)
+		$chkABNeedQueen = GUICtrlCreateCheckbox("", $x + 30, $y + 2, 17, 17)
+			GUICtrlSetTip(-1, $txtTip)
+		$x += 50
+		GUICtrlCreateIcon($pIconLib, $eIcnWarden, $x, $y, 24, 24)
+			$txtTip = "Attack Live Base only if Warden is available"
+			GUICtrlSetTip(-1, $txtTip)
+		$chkABNeedWarden = GUICtrlCreateCheckbox("", $x + 30, $y + 2,17, 17)
+			GUICtrlSetTip(-1, $txtTip)
+		For $i = $cmbABMeetGE To $chkABNeedWarden
 			GUICtrlSetState($i, $GUI_DISABLE)
 		Next
 	GUICtrlCreateGroup("", -99, -99, 1, 1)

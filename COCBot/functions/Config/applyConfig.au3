@@ -178,6 +178,38 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	Else
 		GUICtrlSetState($chkABMeetOne, $GUI_UNCHECKED)
 	EndIf
+	
+	If $ichkABNeedHeroes = 1 Then
+		GUICtrlSetState($chkABNeedHeroes, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkABNeedHeroes, $GUI_UNCHECKED)
+	EndIf
+	chkABNeedHeroes()
+	
+	If $ichkABNeedOneHero = 1 Then
+		GUICtrlSetState($chkABNeedOneHero, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkABNeedOneHero, $GUI_UNCHECKED)
+	EndIf
+	chkABNeedOneHero()
+	
+	If $ichkABNeedKing = 1 Then
+		GUICtrlSetState($chkABNeedKing, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkABNeedKing, $GUI_UNCHECKED)
+	EndIf
+	
+	If $ichkABNeedQueen = 1 Then
+		GUICtrlSetState($chkABNeedQueen, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkABNeedQueen, $GUI_UNCHECKED)
+	EndIf
+	
+	If $ichkABNeedWarden = 1 Then
+		GUICtrlSetState($chkABNeedWarden, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkABNeedWarden, $GUI_UNCHECKED)
+	EndIf
 
 	GUICtrlSetData($txtABMinGold, $iMinGold[$LB])
 	GUICtrlSetData($txtABMinElixir, $iMinElixir[$LB])

@@ -34,7 +34,7 @@ EndFunc   ;==>chkSearchReduction
 Func cmbSearchMode()
 	Switch _GUICtrlComboBox_GetCurSel($cmbSearchMode)
 		Case 0
-			For $i = $cmbABMeetGE To $chkABMeetOne
+			For $i = $cmbABMeetGE To $chkABNeedWarden
 				GUICtrlSetState($i, $GUI_DISABLE)
 			Next
 			For $i = $cmbDBMeetGE To $chkDBMeetCollOutside
@@ -46,13 +46,13 @@ Func cmbSearchMode()
 			For $i = $cmbDBMeetGE To $chkDBMeetCollOutside
 				GUICtrlSetState($i, $GUI_DISABLE)
 			Next
-			For $i = $cmbABMeetGE To $chkABMeetOne
+			For $i = $cmbABMeetGE To $chkABNeedWarden
 				If $i = $cmbABTH And GUICtrlRead($chkABMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
 			Next
 		Case 2
-			For $i = $cmbABMeetGE To $chkABMeetOne
+			For $i = $cmbABMeetGE To $chkABNeedWarden
 				If $i = $cmbABTH And GUICtrlRead($chkABMeetTH) = $GUI_UNCHECKED Then $i += 1
 				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
 				GUICtrlSetState($i, $GUI_ENABLE)
@@ -188,6 +188,26 @@ Func chkABWeakBase()
 		GUICtrlSetState($cmbABWeakWizTower, $GUI_DISABLE)
 	EndIf
 EndFunc   ;==>chkABWeakBase
+
+Func chkABNeedHeroes()
+	If GUICtrlRead($chkABNeedHeroes) = $GUI_CHECKED Then
+		GUICtrlSetState($chkABNeedOneHero, $GUI_ENABLE)
+	Else
+		GUICtrlSetState($chkABNeedOneHero, $GUI_DISABLE)
+	EndIf
+EndFunc   ;==>chkABNeedHeroes
+
+Func chkABNeedOneHero()
+	If GUICtrlRead($chkABNeedOneHero) = $GUI_CHECKED Then
+		GUICtrlSetState($chkABNeedKing, $GUI_DISABLE)
+		GUICtrlSetState($chkABNeedQueen, $GUI_DISABLE)
+		GUICtrlSetState($chkABNeedWarden, $GUI_DISABLE)
+	Else
+		GUICtrlSetState($chkABNeedKing, $GUI_ENABLE)
+		GUICtrlSetState($chkABNeedQueen, $GUI_ENABLE)
+		GUICtrlSetState($chkABNeedWarden, $GUI_ENABLE)
+	EndIf
+EndFunc   ;==>chkABNeedOneHero
 
 Func chkRestartSearchLimit()
 	If GUICtrlRead($ChkRestartSearchLimit) = $GUI_CHECKED Then

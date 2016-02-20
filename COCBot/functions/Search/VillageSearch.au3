@@ -202,7 +202,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If $match[$DB] And $isDeadBase Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      Dead Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
-			$logwrited = True
 			; check for outside collectors if enabled
 			If $ichkDBMeetCollOutside = 1 Then
 				If AreCollectorsOutside($iDBMinCollOutsidePercent) Then
@@ -217,8 +216,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				Else
 					SetLog("Collectors are not outside!", $COLOR_RED, "Lucida Console", 7.5)
 					If $zapBaseMatch Then ; collectors not outside but drills can still be zapped
-						SetLog("      Drills can be zapped!", $COLOR_GREEN, "Lucida Console")	
-						$logwrited = True
+						SetLog("      Drills can be zapped!", $COLOR_GREEN, "Lucida Console")
 						If DEDropSmartSpell() = True Then
 							ReturnHome($TakeLootSnapShot)
 							$ReStart = True  ; Set restart flag after DE zap to return from AttackMain()
@@ -237,12 +235,23 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				EndIf
 				ExitLoop
 			EndIf
+			$logwrited = True
 		ElseIf $match[$LB] And Not $isDeadBase Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
+			If $ichkABNeedHeroes = 1 Then
+				If AreHeroesAvailable() Then					
+					SetLog("Selected Heroes are available for attack", $COLOR_GREEN, "Lucida Console", 7.5)
+					$iMatchMode = $LB
+					ExitLoop
+				Else
+					SetLog("Selected Heroes are not available for attack!", $COLOR_RED, "Lucida Console", 7.5)
+				Endif
+			Else
+				$iMatchMode = $LB
+				ExitLoop
+			EndIf
 			$logwrited = True
-			$iMatchMode = $LB
-			ExitLoop
 		ElseIf $match[$LB] Or $match[$DB] Then
 			If $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
 				If $SearchTHLResult = 1 Then
@@ -486,6 +495,23 @@ Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be 
 	If $debugsetlog = 1 Then SetLog($colOutside & " collectors found outside (out of " & $colNbr & ")", $COLOR_PURPLE)
 	Return False
 EndFunc   ;==>AreCollectorsOutside
+
+Func AreHeroesAvailable()
+	If $ichkABNeedOneHero = 1 Then 
+		Return $BarbarianKingAvailable And $ArcherQueenAvailable And $GrandWardenAvailable
+	Else
+		If $ichkABNeedKing = 1 Then
+			If $BarbarianKingAvailable = 0 Then Return False
+		Endif
+		If $ichkABNeedQueen = 1 Then
+			If $ArcherQueenAvailable = 0 Then Return False
+		Endif
+		If $ichkABNeedWarden = 1 Then
+			If $GrandWardenAvailable = 0 Then Return False
+		Endif
+		Return True
+	EndIf
+EndFunc   ;==>AreHeroesAvailable
 
 Func THSnipeFound()
 	SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
