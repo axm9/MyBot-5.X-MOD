@@ -344,8 +344,8 @@ Global $iNbrOfDetectedDrillsForZap, $lblNbrOfDetectedDrillsForZap
 
 ; Search Settings
 Global $bSearchMode = False
-Global $Is_ClientSyncError = False ;If true means while searching Client Out Of Sync error occurred.
-Global $searchGold, $searchElixir, $searchDark, $searchTrophy, $searchTH ;Resources of bases when searching
+Global $Is_ClientSyncError = False ; If true means while searching Client Out Of Sync error occurred.
+Global $searchGold, $searchElixir, $searchDark, $searchTrophy, $searchTH ; Resources of bases when searching
 Global $SearchGold2 = 0, $SearchElixir2 = 0, $iStuck = 0, $iNext = 0
 Global $iCmbSearchMode
 Global $iMinGold[$iModeCount], $iMinElixir[$iModeCount], $iMinGoldPlusElixir[$iModeCount], $iMinDark[$iModeCount], $iMinTrophy[$iModeCount], $iMaxTH[$iModeCount], $iEnableAfterCount[$iModeCount], $iCmbWeakMortar[$iModeCount], $iCmbWeakWizTower[$iModeCount] ; Minimum Resources conditions
@@ -495,9 +495,9 @@ Global $iHeroWait[$iModeCount] ; Heroes wait status for attack
 Global $iHeroAvailable = $HERO_NOHERO ; Hero ready status
 Global $bFullArmyHero = False ; = BitAnd($iHeroWait[$iMatchMode], $iHeroAvailable)
 
-Global $KingAttackCSV[$iModeCount] ;King attack settings
-Global $QueenAttackCSV[$iModeCount] ;Queen attack settings
-Global $WardenAttackCSV[$iModeCount] ;Grand Garden attack settings
+Global $KingAttackCSV[$iModeCount] ; King attack settings
+Global $QueenAttackCSV[$iModeCount] ; Queen attack settings
+Global $WardenAttackCSV[$iModeCount] ; Grand Garden attack settings
 
 Global $ichkLightSpell[$iModeCount]
 Global $ichkHealSpell[$iModeCount]
@@ -617,6 +617,7 @@ Global $CurLightningSpell = 0, $CurHealSpell = 0, $CurRageSpell = 0, $CurJumpSpe
 Global $iTotalCountSpell = 0
 Global $TotalSFactory = 0
 Global $CurSFactory = 0
+Global $maxElixirSpellNbr = 0
 
 Global $barrackPos[4][2] ; Positions of each barracks
 
@@ -1086,7 +1087,7 @@ Global $__TEST_ERROR_SLOW_ADB_SHELL_COMMAND_DELAY = 0
 Global $__TEST_ERROR_SLOW_ADB_SCREENCAP_DELAY = 0
 Global $__TEST_ERROR_SLOW_ADB_CLICK_DELAY = 0
 
-; Variables to ImgLoc V3 , new image search library Aforge
+; Variables to ImgLoc, new image search library Aforge
 ; Is in Diamond
 Global $DefaultCocDiamond = "430,70|787,335|430,605|67,333" ; DEFAULT No Grass just the village field
 Global $ExtendedCocDiamond = "430,25|840,335|430,645|15,333" ; With Grass
