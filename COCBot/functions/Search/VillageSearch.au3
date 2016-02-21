@@ -242,7 +242,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 
 	    Local $MilkingExtractorsMatch = 0
 		$MilkFarmObjectivesSTR = ""
-		If $match[$LB] And $iChkDeploySettings[$LB] = 6 Then ; MilkingAttack
+		If $match[$LB] And $iChkDeploySettings[$LB] = 7 Then ; MilkingAttack
 			If $debugsetlog = 1 Then Setlog("Check Milking...", $COLOR_BLUE)
 			MilkingDetectRedArea()
 			$MilkingExtractorsMatch = MilkingDetectElixirExtractors()
@@ -259,7 +259,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	    ResumeAndroid()
 
 		If _Sleep($iDelayRespond) Then Return
-		If $match[$LB] and $iChkDeploySettings[$LB]=6  and StringLen($MilkFarmObjectivesSTR) > 0  Then
+		If $match[$LB] and $iChkDeploySettings[$LB] = 7 And StringLen($MilkFarmObjectivesSTR) > 0  Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      Milking target found! ", $COLOR_GREEN, "Lucida Console", 7.5)
 			$logwrited = True
@@ -302,7 +302,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				ExitLoop
 			EndIf
 			$logwrited = True
-		ElseIf $match[$LB] And Not $isDeadBase And $iChkDeploySettings[$LB] <> 6 Then
+		ElseIf $match[$LB] And Not $isDeadBase And $iChkDeploySettings[$LB] <> 7 Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
 			$logwrited = True

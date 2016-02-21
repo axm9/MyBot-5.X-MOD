@@ -20,7 +20,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 	Local $hBitmap_Scaled
 	Local $i
 
-	If $DisableOtherEBO And $iMatchMode = $LB And $iChkDeploySettings[$LB] = 4 And $DESideEB And ($dropQueen Or $dropKing) Then
+	If $DisableOtherEBO And $iMatchMode = $LB And $iChkDeploySettings[$LB] = 5 And $DESideEB And ($dropQueen Or $dropKing) Then
 		SaveandDisableEBO()
 		SetLog("Disabling Normal End Battle Options", $COLOR_GREEN)
 	EndIf
@@ -52,7 +52,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 			If $DebugSetLog = 1 Then Setlog("Battle already over", $COLOR_PURPLE)
 	EndIf
 
-	If $DisableOtherEBO And $iMatchMode = $LB And $iChkDeploySettings[$LB] = 4 And $DESideEB And ($dropQueen Or $dropKing) Then
+	If $DisableOtherEBO And $iMatchMode = $LB And $iChkDeploySettings[$LB] = 5 And $DESideEB And ($dropQueen Or $dropKing) Then
 		RevertEBO()
 	EndIf
 
