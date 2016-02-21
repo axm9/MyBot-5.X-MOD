@@ -39,6 +39,16 @@ Func SnipeWhileTrain()
 			$tempSnipeWhileTrain[11] = $iChkSmartAttack[$DB][2]
 			$tempSnipeWhileTrain[12] = $ichkDBMeetCollOutside
 			$tempSnipeWhileTrain[13] = $iDBMinCollOutsidePercent
+			
+			; this will disable normal attacks in SWT mode
+			$iChkMeetTrophy[$DB] = 1
+			$iChkMeetTrophy[$LB] = 1
+			$iMinTrophy[$DB] = 99
+			$iMinTrophy[$LB] = 99
+			$iChkMeetOne[$DB] = 0
+			$iChkMeetOne[$LB] = 0
+			$OptTrophyMode = 1
+				
 			; if greedy mode enabled
 			If $ichkAttackIfDB = 1 Then	
 				Setlog("Min collector outside set to 70% during snipe while train mode", $COLOR_PURPLE)
@@ -55,17 +65,7 @@ Func SnipeWhileTrain()
 					$iChkSmartAttack[$DB][1] = 1
 					$iChkSmartAttack[$DB][2] = 1
 				EndIf
-			Else				
-				; this will disable DB attack if greedy mode is not enabled
-				$iChkMeetTrophy[$DB] = 1
-				$iChkMeetTrophy[$LB] = 1
-				$iMinTrophy[$DB] = 99
-				$iMinTrophy[$LB] = 99
-				$iChkMeetOne[$DB] = 0
-				$iChkMeetOne[$LB] = 0
 			EndIf
-
-			$OptTrophyMode = 1
 
 			; used to Change back values
 			$SnipeChangedSettings = True

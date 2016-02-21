@@ -123,11 +123,28 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 	Setlog (" - Elixir loot % = " & $ElixirPercent, $COLOR_ORANGE)
 	Setlog (" - Dark Elixir loot % = " & $DarkPercent, $COLOR_ORANGE)
 	
-	If $CurCamp > $iMinTroopToAttackDB And ($GoldPercent <= $ipercentTSSuccess Or $ElixirPercent <= $ipercentTSSuccess) And CompareResources($DB) Then
-		SetLog("Gold & Elixir are mostly in collectors and can be raided", $COLOR_GREEN, "Lucida Console", 7.5)
-		If $ichkDBMeetCollOutside = 1 Then ; check for outside collectors if enabled
-			If AreCollectorsOutside($iDBMinCollOutsidePercent) Then ; attack dead base if collectors are outside
-				SetLog("Collectors are outside.", $COLOR_GREEN)
+	If $CurCamp > $iMinTroopToAttackDB And ($GoldPercent <= $ipercentTSSuccess Or $ElixirPercent <= $ipercentTSSuccess) Then
+		SetLog("Gold & Elixir are mostly in collectors", $COLOR_GREEN, "Lucida Console", 7.5)
+		If $SnipeChangedSettings = True Then ; temporaly re-enable DB search
+			$iAimTrophy[$DB] = 0
+			$iChkMeetOne[$DB] = 1 
+		EndIf
+		If CompareResources($DB) Then
+			SetLog("Resource requirements met for dead base attack", $COLOR_GREEN, "Lucida Console", 7.5)
+			If $ichkDBMeetCollOutside = 1 Then ; check for outside collectors if enabled
+				If AreCollectorsOutside($iDBMinCollOutsidePercent) Then ; attack dead base if collectors are outside
+					SetLog("Collectors are outside.", $COLOR_GREEN)
+					$isDeadBase = True ; change settings to dead base attack
+					$iMatchMode = $DB
+					If $debugDeadBaseImage = 1 Then
+						_CaptureRegion()
+						_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
+						_WinAPI_DeleteObject($hBitmap)
+					EndIf
+				Else
+					SetLog("Collectors are not outside!", $COLOR_RED)
+				EndIf
+			Else
 				$isDeadBase = True ; change settings to dead base attack
 				$iMatchMode = $DB
 				If $debugDeadBaseImage = 1 Then
@@ -135,17 +152,13 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 					_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
 					_WinAPI_DeleteObject($hBitmap)
 				EndIf
-			Else
-				SetLog("Collectors are not outside!", $COLOR_RED)
 			EndIf
 		Else
-			$isDeadBase = True ; change settings to dead base attack
-			$iMatchMode = $DB
-			If $debugDeadBaseImage = 1 Then
-				_CaptureRegion()
-				_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\Zombies\" & $Date & " at " & $Time & ".png")
-				_WinAPI_DeleteObject($hBitmap)
-			EndIf
+			SetLog("Resource requirements not met for dead base attack", $COLOR_RED, "Lucida Console", 7.5)
+		EndIf
+		If $SnipeChangedSettings = True Then ; disable DB search after check
+			$iAimTrophy[$DB] = 99
+			$iChkMeetOne[$DB] = 0 
 		EndIf
 	EndIf	
 	If $ichkDBLightSpell = 1 And $CurLightningSpell > 0 And $DarkPercent <= $ipercentTSSuccess And Number($DarkEnd) >= 1000 Then 

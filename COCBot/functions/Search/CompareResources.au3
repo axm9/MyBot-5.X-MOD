@@ -13,7 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func CompareResources($pMode) ;Compares resources and returns true if conditions meet, otherwise returns false
+Func CompareResources($pMode) ; Compares resources and returns true if conditions meet, otherwise returns false
 	If $iChkSearchReduction = 1 Then
 		If ($iChkEnableAfter[$pMode] = 0 And $SearchCount <> 0 And Mod($SearchCount, $ReduceCount) = 0) Or ($iChkEnableAfter[$pMode] = 1 And $SearchCount - $iEnableAfterCount[$pMode] > 0 And Mod($SearchCount - $iEnableAfterCount[$pMode], $ReduceCount) = 0) Then
 			If $iAimGold[$pMode] - $ReduceGold >= 0 Then $iAimGold[$pMode] -= $ReduceGold
@@ -29,7 +29,7 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 			EndIf
 		EndIf
 	EndIf
-
+	
 	Local $G = (Number($searchGold) >= Number($iAimGold[$pMode])), $E = (Number($searchElixir) >= Number($iAimElixir[$pMode])), $D = (Number($searchDark) >= Number($iAimDark[$pMode])), $T = (Number($searchTrophy) >= Number($iAimTrophy[$pMode])), $GPE = ((Number($searchGold) + Number($searchElixir)) >= Number($iAimGoldPlusElixir[$pMode]))
 	
 	Local $THL = -1, $THLO = -1
