@@ -13,7 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
+Func algorithm_AllTroops() ; Attack Algorithm for all existing troops
 	If $debugSetlog = 1 Then Setlog("algorithm_AllTroops", $COLOR_PURPLE)
 	SetSlotSpecialTroops()
 
