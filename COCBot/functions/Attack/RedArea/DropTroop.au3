@@ -170,6 +170,7 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 	EndIf
 
 	Local $infoDropTroop[6] = [$troop, $listInfoPixelDropTroop, $nbTroopsPerEdge, $slotsPerEdge, $number, $name]
-	Return $infoDropTroop
 	debugRedArea($nameFunc & " OUT ")
+
+	Return $infoDropTroop
 EndFunc   ;==>DropTroop2

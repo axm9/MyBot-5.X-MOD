@@ -118,7 +118,7 @@ Func _RemoteControl()
 						_DeleteMessage($iden[$x])
 						SetLog("Your request has been received. Bot and BS restarting...", $COLOR_GREEN)
 						_Push($iOrigPushB & " | Your bot and BS are now restarting...")
-						SaveConfig()
+						saveConfig()
 						_Restart()
 					Case "BOT " & StringUpper($iOrigPushB) & " STOP"
 						_DeleteMessage($iden[$x])

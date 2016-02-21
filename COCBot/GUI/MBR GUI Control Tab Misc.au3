@@ -103,15 +103,23 @@ Func btnLocateTownHall()
 	$RunState = False
 EndFunc   ;==>btnLocateTownHall
 
+Func chkBotStop()
+	If GUICtrlRead($chkBotStop) = $GUI_CHECKED Then
+		GUICtrlSetState($cmbBotCommand, $GUI_ENABLE)
+		GUICtrlSetState($cmbBotCond, $GUI_ENABLE)
+	Else
+		GUICtrlSetState($cmbBotCommand, $GUI_DISABLE)
+		GUICtrlSetState($cmbBotCond, $GUI_DISABLE)
+	EndIf
+EndFunc   ;==>chkBotStop
+
 Func cmbBotCond()
-	If _GUICtrlComboBox_GetCurSel($cmbBotCond) = 13 Then
+	If _GUICtrlComboBox_GetCurSel($cmbBotCond) = 15 Then
 		If _GUICtrlComboBox_GetCurSel($cmbHoursStop) = 0 Then _GUICtrlComboBox_SetCurSel($cmbHoursStop, 1)
-		GUICtrlSetState($cmbHoursStop, $GUI_ENABLE)
-		GUICtrlSetState($cmbHoursStop, $GUI_SHOW)
+		GUICtrlSetState($cmbHoursStop, $GUI_ENABLE + $GUI_SHOW)
 	Else
 		_GUICtrlComboBox_SetCurSel($cmbHoursStop, 0)
-		GUICtrlSetState($cmbHoursStop, $GUI_DISABLE)
-		GUICtrlSetState($cmbHoursStop, $GUI_HIDE)
+		GUICtrlSetState($cmbHoursStop, $GUI_DISABLE + $GUI_HIDE)
 	EndIf
 EndFunc   ;==>cmbBotCond
 
@@ -243,13 +251,13 @@ Func LoadLanguagesComboBox()
 	WEnd
 	FileClose($hFileSearch)
 
-	;remove last |
+	; remove last |
 	$sOutput = StringLeft($sOutput, StringLen($sOutput) - 1)
 
-	;reset combo box
+	; reset combo box
 	_GUICtrlComboBox_ResetContent($cmbLanguage)
 
-	;set combo box
+	; set combo box
 	GUICtrlSetData($cmbLanguage, $sOutput)
 EndFunc   ;==>LoadLanguagesComboBox
 

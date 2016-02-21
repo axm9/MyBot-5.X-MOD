@@ -5,7 +5,7 @@
 ; Parameters ....:
 ; Return values .: None
 ; Author ........: Code Monkey #17
-; Modified ......:
+; Modified ......: MonkeyHunter (2106-2)
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
@@ -27,45 +27,63 @@ Func BotCommand()
 
 		Switch $icmbBotCond
 			Case 0
-				If isGoldFull() And isElixirFull() And isDarkElixirFull() Then $MeetCondStop = True
+				If isGoldFull() And isElixirFull() And $TrophyMax Then $MeetCondStop = True
 			Case 1
-				If (isGoldFull() And isElixirFull()) Or isDarkElixirFull() Then $MeetCondStop = True
+				If (isGoldFull() And isElixirFull()) Or $TrophyMax Then $MeetCondStop = True
 			Case 2
-				If (isGoldFull() Or isElixirFull()) And isDarkElixirFull() Then $MeetCondStop = True
+				If (isGoldFull() Or isElixirFull()) And $TrophyMax Then $MeetCondStop = True
 			Case 3
-				If isGoldFull() Or isElixirFull() Or isDarkElixirFull() Then $MeetCondStop = True
+				If isGoldFull() Or isElixirFull() Or $TrophyMax Then $MeetCondStop = True
 			Case 4
 				If isGoldFull() And isElixirFull() Then $MeetCondStop = True
 			Case 5
 				If isGoldFull() Or isElixirFull() Then $MeetCondStop = True
 			Case 6
-				If isGoldFull() And isDarkElixirFull() Then $MeetCondStop = True
+				If isGoldFull() And $TrophyMax Then $MeetCondStop = True
 			Case 7
-				If isElixirFull() And isDarkElixirFull() Then $MeetCondStop = True
+				If isElixirFull() And $TrophyMax Then $MeetCondStop = True
 			Case 8
-				If isGoldFull() Or isDarkElixirFull() Then $MeetCondStop = True
+				If isGoldFull() Or $TrophyMax Then $MeetCondStop = True
 			Case 9
-				If isElixirFull() Or isDarkElixirFull() Then $MeetCondStop = True
+				If isElixirFull() Or $TrophyMax Then $MeetCondStop = True
 			Case 10
 				If isGoldFull() Then $MeetCondStop = True
 			Case 11
 				If isElixirFull() Then $MeetCondStop = True
 			Case 12
-				If isDarkElixirFull() Then $MeetCondStop = True
+				If $TrophyMax Then $MeetCondStop = True
 			Case 13
+				If isDarkElixirFull() Then $MeetCondStop = True
+			Case 14
+				If isGoldFull() And isElixirFull() And isDarkElixirFull() Then $MeetCondStop = True
+			Case 15
 				If $UseTimeStop = -1 Then
 					$UseTimeStop = 1
 				EndIf
 				If Round(TimerDiff($sTimer)) > $TimeToStop Then $MeetCondStop = True
-			Case 14
+			Case 16
 				$MeetCondStop = True
-			Case 15
+			Case 17
 				$MeetCondStop = True
 				$bTrainEnabled = False
-			Case 16
+			Case 18
+
 				$MeetCondStop = True
 				$bTrainEnabled = False
 				$bDonationEnabled = False
+			Case 19  ; Have shield - Online/Train/Collect/Donate
+				If $bWaitShield = True Then $MeetCondStop = True
+			Case 20  ; Have shield - Online/Collect/Donate
+				If $bWaitShield = True Then
+					$MeetCondStop = True
+					$bTrainEnabled = False
+				EndIf
+			Case 21  ; Have shield - Online/Collect
+				If $bWaitShield = True Then
+					$MeetCondStop = True
+					$bTrainEnabled = False
+					$bDonationEnabled = False
+				EndIf
 		EndSwitch
 
 		If $MeetCondStop Then
@@ -85,20 +103,35 @@ Func BotCommand()
 					$CommandStop = 0 ; Halt Attack
 					If _Sleep($iDelayBotCommand1) Then Return
 				Case 1
-					SetLog("Force Shutdown PC...", $COLOR_BLUE)
+					SetLog("MyBot.run Bot Stop as requested!!", $COLOR_BLUE)
 					If _Sleep($iDelayBotCommand1) Then Return
-					Shutdown(5) ; Force Shutdown
 					Return True
 				Case 2
-					SetLog("Sleeping PC...", $COLOR_BLUE)
+					SetLog("MyBot.run Close Bot as requested!!", $COLOR_BLUE)
 					If _Sleep($iDelayBotCommand1) Then Return
-					Shutdown(32) ; Sleep / Stand by
-					Return True
+					BotClose()
+					Return True  ; HaHa - No Return possible!
 				Case 3
-					SetLog("Reebooting PC...", $COLOR_BLUE)
+					SetLog("Close Android and Bot as requested!!", $COLOR_BLUE)
 					If _Sleep($iDelayBotCommand1) Then Return
-					Shutdown($SD_REBOOT ) ; Reboot
-					Return True
+					CloseAndroid()
+					BotClose()
+					Return True  ; HaHa - No Return possible!
+				Case 4
+					SetLog("Force Shutdown of PC...", $COLOR_BLUE)
+					If _Sleep($iDelayBotCommand1) Then Return
+					Shutdown(BitOR($SD_SHUTDOWN, $SD_FORCE)) ; Force Shutdown
+					Return True  ; HaHa - No Return possible!
+				Case 5
+					SetLog("PC Sleep Mode Start now ...", $COLOR_BLUE)
+					If _Sleep($iDelayBotCommand1) Then Return
+					Shutdown($SD_STANDBY) ; Sleep / Stand by
+					Return True  ; HaHa - No Return possible!
+				Case 6
+					SetLog("Rebooting PC...", $COLOR_BLUE)
+					If _Sleep($iDelayBotCommand1) Then Return
+					Shutdown(BitOR($SD_REBOOT, $SD_FORCE) ) ; Reboot
+					Return True  ; HaHa - No Return possible!
 			EndSwitch
 		EndIf
 	EndIf

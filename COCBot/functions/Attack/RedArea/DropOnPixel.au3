@@ -23,11 +23,13 @@
 
 Func DropOnPixel($troop, $listArrPixel, $number, $slotsPerEdge = 0)
 	If isProblemAffect(True) Then Return
+    If Not IsAttackPage() Then Return
 
 	$nameFunc = "[DropOnPixel]"
 	debugRedArea($nameFunc & " IN ")
 	debugRedArea("troop : [" & $troop & "] / size arrPixel [" & UBound($listArrPixel) & "] / number [" & $number & "]/ $slotsPerEdge [" & $slotsPerEdge & "] ")
 	If ($number = 0 Or UBound($listArrPixel) = 0) Then Return
+    KeepClicks()
 	If $number = 1 Or $slotsPerEdge = 1 Then ; Drop on a single point per edge => on the middle
 		For $i = 0 To UBound($listArrPixel) - 1
 			debugRedArea("$listArrPixel $i : [" & $i & "] ")
@@ -45,9 +47,9 @@ Func DropOnPixel($troop, $listArrPixel, $number, $slotsPerEdge = 0)
 					$DeployCCPosition[1] = $pixel[1]
 					debugRedArea("CC : $slotsPerEdge = 1 ")
 				EndIf
-				If IsAttackPage() Then Click($pixel[0], $pixel[1], $number, $iDelayDropOnPixel2, "#0096")
+				Click($pixel[0], $pixel[1], $number, $iDelayDropOnPixel2, "#0096")
 			EndIf
-			If _Sleep($iDelayDropOnPixel1) Then Return
+			If _SleepAttack($iDelayDropOnPixel1) Then Return ReleaseClicks()
 		Next
 	ElseIf $slotsPerEdge = 2 Then ; Drop on 2 points per edge
 		For $i = 0 To UBound($listArrPixel) - 1
@@ -64,10 +66,10 @@ Func DropOnPixel($troop, $listArrPixel, $number, $slotsPerEdge = 0)
 					$DeployCCPosition[1] = $pixel[1]
 					debugRedArea("CC : $slotsPerEdge = 2 ")
 				EndIf
-				If IsAttackPage() Then Click($pixel[0], $pixel[1], $number, 0, "#0097")
-				If _Sleep(SetSleep(0)) Then Return
+				Click($pixel[0], $pixel[1], $number, 0, "#0097")
+				If _SleepAttack(SetSleep(0)) Then Return ReleaseClicks()
 			EndIf
-			If _Sleep(SetSleep(1)) Then Return
+			If _SleepAttack(SetSleep(1)) Then Return ReleaseClicks()
 		Next
 	Else
 		For $i = 0 To UBound($listArrPixel) - 1
@@ -110,12 +112,13 @@ Func DropOnPixel($troop, $listArrPixel, $number, $slotsPerEdge = 0)
 						debugRedArea("CC : $slotsPerEdge = else ")
 						debugRedArea("$offset: " & $offset )
 					EndIf
-					If IsAttackPage() Then Click($currentPixel[0], $currentPixel[1], $nbTroopByPixel, 0, "#0098")
+					Click($currentPixel[0], $currentPixel[1], $nbTroopByPixel, 0, "#0098")
 					$nbTroopsLeft -= $nbTroopByPixel
-					If _Sleep(SetSleep(0)) Then Return
+					If _SleepAttack(SetSleep(0)) Then Return ReleaseClicks()
 				Next
 			WEnd
 		Next
 	EndIf
+    ReleaseClicks()
 	debugRedArea($nameFunc & " OUT ")
 EndFunc   ;==>DropOnPixel

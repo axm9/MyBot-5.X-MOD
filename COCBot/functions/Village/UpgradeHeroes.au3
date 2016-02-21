@@ -22,13 +22,13 @@ Func UpgradeHeroes()
 	If $ichkUpgradeKing = 1 Then
 		If isInsideDiamond($KingAltarPos) = False Then LocateKingAltar()
 		If $KingAltarPos[0] = -1 Or $KingAltarPos[1] = -1 Then LocateKingAltar()
-		SaveConfig()
+		saveConfig()
 	EndIf
 
 	If $ichkUpgradeQueen = 1 Then
 		If isInsideDiamond($QueenAltarPos) = False Then LocateQueenAltar()
 		If $QueenAltarPos[0] = -1 Or $QueenAltarPos[1] = -1 Then LocateQueenAltar()
-		SaveConfig()
+		saveConfig()
 	EndIf
 
 	If $ichkUpgradeWarden = 1 Then
@@ -36,7 +36,7 @@ Func UpgradeHeroes()
 		If $WardenAltarPos[0] = -1 Or $WardenAltarPos[1] = -1 Then LocateWardenAltar()
 	EndIf
 
-	;##### Verify the Upgrade troop kind in Laboratory , if is a Dark Spell/Troop , the Lab haves priority #####;
+	;##### Verify the Upgrade troop kind in Laboratory, if is a Dark Spell/Troop , the Lab haves priority #####;
 	If $ichkLab = 1 And $icmbLaboratory >= 16 Then
 		For $i = 15 To 24
 			If $icmbLaboratory = $i Then
@@ -127,8 +127,9 @@ Func QueenUpgrade()
 			If $sInfo[2] <> "" Then
 				$aHeroLevel = Number($sInfo[2]) ; grab hero level from building info array
 				SetLog("Your Queen Level read as: " & $aHeroLevel, $COLOR_GREEN)
-				If $aHeroLevel = 40 Then; max hero
+				If $aHeroLevel = 40 Then ; max hero
 					SetLog("Your AQ is max, cannot upgrade!", $COLOR_BLUE)
+					$ichkUpgradeQueen = 0 ; turn Off the Queen´s upgrade
 					Return
 				EndIf
 			Else
@@ -223,8 +224,9 @@ Func KingUpgrade()
 			If $sInfo[2] <> "" Then
 				$aHeroLevel = Number($sInfo[2]) ; grab hero level from building info array
 				SetLog("Your King Level read as: " & $aHeroLevel, $COLOR_GREEN)
-				If $aHeroLevel = 40 Then; max hero
+				If $aHeroLevel = 40 Then ; max hero
 					SetLog("Your BK is max, cannot upgrade!", $COLOR_BLUE)
+					$ichkUpgradeKing = 0 ; Turn Off the King's Upgrade
 					Return
 				EndIf
 			Else
@@ -325,8 +327,9 @@ Func WardenUpgrade()
 			If $sInfo[2] <> "" Then
 				$aHeroLevel = Number($sInfo[2]) ; grab hero level from building info array
 				SetLog("Your Warden Level read as: " & $aHeroLevel, $COLOR_GREEN)
-				If $aHeroLevel = 20 Then; max hero
+				If $aHeroLevel = 20 Then ; max hero
 					SetLog("Your GW is max, cannot upgrade!", $COLOR_BLUE)
+					$ichkUpgradeWarden = 0 ; turn OFF the Wardn's Upgrade
 					Return
 				EndIf
 			Else

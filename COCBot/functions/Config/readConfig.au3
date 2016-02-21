@@ -70,10 +70,8 @@ Func readConfig() ;Reads config and sets it to the variables
 	
 	If FileExists($config) Then
 		;General Settings--------------------------------------------------------------------------
-		$icmbProfile = IniRead($config, "general", "cmbProfile", "01")
 		$frmBotPosX = IniRead($config, "general", "frmBotPosX", "900")
 		$frmBotPosY = IniRead($config, "general", "frmBotPosY", "20")
-		$iVillageName = IniRead($config, "general", "villageName", "")
 
 		$iCmbLog = IniRead($config, "general", "logstyle", "0")
 		$iDividerY = Number(IniRead($config, "general", "LogDividerY", "385"))
@@ -124,11 +122,6 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkMeetTHO[$LB] = IniRead($config, "search", "ABMeetTHO", "0")
 		$iChkWeakBase[$LB] = IniRead($config, "search", "ABWeakBase", "0")
 		$iChkMeetOne[$LB] = IniRead($config, "search", "ABMeetOne", "0")
-		$ichkABNeedHeroes = IniRead($config, "search", "ABNeedHeroes", "0")
-		$ichkABNeedOneHero = IniRead($config, "search", "ABNeedOneHero", "0")
-		$ichkABNeedKing = IniRead($config, "search", "ABNeedkING", "0")
-		$ichkABNeedQueen = IniRead($config, "search", "ABNeedQueen", "0")
-		$ichkABNeedWarden = IniRead($config, "search", "ABNeedWarden", "0")
 
 		$iEnableAfterCount[$LB] = IniRead($config, "search", "ABEnableAfterCount", "150")
 		$iMinGold[$LB] = IniRead($config, "search", "ABsearchGold", "80000")
@@ -182,17 +175,22 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkSmartAttack[$LB][1] = IniRead($config, "attack", "ABSmartAttackElixirCollector", "0")
 		$iChkSmartAttack[$LB][2] = IniRead($config, "attack", "ABSmartAttackDarkElixirDrill", "0")
 
-		$KingAttack[$DB] = IniRead($config, "attack", "DBKingAtk", "0")
-		$KingAttack[$LB] = IniRead($config, "attack", "ABKingAtk", "0")
+		$iHeroAttack[$DB] = BitOR(Int(IniRead($config, "attack", "DBKingAtk", $HERO_NOHERO)), _
+										Int(IniRead($config, "attack", "DBQueenAtk", $HERO_NOHERO)), _
+										Int(IniRead($config, "attack", "DBWardenAtk", $HERO_NOHERO)))
+		$iHeroAttack[$LB] = BitOR(Int(IniRead($config, "attack", "ABKingAtk", $HERO_NOHERO)), _
+										Int(IniRead($config, "attack", "ABQueenAtk", $HERO_NOHERO)), _
+										Int(IniRead($config, "attack", "ABWardenAtk", $HERO_NOHERO)))
 
-		$QueenAttack[$DB] = IniRead($config, "attack", "DBQueenAtk", "0")
-		$QueenAttack[$LB] = IniRead($config, "attack", "ABQueenAtk", "0")
+		$iHeroWait[$DB] = BitOR(Int(IniRead($config, "attack", "DBKingWait", $HERO_NOHERO)), _
+										Int(IniRead($config, "attack", "DBQueenWait", $HERO_NOHERO)), _
+										Int(IniRead($config, "attack", "DBWardenWait", $HERO_NOHERO)))
+		$iHeroWait[$LB] = BitOR(Int(IniRead($config, "attack", "ABKingWait", $HERO_NOHERO)), _
+										Int(IniRead($config, "attack", "ABQueenWait", $HERO_NOHERO)), _
+										Int(IniRead($config, "attack", "ABWardenWait", $HERO_NOHERO)))
 
 		$iDropCC[$DB] = IniRead($config, "attack", "DBDropCC", "0")
 		$iDropCC[$LB] = IniRead($config, "attack", "ABDropCC", "0")
-
-		$WardenAttack[$DB] = IniRead($config, "attack", "DBWardenAtk", "0")
-		$WardenAttack[$LB] = IniRead($config, "attack", "ABWardenAtk", "0")
 
 		$iChkUseCCBalanced = IniRead($config, "attack", "BalanceCC", "0")
 		$iCmbCCDonated = IniRead($config, "attack", "BalanceCCDonated", "1")
@@ -219,10 +217,8 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$OptTrophyMode = IniRead($config, "advanced", "TrophyMode", "0")
 		$THaddtiles = IniRead($config, "advanced", "THaddTiles", "2")
-		$scmbAttackTHType = IniRead($config, "advanced", "AttackTHType", "smartbarch")
+		$scmbAttackTHType = IniRead($config, "advanced", "AttackTHType", "bam")
 
-		$iChkEnableAfter[$TS] = IniRead($config, "advanced", "TSEnableAfter", "0")
-		$iEnableAfterCount[$TS] = IniRead($config, "advanced", "TSEnableAfterCount", "10")
 		$iCmbMeetGE[$TS] = IniRead($config, "advanced", "TSMeetGE", "1")
 		$iChkMeetDE[$TS] = IniRead($config, "advanced", "TSMeetDE", "0")
 		$iMinGold[$TS] = IniRead($config, "advanced", "TSsearchGold", "100000")
@@ -436,7 +432,7 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		; Troop Settings--------------------------------------------------------------------------
 		$iCmbTroopComp = IniRead($config, "troop", "TroopComposition", "0")
-
+		$icmbDarkTroopComp = IniRead($config, "troop", "DarkTroopComposition", "0")
 		For $i = 0 To UBound($TroopName) - 1
 			Assign($TroopName[$i] & "Comp", IniRead($config, "troop", $TroopName[$i], "0"))
 		Next
@@ -448,22 +444,24 @@ Func readConfig() ;Reads config and sets it to the variables
 			$barrackTroop[$i] = IniRead($config, "troop", "troop" & $i + 1, "0")
 		Next
 
-		; 2 Dark Barracks
-		$darkBarrackTroop[0] = IniRead($config, "troop", "darktroop1", "0")
-		$darkBarrackTroop[1] = IniRead($config, "troop", "darktroop1", "0")
-
+		For $i = 0 To 1 ; Covers all 2 Dark Barracks
+			$darkBarrackTroop[$i] = IniRead($config, "troop", "Darktroop" & $i + 1, "0")
+		Next
 		$fulltroop = IniRead($config, "troop", "fullTroop", "100")
 
 		$isldTrainITDelay = IniRead($config, "troop", "TrainITDelay", "20")
 		;barracks boost not saved (no use)
 
 		; Spells Creation  ---------------------------------------------------------------------
-		$LightningSpellComp = IniRead($config, "Spells", "LightningSpell", "0")
-		$RageSpellComp = IniRead($config, "Spells", "RageSpell", "0")
-		$HealSpellComp = IniRead($config, "Spells", "HealSpell", "0")
-		$PoisonSpellComp = IniRead($config, "Spells", "PoisonSpell", "0")
-		$HasteSpellComp = IniRead($config, "Spells", "HasteSpell", "0")
-		$iTotalCountSpell = IniRead($config, "Spells", "SpellFactory", "0")
+		$iLightningSpellComp = Int(IniRead($config, "Spells", "LightningSpell", "0"))
+		$iRageSpellComp = Int(IniRead($config, "Spells", "RageSpell", "0"))
+		$iHealSpellComp = Int(IniRead($config, "Spells", "HealSpell", "0"))
+		$iJumpSpellComp = Int(IniRead($config, "Spells", "JumpSpell", "0"))
+		$iFreezeSpellComp = Int(IniRead($config, "Spells", "FreezeSpell", "0"))
+		$iPoisonSpellComp = Int(IniRead($config, "Spells", "PoisonSpell", "0"))
+		$iHasteSpellComp = Int(IniRead($config, "Spells", "HasteSpell", "0"))
+		$iEarthSpellComp = Int(IniRead($config, "Spells", "EarthSpell", "0"))
+		$iTotalCountSpell = Int(IniRead($config, "Spells", "SpellFactory", "0"))
 
 		;Misc Settings--------------------------------------------------------------------------
 		;Laboratory
@@ -494,6 +492,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$ichkTrap = IniRead($config, "other", "chkTrap", "0")
 		$iChkCollect = IniRead($config, "other", "chkCollect", "1")
 		$ichkTombstones = IniRead($config, "other", "chkTombstones", "0")
+		$ichkCleanYard = IniRead($config, "other", "chkCleanYard", "0")
 		$sTimeWakeUp = IniRead($config, "other", "txtTimeWakeUp", "0")
 		$iVSDelay = IniRead($config, "other", "VSDelay", "0")
 		$iMaxVSDelay = IniRead($config, "other", "MaxVSDelay", "0")
@@ -509,7 +508,7 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		;PushBullet Settings ---------------------------------------------
 		$PushToken = IniRead($config, "pushbullet", "AccountToken", "")
-		$iOrigPushB = IniRead($config, "pushbullet", "OrigPushB", "")
+		$iOrigPushB = IniRead($config, "pushbullet", "OrigPushB", $sCurrProfile)
 
 		$iAlertPBVillage = IniRead($config, "pushbullet", "AlertPBVillage", "0")
 		$iLastAttack = IniRead($config, "pushbullet", "AlertPBLastAttack", "0")
@@ -547,6 +546,8 @@ Func readConfig() ;Reads config and sets it to the variables
 			$DebugImageSave = BitOR($DebugImageSave, IniRead($config, "debug", "debugimagesave", "0"))
 			$debugBuildingPos = BitOR($debugBuildingPos, IniRead($config, "debug", "debugbuildingpos", "0"))
 			$makeIMGCSV = BitOR($debugBuildingPos, IniRead($config, "debug", "debugmakeimgcsv", "0"))
+			$debugresourcesoffset = BitOR($debugresourcesoffset, IniRead($config, "debug", "debugresourcesoffset", "0"))
+			$continuesearchelixirdebug = BitOR($DebugSetlog, IniRead($config, "debug", "continuesearchelixirdebug", "0"))
 		EndIf
 
 		; Hours Planned
@@ -574,6 +575,10 @@ Func readConfig() ;Reads config and sets it to the variables
 		;forced Total Camp values
 		$ichkTotalCampForced = IniRead($config, "other", "ChkTotalCampForced", "0")
 		$iValueTotalCampForced = IniRead($config, "other", "ValueTotalCampForced", "200")
+
+		$ichkSinglePBTForced  = IniRead($config, "other", "chkSinglePBTForced", "0")
+		$iValueSinglePBTimeForced = IniRead($config, "other", "ValueSinglePBTimeForced", "18")
+		$iValuePBTimeForcedExit = IniRead($config, "other", "ValuePBTimeForcedExit", "15")
 
 		$ichkLanguage = IniRead($config, "General", "ChkLanguage", "1")
 		$ichkVersion = IniRead($config, "General", "ChkVersion", "1")
@@ -648,6 +653,29 @@ Func readConfig() ;Reads config and sets it to the variables
 		$ichkTrophySwitchMin = IniRead($config, "profiles", "chkTrophySwitchMin", "0")
 		$icmbTrophyMinProfile = IniRead($config, "profiles", "cmbTrophyMinProfile", "0")
 		$itxtMinTrophyAmount = IniRead($config, "profiles", "txtMinTrophyAmount", "1000")
+
+		; MilkingAttack
+		$MilkFarmLocateMine = IniRead($config, "MilkingAttack", "LocateMine", "1")
+	    $MilkFarmLocateElixir = IniRead($config, "MilkingAttack", "LocateElixir", "1")
+		$MilkFarmLocateDrill = IniRead($config, "MilkingAttack", "LocateDrill", "1")
+		$MilkFarmElixirParam = StringSplit(IniRead($config, "MilkingAttack", "LocateElixirLevel", "-4|4|3|3|2|2|1|1|1"), "|", 2)
+		If Ubound($MilkFarmElixirParam) <> 9 Then $MilkFarmElixirParam = StringSplit("4|4|3|3|2|2|1|1|1", "|", 2)
+		$MilkFarmMineParam = IniRead($config, "MilkingAttack", "MineParam", "5")
+		$MilkFarmDrillParam = IniRead($config, "MilkingAttack", "DrillParam", "1")
+
+	    $MilkFarmAttackElixirExtractors = IniRead($config, "MilkingAttack", "AttackElixir", "1")
+		$MilkFarmAttackGoldMines =  IniRead($config, "MilkingAttack", "AttackMine", "1")
+		$MilkFarmAttackDarkDrills = IniRead($config, "MilkingAttack", "AttackDrill", "1")
+		$MilkFarmLimitGold = IniRead($config, "MilkingAttack", "LimitGold", "100000")
+		$MilkFarmLimitElixir = IniRead($config, "MilkingAttack", "LimitElixir", "100000")
+		$MilkFarmLimitDark = IniRead($config, "MilkingAttack", "LimitDark", "500")
+		$MilkFarmResMaxTilesFromBorder = IniRead($config, "MilkingAttack", "MaxTiles", "3")
+
+		$MilkFarmTroopForWaveMin = IniRead($config, "MilkingAttack", "TroopForWaveMin", "4")
+		$MilkFarmTroopForWaveMax = IniRead($config, "MilkingAttack", "TroopForWaveMax", "6")
+		$MilkFarmTroopMaxWaves = IniRead($config, "MilkingAttack", "MaxWaves", "4")
+		$MilkFarmDelayFromWavesMin = IniRead($config, "MilkingAttack", "DelayBetweenWavesMin", "3000")
+		$MilkFarmDelayFromWavesMax = IniRead($config, "MilkingAttack", "DelayBetweenWavesMax", "5000")
 		
 		readCollectorConfig()
 		readDefConfig()

@@ -13,6 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
+#include "functions\Config\profileFunctions.au3"
 #include "functions\Config\applyConfig.au3"
 #include "functions\Config\readConfig.au3"
 #include "functions\Config\saveConfig.au3"
@@ -47,6 +48,20 @@
 #include "functions\Attack\AttackCSV\Slice8.au3"
 #include "functions\Attack\AttackCSV\CleanRedArea.au3"
 #include "functions\Attack\AttackCSV\ChkAttackCSVConfig.au3"
+
+#include "functions\Attack\MilkingAttack\Algorithm_MilkingAttack.au3"
+#include "functions\Attack\MilkingAttack\AmountOfResourcesInStructure.au3"
+#include "functions\Attack\MilkingAttack\DetectAmountOfResourceInStructure.au3"
+#include "functions\Attack\MilkingAttack\MilkFarmObjectivesSTR_INSERT.au3"
+#include "functions\Attack\MilkingAttack\LoadAmountOfResourcesImages.au3"
+#include "functions\Attack\MilkingAttack\MilkFarmObjectivesDebugImage.au3"
+#include "functions\Attack\MilkingAttack\MilkingAttackStructure.au3"
+#include "functions\Attack\MilkingAttack\MilkingAttackStructureDestroyed.au3"
+#include "functions\Attack\MilkingAttack\_RandomUnique.au3"
+#include "functions\Attack\MilkingAttack\MilkingDetectElixirExtractors.au3"
+#include "functions\Attack\MilkingAttack\MilkingDetectMineExtractors.au3"
+#include "functions\Attack\MilkingAttack\MilkingDetectDarkExtractors.au3"
+#include "functions\Attack\MilkingAttack\MilkingDetectRedArea.au3"
 
 #include "functions\Attack\RedArea\_FindPixelCloser.au3"
 #include "functions\Attack\RedArea\_GetOffsetTroopFurther.au3"
@@ -103,7 +118,6 @@
 #include "functions\Image Search\checkWall.au3"
 #include "functions\Image Search\CheckTombs.au3"
 #include "functions\Image Search\THSearch.au3"
-#include "functions\Image Search\CheckLootcart.au3"
 
 #include "functions\Main Screen\BlueStacks1Shortcuts.au3"
 #include "functions\Main Screen\checkMainScreen.au3"
@@ -128,6 +142,7 @@
 #include "functions\Other\_NumberFormat.au3"
 #include "functions\Other\_PadStringCenter.au3"
 #include "functions\Other\_ReduceMemory.au3"
+#include "functions\Other\_ProcessSuspendResume2.au3"
 #include "functions\Other\_Sleep.au3"
 #include "functions\Other\_SleepStatus.au3"
 #include "functions\Other\_StatusUpdateTime.au3"
@@ -180,6 +195,8 @@
 
 #include "functions\Read Text\BuildingInfo.au3"
 #include "functions\Read Text\getOcr.au3"
+#include "functions\Read Text\getPBTime.au3"
+#include "functions\Read Text\getShieldInfo.au3"
 
 #include "functions\Search\CompareResources.au3"
 #include "functions\Search\GetResources.au3"
@@ -192,8 +209,10 @@
 #include "functions\Village\BoostBarracks.au3"
 #include "functions\Village\BotDetectFirstTime.au3"
 #include "functions\Village\BotCommand.au3"
+#include "functions\Village\BreakPersonalShield.au3"
 #include "functions\Village\CheckImageType.au3"
 #include "functions\Village\CheckBaseQuick.au3"
+#include "functions\Village\CheckShieldStatus.au3"
 #include "functions\Village\Collect.au3"
 #include "functions\Village\DonateCC.au3"
 #include "functions\Village\DropTrophy.au3"
@@ -209,7 +228,6 @@
 #include "functions\Village\LocateSpell.au3"
 #include "functions\Village\LocateHeroesAltar.au3"
 #include "functions\Village\ProfileReport.au3"
-#include "functions\Village\PersonalShield.au3"
 #include "functions\Village\ReArm.au3"
 #include "functions\Village\RequestCC.au3"
 #include "functions\Village\VillageReport.au3"

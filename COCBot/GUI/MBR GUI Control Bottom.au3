@@ -24,11 +24,12 @@ Func Initiate()
 			SetLog(_PadStringCenter(" Search Mode Start ", 50, "="), $COLOR_GREEN)
 		EndIf
 		SetLog(_PadStringCenter("  Current Profile: " & $sCurrProfile & " ", 73, "-"), $COLOR_BLUE)
-		If $DebugSetlog = 1 Or $DebugOcr = 1 Or $debugRedArea = 1 Or $debugImageSave = 1 Or $debugBuildingPos = 1 Then
-			SetLog(_PadStringCenter("Warning Debug Mode Enabled! Setlog: " & $DebugSetlog &" OCR: "& $DebugOcr & " RedArea: " & $debugRedArea & " ImageSave: " & $debugImageSave & " BuildingPos: " & $debugBuildingPos, 55, "-"), $COLOR_RED)
+		If $DebugSetlog = 1 Or $DebugOcr = 1 Or $debugRedArea = 1 Or $DevMode = 1 or $debugImageSave = 1 or $debugBuildingPos = 1 Then
+			SetLog(_PadStringCenter(" Warning Debug Mode Enabled! Setlog: " & $DebugSetlog &" OCR: "& $DebugOcr & " RedArea: " & $debugRedArea & " ImageSave: " & $debugImageSave & " BuildingPos: " & $debugBuildingPos, 55, "-"), $COLOR_RED)
 		EndIf
 
 		$AttackNow = False
+		$FirstStart = True
 		$Checkrearm = True
 
 		If $iDeleteAllPushes = 1 Then
@@ -102,14 +103,12 @@ Func InitiateLayout()
 EndFunc   ;==>InitiateLayout
 
 Func DisableBS($HWnD, $iButton)
-	ConsoleWrite('+ Window Handle: ' & $HWnD & @CRLF)
 	$hSysMenu = _GUICtrlMenu_GetSystemMenu($HWnD, 0)
 	_GUICtrlMenu_RemoveMenu($hSysMenu, $iButton, False)
 	_GUICtrlMenu_DrawMenuBar($HWnD)
 EndFunc   ;==>DisableBS
 
 Func EnableBS($HWnD, $iButton)
-	ConsoleWrite('+ Window Handle: ' & $HWnD & @CRLF)
 	$hSysMenu = _GUICtrlMenu_GetSystemMenu($HWnD, 1)
 	_GUICtrlMenu_RemoveMenu($hSysMenu, $iButton, False)
 	_GUICtrlMenu_DrawMenuBar($HWnD)
@@ -132,6 +131,7 @@ Func IsStopped()
 EndFunc
 
 Func btnStart()
+    ResumeAndroid()
 	If $RunState = False Then
 		$RunState = True
 		GUICtrlSetState($btnStart, $GUI_HIDE)
@@ -156,11 +156,12 @@ Func btnStart()
 		_GUICtrlRichEdit_SetFont($txtLog, 6, "Lucida Console")
 		_GUICtrlRichEdit_AppendTextColor($txtLog, "" & @CRLF, _ColorConvert($Color_Black))
 
-	    SaveConfig()
+		SetupProfile()
+	    saveConfig()
 		readConfig()
 		applyConfig(False) ; bot window redraw stays disabled!
 
-	    If Not $AndroidSupportsBackgroundMode And $ichkBackground = 1 Then
+	    If BitAND($AndroidSupportFeature, 1+2) = 0 And $ichkBackground = 1 Then
 		   GUICtrlSetState($chkBackground, $GUI_UNCHECKED)
 		   chkBackground() ; Invoke Event manually
 		   SetLog("Background Mode not supported for " & $Android & " and has been disabled", $COLOR_RED)
@@ -187,12 +188,15 @@ Func btnStart()
 
 	    WinGetAndroidHandle()
 		If $HWnD <> 0 Then  ;Is Android open?
+		    Local $hWndActive = $HWnD
 			; check if window can be activated
-			Local $hTimer = TimerInit(), $hWndActive = -1
-			While TimerDiff($hTimer) < 1000 And $hWndActive <> $HWnD And Not _Sleep(100)
-			   $hWndActive = WinActivate($HWnD) ; ensure bot has window focus
-			WEnd
-
+			If $NoFocusTampering = False Then
+			   	Local $hTimer = TimerInit()
+			   	$hWndActive = -1
+				While TimerDiff($hTimer) < 1000 And $hWndActive <> $HWnD And Not _Sleep(100)
+				   $hWndActive = WinActivate($HWnD) ; ensure bot has window focus
+				WEnd
+			EndIf
 			If Not $RunState Then Return
 		    If IsArray(ControlGetPos($Title, $AppPaneName, $AppClassInstance)) And $hWndActive = $HWnD  Then ; Really?
 			   If Not InitiateLayout() Then
@@ -210,7 +214,8 @@ Func btnStart()
 EndFunc   ;==>btnStart
 
 Func btnStop()
-	If $RunState Then
+    ResumeAndroid()
+	If $RunState Then ; Or BitOr(GUICtrlGetState($btnStop), $GUI_SHOW) Then ; $btnStop check added for strange $RunState inconsistencies
 		GUICtrlSetState($chkBackground, $GUI_ENABLE)
 		GUICtrlSetState($btnStart, $GUI_SHOW)
 		GUICtrlSetState($btnStop, $GUI_HIDE)
@@ -239,10 +244,9 @@ Func btnStop()
 			GUICtrlSetState($i, $iPrevState[$i])
 		Next
 
-		AndroidBotStopEvent() ; signal android that bot is now stoppting
 		$RunState = False
+		AndroidBotStopEvent() ; signal android that bot is now stopping
 
-		SetLog(_PadStringCenter(" Bot Stop ", 50, "="), $COLOR_ORANGE)
 		_BlockInputEx(0, "", "", $HWnD)
 		If Not $bSearchMode Then
 			If Not $TPaused Then $iTimePassed += Int(TimerDiff($sTimer))
@@ -255,6 +259,7 @@ Func btnStop()
 		Else
 			$bSearchMode = False
 		EndIf
+		SetLog(_PadStringCenter(" Bot Stop ", 50, "="), $COLOR_ORANGE)
 		SetRedrawBotWindow(True) ; must be here at bottom, after SetLog, so Log refreshes. You could also use SetRedrawBotWindow(True, False) and let the events handle the refresh.
 	EndIf
 EndFunc   ;==>btnStop
@@ -289,6 +294,7 @@ Func btnAttackNowTS()
 EndFunc   ;==>btnAttackNowTS
 
 Func btnHide()
+    ResumeAndroid()
 	WinGetPos($Title)
 	If @error <> 0 Then Return SetError(0,0,0)
 
@@ -386,70 +392,72 @@ Func btnAnalyzeVillage()
 		If $debugSetlog = 1 Then SetLog("- Dark Barrack " & $i + 1 & ": (" & $pixel[0] & "," & $pixel[1] & ")", $COLOR_PURPLE)
     Next
 	SetLog("WEAK BASE C#.....................")
-	SetLog("DEAD BASE IS A WEAK BASE: " & IsWeakBase($DB) , $COLOR_PURPLE)
-	SetLog("LIVE BASE IS A WEAK BASE: " & IsWeakBase($LB) , $COLOR_PURPLE)
+	SetLog("DEAD BASE IS A WEAK BASE: " & IsWeakBase($DB), $COLOR_PURPLE)
+	SetLog("LIVE BASE IS A WEAK BASE: " & IsWeakBase($LB), $COLOR_PURPLE)
     Setlog("--------------------------------------------------------------", $COLOR_TEAL)
 	$debugBuildingPos = 0
 	$debugDeadBaseImage = 0
- EndFunc   ;==>btnAnalyzeVillage
+EndFunc   ;==>btnAnalyzeVillage
  
 Func btnVillageStat()
-	GUICtrlSetState( $lblVillageReportTemp , $GUI_HIDE)
+	GUICtrlSetState($lblVillageReportTemp, $GUI_HIDE)
 
 	If GUICtrlGetState($lblResultGoldNow) = $GUI_ENABLE + $GUI_SHOW Then
-		;hide normal values
-		GUICtrlSetState( $lblResultGoldNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultElixirNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultDENow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultTrophyNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultBuilderNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultGemNow , $GUI_ENABLE +$GUI_HIDE)
-		;show stats values
-		GUICtrlSetState( $lblResultGoldHourNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultElixirHourNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultDEHourNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultRuntimeNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultAttackedHourNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultSkippedHourNow , $GUI_ENABLE +$GUI_SHOW)
+		; hide normal values
+		GUICtrlSetState( $lblResultGoldNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultElixirNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultDENow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultTrophyNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultBuilderNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultGemNow, $GUI_ENABLE + $GUI_HIDE)
+		; show stats values
+		GUICtrlSetState( $lblResultGoldHourNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultElixirHourNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultDEHourNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultRuntimeNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultAttackedHourNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultSkippedHourNow, $GUI_ENABLE + $GUI_SHOW)
 		; hide normal pics
-		GUICtrlSetState( $picResultTrophyNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $picResultBuilderNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $picResultGemNow , $GUI_ENABLE +$GUI_HIDE)
-		;show stats pics
-		GUICtrlSetState( $picResultRuntimeNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $picResultAttackedHourNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $picResultSkippedHourNow , $GUI_ENABLE +$GUI_SHOW)
+		GUICtrlSetState( $picResultTrophyNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $picResultBuilderNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $picResultGemNow, $GUI_ENABLE + $GUI_HIDE)
+		; show stats pics
+		GUICtrlSetState( $picResultRuntimeNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $picResultAttackedHourNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $picResultSkippedHourNow, $GUI_ENABLE + $GUI_SHOW)
+		; change text
+		GUICtrlSetData($btnQuickStats, GetTranslated(13,29, "Now"))
 	Else
-		;show normal values
-		GUICtrlSetState( $lblResultGoldNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultElixirNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultDENow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultTrophyNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultBuilderNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $lblResultGemNow , $GUI_ENABLE +$GUI_SHOW)
-		;hide stats values
-		GUICtrlSetState( $lblResultGoldHourNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultElixirHourNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultDEHourNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultRuntimeNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultAttackedHourNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $lblResultSkippedHourNow , $GUI_ENABLE +$GUI_HIDE)
+		; show normal values
+		GUICtrlSetState( $lblResultGoldNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultElixirNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultDENow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultTrophyNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultBuilderNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $lblResultGemNow, $GUI_ENABLE + $GUI_SHOW)
+		; hide stats values
+		GUICtrlSetState( $lblResultGoldHourNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultElixirHourNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultDEHourNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultRuntimeNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultAttackedHourNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $lblResultSkippedHourNow, $GUI_ENABLE + $GUI_HIDE)
 		; show normal pics
-		GUICtrlSetState( $picResultTrophyNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $picResultBuilderNow , $GUI_ENABLE +$GUI_SHOW)
-		GUICtrlSetState( $picResultGemNow , $GUI_ENABLE +$GUI_SHOW)
+		GUICtrlSetState( $picResultTrophyNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $picResultBuilderNow, $GUI_ENABLE + $GUI_SHOW)
+		GUICtrlSetState( $picResultGemNow, $GUI_ENABLE + $GUI_SHOW)
 		; hide stats pics
-		GUICtrlSetState( $picResultRuntimeNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $picResultAttackedHourNow , $GUI_ENABLE +$GUI_HIDE)
-		GUICtrlSetState( $picResultSkippedHourNow , $GUI_ENABLE +$GUI_HIDE)
+		GUICtrlSetState( $picResultRuntimeNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $picResultAttackedHourNow, $GUI_ENABLE + $GUI_HIDE)
+		GUICtrlSetState( $picResultSkippedHourNow, $GUI_ENABLE + $GUI_HIDE)
+		;change text
+		GUICtrlSetData($btnQuickStats, GetTranslated(13,28, "Avg."))
 	EndIf
 EndFunc   ;==>btnVillageStat
 
 Func btnTestVillage()
 	testDeadBase()
 	testDefs()
-	checkLootcart()
-	testFullDarkElixir()
 EndFunc   ;==>testDeadBase
 
 Func testDeadBase()
@@ -501,10 +509,153 @@ Func testTestDonate()
 	$RunState = False
 EndFunc   ;==>testTestDonate
 
-Func testFullDarkElixir()
-	If isDarkElixirFull() Then ; Hex if color of dark elixir (black-ish)
-		SetLog("Dark Elixir Storage is full!", $COLOR_GREEN)
-	Else 
-		SetLog("Dark Elixir Storage is not full!", $COLOR_RED)
-	EndIf
-EndFunc   ;==>testFullDarkElixir
+Func btnTestButtons()
+	$RunState = True
+	Local $ButtonX, $ButtonY
+	Local $hTimer = TimerInit()
+	Local $res
+	Local $ImagesToUse[3]
+		$ImagesToUse[0] = @ScriptDir & "\images\Button\Traps.png"
+		$ImagesToUse[1] = @ScriptDir & "\images\Button\Xbow.png"
+		$ImagesToUse[2] = @ScriptDir & "\images\Button\Inferno.png"
+	Local $x = 1
+	Local $y = 1
+	Local $w = 615
+	Local $h = 105
+
+	$ToleranceImgLoc = 0.950
+
+	SETLOG("SearchTile TEST..................START")
+	;;;;;; Use the Polygon to a rectangle or Square search zone ;;;;;;;;;;
+	$SearchArea = String($x & "|" & $y & "|" & $w & "|" & $h) ; x|y|Width|Height
+	; form a polygon " top(x,y) | Right (w,y) | Bottom(w,h) | Left(x,h) "
+	Local $AreaInRectangle = String($x + 1 & "," & $y + 1 & "|" & $w - 1 & "," & $y + 1 & "|" & $w - 1 & "," & $h - 1 & "|" & $x + 1 & "," & $h - 1)
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+	$hBitmapFirst = _CaptureRegion(125, 610, 740, 715)
+	For $i = 0 To 2
+		If FileExists($ImagesToUse[$i]) Then
+			$res = DllCall($pImgLib, "str", "SearchTile", "handle", $hBitmapFirst, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc, "str", $SearchArea, "str", $AreaInRectangle)
+			If IsArray($res) Then
+				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+				If $res[0] = "0" Then
+					; failed to find a loot cart on the field
+					SetLog("No Button found")
+				ElseIf $res[0] = "-1" Then
+					SetLog("DLL Error", $COLOR_RED)
+				ElseIf $res[0] = "-2" Then
+					SetLog("Invalid Resolution", $COLOR_RED)
+				Else
+					$expRet = StringSplit($res[0], "|", 2)
+					$ButtonX = 125 + Int($expRet[1])
+					$ButtonY = 610 + Int($expRet[2])
+					SetLog("found (" & $ButtonX & "," & $ButtonY & ")", $COLOR_GREEN)
+					;If IsMainPage() Then Click($ButtonX, $ButtonY, 1, 0, "#0330")
+					If _Sleep(200) Then Return
+					;Click(515, 400, 1, 0, "#0226")
+					If _Sleep(200) Then Return
+					If isGemOpen(True) = True Then
+						Setlog("Not enough loot to rearm traps.....", $COLOR_RED)
+						Click(585, 252, 1, 0, "#0227") ; Click close gem window "X"
+						If _Sleep(200) Then Return
+					Else
+						If $i = 0 then SetLog("Rearmed Trap(s)", $COLOR_GREEN)
+						If $i = 1 then SetLog("Reloaded XBow(s)", $COLOR_GREEN)
+						If $i = 2 then SetLog("Reloaded Inferno(s)", $COLOR_GREEN)
+						If _Sleep(200) Then Return
+					EndIf
+				EndIf
+			EndIf
+		EndIf
+	Next
+	_WinAPI_DeleteObject($hBitmapFirst)
+	SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+	SETLOG("SearchTile TEST..................STOP")
+
+	Local $hTimer = TimerInit()
+	SETLOG("MBRSearchImage TEST..................STOP")
+
+	$hBitmapFirst = _CaptureRegion2(125, 610, 740, 715)
+	For $i = 0 To 2
+		If FileExists($ImagesToUse[$i]) Then
+			$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hBitmapFirst, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc)
+			If IsArray($res) Then
+				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+				If $res[0] = "0" Then
+					; failed to find a loot cart on the field
+					SetLog("No Button found")
+				ElseIf $res[0] = "-1" Then
+					SetLog("DLL Error", $COLOR_RED)
+				ElseIf $res[0] = "-2" Then
+					SetLog("Invalid Resolution", $COLOR_RED)
+				Else
+					$expRet = StringSplit($res[0], "|", 2)
+					$ButtonX = 125 + Int($expRet[1])
+					$ButtonY = 610 + Int($expRet[2])
+					SetLog("found (" & $ButtonX & "," & $ButtonY & ")", $COLOR_GREEN)
+					If _Sleep(200) Then Return
+					If _Sleep(200) Then Return
+					If isGemOpen(True) = True Then
+						Setlog("Not enough loot to rearm traps.....", $COLOR_RED)
+						Click(585, 252, 1, 0, "#0227") ; Click close gem window "X"
+						If _Sleep(200) Then Return
+					Else
+						If $i = 0 then SetLog("Rearmed Trap(s)", $COLOR_GREEN)
+						If $i = 1 then SetLog("Reloaded XBow(s)", $COLOR_GREEN)
+						If $i = 2 then SetLog("Reloaded Inferno(s)", $COLOR_GREEN)
+						If _Sleep(200) Then Return
+					EndIf
+				EndIf
+			EndIf
+		EndIf
+	Next
+	_WinAPI_DeleteObject($hBitmapFirst)
+	SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+	SETLOG("MBRSearchImage TEST..................STOP")
+	$RunState = False
+EndFunc   ;==>btnTestButtons
+
+Func btnBoostVillage()
+	$RunState = True
+	Local $ButtonX, $ButtonY
+	Local $hTimer = TimerInit()
+	Local $res
+	Local $ImagesToUse[2]
+		$ImagesToUse[0] = @ScriptDir & "\images\Button\BoostBarrack.png"
+		$ImagesToUse[1] = @ScriptDir & "\images\Button\BarrackBoosted.png"
+	$ToleranceImgLoc = 0.90
+	SETLOG("MBRSearchImage TEST..................STARTED")
+	$hBitmapFirst = _CaptureRegion2(125, 610, 740, 715)
+	For $i = 0 To 1
+		If FileExists($ImagesToUse[$i]) Then
+			$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hBitmapFirst, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc)
+			If IsArray($res) Then
+				If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+				If $res[0] = "0" Then
+					; failed to find boost button
+					if $i = 1 then SetLog("No Button found")
+				ElseIf $res[0] = "-1" Then
+					SetLog("DLL Error", $COLOR_RED)
+				ElseIf $res[0] = "-2" Then
+					SetLog("Invalid Resolution", $COLOR_RED)
+				Else
+					If _Sleep(200) Then Return
+					If $i = 0 Then
+						SetLog ("Found the Button to Boost individual")
+						$expRet = StringSplit($res[0], "|", 2)
+						$ButtonX = 125 + Int($expRet[1])
+						$ButtonY = 610 + Int($expRet[2])
+						SetLog("found (" & $ButtonX & "," & $ButtonY & ")", $COLOR_GREEN)
+						ExitLoop
+					Else
+						SetLog ("The Barrack is already boosted!")
+					EndIf
+				EndIf
+			EndIf
+		EndIf
+	Next
+	_WinAPI_DeleteObject($hBitmapFirst)
+	SetLog("  - Calculated  in: " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds ", $COLOR_TEAL)
+	SETLOG("MBRSearchImage TEST..................STOP")
+	$RunState = False
+EndFunc   ;==>ButtonBoost

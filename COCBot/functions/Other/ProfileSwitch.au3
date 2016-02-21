@@ -17,59 +17,59 @@ Func ProfileSwitch()
 	If $ichkGoldSwitchMax = 1 Or $ichkGoldSwitchMin = 1 Or $ichkElixirSwitchMax = 1 Or $ichkElixirSwitchMin = 1 Or _
 	$ichkDESwitchMax = 1 Or $ichkDESwitchMin = 1 Or $ichkTrophySwitchMax = 1 Or $ichkTrophySwitchMin = 1 Then
 		Local $SwitchtoProfile = ""
-		Local $curProfile = Int($sCurrProfile) - 1
+		Local $curProfile = $sCurrProfile
 		While True
 			If $ichkGoldSwitchMax = 1 Then
-				If Number($iGoldCurrent) >= Number($itxtMaxGoldAmount) And $curProfile <> Int($icmbGoldMaxProfile) Then
+				If Number($iGoldCurrent) >= Number($itxtMaxGoldAmount) And $curProfile <> $icmbGoldMaxProfile Then
 					$SwitchtoProfile = $icmbGoldMaxProfile
 					Setlog("Village Gold detected Above Gold Profile Switch Condition")
 					ExitLoop
 				EndIf
 			EndIf
 			If $ichkGoldSwitchMin = 1 Then
-				If Number($iGoldCurrent) <= Number($itxtMinGoldAmount) And $curProfile <> Int($icmbGoldMinProfile) Then
+				If Number($iGoldCurrent) <= Number($itxtMinGoldAmount) And $curProfile <> $icmbGoldMinProfile Then
 					$SwitchtoProfile = $icmbGoldMinProfile
 					Setlog("Village Gold detected Below Gold Profile Switch Condition")
 					ExitLoop
 				EndIf
 			EndIf
 			If $ichkElixirSwitchMax = 1 Then
-				If Number($iElixirCurrent) >= Number($itxtMaxElixirAmount) And $curProfile <> Int($icmbElixirMaxProfile) Then
+				If Number($iElixirCurrent) >= Number($itxtMaxElixirAmount) And $curProfile <> $icmbElixirMaxProfile Then
 					$SwitchtoProfile = $icmbElixirMaxProfile
 					Setlog("Village Gold detected Above Elixir Profile Switch Condition")
 					ExitLoop
 				EndIf
 			EndIf
 			If $ichkElixirSwitchMin = 1 Then
-				If Number($iElixirCurrent) <= Number($itxtMinElixirAmount) And $curProfile <> Int($icmbElixirMinProfile) Then
+				If Number($iElixirCurrent) <= Number($itxtMinElixirAmount) And $curProfile <> $icmbElixirMinProfile Then
 					$SwitchtoProfile = $icmbElixirMinProfile
 					Setlog("Village Gold detected Below Elixir Switch Condition")
 					ExitLoop
 				EndIf
 			EndIf
 			If $ichkDESwitchMax = 1 Then
-				If Number($iDarkCurrent) >=	Number($itxtMaxDEAmount) And $curProfile <> Int($icmbDEMaxProfile) Then
+				If Number($iDarkCurrent) >=	Number($itxtMaxDEAmount) And $curProfile <> $icmbDEMaxProfile Then
 					$SwitchtoProfile = $icmbDEMaxProfile
 					Setlog("Village Dark Elixir detected Above Dark Elixir Profile Switch Condition")
 					ExitLoop
 				EndIf
 			EndIf
 			If $ichkDESwitchMin = 1 Then
-				If Number($iDarkCurrent) <=	Number($itxtMinDEAmount) And $curProfile <> Int($icmbDEMinProfile) Then
+				If Number($iDarkCurrent) <=	Number($itxtMinDEAmount) And $curProfile <> $icmbDEMinProfile Then
 					$SwitchtoProfile = $icmbDEMinProfile
 					Setlog("Village Dark Elixir detected Below Dark Elixir Profile Switch Condition")
 					ExitLoop
 				EndIf
 			EndIf
 			If $ichkTrophySwitchMax = 1 Then
-				If Number($iTrophyCurrent) >= Number($itxtMaxTrophyAmount) And $curProfile <> Int($icmbTrophyMaxProfile) Then
+				If Number($iTrophyCurrent) >= Number($itxtMaxTrophyAmount) And $curProfile <> $icmbTrophyMaxProfile Then
 					$SwitchtoProfile = $icmbTrophyMaxProfile
 					Setlog("Village Trophies detected Above Throphy Profile Switch Condition")
 					ExitLoop
 				EndIf
 			EndIf
 			If $ichkTrophySwitchMin = 1 Then
-				If Number($iTrophyCurrent) <= Number($itxtMinTrophyAmount) And $curProfile <> Int($icmbTrophyMinProfile) Then
+				If Number($iTrophyCurrent) <= Number($itxtMinTrophyAmount) And $curProfile <> $icmbTrophyMinProfile Then
 					$SwitchtoProfile = $icmbTrophyMinProfile
 					Setlog("Village Trophies detected Below Trophy Profile Switch Condition")
 					ExitLoop
@@ -79,7 +79,7 @@ Func ProfileSwitch()
 		WEnd
 
 		If $SwitchtoProfile <> "" Then
-			If $curProfile <> Int($SwitchtoProfile) Then ; switch profile if we are not using it already
+			If $curProfile <> $SwitchtoProfile Then ; switch profile if we are not using it already
 				If $AlertSearch = 1 Then
 					TrayTip($sBotTitle, "Switch profile condition detected", 0)
 				EndIf

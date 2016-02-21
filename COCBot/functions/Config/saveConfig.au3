@@ -20,10 +20,8 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	Local $frmBotPos = WinGetPos($sBotTitle)
 
-	IniWrite($config, "general", "cmbProfile", _GUICtrlComboBox_GetCurSel($cmbProfile))
 	IniWrite($config, "general", "frmBotPosX", $frmBotPos[0])
 	IniWrite($config, "general", "frmBotPosY", $frmBotPos[1])
-	IniWrite($config, "general", "villageName", GUICtrlRead($txtVillageName))
 
 	IniWrite($config, "general", "logstyle", _GUICtrlComboBox_GetCurSel($cmbLog))
 	$DPos = ControlGetPos($frmBot, "", $divider)
@@ -161,36 +159,6 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "search", "ABMeetOne", 0)
 	EndIf
 
-	If GUICtrlRead($chkABNeedHeroes) = $GUI_CHECKED Then
-		IniWrite($config, "search", "ABNeedHeroes", 1)
-	Else
-		IniWrite($config, "search", "ABNeedHeroes", 0)
-	EndIf
-
-	If GUICtrlRead($chkABNeedOneHero) = $GUI_CHECKED Then
-		IniWrite($config, "search", "ABNeedOneHero", 1)
-	Else
-		IniWrite($config, "search", "ABNeedOneHero", 0)
-	EndIf
-
-	If GUICtrlRead($chkABNeedKing) = $GUI_CHECKED Then
-		IniWrite($config, "search", "ABNeedKing", 1)
-	Else
-		IniWrite($config, "search", "ABNeedKing", 0)
-	EndIf
-
-	If GUICtrlRead($chkABNeedQueen) = $GUI_CHECKED Then
-		IniWrite($config, "search", "ABNeedQueen", 1)
-	Else
-		IniWrite($config, "search", "ABNeedQueen", 0)
-	EndIf
-
-	If GUICtrlRead($chkABNeedWarden) = $GUI_CHECKED Then
-		IniWrite($config, "search", "ABNeedWarden", 1)
-	Else
-		IniWrite($config, "search", "ABNeedWarden", 0)
-	EndIf
-
 	IniWrite($config, "search", "ABsearchGold", GUICtrlRead($txtABMinGold))
 	IniWrite($config, "search", "ABsearchElixir", GUICtrlRead($txtABMinElixir))
 	IniWrite($config, "search", "ABsearchGoldPlusElixir", GUICtrlRead($txtABMinGoldPlusElixir))
@@ -293,25 +261,46 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 
 	If GUICtrlRead($chkDBKingAttack) = $GUI_CHECKED Then
-		IniWrite($config, "attack", "DBKingAtk", 1)
+		IniWrite($config, "attack", "DBKingAtk", $HERO_KING)
 	Else
-		IniWrite($config, "attack", "DBKingAtk", 0)
+		IniWrite($config, "attack", "DBKingAtk", $HERO_NOHERO)
 	EndIf
-	If GUICtrlRead($chkABKingAttack) = $GUI_CHECKED Then
-		IniWrite($config, "attack", "ABKingAtk", 1)
+	If GUICtrlRead($chkDBKingWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "DBKingWait", $HERO_KING)
 	Else
-		IniWrite($config, "attack", "ABKingAtk", 0)
+		IniWrite($config, "attack", "DBKingWait", $HERO_NOHERO)
+	EndIf
+
+	If GUICtrlRead($chkABKingAttack) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "ABKingAtk", $HERO_KING)
+	Else
+		IniWrite($config, "attack", "ABKingAtk", $HERO_NOHERO)
+	EndIf
+	If GUICtrlRead($chkABKingWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "ABKingWait", $HERO_KING)
+	Else
+		IniWrite($config, "attack", "ABKingWait", $HERO_NOHERO)
 	EndIf
 
 	If GUICtrlRead($chkDBQueenAttack) = $GUI_CHECKED Then
-		IniWrite($config, "attack", "DBQueenAtk", 1)
+		IniWrite($config, "attack", "DBQueenAtk", $HERO_QUEEN)
 	Else
-		IniWrite($config, "attack", "DBQueenAtk", 0)
+		IniWrite($config, "attack", "DBQueenAtk", $HERO_NOHERO)
+	EndIf
+	If GUICtrlRead($chkDBQueenWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "DBQueenWait", $HERO_QUEEN)
+	Else
+		IniWrite($config, "attack", "DBQueenWait", $HERO_NOHERO)
 	EndIf
 	If GUICtrlRead($chkABQueenAttack) = $GUI_CHECKED Then
-		IniWrite($config, "attack", "ABQueenAtk", 1)
+		IniWrite($config, "attack", "ABQueenAtk", $HERO_QUEEN)
 	Else
-		IniWrite($config, "attack", "ABQueenAtk", 0)
+		IniWrite($config, "attack", "ABQueenAtk", $HERO_NOHERO)
+	EndIf
+	If GUICtrlRead($chkABQueenWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "ABQueenWait", $HERO_QUEEN)
+	Else
+		IniWrite($config, "attack", "ABQueenWait", $HERO_NOHERO)
 	EndIf
 
 	If GUICtrlRead($chkDBDropCC) = $GUI_CHECKED Then
@@ -321,15 +310,25 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 
 	If GUICtrlRead($chkDBWardenAttack) = $GUI_CHECKED Then
-		IniWrite($config, "attack", "DBWardenAtk", 1)
+		IniWrite($config, "attack", "DBWardenAtk", $HERO_WARDEN)
 	Else
-		IniWrite($config, "attack", "DBWardenAtk", 0)
+		IniWrite($config, "attack", "DBWardenAtk", $HERO_NOHERO)
+	EndIf
+	If GUICtrlRead($chkDBWardenWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "DBWardenWait", $HERO_WARDEN)
+	Else
+		IniWrite($config, "attack", "DBWardenWait", $HERO_NOHERO)
 	EndIf
 
 	If GUICtrlRead($chkABWardenAttack) = $GUI_CHECKED Then
-		IniWrite($config, "attack", "ABWardenAtk", 1)
+		IniWrite($config, "attack", "ABWardenAtk", $HERO_WARDEN)
 	Else
-		IniWrite($config, "attack", "ABWardenAtk", 0)
+		IniWrite($config, "attack", "ABWardenAtk", $HERO_NOHERO)
+	EndIf
+	If GUICtrlRead($chkABWardenWait) = $GUI_CHECKED Then
+		IniWrite($config, "attack", "ABWardenWait", $HERO_WARDEN)
+	Else
+		IniWrite($config, "attack", "ABWardenWait", $HERO_NOHERO)
 	EndIf
 
 	If GUICtrlRead($chkABDropCC) = $GUI_CHECKED Then
@@ -339,7 +338,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 
 	If GUICtrlRead($chkUseCCBalanced) = $GUI_CHECKED Then
-		IniWrite($config, "attack", "BalanceCC", 1)
+		IniWrite($config, "attack", "BalanceCC", 0)
 	Else
 		IniWrite($config, "attack", "BalanceCC", 0)
 	EndIf
@@ -886,7 +885,7 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	; Troop Settings--------------------------------------------------------------------------
 	IniWrite($config, "troop", "TroopComposition", _GUICtrlComboBox_GetCurSel($cmbTroopComp))
-
+	IniWrite($config, "troop", "DarkTroopComposition", _GUICtrlComboBox_GetCurSel($cmbDarkTroopComp))
 	For $i = 0 To UBound($TroopName) - 1
 		IniWrite($config, "troop", $TroopName[$i], GUICtrlRead(Eval("txtNum" & $TroopName[$i])))
 	Next
@@ -899,8 +898,8 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "troop", "troop3", _GUICtrlComboBox_GetCurSel($cmbBarrack3))
 	IniWrite($config, "troop", "troop4", _GUICtrlComboBox_GetCurSel($cmbBarrack4))
 
-	IniWrite($config, "troop", "darktroop1", _GUICtrlComboBox_GetCurSel($cmbDarkBarrack1))
-	IniWrite($config, "troop", "darktroop2", _GUICtrlComboBox_GetCurSel($cmbDarkBarrack2))
+	IniWrite($config, "troop", "Darktroop1", _GUICtrlComboBox_GetCurSel($cmbDarkBarrack1))
+	IniWrite($config, "troop", "Darktroop2", _GUICtrlComboBox_GetCurSel($cmbDarkBarrack2))
 
 	IniWrite($config, "troop", "fulltroop", GUICtrlRead($txtFullTroop))
 	IniWrite($config, "troop", "TrainITDelay", GUICtrlRead($sldTrainITDelay))
@@ -909,7 +908,10 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "Spells", "LightningSpell", GUICtrlRead($txtNumLightningSpell))
 	IniWrite($config, "Spells", "RageSpell", GUICtrlRead($txtNumRageSpell))
 	IniWrite($config, "Spells", "HealSpell", GUICtrlRead($txtNumHealSpell))
+	IniWrite($config, "Spells", "JumpSpell", GUICtrlRead($txtNumJumpSpell))
+	IniWrite($config, "Spells", "FreezeSpell", GUICtrlRead($txtNumFreezeSpell))
 	IniWrite($config, "Spells", "PoisonSpell", GUICtrlRead($txtNumPoisonSpell))
+	IniWrite($config, "Spells", "EarthSpell", GUICtrlRead($txtNumEarthSpell))
 	IniWrite($config, "Spells", "HasteSpell", GUICtrlRead($txtNumHasteSpell))
 	IniWrite($config, "Spells", "SpellFactory", GUICtrlRead($txtTotalCountSpell))
 
@@ -959,6 +961,13 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "other", "chkTombstones", 0)
 	EndIf
+
+	If GUICtrlRead($chkCleanYard) = $GUI_CHECKED Then
+		IniWrite($config, "other", "chkCleanYard", 1)
+	Else
+		IniWrite($config, "other", "chkCleanYard", 0)
+	EndIf
+
 	IniWrite($config, "other", "txtTimeWakeUp", GUICtrlRead($txtTimeWakeUp))
 	IniWrite($config, "other", "VSDelay", GUICtrlRead($sldVSDelay))
 	IniWrite($config, "other", "MaxVSDelay", GUICtrlRead($sldMaxVSDelay))
@@ -1286,11 +1295,16 @@ Func saveConfig() ;Saves the controls settings to the config
 		Else
 			IniWrite($config, "debug", "debugmakeimgcsv", 0)
 		EndIf
+		IniWrite($config, "debug", "debugresourcesoffset", $debugresourcesoffset)
+		IniWrite($config, "debug", "continuesearchelixirdebug", $continuesearchelixirdebug)
+
 	Else
 		IniDelete($config, "debug", "debugocr")
 		IniDelete($config, "debug", "debugsetlog")
 		IniDelete($config, "debug", "debugimagesave")
 		IniDelete($config, "debug", "debugbuildingpos")
+		IniDelete($config, "debug", "debugresourcesoffset")
+		IniDelete($config, "debug", "continuesearchelixirdebug")
 	EndIf
 
 	;forced Total Camp values
@@ -1300,6 +1314,14 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "other", "ChkTotalCampForced", 0)
 	EndIf
 	IniWrite($config, "other", "ValueTotalCampForced", GUICtrlRead($txtTotalCampForced))
+
+	If GUICtrlRead($chkSinglePBTForced) = $GUI_CHECKED Then
+		IniWrite($config, "other", "chkSinglePBTForced", 1)
+	Else
+		IniWrite($config, "other", "chkSinglePBTForced", 0)
+	EndIf
+	IniWrite($config, "other", "ValueSinglePBTimeForced", GUICtrlRead($txtSinglePBTimeForced))
+	IniWrite($config, "other", "ValuePBTimeForcedExit", GUICtrlRead($txtPBTimeForcedExit))
 
 	If GUICtrlRead($ChkLanguage) = $GUI_CHECKED Then
 		IniWrite($config, "General", "ChkLanguage", 1)
@@ -1516,7 +1538,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "profiles", "chkGoldSwitchMax", 0)
 	EndIf
-	IniWrite($config, "profiles", "cmbGoldMaxProfile", _GUICtrlComboBox_GetCurSel($cmbGoldMaxProfile))
+	IniWrite($config, "profiles", "cmbGoldMaxProfile", GUICtrlRead($cmbGoldMaxProfile))
 	IniWrite($config, "profiles", "txtMaxGoldAmount", GUICtrlRead($txtMaxGoldAmount))
 
 	If GUICtrlRead($chkGoldSwitchMin) = $GUI_CHECKED Then
@@ -1524,7 +1546,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "profiles", "chkGoldSwitchMin", 0)
 	EndIf
-	IniWrite($config, "profiles", "cmbGoldMinProfile", _GUICtrlComboBox_GetCurSel($cmbGoldMinProfile))
+	IniWrite($config, "profiles", "cmbGoldMinProfile", GUICtrlRead($cmbGoldMinProfile))
 	IniWrite($config, "profiles", "txtMinGoldAmount", GUICtrlRead($txtMinGoldAmount))
 
 	If GUICtrlRead($chkElixirSwitchMax) = $GUI_CHECKED Then
@@ -1532,7 +1554,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "profiles", "chkElixirSwitchMax", 0)
 	EndIf
-	IniWrite($config, "profiles", "cmbElixirMaxProfile", _GUICtrlComboBox_GetCurSel($cmbElixirMaxProfile))
+	IniWrite($config, "profiles", "cmbElixirMaxProfile", GUICtrlRead($cmbElixirMaxProfile))
 	IniWrite($config, "profiles", "txtMaxElixirAmount", GUICtrlRead($txtMaxElixirAmount))
 
 	If GUICtrlRead($chkElixirSwitchMin) = $GUI_CHECKED Then
@@ -1540,7 +1562,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "profiles", "chkElixirSwitchMin", 0)
 	EndIf
-	IniWrite($config, "profiles", "cmbElixirMinProfile", _GUICtrlComboBox_GetCurSel($cmbElixirMinProfile))
+	IniWrite($config, "profiles", "cmbElixirMinProfile", GUICtrlRead($cmbElixirMinProfile))
 	IniWrite($config, "profiles", "txtMinElixirAmount", GUICtrlRead($txtMinElixirAmount))
 
 	If GUICtrlRead($chkDESwitchMax) = $GUI_CHECKED Then
@@ -1548,7 +1570,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "profiles", "chkDESwitchMax", 0)
 	EndIf
-	IniWrite($config, "profiles", "cmbDEMaxProfile", _GUICtrlComboBox_GetCurSel($cmbDEMaxProfile))
+	IniWrite($config, "profiles", "cmbDEMaxProfile", GUICtrlRead($cmbDEMaxProfile))
 	IniWrite($config, "profiles", "txtMaxDEAmount", GUICtrlRead($txtMaxDEAmount))
 
 	If GUICtrlRead($chkDESwitchMin) = $GUI_CHECKED Then
@@ -1556,7 +1578,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "profiles", "chkDESwitchMin", 0)
 	EndIf
-	IniWrite($config, "profiles", "cmbDEMinProfile", _GUICtrlComboBox_GetCurSel($cmbDEMinProfile))
+	IniWrite($config, "profiles", "cmbDEMinProfile", GUICtrlRead($cmbDEMinProfile))
 	IniWrite($config, "profiles", "txtMinDEAmount", GUICtrlRead($txtMinDEAmount))
 
 	If GUICtrlRead($chkTrophySwitchMax) = $GUI_CHECKED Then
@@ -1564,7 +1586,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "profiles", "chkTrophySwitchMax", 0)
 	EndIf
-	IniWrite($config, "profiles", "cmbTrophyMaxProfile", _GUICtrlComboBox_GetCurSel($cmbTrophyMaxProfile))
+	IniWrite($config, "profiles", "cmbTrophyMaxProfile", GUICtrlRead($cmbTrophyMaxProfile))
 	IniWrite($config, "profiles", "txtMaxTrophyAmount", GUICtrlRead($txtMaxTrophyAmount))
 
 	If GUICtrlRead($chkTrophySwitchMin) = $GUI_CHECKED Then
@@ -1572,10 +1594,38 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "profiles", "chkTrophySwitchMin", 0)
 	EndIf
-	IniWrite($config, "profiles", "cmbTrophyMinProfile", _GUICtrlComboBox_GetCurSel($cmbTrophyMinProfile))
+	IniWrite($config, "profiles", "cmbTrophyMinProfile", GUICtrlRead($cmbTrophyMinProfile))
 	IniWrite($config, "profiles", "txtMinTrophyAmount", GUICtrlRead($txtMinTrophyAmount))
+
+    ; MilkingAttack Options
+    IniWrite($config, "MilkingAttack", "LocateMine", $MilkFarmLocateMine)
+    IniWrite($config, "MilkingAttack", "LocateElixir", $MilkFarmLocateElixir)
+    IniWrite($config, "MilkingAttack", "LocateDrill", $MilkFarmLocateDrill)
+	Local $tempElixirParam = ""
+	For $i = 0 To Ubound($MilkFarmElixirParam) -1
+	   $tempElixirParam  &= $MilkFarmElixirParam[$i] & "|"
+    Next
+	$tempElixirParam = StringLeft($tempElixirParam,StringLen($tempElixirParam) -1 )
+    IniWrite($config, "MilkingAttack", "LocateElixirLevel", $tempElixirParam)
+    IniWrite($config, "MilkingAttack", "MineParam", $MilkFarmMineParam)
+    IniWrite($config, "MilkingAttack", "DrillParam", $MilkFarmDrillParam)
+
+    IniWrite($config, "MilkingAttack", "AttackElixir", $MilkFarmAttackElixirExtractors)
+    IniWrite($config, "MilkingAttack", "AttackMine", $MilkFarmAttackGoldMines)
+    IniWrite($config, "MilkingAttack", "AttackDrill", $MilkFarmAttackDarkDrills)
+    IniWrite($config, "MilkingAttack", "LimitGold", $MilkFarmLimitGold)
+    IniWrite($config, "MilkingAttack", "LimitElixir", $MilkFarmLimitElixir)
+    IniWrite($config, "MilkingAttack", "LimitDark", $MilkFarmLimitDark)
+    IniWrite($config, "MilkingAttack", "MaxTiles", $MilkFarmResMaxTilesFromBorder)
+
+    IniWrite($config, "MilkingAttack", "TroopForWaveMin", $MilkFarmTroopForWaveMin)
+    IniWrite($config, "MilkingAttack", "TroopForWaveMax", $MilkFarmTroopForWaveMax)
+    IniWrite($config, "MilkingAttack", "MaxWaves", $MilkFarmTroopMaxWaves)
+    IniWrite($config, "MilkingAttack", "DelayBetweenWavesMin", $MilkFarmDelayFromWavesMin)
+    IniWrite($config, "MilkingAttack", "DelayBetweenWavesMax", $MilkFarmDelayFromWavesMax)
 	
-	savedefConfig()
+	saveCollectorConfig()
+	saveDefConfig()
 
 	If $hFile <> -1 Then FileClose($hFile)
 EndFunc   ;==>saveConfig

@@ -131,6 +131,14 @@ Func chkSnipeMode()
 	chkTSAttackIfDB()
 EndFunc   ;==>chkSnipeMode
 
+Func chkTSEnableAfter()
+	If GUICtrlRead($chkTSEnableAfter) = $GUI_CHECKED Then
+		_GUICtrlEdit_SetReadOnly($txtTSEnableAfter, False)
+	Else
+		_GUICtrlEdit_SetReadOnly($txtTSEnableAfter, True)
+	EndIf
+EndFunc   ;==>chkTSEnableAfter
+
 Func cmbTSGoldElixir()
 	If _GUICtrlComboBox_GetCurSel($cmbTSMeetGE) < 2 Then
 		GUICtrlSetState($txtTSMinGold, $GUI_SHOW)

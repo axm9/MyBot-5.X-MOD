@@ -21,7 +21,7 @@ Opt("TrayMenuMode", 3)
 #include-once
 #include "functions\Other\GUICtrlGetBkColor.au3" ; Included here to use on GUI Control
 
-;Dynamic declaration of Array controls, cannot be on global variables because the GUI has to be created first for these control-id's to be known.
+; Dynamic declaration of Array controls, cannot be on global variables because the GUI has to be created first for these control-id's to be known.
 Local $aChkDonateControls[17] = [$chkDonateBarbarians, $chkDonateArchers, $chkDonateGiants, $chkDonateGoblins, $chkDonateWallBreakers, $chkDonateBalloons, $chkDonateWizards, $chkDonateHealers, $chkDonateDragons, $chkDonatePekkas, $chkDonateMinions, $chkDonateHogRiders, $chkDonateValkyries, $chkDonateGolems, $chkDonateWitches, $chkDonateLavaHounds, $chkDonateCustom]
 Local $aChkDonateControlsSpell[3] = [$chkDonatePoisonSpells, $chkDonateEarthQuakeSpells, $chkDonateHasteSpells]
 Local $aChkDonateAllControls[17] = [$chkDonateAllBarbarians, $chkDonateAllArchers, $chkDonateAllGiants, $chkDonateAllGoblins, $chkDonateAllWallBreakers, $chkDonateAllBalloons, $chkDonateAllWizards, $chkDonateAllHealers, $chkDonateAllDragons, $chkDonateAllPekkas, $chkDonateAllMinions, $chkDonateAllHogRiders, $chkDonateAllValkyries, $chkDonateAllGolems, $chkDonateAllWitches, $chkDonateAllLavaHounds, $chkDonateAllCustom]
@@ -47,6 +47,7 @@ AtkLogHead()
 #include "GUI\MBR GUI Control Bottom.au3"
 #include "GUI\MBR GUI Control Collectors.au3"
 #include "GUI\MBR GUI Control Defenses.au3"
+#include "GUI\MBR GUI Control Milking.au3"
 #include "GUI\MBR GUI Control Tab General.au3"
 #include "GUI\MBR GUI Control Tab Troops.au3"
 #include "GUI\MBR GUI Control Tab Search.au3"
@@ -84,12 +85,11 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
 				Case $divider
 					MoveDivider()
 				Case $GUI_EVENT_CLOSE
-					; Clean up resources
 					BotClose()
 				Case $labelMyBotURL
-					ShellExecute("https://MyBot.run/forums") ;open web site when clicking label
+					ShellExecute("https://MyBot.run/forums") ; open web site when clicking label
 				Case $labelForumURL
-					ShellExecute("https://MyBot.run/forums/forumdisplay.php?fid=2") ;open web site when clicking label
+					ShellExecute("https://mybot.run/forums/index.php?/forum/4-official-releases/") ; open web site when clicking label
 				Case $btnStop
 					btnStop()
 				Case $btnPause
@@ -106,6 +106,8 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
 					btnAttackNowLB()
 				Case $btnAttackNowTS
 					btnAttackNowTS()
+				Case $DonateConfig
+					ShellExecute("https://www.paypal.com/us/cgi-bin/webscr?cmd=_send-money&nav=1&email=mc_slither@hotmail.com")
 				Case $CheckVersionConfig
 					If CheckMODVersion() Then MsgBox(0, "", "Your Greedy MOD is up-of-date!")
 				Case $DownloadLatestConfig
@@ -130,15 +132,25 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
 					EndIf
 				Case $pic2arrow
 					If $RunState Then btnVillageStat()
+				Case $btnQuickStats
+					If $RunState Then btnVillageStat()
 			EndSwitch
 	   Case $WM_SYSCOMMAND ; 274
-			Switch $wParam
-			    Case $SC_RESTORE ; 0xf120
-				    ; set redraw controls flag that require addition redraw if visible
-				    $bRedrawBotWindow[2] = True
-			    Case $SC_CLOSE ; 0xf060
-				    If Not $gui2open Then BotClose()
-			EndSwitch
+			If $__TEST_ERROR = True Then SetDebugLog("Bot WM_SYSCOMMAND: " & Hex($wParam, 4))
+            If $hWind = $frmBot Then ; Only close Bot when Bot Window sends Close Message
+				Switch $wParam
+					Case $SC_MINIMIZE
+						   $FrmBotMinimized = True
+				    Case $SC_RESTORE ; 0xf120
+						; set redraw controls flag to check if after restore visibile controls require redraw
+						If $FrmBotMinimized = True Then
+							$FrmBotMinimized = False ; prevents "flickering" due to DLL hanging of bot
+					    	$bRedrawBotWindow[2] = True
+						EndIf
+				    Case $SC_CLOSE ; 0xf060
+						BotClose()
+				EndSwitch
+			EndIf
 	EndSwitch
 
 	Return $GUI_RUNDEFMSG
@@ -147,7 +159,9 @@ EndFunc   ;==>GUIControl
 Func BotClose()
 	SetLog("Closing " & $sBotTitle & " ...")
 	If $RunState = True Then AndroidBotStopEvent() ; signal android that bot is now stoppting
-	SaveConfig()
+   	setupProfile()
+	saveConfig()
+	AndroidAdbTerminateShellInstance()
 	; Close Mutexes
 	If $hMutex_BotTitle <> 0 Then _WinAPI_CloseHandle($hMutex_BotTitle)
 	If $hMutex_Profile <> 0 Then _WinAPI_CloseHandle($hMutex_Profile)
@@ -159,6 +173,7 @@ Func BotClose()
 	MBRFunc(False) ; close MBRFunctions dll
 	_GUICtrlRichEdit_Destroy($txtLog)
 	_GUICtrlRichEdit_Destroy($txtAtkLog)
+   	GUIDelete($frmBot)
 	Exit
 EndFunc
 
@@ -184,6 +199,8 @@ EndFunc
 Func CheckRedrawBotWindow($bForceRedraw = False)
     ; check if bot window redraw is enabled and required
 	If ($bRedrawBotWindow[0] And $bRedrawBotWindow[1]) Or $bForceRedraw Then
+	   ; enable logging to debug GUI redraw
+	   SetDebugLog("Redraw MyBot Window" & ($bForceRedraw ? " (forced)" : "")) ; enable logging to debug GUI redraw
 	   ; Redraw bot window
 	   _WinAPI_RedrawWindow($frmBot)
 	   $bRedrawBotWindow[1] = False
@@ -370,13 +387,13 @@ Func _DonateBtn($FirstControl, $LastControl)
 	$LastDonateBtn1 = $FirstControl
 	$LastDonateBtn2 = $LastControl
 
-	;Show Controls
+	; Show Controls
 	For $i = $FirstControl To $LastControl ; Show these controls on Donate Tab
 		GUICtrlSetState($i, $GUI_SHOW)
 	Next
 EndFunc   ;==>_DonateBtn
 
-_GUICtrlComboBox_SetCurSel($cmbProfile, Int($sCurrProfile) - 1)
+selectProfile() ; Choose the profile
 If FileExists($config) Or FileExists($building) Then
 	readConfig()
 	applyConfig()

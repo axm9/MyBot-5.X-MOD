@@ -32,6 +32,8 @@ Func Collect()
 	Local $tempElixir = $iElixirCurrent
 	Local $tempDElixir = $iDarkCurrent
 
+	checkAttackDisable($iTaBChkIdle) ; Early Take-A-Break detection
+
 	SetLog("Collecting Resources", $COLOR_BLUE)
 	If _Sleep($iDelayCollect2) Then Return
 
@@ -56,12 +58,10 @@ Func Collect()
 		Next
 	EndIf
 
-	checkAttackDisable($iTaBChkIdle) ; Early Take-A-Break detection
-
 	While 1
 		If _Sleep($iDelayCollect1) Or $RunState = False Then ExitLoop
 		_CaptureRegion()
-		If _ImageSearch(@ScriptDir & "\images\collect.png", 1, $collx, $colly, 20) Then
+		If _ImageSearch(@ScriptDir & "\images\Resources\collect.png", 1, $collx, $colly, 20) Then
 			If isInsideDiamondXY($collx, $colly) Then
 				If IsMainPage() Then Click($collx, $colly, 1, 0, "#0330") ;Click collector
 				If _Sleep($iDelayCollect1) Then Return
@@ -75,6 +75,60 @@ Func Collect()
 	WEnd
 	If _Sleep($iDelayCollect3) Then Return
 	checkMainScreen(False) ; check if errors during function
+
+	; collect Loot Cart
+	If $ineedRearm Then
+		Setlog("Searching for a Loot Cart..", $COLOR_BLUE)
+		Local $LootCart = @ScriptDir & "\images\Resources\loot_cart.png"
+		Local $LootCartX, $LootCartY
+		$ToleranceImgLoc = 0.850
+
+		$hBitmapFirst = _CaptureRegion2()
+		Local $res = DllCall($pImgLib, "str", "SearchTile", "handle", $hBitmapFirst, "str", $LootCart, "float", $ToleranceImgLoc, "str", $ExtendedCocSearchArea, "str", $ExtendedCocDiamond)
+		_WinAPI_DeleteObject($hBitmapFirst)
+
+		If IsArray($res) Then
+			If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+			If $res[0] = "0" Then
+				; failed to find a loot cart on the field
+				SetLog("No Loot Cart found, Yard is clean!", $COLOR_PURPLE)
+			ElseIf $res[0] = "-1" Then
+				SetLog("DLL Error", $COLOR_RED)
+			ElseIf $res[0] = "-2" Then
+				SetLog("Invalid Resolution", $COLOR_RED)
+			Else
+				$expRet = StringSplit($res[0], "|", 2)
+				For $j = 1 To UBound($expRet) - 1 Step 2
+					$LootCartX = Int($expRet[$j])
+					$LootCartY = Int($expRet[$j + 1])
+					If $DebugSetlog then SetLog("LootCart found (" & $LootCartX & "," & $LootCartY & ")", $COLOR_GREEN)
+					If IsMainPage() Then Click($LootCartX, $LootCartY, 1, 0, "#0330")
+					If _Sleep($iDelayCollect1) Then Return
+
+					; Get LootCart info confirming the name
+					Local $sInfo = BuildingInfo(242, 520 + $bottomOffsetY) ; 860x780
+					If @error Then SetError(0, 0, 0)
+					Local $CountGetInfo = 0
+					While IsArray($sInfo) = False
+						$sInfo = BuildingInfo(242, 520 + $bottomOffsetY) ; 860x780
+						If @error Then SetError(0, 0, 0)
+						If _Sleep($iDelayCollect1) Then Return
+						$CountGetInfo += 1
+						If $CountGetInfo >= 5 Then Return
+					WEnd
+					If $DebugSetlog then SetLog(_ArrayToString($sInfo, " "), $COLOR_PURPLE)
+					If @error Then Return SetError(0, 0, 0)
+					If $sInfo[0] > 1 Or $sInfo[0] = "" Then
+						If StringInStr($sInfo[1], "Loot") = 0 Then
+							If $DebugSetlog then SetLog("Bad Loot Cart location", $COLOR_ORANGE)
+						Else
+							If IsMainPage() Then Click($aLootCartBtn[0], $aLootCartBtn[1], 1, 0, "#0331") ; Click loot cart button
+						EndIf
+					EndIf
+				Next
+			EndIf
+		EndIf
+	EndIf
 
 	VillageReport(True, True)
 	$tempCounter = 0

@@ -39,14 +39,8 @@ Func SnipeWhileTrain()
 			$tempSnipeWhileTrain[11] = $iChkSmartAttack[$DB][2]
 			$tempSnipeWhileTrain[12] = $ichkDBMeetCollOutside
 			$tempSnipeWhileTrain[13] = $iDBMinCollOutsidePercent
-
-			; change values to snipe while train
-			$iChkMeetTrophy[$DB] = 1
-			$iChkMeetTrophy[$LB] = 1
-			$iMinTrophy[$DB] = 99
-			$iMinTrophy[$LB] = 99
 			; if greedy mode enabled
-			If $ichkAttackIfDB = 1 Then
+			If $ichkAttackIfDB = 1 Then	
 				Setlog("Min collector outside set to 70% during snipe while train mode", $COLOR_PURPLE)
 				; bot should only attack dead bases with 70% of collectors outside in SWT mode
 				$ichkDBMeetCollOutside = 1
@@ -61,9 +55,16 @@ Func SnipeWhileTrain()
 					$iChkSmartAttack[$DB][1] = 1
 					$iChkSmartAttack[$DB][2] = 1
 				EndIf
+			Else				
+				; this will disable DB attack if greedy mode is not enabled
+				$iChkMeetTrophy[$DB] = 1
+				$iChkMeetTrophy[$LB] = 1
+				$iMinTrophy[$DB] = 99
+				$iMinTrophy[$LB] = 99
+				$iChkMeetOne[$DB] = 0
+				$iChkMeetOne[$LB] = 0
 			EndIf
-			$iChkMeetOne[$DB] = 0
-			$iChkMeetOne[$LB] = 0
+
 			$OptTrophyMode = 1
 
 			; used to Change back values
@@ -115,6 +116,7 @@ Func SWHTSearchLimit($iSkipped)
 		While not(_CheckPixel($aSurrenderButton, $bCapturepixel))
 			If _Sleep($iDelaySWHTSearchLimit1) Then Return
 			$Wcount += 1
+			If $debugSetlog = 1 Then Setlog("Wait for surrender button " & $Wcount, $COLOR_PURPLE)
 			If $Wcount >= 50 Then ExitLoop
 		WEnd
 
@@ -127,6 +129,7 @@ Func SWHTSearchLimit($iSkipped)
 		While Not (_CheckPixel($aIsMain, $bCapturepixel))
 			If _Sleep($iDelaySearchLimit2) Then Return
 			$mCcount += 1
+			If $debugSetlog = 1 Then Setlog("Wait for main screen " & $mCcount, $COLOR_PURPLE)
 			If $mCount >= 50 Then ExitLoop
 		WEnd
 

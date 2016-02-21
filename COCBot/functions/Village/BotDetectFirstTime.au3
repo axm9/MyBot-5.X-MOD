@@ -66,7 +66,7 @@ Func BotDetectFirstTime()
 					$barrackPos[$x][1] = -1
 				Next
 				LocateBarrack2()
-				SaveConfig()
+				saveConfig()
 				ExitLoop
 			EndIf
 		Next
@@ -76,7 +76,7 @@ Func BotDetectFirstTime()
 		If _Sleep($iDelayBotDetectFirstTime3) Then Return
 		If $DSFPos[0] = -1 Then
 			LocateDarkSpellFactory()
-			SaveConfig()
+			saveConfig()
 		EndIf
 	EndIf
 
@@ -84,7 +84,7 @@ Func BotDetectFirstTime()
 		If _Sleep($iDelayBotDetectFirstTime3) Then Return
 		If $SFPos[0] = -1 Then
 			LocateSpellFactory()
-			SaveConfig()
+			saveConfig()
 		EndIf
 	EndIf
 
@@ -92,7 +92,7 @@ Func BotDetectFirstTime()
 		If _Sleep($iDelayBotDetectFirstTime3) Then Return
 		If $aLabPos[0] = "" Or $aLabPos[0] = -1 Then
 			LocateLab()
-			SaveConfig()
+			saveConfig()
 		EndIf
 	EndIf
 
@@ -100,7 +100,7 @@ Func BotDetectFirstTime()
 		If _Sleep($iDelayBotDetectFirstTime3) Then Return
 		If $KingAltarPos[0] = -1 Then
 			LocateKingAltar()
-			SaveConfig()
+			saveConfig()
 		EndIf
 	EndIf
 
@@ -108,7 +108,7 @@ Func BotDetectFirstTime()
 		If _Sleep($iDelayBotDetectFirstTime3) Then Return
 		If $QueenAltarPos[0] = -1 Then
 			LocateQueenAltar()
-			SaveConfig()
+			saveConfig()
 		EndIf
 	EndIf
 
@@ -116,7 +116,7 @@ Func BotDetectFirstTime()
 		If _Sleep($iDelayBotDetectFirstTime3) Then Return
 		If $WardenAltarPos[0] = -1 Then
 			LocateWardenAltar()
-			SaveConfig()
+			saveConfig()
 		EndIf
 	EndIf
 
@@ -138,6 +138,9 @@ Func BotDetectFirstTime()
 			$i += 1
 		WEnd
 		SetLog("Verifying your Mines/Collectors/Drills ...wait ...")
+
+		_WinAPI_DeleteObject($hBitmapFirst)
+		$hBitmapFirst = _CaptureRegion2()
 		$t = 0
 		$PixelMineHere = GetLocationMine()
 		For $i = 0 To UBound($PixelMineHere) - 1
@@ -184,5 +187,4 @@ Func BotDetectFirstTime()
 		EndIf
 		$t = 0
 	EndIf
-
 EndFunc   ;==>BotDetectFirstTime

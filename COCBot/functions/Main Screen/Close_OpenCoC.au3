@@ -14,6 +14,7 @@
 ; ===============================================================================================================================
 
 Func CloseCoC($ReOpenCoC = False)
+    ResumeAndroid()
     If Not $RunState Then Return
 
     Local $Adb = ""
@@ -52,6 +53,7 @@ EndFunc   ;==>CloseCoC
 ; ===============================================================================================================================
 
 Func OpenCoC()
+    ResumeAndroid()
     If Not $RunState Then Return
 
 	Local $RunApp = "" , $iCount = 0
@@ -87,12 +89,22 @@ EndFunc  ;==>OpenCoC
 ; ===============================================================================================================================
 
 Func WaitnOpenCoC($iWaitTime, $bFullRestart = False)
+    ResumeAndroid()
     If Not $RunState Then Return
 
 	Local $RunApp = ""
+	Local $sWaitTime = ""
+	Local $iMin, $iSec, $iHour, $iWaitSec
 	WinGetAndroidHandle()
 	BS1HomeButton()
-	SetLog("Waiting " & Round ($iWaitTime / 1000) & " seconds before starting CoC", $COLOR_GREEN)
+	$iWaitSec = Round($iWaitTime/1000)
+	$iHour = Floor(Floor($iWaitSec / 60) / 60)
+	$iMin = Floor(Mod(Floor($iWaitSec / 60), 60))
+	$iSec = Floor(Mod($iWaitSec, 60))
+	If $iHour > 0 Then $sWaitTime &= $iHour &" hours "
+	If $imin > 0 Then $sWaitTime &= $imin &" minutes "
+	If $iSec > 0 Then $sWaitTime &= $iSec &" seconds "
+	SetLog("Waiting " & $sWaitTime & "before starting CoC", $COLOR_GREEN)
 	If _SleepStatus($iWaitTime) Then Return False ; Wait for server to see log off
 	
 	SendAdbCommand("shell am start -n com.supercell.clashofclans/.GameApp")

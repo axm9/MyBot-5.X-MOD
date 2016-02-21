@@ -13,6 +13,8 @@
 ;                               x    y     color  tolerance
 Global $aIsReloadError[4]    	= [457, 301 + $midOffsetY, 0x33B5E5, 10] ; Pixel Search Check point For All Reload Button errors, except break ending
 Global $aIsMain[4]           	= [284,  28, 0x41B1CD, 20] ; Main Screen, Builder Left Eye
+Global $aIsDPI125[4]         = [355,  35, 0x399CB8, 15] ; Main Screen, Builder Left Eye, DPI set to 125%
+Global $aIsDPI150[4]         = [426,  42, 0x348FAA, 15] ; Main Screen, Builder Left Eye, DPI set to 150%
 Global $aIsMainGrayed[4]     	= [284,  28, 0x215B69, 15] ; Main Screen Grayed, Builder Left Eye
 Global $aTopLeftClient[4]    	= [  1,   1, 0x000000,  0] ; TopLeftClient: Tolerance not needed
 Global $aTopMiddleClient[4]  	= [475,   1, 0x000000,  0] ; TopMiddleClient: Tolerance not needed
@@ -74,6 +76,8 @@ Global $aIsGemWindow1[4]     	= [573, 256 + $midOffsetY, 0xDD0408, 20] ; Main Sc
 Global $aIsGemWindow2[4]     	= [577, 266 + $midOffsetY, 0xBF1218, 20] ; Main Screen, pixel below Red X to close gem window
 Global $aIsGemWindow3[4]     	= [586, 266 + $midOffsetY, 0xBC1218, 20] ; Main Screen, pixel below Red X to close gem window
 Global $aIsGemWindow4[4]     	= [595, 266 + $midOffsetY, 0xBC1218, 20] ; Main Screen, pixel below Red X to close gem window
+Global $aLootCartBtn[2]      	= [430, 640 + $bottomOffsetY] ; Main Screen Loot Cart button
+Global $aCleanYard[4]        	= [418, 587 + $bottomOffsetY, 0xE1debe, 20] ; Main Screen Clean Resources - Trees , Mushrooms etc
 
 Global $aKingHealth          	= [ -1, 572 + $bottomOffsetY, 0x00b29e, 15] ; Attack Screen, Check King's Health, X coordinate is dynamic, not used from array   ;  -> with slot compensation 0xbfb29e
 Global $aQueenHealth         	= [ -1, 572 + $bottomOffsetY, 0x008227, 15] ; Attack Screen, Check Queen's Health, X coordinate is dynamic, not used from array  ;  -> with slot compensation 0xe08227

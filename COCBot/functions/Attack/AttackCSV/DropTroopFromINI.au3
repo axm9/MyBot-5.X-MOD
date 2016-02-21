@@ -32,7 +32,7 @@ Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $
 	debugAttackCSV(" - delay when  change deploy point : " & $delayDropMin & "-" & $delayDropMax)
 	debugAttackCSV(" - delay after drop all troops : " & $sleepafterMin & "-" & $sleepAfterMax)
 
-	;initialize vector arrays
+	; initialize vector arrays
 	Local $vectorLetters = StringSplit($vectorString, "-")
 	Local $vectorCount = $vectorLetters[0]
 	Local $vectors[$vectorCount]
@@ -40,7 +40,7 @@ Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $
 		$vectors[$i] = Execute("$ATTACKVECTOR_" & $vectorLetters[$i + 1])
 	Next
 
-	;Qty to drop
+	; Qty to drop
 	If $qtaMin <> $qtaMax Then
 		Local $qty = Random($qtaMin, $qtaMax, 1)
 	Else
@@ -48,12 +48,12 @@ Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $
 	EndIf
 	debugAttackCSV(">> qty to deploy: " & $qty)
 
-	;number of troop to drop in one point...
+	; number of troop to drop in one point...
 	Local $qtyxpoint = Int($qty / ($indexEnd - $indexStart + 1))
 	Local $extraunit = Mod($qty, ($indexEnd - $indexStart + 1))
 	debugAttackCSV(">> qty x point: " & $qtyxpoint)
 	debugAttackCSV(">> qty extra: " & $extraunit)
-	;search slot where is the troop...
+	; search slot where is the troop...
 	Local $troopPosition = -1
 	For $i = 0 To UBound($atkTroops) - 1
 		If $atkTroops[$i][0] = Eval("e" & $troopName) Then
@@ -90,21 +90,21 @@ Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $
 		EndIf
 
 	Else
+		Local $SuspendMode = SuspendAndroid()
 		SelectDropTroop($troopPosition) ; select the troop...
-		
+		KeepClicks()
 		Local $troopEnum = Eval("e" & $troopName)
-					Local $qty2 = $qtyxpoint
+		Local $qty2 = $qtyxpoint
 
-					;delay time between 2 drops in same point
-					If $delayPointmin <> $delayPointmax Then
-						Local $delayPoint = Random($delayPointmin, $delayPointmax, 1)
-					Else
-						Local $delayPoint = $delayPointmin
-					EndIf
+		; delay time between 2 drops in same point
+		If $delayPointmin <> $delayPointmax Then
+			Local $delayPoint = Random($delayPointmin, $delayPointmax, 1)
+		Else
+			Local $delayPoint = $delayPointmin
+		EndIf
 
-		Local $delayDrop
-		
-		;drop
+		Local $delayDrop		
+		; drop
 		Local $hTimer = TimerInit()
 		For $i = $indexStart To $indexEnd
 			For $j = 0 To $vectorCount - 1
@@ -120,19 +120,19 @@ Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $
 							Else
 								PureClick($pixel[0], $pixel[1], $qty2, $delayPoint, "#0666")
 							EndIf
-						Case $eKing; drop King
+						Case $eKing
 							If $debug = True Then
 								Setlog("dropHeroes(" & $pixel[0] & ", " & $pixel[1] & ", " & $King & ", -1, -1) ")
 							Else
 								dropHeroes($pixel[0], $pixel[1], $King, -1, -1)
 							EndIf
-						Case $eQueen ; drop Queen
+						Case $eQueen
 							If $debug = True Then
 								Setlog("dropHeroes(" & $pixel[0] & ", " & $pixel[1] & ", -1, " & $Queen & ", -1) ")
 							Else
 								dropHeroes($pixel[0], $pixel[1], -1, $Queen, -1)
 							EndIf
-						Case $eWarden ; drop Warden
+						Case $eWarden
 							If $debug = True Then
 								Setlog("dropHeroes(" & $pixel[0] & ", " & $pixel[1] & ", -1, -1, " & $Warden & ") ")
 							Else
@@ -157,7 +157,7 @@ Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $
 				EndIf
 			Next
 			If $i <> $indexEnd Then
-				;delay time between 2 drops in different point
+				; delay time between 2 drops in different point
 				If $delayDropMin <> $delayDropMax Then
 					$delayDrop = Random($delayDropMin, $delayDropMax, 1)
 				Else
@@ -165,15 +165,18 @@ Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $
 				EndIf
 				debugAttackCSV(">> delay change drop point: " & $delayDrop)
 				If $delayDrop <> 0 Then
+				    SuspendAndroid($SuspendMode)
+					ReleaseClicks()
 					If _Sleep($delayDrop) Then Return
+					KeepClicks()
 				EndIf
 			EndIf
 		Next
 
-		Local $htimerDrop = Round(TimerDiff($hTimer) / 1000, 2)
-		Setlog($troopName & " drop took " & $htimerDrop & " seconds.")
+	    ReleaseClicks()
+	    SuspendAndroid($SuspendMode)
 
-		;sleep time after deploy all troops
+		; sleep time after deploy all troops
 		If $sleepafterMin <> $sleepAfterMax Then
 			Local $sleepafter = Random($sleepafterMin, $sleepAfterMax, 1)
 		Else

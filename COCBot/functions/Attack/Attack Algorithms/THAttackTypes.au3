@@ -125,12 +125,10 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 	
 	If $CurCamp > $iMinTroopToAttackDB And ($GoldPercent <= $ipercentTSSuccess Or $ElixirPercent <= $ipercentTSSuccess) And CompareResources($DB) Then
 		SetLog("Gold & Elixir are mostly in collectors and can be raided", $COLOR_GREEN, "Lucida Console", 7.5)
-		; change settings to dead base attack
-		$isDeadBase = True
-		
 		If $ichkDBMeetCollOutside = 1 Then ; check for outside collectors if enabled
 			If AreCollectorsOutside($iDBMinCollOutsidePercent) Then ; attack dead base if collectors are outside
 				SetLog("Collectors are outside.", $COLOR_GREEN)
+				$isDeadBase = True ; change settings to dead base attack
 				$iMatchMode = $DB
 				If $debugDeadBaseImage = 1 Then
 					_CaptureRegion()
@@ -141,6 +139,7 @@ Func TestLootForDB($GoldStart, $ElixirStart, $DarkStart)
 				SetLog("Collectors are not outside!", $COLOR_RED)
 			EndIf
 		Else
+			$isDeadBase = True ; change settings to dead base attack
 			$iMatchMode = $DB
 			If $debugDeadBaseImage = 1 Then
 				_CaptureRegion()

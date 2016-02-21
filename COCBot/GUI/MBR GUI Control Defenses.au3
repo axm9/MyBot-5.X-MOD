@@ -144,16 +144,19 @@ Func applyDefConfig()
 EndFunc
 
 Func OpenGUI3()
-	GUI3()
-	applyDefConfig()
-	GUISetState(@SW_SHOW, $hdefGUI)
-	GUISetState(@SW_DISABLE, $frmBot)
+	If $hDefGUI = 0 Then
+		GUI3()
+		applyDefConfig()
+		GUISetState(@SW_SHOW, $hdefGUI)
+		GUISetState(@SW_DISABLE, $frmBot)
+    EndIf
 EndFunc
 
 Func CloseGUI3()
 	$gui2open = 0
 	savedefConfig()
 	GUIDelete($hdefGUI)
+	$hDefGUI = 0
 	GUISetState(@SW_ENABLE, $frmBot)
 	WinActivate($frmBot)
 EndFunc

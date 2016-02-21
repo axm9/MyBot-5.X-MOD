@@ -57,7 +57,7 @@ Func PrepareSearch() ;Click attack button and find match button, will break shie
 		Return
 	EndIf
 	
-	If IsAttackWhileShieldPage() Then  ; check for shield window and then button to lose time due attack and click okay
+	If IsAttackWhileShieldPage(False) Then  ; check for shield window and then button to lose time due attack and click okay
 		Local $offColors[3][3] = [[0x000000, 144, 1], [0xFFFFFF, 54, 17], [0xFFFFFF, 54, 28]] ; 2nd Black opposite button, 3rd pixel white "O" center top, 4th pixel White "0" bottom center
 		Global $ButtonPixel = _MultiPixelSearch(359, 404 + $midOffsetY, 510, 445 + $midOffsetY, 1, 1, Hex(0x000000, 6), $offColors, 20) ; first vertical black pixel of Okay
 		If IsArray($ButtonPixel) Then

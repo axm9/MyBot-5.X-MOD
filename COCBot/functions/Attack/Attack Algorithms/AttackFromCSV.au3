@@ -186,14 +186,16 @@ Func Algorithm_AttackCSV($testattack = False)
 	; 03 - TOWNHALL ------------------------------------------------------------------------
 	If $searchTH = "" Then
 		If $attackcsv_locate_townhall = 1 Then
+		    SuspendAndroid()
 			$hTimer = TimerInit()
 			Local $searchTH = checkTownHallADV2(0, 0, False)
 			If $searchTH = "-" Then ; retry with autoit search after $iDelayVillageSearch5 seconds
 				If _Sleep($iDelayAttackCSV1) Then Return
-				SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
+				If $debugsetlog = 1 Then SetLog("2nd attempt to detect the TownHall!", $COLOR_RED)
 				$searchTH = checkTownhallADV2()
 			EndIf
 			Setlog("> Townhall located in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds", $COLOR_BLUE)
+			ResumeAndroid()
 		Else
 			Setlog("> Townhall search not needed, skip")
 		EndIf
@@ -219,7 +221,9 @@ Func Algorithm_AttackCSV($testattack = False)
 	; 04.01 If drop troop near gold mine
 	If $attackcsv_locate_mine = 1 Then
 		$hTimer = TimerInit()
+		SuspendAndroid()
 		$PixelMine = GetLocationMine()
+		ResumeAndroid()
 		CleanRedArea($PixelMine)
 		Local $htimerMine = Round(TimerDiff($hTimer) / 1000, 2)
 		If (IsArray($PixelMine)) Then
@@ -251,7 +255,9 @@ Func Algorithm_AttackCSV($testattack = False)
 	; 04.02  If drop troop near elixir
 	If $attackcsv_locate_elixir = 1 Then
 		$hTimer = TimerInit()
+		SuspendAndroid()
 		$PixelElixir = GetLocationElixir()
+		ResumeAndroid()
 		CleanRedArea($PixelElixir)
 		Local $htimerMine = Round(TimerDiff($hTimer) / 1000, 2)
 		If (IsArray($PixelElixir)) Then
@@ -283,7 +289,9 @@ Func Algorithm_AttackCSV($testattack = False)
 	; 04.03 If drop troop near drill
 	If $attackcsv_locate_drill = 1 Then
 		$hTimer = TimerInit()
+		SuspendAndroid()
 		$PixelDarkElixir = GetLocationDarkElixir()
+		ResumeAndroid()
 		CleanRedArea($PixelDarkElixir)
 		Local $htimerMine = Round(TimerDiff($hTimer) / 1000, 2)
 		If (IsArray($PixelDarkElixir)) Then
@@ -324,7 +332,9 @@ Func Algorithm_AttackCSV($testattack = False)
 	; 05 - DARKELIXIRSTORAGE ------------------------------------------------------------------------
 	If $attackcsv_locate_dark_storage = 1 Then
 		$hTimer = TimerInit()
+		SuspendAndroid()
 		Local $PixelDarkElixir = GetLocationDarkElixirStorageWithLevel()
+		ResumeAndroid()
 		CleanRedArea($PixelDarkElixir)
 		Local $pixel = StringSplit($PixelDarkElixir, "#", 2)
 		If UBound($pixel) >= 2 Then

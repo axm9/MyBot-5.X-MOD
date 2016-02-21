@@ -22,14 +22,23 @@ Local $x = 30, $y = 150
 		$chkBotStop = GUICtrlCreateCheckbox("", $x - 5, $y, 16, 16)
 			$txtTip = GetTranslated(7,3, "Use these options to set when the bot will stop attacking.")
 			GUICtrlSetTip(-1, $txtTip)
-		$cmbBotCommand = GUICtrlCreateCombo("", $x + 20, $y - 3, 90, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+			GUICtrlSetOnEvent(-1, "chkBotStop")
+		$cmbBotCommand = GUICtrlCreateCombo("", $x + 20, $y - 3, 95, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, GetTranslated(7,4, "Halt Attack") & "|" & GetTranslated(7,5, "Shutdown PC") & "|" & GetTranslated(7,6, "Sleep PC") & "|" & GetTranslated(7,7, "Reboot PC"), GetTranslated(7,4, -1))
-		$lblBotCond = GUICtrlCreateLabel(GetTranslated(7,88, "When..."), $x + 125, $y, 45, 17)
+			GUICtrlSetData(-1, GetTranslated(7,4, "Halt Attack") & "|" & GetTranslated(7,155, "Stop Bot") & "|" & GetTranslated(7,156, "Close Bot") & "|" & GetTranslated(7,157, "Close CoC+Bot") & "|" & GetTranslated(7,5, "Shutdown PC") & "|" & GetTranslated(7,6, "Sleep PC") & "|" & GetTranslated(7,7, "Reboot PC"), GetTranslated(7,4, -1))
+			GUICtrlSetState (-1, $GUI_DISABLE)
+		$lblBotCond = GUICtrlCreateLabel(GetTranslated(7,88, "When..."), $x + 128, $y, 45, 17)
 		$cmbBotCond = GUICtrlCreateCombo("", $x + 175, $y - 3, 160, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, GetTranslated(7,8, "G and E and DE Full") & "|" & GetTranslated(7,9, "(G and E) or DE Full") & "|" & GetTranslated(7,10, "(G or E) and DE Full") & "|" & GetTranslated(7,11, "G or E or DE Full") & "|" & GetTranslated(7,12, "Gold and Elixir Full") & "|" & GetTranslated(7,13, "Gold or Elixir Full") & "|" & GetTranslated(7,14, "Gold and DE Full") & "|" & GetTranslated(7,15, "Elixir and DE Full") & "|" & GetTranslated(7,16, "Gold or DE Full") & "|" & GetTranslated(7,17, "Elixir or DE Full") & "|" & GetTranslated(7,18, "Gold Full") & "|" & GetTranslated(7,19, "Elixir Full") & "|" & GetTranslated(7,20, "Dark Elixir Full") & "|" & GetTranslated(7,21, "Bot running for...") & "|" & GetTranslated(7,89, "Now (Train/Donate Only)") & "|" & GetTranslated(7,22, "Now (Donate Only)") & "|" & GetTranslated(7,23, "Now (Only stay online)") , GetTranslated(7,89, -1))
+			GUICtrlSetData(-1, GetTranslated(7,8, "G and E Full and Max.Trophy") & "|" & GetTranslated(7,9, "(G and E) Full or Max.Trophy") & "|" & GetTranslated(7,10, "(G or E) Full and Max.Trophy") & "|" & _
+			GetTranslated(7,11, "G or E Full or Max.Trophy") & "|" & GetTranslated(7,12, "Gold and Elixir Full") & "|" & GetTranslated(7,13, "Gold or Elixir Full") & "|" & GetTranslated(7,14, "Gold Full and Max.Trophy") & "|" & _
+			GetTranslated(7,15, "Elixir Full and Max.Trophy") & "|" & GetTranslated(7,16, "Gold Full or Max.Trophy") & "|" & GetTranslated(7,17, "Elixir Full or Max.Trophy") & "|" & GetTranslated(7,18, "Gold Full") & "|" & _
+			GetTranslated(7,19, "Elixir Full") & "|" & GetTranslated(7,20, "Reach Max. Trophy") & "|" & GetTranslated(7,153, "Dark Elixir Full") & "|" & GetTranslated(7,154, "All Storage (G+E+DE) Full") & "|" & _
+			GetTranslated(7,21, "Bot running for...") & "|" & GetTranslated(7,89, "Now (Train/Donate Only)") & "|" & _
+			GetTranslated(7,22, "Now (Donate Only)") & "|" & GetTranslated(7,23, "Now (Only stay online)") & "|" & GetTranslated(7,150, "W/Shield (Train/Donate Only)") & "|" & GetTranslated(7,151, "W/Shield (Donate Only)") & "|" & _
+			GetTranslated(7,152, "W/Shield (Only stay online)"), GetTranslated(7,89, -1))
 			GUICtrlSetOnEvent(-1, "cmbBotCond")
+			GUICtrlSetState (-1, $GUI_DISABLE)
 		$cmbHoursStop = GUICtrlCreateCombo("", $x + 335, $y - 3, 80, 35, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, $txtTip)
 			$sTxtHours = GetTranslated(7,25, "Hours")
@@ -75,9 +84,15 @@ Local $x = 30, $y = 253
 			GUICtrlSetState(-1, $GUI_CHECKED)
 			
 	$y += 28
-		GUICtrlCreateIcon($pIconLib, $eIcnTombstone, $x + 20, $y, 24, 24)
-		$chkTombstones = GUICtrlCreateCheckbox(GetTranslated(7,39, "Clear Tombstones"), $x + 75, $y + 2, -1, -1)
+		GUICtrlCreateIcon($pIconLib, $eIcnTombstone, $x - 5 , $y + 4, 24, 24)
+		$chkTombstones = GUICtrlCreateCheckbox(GetTranslated(7,39, "Tombs"), $x + 23, $y + 6, -1, -1)
 			$txtTip = GetTranslated(7,40, "Check this to automatically clear tombstones after enemy attack.")
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetState(-1, $GUI_UNCHECKED)
+
+		GUICtrlCreateIcon($pIconLib, $eIcnCleanYard, $x + 80, $y + 4, 24, 24)
+		$chkCleanYard = GUICtrlCreateCheckbox(GetTranslated(7,101, "Obstacles"), $x + 108, $y + 6, -1, -1)
+			$txtTip = GetTranslated(7,102, "Check this to automatically clear Yard from Trees, Trunks, etc.")
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_UNCHECKED)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)

@@ -28,7 +28,7 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 		Return
     EndIf
 	getBSPos() ; Update $HWnd and Android Window Positions
-	If $ichkBackground = 0 Then
+	If $ichkBackground = 0 And $NoFocusTampering = False Then
 	    Local $hTimer = TimerInit(), $hWndActive = -1
 		While TimerDiff($hTimer) < 1000 And $hWndActive <> $HWnD And Not _Sleep(100)
 		   getBSPos() ; update $HWnD
@@ -69,10 +69,8 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 
 	If $Check = True Then
 		SetLog("Main Screen Located", $COLOR_GREEN)
-	Else
-		If $debugsetlog = 1 Then SetLog("checkMainScreen exit quiet mode", $COLOR_PURPLE)
 	EndIf
 
-    ;After checkscreen dispose windows
+    ; After checkscreen dispose windows
 	DisposeWindows()
 EndFunc   ;==>checkMainScreen

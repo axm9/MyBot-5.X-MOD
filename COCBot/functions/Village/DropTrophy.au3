@@ -35,8 +35,8 @@ Func DropTrophy()
 		EndIf
 	Next
 	; if heroes enabled, check them and reset drop trophy disable
-	If $iChkTrophyHeroes = 1 And ($BarbarianKingAvailable Or $ArcherQueenAvailable Or $GrandWardenAvailable) Then
-		If $DebugSetlog = 1 Then SetLog("Drop Trophy Found Hero BK|AQ|GW: " & $BarbarianKingAvailable & "|" & $ArcherQueenAvailable & "|" & $GrandWardenAvailable, $COLOR_PURPLE)
+	If $iChkTrophyHeroes = 1 And $iHeroAvailable > 0 Then
+		If $DebugSetlog = 1 Then SetLog("Drop Trophy Found Hero BK|AQ|GW: " & BitOR($iHeroAvailable, $HERO_KING) & "|" & BitOR($iHeroAvailable, $HERO_QUEEN) & "|" & BitOR($iHeroAvailable, $HERO_WARDEN), $COLOR_PURPLE)
 		$bDisableDropTrophy = False
 		$bHaveTroops = True
 	EndIf
@@ -140,6 +140,12 @@ Func DropTrophy()
 		Else
 			; Normal Drop Trophy, no check for Dead Base
 			$SearchCount = 0
+				GetResources(False, $DT)
+
+				SetLog("Identification of your troops:", $COLOR_BLUE)
+				PrepareAttack($DT) ; ==== Troops :checks for type, slot, and quantity ===
+				If $Restart = True Then Return
+
 		EndIf
 
 		If _Sleep($iDelayDropTrophy4) Then ExitLoop

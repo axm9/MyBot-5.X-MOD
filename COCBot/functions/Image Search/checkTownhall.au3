@@ -17,33 +17,33 @@ Func LoadTHImage()
 	Local $x
 	Local $path = @ScriptDir & "\images\TH\"
     Local $useImages
-	If $iDetectedImageType = 0 Then ;all files, exlude snow
+	If $iDetectedImageType = 0 Then ; all files, exlude snow
 	   $useImages = "*T*X*Y*.bmp|*SNOW*.bmp"
-    ElseIf $iDetectedImageType = 1 Then ;all files, exclude normal
+    ElseIf $iDetectedImageType = 1 Then ; all files, exclude normal
 	   $useImages = "*T*X*Y*.bmp|*NORM*.bmp"
-    Else ;all files
+    Else ; all files
 	   $useImages = "*T*X*Y*.bmp"
     EndIf
 	For $t = 0 To 5
-		;assign THImages0... THImages4  an array empty with THimagesx[0]=0
+		; assign THImages0... THImages4  an array empty with THimagesx[0]=0
 		Assign("THImages" & $t, StringSplit("", ""))
-		;put in a temp array the list of files matching condition "*T*.bmp"
+		; put in a temp array the list of files matching condition "*T*.bmp"
 		$x = _FileListToArrayRec($path & $THText[$t] & "\", $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
-		;assign value at THimages0... THImages4 if $x it's not empty
+		; assign value at THimages0... THImages4 if $x it's not empty
 		If UBound($x) Then Assign("THImages" & $t, $x)
 
-		;code to debug in console if need
+		; code to debug in console if need
 		For $i = 0 To UBound(Eval("THImages" & $t)) - 1
 			ConsoleWrite("THImages_" & $t + 6  & "[" & $i & "]:" & Execute("$THImages" & $t & "[" & $i & "]") & @CRLF)
 		Next
 
-		;make stats array and put values = 0
+		; make stats array and put values = 0
 		For $i = 0 To UBound($x) - 1
 			$x[$i] = "0"
 		Next
 		If UBound($x) Then Assign("THImagesStat" & $t, $x)
 
-		;read from ini file stats values
+		; read from ini file stats values
 		For $i = 1 To UBound(Eval("THImagesStat" & $t)) - 1
 			Local $tempvect = Eval("THImagesStat" & $t)
 			$tempvect[$i] = IniRead($statChkTownHall, $THText[$t], Execute("$THImages" & $t & "[" & $i & "]"), "0")
@@ -52,7 +52,7 @@ Func LoadTHImage()
 	Next
 EndFunc   ;==>LoadTHImage
 
-Func checkTownHallADV2($limit = 0, $tolerancefix = 0, $captureRegion=True)
+Func checkTownHallADV2($limit = 0, $tolerancefix = 0, $captureRegion = True)
 	; variable limit: limit number of searches, limit = 0 disable limit search
 	; variable tolearnce: set a fixed tolearnce, tolerance = 0 disable fixed tolerance
 	Local $hTimer = TimerInit()
@@ -91,7 +91,7 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0, $captureRegion=True)
 						SetLog("  - Images checked: " & $count, $COLOR_TEAL)
 					EndIf
 					If isInsideDiamondXY($THx, $THy) = True Then
-						;add in stats-----
+						; add in stats-----
 						Local $tempvect = Eval("THImagesStat" & $t)
 						$tempvect[$i] += 1
 						Assign("THImagesStat" & $t, $tempvect)
@@ -106,7 +106,7 @@ Func checkTownHallADV2($limit = 0, $tolerancefix = 0, $captureRegion=True)
 					EndIf
 				EndIf
 			EndIf
-			If $found Then ExitLoop ;if found = true exit from second for...
+			If $found Then ExitLoop ; if found = true exit from second for...
 		Next
 	Next
 
@@ -153,7 +153,9 @@ Func CaptureTHwithInfo($THx, $THy, $ImageInfo)
 	Local $filename = String("THDetected_" & $Date & "_" & $Time & "_" & $ImageInfo & ".png")
 
 	If $debugBuildingPos = 1 And $debugsetlog = 1 Then Setlog(" _GDIPlus_ImageSaveToFile", $COLOR_PURPLE)
-	_GDIPlus_ImageSaveToFile($EditedImage, $dirTempDebug & $filename)
+	Local $savefolder = $dirTempDebug & "THDetected_" & "\"
+	DirCreate($savefolder)
+	_GDIPlus_ImageSaveToFile($EditedImage, $savefolder & $filename)
 	_GDIPlus_PenDispose($hPen)
 	_GDIPlus_GraphicsDispose($hGraphic)
 EndFunc   ;==>CaptureTHwithInfo

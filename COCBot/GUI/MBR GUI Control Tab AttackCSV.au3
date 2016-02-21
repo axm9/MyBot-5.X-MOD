@@ -50,6 +50,7 @@ Func chkUseAttackABCSV()
 		EndIf
 	Next
 	chkABSmartAttackRedArea()
+	cmbABDeploy()
 EndFunc
 
 Func PopulateDBComboScriptsFiles()
@@ -71,7 +72,8 @@ Func PopulateDBComboScriptsFiles()
 
 	_GUICtrlComboBox_SetCurSel($cmbDBScriptName, _GUICtrlComboBox_FindStringExact($cmbDBScriptName, ""))
 	GUICtrlSetData($lblNotesDBScript, "")
-EndFunc
+EndFunc   ;==>PopulateDBComboScriptsFiles
+
 
 Func PopulateABComboScriptsFiles()
 	Dim $FileSearch, $NewFile

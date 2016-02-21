@@ -69,7 +69,7 @@ Func IsTHTrapped()
 				Local $defTolerance = $defToleranceArray[2] + ($tolerancedefOffset/100)
 				If $debugsetlog = 1 Then Setlog("Check for image " & $imageName, $COLOR_PURPLE)
 				
-				Local $result = DllCall($LibDir & "\ImgLocV6.dll", "str", "SearchTile", "handle", $sendHBitmap, "str", $FFile , "float", $defTolerance, "str", $customSearchArea, "str", $customDiamond)
+				Local $result = DllCall($pImgLib, "str", "SearchTile", "handle", $sendHBitmap, "str", $FFile , "float", $defTolerance, "str", $customSearchArea, "str", $customDiamond)
 				Local $DefLocation = StringSplit($result[0], "|")
 				$defCount += 1
 
@@ -228,7 +228,7 @@ Func CaptureDefs($iLeft = 15, $iTop = 25, $iRight = 825, $iBottom = 625)
 				Local $defToleranceArray = StringSplit(Execute("$DefImages" & $t & "["& $i & "]") , "T")
 				Local $defTolerance = $defToleranceArray[2] + ($tolerancedefOffset/100)
 				If $debugsetlog = 1 Then Setlog("Check for image " & $imageName, $COLOR_PURPLE)
-				Local $result = DllCall($LibDir & "\ImgLocV6.dll", "str", "SearchTile", "handle", $hBitmap, "str", $FFile , "float", $defTolerance, "str" , $customSearchArea, "str", $customDiamond)
+				Local $result = DllCall($pImgLib, "str", "SearchTile", "handle", $hBitmap, "str", $FFile , "float", $defTolerance, "str" , $customSearchArea, "str", $customDiamond)
 				If $debugsetlog = 1 Then Setlog("ImgLocV6 result: ", $result, $COLOR_PURPLE)
 				Local $DefLocation = StringSplit($result[0], "|")
 				$defCount += 1

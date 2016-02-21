@@ -21,6 +21,7 @@
 
 Func GoldElixirChange()
 	Local $Gold1, $Gold2
+	Local $GoldChange, $ElixirChange
 	Local $Elixir1, $Elixir2
 	SetLog("Checking if the battle has finished", $COLOR_BLUE)
 	While 1
@@ -42,6 +43,12 @@ Func GoldElixirChange()
 				$Gold2 = getGoldVillageSearch(48, 69)
 			EndIf
 			$Elixir2 = getElixirVillageSearch(48, 69 + 29)
+
+
+			If $Gold2 <> "" Or $Elixir2 <> "" Then
+				$GoldChange = $Gold2
+				$ElixirChange = $Elixir2
+			EndIf
 
 			If ($Gold2 = "" And $Elixir2 = "") Then
 				If _Sleep($iDelayGoldElixirChange1) Then Return

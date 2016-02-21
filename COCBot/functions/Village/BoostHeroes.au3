@@ -20,7 +20,7 @@ Func BoostKing()
 		SetLog("Boost Barbarian King...", $COLOR_BLUE)
 		If $KingAltarPos[0] = -1 Then
 			LocateKingAltar()
-			SaveConfig()
+			saveConfig()
 			If _Sleep($iDelayBoostHeroes4) Then Return
 		Else
 			Click($KingAltarPos[0], $KingAltarPos[1], 1, 0, "#0462")
@@ -61,7 +61,7 @@ Func BoostQueen()
 		SetLog("Boost Archer Queen...", $COLOR_BLUE)
 		If $QueenAltarPos[0] = -1 Then
 			LocateQueenAltar()
-			SaveConfig()
+			saveConfig()
 			If _Sleep($iDelayBoostHeroes4) Then Return
 		Else
 			Click($QueenAltarPos[0], $QueenAltarPos[1], 1, 0, "#0562")
@@ -102,7 +102,7 @@ Func BoostWarden()
 		SetLog("Boost Grand Warden...", $COLOR_BLUE)
 		If $WardenAltarPos[0] = -1 Then
 			LocateWardenAltar()
-			SaveConfig()
+			saveConfig()
 			If _Sleep($iDelayBoostHeroes4) Then Return
 		Else
 			Click($WardenAltarPos[0], $WardenAltarPos[1])

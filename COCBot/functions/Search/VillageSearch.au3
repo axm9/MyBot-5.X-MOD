@@ -5,7 +5,7 @@
 ; Parameters ....:
 ; Return values .: None
 ; Author ........: Code Monkey #6
-; Modified ......: kaganus (Jun/Aug 2015), Sardo 2015-07, KnowJack(Aug 2015) , The Master (2015)
+; Modified ......: kaganus (Jun/Aug 2015), Sardo 2015-07, KnowJack(Aug 2015) , The Master (2015), MonkeyHunter (2016-2)
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
@@ -37,8 +37,14 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	_WinAPI_EmptyWorkingSet(@AutoItPID) ; Reduce Working Set of Bot
 
 	If _Sleep($iDelayVillageSearch1) Then Return
+	$Result = getAttackDisable(346, 182) ; Grab Ocr for TakeABreak check
+	checkAttackDisable($iTaBChkAttack, $Result) ;last check to see If TakeABreak msg on screen for fast PC from PrepareSearch click
 	If $Restart = True Then Return ; exit func
 	For $x = 0 To $iModeCount - 1
+		If $iHeroWait[$x] > $HERO_NOHERO And (BitAND($iHeroAttack[$x], $iHeroWait[$x], $iHeroAvailable) = $iHeroWait[$x]) = False Then
+			SetLog(_PadStringCenter(" Skip " & $sModeText[$x] & " - Hero Not Ready " & BitAND($iHeroAttack[$x], $iHeroWait[$x], $iHeroAvailable) & "|" & $iHeroAvailable, 54, "="), $COLOR_RED)
+			ContinueLoop ; check if herowait selected and hero available for each search mode
+		EndIf
 		If $x = $iCmbSearchMode Or $iCmbSearchMode = 2 Then
 			If Not ($Is_SearchLimit) Then SetLog(_PadStringCenter(" Searching For " & $sModeText[$x] & " ", 54, "="), $COLOR_BLUE)
 
@@ -114,6 +120,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If $debugVillageSearchImages = 1 Then DebugImageSave("villagesearch")
 		$logwrited = False
 		$bBtnAttackNowPressed = False
+		$hAttackCountDown = TimerInit()
 		If $iVSDelay > 0 And $iMaxVSDelay > 0 Then ; Check if village delay values are set
 			If $iVSDelay <> $iMaxVSDelay Then ; Check if random delay requested
 				If _Sleep(Round(1000 * Random($iVSDelay, $iMaxVSDelay))) Then Return ;Delay time is random between min & max set by user
@@ -134,6 +141,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			If _Sleep($iDelayRespond) Then Return
 			If CheckZoomOut() = False Then Return
 		EndIf
+
+		SuspendAndroid()
 
 		; check DE/drill for Zap
 		$numDEDrill = 0
@@ -162,21 +171,54 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		Next
 
 		If _Sleep($iDelayRespond) Then Return
-		If $iCmbSearchMode = 0 Then
-			$isModeActive[$DB] = True
-			$match[$DB] = CompareResources($DB)
-		ElseIf $iCmbSearchMode = 1 Then
-			$isModeActive[$LB] = True
-			$match[$LB] = CompareResources($LB)
-		ElseIf $iCmbSearchMode = 2 Then
+		Switch $iCmbSearchMode
+			Case 0 ; check Dead Base only
+				If $iHeroWait[$DB] = 0 Or ($iHeroWait[$DB] > 0 And BitAND($iHeroAttack[$DB], $iHeroWait[$DB], $iHeroAvailable) = $iHeroWait[$DB]) Then ; check hero wait/avail
+					$isModeActive[$DB] = True
+					$match[$DB] = CompareResources($DB)
+				Else
+					$noMatchTxt &= ", DB Hero Not Ready, "
+				EndIf
+			Case 1 ; Check Live Base only
+				If $iHeroWait[$LB] = 0 Or ($iHeroWait[$LB] > 0 And BitAND($iHeroAttack[$LB], $iHeroWait[$LB], $iHeroAvailable) = $iHeroWait[$LB]) Then ; check hero wait/avail
+					$isModeActive[$LB] = True
+					$match[$LB] = CompareResources($LB)
+				Else
+					$noMatchTxt &= ", LB Hero Not Ready, "
+				EndIf
+			Case  2
 			For $i = 0 To $iModeCount - 2
-				$isModeActive[$i] = IsSearchModeActive($i)
-				If $isModeActive[$i] Then
-					$match[$i] = CompareResources($i)
+				If $iHeroWait[$i] = 0 Or ($iHeroWait[$i] > 0 And BitAND($iHeroAttack[$i],$iHeroWait[$i], $iHeroAvailable) = $iHeroWait[$i]) Then ; check hero wait/avail
+					$isModeActive[$i] = IsSearchModeActive($i)
+					If $isModeActive[$i] Then
+						$match[$i] = CompareResources($i)
+					EndIf
+				Else
+					$noMatchTxt &= ", " & $sModeText[$i] & " Hero Not Ready: " & BitAND($iHeroAttack[$i], $iHeroWait[$i], $iHeroAvailable)
 				EndIf
 			Next
-		EndIf
+		EndSwitch		
 		If IsSearchModeActive($TS) Then $match[$TS] = CompareResources($TS)
+		
+		; Fail safe Safety Check for rare error with Hero wait and Hero not available that will disable ALL CompareResources
+		Local $bSearchSafe = False
+		For $i = 0 To $iModeCount - 2
+			If $isModeActive[$i] Then $bSearchSafe = True
+		Next
+		If $bSearchSafe = False And ($OptBullyMode = 0 And $OptTrophyMode = 0) Then  ; no search modes are active.
+			Setlog("ERROR - Check Hero Wait & Search Start Values!!", $COLOR_RED)
+			If _Sleep($iDelayRespond) Then Return
+			Setlog("Search Logic Error occured and will NEVER find base!!!", $COLOR_RED)
+			If _Sleep($iDelayRespond) Then Return
+			ReturnHome(False, False) ;If End battle is available
+			$Restart = True ; set force runbot restart flag
+			$Is_ClientSyncError = False ; reset OOS flag
+			Setlog("Switching to Halt Attack, Stay Online/Collect mode ...", $COLOR_RED)
+			If _Sleep($iDelayRespond) Then Return
+			$ichkBotStop = 1 ; set halt attack variable
+			$icmbBotCond = 18 ; set stay online/collect only mode
+			Return
+		EndIf
 
 		If _Sleep($iDelayRespond) Then Return
 		For $i = 0 To $iModeCount - 2
@@ -196,10 +238,34 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		EndIf
 		$zapBaseMatch = $zapBaseMatch And $isDeadBase
 		; snipe dead base only if have enough troops to use for greedy attack
-		If $isDeadBase Then $match[$TS] = $match[$TS] And ($CurCamp > $iMinTroopToAttackDB)
+		If $isDeadBase Then $match[$TS] = ($match[$TS] And ($CurCamp > $iMinTroopToAttackDB))		
+
+	    Local $MilkingExtractorsMatch = 0
+		$MilkFarmObjectivesSTR = ""
+		If $match[$LB] And $iChkDeploySettings[$LB] = 6 Then ; MilkingAttack
+			If $debugsetlog = 1 Then Setlog("Check Milking...", $COLOR_BLUE)
+			MilkingDetectRedArea()
+			$MilkingExtractorsMatch = MilkingDetectElixirExtractors()
+			If $MilkingExtractorsMatch > 0 Then
+				$MilkingExtractorsMatch += MilkingDetectMineExtractors() + MilkingDetectDarkExtractors()
+			EndIf
+			If StringLen($MilkFarmObjectivesSTR) >0 and $debugsetlog=1 Then
+				Setlog("Match for Milking", $COLOR_BLUE)
+			Else
+				Setlog("Not a Match for Milking", $COLOR_BLUE)
+			EndIf
+		EndIf
+
+	    ResumeAndroid()
 
 		If _Sleep($iDelayRespond) Then Return
-		If $match[$DB] And $isDeadBase Then
+		If $match[$LB] and $iChkDeploySettings[$LB]=6  and StringLen($MilkFarmObjectivesSTR) > 0  Then
+			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+			SetLog("      Milking target found! ", $COLOR_GREEN, "Lucida Console", 7.5)
+			$logwrited = True
+			$iMatchMode = $LB
+			ExitLoop
+		ElseIf $match[$DB] And $isDeadBase Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      Dead Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
 			; check for outside collectors if enabled
@@ -236,22 +302,12 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				ExitLoop
 			EndIf
 			$logwrited = True
-		ElseIf $match[$LB] And Not $isDeadBase Then
+		ElseIf $match[$LB] And Not $isDeadBase And $iChkDeploySettings[$LB] <> 6 Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
-			If $ichkABNeedHeroes = 1 Then
-				If AreHeroesAvailable() Then					
-					SetLog("Selected Heroes are available for attack", $COLOR_GREEN, "Lucida Console", 7.5)
-					$iMatchMode = $LB
-					ExitLoop
-				Else
-					SetLog("Selected Heroes are not available for attack!", $COLOR_RED, "Lucida Console", 7.5)
-				Endif
-			Else
-				$iMatchMode = $LB
-				ExitLoop
-			EndIf
 			$logwrited = True
+			$iMatchMode = $LB
+			ExitLoop
 		ElseIf $match[$LB] Or $match[$DB] Then
 			If $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
 				If $SearchTHLResult = 1 Then
@@ -495,23 +551,6 @@ Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be 
 	If $debugsetlog = 1 Then SetLog($colOutside & " collectors found outside (out of " & $colNbr & ")", $COLOR_PURPLE)
 	Return False
 EndFunc   ;==>AreCollectorsOutside
-
-Func AreHeroesAvailable()
-	If $ichkABNeedOneHero = 1 Then 
-		Return $BarbarianKingAvailable And $ArcherQueenAvailable And $GrandWardenAvailable
-	Else
-		If $ichkABNeedKing = 1 Then
-			If $BarbarianKingAvailable = 0 Then Return False
-		Endif
-		If $ichkABNeedQueen = 1 Then
-			If $ArcherQueenAvailable = 0 Then Return False
-		Endif
-		If $ichkABNeedWarden = 1 Then
-			If $GrandWardenAvailable = 0 Then Return False
-		Endif
-		Return True
-	EndIf
-EndFunc   ;==>AreHeroesAvailable
 
 Func THSnipeFound()
 	SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)

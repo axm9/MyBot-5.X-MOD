@@ -50,14 +50,14 @@ Func DonateCC($Check = False)
 
 	Local $y = 119
 
-	;check for new chats first
+	; check for new chats first
 	If $Check = True Then
 		If _ColorCheck(_GetPixelColor(26, 312 + $midOffsetY, True), Hex(0xf00810, 6), 20) = False And $CommandStop <> 3 Then
-			Return ;exit if no new chats
+			Return ; exit if no new chats
 		EndIf
 	EndIf
 
-	ClickP($aAway, 1, 0, "#0167") ;Click Away
+	ClickP($aAway, 1, 0, "#0167") ; Click Away
 	Setlog("Checking for Donate Requests in Clan Chat", $COLOR_BLUE)
 
 	If _CheckPixel($aChatTab, $bCapturePixel) = False Then ClickP($aOpenChat, 1, 0, "#0168") ; Clicks chat tab
@@ -75,12 +75,16 @@ Func DonateCC($Check = False)
 		If IsArray($DonatePixel) Then ; if Donate Button found
 			If $debugSetlog = 1 Then Setlog("$DonatePixel: (" & $DonatePixel[0] & "," & $DonatePixel[1] & ")", $COLOR_PURPLE)
 
-			;reset every run
+			; reset every run
 			$bDonate = False
 			$bSkipDonTroops = False
-			$bSkipDonSpells = False
+			If $iTownHallLevel < 8 Or $numFactoryDarkSpellAvaiables = 0 Then ; if you are a < TH8 you don't have a Dark Spells Factory or it is Upgrading
+				$bSkipDonSpells = True
+			Else
+				$bSkipDonSpells = False
+			EndIf
 
-			;Read chat request for DonateTroop and DonateSpell
+			; Read chat request for DonateTroop and DonateSpell
 			If $bDonateTroop Or $bDonateSpell Then
 				If $ichkExtraAlphabets = 1 Then
 					; Chat Request , Latin + Turkish + Extra latin + Cyrillic Alphabets / three paragraphs.
@@ -200,7 +204,6 @@ Func DonateCC($Check = False)
 					If $iChkDonateBarbarians = 1 And $bSkipDonTroops = False And CheckDonateTroop($eBarb, $aDonBarbarians, $aBlkBarbarians, $aBlackList, $ClanString) Then DonateTroopType($eBarb)
 					If $iChkDonateArchers = 1 And $bSkipDonTroops = False And CheckDonateTroop($eArch, $aDonArchers, $aBlkArchers, $aBlackList, $ClanString) Then DonateTroopType($eArch)
 					If $iChkDonateGoblins = 1 And $bSkipDonTroops = False And CheckDonateTroop($eGobl, $aDonGoblins, $aBlkGoblins, $aBlackList, $ClanString) Then DonateTroopType($eGobl)
-
 				EndIf
 
 				If $bDonateSpell = 1 And $bSkipDonSpells = False Then
@@ -334,7 +337,6 @@ Func DonateCC($Check = False)
 	WEnd
 
 	If _Sleep($iDelayDonateCC2) Then Return
-
 EndFunc   ;==>DonateCC
 
 Func CheckDonateTroop($Type, $aDonTroop, $aBlkTroop, $aBlackList, $ClanString)
@@ -544,8 +546,8 @@ Func DonateWindow($Open = True)
 	EndIf
 
 	; Click on Donate Button and wait for the window
-	If _ColorCheck(_GetPixelColor($DonatePixel[0], $DonatePixel[1], True), Hex(0xc0e460, 6), 20) Then
-		Click($DonatePixel[0] - 30, $DonatePixel[1] + 10, 1, 0, "#0174")
+	If _ColorCheck(_GetPixelColor($DonatePixel[0] - 44 , $DonatePixel[1] + 14 , True), Hex(0xFFFFFF, 6), 5) Then
+		Click($DonatePixel[0] - 40, $DonatePixel[1] + 10, 1, 0, "#0174")
 	Else
 		If $debugSetlog = 1 Then SetLog("Could not find the Donate Button!", $COLOR_PURPLE)
 		Return False

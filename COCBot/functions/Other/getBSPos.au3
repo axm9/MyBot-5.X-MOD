@@ -14,6 +14,7 @@
 ; ===============================================================================================================================
 
 Func getBSPos()
+    Local $SuspendMode = ResumeAndroid()
     Local $Changed = False, $aOldValues[4]
 	$HWnd = WinGetHandle($Title)
 	ControlGetPos($hWnd, $AppPaneName, $AppClassInstance)
@@ -78,6 +79,8 @@ Func getBSPos()
 	    $Changed = Not ($aOldValues[0] = $BSpos[0] And $aOldValues[1] = $BSpos[1] And $aOldValues[2] = $BSrpos[0] And $aOldValues[3] = $BSrpos[1])
 	    If $debugClick = 1 Or $debugSetlog = 1 And $Changed Then Setlog("$BSpos X,Y = " & $BSpos[0] & "," & $BSpos[1] & "; BSrpos X,Y = " & $BSrpos[0] & "," & $BSrpos[1], $COLOR_RED, "Verdana", "7.5", 0)
 	EndIf
+
+    SuspendAndroid($SuspendMode, False)
 EndFunc   ;==>getBSPos
 
 Func getAndroidPos()
@@ -93,8 +96,6 @@ Func getAndroidPos()
 		EndIf
 	
 		If $BSx <> $AndroidClientWidth Or $BSy <> $AndroidClientHeight Then ; Is Client size correct?
-			;DisposeWindows()
-			;WinActivate($Title)
 			SetDebugLog("Unsupported " & $Android & " screen size of " & $BSx & " x " & $BSy & " !", $COLOR_ORANGE)
 	
 			; check if emultor window only needs resizing (problem with BS or Droid4X in lower Screen Resolutions!)
@@ -119,7 +120,6 @@ Func getAndroidPos()
 	
 			If $AndroidWindowWidth > 0 And $AndroidWindowHeight > 0 And ($WinWidth <> $aAndroidWindow[0] Or $WinHeight <> $aAndroidWindow[1]) Then ; Check expected Window size	
 				WinMove2($Title, "", $AndroidWinPos[0], $AndroidWinPos[1], $aAndroidWindow[0], $aAndroidWindow[1])
-				;_WinAPI_SetWindowPos($hWnd, 0, 0, 0, $AndroidWindowWidth, $AndroidWindowHeight, BitOr($SWP_NOACTIVATE, $SWP_NOMOVE, $SWP_NOREPOSITION, $SWP_NOSENDCHANGING, $SWP_NOZORDER)) ; resize window without BS changing it back
 				If @error = 0 Then
 					SetDebugLog($Android & " window resized to " & $aAndroidWindow[0] & " x " & $aAndroidWindow[1], $COLOR_GREEN)
 					If _Sleep(500) Then Return False ; Just wait, not really required...

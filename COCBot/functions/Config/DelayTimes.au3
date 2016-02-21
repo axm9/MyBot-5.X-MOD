@@ -11,6 +11,9 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
+;General Delay Times
+Global Const $iDelayWaitForPopup = 1500 ; An action was just clicked and waiting for popup
+
 Global Const $iDelayRespond = 5 ; Just to make stop button more Responsive
 Global Const $iDelayRunBot1 = 1000
 Global Const $iDelayRunBot2 = 800
@@ -18,8 +21,8 @@ Global Const $iDelayRunBot3 = 200
 Global Const $iDelayRunBot4 = 1500
 Global Const $iDelayRunBot5 = 500
 Global Const $iDelayRunBot6 = 100
-Global Const $iDelayIdle1 = 300
-Global Const $iDelayIdle2 = 2000
+Global Const $iDelayIdle1 = 200
+Global Const $iDelayIdle2 = 1500
 Global Const $iDelayAttackMain1 = 1000
 Global Const $iDelayAttackMain2 = 1500
 
@@ -45,7 +48,7 @@ Global Const $iDelayCastSpell1 = 10
 ;algorithm_AllTroops
 Global Const $iDelayalgorithm_AllTroops1 = 2000
 Global Const $iDelayalgorithm_AllTroops2 = 1000
-Global Const $iDelayalgorithm_AllTroops3 = 1500
+Global Const $iDelayalgorithm_AllTroops3 = $iDelayWaitForPopup
 Global Const $iDelayalgorithm_AllTroops4 = 100
 Global Const $iDelayalgorithm_AllTroops5 = 500
 
@@ -86,8 +89,9 @@ Global Const $iDelayDropTroop1 = 100
 Global Const $iDelayDropTroop2 = 300
 
 ;ReturnHome
+Global Const $iDelayReturnHomeSurrender = $iDelayWaitForPopup
 Global Const $iDelayReturnHome1 = 1000
-Global Const $iDelayReturnHome2 = 500
+Global Const $iDelayReturnHome2 = 1500
 Global Const $iDelayReturnHome3 = 2500
 Global Const $iDelayReturnHome4 = 2000
 Global Const $iDelayReturnHome5 = 200
@@ -210,6 +214,7 @@ Global Const $iDelayBoostBarracks1 = 1000
 Global Const $iDelayBoostBarracks2 = 2000
 Global Const $iDelayBoostBarracks3 = 500
 Global Const $iDelayBoostBarracks4 = 600
+Global Const $iDelayBoostBarracks5 = 200
 
 ;BoostSpellFactory
 Global Const $iDelayBoostSpellFactory1 = 1000
@@ -315,10 +320,10 @@ Global Const $iDelayPushMsg1 = 500
 Global Const $iDelayPushMsg2 = 1000
 
 ;ReArm
-Global Const $iDelayReArm1 = 1000
-Global Const $iDelayReArm2 = 500
-Global Const $iDelayReArm3 = 1500
-Global Const $iDelayReArm4 = 700
+Global Const $iDelayReArm1 = 500
+Global Const $iDelayReArm2 = 1500
+Global Const $iDelayReArm3 = 700
+Global Const $iDelayReArm4 = 200
 Global Const $iDelayReArm5 = 500
 
 ;ReplayShare
@@ -423,3 +428,8 @@ Global Const $iPersonalShield3 = 100
 ;Star bonus
 Global Const $iDelayStarBonus100 = 100
 Global Const $iDelayStarBonus500 = 500
+
+; Attack Disable
+Global Const $iDelayAttackDisable100 = 100
+Global Const $iDelayAttackDisable500 = 500
+Global Const $iDelayAttackDisable1000 = 1000

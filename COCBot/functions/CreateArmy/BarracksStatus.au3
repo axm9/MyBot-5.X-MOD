@@ -73,51 +73,53 @@ Func BarracksStatus($showlog = false)
 		ElseIf _ColorCheck(_GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), Hex($COLOR_UPGRADING, 6), 20) Then
 			If $debugSetlog = 1 Then Setlog("dark barrack " & $i -1 & " found upgrading! color " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
 			$numDarkBarracks += 1
+			$numDarkBarracksAvaiables += 0
 			$Trainavailable[$i] = 0
 		Else
 			If $debugSetlog = 1 Then Setlog("dark barrack " & $i -2 & " NO found, color = " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
 			$numDarkBarracks += 0
+			$numDarkBarracksAvaiables += 0
 			$Trainavailable[$i] = 0
 		EndIf
 	Next
 
 	$i = 7
-		If _ColorCheck(_GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), Hex($COLOR_AVAIABLE, 6), 20) Then
-			If $debugSetlog = 1 Then Setlog("Factory Spell found! color " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
-			$numFactorySpell += 1
-			$numFactorySpellAvaiables += 1
-			$Trainavailable[$i] = 1
-		ElseIf _ColorCheck(_GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), Hex($COLOR_UPGRADING, 6), 20) Then
-			If $debugSetlog = 1 Then Setlog("Factory spell found upgrading! color " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
-			$numFactorySpell += 1
-			$numFactorySpellAvaiables += 0
-			$Trainavailable[$i] = 0
-		Else
-			If $debugSetlog = 1 Then Setlog("Factory spell NO found, color = " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
-			$numFactorySpell += 0
-			$numFactorySpellAvaiables += 0
-			$Trainavailable[$i] = 0
-		EndIf
+	If _ColorCheck(_GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), Hex($COLOR_AVAIABLE, 6), 20) Then
+		If $debugSetlog = 1 Then Setlog("Factory Spell found! color " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
+		$numFactorySpell += 1
+		$numFactorySpellAvaiables += 1
+		$Trainavailable[$i] = 1
+	ElseIf _ColorCheck(_GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), Hex($COLOR_UPGRADING, 6), 20) Then
+		If $debugSetlog = 1 Then Setlog("Factory spell found upgrading! color " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
+		$numFactorySpell += 1
+		$numFactorySpellAvaiables += 0
+		$Trainavailable[$i] = 0
+	Else
+		If $debugSetlog = 1 Then Setlog("Factory spell NO found, color = " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
+		$numFactorySpell += 0
+		$numFactorySpellAvaiables += 0
+		$Trainavailable[$i] = 0
+	EndIf
 
 	$i = 8
-		If _ColorCheck(_GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), Hex($COLOR_AVAIABLE, 6), 20) Then
-			If $debugSetlog = 1 Then Setlog("Dark Factory Spell found! color " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
-			$numFactoryDarkSpell += 1
-			$numFactoryDarkSpellAvaiables += 1
-			$Trainavailable[$i] = 1
-		ElseIf _ColorCheck(_GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), Hex($COLOR_UPGRADING, 6), 20) Then
-			If $debugSetlog = 1 Then Setlog("Dark Factory spell found upgrading! color " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
-			$numFactoryDarkSpell += 1
-			$numFactoryDarkSpellAvaiables += 0
-			$Trainavailable[$i] = 0
-		Else
-			If $debugSetlog = 1 Then Setlog("Dark Factory spell NO found, color = " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
-			$numFactorySpell += 0
-			$numFactorySpellAvaiables += 0
-			$Trainavailable[$i] = 0
-		EndIf
+	If _ColorCheck(_GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), Hex($COLOR_AVAIABLE, 6), 20) Then
+		If $debugSetlog = 1 Then Setlog("Dark Factory Spell found! color " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
+		$numFactoryDarkSpell += 1
+		$numFactoryDarkSpellAvaiables += 1
+		$Trainavailable[$i] = 1
+	ElseIf _ColorCheck(_GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), Hex($COLOR_UPGRADING, 6), 20) Then
+		If $debugSetlog = 1 Then Setlog("Dark Factory spell found upgrading! color " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
+		$numFactoryDarkSpell += 1
+		$numFactoryDarkSpellAvaiables += 0
+		$Trainavailable[$i] = 0
+	Else
+		If $debugSetlog = 1 Then Setlog("Dark Factory spell NO found, color = " & _GetPixelColor($btnpos[$i][0], $btnpos[$i][1], True), $COLOR_PURPLE)
+		$numFactorySpell += 0
+		$numFactorySpellAvaiables += 0
+		$Trainavailable[$i] = 0
+	EndIf
 
-	If $showlog = true or $debugSetlog = 1 Then
+	If $showlog = True or $debugSetlog = 1 Then
 		SetLog("Barracks and Spell factory status: ", $COLOR_GREEN)
 		SetLog("- Barracks detected: " & $numBarracks & " | Available: " & $numBarracksAvaiables & " | Upgrading: " & $numBarracks -  $numBarracksAvaiables,$COLOR_GREEN)
 		SetLog("- Dark Barracks detected: " & $numDarkBarracks & " | Available: " & $numDarkBarracksAvaiables & " | Upgrading: " & $numDarkBarracks -  $numDarkBarracksAvaiables,$COLOR_GREEN)

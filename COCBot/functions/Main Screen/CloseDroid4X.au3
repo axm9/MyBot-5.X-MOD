@@ -39,13 +39,13 @@ Func CloseDroid4X()
 	EndIf
 
     ; also stop virtualbox instance
-	LaunchConsole($__VirtualBox_Path & "VBoxManage.exe", "controlvm " & $AndroidInstance & " poweroff", $process_killed)
+	LaunchConsole($__VBoxManage_Path, "controlvm " & $AndroidInstance & " poweroff", $process_killed)
 	If _SleepStatus(3000) Then Return
 
 	If $debugsetlog = 1 And $bOops Then
 		SetLog("Droid4X Kill Failed to stop service", $COLOR_RED)
 	ElseIf Not $bOops Then
-		SetLog("Droid4X stopped succesfully", $COLOR_GREEN)
+		SetLog("Droid4X stopped successfully", $COLOR_GREEN)
 	EndIf
 
 	RemoveGhostTrayIcons($Title)  ; Remove ghost icon if left behind due forced taskkill
@@ -56,29 +56,16 @@ Func CloseDroid4X()
 EndFunc   ;==>CloseDroid4X
 
 Func KillDroid4XProcess()
-	Local $iIndex, $iCount, $bOops = False
-	Local $aFileNames[2][2] = [['Droid4X.exe', 0], ['adb.exe', 0]]
-
-	For $iIndex = 0 To UBound($aFileNames) - 1
-		$iCount = 0
-		While ProcessExists($aFileNames[$iIndex][0]) And $iCount < 3
-			$aFileNames[$iIndex][1] = ProcessExists($aFileNames[$iIndex][0]) ; Find the PID for each file name that is running
-			If $debugsetlog = 1 Then Setlog($aFileNames[$iIndex][0] & " PID = " & $aFileNames[$iIndex][1], $COLOR_PURPLE)
-			If $aFileNames[$iIndex][1] > 0 Then ; If it is running, then kill it
-				ShellExecute(@WindowsDir & "\System32\taskkill.exe", " -pid " & $aFileNames[$iIndex][1], "", Default, @SW_HIDE)
-				If _Sleep(5000) Then Return ; Give OS time to work
-			EndIf
-			If ProcessExists($aFileNames[$iIndex][1]) Then ; If it is still running, then force kill it
-				If $debugsetlog = 1 Then Setlog($aFileNames[$iIndex][0] & " 1st Kill failed, trying again", $COLOR_PURPLE)
-				ShellExecute(@WindowsDir & "\System32\taskkill.exe", "-f -t -pid " & $aFileNames[$iIndex][1], "", Default, @SW_HIDE)
-				If _Sleep(5000) Then Return ; Give OS time to work
-			EndIf
-			$iCount += 1
-	    WEnd
-		If ProcessExists($aFileNames[$iIndex][0]) Then
-		   $bOops = True
-	    EndIf
-	Next
-
-	Return $bOops
+	; kill only my instances
+	Local $pid = WinGetProcess(WinGetAndroidHandle())
+	If $pid <> -1 Then
+		If ProcessClose($pid) = 0 Then
+			ShellExecute(@WindowsDir & "\System32\taskkill.exe", "-f -t -pid " & $pid, "", Default, @SW_HIDE)
+		EndIf
+	EndIf
+	If ProcessExists($AndroidAdbPid) Then
+		If ProcessClose($AndroidAdbPid) = 0 Then
+			ShellExecute(@WindowsDir & "\System32\taskkill.exe", "-f -t -pid " & $AndroidAdbPid, "", Default, @SW_HIDE)
+		EndIf
+	EndIF
 EndFunc   ;==>KillDroid4XProcess

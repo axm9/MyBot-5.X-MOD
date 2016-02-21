@@ -113,9 +113,8 @@ Func btnchkbxUpgrade()
 EndFunc   ;==>btnchkbxUpgrade
 
 Func btnResetUpgrade()
-	; Reset Condition $aUpgrades[4][4] = [[-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""]]
 	For $i = 0 To 5
-		$aUpgrades[$i][3] = "" ;Clear Upgrade Type
+		$aUpgrades[$i][3] = "" ; Clear Upgrade Type
 		GUICtrlSetData($txtUpgradeX[$i], "") ; Clear GUI X position
 		GUICtrlSetData($txtUpgradeY[$i], "") ; Clear GUI Y position
 		GUICtrlSetData($txtUpgradeValue[$i], "") ; Clear Upgrade value in GUI
@@ -153,11 +152,16 @@ Func cmbLab()
 EndFunc   ;==>cmbLab
 
 Func chkUpgradeKing()
-
 	If GUICtrlRead($chkUpgradeKing) = $GUI_CHECKED Then
 		$ichkUpgradeKing = 1
+		GUICtrlSetState($chkDBKingWait, $GUI_UNCHECKED)
+		GUICtrlSetState($chkABKingWait, $GUI_UNCHECKED)
+		GUICtrlSetState($chkDBKingWait, $GUI_DISABLE)
+		GUICtrlSetState($chkABKingWait, $GUI_DISABLE)
 	Else
 		$ichkUpgradeKing = 0
+		GUICtrlSetState($chkDBKingWait, $GUI_ENABLE)
+		GUICtrlSetState($chkABKingWait, $GUI_ENABLE)
 	EndIf
 
 	If GUICtrlRead($cmbBoostBarbarianKing) > 0 Then
@@ -167,15 +171,19 @@ Func chkUpgradeKing()
 	Else
 		GUICtrlSetState($chkUpgradeKing, $GUI_ENABLE)
 	EndIf
-
-	IniWrite($config, "upgrade", "UpgradeKing", $ichkUpgradeKing)
 EndFunc   ;==>ichkUpgradeKing
 
 Func chkUpgradeQueen()
 	If GUICtrlRead($chkUpgradeQueen) = $GUI_CHECKED Then
 		$ichkUpgradeQueen = 1
+		GUICtrlSetState($chkDBQueenWait, $GUI_UNCHECKED)
+		GUICtrlSetState($chkABQueenWait, $GUI_UNCHECKED)
+		GUICtrlSetState($chkDBQueenWait, $GUI_DISABLE)
+		GUICtrlSetState($chkABQueenWait, $GUI_DISABLE)
 	Else
 		$ichkUpgradeQueen = 0
+		GUICtrlSetState($chkDBQueenWait, $GUI_ENABLE)
+		GUICtrlSetState($chkABQueenWait, $GUI_ENABLE)
 	EndIf
 
 	If GUICtrlRead($cmbBoostArcherQueen) > 0 Then
@@ -185,15 +193,19 @@ Func chkUpgradeQueen()
 	Else
 		GUICtrlSetState($chkUpgradeQueen, $GUI_ENABLE)
 	EndIf
-
-	IniWrite($config, "upgrade", "UpgradeQueen", $ichkUpgradeQueen)
 EndFunc   ;==>chkUpgradeQueen
 
 Func chkUpgradeWarden()
 	If GUICtrlRead($chkUpgradeWarden) = $GUI_CHECKED Then
 		$ichkUpgradeWarden = 1
+		GUICtrlSetState($chkDBWardenWait, $GUI_UNCHECKED)
+		GUICtrlSetState($chkABWardenWait, $GUI_UNCHECKED)
+		GUICtrlSetState($chkDBWardenWait, $GUI_DISABLE)
+		GUICtrlSetState($chkABWardenWait, $GUI_DISABLE)
 	Else
 		$ichkUpgradeWarden = 0
+		GUICtrlSetState($chkDBWardenWait, $GUI_ENABLE)
+		GUICtrlSetState($chkABWardenWait, $GUI_ENABLE)
 	EndIf
 
 	If GUICtrlRead($cmbBoostWarden) > 0 Then
@@ -203,6 +215,4 @@ Func chkUpgradeWarden()
 	Else
 		GUICtrlSetState($chkUpgradeWarden, $GUI_ENABLE)
 	EndIf
-
-	IniWrite($config, "upgrade", "UpgradeWarden", $ichkUpgradeWarden)
 EndFunc   ;==>chkUpgradeWarden

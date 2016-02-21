@@ -44,7 +44,7 @@ Func isNetFramework4Installed()
 EndFunc   ;==>isNetFramework4Installed
 
 Func isNetFramework4dot5Installed()
-	;https://msdn.microsoft.com/it-it/library/hh925568%28v=vs.110%29.aspx#net_b
+	; https://msdn.microsoft.com/it-it/library/hh925568%28v=vs.110%29.aspx#net_b
 	Local $z = 0, $sKeyValue, $success = False
 	$sKeyValue = RegRead("HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\", "Release")
 	If Number($sKeyValue) >= 378389 Then $success = True
@@ -74,11 +74,12 @@ Func isEveryFileInstalled()
 	Local $bResult = False, $iCount = 0
 
 	; folders and files needed checking
-	Local $aCheckFiles[8] = [@ScriptDir & "\COCBot", _
+	Local $aCheckFiles[9] = [@ScriptDir & "\COCBot", _
 							$LibDir, _
 							@ScriptDir & "\Images", _
 							$pFuncLib, _
 							$pImageLib, _
+							$pImgLib, _
 							$pIconLib, _
 							$LibDir & "\opencv_core220.dll", _
 							$LibDir & "\opencv_imgproc220.dll"]

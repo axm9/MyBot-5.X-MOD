@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 Func Laboratory()
-	;Create local static array to hold upgrade values
+	; Create local static array to hold upgrade values
 	Static $aUpgradeValue[25] = [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	Local $iAvailElixir, $iAvailDark, $iElixirCount, $iDarkCount
 	$itxtUpgrMinElixir = Number($itxtUpgrMinElixir)
@@ -91,8 +91,8 @@ Func Laboratory()
 		EndIf
 	EndIf
 
-	If $aLabTroops[$icmbLaboratory][2] > 0 Then ;Check if troop located on page 2 of lab window and Move to page 2 if needed
-		_PostMessage_ClickDrag(734, 393 + $midOffsetY, 3, 393 + $midOffsetY, "left", 2000)
+	If $aLabTroops[$icmbLaboratory][2] > 0 Then ; Check if troop located on page 2 of lab window and Move to page 2 if needed
+		ClickDrag(734, 393 + $midOffsetY, 3, 393 + $midOffsetY, 2000)
 		If _Sleep($iDelayLaboratory3) Then Return
 		If $debugSetlog = 1 Then LabTroopImages2() ; Debug Only
 		If $iFirstTimeLab < 2 Then
@@ -124,8 +124,8 @@ Func Laboratory()
 		ClickP($aAway, 2, $iDelayLaboratory4,"#0354")
 		Return False
 	EndIf
-	Switch $icmbLaboratory ;Change messaging based on troop number
-		Case 1 To 15  ; regular elixir
+	Switch $icmbLaboratory ; Change messaging based on troop number
+		Case 1 To 15 ; regular elixir
 			If $iAvailElixir < ($aUpgradeValue[$icmbLaboratory] + $itxtUpgrMinElixir) Then
 				SetLog("Insufficent Elixir for " &$aLabTroops[$icmbLaboratory][3]& ", Lab requires: " &  $aUpgradeValue[$icmbLaboratory] & " + " & $itxtUpgrMinElixir & " user reserve", $COLOR_BLUE)
 				ClickP($aAway, 2, $iDelayLaboratory4,"#0355")
@@ -136,8 +136,7 @@ Func Laboratory()
 			 ClickP($aAway, 2,  $iDelayLaboratory4,"#0356")
 			 Return True
 			EndIf
-
-		Case 16 To 24  ; Dark Elixir
+		Case 16 To 24 ; Dark Elixir
 			If $iAvailDark  <  $aUpgradeValue[$icmbLaboratory] + $itxtUpgrMinDark Then
 				SetLog("Insufficent Dark Elixir for " & $aLabTroops[$icmbLaboratory][3] & ", Lab requires: " &  $aUpgradeValue[$icmbLaboratory] & " + " & $itxtUpgrMinDark & " user reserve", $COLOR_BLUE)
 				ClickP($aAway, 2, $iDelayLaboratory4,"#0357")
