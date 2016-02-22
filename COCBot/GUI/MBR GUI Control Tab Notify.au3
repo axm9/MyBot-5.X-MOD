@@ -41,6 +41,7 @@ Func chkPBenabled()
 		GUICtrlSetState($btnDeletePBmessages, $GUI_ENABLE)
 		GUICtrlSetState($chkAlertPBCampFull, $GUI_ENABLE)
 
+		GUICtrlSetData($OrigPushB, $sCurrProfile)
 		If $ichkDeleteOldPushes = 1 Then
 			GUICtrlSetState($cmbHoursPushBullet, $GUI_ENABLE)
 		EndIf

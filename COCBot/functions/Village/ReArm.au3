@@ -81,6 +81,7 @@ Func ReArm()
 		EndIf
 	Next
 	_WinAPI_DeleteObject($hBitmapFirst)
+	CheckTombs()
 
 	ClickP($aAway, 1, 0, "#0234") ; Click away
 	$ineedRearm = False

@@ -102,6 +102,7 @@ Func setupProfile()
 	createProfile()
 	; Set the profile name on the village info group.
 	GUICtrlSetData($grpVillage, GetTranslated(13, 21, "Village") & ": " & $sCurrProfile)
+	GUICtrlSetData($txtVillageName, $sCurrProfile)
 	GUICtrlSetData($OrigPushB, $sCurrProfile)
 EndFunc   ;==>setupProfile
 
@@ -137,5 +138,6 @@ Func selectProfile()
 
 	; Set the profile name on the village info group.
 	GUICtrlSetData($grpVillage, GetTranslated(13, 21, "Village") & ": " & $sCurrProfile)
+	GUICtrlSetData($txtVillageName, $sCurrProfile)
 	GUICtrlSetData($OrigPushB, $sCurrProfile)
 EndFunc   ;==>selectProfile
