@@ -191,6 +191,8 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$iDropCC[$DB] = IniRead($config, "attack", "DBDropCC", "0")
 		$iDropCC[$LB] = IniRead($config, "attack", "ABDropCC", "0")
+		$ichkNeed1Hero[$DB] = IniRead($config, "attack", "DBNeed1Hero", "1")
+		$ichkNeed1Hero[$LB] = IniRead($config, "attack", "ABNeed1Hero", "1")
 
 		$iChkUseCCBalanced = IniRead($config, "attack", "BalanceCC", "0")
 		$iCmbCCDonated = IniRead($config, "attack", "BalanceCCDonated", "1")

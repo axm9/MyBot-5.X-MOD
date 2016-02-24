@@ -372,6 +372,17 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	EndIf
 	chkDBHeroWait()
 	chkABHeroWait()
+	
+	If $ichkNeed1Hero[$DB] = 1 Then
+		GUICtrlSetState($chkDBNeed1Hero, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkDBNeed1Hero, $GUI_UNCHECKED)
+	EndIf	
+	If $ichkNeed1Hero[$LB] = 1 Then
+		GUICtrlSetState($chkABNeed1Hero, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkABNeed1Hero, $GUI_UNCHECKED)
+	EndIf
 
 	If $iChkUseCCBalanced = 1 Then
 		GUICtrlSetState($chkUseCCBalanced, $GUI_CHECKED)

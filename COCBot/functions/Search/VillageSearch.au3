@@ -173,14 +173,14 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If _Sleep($iDelayRespond) Then Return
 		Switch $iCmbSearchMode
 			Case 0 ; check Dead Base only
-				If $iHeroWait[$DB] = 0 Or ($iHeroWait[$DB] > 0 And BitAND($iHeroAttack[$DB], $iHeroWait[$DB], $iHeroAvailable) = $iHeroWait[$DB]) Then ; check hero wait/avail
+				If AreHeroesAvailable($DB) Then ; check hero wait/avail
 					$isModeActive[$DB] = True
 					$match[$DB] = CompareResources($DB)
 				Else
 					$noMatchTxt &= ", DB Hero Not Ready, "
 				EndIf
 			Case 1 ; Check Live Base only
-				If $iHeroWait[$LB] = 0 Or ($iHeroWait[$LB] > 0 And BitAND($iHeroAttack[$LB], $iHeroWait[$LB], $iHeroAvailable) = $iHeroWait[$LB]) Then ; check hero wait/avail
+				If AreHeroesAvailable($LB) Then ; check hero wait/avail
 					$isModeActive[$LB] = True
 					$match[$LB] = CompareResources($LB)
 				Else
@@ -188,7 +188,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				EndIf
 			Case  2
 			For $i = 0 To $iModeCount - 2
-				If $iHeroWait[$i] = 0 Or ($iHeroWait[$i] > 0 And BitAND($iHeroAttack[$i],$iHeroWait[$i], $iHeroAvailable) = $iHeroWait[$i]) Then ; check hero wait/avail
+				If AreHeroesAvailable($i) Then ; check hero wait/avail
 					$isModeActive[$i] = IsSearchModeActive($i)
 					If $isModeActive[$i] Then
 						$match[$i] = CompareResources($i)
@@ -501,6 +501,14 @@ Func IsWeakBase($pMode)
 		Return False
 	EndIf
 EndFunc   ;==>IsWeakBase
+
+Func AreHeroesAvailable($searchType)
+	If $ichkNeed1Hero[$searchType] = 1 Then 
+		Return $iHeroWait[$searchType] = 0 Or ($iHeroWait[$searchType] > 0 And $iHeroAvailable > 0)
+	Else
+		Return $iHeroWait[$searchType] = 0 Or ($iHeroWait[$searchType] > 0 And BitAND($iHeroAttack[$searchType], $iHeroWait[$searchType], $iHeroAvailable) = $iHeroWait[$searchType])
+	EndIf
+EndFunc
 
 Func AreCollectorsOutside($percent) ; dark drills are ignored since they can be zapped
 	SetLog("Locating Mines & Collectors", $COLOR_BLUE)	

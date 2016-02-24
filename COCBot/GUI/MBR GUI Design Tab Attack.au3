@@ -18,7 +18,7 @@
 ;~ -------------------------------------------------------------
 $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 	Local $x = 30, $y = 150
-	$grpDeadBaseDeploy = GUICtrlCreateGroup(GetTranslated(3,2, "DeadBase Deploy"), $x - 20, $y - 20, 225, 295)
+	$grpDeadBaseDeploy = GUICtrlCreateGroup(GetTranslated(3,2, "DeadBase Deploy"), $x - 20, $y - 20, 225, 320)
 		$lblDBDeploy = GUICtrlCreateLabel(GetTranslated(3,3, "Attack on")&":", $x, $y + 5, -1, -1)
 		$cmbDBDeploy = GUICtrlCreateCombo("", $x + 55, $y, 120, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, GetTranslated(3,4, "Attack on a single side, penetrates through base") & @CRLF & GetTranslated(3,5, "Attack on two sides, penetrates through base") & @CRLF & GetTranslated(3,6, "Attack on three sides, gets outer and some inside of base"), GetTranslated(3,7,"Select the No. of sides to attack on."))
@@ -142,10 +142,16 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 			GUICtrlSetTip(-1, $txtTip)
 		$chkDBDropCC = GUICtrlCreateCheckbox( "", $x + 32, $y + 4, 17, 17)
 			GUICtrlSetTip(-1, $txtTip)
+			
+		$x = 30	
+		$y += 28
+		$chkDBNeed1Hero = GUICtrlCreateCheckbox("Need 1 Hero only", $x, $y, -1, -1)
+			$txtTip = "Attack base if one of the Heroes is available"
+			GUICtrlSetTip(-1, $txtTip)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	Local $x = 260, $y = 150
-	$grpLiveBaseDeploy = GUICtrlCreateGroup(GetTranslated(3,46, "LiveBase Deploy"), $x - 20, $y - 20, 220, 295)
+	$grpLiveBaseDeploy = GUICtrlCreateGroup(GetTranslated(3,46, "LiveBase Deploy"), $x - 20, $y - 20, 220, 320)
 		$lblABDeploy = GUICtrlCreateLabel(GetTranslated(3,3, -1) & ":", $x, $y + 5, -1, -1)
 		$cmbABDeploy = GUICtrlCreateCombo("", $x + 55, $y, 120, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, GetTranslated(3,4, -1) & @CRLF & GetTranslated(3,5, -1) & @CRLF & GetTranslated(3,6, -1) & @CRLF & GetTranslated(3,63, -1) & @CRLF & GetTranslated(3,64, "Attack on the single side closest to the Dark Elixir Storage") & @CRLF & GetTranslated(3,65, "Attack on the single side closest to the Townhall") & @CRLF & GetTranslated(3,83, "Milking Farm Attack"), GetTranslated(3,7, -1))
@@ -255,10 +261,16 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 			GUICtrlSetTip(-1, $txtTip)
 		$chkABDropCC = GUICtrlCreateCheckbox( "", $x + 32, $y + 4, 17, 17)
 			GUICtrlSetTip(-1, $txtTip)
+			
+		$x = 310
+		$y += 28
+		$chkABNeed1Hero = GUICtrlCreateCheckbox("Need 1 Hero only", $x, $y, -1, -1)
+			$txtTip = "Attack base if one of the Heroes is available"
+			GUICtrlSetTip(-1, $txtTip)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	Local $x = 200, $y = 345
-	$grpClanCastleBal = GUICtrlCreateGroup(GetTranslated(3,47, "ClanCastle Balance"), $x - 20, $y - 20, 110, 105)
+	Local $x = 200, $y = 370
+	$grpClanCastleBal = GUICtrlCreateGroup(GetTranslated(3,47, "ClanCastle Balance"), $x - 20, $y - 20, 110, 95)
 		GUICtrlCreateLabel("", $x - 18, $y - 7, 106, 85) ; fake label to hide group border from DB and LB setting groups
 		GUICtrlSetBkColor (-1, $COLOR_WHITE)
 		GUICtrlSetState (-1, $GUI_DISABLE)
@@ -284,13 +296,13 @@ $tabAttack = GUICtrlCreateTabItem(GetTranslated(3,1, "Attack"))
 			GUICtrlSetOnEvent(-1, "cmbBalanceDR")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	Local $x = 30, $y = 450
-	$grpRoyalAbilities = GUICtrlCreateGroup(GetTranslated(3,54, "Hero Abilities"), $x - 20, $y - 20, 450, 75)
-		GUICtrlCreateIcon($pIconLib, $eIcnKingAbility, $x, $y-2, 24, 24)
-		GUICtrlCreateIcon($pIconLib, $eIcnQueenAbility, $x+ 30, $y-2, 24, 24)
-		GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x+ 15, $y + 25, 24, 24)
+	Local $x = 30, $y = 470
+	$grpRoyalAbilities = GUICtrlCreateGroup(GetTranslated(3,54, "Hero Abilities"), $x - 20, $y - 20, 450, 55)
+		GUICtrlCreateIcon($pIconLib, $eIcnKingAbility, $x, $y, 24, 24)
+		GUICtrlCreateIcon($pIconLib, $eIcnQueenAbility, $x + 25, $y, 24, 24)
+		GUICtrlCreateIcon($pIconLib, $eIcnWardenAbility, $x + 50, $y, 24, 24)
 
-		$x += 60
+		$x += 85
 		$y -= 8
 		$radManAbilities = GUICtrlCreateRadio(GetTranslated(3,55, "Timed activation of Heroes Abilities after") & ":", $x, $y -1, -1, -1)
 			$txtTip = GetTranslated(3,56, "Activate the Ability on a timer.") & @CRLF & GetTranslated(3,57, "All Heroes are activated at the same time.")
