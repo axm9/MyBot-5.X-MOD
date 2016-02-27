@@ -140,12 +140,11 @@ Func DropTrophy()
 		Else
 			; Normal Drop Trophy, no check for Dead Base
 			$SearchCount = 0
-				GetResources(False, $DT)
+			GetResources(False, $DT)
 
-				SetLog("Identification of your troops:", $COLOR_BLUE)
-				PrepareAttack($DT) ; ==== Troops :checks for type, slot, and quantity ===
-				If $Restart = True Then Return
-
+			SetLog("Identification of your troops:", $COLOR_BLUE)
+			PrepareAttack($DT) ; ==== Troops :checks for type, slot, and quantity ===
+			If $Restart = True Then Return
 		EndIf
 
 		If _Sleep($iDelayDropTrophy4) Then ExitLoop
