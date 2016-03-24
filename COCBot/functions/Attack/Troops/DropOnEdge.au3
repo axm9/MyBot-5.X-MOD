@@ -85,14 +85,14 @@ Func DropOnEdge($troop, $edge, $number, $slotsPerEdge = 0, $edge2 = -1, $x = -1,
 				If $FourFingers = 5 Then ; if $nbSide = 5
 					Local $posX2 = $maxX2 - (($maxX2 - $minX2) * ($slotsPerEdge - $i)) / ($slotsPerEdge - 1)
 					Local $posY2 = $maxY2 - (($maxY2 - $minY2) * ($slotsPerEdge - $i)) / ($slotsPerEdge - 1)
-					AttackClick($posX, $posY, $nbtroopPerSlot, SetSleep(0), 0, "#0109")
+					AttackClick($posX2, $posY2, $nbtroopPerSlot, SetSleep(0), 0, "#0109")
 					Local $posX2 = $maxX2TR - (($maxX2TR - $minX2TR) * $i) / ($slotsPerEdge - 1);addition
 					Local $posY2 = $maxY2TR - (($maxY2TR - $minY2TR) * $i) / ($slotsPerEdge - 1);addition
-					AttackClick($posX, $posY, $nbtroopPerSlot, SetSleep(0), 0, "#0109")
+					AttackClick($posX2, $posY2, $nbtroopPerSlot, SetSleep(0), 0, "#0109")
 				Else
                     Local $posX2 = Round($maxX2 - (($maxX2 - $minX2) * $i) / ($slotsPerEdge - 1))
                     Local $posY2 = Round($maxY2 - (($maxY2 - $minY2) * $i) / ($slotsPerEdge - 1))
-                    AttackClick($posX, $posY, $nbtroopPerSlot, SetSleep(0), 0, "#0109")
+                    AttackClick($posX2, $posY2, $nbtroopPerSlot, SetSleep(0), 0, "#0109")
 				EndIf
 				$nbTroopsLeft -= $nbtroopPerSlot
 			Else
