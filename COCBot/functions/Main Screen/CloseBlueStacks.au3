@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 Func CloseBS() ; @deprecated, use CloseAndroid()
-	CloseBlueStacks()
+   	CloseAndroid()
 EndFunc
 
 Func CloseBlueStacks()

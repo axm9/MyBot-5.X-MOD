@@ -257,7 +257,7 @@ Func CookDrillZapSpell()
 					Setlog("Spell Factory Full", $COLOR_RED)
 					Return
 				Else
-					GemClick(220 + 107 * 0, 354 + $midOffsetY, $iLightningSpell, $iDelayTrain7, "#0290")
+					GemClick(220 + 107 * 0, 354 + $midOffsetY, 1, $iDelayTrain7, "#0290")
 					$x = $x + 1
 				EndIf
 			WEnd

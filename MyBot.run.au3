@@ -438,11 +438,25 @@ Func Attack() ; Selects which algorithm
 		; check if can snipe external TH
 		If $OptTrophyMode = 1 Then ; Enables Combo Mode Settings
 			If SearchTownHallLoc() And IsSearchModeActive($TS) Then ; attack this base anyway because outside TH found to snipe
-				SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-				SetLog("      " & "TH Outside Found!!! ", $COLOR_GREEN, "Lucida Console", 7.5)
-				$iMatchMode = $TS
-				PrepareAttack($iMatchMode, True)
-				algorithm_AllTroops()
+				Local $originalGold = $iAimGold[$TS]
+				Local $originalElixir = $iAimElixir[$TS]
+				Local $originalDark = $iAimDark[$TS]
+				Local $originalGoldPlusElixir = $iAimGoldPlusElixir[$TS]
+				$iAimGold[$TS]  = 0
+				$iAimElixir[$TS] = 0
+				$iAimDark[$TS]  = 0
+				$iAimGoldPlusElixir[$TS] = 0
+				If CompareResources($TS) Then
+					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+					SetLog("      " & "TH Outside Found!!! ", $COLOR_GREEN, "Lucida Console", 7.5)
+					$iMatchMode = $TS
+					PrepareAttack($iMatchMode, True)
+					algorithm_AllTroops()
+				EndIf
+				$iAimGold[$TS]  = $originalGold
+				$iAimElixir[$TS] = $originalElixir
+				$iAimDark[$TS]  = $originalDark
+				$iAimGoldPlusElixir[$TS] = $originalGoldPlusElixir
 			EndIf
 		EndIf
 	Else

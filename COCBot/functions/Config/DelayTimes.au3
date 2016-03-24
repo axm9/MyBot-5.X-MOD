@@ -129,10 +129,6 @@ Global Const $iDelaycheckDarkElix2 = 1000
 Global Const $iDelayCheckTombs1 = 500
 Global Const $iDelayCheckTombs2 = 2000
 
-;CheckLootcart
-Global Const $iDelayCheckLootcart1 = 500
-Global Const $iDelayCheckLootcart2 = 2000
-
 ;CheckWall
 Global Const $iDelayCheckWall1 = 500
 Global Const $iDelayCheckWall2 = 1000
@@ -324,7 +320,6 @@ Global Const $iDelayReArm1 = 500
 Global Const $iDelayReArm2 = 1500
 Global Const $iDelayReArm3 = 700
 Global Const $iDelayReArm4 = 200
-Global Const $iDelayReArm5 = 500
 
 ;ReplayShare
 Global Const $iDelayReplayShare1 = 250

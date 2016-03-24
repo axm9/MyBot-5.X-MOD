@@ -32,7 +32,7 @@ Func CheckTombs()
 				If $DebugSetLog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
 				If $res[0] = "0" Then
 					; failed to find a tomb on the field
-					If $i = 2 then SetLog("No Tombstone found, Yard is clean!", $COLOR_GREEN)
+					If $i = 2 Then SetLog("No Tombstone found, Yard is clean!", $COLOR_GREEN)
 				ElseIf $res[0] = "-1" Then
 					SetLog("DLL Error", $COLOR_RED)
 				ElseIf $res[0] = "-2" Then

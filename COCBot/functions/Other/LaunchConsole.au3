@@ -30,6 +30,13 @@ Func LaunchConsole($cmd, $param, ByRef $process_killed, $timeout = 10000)
 	EndIf
 	
 	$data = ""
+	
+	Local $timeout_sec = Round($timeout / 1000)
+	If $timeout > 0 And $timeout_sec = 0 Then $timeout_sec = 1
+	ProcessWaitClose($pid, $timeout_sec)
+	$data &= StdoutRead($pid)
+	$data &= StderrRead($pid)
+	CleanLaunchOutput($data)
 
 	If ProcessExists($pid) Then
 		If ProcessClose($pid) = 1 Then

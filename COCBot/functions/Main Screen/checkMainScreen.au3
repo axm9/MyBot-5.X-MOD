@@ -14,7 +14,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func checkMainScreen($Check = True) ;Checks if in main screen
+Func checkMainScreen($Check = True) ; Checks if in main screen
 	Local $iCount, $Result
 	If $Check = True Then
 		SetLog("Trying to locate Main Screen")
@@ -33,13 +33,13 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 	If $ichkBackground = 0 And $NoFocusTampering = False Then
 	    Local $hTimer = TimerInit(), $hWndActive = -1
 		While TimerDiff($hTimer) < 1000 And $hWndActive <> $HWnD And Not _Sleep(100)
-		   getBSPos() ; update $HWnD
-		   $hWndActive = WinActivate($HWnD) ; ensure bot has window focus
+			getBSPos() ; update $HWnD
+			$hWndActive = WinActivate($HWnD) ; ensure bot has window focus
 		WEnd
 		If $hWndActive <> $HWnD Then
-		   ; something wrong with window, restart Android
-		   RebootAndroid()
-		   Return
+			; something wrong with window, restart Android
+			RebootAndroid()
+			Return
 	    EndIf
     EndIf
 	$iCount = 0
@@ -52,7 +52,7 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 		If ($Result = False And $MinorObstacle = True) Then
 			$MinorObstacle = False
 		ElseIf ($Result = False And $MinorObstacle = False) Then
-			 RestartAndroidCoC() ; Need to try to restart CoC
+			RestartAndroidCoC() ; Need to try to restart CoC
 		Else
 			$Restart = True
 		EndIf
