@@ -20,26 +20,25 @@ Func LoadAmountOfResourcesImages()
 	For $t = 0 To 8
 		Assign("CapacityStructureElixir" & $t, StringSplit("", ""))
 		; put in a temp array the list of files matching condition "*_*_*_*.bmp"
-		$x = _FileListToArrayRec(@ScriptDir & "\images\CapacityStructure\", "elixir_" & $t & $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
-		; assign value at THimages0... THImages4 if $x it's not empty
-		If UBound($x) >0 Then Assign("CapacityStructureElixir" & $t, $x)
+		$x = _FileListToArrayRec($path, "elixir_" & $t & $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
+		If UBound($x) > 0  Then Assign("CapacityStructureElixir" & $t, $x)
 	Next
 	For $t = 0 To 8
 	    Assign("DestroyedMineIMG" & $t, StringSplit("", ""))
 		; put in a temp array the list of files matching condition "*_*_*_*.bmp"
-		$x = _FileListToArrayRec(@ScriptDir & "\images\CapacityStructure\", "destroyed_mine_" & $t & $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
-		If UBound($x) >0 Then Assign("DestroyedMineIMG" & $t, $x)
+		$x = _FileListToArrayRec($path, "destroyed_mine_" & $t & $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
+		If UBound($x) > 0 Then Assign("DestroyedMineIMG" & $t, $x)
 	Next
 	For $t = 0 To 8
 	    Assign("DestroyedElixirIMG" & $t, StringSplit("", ""))
 		; put in a temp array the list of files matching condition "*_*_*_*.bmp"
-		$x = _FileListToArrayRec(@ScriptDir & "\images\CapacityStructure\", "destroyed_elixir_" & $t & $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
-		If UBound($x) >0  Then Assign("DestroyedElixirIMG" & $t, $x)
+		$x = _FileListToArrayRec($path, "destroyed_elixir_" & $t & $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
+		If UBound($x) > 0  Then Assign("DestroyedElixirIMG" & $t, $x)
 	Next
 	For $t = 0 To 8
 	    Assign("DestroyedDarkIMG" & $t, StringSplit("", ""))
 		; put in a temp array the list of files matching condition "*_*_*_*.bmp"
-		$x = _FileListToArrayRec(@ScriptDir & "\images\CapacityStructure\", "destroyed_dark_" & $t & $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
-		If UBound($x) >0 Then Assign("DestroyedDarkIMG" & $t, $x)
+		$x = _FileListToArrayRec($path, "destroyed_dark_" & $t & $useImages, $FLTAR_FILES, $FLTAR_NORECUR, $FLTAR_SORT, $FLTAR_NOPATH)
+		If UBound($x) > 0 Then Assign("DestroyedDarkIMG" & $t, $x)
 	Next
 EndFunc   ;==>LoadAmountOfResourcesImages

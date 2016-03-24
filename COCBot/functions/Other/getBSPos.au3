@@ -16,13 +16,18 @@
 Func getBSPos()
     Local $SuspendMode = ResumeAndroid()
     Local $Changed = False, $aOldValues[4]
-	$HWnd = WinGetHandle($Title)
-	ControlGetPos($hWnd, $AppPaneName, $AppClassInstance)
+	Local $hWin = $HWnD
+	WinGetAndroidHandle()
+	ControlGetPos($HWnD, $AppPaneName, $AppClassInstance)
 	If Not $RunState Then Return
 	If @error = 1 Then
 		SetError (0,0,0)
-		OpenAndroid(True)
-	    ControlGetPos($hWnd, $AppPaneName, $AppClassInstance)
+		If $hWin = 0 Then
+			OpenAndroid(True)
+		Else
+			RebootAndroid()
+		EndIf
+	    ControlGetPos($HWnD, $AppPaneName, $AppClassInstance)
 		If Not $RunState Then Return
 		If @error = 1 Then
 			_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 600)
@@ -37,37 +42,47 @@ Func getBSPos()
 	EndIf
 	If @error = 1 Then
 		SetError (0,0,0)
-		OpenAndroid(True) ; Try to start Android if it is not running
+		If $hWin = 0 Then
+			OpenAndroid(True) ; Try to start Android if it is not running
+		Else
+			RebootAndroid()
+		EndIf
 		Return
-	Else
-	    $aOldValues[0] = $BSpos[0]
-	    $aOldValues[1] = $BSpos[1]
-	    $aOldValues[2] = $BSrpos[0]
-	    $aOldValues[3] = $BSrpos[1]
+	EndIf
+	$aOldValues[0] = $BSpos[0]
+	$aOldValues[1] = $BSpos[1]
+	$aOldValues[2] = $BSrpos[0]
+	$aOldValues[3] = $BSrpos[1]
 
-	    Local $aPos = getAndroidPos()
-		If Not IsArray($aPos) Then
-		   OpenAndroid(True)
-		   $aPos = ControlGetPos($hWnd, $AppPaneName, $AppClassInstance)
-		   If Not $RunState Then Return
-		   If @error = 1 Then
-			   _ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 600)
-			   $stext = @CRLF & "MyBot has experienced a serious error" & @CRLF & @CRLF & _
-					   "Unable to find or start up " & $Android & @CRLF & @CRLF & "Reboot PC and try again," & _
-					   "and search www.mybot.run forums for more help" & @CRLF
-			   $MsgBox = _ExtMsgBox(0, "Close MyBot!", "Okay - Must Exit Program", $stext, 15, $frmBot)
-			   If $MsgBox = 1 Then
-				   BotClose()
-			   EndIf
+	Local $aPos = getAndroidPos()
+	If Not IsArray($aPos) Then
+		If $hWin = 0 Then
+			OpenAndroid(True) ; Try to start Android if it is not running
+		Else
+			RebootAndroid()
+		EndIf
+	  	$aPos = ControlGetPos($HWnD, $AppPaneName, $AppClassInstance)
+		If Not $RunState Then Return
+		If @error = 1 Then
+			_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 600)
+			$stext = @CRLF & "MyBot has experienced a serious error" & @CRLF & @CRLF & _
+					 "Unable to find or start up " & $Android & @CRLF & @CRLF & "Reboot PC and try again," & _
+					 "and search www.mybot.run forums for more help" & @CRLF
+			$MsgBox = _ExtMsgBox(0, "Close MyBot!", "Okay - Must Exit Program", $stext, 15, $frmBot)
+			If $MsgBox = 1 Then
+				BotClose()
 			EndIf
-	    EndIf
+		EndIf
+	EndIf
+
+	If IsArray($aPos) Then
 	    If Not $RunState Then Return
 	    Local $tPoint = DllStructCreate("int X;int Y")
 		DllStructSetData($tPoint, "X", $aPos[0])
 		If @error <> 0 Then Return SetError (0,0,0)
     	DllStructSetData($tPoint, "Y", $aPos[1])
 		If @error <> 0 Then Return SetError (0,0,0)
-	    _WinAPI_ClientToScreen(WinGetHandle(WinGetTitle($Title)), $tPoint)
+		_WinAPI_ClientToScreen($HWnD, $tPoint)
 		If @error <> 0 Then Return SetError (0,0,0)
 	    $BSpos[0] = DllStructGetData($tPoint, "X")
 		If @error <> 0 Then Return SetError (0,0,0)
@@ -84,7 +99,7 @@ Func getBSPos()
 EndFunc   ;==>getBSPos
 
 Func getAndroidPos()
-	Local $BSsize = ControlGetPos($Title, $AppPaneName, $AppClassInstance)
+   Local $BSsize = ControlGetPos($HWnD, $AppPaneName, $AppClassInstance)
 	If Not $RunState Then Return $BSsize
 	If IsArray($BSsize) Then ; Is Android Client Control available?	
 		Local $BSx = $BSsize[2] ; ($BSsize[2] > $BSsize[3]) ? $BSsize[2] : $BSsize[3]
@@ -99,14 +114,13 @@ Func getAndroidPos()
 			SetDebugLog("Unsupported " & $Android & " screen size of " & $BSx & " x " & $BSy & " !", $COLOR_ORANGE)
 	
 			; check if emultor window only needs resizing (problem with BS or Droid4X in lower Screen Resolutions!)
-			Local $AndroidWinPos = WinGetPos($Title)
+			Local $AndroidWinPos = WinGetPos($HWnD)
 			Local $WinWidth = $AndroidWinPos[2] ; ($AndroidWinPos[2] > $AndroidWinPos[3]) ? $AndroidWinPos[2] : $AndroidWinPos[3]
 			Local $WinHeight = $AndroidWinPos[3] ; ($AndroidWinPos[2] > $AndroidWinPos[3]) ? $AndroidWinPos[3] : $AndroidWinPos[2]
 	
 			Local $aWindowClientDiff[2] = [0,0] ; Compensate any controls surrounding the Android Client Control
 			Local $aAndroidWindow[2] = [$AndroidWindowWidth, $AndroidWindowHeight]
-			$HWnD = WinGetHandle($Title) ; get window Handle
-			Local $tRECT = _WinAPI_GetClientRect($HWnd)
+	    	Local $tRECT = _WinAPI_GetClientRect($HWnD)
 			If @error = 0 Then
 				$aWindowClientDiff[0] = $WinWidth - (DllStructGetData($tRECT, "Right") - DllStructGetData($tRECT, "Left"))
 				$aWindowClientDiff[1] = $WinHeight - (DllStructGetData($tRECT, "Bottom") - DllStructGetData($tRECT, "Top"))
@@ -119,16 +133,19 @@ Func getAndroidPos()
 			EndIf
 	
 			If $AndroidWindowWidth > 0 And $AndroidWindowHeight > 0 And ($WinWidth <> $aAndroidWindow[0] Or $WinHeight <> $aAndroidWindow[1]) Then ; Check expected Window size	
-				WinMove2($Title, "", $AndroidWinPos[0], $AndroidWinPos[1], $aAndroidWindow[0], $aAndroidWindow[1])
+				WinMove2($HWnD, "", $AndroidWinPos[0], $AndroidWinPos[1], $aAndroidWindow[0], $aAndroidWindow[1])
 				If @error = 0 Then
 					SetDebugLog($Android & " window resized to " & $aAndroidWindow[0] & " x " & $aAndroidWindow[1], $COLOR_GREEN)
+
+			   		RedrawAndroidWindow()
+
 					If _Sleep(500) Then Return False ; Just wait, not really required...
 					; wait 5 Sec. till window client content is resized also
 					Local $hTimer = TimerInit()
 					Do
 						If _Sleep(100) Then Return False
-						Local $new_BSsize = ControlGetPos($Title, $AppPaneName, $AppClassInstance)
-					Until TimerDiff($hTimer) > 5000 Or $BSsize[2] <> $new_BSsize[2] or $BSsize[3] <> $new_BSsize[3]
+				  		Local $new_BSsize = ControlGetPos($HWnD, $AppPaneName, $AppClassInstance)
+			   		Until TimerDiff($hTimer) > 5000 Or ($BSsize[2] = $AndroidClientWidth And $BSsize[3] <> $AndroidClientHeight)
 		
 					; reload size
 					$BSsize[2] = $new_BSsize[2]

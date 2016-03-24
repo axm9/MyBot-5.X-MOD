@@ -18,9 +18,6 @@ Func BotDetectFirstTime()
 	ClickP($aAway, 1, 0, "#0166") ; Click away
 	If _Sleep($iDelayBotDetectFirstTime1) Then Return
 
-	_WinAPI_DeleteObject($hBitmapFirst)
-	$hBitmapFirst = _CaptureRegion2()
-
 	SetLog("Detecting your Buildings..", $COLOR_BLUE)
 
 	If (isInsideDiamond($TownHallPos) = False) Then
@@ -28,6 +25,7 @@ Func BotDetectFirstTime()
 			Zoomout()
 			Collect()
 		EndIf
+		_CaptureRegion2()
 		Local $PixelTHHere = GetLocationItem("getLocationTownHall")
 		If UBound($PixelTHHere) > 0 Then
 			$pixel = $PixelTHHere[0]
@@ -88,6 +86,14 @@ Func BotDetectFirstTime()
 		EndIf
 	EndIf
 
+	If GUICtrlRead($chkScreenshotHideName) = $GUI_CHECKED Or $ichkScreenshotHideName = 1 Then
+		If _Sleep($iDelayBotDetectFirstTime3) Then Return
+		If $aCCPos[0] = -1 Then
+			LocateClanCastle()
+			SaveConfig()
+		EndIf
+	EndIf
+
 	If $ichkLab = 1 Then
 		If _Sleep($iDelayBotDetectFirstTime3) Then Return
 		If $aLabPos[0] = "" Or $aLabPos[0] = -1 Then
@@ -139,9 +145,9 @@ Func BotDetectFirstTime()
 		WEnd
 		SetLog("Verifying your Mines/Collectors/Drills ...wait ...")
 
-		_WinAPI_DeleteObject($hBitmapFirst)
-		$hBitmapFirst = _CaptureRegion2()
-		$t = 0
+
+		_CaptureRegion2()
+		$t =0
 		$PixelMineHere = GetLocationMine()
 		For $i = 0 To UBound($PixelMineHere) - 1
 			If isInsideDiamond($PixelMineHere[$i]) Then
@@ -157,9 +163,6 @@ Func BotDetectFirstTime()
 		$t =0
 		If _Sleep($iDelayBotDetectFirstTime1) Then Return
 		$PixelElixirHere = GetLocationElixir()
-		If UBound($PixelElixirHere) > 0 Then
-			SetLog("Total No. of Elixir Collectors: " & UBound($PixelElixirHere))
-		EndIf
 		For $i = 0 To UBound($PixelElixirHere) - 1
 			If isInsideDiamond($PixelElixirHere[$i]) Then
 				$pixel = $PixelElixirHere[$i]

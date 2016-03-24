@@ -1,9 +1,9 @@
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: IsTrainPage & IsAttackPage & IsMainPage & IsMainChatOpenPage & IsClanInfoPage & IsLaunchAttackPage &
 ;                  IsEndBattlePage & IsReturnHomeBattlePage
-; Description ...: VerIfy If you are in the correct window...
+; Description ...: Verify if you are in the correct window...
 ; Author ........: Sardo (2015)
-; ModIfied ......: ProMac 2015, MonkeyHunter (2015-12)
+; Modified ......: ProMac 2015, MonkeyHunter (2015-12)
 ; Remarks .......: This file is part of MyBot Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......: Returns True or False
@@ -15,7 +15,7 @@ Func IsTrainPage()
 	Local $i = 0
 
 	While $i < 30
-		If _ColorCheck(_GetPixelColor(717, 120 + $midOffsetY, True), Hex(0xE0070A, 6), 10) And _ColorCheck(_GetPixelColor(762, 328 + $midOffsetY, True), Hex(0xF18439, 6), 10) Then ExitLoop
+		If _CheckPixel($aIsTrainPgChk1, $bCapturePixel) And _CheckPixel($aIsTrainPgChk2, $bCapturePixel) Then ExitLoop
 		If _Sleep($iDelayIsTrainPage1) Then ExitLoop
 		$i += 1
 	WEnd

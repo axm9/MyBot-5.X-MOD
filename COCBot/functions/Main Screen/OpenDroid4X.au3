@@ -40,14 +40,11 @@ Func OpenDroid4X($bRestart = False)
 	EndIf
 	
 	; Test ADB is connected
-	$connected_to = IsAdbConnected()
+   	$connected_to = ConnectAndroidAdb(False, 60 * 1000)
 	If Not $RunState Then Return
 	
    	SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_GREEN)
 	$hTimer = TimerInit()
-	; Wait for device
-	$cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " wait-for-device", $process_killed, 60 * 1000)
-	If Not $RunState Then Return
 	
 	; Wair for Activity Manager
 	If WaitForAndroidBootCompleted($AndroidLaunchWaitSec - TimerDiff($hTimer) / 1000, $hTimer) Then Return
@@ -167,9 +164,11 @@ Func InitDroid4X($bCheckOnly = False)
 	
 	; Read ADB host and Port
 	If Not $bCheckOnly Then
-	  $__VBoxManage_Path = $VirtualBox_Path & "VBoxManage.exe"
-	  $__VBoxVMinfo = LaunchConsole($__VBoxManage_Path, "showvminfo " & $AndroidInstance, $process_killed)
-	  $aRegExResult = StringRegExp($__VBoxVMinfo, "ADB_PORT.*host ip = ([^,]+),", $STR_REGEXPARRAYMATCH)
+	  	InitAndroidConfig(True) ; Restore default config
+
+	  	$__VBoxManage_Path = $VirtualBox_Path & "VBoxManage.exe"
+	  	$__VBoxVMinfo = LaunchConsole($__VBoxManage_Path, "showvminfo " & $AndroidInstance, $process_killed)
+	  	$aRegExResult = StringRegExp($__VBoxVMinfo, "ADB_PORT.*host ip = ([^,]+),", $STR_REGEXPARRAYMATCH)
 		If Not @error Then
 			$AndroidAdbDeviceHost = $aRegExResult[0]
 			If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDeviceHost = " & $AndroidAdbDeviceHost, $COLOR_PURPLE)
@@ -178,7 +177,7 @@ Func InitDroid4X($bCheckOnly = False)
 			SetLog("Cannot read " & $Android & "(" & $AndroidInstance & ") ADB Device Host", $COLOR_RED)
 		EndIF
 	
-	  $aRegExResult = StringRegExp($__VBoxVMinfo, "ADB_PORT.*host port = (\d{3,5}),", $STR_REGEXPARRAYMATCH)
+	  	$aRegExResult = StringRegExp($__VBoxVMinfo, "ADB_PORT.*host port = (\d{3,5}),", $STR_REGEXPARRAYMATCH)
 		If Not @error Then
 			$AndroidAdbDevicePort = $aRegExResult[0]
 			If $debugSetlog = 1 Then Setlog("Func LaunchConsole: Read $AndroidAdbDevicePort = " & $AndroidAdbDevicePort, $COLOR_PURPLE)
@@ -212,10 +211,10 @@ Func InitDroid4X($bCheckOnly = False)
 		$AndroidPicturesPath = "/mnt/shared/picture/"
 		$aRegExResult = StringRegExp($__VBoxVMinfo, "Name: 'picture', Host path: '(.*)'.*", $STR_REGEXPARRAYMATCH)
 		If Not @error Then
-			$AndroidAdbScreencap = True
 			$AndroidPicturesHostPath = $aRegExResult[0] & "\"
 		Else
-			;SetLog($Android & " Background Mode is not available", $COLOR_RED)
+		 	SetLog($Android & " Background Mode is not available", $COLOR_RED)
+		 	$AndroidPicturesHostPath = ""
 			$AndroidAdbScreencap = False
 		EndIf
 	
@@ -259,7 +258,7 @@ Func SetScreenDroid4X()
 	$cmdOutput = LaunchConsole($__VBoxManage_Path, "guestproperty set " & $AndroidInstance & " vbox_dpi 160", $process_killed)
 
 	;vboxmanage sharedfolder add droid4x --name picture --hostpath "C:\Users\Administrator\Pictures\Droid4X Photo" --automount
-	If $ichkBackground = 1 And $AndroidAdbScreencap = False And $AndroidPicturesPathAutoConfig = True And BitAND($AndroidSupportFeature, 2) = 2 and FileExists(	$AndroidPicturesHostPath) = 1 Then
+	If $ichkBackground = 1 And $AndroidAdbScreencap = False And $AndroidPicturesPathAutoConfig = True And BitAND($AndroidSupportFeature, 2) = 2 and FileExists($AndroidPicturesHostPath) = 1 Then
 		$cmdOutput = LaunchConsole($__VBoxManage_Path, "sharedfolder add " & $AndroidInstance & " --name picture --hostpath """ & $AndroidPicturesHostPath & """  --automount", $process_killed)
 	EndIf
 	
@@ -300,7 +299,7 @@ Func CheckScreenDroid4X($bSetLog = True)
 	Next
 	If $iErrCnt > 0 Then Return False
 
-	; check if shared folder exists for background mode
+	; check if shared folder exists for background mode and mouse events
 	If $ichkBackground = 1 And $AndroidAdbScreencap = False And $AndroidPicturesPathAutoConfig = True And BitAND($AndroidSupportFeature, 2) = 2 Then
 		Local $myPictures = RegRead("HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\", "My Pictures")
 		If @error = 0 And FileExists($myPictures) = 1 Then

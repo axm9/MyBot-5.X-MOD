@@ -23,7 +23,7 @@ Func BoostBarracks()
 	Local $ImagesToUse1[2] ; Boost one
 	$ImagesToUse1[0] = @ScriptDir & "\images\Button\BoostBarrack.png" ; This image is use to Barracks and Spells Factories
 	$ImagesToUse1[1] = @ScriptDir & "\images\Button\BarrackBoosted.png"
-	$ToleranceImgLoc = 0.90 ; similarity 0.00 to 1
+	$ToleranceImgLoc = 0.92 ; similarity 0.00 to 1
 
 	; Get from GUI the values
 	Local $icmbQuantBoostBarracks = GUICtrlRead($cmbQuantBoostBarracks)
@@ -67,11 +67,11 @@ Func BoostBarracks()
 		If _Sleep($iDelayBoostBarracks1) Then Return
 		
 		; Capture Buttom Region to detect the Buttom to click
-		_WinAPI_DeleteObject($hBitmapFirst)
-		$hBitmapFirst = _CaptureRegion2(125, 610, 740, 715)
+		_CaptureRegion2(125, 610, 740, 715)
 		For $i = 0 To 1
 			If FileExists($ImagesToUse[$i]) Then
-				$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hBitmapFirst, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc)
+				$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hHBitmap2, "str", $ImagesToUse[$i], "float", $ToleranceImgLoc)
+				If @error Then _logErrorDLLCall($pImgLib, @error)
 				If IsArray($res) Then
 					If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
 					If $res[0] = "0" Then
@@ -128,11 +128,12 @@ Func BoostBarracks()
 			If _Sleep($iDelayBoostBarracks1) Then Return
 			Click($barrackPos[$i][0], $barrackPos[$i][1], 1, 0, "#0158")
 			If _Sleep($iDelayBoostBarracks1) Then Return
-			_WinAPI_DeleteObject($hBitmapFirst)
-			$hBitmapFirst = _CaptureRegion2(125, 610, 740, 715)
+
+			_CaptureRegion2(125, 610, 740, 715)
 			For $t = 0 To 1
 				If FileExists($ImagesToUse1[$t]) Then
-					$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hBitmapFirst, "str", $ImagesToUse1[$t], "float", $ToleranceImgLoc)
+					$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hHBitmap2, "str", $ImagesToUse1[$t], "float", $ToleranceImgLoc)
+					If @error Then _logErrorDLLCall($pImgLib, @error)
 					If IsArray($res) Then
 						If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
 						If $res[0] = "0" Then
@@ -218,13 +219,14 @@ Func BoostSpellFactory()
 		EndIf
 			Click($SFPos[0], $SFPos[1], 1, 0, "#0162")
 			If _Sleep($iDelayBoostSpellFactory4) Then Return
-		_WinAPI_DeleteObject($hBitmapFirst)
-		$hBitmapFirst = _CaptureRegion2(125, 610, 740, 715)
+
+		_CaptureRegion2(125, 610, 740, 715)
 		For $i = 0 To 1
 			If FileExists($ImagesToUse1[$i]) Then
-				$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hBitmapFirst, "str", $ImagesToUse1[$i], "float", $ToleranceImgLoc)
+				$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hHBitmap2, "str", $ImagesToUse1[$i], "float", $ToleranceImgLoc)
+				If @error Then _logErrorDLLCall($pImgLib, @error)
 				If IsArray($res) Then
-					If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+					If $DebugSetlog Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
 					If $res[0] = "0" Then
 						If $i = 1 Then SetLog("No Button found")
 					ElseIf $res[0] = "-1" Then
@@ -234,7 +236,7 @@ Func BoostSpellFactory()
 					Else
 						If _Sleep($iDelayBoostBarracks5) Then Return
 						If $i = 0 Then
-							If $DebugSetlog Then SetLog("Found the Button to Boost Spell Factory")
+							If $DebugSetlog = 1 Then SetLog("Found the Button to Boost Spell Factory")
 							$expRet = StringSplit($res[0], "|", 2)
 							$ButtonX = 125 + Int($expRet[1])
 							$ButtonY = 610 + Int($expRet[2])
@@ -293,11 +295,12 @@ Func BoostDarkSpellFactory()
 		Click($DSFPos[0], $DSFPos[1], 1, 0, "#0162")
 		If _Sleep($iDelayBoostSpellFactory4) Then Return
 
-		_WinAPI_DeleteObject($hBitmapFirst)
-		$hBitmapFirst = _CaptureRegion2(125, 610, 740, 715)
+
+		_CaptureRegion2(125, 610, 740, 715)
 		For $i = 0 To 1
 			If FileExists($ImagesToUse1[$i]) Then
-				$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hBitmapFirst, "str", $ImagesToUse1[$i], "float", $ToleranceImgLoc)
+				$res = DllCall($pImgLib, "str", "MBRSearchImage", "handle", $hHBitmap2, "str", $ImagesToUse1[$i], "float", $ToleranceImgLoc)
+				If @error Then _logErrorDLLCall($pImgLib, @error)
 				If IsArray($res) Then
 					If $DebugSetlog = 1 Then SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
 					If $res[0] = "0" Then

@@ -1,6 +1,6 @@
 #cs new code for Troopsbar Identify, need to implement this somewhere
 
-Local $result = DllCall($hFuncLib, "str", "searchIdentifyTroop", "ptr", $hBitmapFirst)
+Local $result = DllCall($hFuncLib, "str", "searchIdentifyTroop", "ptr", $hHBitmap2)
     ConsoleWrite("result : "&$result[0])
 
 Return :
@@ -24,7 +24,7 @@ Func IdentifyTroopKind($SlotPos = 0)
                     $SlotComp = 2
 				Case 7 to 10
                     $SlotComp = 3
-	    Case Else
+	    		Case Else
 					$SlotComp = 0
             EndSwitch
 
@@ -136,7 +136,7 @@ Func IdentifyTroopKindCreate($SlotPos = 0)
                     $SlotComp = 2
 				Case 7 to 10
                     $SlotComp = 3
-		Case Else
+				Case Else
 					$SlotComp = 0
             EndSwitch
 

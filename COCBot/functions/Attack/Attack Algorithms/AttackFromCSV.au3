@@ -85,8 +85,8 @@ Func Algorithm_AttackCSV($testattack = False)
 	
 	; 02.01 - RED AREA -----------------------------------------------------------------------------------------------------------------------------------------
 	Local $hTimer = TimerInit()
-	_WinAPI_DeleteObject($hBitmapFirst)
-	$hBitmapFirst = _CaptureRegion2()
+
+	_CaptureRegion2()
 	_GetRedArea()
 
 	Local $htimerREDAREA = Round(TimerDiff($hTimer) / 1000, 2)
@@ -203,7 +203,7 @@ Func Algorithm_AttackCSV($testattack = False)
 		Setlog("> Townhall has already been located in while searching for an image", $COLOR_BLUE)
 	EndIf
 
-	_CaptureRegion()
+	_CaptureRegion2()
 
 	; 04 - MINES, COLLECTORS, DRILLS -----------------------------------------------------------------------------------------------------------------------
 
@@ -329,19 +329,31 @@ Func Algorithm_AttackCSV($testattack = False)
 	$PixelNearCollectorBottomLeft = GetListPixel3($PixelNearCollectorBottomLeftSTR)
 	$PixelNearCollectorBottomRight = GetListPixel3($PixelNearCollectorBottomRightSTR)
 
+	If $attackcsv_locate_gold_storage = 1 Then
+		SuspendAndroid()
+		$GoldStoragePos = GetLocationGoldStorage()
+		ResumeAndroid()
+	EndIf
+
+	If $attackcsv_locate_elixir_storage = 1 Then
+		SuspendAndroid()
+		$ElixirStoragePos = GetLocationElixirStorage()
+		ResumeAndroid()
+	EndIf
+
 	; 05 - DARKELIXIRSTORAGE ------------------------------------------------------------------------
 	If $attackcsv_locate_dark_storage = 1 Then
 		$hTimer = TimerInit()
 		SuspendAndroid()
-		Local $PixelDarkElixir = GetLocationDarkElixirStorageWithLevel()
+		Local $PixelDarkElixirStorage = GetLocationDarkElixirStorageWithLevel()
 		ResumeAndroid()
-		CleanRedArea($PixelDarkElixir)
-		Local $pixel = StringSplit($PixelDarkElixir, "#", 2)
+		CleanRedArea($PixelDarkElixirStorage)
+		Local $pixel = StringSplit($PixelDarkElixirStorage, "#", 2)
 		If UBound($pixel) >= 2 Then
 			Local $pixellevel = $pixel[0]
 			Local $pixelpos = StringSplit($pixel[1], "-", 2)
 			If UBound($pixelpos) >= 2 Then
-				Local $temp = [$pixelpos[0], $pixelpos[1]]
+				Local $temp = [Int($pixelpos[0]), Int($pixelpos[1])]
 				$darkelixirStoragePos = $temp
 			EndIf
 		EndIf

@@ -29,9 +29,8 @@ Func THSearch($bReTest = False)
 		Next
 	EndIf
 
-	_WinAPI_DeleteObject($hBitmapFirst)
-	$hBitmapFirst = _CaptureRegion2()
-	$result = DllCall($hFuncLib, "str", "getLocationTownHallWithLevel", "ptr", $hBitmapFirst)
+	_CaptureRegion2()
+	$result = DllCall($hFuncLib, "str", "getLocationTownHallWithLevel", "ptr", $hHBitmap2)
 	If $debugsetlog = 1 Then SetLog("Calculated (in " & Round(TimerDiff($hTimer) / 1000, 2) & " seconds) :")
 	If $debugsetlog = 1 Then Setlog("TownHall search $result[0] = " & $result[0], $COLOR_PURPLE) ;Debug
 
@@ -76,6 +75,7 @@ Func THSearch($bReTest = False)
 			$THx = $aTownHallLocal[0]
 			$THy = $aTownHallLocal[1]
 			$ImageInfo = String("C# DLL_" & $aTownHallLocal[2])
+			If $debugImageSave = 1 Then CaptureTHwithInfo($THx, $THy, $ImageInfo)
 			If $debugsetlog = 1 Then SetLog("TownHall: [" & $aTownHallLocal[0] & "," & $aTownHallLocal[1] & "], Level: " & $aTownHallLocal[2], $COLOR_BLUE)
 			Return $THText[($aTownHallLocal[2] < 6 ? 0 : $aTownHallLocal[2] - 6)]
 		Else

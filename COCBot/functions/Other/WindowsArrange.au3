@@ -17,7 +17,7 @@
 Func WindowsArrange($position, $offsetX = 0, $offsetY = 0)
 	WinGetAndroidHandle()
 	Local $BSHandle, $BOTHandle
-	Local $BSPos = WinGetPos($Title)
+	Local $BSPos = WinGetPos($HWnD)
 	Local $BOTPos = WinGetPos($sBotTitle)
 	If IsArray($BSPos) And IsArray($BOTPos) Then
 		Local $BSx = $BSPos[0]
@@ -31,14 +31,14 @@ Func WindowsArrange($position, $offsetX = 0, $offsetY = 0)
 		If Number( $BSx) > -30000 and Number($BSy ) > -30000 Then
 			Switch $position
 				Case "BS-BOT" ; position left bs, right adjacent BOT
-					$BSHandle = WinMove2($Title, "", 0 + Number($offsetX) , 0 + number($offsetY))
+					$BSHandle = WinMove2($HWnD, "", 0 + Number($offsetX) , 0 + number($offsetY))
 					If _Sleep($iDelayWindowsArrange1) Then Return
 					$BOTHandle = WinMove2($sBotTitle, "", Number($BSw) + Number($offsetX)*2, 0 + number($offsetY))
 					If _Sleep($iDelayWindowsArrange1) Then Return
 				Case "BOT-BS" ; position left BOT, right adjacent BS
 					$BOTHandle = WinMove2($sBotTitle, "", 0 + Number($offsetX) , 0 + number($offsetY))
 					If _Sleep($iDelayWindowsArrange1) Then Return
-					$BSHandle = WinMove2($Title, "", Number($BOTw) + Number($offsetX)*2, 0 + number($offsetY))
+					$BSHandle = WinMove2($HWnD, "", Number($BOTw) + Number($offsetX)*2, 0 + number($offsetY))
 					If _Sleep($iDelayWindowsArrange1) Then Return
 				Case "SNAP-TR" ; position BOT top right of BS, do not move BS
 					If $BSx + $BSw + number($offsetX) < @DesktopWidth Then $BOTHandle = WinMove2($sBotTitle, "", $BSx + $BSw + Number($offsetX), $BSy )

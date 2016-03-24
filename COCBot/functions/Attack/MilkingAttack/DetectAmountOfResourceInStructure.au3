@@ -54,7 +54,7 @@ Func DetectAmountOfResourceInStructure($type, $coordinate, $level, $mincapacity)
 						_GDIPlus_PenDispose($hPen)
 						_GDIPlus_BrushDispose($hBrush)
 						_GDIPlus_GraphicsDispose($hGraphic)
-						DebugImageSave("debugresourcesoffset_" & $type & "_" & $level & "_" & $filename &"#", False)
+						DebugImageSave("debugresourcesoffset_" & $type & "_" & $level & "_" & $filename & "#", False)
 					EndIf
 
 					Return $capacityanalized

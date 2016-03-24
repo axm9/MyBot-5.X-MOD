@@ -16,6 +16,7 @@
 Func MilkingDetectDarkExtractors()
 		Local $MilkFarmAtkPixelListDRILLSTR = ""
 	If $MilkFarmLocateDrill = 1 Then
+		_CaptureRegion2(80, 70, 785, 530)
 		Local $hTimer = TimerInit()
 		; 03.01 locate extractors
 		Local $DrillVect = StringSplit(GetLocationDarkElixirWithLevel(), "~", 2) ; ["6#527-209" , "6#421-227" , "6#600-264" , "6#299-331" , "6#511-404" , "6#511-453"]
@@ -28,6 +29,9 @@ Func MilkingDetectDarkExtractors()
 			If UBound($temp) = 2 Then
 				$pixel = StringSplit($temp[1], "-", 2) ; PIXEL ["404","325"]
 				If UBound($pixel) = 2 Then
+					Local $tempPixel[2] = [$pixel[0] + 80, $pixel[1] + 70]
+					$pixel = $tempPixel
+					$temp[1] = String($pixel[0]& "-" & $pixel[1])
 					If isInsideDiamond($pixel) Then
 						; debug if need
 						If $debugresourcesoffset = 1 Then
@@ -84,4 +88,4 @@ Func MilkingDetectDarkExtractors()
 	Else
 		Return 0
 	EndIf
-EndFunc
+EndFunc   ;==>MilkingDetectDarkExtractors

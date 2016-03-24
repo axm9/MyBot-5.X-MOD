@@ -16,7 +16,7 @@
 Func MilkingDetectElixirExtractors()
 	; detect elixir extractors position according to settings: amount of resource and level.
     $MilkFarmObjectivesSTR = ""
-
+	_CaptureRegion2(80, 70, 785, 530)
    	Local $MilkFarmAtkPixelListSTR = ""
 	Local $hTimer = TimerInit()
 	; 03.01 locate extractors
@@ -30,6 +30,9 @@ Func MilkingDetectElixirExtractors()
 		If UBound($temp) = 2 Then
 			$pixel = StringSplit($temp[1], "-", 2) ; PIXEL ["404","325"]
 			If UBound($pixel) = 2 Then
+				Local $tempPixel[2] = [$pixel[0] + 80, $pixel[1] + 70]
+				$pixel = $tempPixel
+				$temp[1] = String($pixel[0]& "-" & $pixel[1])
 				; A: check if resource it is inside village.........................................................................
 				If isInsideDiamond($pixel) Then
 					; B: check if amount ofr esource it is enough...................................................................
@@ -60,7 +63,7 @@ Func MilkingDetectElixirExtractors()
 	EndIf
 	If $debugsetlog = 1 Then Setlog("> Elixir Extractors to attack list: " & $MilkFarmAtkPixelListSTR, $color_purple)
 	Local $htimerLocateElixir = Round(TimerDiff($hTimer) / 1000, 2)
-	If $debugsetlog=1 Then Setlog("> Elixir Extractors found: " & $elixirfounds & " | match conditions: " & $elixirmatch & " | discard " & $elixirdiscard, $color_blue)
+	If $debugsetlog = 1 Then Setlog("> Elixir Extractors found: " & $elixirfounds & " | match conditions: " & $elixirmatch & " | discard " & $elixirdiscard, $color_blue)
 	If $debugsetlog = 1 Then SetLog("> Elixir Extractors position and %full detectecd in " & $htimerLocateElixir & " seconds", $color_blue)
 	Return $Elixirmatch
-EndFunc
+EndFunc   ;==>MilkingDetectElixirExtractors

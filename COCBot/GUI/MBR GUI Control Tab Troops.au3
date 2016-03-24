@@ -35,20 +35,18 @@ Func cmbDarkTroopComp()
 EndFunc   ;==>cmbDarkTroopComp
 Func SetComboDarkTroopComp()
 	Switch _GUICtrlComboBox_GetCurSel($cmbDarkTroopComp)
-		Case 0
-			; show all the barrack mode controls
+		Case 0 ; Barrack Mode
 			For $i = 1 To 2
-				GUICtrlSetState(Eval("cmbDarkBarrack"&$i), $GUI_SHOW)
-				GUICtrlSetState(Eval("cmbDarkBarrack"&$i), $GUI_ENABLE)
-				GUICtrlSetState(Eval("lblDarkBarrack"&$i), $GUI_SHOW)
+				GUICtrlSetState(Eval("cmbDarkBarrack" & $i), $GUI_SHOW)
+				GUICtrlSetState(Eval("cmbDarkBarrack" & $i), $GUI_ENABLE)
+				GUICtrlSetState(Eval("lblDarkBarrack" & $i), $GUI_SHOW)
 			Next
-
 			HideDarkCustomControls()
 			ShowDarkBarrackControls()
-		Case 1
+		Case 1 ; Custom Mode
 			HideDarkBarrackControls()
 			ShowDarkCustomControls()
-		Case 2 ;None
+		Case 2 ; None
 			HideDarkBarrackControls()
 			HideDarkCustomControls()
 	EndSwitch
@@ -57,16 +55,16 @@ EndFunc   ;==>SetComboTroopComp
 Func ShowDarkBarrackControls()
 	GUICtrlSetState($grpDarkBarrackMode, $GUI_SHOW)
 	For $i = 1 To 2
-		GUICtrlSetState(Eval("cmbDarkBarrack"&$i), $GUI_SHOW)
-		GUICtrlSetState(Eval("cmbDarkBarrack"&$i), $GUI_ENABLE)
-		GUICtrlSetState(Eval("lblDarkBarrack"&$i), $GUI_SHOW)
+		GUICtrlSetState(Eval("cmbDarkBarrack" & $i), $GUI_SHOW)
+		GUICtrlSetState(Eval("cmbDarkBarrack" & $i), $GUI_ENABLE)
+		GUICtrlSetState(Eval("lblDarkBarrack" & $i), $GUI_SHOW)
 	Next
-EndFunc
+EndFunc   ;==>ShowDarkBarrackControls
 
-func ShowDarkCustomControls()
+Func ShowDarkCustomControls()
 	GUICtrlSetState($grpDarkTroops, $GUI_SHOW)
 	For $i = 0 To UBound($TroopDarkName) - 1
-		GUICtrlSetState(Eval("txtNum" & $TroopDarkName[$i]), $GUI_SHOW)
+		GUICtrlSetState(Eval("txtNum" & $TroopDarkName[$i]), $GUI_SHOW + $GUI_ENABLE)
 	Next
 	GUICtrlSetState($lblMinion, $GUI_SHOW)
 	GUICtrlSetState($lblHogRiders, $GUI_SHOW)
@@ -88,17 +86,17 @@ func ShowDarkCustomControls()
 	GUICtrlSetState($icnGole, $GUI_SHOW)
 	GUICtrlSetState($icnWitc, $GUI_SHOW)
 	GUICtrlSetState($icnLava, $GUI_SHOW)
-EndFunc
+EndFunc   ;==>ShowDarkCustomControls
 
 Func HideDarkBarrackControls()
 	GUICtrlSetState($grpDarkBarrackMode, $GUI_HIDE)
 	For $i = 1 To 2
-		GUICtrlSetState(Eval("cmbDarkBarrack"&$i), $GUI_HIDE)
-		GUICtrlSetState(Eval("lblDarkBarrack"&$i), $GUI_HIDE)
+		GUICtrlSetState(Eval("cmbDarkBarrack" & $i), $GUI_HIDE)
+		GUICtrlSetState(Eval("lblDarkBarrack" & $i), $GUI_HIDE)
 	Next
-EndFunc
+EndFunc   ;==>HideDarkBarrackControls
 
-func HideDarkCustomControls()
+Func HideDarkCustomControls()
 	GUICtrlSetState($grpDarkTroops, $GUI_HIDE)
 	For $i = 0 To UBound($TroopDarkName) - 1
 		GUICtrlSetState(Eval("txtNum" & $TroopDarkName[$i]), $GUI_HIDE)
@@ -123,7 +121,7 @@ func HideDarkCustomControls()
 	GUICtrlSetState($icnGole, $GUI_HIDE)
 	GUICtrlSetState($icnWitc, $GUI_HIDE)
 	GUICtrlSetState($icnLava, $GUI_HIDE)
-EndFunc
+EndFunc   ;==>HideDarkCustomControls
 
 Func SetComboTroopComp()
 	Switch _GUICtrlComboBox_GetCurSel($cmbTroopComp)
@@ -347,17 +345,16 @@ Func SetComboTroopComp()
 			GUICtrlSetData($txtNumHogs, $HogsComp)
 			HideBarrackControls()
 			ShowCustomControls()
-		Case 8
-			; show all the barrack mode controls
+		Case 8 ; Barrack Mode
 			For $i = 1 To 4
-				GUICtrlSetState(Eval("cmbBarrack"&$i), $GUI_SHOW)
-				GUICtrlSetState(Eval("cmbBarrack"&$i), $GUI_ENABLE)
-				GUICtrlSetState(Eval("lblBarrack"&$i), $GUI_SHOW)
+				GUICtrlSetState(Eval("cmbBarrack" & $i), $GUI_SHOW)
+				GUICtrlSetState(Eval("cmbBarrack" & $i), $GUI_ENABLE)
+				GUICtrlSetState(Eval("lblBarrack" & $i), $GUI_SHOW)
 			Next
 			GUICtrlSetState($grpBarrackMode, $GUI_SHOW)
 			HideCustomControls()
 			ShowBarrackControls()
-		Case 9			
+		Case 9 ; Custom Troops
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_SHOW)
 			Next
@@ -370,8 +367,17 @@ Func SetComboTroopComp()
 				GUICtrlSetData(Eval("txtNum" & $TroopName[$i]), Eval($TroopName[$i] & "Comp"))
 			Next
 
+			For $i = 0 To UBound($TroopDarkName) - 1
+				_GUICtrlEdit_SetReadOnly(Eval("txtNum" & $TroopDarkName[$i]), False)
+			Next
+
+			For $i = 0 To UBound($TroopDarkName) - 1
+				GUICtrlSetData(Eval("txtNum" & $TroopDarkName[$i]), Eval($TroopDarkName[$i] & "Comp"))
+			Next
+
 			HideBarrackControls()
 			ShowCustomControls()
+			ShowDarkCustomControls()
 	EndSwitch
 	lblTotalCount()
 EndFunc   ;==>SetComboTroopComp
@@ -383,9 +389,9 @@ Func HideBarrackControls()
 	GUICtrlSetState($cmbBarrack3, $GUI_HIDE)
 	GUICtrlSetState($cmbBarrack4, $GUI_HIDE)
 	For $i = 1 To 4
-		GUICtrlSetState(Eval("lblBarrack"&$i), $GUI_HIDE)
+		GUICtrlSetState(Eval("lblBarrack" & $i), $GUI_HIDE)
 	Next
-EndFunc
+EndFunc   ;==>HideBarrackControls
 
 Func HideCustomControls()
 	GUICtrlSetState($grpTroops, $GUI_HIDE);hide all custom army controls
@@ -441,7 +447,7 @@ Func HideCustomControls()
 	GUICtrlSetState($lblTotalCount, $GUI_HIDE)
 	GUICtrlSetState($lblTotal, $GUI_HIDE)
 	GUICtrlSetState($lblPercentTotal, $GUI_HIDE)
-EndFunc
+EndFunc   ;==>HideCustomControls
 
 Func ShowBarrackControls()
 	GUICtrlSetState($grpBarrackMode, $GUI_SHOW)
@@ -450,9 +456,9 @@ Func ShowBarrackControls()
 	GUICtrlSetState($cmbBarrack3, $GUI_SHOW)
 	GUICtrlSetState($cmbBarrack4, $GUI_SHOW)
 	For $i = 1 To 4
-		GUICtrlSetState(Eval("lblBarrack"&$i), $GUI_SHOW)
+		GUICtrlSetState(Eval("lblBarrack" & $i), $GUI_SHOW)
 	Next
-EndFunc
+EndFunc   ;==>ShowBarrackControls
 
 Func ShowCustomControls()
 	GUICtrlSetState($grpTroops, $GUI_SHOW);SHOW all custom army controls
@@ -508,7 +514,7 @@ Func ShowCustomControls()
 	GUICtrlSetState($lblTotalCount, $GUI_SHOW)
 	GUICtrlSetState($lblTotal, $GUI_SHOW)
 	GUICtrlSetState($lblPercentTotal, $GUI_HIDE)
-EndFunc
+EndFunc   ;==>ShowCustomControls
 
 Func lblTotalCount()
 	GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGobl))
@@ -522,7 +528,7 @@ Func lblTotalCount()
 EndFunc   ;==>lblTotalCount
 
 Func lblTotalCountSpell()
-	If (GUICtrlRead($txtNumLightningSpell)*2 + GUICtrlRead($txtNumHealSpell)*2 + GUICtrlRead($txtNumRageSpell)*2 + GUICtrlRead($txtNumJumpSpell)*2 + GUICtrlRead($txtNumFreezeSpell)*2 + GUICtrlRead($txtNumPoisonSpell) + GUICtrlRead($txtNumHasteSpell) + GUICtrlRead($txtNumEarthSpell)) < GUICtrlRead($txtTotalCountSpell)+1 Then
+	If (GUICtrlRead($txtNumLightningSpell) * 2 + GUICtrlRead($txtNumHealSpell) * 2 + GUICtrlRead($txtNumRageSpell) * 2 + GUICtrlRead($txtNumJumpSpell) * 2 + GUICtrlRead($txtNumFreezeSpell) * 2 + GUICtrlRead($txtNumPoisonSpell) + GUICtrlRead($txtNumHasteSpell) + GUICtrlRead($txtNumEarthSpell)) < GUICtrlRead($txtTotalCountSpell) + 1 Then
 		GUICtrlSetBkColor($txtNumLightningSpell, $COLOR_MONEYGREEN)
 		GUICtrlSetBkColor($txtNumHealSpell, $COLOR_MONEYGREEN)
 		GUICtrlSetBkColor($txtNumRageSpell, $COLOR_MONEYGREEN)
@@ -542,7 +548,7 @@ Func lblTotalCountSpell()
 		GUICtrlSetBkColor($txtNumHasteSpell, $COLOR_RED)
 	EndIf
 
-	If GUICtrlRead($txtTotalCountSpell) = 0 then
+	If GUICtrlRead($txtTotalCountSpell) = 0 Then
 		GUICtrlSetState($txtNumLightningSpell, $GUI_DISABLE)
 		GUICtrlSetState($txtNumHealSpell, $GUI_DISABLE)
 		GUICtrlSetState($txtNumRageSpell, $GUI_DISABLE)

@@ -48,6 +48,19 @@ Func setupProfileComboBox()
 	GUICtrlSetData($cmbTrophyMinProfile, $profileString, "<No Profiles>")
 EndFunc   ;==>setupProfileComboBox
 
+Func renameProfile()
+	Local $originalPath = $sProfilePath & "\" & GUICtrlRead($cmbProfile)
+	Local $newPath = $sProfilePath & "\" & $sCurrProfile
+	If FileExists($originalPath) Then
+		; Close the logs to ensure all files can be deleted.
+		FileClose($hLogFileHandle)
+		FileClose($hAttackLogFileHandle)
+
+		; Remove the directory and all files and sub folders.
+		DirMove($originalPath, $newPath, $FC_NOOVERWRITE)
+	EndIf
+EndFunc   ;==>deleteProfile
+
 Func deleteProfile()
 	Local $deletePath = $sProfilePath & "\" & GUICtrlRead($cmbProfile)
 	If FileExists($deletePath) Then
@@ -66,7 +79,7 @@ Func createProfile()
 
 	; If the Profiles file does not exist create it.
 	If Not FileExists($sProfilePath & "\profile.ini") Then
-		Local $hFile = FileOpen($sProfilePath & "\profile.ini", BitOR($FO_APPEND, $FO_CREATEPATH))
+		Local $hFile = FileOpen($sProfilePath & "\profile.ini", $FO_APPEND + $FO_CREATEPATH)
 		FileWriteLine($hFile, "[general]")
 		FileClose($hFile)
 	EndIf
@@ -98,7 +111,7 @@ Func setupProfile()
 		$sCurrProfile = GUICtrlRead($cmbProfile)
 	EndIf
 
-	; Create the profile if needed
+	; Create the profile if needed, this also sets the variables if the profile exists.
 	createProfile()
 	; Set the profile name on the village info group.
 	GUICtrlSetData($grpVillage, GetTranslated(13, 21, "Village") & ": " & $sCurrProfile)

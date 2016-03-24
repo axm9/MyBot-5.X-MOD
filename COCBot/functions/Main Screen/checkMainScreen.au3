@@ -18,13 +18,15 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 	Local $iCount, $Result
 	If $Check = True Then
 		SetLog("Trying to locate Main Screen")
-		_WinAPI_EmptyWorkingSet(WinGetProcess($Title)) ; Reduce BlueStacks Memory Usage
-	Else
-		If $debugsetlog = 1 Then SetLog("checkMainScreen start quiet mode", $COLOR_PURPLE)
+		_WinAPI_EmptyWorkingSet(WinGetProcess($HWnD)) ; Reduce Android Memory Usage
     EndIf
-	WinGetAndroidHandle()
-	If $HWnD = 0 Then
+	Local $hWin = $HWnD
+	If WinGetAndroidHandle() = 0 Then
+		If $hWin = 0 Then
 		OpenAndroid(True)
+		Else
+		   RebootAndroid()
+	    EndIf
 		Return
     EndIf
 	getBSPos() ; Update $HWnd and Android Window Positions
@@ -45,7 +47,7 @@ Func checkMainScreen($Check = True) ;Checks if in main screen
 		WinGetAndroidHandle()
 		If _Sleep($iDelaycheckMainScreen1) Then Return
 		$Result = checkObstacles()
-		If $debugsetlog = 1 Then Setlog("CheckObstacles Result = " & $Result, $COLOR_PURPLE)
+		If $debugsetlog = 1 Then Setlog("CheckObstacles Result = "&$Result, $COLOR_PURPLE)
 
 		If ($Result = False And $MinorObstacle = True) Then
 			$MinorObstacle = False

@@ -15,7 +15,12 @@
 
 Func BotCommand()
 	If $iChkBotStop = 1 Then
-		If $icmbBotCond = 13 And $icmbHoursStop <> 0 Then $TimeToStop = $icmbHoursStop * 3600000 ; 3600000 = 1 Hours
+
+		$MeetCondStop = False  ; reset flags so bot can restart farming when conditions change.
+		$bTrainEnabled = True
+		$bDonationEnabled = True
+
+		If $icmbBotCond = 15 And $icmbHoursStop <> 0 Then $TimeToStop = $icmbHoursStop * 3600000 ; 3600000 = 1 Hours
 
 		Local $iTrophyCurrent = getTrophyMainScreen($aTrophies[0], $aTrophies[1])
 		Local $TrophyMax = Number($iTrophyCurrent) > Number($itxtMaxTrophy)

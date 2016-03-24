@@ -13,38 +13,37 @@
 ; Example .......: Noo
 ; ===============================================================================================================================
 
-Func MilkingAttackStructureDestroyed($type,$level, $coordinate)
-	$pixel = StringSplit($coordinate,"-",2)
-   Switch $type  ; adjust coordinate
-	Case "gomine"
-		Local $px = StringSplit($MilkFarmOffsetMine[$level], "-", 2)
-		Local $name = "Mine"
-	Case "elixir"
-		Local $px = StringSplit($MilkFarmOffsetElixir[$level], "-", 2)
-		Local $name = "Elixir"
-	Case "ddrill"
-		Local $px = StringSplit($MilkFarmOffsetDark[$level], "-", 2)
-		Local $name = "Dark"
-	Case Else
-		Local $px = StringSplit("0-0", "-", 2)
-		Local $name = ""
-		If $debugsetlog=1 Then Setlog("MilkingAttackStructureDestroyed error #1")
+Func MilkingAttackStructureDestroyed($type, $level, $coordinate)
+	$pixel = StringSplit($coordinate, "-", 2)
+	Switch $type ;adjust coordinate
+		Case "gomine"
+			Local $px = StringSplit($MilkFarmOffsetMine[$level], "-", 2)
+			Local $name = "Mine"
+		Case "elixir"
+			Local $px = StringSplit($MilkFarmOffsetElixir[$level], "-", 2)
+			Local $name = "Elixir"
+		Case "ddrill"
+			Local $px = StringSplit($MilkFarmOffsetDark[$level], "-", 2)
+			Local $name = "Dark"
+		Case Else
+			Local $px = StringSplit("0-0", "-", 2)
+			Local $name = ""
+			If $debugsetlog = 1 Then Setlog("MilkingAttackStructureDestroyed error #1")
 	EndSwitch
 	$pixel[0] += $px[0]
 	$pixel[1] += $px[1]
-	If Ubound($pixel)=2 then
+	If UBound($pixel) = 2 Then
 		_CaptureRegion($pixel[0]  - 15, $pixel[1]  - 15, $pixel[0]  + 15, $pixel[1]  + 15)
-		
 		Local $found = 0
 	    Local $posx, $posy
-		If $debugsetlog=1 Then Setlog("##start search in vector Destroyed" & $name & "IMG" & $level& ": numbers of files=" & UBound(Eval("Destroyed" & $name & "IMG" & $level)),$color_green)
+		If $debugsetlog = 1 Then Setlog("##start search in vector Destroyed" & $name & "IMG" & $level & ": numbers of files=" & UBound(Eval("Destroyed" & $name & "IMG" & $level)), $color_green)
 		For $t = UBound(Eval("Destroyed" & $name & "IMG" & $level)) - 1 To 1 Step -1 ;
-			$filename = Execute("$Destroyed" & $name & "IMG"& $level & "[" & $t & "]")
+			$filename = Execute("$Destroyed" & $name & "IMG" & $level & "[" & $t & "]")
 			$tolerance = StringMid($filename, StringInStr($filename, "_", 0, 3) + 1, StringInStr($filename, "_", 0, 4) - StringInStr($filename, "_", 0, 3) - 1)
 			$found = _ImageSearch(@ScriptDir & "\images\CapacityStructure\" & Execute("$Destroyed" & $name & "IMG" &  $level & "[" & $t & "]"), 1, $posx, $posy, $tolerance)
 			If $found = 1 Then
 				If $debugsetlog = 1 Then Setlog("IMAGECKECK OK " & $filename, $COLOR_purple)
-					If $debugsetlog=1 Then SetLog(">>Structure Destroyed! (" & $name & "," &$level& ")",$color_RED)
+				If $debugsetlog = 1 Then SetLog(">>Structure Destroyed! (" & $name & "," & $level & ")", $color_RED)
 				Return True
 				ExitLoop
 			EndIf
@@ -54,6 +53,6 @@ Func MilkingAttackStructureDestroyed($type,$level, $coordinate)
 		EndIf
 		Return False
 	Else
-		If $debugsetlog=1 Then Setlog("error MilkingAttackStructureDestroyed #1")
+		If $debugsetlog = 1 Then Setlog("error MilkingAttackStructureDestroyed #1")
 	EndIf
-EndFunc
+EndFunc   ;==>MilkingAttackStructureDestroyed

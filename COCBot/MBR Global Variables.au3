@@ -18,6 +18,8 @@
 #include <EditConstants.au3>
 #include <FileConstants.au3>
 #include <GUIConstantsEx.au3>
+#include <GuiButton.au3> ; Added for Profiles
+#include <GuiImageList.au3> ; Added for Profiles
 #include <GuiStatusBar.au3>
 #include <GUIEdit.au3>
 #include <GUIComboBox.au3>
@@ -62,24 +64,35 @@ Else
 	$Compiled = @ScriptName & " Script"
 EndIf
 
-Global $hBitmap; Image for pixel functions
-Global $hHBitmap; Handle Image for pixel functions
-Global $hBitmapScreenshot; Image for screenshot functions
-Global $hHBitmapScreenshot; Handle Image for screenshot functions
+Global $hBitmap ; Image for pixel functions
+Global $hHBitmap ; Handle Image for pixel functions
+Global $hHBitmap2  ; handle to Device Context (DC) with graphics captured by _captureregion2()
 
 Global Const $64Bit = StringInStr(@OSArch, "64") > 0
 Global Const $HKLM = "HKLM" & ($64Bit ? "64" : "")
 Global Const $Wow6432Node = ($64Bit ? "\Wow6432Node" : "")
 
+Global $AndroidGamePackage = "com.supercell.clashofclans"
+Global $AndroidGameClass = ".GameApp"
+Global $AndroidCheckTimeLagEnabled = True ; Checks every 60 Seconds or later in main loops (Bot Run, Idle and SearchVillage) is Android needs reboot due to time lag (see $AndroidTimeLagThreshold)
+Global $AndroidAdbAutoTerminate = 0 ; Steady ADB shell instance is automatically closed after this number of executed commands, 0 = disabled (test for BS to fix frozen screen situation!)
+Global $AndroidAdbScreencapEnabled = True ; Use Android ADB to capture screenshots in RGBA raw format
+Global $AndroidAdbScreencapPngEnabled = False ; Use Android ADB to capture screenshots in PNG format, significantly slower than raw format (not final, captured screenshot resize too slow...)
+Global $AndroidAdbZoomoutEnabled = True ; Use Android ADB zoom-out script
+Global $AndroidAdbInputEnabled = True ; Enable Android ADB swipe and send text (CC requests)
+Global $AndroidAdbClickEnabled = True ; Enable Android ADB mouse click
+Global $AndroidAdbClicksEnabled = False ; (Experimental & Dangerous!) Enable Android KeepClicks() and ReleaseClicks() to fire collected clicks all at once, only available when also $AndroidAdbClick = True
+Global $AndroidAdbClicksTroopDeploySize = 0 ; (Experimental & Dangerous!) Deploy more troops at once, 0 = deploy group, only available when also $AndroidAdbClicksEnabled = True (currently only just in CSV Deploy)
+Global $AndroidAdbInstanceEnabled = True ; Enable Android steady ADB shell instance when available
+Global $AndroidSuspendedEnabled = False ; Enable Android Suspend & Resume during Search and Attack
 Global $NoFocusTampering = False ; If enabled, no ControlFocus or WinActivate is called, except when really required (like Zoom-Out for Droid4X, might break restart stability when Android Window not responding)
-Global $OnlyInstance = True
-Global $SilentSetLog = False
 
 ; Android Configutions
 Global $__BS_Idx = 0 ; BlueStacks 0.9.x - 0.10.x
-Global $__BS2_Idx = 1 ; BlueStacks 2.0.x
+Global $__BS2_Idx = 1 ; BlueStacks 2.x
 Global $__Droid4X_Idx = 2 ; Droid4X 0.8.6 Beta, 0.8.7 Beta, 0.9.0
-Global $__MEmu_Idx = 3 ; MEmu 2.2.1 - 2.3.1, default config with open Tool Bar at right and System Bar at bottom, adjusted in config
+Global $__MEmu_Idx = 3 ; MEmu 2.2.1 - 2.5.0, default config with open Tool Bar at right and System Bar at bottom, adjusted in config
+Global $__Nox_Idx = 4 ; Nox 3.1.0.0
 ; "BlueStacks2" $AndroidAppConfig is also updated based on Registry settings in Func InitBlueStacks2() with these special variables
 Global $__BlueStacks_SystemBar = 48
 ; "MEmu" $AndroidAppConfig is also updated based on runtime config in Func UpdateMEmuWindowState() with these special variables
@@ -90,25 +103,31 @@ Global $__MEmu_PhoneLayout = "0"
 ;   0            |1               |2                       |3                                 |4            |5                  |6                   |7                  |8                   |9             |10               |11                    |12                 |13
 ;   $Android     |$AndroidInstance|$Title                  |$AppClassInstance                 |$AppPaneName |$AndroidClientWidth|$AndroidClientHeight|$AndroidWindowWidth|$AndroidWindowHeight|$ClientOffsetY|$AndroidAdbDevice|$AndroidSupportFeature|$AndroidShellPrompt|$AndroidMouseDevice
 ;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |1 = Normal background mode                |
-;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |2 = New ADB screencap mode                |
-;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |4 = New ADB mouse click                   |
-;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |8 = New ADB input text and swipe          |
-Global $AndroidAppConfig[4][14] = [ _ ;                    |                                  |             |                   |                    |                   |                    |              |                 |                      |                   |
-   ["BlueStacks", "",              "BlueStacks App Player","[CLASS:BlueStacksApp; INSTANCE:1]","_ctl.Window",$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,0,             "emulator-5554",  1    +8               ,'$ ',               ''], _
+;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |2 = ADB screencap mode|                   |
+;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |4 = ADB mouse click   |                   |
+;                |                |                        |                                  |             |                   |                    |                   |                    |              |                 |8 = ADB input text and swipe              |
+Global $AndroidAppConfig[5][14] = [ _ ;                    |                                  |             |                   |                    |                   |                    |              |                 |16 = ADB shell is steady                  |
+   ["BlueStacks", "",              "BlueStacks App Player","[CLASS:BlueStacksApp; INSTANCE:1]","_ctl.Window",$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,0,             "emulator-5554",  1    +8               ,'$ ',               'BlueStacks Virtual Touch'], _
    ["BlueStacks2","",              "BlueStacks ",          "[CLASS:BlueStacksApp; INSTANCE:1]","_ctl.Window",$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,0,             "emulator-5554",  1    +8               ,'$ ',               'BlueStacks Virtual Touch'], _
-   ["Droid4X",    "droid4x",       "Droid4X 0.",           "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH + 10,$DEFAULT_HEIGHT + 50,0,             "127.0.0.1:26944",0+2+4+8               ,'# ',               'droid4x Virtual Input'], _
-   ["MEmu",       "MEmu",          "MEmu 2.",              "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 12,$DEFAULT_WIDTH + 51,$DEFAULT_HEIGHT + 24,0,             "127.0.0.1:21503",0+2+4+8               ,'# ',               'Microvirt Virtual Input'] _
+   ["Droid4X",    "droid4x",       "Droid4X 0.",           "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH + 10,$DEFAULT_HEIGHT + 50,0,             "127.0.0.1:26944",0+2+4+8+16            ,'# ',               'droid4x Virtual Input'], _
+   ["MEmu",       "MEmu",          "MEmu 2.",              "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 12,$DEFAULT_WIDTH + 51,$DEFAULT_HEIGHT + 24,0,             "127.0.0.1:21503",0+2+4+8+16            ,'# ',               'Microvirt Virtual Input'], _
+   ["Nox",        "nox",           "No",                   "[CLASS:subWin; INSTANCE:1]",       "",           $DEFAULT_WIDTH,     $DEFAULT_HEIGHT - 48,$DEFAULT_WIDTH +  4,$DEFAULT_HEIGHT - 10,0,             "127.0.0.1:62001",0+2+4+8+16            ,'# ',               'nox Virtual Input'] _
 ]
+Global $OnlyInstance = True
 Global $FoundRunningAndroid = False
 Global $FoundInstalledAndroid = False
 
 Global $AndroidConfig = 0 ; Default selected Android Config of $AndroidAppConfig array
 Global $AndroidVersion ; Identified version of Android Emulator
 ; Updated in UpdateAndroidConfig() as well
-Func InitAndroidConfig()
-Global $Android = $AndroidAppConfig[$AndroidConfig][0] ; Emulator used (BS, BS2, Droid4X or MEmu)
-Global $AndroidInstance = $AndroidAppConfig[$AndroidConfig][1] ; Clone or instance of emulator or "" if not supported
-Global $Title = $AndroidAppConfig[$AndroidConfig][2] ; Emulator Window Title
+Func InitAndroidConfig($bRestart = False)
+Global $Android = $AndroidAppConfig[$AndroidConfig][0] ; Emulator used (BS, BS2, Droid4X, MEmu or Nox)
+Global $AndroidInstance ; Clone or instance of emulator or "" if not supported
+Global $Title ; Emulator Window Title
+If $bRestart = False Then
+   $AndroidInstance = $AndroidAppConfig[$AndroidConfig][1]
+   $Title = $AndroidAppConfig[$AndroidConfig][2]
+EndIf
 Global $AppClassInstance = $AndroidAppConfig[$AndroidConfig][3] ; Control Class and instance of android rendering
 Global $AppPaneName = $AndroidAppConfig[$AndroidConfig][4] ; Control name of android rendering TODO check is still required
 Global $AndroidClientWidth = $AndroidAppConfig[$AndroidConfig][5] ; Expected width of android rendering control
@@ -116,14 +135,15 @@ Global $AndroidClientHeight = $AndroidAppConfig[$AndroidConfig][6] ; Expected he
 Global $AndroidWindowWidth = $AndroidAppConfig[$AndroidConfig][7] ; Expected Width of android window
 Global $AndroidWindowHeight = $AndroidAppConfig[$AndroidConfig][8] ; Expected height of android window
 Global $ClientOffsetY = $AndroidAppConfig[$AndroidConfig][9] ; not used/required anymore
-Global $AndroidAdbPath ; Path to executable HD-Adb.exe or adb.exe
+Global $AndroidAdbPath = "" ; Path to executable HD-Adb.exe or adb.exe
 Global $AndroidAdbDevice = $AndroidAppConfig[$AndroidConfig][10] ; full device name ADB connects to
 Global $AndroidSupportFeature = $AndroidAppConfig[$AndroidConfig][11] ; 0 = Not available, 1 = Available, 2 = Available using ADB (experimental!)
 Global $AndroidShellPrompt = $AndroidAppConfig[$AndroidConfig][12] ; empty string not available, '# ' for rooted and '$ ' for not rooted android
 Global $AndroidMouseDevice = $AndroidAppConfig[$AndroidConfig][13] ; empty string not available, can be direct device '/dev/input/event2' or name by getevent -p
-Global $AndroidAdbScreencap = BitAND($AndroidSupportFeature, 2) = 2 ; Use android ADB to capture screenshots in RGBA raw format
-Global $AndroidAdbClick =  BitAND($AndroidSupportFeature, 4) = 4 ; Enable Android ADB mouse click
-Global $AndroidAdbInput = BitAND($AndroidSupportFeature, 8) = 8 ; Enable Android ADB swipe and send text (CC requests)
+Global $AndroidAdbScreencap = $AndroidAdbScreencapEnabled = True And BitAND($AndroidSupportFeature, 2) = 2 ; Use Android ADB to capture screenshots in RGBA raw format
+Global $AndroidAdbClick = $AndroidAdbClickEnabled = True And BitAND($AndroidSupportFeature, 4) = 4 ; Enable Android ADB mouse click
+Global $AndroidAdbInput = $AndroidAdbInputEnabled = True And BitAND($AndroidSupportFeature, 8) = 8 ; Enable Android ADB swipe and send text (CC requests)
+Global $AndroidAdbInstance = $AndroidAdbInstanceEnabled = True And BitAND($AndroidSupportFeature, 16) = 16 ; Enable Android steady ADB shell instance when available
 EndFunc
 InitAndroidConfig()
 
@@ -134,14 +154,19 @@ Global $AndroidClientHeight_Configured = 0 ; Android configured Screen Height
 Global $AndroidLaunchWaitSec = 240 ; Seconds to wait for launching Android Simulator
 
 Global $AndroidAdbPid = 0 ; Single instance of ADB used for screencap (and sendevent in future)
-Global $AndroidPicturesPath ; Android mounted path to pictures on host
-GLobal $AndroidPicturesHostPath ; Windows host path to mounted pictures in android
+Global $AndroidAdbPrompt = "mybot.run:" ; Single instance of ADB PS1 prompt
+Global $AndroidPicturesPath = ""; Android mounted path to pictures on host
+Global $AndroidPicturesHostPath = ""; Windows host path to mounted pictures in android
 Global $AndroidPicturesHostFolder = "mybot.run\" ; Subfolder for host and android, can be "", must end with "\" when used
 Global $AndroidPicturesPathAutoConfig = True ; Try to configure missing shared folder if missing
 ; Special ADB modes for screencap, mouse clicks and input text
+Global $AndroidAdbAutoTerminateCount = 0 ; Counter for $AndroidAdbAutoTerminate to terminate ADB shell automatically after x executed commands
 Global $AndroidAdbScreencapBuffer = DllStructCreate("byte[" & ($DEFAULT_WIDTH * $DEFAULT_HEIGHT * 4) & "]") ; Holds the android screencap BGRA buffer for caching
+Global $AndroidAdbScreencapBufferPngHandle = 0 ; Holds the android screencap PNG buffer for caching (handle to GDIPlus Bitmap/Image Object)
+Global $AndroidAdbScreencapWaitAdbTimeout = 10000 ; Timeout to wait for Adb screencap command
+Global $AndroidAdbScreencapWaitFileTimeout = 10000 ; Timeout to wait for file to be accessible for bot
 Global $AndroidAdbScreencapTimer = 0 ; Timer handle to use last captured screenshot to improve performance
-Global $AndroidAdbScreencapTimeoutMin = 200 ; Milliseconds the last screenshot is used in $ForceCapture = True mode (for upgrades etc.), also minimum allowed timeout
+Global $AndroidAdbScreencapTimeoutMin = 200 ; Minimum Milliseconds the last screenshot is used
 Global $AndroidAdbScreencapTimeoutMax = 1000 ; Maximum Milliseconds the last screenshot is used
 Global $AndroidAdbScreencapTimeout = $AndroidAdbScreencapTimeoutMax ; Milliseconds the last screenshot is used, dynamically calculated: $AndroidAdbScreencapTimeoutMin < 3 x last capture duration < $AndroidAdbScreencapTimeoutMax
 Global $AndroidAdbScreencapTimeoutDynamic = 3 ; Calculate dynamic timeout multiply of last duration; if 0 $AndroidAdbScreencapTimeoutMax is used as fix timeout
@@ -149,13 +174,33 @@ Global $AndroidAdbScreencapWidth = 0 ; Width of last captured screenshot (always
 Global $AndroidAdbScreencapHeight = 0 ; Height of last captured screenshot (always full size)
 Global $AndroidAdbClickGroup = 10 ; 1 Disables grouping clicks; > 1 number of clicks fired at once (e.g. when Click with $times > 1 used) (Experimental as some clicks might get lost!)
 Global $AndroidAdbClickGroupDelay = 50 ; Additional delay in Milliseconds after group of ADB clicks sent (sleep in Android is executed!)
-Global $AndroidAdbClicksEnabled = False ; Enable Android KeepClicks() and ReleaseClicks() to fire collected clicks all at once (Experimental as some clicks might get lost!), only available when also $AndroidAdbClick = True
+Global $AndroidAdbKeepClicksActive = False ; Track KeepClicks mode regardless of enabled or not (poor mans deploy troops detection)
 Global $AndroidAdbClicks[1] = [-1] ; Stores clicks after KeepClicks() called, fired and emptied with ReleaseClicks()
+Global $AndroidAdbStatsTotal[2][2] = [ _
+   [0,0], _ ; Total of screencap duration, 0 is count, 1 is sum of durations
+   [0,0] _  ; Total of click duration, 0 is count, 1 is sum of durations
+]
+Global $AndroidAdbStatsLast[2][12] ; Last 10 durations, 0 is sum of durations, 1 is index to oldest, 2-11 last 10 durations
+       $AndroidAdbStatsLast[0][0] = 0 ; screencap sum of durations
+	   $AndroidAdbStatsLast[0][1] = -1 ; screencap index to oldest
+       $AndroidAdbStatsLast[1][0] = 0 ; click sum of durations
+	   $AndroidAdbStatsLast[1][1] = -1 ; click index to oldest
+Global $AndroidTimeLag[4] ; Timer varibales for time lag calculation
+Func InitAndroidTimeLag()
+	   $AndroidTimeLag[0] = 0 ; Time lag in Secodns determined
+	   $AndroidTimeLag[1] = 0 ; UTC time of Android in Seconds
+	   $AndroidTimeLag[2] = 0 ; AutoIt TimerHandle
+	   $AndroidTimeLag[3] = 0 ; Suspended time of Android in Milliseconds
+EndFunc
+InitAndroidTimeLag()
+Global $AndroidTimeLagThreshold = 5 ; Time lag Seconds per Minute when CoC gets restarted
 Global $ForceCapture = False ; Force android ADB screencap to run and not provide last screenshot if available
+Global $ScreenshotTime = 0; Last duration in Milliseconds it took to get screenshot
 
 Global $HWnD = 0 ; Handle for Android window
-Global $AndroidSuspendedEnabled = False ; Enable Android Suspend & Resume during Search and Attack
+Global $AndroidSvcPid = 0 ; Android Backend Process
 Global $AndroidSuspended = False ; Android window is suspended flag
+Global $AndroidSuspendedTimer = 0; Android Suspended Timer
 Global $InitAndroid = True ; Used to cache android config, is set to False once initialized, new emulator window handle resets it to True
 Global $FrmBotMinimized = False ; prevents bot flickering
 
@@ -170,6 +215,7 @@ Global $ichkDESwitchMax, $itxtMaxDEAmount, $icmbDEMaxProfile, $ichkDESwitchMin, 
 Global $ichkTrophySwitchMax, $itxtMaxTrophyAmount, $icmbTrophyMaxProfile, $ichkTrophySwitchMin, $itxtMinTrophyAmount, $icmbTrophyMinProfile
 
 Global $iMoveMouseOutBS = 0 ; If enabled moves mouse out of Android window when bot is running
+Global $SilentSetLog = False ; No logs to Log Control when enabled
 Global $DevMode = 0
 If FileExists(@ScriptDir & "\EnableMBRDebug.txt") Then $DevMode = 1
 
@@ -179,6 +225,7 @@ Global $__BlueStacks_Path
 Global $__Droid4X_Version
 Global $__Droid4X_Path
 Global $__MEmu_Path
+Global $__Nox_Path
 
 Global $__VBoxManage_Path ; Full path to executable VBoxManage.exe
 Global $__VBoxVMinfo ; Virtualbox vminfo config details of android instance
@@ -783,17 +830,35 @@ Global $ichkTimeStopAtk, $ichkTimeStopAtk2
 Global $stxtMinGoldStopAtk2 = 1000, $stxtMinElixirStopAtk2 = 1000, $stxtMinDarkElixirStopAtk2 = 50
 Global $ichkEndOneStar = 0, $ichkEndTwoStars = 0
 
-; ImprovedUpgradeBuildingHero
-Global $aUpgrades[6][4] = [[-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""]] ;Store upgrade position x&y, value, and loot type
-Global $picUpgradeStatus[6], $ipicUpgradeStatus[6] ;Add indexable array variables for accessing the Upgrades GUI
-Global $picUpgradeType[6], $txtUpgradeX[6], $txtUpgradeY[6], $chkbxUpgrade[6], $txtUpgradeValue[6]
-Global $ichkbxUpgrade[6], $itxtUpgrMinGold, $itxtUpgrMinElixir, $txtUpgrMinDark, $itxtUpgrMinDark
+;ImprovedUpgradeBuildingHero
+Global $iUpgradeSlots = 8
+Global $aUpgrades[$iUpgradeSlots][8]
+
+;Fill empty array [8] to store upgrade data
+For $i = 0 To $iUpgradeSlots - 1
+	$aUpgrades[$i][0] = -1  ; position x
+	$aUpgrades[$i][1] = -1  ; position y
+	$aUpgrades[$i][2] = -1  ; upgrade value
+	$aUpgrades[$i][3] = ""  ; string loot type required
+	$aUpgrades[$i][4] = ""  ; string Bldg Name
+	$aUpgrades[$i][5] = ""  ; string Bldg level
+	$aUpgrades[$i][6] = ""  ; string upgrade time
+	$aUpgrades[$i][7] = ""  ; string upgrade end date/time (_datediff compatible)
+Next
+
+Global $picUpgradeStatus[$iUpgradeSlots], $ipicUpgradeStatus[$iUpgradeSlots] ;Add indexable array variables for accessing the Upgrades GUI
+Global $picUpgradeType[$iUpgradeSlots], $txtUpgradeX[$iUpgradeSlots], $txtUpgradeY[$iUpgradeSlots], $chkbxUpgrade[$iUpgradeSlots]
+Global $txtUpgradeValue[$iUpgradeSlots], $chkUpgrdeRepeat[$iUpgradeSlots], $ichkUpgrdeRepeat[$iUpgradeSlots],$txtUpgradeLevel[$iUpgradeSlots]
+Global $itxtUpgradeLevel[$iUpgradeSlots], $ichkbxUpgrade[$iUpgradeSlots ], $txtUpgradeName[$iUpgradeSlots ],$txtUpgradeTime[$iUpgradeSlots]
+Global $itxtUpgrMinGold, $itxtUpgrMinElixir, $txtUpgrMinDark, $itxtUpgrMinDark
+
 Global $chkSaveWallBldr, $iSaveWallBldr
 Global $pushLastModified = 0
 
 ; UpgradeTroops
 Global $aLabPos[2] = [-1, -1]
 Global $iChkLab, $iCmbLaboratory, $iFirstTimeLab
+Global $sLabUpgradeTime = ""
 
 ; Array to hold Laboratory Troop information [LocX of upper left corner of image, LocY of upper left corner of image, PageLocation, Troop "name", Icon # in DLL file]
 Global Const $aLabTroops[25][5] = [ _
@@ -883,6 +948,7 @@ Global $ichkSinglePBTForced = 0
 Global $iValueSinglePBTimeForced = 18
 Global $iValuePBTimeForcedExit = 15
 Global $bWaitShield = False
+Global $bGForcePBTUpdate = False
 
 Global $iMakeScreenshotNow = False
 
@@ -929,7 +995,7 @@ Global $aShieldStatus = ["","",""] ; string shield type, string shield time, str
 ; Building Side (DE/TH) Switch and DESide End Early
 Global Enum $eSideBuildingDES, $eSideBuildingTH
 Global $BuildingLoc, $BuildingLocX = 0, $BuildingLocY = 0
-Global $dropQueen, $dropKing
+Global $dropQueen, $dropKing, $dropWarden
 Global $BuildingEdge, $BuildingToLoc = ""
 Global $saveiChkTimeStopAtk, $saveiChkTimeStopAtk2, $saveichkEndOneStar, $saveichkEndTwoStars
 Global $DarkLow
@@ -938,10 +1004,15 @@ Global $DEEndAq, $DEEndBk, $DEEndOneStar
 Global $SpellDP[2] = [0, 0]; Spell drop point for DE attack
 
 ; Attack SCV
+Global $PixelMine[0]
+Global $PixelElixir[0]
+Global $PixelDarkElixir[0]
 Global $PixelNearCollectorTopLeft[0]
 Global $PixelNearCollectorBottomLeft[0]
 Global $PixelNearCollectorTopRight[0]
 Global $PixelNearCollectorBottomRight[0]
+Global $GoldStoragePos
+Global $ElixirStoragePos
 Global $darkelixirStoragePos
 
 ; Snipe While Train
@@ -1006,15 +1077,15 @@ Global $MilkingAttackDropGoblinAlgorithm = 1 ; 0= drop each goblin in different 
 Global $MilkFarmLocateMine = 1
 Global $MilkFarmLocateElixir = 1
 Global $MilkFarmLocateDrill = 1
-Global $MilkFarmElixirParam = StringSplit("4|4|3|3|2|2|1|1|1", "|", 2)
+Global $MilkFarmElixirParam = StringSplit("-1|-1|-1|-1|-1|-1|2|2|2", "|", 2)
 Global $MilkFarmMineParam = 5 ; values 0-8 (0=mines level 1-4  ; 1= mines level 5; ... ; 8=mines level 12)
 Global $MilkFarmDrillParam = 1 ; values 1-6 (1=drill level 1 ... 6=drill level 6)
 Global $MilkFarmAttackElixirExtractors = 1
 Global $MilkFarmAttackGoldMines = 1
 Global $MilkFarmAttackDarkDrills = 1
-Global $MilkFarmLimitGold = 100000
-Global $MilkFarmLimitElixir = 100000
-Global $MilkFarmLimitDark = 500
+Global $MilkFarmLimitGold = 9995000
+Global $MilkFarmLimitElixir = 9995000
+Global $MilkFarmLimitDark = 1995000
 Global $MilkFarmResMaxTilesFromBorder = 0
 Global $MilkFarmTroopForWaveMin = 4
 Global $MilkFarmTroopForWaveMax = 6
@@ -1088,7 +1159,7 @@ Global $__TEST_ERROR_SLOW_ADB_SHELL_COMMAND_DELAY = 0
 Global $__TEST_ERROR_SLOW_ADB_SCREENCAP_DELAY = 0
 Global $__TEST_ERROR_SLOW_ADB_CLICK_DELAY = 0
 
-; Variables to ImgLoc, new image search library Aforge
+; Variables to ImgLoc V3 , new image search library Aforge
 ; Is in Diamond
 Global $DefaultCocDiamond = "430,70|787,335|430,605|67,333" ; DEFAULT No Grass just the village field
 Global $ExtendedCocDiamond = "430,25|840,335|430,645|15,333" ; With Grass

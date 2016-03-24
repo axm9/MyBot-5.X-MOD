@@ -33,7 +33,7 @@ Global $aAway[2]             	= [  1,  40]               ; Away click, moved fro
 Global $aRemoveShldButton[4] 	= [470,  18, 0xA80408, 10] ; Legacy - Main Screen, Red pixel lower part of Minus sign to remove shield, used to validate latest COC installed
 Global $aNoShield[4]  	  	 	= [448,  20, 0x43484B, 10] ; Main Screen, charcoal pixel center of shield when no shield is present
 Global $aHaveShield[4]  	 	= [455,  23, 0xEEF4F8, 10] ; Main Screen, Silver pixel center of shield
-Global $aHavePerGuard[4]  	 	= [455,  23, 0x010102, 10] ; Main Screen, black pixel in sword outline center of shield
+Global $aHavePerGuard[4]  	 	= [451,  20, 0x7848D1, 10] ; Main Screen, black pixel in sword outline center of shield
 Global $aShieldInfoButton[4] 	= [472,  11, 0x6DB0D3, 10] ; Main Screen, Blue pixel upper part of "i"
 Global $aIsShieldInfo[4]     	= [645, 195, 0xE00408, 20] ; Main Screen, Shield Info window, red pixel right of X
 Global $aSurrenderButton[4]  	= [ 70, 545 + $bottomOffsetY, 0xC00000, 40] ; Surrender Button, Attack Screen
@@ -67,9 +67,9 @@ Global $aArmyOverviewTest[4] 	= [150, 554 + $midOffsetY, 0xBC2BD1, 20] ; Color p
 Global $aCancRequestCCBtn[4] 	= [340, 245, 0xCC4010, 20] ; Red button Cancel in window request CC
 Global $aSendRequestCCBtn[2] 	= [524, 245]               ; Green button Send in window request CC
 Global $atxtRequestCCBtn[2]  	= [430, 140]               ; textbox in window request CC
+Global $aIsDarkElixirFull[4] = [709, 134, 0x1A0026, 10] ; Main Screen DE Resource bar is full
 Global $aIsGoldFull[4]       	= [660,  33, 0xD4B100, 6] ; Main Screen Gold Resource bar is Full
 Global $aIsElixirFull[4]     	= [660,  84, 0xAE1AB3, 6] ; Main Screen Elixir Resource bar is Full
-Global $aIsDarkElixirFull[4]    = [710,  135, 0x1A0026, 6] ; Main Screen Dark Elixir Resource bar is Full
 Global $aConfirmCoCExit[2]   	= [515, 410 + $midOffsetY] ; CoC Confirm Exit button (no color for button as it matches grass)
 Global $aPerkBtn[4]          	= [ 95, 243 + $midOffsetY, 0x7cd8e8, 10] ; Clan Info Page, Perk Button (blue); 800x780
 Global $aIsGemWindow1[4]     	= [573, 256 + $midOffsetY, 0xDD0408, 20] ; Main Screen, pixel left of Red X to close gem window
@@ -78,6 +78,8 @@ Global $aIsGemWindow3[4]     	= [586, 266 + $midOffsetY, 0xBC1218, 20] ; Main Sc
 Global $aIsGemWindow4[4]     	= [595, 266 + $midOffsetY, 0xBC1218, 20] ; Main Screen, pixel below Red X to close gem window
 Global $aLootCartBtn[2]      	= [430, 640 + $bottomOffsetY] ; Main Screen Loot Cart button
 Global $aCleanYard[4]        	= [418, 587 + $bottomOffsetY, 0xE1debe, 20] ; Main Screen Clean Resources - Trees , Mushrooms etc
+Global $aIsTrainPgChk1[4]	  = [717, 120 + $midOffsetY, 0xE0070A, 10]  ; Main Screen, Train page open - Red below X
+Global $aIsTrainPgChk2[4]	  = [762, 328 + $midOffsetY, 0xF18439, 10]  ; Main Screen, Train page open - Dark Orange in left arrow
 
 Global $aKingHealth          	= [ -1, 572 + $bottomOffsetY, 0x00b29e, 15] ; Attack Screen, Check King's Health, X coordinate is dynamic, not used from array   ;  -> with slot compensation 0xbfb29e
 Global $aQueenHealth         	= [ -1, 572 + $bottomOffsetY, 0x008227, 15] ; Attack Screen, Check Queen's Health, X coordinate is dynamic, not used from array  ;  -> with slot compensation 0xe08227
@@ -111,7 +113,7 @@ Global $TrainLava[4]        	= [ 220, 459 + $midOffsetY, 0x4F4F40,     40] ;  Do
 Global $NextBtn[4]          	= [ 780, 546 + $bottomOffsetY, 0xD34300,  20] ;  Next Button
 ; Someone asking troops : Color 0xD0E978 in x = 121
 
-Global $aRequestTroopsAO[6]		= [706, 290 + $midOffsetY, 0xD8EC80, 0x12130B, 0xDADADA, 20] ; Button Request Troops in Army Overview  (x,y,can request, request allready made, army full/no clan, toll)
+Global $aRequestTroopsAO[6]		= [707, 290 + $midOffsetY, 0xD8EC80, 0x12130B, 0xDADADA, 20] ; Button Request Troops in Army Overview  (x,y,can request, request allready made, army full/no clan, toll)
 
 Global Const $FullBarb[4]   	= [ 253, 375 + $midOffsetY, 0x8F8F8F, 45]  ; Location of Elixir check pixel with normal color and Barrack Full color
 Global Const $FullArch[4]   	= [ 360, 375 + $midOffsetY, 0x8D8D8D, 45]

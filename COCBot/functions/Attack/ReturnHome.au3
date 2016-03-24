@@ -49,7 +49,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 		
 		If $zapBaseMatch Then DEDropSmartSpell()
 	Else
-			If $DebugSetLog = 1 Then Setlog("Battle already over", $COLOR_PURPLE)
+		If $DebugSetLog = 1 Then Setlog("Battle already over", $COLOR_PURPLE)
 	EndIf
 
 	If $DisableOtherEBO And $iMatchMode = $LB And $iChkDeploySettings[$LB] = 5 And $DESideEB And ($dropQueen Or $dropKing) Then
@@ -64,6 +64,8 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 
 	SetLog("Returning Home", $COLOR_BLUE)
 	If $RunState = False Then Return
+
+	checkAndroidTimeLag(False)
 
 	If Not(IsReturnHomeBattlePage(True, False)) Then
 		; ---- CLICK SURRENDER BUTTON ----

@@ -63,16 +63,18 @@ Func _ImageSearchArea($findImage, $resultPosition, $x1, $y1, $right, $bottom, By
 	Else
 		$result = DllCall($pImageLib, "str", "ImageSearchExt", "int", $x1, "int", $y1, "int", $right, "int", $bottom, "int", $Tolerance, "ptr", $findImage, "ptr", $HBMP)
 	EndIf
+	If @error Then _logErrorDLLCall($pImageLib, @error)
 
 	; If error exit
 	If IsArray($result) Then
 		If $result[0] = "0" Then Return 0
 	Else
 		SetLog("Error: Image Search not working...", $COLOR_RED)
-		Return -1
+		Return 1
 	EndIf
 
 	; Otherwise get the x,y location of the match and the size of the image to compute the centre of search
+	; compute the centre of search
 	$array = StringSplit($result[0], "|")
 	If (UBound($array) >= 4) Then
 		$x = Int(Number($array[2]))

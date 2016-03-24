@@ -1,11 +1,11 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........:MilkFarmObjectivesSTR_INSERT.au3
-; Description ...:Inserts a building into objective string
-; Syntax ........:MilkFarmObjectivesSTR_INSERT($type, $level, $coordinate)
-; Parameters ....:$type-building type
+; Name ..........: MilkFarmObjectivesSTR_INSERT.au3
+; Description ...: Inserts a building into objective string
+; Syntax ........: MilkFarmObjectivesSTR_INSERT($type, $level, $coordinate)
+; Parameters ....: $type-building type
 ;				  $level-level of building
 ;				  $coordinate-location of building
-; Return values .:None
+; Return values .: None
 ; Author ........: Sardo (2016)
 ; Modified ......:
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2016

@@ -141,8 +141,8 @@ Func DeleteExcessTroops()
 				$SlotTemp = Eval("SlotInArmy" & $TroopName[$i])
 
 				If _Sleep(250) Then Return
-				If _ColorCheck(_GetPixelColor(192 + (62 * $SlotTemp), 235 + $midOffsetY, True), Hex(0xD10400, 6), 10) Then ; Verify if existe the RED [-] button
-					Click(192 + (62 * $SlotTemp), 235 + $midOffsetY, $Delete, 300)
+				If _ColorCheck(_GetPixelColor(170 + (62 * $SlotTemp), 235 + $midOffsetY, True), Hex(0xD40003, 6), 10) Then ; Verify if existe the RED [-] button
+					Click(170 + (62 * $SlotTemp), 235 + $midOffsetY, $Delete, 300)
 					SetLog("~Deleted " & $Delete & " " & NameOfTroop(Eval("e" & $TroopName[$i])), $COLOR_RED)
 					Assign("Cur" & $TroopName[$i], Eval("Cur" & $TroopName[$i]) + $Delete) ; Remove From $CurTroop the deleted Troop quantity
 				EndIf
@@ -159,8 +159,8 @@ Func DeleteExcessTroops()
 				$SlotTemp = Eval("SlotInArmy" & $TroopDarkName[$i])
 
 				If _Sleep(250) Then Return
-				If _ColorCheck(_GetPixelColor(192 + (62 * $SlotTemp), 235 + $midOffsetY, True), Hex(0xD10400, 6), 10) Then ; Verify if existe the RED [-] button
-					Click(192 + (62 * $SlotTemp), 235 + $midOffsetY, $Delete, 300)
+				If _ColorCheck(_GetPixelColor(170 + (62 * $SlotTemp), 235 + $midOffsetY, True), Hex(0xD40003, 6), 10) Then ; Verify if existe the RED [-] button
+					Click(170 + (62 * $SlotTemp), 235 + $midOffsetY, $Delete, 300)
 					SetLog("~Deleted " & $Delete & " " & NameOfTroop(Eval("e" & $TroopDarkName[$i])), $COLOR_RED)
 					Assign("Cur" & $TroopDarkName[$i], Eval("Cur" & $TroopDarkName[$i]) + $Delete) ; Remove From $CurTroop the deleted Troop quantity
 				EndIf

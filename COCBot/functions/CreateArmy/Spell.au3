@@ -250,11 +250,14 @@ Func CookDrillZapSpell()
 			While 1
 				_CaptureRegion()
 				If _Sleep($iDelayTrain2) Then Return
-				If _ColorCheck(_GetPixelColor(200, 346 + $midOffsetY, True), Hex(0x414141, 6), 20) Then
-					Setlog("Spell Factory is full...", $COLOR_BLUE)
-					ExitLoop
+				If _ColorCheck(_GetPixelColor(239 + 107 * 0, 375 + $midOffsetY, True), Hex(0xFFFFFF, 6), 20) = False Then
+					Setlog("Not enough Elixir to create Spell", $COLOR_RED)
+					Return
+				ElseIf _ColorCheck(_GetPixelColor(200, 346 + $midOffsetY, True), Hex(0x414141, 6), 20) Then
+					Setlog("Spell Factory Full", $COLOR_RED)
+					Return
 				Else
-					GemClick(252, 354 + $midOffsetY, 1, $iDelayTrain6, "#0290")
+					GemClick(220 + 107 * 0, 354 + $midOffsetY, $iLightningSpell, $iDelayTrain7, "#0290")
 					$x = $x + 1
 				EndIf
 			WEnd

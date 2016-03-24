@@ -19,7 +19,7 @@ Func chkShieldStatus($bChkShield = True, $bForceChkPBT = False)
 
 	Local $Result, $iTimeTillPBTstartSec, $ichkTime = 0, $ichkSTime = 0, $ichkPBTime = 0
 
-	If $bChkShield Or $aShieldStatus[0] = "" Or $aShieldStatus[1] = "" Or $aShieldStatus[2] = "" Or $sPBStartTime = "" Then ; almost always get shield information
+	If $bChkShield Or $aShieldStatus[0] = "" Or $aShieldStatus[1] = "" Or $aShieldStatus[2] = "" Or $sPBStartTime = "" Or $bGForcePBTUpdate = True Then ; almost always get shield information
 		$Result = getShieldInfo() ; get expire time of shield
 
 		If @error Then Setlog("chkShieldStatus Shield OCR error= " & @error & "Extended= " & @extended, $COLOR_RED)
@@ -66,7 +66,6 @@ Func chkShieldStatus($bChkShield = True, $bForceChkPBT = False)
 			For $i = 0 To UBound($aShieldStatus) - 1 ; clear global shieldstatus if no shield data returned
 				$aShieldStatus[$i] = ""
 			Next
-
 		EndIf
 	EndIf
 
@@ -80,12 +79,11 @@ Func chkShieldStatus($bChkShield = True, $bForceChkPBT = False)
 		EndIf
 	EndIf
 
-	If $bForceChkPBT Or $sPBStartTime = "" Then
-
+	If $bForceChkPBT Or $bGForcePBTUpdate Or $sPBStartTime = "" Then
+		$bGForcePBTUpdate = False  ; Reset global flag to force PB update
 		$Result = getPBTime() ; Get time in future that PBT starts
 
 		If @error Then Setlog("chkShieldStatus getPBTime OCR error= " & @error & ", Extended= " & @extended, $COLOR_RED)
-		;If $debugSetlog = 1 Then Setlog("getPBTime() returned: " & $Result, $COLOR_PURPLE)
 		If _Sleep($iDelayRespond) Then Return
 
 		If _DateIsValid($Result) Then

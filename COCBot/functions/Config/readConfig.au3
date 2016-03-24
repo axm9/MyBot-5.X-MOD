@@ -55,12 +55,17 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$listResourceLocation = IniRead($building, "other", "listResource", "")
 
-		For $iz = 0 To 5 ; SReads Upgrade building data
+		For $iz = 0 To UBound($aUpgrades, 1) - 1 ; SReads Upgrade building data
 			$aUpgrades[$iz][0] = IniRead($building, "upgrade", "xupgrade" & $iz, "-1")
 			$aUpgrades[$iz][1] = IniRead($building, "upgrade", "yupgrade" & $iz, "-1")
 			$aUpgrades[$iz][2] = IniRead($building, "upgrade", "upgradevalue" & $iz, "-1")
 			$aUpgrades[$iz][3] = IniRead($building, "upgrade", "upgradetype" & $iz, "")
+			$aUpgrades[$iz][4] = IniRead($building, "upgrade", "upgradename" & $iz, "")
+			$aUpgrades[$iz][5] = IniRead($building, "upgrade", "upgradelevel" & $iz, "")
+			$aUpgrades[$iz][6] = IniRead($building, "upgrade", "upgradetime" & $iz, "")
+			$aUpgrades[$iz][7] = IniRead($building, "upgrade", "upgradeend" & $iz, "-1")
 			$ichkbxUpgrade[$iz] = IniRead($building, "upgrade", "upgradechk" & $iz, "0")
+			$ichkUpgrdeRepeat[$iz] = IniRead($building, "upgrade", "upgraderepeat" & $iz, "0")
 			$ipicUpgradeStatus[$iz] = IniRead($building, "upgrade", "upgradestatusicon" & $iz, $eIcnRedLight)
 		Next
 		$itxtUpgrMinGold = Number(IniRead($building, "upgrade", "minupgrgold", "100000"))
@@ -469,6 +474,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		;Laboratory
 		$ichkLab = IniRead($config, "upgrade", "upgradetroops", "0")
 		$icmbLaboratory = IniRead($config, "upgrade", "upgradetroopname", "0")
+		$sLabUpgradeTime = IniRead($building, "upgrade", "upgradelabtime", "")
 		$aLabPos[0] = Int(IniRead($building, "upgrade", "LabPosX", "0"))
 		$aLabPos[1] = Int(IniRead($building, "upgrade", "LabPosY", "0"))
 

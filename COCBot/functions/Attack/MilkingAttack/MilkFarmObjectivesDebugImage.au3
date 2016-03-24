@@ -14,7 +14,7 @@
 ; Example .......: Noo
 ; ===============================================================================================================================
 
-Func MilkFarmObjectivesDebugImage($vector, $maxtiles = 1)
+Func MilkFarmObjectivesDebugImage($vector, $maxtiles = 0)
 	_CaptureRegion()
 	Local $EditedImage
 	$EditedImage = $hBitmap
@@ -72,38 +72,35 @@ Func MilkFarmObjectivesDebugImage($vector, $maxtiles = 1)
 			If UBound($pixel) = 2 Then
 				Local $hPen = _GDIPlus_PenCreate(0xFFFF0000, 1)
 				Local $x = 20
-				_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $x, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety -10, $hPen)
-				_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety +10, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $x, $hPen)
-				_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $x, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx -10, $pixel[1] + $resourceoffsety, $hPen)
-				_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx +10, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx + $x, $pixel[1] + $resourceoffsety, $hPen)
+				_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $x, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - 10, $hPen)
+				_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + 10, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $x, $hPen)
+				_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $x, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx - 10, $pixel[1] + $resourceoffsety, $hPen)
+				_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx + 10, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx + $x, $pixel[1] + $resourceoffsety, $hPen)
 
+				If $maxtiles >= 0 Then
 				Local $hPen = _GDIPlus_PenCreate(0xFF0026FF, 1)
-				Switch $maxtiles
-					Case 0 ; rectangle dist 0
-						Local $multiplier = 0
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)				
-					Case 1 ; rectangle dist 1
-						Local $multiplier = 1
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
-					Case 2 ; rectangle dist 2
-						Local $multiplier = 2
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
-					Case 2 ; rectangle dist 3
-						Local $multiplier = 3
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
-						_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
-				EndSwitch
+					Local $multiplier = 0
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $hPen)
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $hPen)
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)				
+				EndIf
+				If $maxtiles >= 1 Then ;rectangle dist 1
+					Local $hPen = _GDIPlus_PenCreate(0xFF00FFFF, 1)
+					Local $multiplier = 1
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $hPen)
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $hPen)
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
+				EndIf
+				If $maxtiles >= 2 Then ;rectangle dist 2
+					Local $hPen = _GDIPlus_PenCreate(0xFFFFD800, 1)
+					Local $multiplier = 2
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $hPen)
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx - $MilkFarmOffsetX - $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $hPen)
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety - $MilkFarmOffsetY - $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
+					_GDIPlus_GraphicsDrawLine($hGraphic, $pixel[0] + $resourceoffsetx, $pixel[1] + $resourceoffsety + $MilkFarmOffsetY + $MilkFarmOffsetYStep * $multiplier, $pixel[0] + $resourceoffsetx + $MilkFarmOffsetX + $MilkFarmOffsetXStep * $multiplier, $pixel[1] + $resourceoffsety, $hPen)
+				EndIf
 			Else
 				If $DebugSetLog = 1 Then Setlog("MilkFarmObjectivesDebugImage #1", $color_purple)
 			EndIf
@@ -114,7 +111,7 @@ Func MilkFarmObjectivesDebugImage($vector, $maxtiles = 1)
 
 	Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
 	Local $Time = @HOUR & "." & @MIN & "." & @SEC
-	Local $savefolder = $dirTempDebug& "MilkFarmDebug_" & "\"
+	Local $savefolder = $dirTempDebug & "MilkFarmDebug_" & "\"
 	DirCreate($savefolder)
 
 	Local $filename = String("MilkFarmDebug_" & $Date & "_" & $Time)

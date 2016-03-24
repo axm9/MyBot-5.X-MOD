@@ -259,15 +259,10 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	    ResumeAndroid()
 
 		If _Sleep($iDelayRespond) Then Return
-		If $match[$LB] and $iChkDeploySettings[$LB] = 7 And StringLen($MilkFarmObjectivesSTR) > 0  Then
-			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-			SetLog("      Milking target found! ", $COLOR_GREEN, "Lucida Console", 7.5)
-			$logwrited = True
-			$iMatchMode = $LB
-			ExitLoop
-		ElseIf $match[$DB] And $isDeadBase Then
+		If $match[$DB] And $isDeadBase Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      Dead Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
+			$logwrited = True
 			; check for outside collectors if enabled
 			If $ichkDBMeetCollOutside = 1 Then
 				If AreCollectorsOutside($iDBMinCollOutsidePercent) Then
@@ -301,14 +296,19 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				EndIf
 				ExitLoop
 			EndIf
+		ElseIf $match[$LB] and $iChkDeploySettings[$LB] = 7 And StringLen($MilkFarmObjectivesSTR) > 0 Then
+			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+			SetLog("      " & "Milking on: " & $MilkingExtractorsMatch &" resources!", $COLOR_GREEN, "Lucida Console", 7.5)
 			$logwrited = True
+			$iMatchMode = $LB
+			ExitLoop
 		ElseIf $match[$LB] And Not $isDeadBase And $iChkDeploySettings[$LB] <> 7 Then
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
 			SetLog("      Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
 			$logwrited = True
 			$iMatchMode = $LB
 			ExitLoop
-		ElseIf $match[$LB] Or $match[$DB] Then
+		ElseIf $match[$LB] Or $match[$DB] And $iChkDeploySettings[$LB] <> 7 Then
 			If $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
 				If $SearchTHLResult = 1 Then
 					SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
@@ -384,6 +384,12 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If SWHTSearchLimit($iSkipped + 1) Then Return True
 		; Return Home on Search limit
 		If SearchLimit($iSkipped + 1) Then Return True
+
+		If checkAndroidTimeLag() = True Then
+		   $Restart = True
+		   $Is_ClientSyncError = True
+		   Return
+	    EndIF
 
 		Local $i = 0
 		While $i < 100
@@ -487,9 +493,8 @@ Func IsSearchModeActive($pMode)
 EndFunc   ;==>IsSearchModeActive
 
 Func IsWeakBase($pMode)
-	_WinAPI_DeleteObject($hBitmapFirst)
-	$hBitmapFirst = _CaptureRegion2()
-	Local $resultHere = DllCall($hFuncLib, "str", "CheckConditionForWeakBase", "ptr", $hBitmapFirst, "int", ($iCmbWeakMortar[$pMode] + 1), "int", ($iCmbWeakWizTower[$pMode] + 1), "int", 10)
+	_CaptureRegion2()
+	Local $resultHere = DllCall($hFuncLib, "str", "CheckConditionForWeakBase", "ptr", $hHBitmap2, "int", ($iCmbWeakMortar[$pMode] + 2), "int", ($iCmbWeakWizTower[$pMode] + 2), "int", 10)
 	If @error Then ; detect if DLL error and return weakbase not found
 		SetLog("Weakbase search DLL error", $COLOR_RED)
 		Return False

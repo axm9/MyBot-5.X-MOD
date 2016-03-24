@@ -12,6 +12,7 @@ Func GUIMilk()
 	GUISetOnEvent($GUI_EVENT_CLOSE, 'CloseGUIMilk2') ; Run this function when the secondary GUI [X] is clicked
 	GUISetIcon($pIconLib, $eIcnGUI)
 	$gui3open = 1
+	Local $sTxtDisable = GetTranslated(16,41,"DISABLE")
 	Local $x = 9
 	Local $y = 13
 	$grpExtractorOptions = GUICtrlCreateGroup(GetTranslated(16,2, "1. Elixir Collectors Minimum Level"), $x, $y, 367, 111)
@@ -19,41 +20,41 @@ Func GUIMilk()
 	$x += 20
 	$lblLvl4 = GUICtrlCreateLabel(GetTranslated(16,3, "Levels 1-4"), $x, $y)
 	$cmbMilkLvl4 = GUICtrlCreateCombo("", $x - 6, $y + 16, 68, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "DISABLE|0-4%|5-19%|20-74%|75-89%|90-100%")
+		GUICtrlSetData(-1, $sTxtDisable & "|0-4%|5-19%|20-74%|75-89%|90-100%")
 	$x += 70
 	$lblLvl5 = GUICtrlCreateLabel(GetTranslated(16,4, "Level 5"), $x, $y)
 	$cmbMilkLvl5 = GUICtrlCreateCombo("", $x - 6, $y + 16, 68, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "DISABLE|0-4%|5-19%|20-74%|75-89%|90-100%")
+		GUICtrlSetData(-1, $sTxtDisable & "|0-4%|5-19%|20-74%|75-89%|90-100%")
 	$x += 70
 	$lblLvl6 = GUICtrlCreateLabel(GetTranslated(16,5, "Level 6"), $x, $y)
 	$cmbMilkLvl6 = GUICtrlCreateCombo("", $x - 6, $y + 16, 68, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "DISABLE|0-4%|5-19%|20-74%|75-89%|90-100%")
+		GUICtrlSetData(-1, $sTxtDisable & "|0-4%|5-19%|20-74%|75-89%|90-100%")
 	$x += 70
 	$lblLvl7 = GUICtrlCreateLabel(GetTranslated(16,6, "Level 7"), $x, $y)
 	$cmbMilkLvl7 = GUICtrlCreateCombo("", $x - 6, $y + 16, 68, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "DISABLE|0-4%|5-19%|20-74%|75-89%|90-100%")
+		GUICtrlSetData(-1, $sTxtDisable & "|0-4%|5-19%|20-74%|75-89%|90-100%")
 	$x += 70
 	$lblLvl8 = GUICtrlCreateLabel(GetTranslated(16,7, "Level 8"), $x, $y)
 	$cmbMilkLvl8 = GUICtrlCreateCombo("", $x - 6, $y + 16, 68, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "DISABLE|0-4%|5-19%|20-74%|75-89%|90-100%")
+		GUICtrlSetData(-1, $sTxtDisable & "|0-4%|5-19%|20-74%|75-89%|90-100%")
 
 	$x = 29
 	$y = 78
 	$lblLvl9 = GUICtrlCreateLabel(GetTranslated(16,8, "Level 9"), $x, $y)
 	$cmbMilkLvl9 = GUICtrlCreateCombo("", $x - 6, $y + 16, 68, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "DISABLE|0-4%|5-19%|20-74%|75-89%|90-100%")
+		GUICtrlSetData(-1, $sTxtDisable & "|0-4%|5-19%|20-74%|75-89%|90-100%")
 	$x += 70
 	$lblLvl10 = GUICtrlCreateLabel(GetTranslated(16,9, "Level 10"), $x, $y)
 	$cmbMilkLvl10 = GUICtrlCreateCombo("", $x - 6, $y + 16, 68, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "DISABLE|0-4%|5-19%|20-74%|75-89%|90-100%")
+		GUICtrlSetData(-1, $sTxtDisable & "|0-4%|5-19%|20-74%|75-89%|90-100%")
 	$x += 70
 	$lblLvl11 = GUICtrlCreateLabel(GetTranslated(16,10, "Level 11"), $x, $y)
 	$cmbMilkLvl11 = GUICtrlCreateCombo("", $x - 6, $y + 16, 68, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "DISABLE|0-4%|5-19%|20-74%|75-89%|90-100%")
+		GUICtrlSetData(-1, $sTxtDisable & "|0-4%|5-19%|20-74%|75-89%|90-100%")
 	$x += 70
 	$lblLvl12 = GUICtrlCreateLabel(GetTranslated(16,11, "Level 12"), $x, $y)
 	$cmbMilkLvl12 = GUICtrlCreateCombo("", $x - 6, $y + 16, 68, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "DISABLE|0-4%|5-19%|20-74%|75-89%|90-100%")
+		GUICtrlSetData(-1, $sTxtDisable & "|0-4%|5-19%|20-74%|75-89%|90-100%")
 
 	$grpIfFoundElixir = GUICtrlCreateGroup(GetTranslated(16,12, "2. If Elixir Collectors Found, Then"), 9, 127, 280, 83)
 
@@ -81,24 +82,18 @@ Func GUIMilk()
 	$y += 20
 	$chkAttackMinesifGold = GUICtrlCreateCheckbox(GetTranslated(16,18, "Attack Gold Mines If Gold Over"), $x, $y)
 		GUICtrlSetOnEvent(-1, "chkAttackMinesifGold")
-		GUICtrlSetTip(-1, "This filter is not used by the bot yet")
-	$txtAttackMinesIfGold = GUICtrlCreateInput("100000", 235, $y, 52, 21)
+	$txtAttackMinesIfGold = GUICtrlCreateInput("9950000", 235, $y, 52, 21)
 		GUICtrlSetState(-1,$GUI_DISABLE)
-		GUICtrlSetTip(-1, "This filter is not used by the bot yet")
 	$y += 20
 	$chkAttackMinesifElixir = GUICtrlCreateCheckbox(GetTranslated(16,19, "Attack Elixir Collectors If Elixir Over"), $x, $y)
 		GUICtrlSetOnEvent(-1, "chkAttackMinesifElixir")
-		GUICtrlSetTip(-1, "This filter is not used by the bot yet")
-	$txtAttackMinesIfElixir = GUICtrlCreateInput("100000", 235, $y, 52, 21)
+	$txtAttackMinesIfElixir = GUICtrlCreateInput("9950000", 235, $y, 52, 21)
 		GUICtrlSetState(-1,$GUI_DISABLE)
-		GUICtrlSetTip(-1, "This filter is not used by the bot yet")
 	$y += 20
 	$chkAttackMinesifDarkElixir = GUICtrlCreateCheckbox(GetTranslated(16,20, "Attack Dark Elixir Drills If Dark Over"), $x, $y)
 		GUICtrlSetOnEvent(-1, "chkAttackMinesifDarkElixir")
-		GUICtrlSetTip(-1, "This filter is not used by the bot yet")
-	$txtAttackMinesIfDarkElixir = GUICtrlCreateInput("500", 235, $y, 52, 21)
+	$txtAttackMinesIfDarkElixir = GUICtrlCreateInput("195000", 235, $y, 52, 21)
 		GUICtrlSetState(-1,$GUI_DISABLE)
-		GUICtrlSetTip(-1, "This filter is not used by the bot yet")
 
 	$grpTroopsToUse = GUICtrlCreateGroup(GetTranslated(16,21, "4. Troops To Use For Each Resource"), 9, 343,280,96)
 	$x = 42

@@ -38,15 +38,11 @@ Func OpenMEmu($bRestart = False)
 		EndIf
 	EndIf
 	
+   SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_GREEN)
+   $hTimer = TimerInit()
+
 	; Test ADB is connected
-	$cmdOutput = LaunchConsole($AndroidAdbPath, "connect " & $AndroidAdbDevice, $process_killed)
-	$connected_to = StringInStr($cmdOutput, "connected to")
-	If Not $RunState Then Return
-	
-   	SetLog("Please wait while " & $Android & " and CoC start...", $COLOR_GREEN)
-	$hTimer = TimerInit()
-	; Wait for device
-	$cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " wait-for-device", $process_killed, 60 * 1000)
+   $connected_to = ConnectAndroidAdb(False, 60 * 1000)
 	If Not $RunState Then Return
 	
 	; Wair for Activity Manager
@@ -158,6 +154,8 @@ Func InitMEmu($bCheckOnly = False)
 	
 	; Read ADB host and Port
 	If Not $bCheckOnly Then
+	  InitAndroidConfig(True) ; Restore default config
+
 		$__VBoxVMinfo = LaunchConsole($MEmu_Manage_Path, "showvminfo " & $AndroidInstance, $process_killed)
 		; check if instance is known
 		If StringInStr($__VBoxVMinfo, "Could not find a registered machine named") > 0 Then
@@ -199,10 +197,10 @@ Func InitMEmu($bCheckOnly = False)
 		$AndroidPicturesPath = "/mnt/shell/emulated/0/Pictures/"
 		$aRegExResult = StringRegExp($__VBoxVMinfo, "Name: 'picture', Host path: '(.*)'.*", $STR_REGEXPARRAYMATCH)
 		If Not @error Then
-			$AndroidAdbScreencap = True
 			$AndroidPicturesHostPath = $aRegExResult[0] & "\"
 		Else
 			$AndroidAdbScreencap = False
+		 $AndroidPicturesHostPath = ""
 			SetLog($Android & " Background Mode is not available", $COLOR_RED)
 		EndIf
 		

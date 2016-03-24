@@ -29,6 +29,7 @@ $DonateMenu = GUICtrlCreateMenu("&Paypal Donate?")
 $DonateConfig = GUICtrlCreateMenuItem("Support the development", $DonateMenu)
 GUICtrlSetOnEvent(-1, "")
 
+; CUstom MOD version check menu items
 $UpdateMenu = GUICtrlCreateMenu("&Update MOD")
 $CheckVersionConfig = GUICtrlCreateMenuItem("Check Version", $UpdateMenu)
 $DownloadLatestConfig = GUICtrlCreateMenuItem("Download Latest", $UpdateMenu)
@@ -123,3 +124,15 @@ _GUICtrlStatusBar_SetText($statLog, "Status : Idle")
 $tiAbout = TrayCreateItem("About")
 TrayCreateItem("")
 $tiExit = TrayCreateItem("Exit")
+
+; Create profile if specified by command line parameter does not exist
+If $sCurrProfile <> "<No Profiles>" And Not FileExists($sProfilePath & "\" & $sCurrProfile) Then
+	createProfile()
+	setupProfileComboBox()
+	selectProfile()
+ElseIf $sCurrProfile = "<No Profiles>" Then ; Create profile if there are no profiles
+	setupProfile()
+	setupProfileComboBox()
+	selectProfile()
+EndIf
+;~ -------------------------------------------------------------
