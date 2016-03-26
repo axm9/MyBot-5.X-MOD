@@ -4,7 +4,7 @@
 ; Syntax ........: DEDrillSearch([$bReTest = False])
 ; Parameters ....: $bReTest             - [optional] a boolean value. Default is False.
 ; Return values .: $aDrills Array with data on Dark Elixir Drills found in search
-; Author ........: KnowJack (May 2015)
+; Author ........: McSlither (May 2016)
 ; Modified ......:
 ; Remarks .......: This file is part of ClashGameBot. Copyright 2015
 ;                  ClashGameBot is distributed under the terms of the GNU GPL
@@ -19,36 +19,25 @@ Func DEDrillSearch($bReTest = False)
 	Local $pixel[2], $result, $listPixelByLevel, $pixelWithLevel, $level, $pixelStr
 	$numDEDrill = 0
 
-	ZoomOut()
-	; Checks the screen and stores the results as $result
-	_WinAPI_DeleteObject($hBitmapFirst)
-	$hBitmapFirst = _CaptureRegion2()
-	$result = DllCall($LibDir & "\MBRfunctions.dll", "str", "getLocationDarkElixirExtractorWithLevel", "ptr", $hBitmapFirst)
-
-	; Debugger
-	If $debugsetlog = 1 Then Setlog("Drill search $result[0] = " & $result[0], $COLOR_PURPLE) ;Debug
-
-	$listPixelByLevel = StringSplit($result[0], "~") ; split each building into array
-	If UBound($listPixelByLevel) > 1 Then ; check for more than 1 bldg and proper split a part
-		$numDEDrill = UBound($listPixelByLevel) - 1
-		SetLog("Total No. of Dark Elixir Drills found = " & $numDEDrill, $COLOR_FUCHSIA)
-		If $debugsetlog = 1 Then
-			For $ii = 0 To $listPixelByLevel[0]
-				Setlog("Drill search $listPixelByLevel[" & $ii & "] = " & $listPixelByLevel[$ii], $COLOR_PURPLE) ;Debug
-			Next
-		EndIf
+	ZoomOut()	
+	_CaptureRegion2()
+	$result = GetLocationDarkElixirWithLevel() ; Get the results of a drill search
+	If $debugsetlog = 1 Then Setlog("Drill search $result = " & $result, $COLOR_PURPLE) ; Debug
+	
+	$listPixelByLevel = StringSplit($result, "~") ; Split DLL return into an array
+	If $listPixelByLevel[1] <> "" Then $numDEDrill = $listPixelByLevel[0]
+	SetLog("Total No. of Dark Elixir Drills found = " & $numDEDrill, $COLOR_FUCHSIA)
+	If $debugsetlog = 1 Then
+		For $i = 1 To $numDEDrill
+			Setlog("Drill search $listPixelByLevel[" & $i & "] = " & $listPixelByLevel[$i], $COLOR_PURPLE)
+		Next
 	EndIf
 
-	If $numDEDrill <> 0 Then		
+	If $numDEDrill > 0 Then		
 		$iNbrOfDetectedDrillsForZap += $numDEDrill
 		For $i = 0 To $numDEDrill
-			If $numDEDrill > 1 Then
-				$pixelWithLevel = StringSplit($listPixelByLevel[$i], "#")
-				If @error Then ContinueLoop ; If the string delimiter is not found, then try next string.
-			Else
-				$pixelWithLevel = StringSplit($result[$i], "#")
-			If @error Then ContinueLoop
-			EndIf
+			$pixelWithLevel = StringSplit($listPixelByLevel[$i], "#")
+			If @error Then ContinueLoop ; If the string delimiter is not found, then try next string.
 
 			$level = $pixelWithLevel[1]
 			$pixelStr = StringSplit($pixelWithLevel[2], "-")
@@ -62,7 +51,7 @@ Func DEDrillSearch($bReTest = False)
 				If $debugsetlog = 1 Then SetLog("Dark Elixir Drill: [" & $aDrills[$i][0] & "," & $aDrills[$i][1] & "], Level: " & $aDrills[$i][2] & " " & $aDrills[$i][3], $COLOR_BLUE)
 			Else
 				If $debugsetlog = 1 Then SetLog("Dark Elixir Drill: [" & $pixel[0] & "," & $pixel[1] & "], Level: " & $level, $COLOR_PURPLE)
-				If $debugsetlog = 1 Then SetLog("Found Drill Storage with Invalid Location?", $COLOR_RED)
+				If $debugsetlog = 1 Then SetLog("Found Drill Drill with Invalid Location.", $COLOR_RED)
 			EndIf
 		Next
 	EndIf

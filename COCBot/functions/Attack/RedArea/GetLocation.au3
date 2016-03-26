@@ -224,7 +224,6 @@ Func GetLocationGoldStorage()
 EndFunc   ;==>GetLocationGoldStorage
 
 Func GetLocationElixirStorage()
-
 	Local $hTimer = TimerInit()
 	Local $LocationElixirStorag[6]
 	$LocationElixirStorag[0] = @ScriptDir & "\images\Storages\Elixir\Lv10_f.png"

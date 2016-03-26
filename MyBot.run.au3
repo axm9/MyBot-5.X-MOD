@@ -386,7 +386,7 @@ Func AttackMain() ;Main control for attack functions
 		checkMainScreen(False)
 		If $Restart = True Then Return
 	EndIf
-	If Number($iTrophyCurrent) > Number($iTxtMaxTrophy) Then ;If current trophy above max trophy, try drop first
+	If Number($iTrophyCurrent) > Number($iTxtMaxTrophy) Then ; If current trophy above max trophy, try drop first
 		DropTrophy()
 		$Is_ClientSyncError = False ; reset OOS flag to prevent looping.
 		If _Sleep($iDelayAttackMain1) Then Return

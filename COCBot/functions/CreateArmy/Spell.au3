@@ -246,22 +246,7 @@ Func CookDrillZapSpell()
 			If $iBarrHere = 8 Then ExitLoop
 		WEnd
 		If isSpellFactory() Then
-			Local $x = 0
-			While 1
-				_CaptureRegion()
-				If _Sleep($iDelayTrain2) Then Return
-				If _ColorCheck(_GetPixelColor(239 + 107 * 0, 375 + $midOffsetY, True), Hex(0xFFFFFF, 6), 20) = False Then
-					Setlog("Not enough Elixir to create Spell", $COLOR_RED)
-					Return
-				ElseIf _ColorCheck(_GetPixelColor(200, 346 + $midOffsetY, True), Hex(0x414141, 6), 20) Then
-					Setlog("Spell Factory Full", $COLOR_RED)
-					Return
-				Else
-					GemClick(220 + 107 * 0, 354 + $midOffsetY, 1, $iDelayTrain7, "#0290")
-					$x = $x + 1
-				EndIf
-			WEnd
-			If $x <> 0 Then SetLog("Created " & $x & " Lightning Spell(s)", $COLOR_BLUE)
+			GemClick(220, 354 + $midOffsetY, 1, $iDelayTrain7, "#0290")
 		Else
 			SetLog("Spell Factory not found...", $COLOR_BLUE)
 		EndIf

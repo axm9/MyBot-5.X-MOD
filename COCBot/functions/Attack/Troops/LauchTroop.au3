@@ -197,7 +197,7 @@ Func LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 									$listPixel = $infoListArrPixel[$i]
 									; infoPixelDropTroop : First element in array contains troop and list of array to drop troop
 									If _Sleep($iDelayLaunchTroop21) Then Return
-									SelectDropTroop($infoTroopListArrPixel[0]) ;Select Troop
+									SelectDropTroop($infoTroopListArrPixel[0])
 									If _Sleep($iDelayLaunchTroop23) Then Return
 									SetLog("Dropping " & $infoTroopListArrPixel[2] & "  of " & $infoTroopListArrPixel[5] & " => on each side (side : " & $i + 1 & ")", $COLOR_GREEN)
 									Local $pixelDropTroop[1] = [$listPixel]
@@ -222,7 +222,7 @@ Func LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
 					Local $numberLeft = ReadTroopQuantity($infoPixelDropTroop[0])
 					If ($numberLeft > 0) Then
 						If _Sleep($iDelayLaunchTroop21) Then Return
-						SelectDropTroop($infoPixelDropTroop[0]) ;Select Troop
+						SelectDropTroop($infoPixelDropTroop[0])
 						If _Sleep($iDelayLaunchTroop23) Then Return
 						SetLog("Dropping last " & $numberLeft & "  of " & $infoPixelDropTroop[5], $COLOR_GREEN)
 

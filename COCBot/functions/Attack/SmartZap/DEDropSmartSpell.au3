@@ -1,14 +1,13 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: DEDropSmartSpell, checkDE
+; Name ..........: DEDropSmartSpell, getDarkElixir
 ; Description ...: DEDropSmartSpell - Grabs DE drill info. Selects Lightning spell and drops the spell at a
 ; 				   point, depending on criteria
-; Syntax ........: DEDropSmartSpell(), checkDE()
+; Syntax ........: DEDropSmartSpell(), getDarkElixir()
 ; Parameters ....:
-; Return values .: DEDropSmartSpell - None; checkDE - False or value if found
-; Author ........: drei3000 (July 2015)
+; Return values .: DEDropSmartSpell - None; getDarkElixir - False or value if found
+; Author ........: McSlither (May 2016)
 ; Modified ......:
-; Remarks .......:This file is part of ClashGameBot. Copyright 2015
-;                  ClashGameBot is distributed under the terms of the GNU GPL
+; Remarks .......: This file is part of MyBot.run. Copyright 2016
 ; Related .......:
 ; Link ..........:
 ; Example .......: No
@@ -20,7 +19,7 @@ Func DEDropSmartSpell()
 	Local $searchDark, $aDarkDrills, $DEDrillRemoved = False, $oldDark = 0, $Spell, $strikeGain = 0, $smartZapGain = 0, $expectedDE = 0	
 	
 	; Get Dark Elixir value, if no DE value exists, exit.
-	$searchDark = checkDE()
+	$searchDark = getDarkElixir()
 	If $searchDark = False Then
 		SetLog("Could not determine the target's Dark Elixir value", $COLOR_RED)
 		Return False
@@ -40,17 +39,15 @@ Func DEDropSmartSpell()
 		Return False
 	EndIf
 	$iZapVillageFound += 1
-
+	
 	; Select Lightning Spell and update number of spells left
-	For $i = 0 To UBound($atkTroops) - 1
-		If $atkTroops[$i][0] = $eLSpell Then
-			$CurLightningSpell = $atkTroops[$i][1]
-			If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: " & $CurLightningSpell, $COLOR_PURPLE)
-			If $CurLightningSpell = 0 Then Return False
-			SelectDropTroop($i)
-			ExitLoop
-		EndIf
-	Next
+	Local $barPosition = unitLocation($eLSpell)	
+	If $barPosition <> -1 Then ; Check to see if we have spell trained		
+		$CurLightningSpell = unitCount($eLSpell)		
+		If $debugsetlog = 1 Then SetLog("Number of Lightning Spells: " & $CurLightningSpell, $COLOR_PURPLE)
+		If $CurLightningSpell = 0 Then Return False		
+		SelectDropTroop($barPosition) ; Select Spell
+	EndIf
 
 	; Offset the zap criteria for th8 and lower
 	Local $drillLvlOffset = 0
@@ -84,7 +81,7 @@ Func DEDropSmartSpell()
 		; If you have most of your spells, drop lightning on level 3+ de drill
 		If $CurLightningSpell/$maxElixirSpellNbr >= 0.7 And $aDarkDrills[0][2] >= (3 - $drillLvlOffset) Then
 			If $debugsetlog = 1 Then SetLog("First condition: Attack level 3+ drill if you have most of spells.", $COLOR_PURPLE)
-			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
+			AttackClick($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1, 0, 0)
 			$CurLightningSpell -= 1
 			$iLightSpellUsed += 1
 			$aDarkDrills[0][4] += 1
@@ -92,7 +89,7 @@ Func DEDropSmartSpell()
 		; else if you have half of your spells, drop lightning on level 4+ de drill
 		ElseIf $CurLightningSpell/$maxElixirSpellNbr >= 0.4 And $CurLightningSpell/$maxElixirSpellNbr <= 0.7 And $aDarkDrills[0][2] >= (4 - $drillLvlOffset) Then
 			If $debugsetlog = 1 Then SetLog("Second condition: Attack level 4+ drills if you have half of spells", $COLOR_PURPLE)
-			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
+			AttackClick($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1, 0, 0)
 			$CurLightningSpell -= 1
 			$iLightSpellUsed += 1
 			$aDarkDrills[0][4] += 1
@@ -100,7 +97,7 @@ Func DEDropSmartSpell()
 		; else if the collector is level 5+ and collector is more than 30% full
 		ElseIf $aDarkDrills[0][2] >= (5 - $drillLvlOffset) And ($aDarkDrills[0][3]/$DrillLevelHold[$aDarkDrills[0][2] - 1]) > 0.3 Then
 			If $debugsetlog = 1 Then SetLog("Third condition: Attack level 5+ drills if it's more than 30% full", $COLOR_PURPLE)
-			Click($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1)
+			AttackClick($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1], 1, 0, 0)
 			$CurLightningSpell -= 1
 			$iLightSpellUsed += 1
 			$aDarkDrills[0][4] += 1
@@ -115,7 +112,7 @@ Func DEDropSmartSpell()
 		EndIf
 
 		$oldDark = $searchDark
-		$searchDark = checkDE()
+		$searchDark = getDarkElixir()
 		If $searchDark = False Then ExitLoop ; In case proper color isn't detected for the DE
 
 		$strikeGain = $oldDark - $searchDark
@@ -163,14 +160,14 @@ Func DEDropSmartSpell()
 	Return True
 EndFunc
 
-; Checks the value of DE on opponents base. Returns value if there is DE, otherwise returns false.
-Func checkDE()
+; Gets the value of DE on opponents base. Returns value if there is DE, otherwise returns false.
+Func getDarkElixir()
 	Local $searchDark, $oldsearchDark, $icount
-	If _ColorCheck(_GetPixelColor(30, 142, True), Hex(0x07010D, 6), 10) Then ; check if the village have a Dark Elixir Storage
+	If _ColorCheck(_GetPixelColor(31, 144, True), Hex(0x0a050a, 6), 10) Or _ColorCheck(_GetPixelColor(31, 144, True), Hex(0x0F0617, 6), 5) Then ; Check if the village have a Dark Elixir Storage
 		$searchDark = ""
 		While $searchDark = "" Or $searchDark <> $oldsearchDark
 			$oldsearchDark = $searchDark
-			$searchDark = getDarkElixirVillageSearch(48, 69 + 57) ; Get updated Dark Elixir value
+			$searchDark = getDarkElixirVillageSearch(45, 125) ; Get updated Dark Elixir value
 			$icount += 1
 			If $icount > 15 Then ExitLoop ; check couple of times in case troops are blocking image
 			If _Sleep(1000) Then Return

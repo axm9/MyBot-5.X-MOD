@@ -457,7 +457,8 @@ Func readConfig() ;Reads config and sets it to the variables
 		$fulltroop = IniRead($config, "troop", "fullTroop", "100")
 
 		$isldTrainITDelay = IniRead($config, "troop", "TrainITDelay", "20")
-		;barracks boost not saved (no use)
+		
+		$clearBarracksOnStart = IniRead($config, "troop", "ClearBarracksOnStart", "1")
 
 		; Spells Creation  ---------------------------------------------------------------------
 		$iLightningSpellComp = Int(IniRead($config, "Spells", "LightningSpell", "0"))

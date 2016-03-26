@@ -28,6 +28,8 @@
 #include "functions\Attack\ReturnHome.au3"
 #include "functions\Attack\SnipeWhileTrain.au3"
 #include "functions\Attack\Unbreakable.au3"
+; Unit Info file for casting lightning spell - Added by LunaEclipse
+#include "functions\Attack\UnitInfo.au3"
 
 #include "functions\Attack\Attack Algorithms\algorithm_AllTroops.au3"
 #include "functions\Attack\Attack Algorithms\algorithmTH.au3"
@@ -220,9 +222,9 @@
 #include "functions\Village\DonateCC.au3"
 #include "functions\Village\DropTrophy.au3"
 #include "functions\Village\GetTownHallLevel.au3"
+#include "functions\Village\isDarkElixirFull.au3"
 #include "functions\Village\isGoldFull.au3"
 #include "functions\Village\isElixirFull.au3"
-#include "functions\Village\isDarkElixirFull.au3"
 #include "functions\Village\LocateBarrack.au3"
 #include "functions\Village\LocateUpgrade.au3"
 #include "functions\Village\LocateClanCastle.au3"

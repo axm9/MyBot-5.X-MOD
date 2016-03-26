@@ -27,7 +27,7 @@ Func DropTrophy()
 			$bDisableDropTrophy = False
 			$bHaveTroops = True
 			If $DebugSetlog = 1 Then
-				SetLog("Drop Trophy Found " & StringFormat("%3s", $aDTtroopsToBeUsed[$i][1]) & " " & $aDTtroopsToBeUsed[$i][0], $COLOR_PURPLE)
+				SetLog("Drop Trophy Troops Found " & StringFormat("%3s", $aDTtroopsToBeUsed[$i][1]) & " " & $aDTtroopsToBeUsed[$i][0], $COLOR_PURPLE)
 				ContinueLoop ; display all troop counts if debug flag set
 			Else
 				ExitLoop ; Finding 1 troop type is enough to use trophy drop, stop checking rest when no debug flag

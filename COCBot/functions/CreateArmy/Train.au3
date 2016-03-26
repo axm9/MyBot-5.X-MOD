@@ -124,7 +124,7 @@ Func Train()
 	
 	SetLog("Training Troops & Spells", $COLOR_BLUE)
 	If _Sleep($iDelayTrain1) Then Return
-	ClickP($aAway, 1, 0, "#0268") ;Click Away to clear open windows in case user interupted
+	ClickP($aAway, 1, 0, "#0268") ; Click Away to clear open windows in case user interupted
 	If _Sleep($iDelayTrain4) Then Return
 
 	; OPEN ARMY OVERVIEW WITH NEW BUTTON
@@ -133,7 +133,7 @@ Func Train()
 		If IsMainPage() Then Click($aArmyTrainButton[0], $aArmyTrainButton[1], 1, 0, "#0293") ; Button Army Overview
 	EndIf
 
-	;Wait for the armyoverview Window
+	; Wait for the armyoverview Window
 	If WaitforPixel(762, 328 + $midOffsetY, 763, 329 + $midOffsetY, Hex(0xF18439, 6), 10, 10) Then
 		If $debugSetlog = 1 Then SetLog("Wait for ArmyOverView Window", $COLOR_GREEN)
 		If IsTrainPage() Then checkArmyCamp()
@@ -336,7 +336,7 @@ Func Train()
 
 		If $debugSetlog = 1 Then SetLog("------- Calculating TOTAL of Units: Arch/Barbs/Gobl ------", $COLOR_PURPLE)
 
-		; Balance Archers ,Barbs and goblins
+		; Balance Archers, Barbs and goblins
 		If $OptTrophyMode = 1 And $icmbTroopComp <> 8 Then
 			For $i = 0 To UBound($TroopName) - 1
 				If Number(Eval($TroopName[$i] & "Comp")) <> 0 Then
@@ -367,9 +367,9 @@ Func Train()
 		If $debugSetlog = 1 Then SetLog("Need to train GOBL: " & $CurGobl & " /BARB: " & $CurBarb & " /ARCH: " & $CurArch & " /Total Space: " & $CurBarb + $CurArch + $CurGobl + $anotherTroops & "/" & $TotalCamp, $COLOR_PURPLE)
 		If $debugSetlog = 1 Then SetLog("--------- End Calculating Troops / FullArmy true ---------", $COLOR_PURPLE)
 
-		; The $Cur+TroopName will be the diference bewtween -($Cur+TroopName) returned from ChechArmycamp() and what was selected by user GUI
-		; $Cur+TroopName = Trained - needed  (-20+25 = 5)
-		; $anotherTroops = quantity unit troops x $TroopHeight
+	; The $Cur+TroopName will be the diference bewtween -($Cur+TroopName) returned from ChechArmycamp() and what was selected by user GUI
+	; $Cur+TroopName = Trained - needed (-20 + 25 = 5)
+	; $anotherTroops = quantity unit troops x $TroopHeight
 	ElseIf ($ArmyComp = 0 And $icmbTroopComp <> 8) Or $FirstStart Then
 		$anotherTroops = 0
 		For $i = 0 To UBound($TroopName) - 1
@@ -459,7 +459,7 @@ Func Train()
 		While isBarrack()
 			$brrNum += 1
 			_CaptureRegion()
-			If $FirstStart Then
+			If $FirstStart And $clearBarracksOnStart = 1 Then
 				If _Sleep($iDelayTrain2) Then Return
 				$icount = 0
 				If _ColorCheck(_GetPixelColor(187, 212, True), Hex(0xD30005, 6), 10) Then ; check if there are more then 6 slots troops on train bar
@@ -523,13 +523,13 @@ Func Train()
 		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Train Custom Army Mode For Elixir Troops ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 		If $debugSetlog = 1 Then SetLog("---------TRAIN NEW BARRACK MODE------------------------", $COLOR_PURPLE)
 
-		If $FirstStart = True Then SetLog("Remove previous training troops and start to train")
+		If $FirstStart = True And $clearBarracksOnStart = 1 Then SetLog("Remove previous training troops and start to train")
 		If $fullarmy = True Then SetLog("Build troops before attacking.")
 
 		While isBarrack() And $isNormalBuild
 			$brrNum += 1
 			If $debugSetlog = 1 Then SetLog("====== Checking available Barrack: " & $brrNum & " ======", $COLOR_PURPLE)
-			If ($fullarmy = True) Or $FirstStart Then
+			If ($fullarmy = True) Or $FirstStart And $clearBarracksOnStart = 1 Then
 				; CLICK REMOVE TROOPS
 				If _Sleep($iDelayTrain2) Then Return
 				$icount = 0
@@ -542,8 +542,8 @@ Func Train()
 					WEnd
 				EndIf
 				$icount = 0
-				While Not _ColorCheck(_GetPixelColor(593, 200 + $midOffsetY, True), Hex(0xD0D0C0, 6), 20) ; while not disappears  green arrow
-					If Not (IsTrainPage()) Then Return ;exit if no train page
+				While Not _ColorCheck(_GetPixelColor(593, 200 + $midOffsetY, True), Hex(0xD0D0C0, 6), 20) ; while not disappears green arrow
+					If Not (IsTrainPage()) Then Return ; exit if no train page
 					Click(568, 177 + $midOffsetY, 10, 0, "#0284") ; Remove Troops in training
 					$icount += 1
 					If $icount = 100 Then ExitLoop
@@ -662,9 +662,8 @@ Func Train()
 
 			;;; Train archers to reach full army if trained troops not enough to reach full army or remaining capacity is lower than housing space of trained troop ;;;
 			If $icmbTroopComp <> 8 And $fullarmy = False And $FirstStart = False Then
-
 				; Checks if there is Troops being trained in this barrack
-				If _ColorCheck(_GetPixelColor(599, 202 + $midOffsetY, True), Hex(0xa8d070, 6), 20) = False Then ;if no green arrow
+				If _ColorCheck(_GetPixelColor(599, 202 + $midOffsetY, True), Hex(0xa8d070, 6), 20) = False Then ; if no green arrow
 					$BarrackStatus[$brrNum - 1] = False ; No troop is being trained in this barrack
 				Else
 					$BarrackStatus[$brrNum - 1] = True ; Troops are being trained in this barrack
@@ -787,7 +786,7 @@ Func Train()
 			While isDarkBarrack()
 				$brrDarkNum += 1
 				_CaptureRegion()
-				If $FirstStart Then
+				If $FirstStart And $clearBarracksOnStart = 1 Then
 					If _Sleep($iDelayTrain2) Then Return
 					$icount = 0
 					If _ColorCheck(_GetPixelColor(187, 212, True), Hex(0xD30005, 6), 10) Then ; check if the existe more then 6 slots troops on train bar
@@ -849,7 +848,7 @@ Func Train()
 				$brrDarkNum += 1
 				If $debugSetlog = 1 Then SetLog("====== Checking available Dark Barrack: " & $brrDarkNum & " ======", $COLOR_PURPLE)
 
-				If ($fullarmy = True) Or $FirstStart Then ; Delete Troops That is being trained
+				If ($fullarmy = True) Or $FirstStart And $clearBarracksOnStart = 1 Then ; Delete Troops That is being trained
 					$icount = 0
 					If _ColorCheck(_GetPixelColor(187, 212, True), Hex(0xD30005, 6), 10) Then ; check if the existe more then 6 slots troops on train bar
 						While Not _ColorCheck(_GetPixelColor(573, 212, True), Hex(0xD80001, 6), 10) ; while until appears the Red icon to delete troops
@@ -968,7 +967,7 @@ Func Train()
 				;;; Train Minions to reach full army if trained troops not enough to reach full army or remaining capacity is lower than housing space of trained troop ;;;
 				If $icmbTroopComp <> 8 And $fullarmy = False And $FirstStart = False Then
 					; Checks if there is Troops being trained in this Dark barrack
-					If _ColorCheck(_GetPixelColor(599, 202 + $midOffsetY, True), Hex(0xa8d070, 6), 20) = False Then ;if no green arrow
+					If _ColorCheck(_GetPixelColor(599, 202 + $midOffsetY, True), Hex(0xa8d070, 6), 20) = False Then ; if no green arrow
 						$BarrackDarkStatus[$brrDarkNum - 1] = False ; No troop is being trained in this Dark barrack
 					Else
 						$BarrackDarkStatus[$brrDarkNum - 1] = True ; Troops are being trained in this Dark barrack

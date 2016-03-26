@@ -41,10 +41,6 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 	checkAttackDisable($iTaBChkAttack, $Result) ;last check to see If TakeABreak msg on screen for fast PC from PrepareSearch click
 	If $Restart = True Then Return ; exit func
 	For $x = 0 To $iModeCount - 1
-		If $iHeroWait[$x] > $HERO_NOHERO And (BitAND($iHeroAttack[$x], $iHeroWait[$x], $iHeroAvailable) = $iHeroWait[$x]) = False Then
-			SetLog(_PadStringCenter(" Skip " & $sModeText[$x] & " - Hero Not Ready " & BitAND($iHeroAttack[$x], $iHeroWait[$x], $iHeroAvailable) & "|" & $iHeroAvailable, 54, "="), $COLOR_RED)
-			ContinueLoop ; check if herowait selected and hero available for each search mode
-		EndIf
 		If $x = $iCmbSearchMode Or $iCmbSearchMode = 2 Then
 			If Not ($Is_SearchLimit) Then SetLog(_PadStringCenter(" Searching For " & $sModeText[$x] & " ", 54, "="), $COLOR_BLUE)
 

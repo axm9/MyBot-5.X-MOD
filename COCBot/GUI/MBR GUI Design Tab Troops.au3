@@ -77,7 +77,7 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 	$x += 150
 	$y = 150
 
-	$y =379
+	$y = 379
 	$grpRaidComp = GUICtrlCreateGroup(GetTranslated(1,27, "Army Strength"), $x - 20, $y - 15, 150, 52)
 		$y += 10
 		GUICtrlCreateIcon ($pIconLib, $eIcnBldgTarget, $x - 10, $y - 8, 24, 24)
@@ -87,9 +87,16 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 		$lblFullTroop = GUICtrlCreateLabel("%",$x + 117, $y, -1, 17)
 			GUICtrlSetLimit(-1, 3)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
+	
+	$y = 420
+		$chkClearBarracksOnStart = GUICtrlCreateCheckbox("Clear Barracks on start", $x - 20, $y, -1, -1)
+			$txtTip = "On bot start all Barracks' training queues will be clear before starting to train troops if this option is checked."
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetOnEvent(-1, "chkClearBarracksOnStart")
+			GUICtrlSetState(-1, $GUI_CHECKED)
 
 	$y = 150
-	$x +=155
+	$x += 155
 	$grpSpells = GUICtrlCreateGroup(GetTranslated(1,54, "Spells"), $x - 20, $y - 20, 145, 175)
 		$lblLightningIcon = GUICtrlCreateIcon ($pIconLib, $eIcnLightSpell, $x - 10, $y - 5, 24, 24)
 		GUICtrlSetState(-1, $GUI_HIDE)

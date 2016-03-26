@@ -33,6 +33,7 @@ Func cmbDarkTroopComp()
 		SetComboDarkTroopComp()
 	EndIf
 EndFunc   ;==>cmbDarkTroopComp
+
 Func SetComboDarkTroopComp()
 	Switch _GUICtrlComboBox_GetCurSel($cmbDarkTroopComp)
 		Case 0 ; Barrack Mode
@@ -50,7 +51,7 @@ Func SetComboDarkTroopComp()
 			HideDarkBarrackControls()
 			HideDarkCustomControls()
 	EndSwitch
-EndFunc   ;==>SetComboTroopComp
+EndFunc   ;==>SetComboDarkTroopComp
 
 Func ShowDarkBarrackControls()
 	GUICtrlSetState($grpDarkBarrackMode, $GUI_SHOW)
@@ -377,7 +378,6 @@ Func SetComboTroopComp()
 
 			HideBarrackControls()
 			ShowCustomControls()
-			ShowDarkCustomControls()
 	EndSwitch
 	lblTotalCount()
 EndFunc   ;==>SetComboTroopComp
@@ -515,6 +515,14 @@ Func ShowCustomControls()
 	GUICtrlSetState($lblTotal, $GUI_SHOW)
 	GUICtrlSetState($lblPercentTotal, $GUI_HIDE)
 EndFunc   ;==>ShowCustomControls
+
+Func chkClearBarracksOnStart()
+	If GUICtrlRead($chkClearBarracksOnStart) = $GUI_CHECKED Then
+		$clearBarracksOnStart = 1
+	Else
+		$clearBarracksOnStart = 0
+	EndIf
+EndFunc   ;==>chkClearBarracksOnStart
 
 Func lblTotalCount()
 	GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGobl))

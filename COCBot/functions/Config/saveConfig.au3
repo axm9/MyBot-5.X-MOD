@@ -915,6 +915,12 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	IniWrite($config, "troop", "fulltroop", GUICtrlRead($txtFullTroop))
 	IniWrite($config, "troop", "TrainITDelay", GUICtrlRead($sldTrainITDelay))
+	
+	If GUICtrlRead($chkClearBarracksOnStart) = $GUI_CHECKED Then
+		IniWrite($config, "troop", "ClearBarracksOnStart", 1)
+	Else
+		IniWrite($config, "troop", "ClearBarracksOnStart", 0)
+	EndIf
 
 	; Spells Creation  ---------------------------------------------------------------------
 	IniWrite($config, "Spells", "LightningSpell", GUICtrlRead($txtNumLightningSpell))

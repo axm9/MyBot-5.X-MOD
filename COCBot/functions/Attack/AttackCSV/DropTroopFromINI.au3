@@ -26,19 +26,31 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $troopName, $delayPointmin, $delayPointmax, $delayDropMin, $delayDropMax, $sleepafterMin, $sleepAfterMax, $debug = False)
-	debugAttackCSV("drop using vectors " & $vectorString & " index " & $indexStart & "-" & $indexEnd & " and using " & $qtaMin & "-" & $qtaMax & " of " & $troopName)
+Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $qtaMin, $qtaMax, $troopName, $delayPointmin, $delayPointmax, $delayDropMin, $delayDropMax, $sleepafterMin, $sleepAfterMax, $debug = False)
+	debugAttackCSV("drop using vectors " & $vectors & " index " & $indexStart & "-" & $indexEnd & " and using " & $qtaMin & "-" & $qtaMax & " of " & $troopName)
 	debugAttackCSV(" - delay for multiple troops in same point: " & $delayPointmin & "-" & $delayPointmax)
 	debugAttackCSV(" - delay when  change deploy point : " & $delayDropMin & "-" & $delayDropMax)
 	debugAttackCSV(" - delay after drop all troops : " & $sleepafterMin & "-" & $sleepAfterMax)
+	
+	; how many vectors need to manage...
+	Local $temp = StringSplit($vectors, "-")
+	Local $numbersOfVectors
+	If UBound($temp) > 0 Then
+		$numbersOfVectors = $temp[0]
+	Else
+		$numbersOfVectors = 0
+	EndIf
 
-	; initialize vector arrays
-	Local $vectorLetters = StringSplit($vectorString, "-")
-	Local $vectorCount = $vectorLetters[0]
-	Local $vectors[$vectorCount]
-	For $i = 0 To $vectorCount - 1
-		$vectors[$i] = Execute("$ATTACKVECTOR_" & $vectorLetters[$i + 1])
-	Next
+	; name of vectors...
+	Local $vector1, $vector2, $vector3, $vector4
+	If UBound($temp) > 0 Then
+		If $temp[0] >= 1 Then $vector1 = "ATTACKVECTOR_" & $temp[1]
+		If $temp[0] >= 2 Then $vector2 = "ATTACKVECTOR_" & $temp[2]
+		If $temp[0] >= 3 Then $vector3 = "ATTACKVECTOR_" & $temp[3]
+		If $temp[0] >= 4 Then $vector4 = "ATTACKVECTOR_" & $temp[4]
+	Else
+		$vector1 = $vectors
+	EndIf
 
 	; Qty to drop
 	If $qtaMin <> $qtaMax Then
@@ -91,8 +103,6 @@ Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $
 
 	Else
 		SelectDropTroop($troopPosition) ; select the troop...
-		Local $troopEnum = Eval("e" & $troopName)
-		Local $qty2 = $qtyxpoint
 		; drop
 		For $i = $indexStart To $indexEnd
 			Local $delayDrop = 0
@@ -105,16 +115,23 @@ Func DropTroopFromINI($vectorString, $indexStart, $indexEnd, $qtaMin, $qtaMax, $
 				EndIf
 				debugAttackCSV(">> delay change drop point: " & $delayDrop)
 			EndIf
-			For $j = 0 To $vectorCount - 1				
+			For $j = 1 To $numbersOfVectors
 				; delay time between 2 drops in different point
 				Local $delayDropLast = 0
-				If $j = ($vectorCount - 1) Then $delayDropLast = $delayDrop
-				If $i <= UBound($vectors[$j]) Then
-					$pixel = ($vectors[$j])[$i - 1]
-					
+				If $j = $numbersOfVectors Then $delayDropLast = $delayDrop
+				If $i <= UBound(Execute("$" & Eval("vector" & $j))) Then
+					$pixel = Execute("$" & Eval("vector" & $j) & "[" & $i - 1 & "]")
+					Local $qty2 = $qtyxpoint
 					If $i < $indexStart + $extraunit Then $qty2 += 1
 
-					Switch $troopEnum
+					; delay time between 2 drops in same point
+					If $delayPointmin <> $delayPointmax Then
+						Local $delayPoint = Random($delayPointmin, $delayPointmax, 1)
+					Else
+						Local $delayPoint = $delayPointmin
+					EndIf
+
+					Switch Eval("e" & $troopName)
 						Case $eBarb To $eLava ; drop normal troops
 							If $debug = True Then
 								Setlog("AttackClick( " & $pixel[0] & ", " & $pixel[1] & " , " & $qty2 & ", " & $delayPoint & ",#0666)")

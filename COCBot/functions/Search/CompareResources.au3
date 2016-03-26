@@ -51,49 +51,49 @@ Func CompareResources($pMode) ; Compares resources and returns true if condition
 	If $iChkMeetOne[$pMode] = 1 Then
 		If $iCmbMeetGE[$pMode] = 0 Then
 			If $G = True And $E = True Then
-				If $DebugSetlog = 1 Then Setlog("Gold and Elixir requirement met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Gold and Elixir requirement met for mode " & $pMode, $COLOR_GREEN)
 				Return True
 			EndIf
 		EndIf
 
 		If $iCmbMeetGE[$pMode] = 1 Then
 			If $G = True Or $E = True Then
-				If $DebugSetlog = 1 Then Setlog("Gold or Elixir requirement met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Gold or Elixir requirement met for mode " & $pMode, $COLOR_GREEN)
 				Return True
 			EndIf
 		EndIf
 
 		If $iCmbMeetGE[$pMode] = 2 Then
 			If $GPE = True Then
-				If $DebugSetlog = 1 Then Setlog("Gold + Elixir requirement met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Gold + Elixir requirement met for mode " & $pMode, $COLOR_GREEN)
 				Return True
 			EndIf
 		EndIf
 
 		If $iChkMeetDE[$pMode] = 1 Then
 			If $D = True Then
-				If $DebugSetlog = 1 Then Setlog("Dark Elixir requirement met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Dark Elixir requirement met for mode " & $pMode, $COLOR_GREEN)
 				Return True
 			EndIf
 		EndIf
 
 		If $iChkMeetTrophy[$pMode] = 1 Then
 			If $T = True Then
-				If $DebugSetlog = 1 Then Setlog("Trophy requirement met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Trophy requirement met for mode " & $pMode, $COLOR_GREEN)
 				Return True
 			EndIf
 		EndIf
 
 		If $iChkMeetTH[$pMode] = 1 Then
 			If $THL <> -1 And $THL <= $iCmbTH[$pMode] Then
-				If $DebugSetlog = 1 Then Setlog("Townhall level requirement met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Townhall level requirement met for mode " & $pMode, $COLOR_GREEN)
 				Return True
 			EndIf
 		EndIf
 
 		If $iChkMeetTHO[$pMode] = 1 Then
 			If $THLO = 1 Then
-				If $DebugSetlog = 1 Then Setlog("Townhall outside requirement met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Townhall outside requirement met for mode " & $pMode, $COLOR_GREEN)
 				Return True
 			EndIf
 		EndIf
@@ -102,49 +102,49 @@ Func CompareResources($pMode) ; Compares resources and returns true if condition
 	Else
 		If $iCmbMeetGE[$pMode] = 0 Then
 			If $G = False Or $E = False Then
-				If $DebugSetlog = 1 Then Setlog("Gold or Elixir requirement not met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Gold or Elixir requirement not met for mode " & $pMode, $COLOR_RED)
 				Return False
 			EndIf
 		EndIf
 
 		If $iCmbMeetGE[$pMode] = 1 Then
 			If $G = False And $E = False Then
-				If $DebugSetlog = 1 Then Setlog("Gold and Elixir requirement not met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Gold and Elixir requirement not met for mode " & $pMode, $COLOR_RED)
 				Return False
 			EndIf
 		EndIf
 
 		If $iCmbMeetGE[$pMode] = 2 Then
 			If $GPE = False Then
-				If $DebugSetlog = 1 Then Setlog("Gold + Elixir requirement not met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Gold + Elixir requirement not met for mode " & $pMode, $COLOR_RED)
 				Return False
 			EndIf
 		EndIf
 
 		If $iChkMeetDE[$pMode] = 1 Then
 			If $D = False Then
-				If $DebugSetlog = 1 Then Setlog("Dark Elixir requirement not met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Dark Elixir requirement not met for mode " & $pMode, $COLOR_RED)
 				Return False
 			EndIf
 		EndIf
 
 		If $iChkMeetTrophy[$pMode] = 1 Then
 			If $T = False Then
-				If $DebugSetlog = 1 Then Setlog("Trophy requirement not met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Trophy requirement not met for mode " & $pMode, $COLOR_RED)
 				Return False
 			EndIf
 		EndIf
 
 		If $iChkMeetTH[$pMode] = 1 Then
 			If $THL = -1 Or $THL > $iCmbTH[$pMode] Then
-				If $DebugSetlog = 1 Then Setlog("Townhall level requirement not met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Townhall level requirement not met for mode " & $pMode, $COLOR_RED)
 				Return False
 			EndIf
 		EndIf
 
 		If $iChkMeetTHO[$pMode] = 1 Then
 			If $THLO <> 1 Then
-				If $DebugSetlog = 1 Then Setlog("Townhall outside requirement not met", $COLOR_PURPLE)
+				If $DebugSetlog = 1 Then Setlog("Townhall outside requirement not met for mode " & $pMode, $COLOR_RED)
 				Return False
 			EndIf
 		EndIf
