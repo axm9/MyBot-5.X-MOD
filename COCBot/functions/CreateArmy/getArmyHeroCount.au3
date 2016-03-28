@@ -14,7 +14,7 @@
 ; ===============================================================================================================================
 
 Func getArmyHeroCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
-	If $debugSetlog = 1 Then Setlog("Begin getArmyTHeroCount", $COLOR_PURPLE)
+	If $debugSetlog = 1 Then SETLOG("Begin getArmyTHeroCount:", $COLOR_PURPLE)
 
 	If $bOpenArmyWindow = False And IsTrainPage() = False Then ; check for train page
 		SetError(1)
@@ -27,45 +27,75 @@ Func getArmyHeroCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		If _Sleep($iDelaycheckArmyCamp5) Then Return
 	EndIf
 
-	$iHeroAvailable = $HERO_NOHERO ; Reset hero available data
+	$iHeroAvailable = $HERO_NOHERO  ; reset global hero available data
 	$bFullArmyHero = False
-	$BarbarianKingAvailable = 0 ; reset Gobal variables
+	$BarbarianKingAvailable = 0
 	$ArcherQueenAvailable = 0
 	$GrandWardenAvailable = 0
+	
+	Local $debugArmyHeroCount = 0 ; put = 1 to make debug images
+	Local $capture_x = 440 ; capture a portion of screen starting from ($capture_x,$capture_y)
+	Local $capture_y = 420 + $midOffsetY
+	Local $capture_width= 200
+	Local $capture_height= 150
 
-	If Not _ColorCheck(_GetPixelColor(428, 447 + $midOffsetY, True), Hex(0xd0cfc5, 6), 10) Then
-		; Slot 1
-		If _ColorCheck(_GetPixelColor(426, 447 + $midOffsetY, True), Hex(0xf6bc20, 6), 15) Then
-			Setlog(" - Grand Warden available")
+	_CaptureRegion()
+	If $debugArmyHeroCount = 1 Then ; make debug image
+		$Date = @MDAY & "." & @MON & "." & @YEAR
+		$Time = @HOUR & "." & @MIN & "." & @SEC
+		_GDIPlus_ImageSaveToFile($hBitmap, $dirTempDebug & "getArmyHeroCount_" & $Date & " at " & $Time & ".png")
+	EndIf
+
+	Local $found = 0
+	Local $tolerance = 70
+	Local $xpos, $ypos
+
+	; search King
+	$xpos = 0
+	$ypos = 0
+	$found = _ImageSearchArea(@ScriptDir & "\images\HeroesArmy\king.bmp", 1, $capture_x, $capture_y, $capture_x + $capture_width, $capture_y + $capture_height, $xpos, $ypos, $Tolerance)
+	If $found = 1 Then
+		Setlog(" - Barbarian King available", $color_blue)
+		If $debugArmyHeroCount = 1 Then Setlog("- detected in position (" & $xpos & "+" & $capture_x & "," & $ypos & "+" & $capture_y & ")" )
+		$iHeroAvailable = BitOR($iHeroAvailable, $HERO_KING)
+		$BarbarianKingAvailable = 1
+	Else
+		If $debugArmyHeroCount = 1 Then Setlog(" - Barbarian King not found", $color_blue)
+	EndIf
+
+	; search Queen
+	$xpos = 0
+	$ypos = 0
+	$found = _ImageSearchArea(@ScriptDir & "\images\HeroesArmy\queen.bmp", 1, $capture_x, $capture_y, $capture_x + $capture_width, $capture_y + $capture_height, $xpos, $ypos, $Tolerance)
+	If $found = 1 Then
+		Setlog(" - Archer Queen available", $color_blue)
+		If $debugArmyHeroCount = 1 Then Setlog("- detected in position (" & $xpos & "+" & $capture_x & "," & $ypos & "+" & $capture_y & ")" )
+		$iHeroAvailable = BitOR($iHeroAvailable, $HERO_QUEEN)
+		$ArcherQueenAvailable = 1
+	Else
+		If $debugArmyHeroCount = 1 Then Setlog(" - Archer Queen not found", $color_blue)
+	EndIf
+
+	; search Grand Warden
+	$xpos = 0
+	$ypos = 0
+	$found = _ImageSearchArea(@ScriptDir & "\images\HeroesArmy\warden.bmp", 1, $capture_x, $capture_y, $capture_x + $capture_width, $capture_y + $capture_height, $xpos, $ypos, $Tolerance)
+	If $found = 1 Then
+		Setlog(" - Grand Warden available", $color_blue)
+		If $debugArmyHeroCount = 1 Then Setlog("- detected in position (" & $xpos & "+" & $capture_x & "," & $ypos & "+" & $capture_y & ")" )
+		$iHeroAvailable = BitOR($iHeroAvailable, $HERO_WARDEN)
+		$GrandWardenAvailable = 1
+	Else
+		$xpos = 0
+		$ypos = 0
+		$found = _ImageSearchArea(@ScriptDir & "\images\HeroesArmy\warden2.bmp", 1, $capture_x, $capture_y, $capture_x + $capture_width, $capture_y + $capture_height, $xpos, $ypos, $Tolerance)
+		If $found = 1 Then
+			Setlog(" - Grand Warden available", $color_blue)
+			If $debugArmyHeroCount = 1 Then Setlog("- detected in position (" & $xpos & "+" & $capture_x & "," & $ypos & "+" & $capture_y & ")" )
 			$iHeroAvailable = BitOR($iHeroAvailable, $HERO_WARDEN)
-			$GrandWardenAvailable = 1
-		EndIf
-		If _ColorCheck(_GetPixelColor(426, 447 + $midOffsetY, True), Hex(0x812612, 6), 15) Then
-			Setlog(" - Archer Queen available")
-			$iHeroAvailable = BitOR($iHeroAvailable, $HERO_QUEEN)
-			$ArcherQueenAvailable = 1
-		EndIf
-		If _ColorCheck(_GetPixelColor(428, 447 + $midOffsetY, True), Hex(0x4e3d33, 6), 15) Then
-			Setlog(" - Barbarian King available")
-			$iHeroAvailable = BitOR($iHeroAvailable, $HERO_KING)
-			$BarbarianKingAvailable = 1
-		EndIf
-		; Slot 2
-		If _ColorCheck(_GetPixelColor(490, 447 + $midOffsetY, True), Hex(0xf2bb1f, 6), 15) Then
-			Setlog(" - Grand Warden available")
-			$iHeroAvailable = BitOR($iHeroAvailable, $HERO_WARDEN)
-			$GrandWardenAvailable = 1
-		EndIf
-		If _ColorCheck(_GetPixelColor(490, 447 + $midOffsetY, True), Hex(0xa81c08, 6), 15) Then
-			Setlog(" - Archer Queen available")
-			$iHeroAvailable = BitOR($iHeroAvailable, $HERO_QUEEN)
-			$ArcherQueenAvailable = 1
-		EndIf
-		; Slot 3
-		If _ColorCheck(_GetPixelColor(558, 447 + $midOffsetY, True), Hex(0xfecc1d, 6), 15) Then
-			Setlog(" - Grand Warden available")
-			$iHeroAvailable = BitOR($iHeroAvailable, $HERO_WARDEN)
-			$GrandWardenAvailable = 1
+		$GrandWardenAvailable = 1
+		Else
+			If $debugArmyHeroCount = 1 Then Setlog(" - Grand Warden not found", $color_blue)
 		EndIf
 	EndIf
 
