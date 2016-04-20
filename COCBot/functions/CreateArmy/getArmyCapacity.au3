@@ -124,7 +124,7 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		If $fullArmy Then
 			$stayOfflineTime = 0;
 		Else
-			$stayOfflineTime = getRemainingTrainTime()
+			$stayOfflineTime = getRemainingTrainTime(True, False)
 			SetLog($stayOfflineTime & " minutes until troops training is done")
 		EndIf
 	EndIf
