@@ -308,6 +308,21 @@ Func Idle() ;Sequence that runs until Full Army
 		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 		If _Sleep($iDelayIdle1) Then Return
 		If $CommandStop = -1 Then SetLog("====== Waiting for full army ======", $COLOR_GREEN)
+		
+		; stay offline mode
+		If $stayOfflineWhileTrain = 1 Then
+			If $stayOfflineTime > 4 Then ; go offline if remaining training time takes more than 4 minutes
+				CloseCOC() ; Close COC
+				
+				; Sleeping until troops are training
+				$timewait = ($stayOfflineTime - 2) * 60000				   
+				SetLog("====== Sleeping for " & ($stayOfflineTime - 2) & " Minutes ======", $COLOR_GREEN)                 					
+				If _Sleep($timewait) Then Return				
+						
+				OpenCOC() ; Open COC
+			EndIf
+        EndIf
+		
 		Local $hTimer = TimerInit()
 		Local $iReHere = 0
 		While $iReHere < 7

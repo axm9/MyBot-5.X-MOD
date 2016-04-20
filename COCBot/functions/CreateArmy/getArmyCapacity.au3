@@ -119,9 +119,18 @@ Func getArmyCapacity($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 	If ($CurCamp + 1) = $TotalCamp Then
 		$fullArmy = True
 	EndIf
+	
+	If $stayOfflineWhileTrain = 1 Then
+		If $fullArmy Then
+			$stayOfflineTime = 0;
+		Else
+			$stayOfflineTime = getRemainingTrainTime()
+			SetLog($stayOfflineTime & " minutes until troops training is done")
+		EndIf
+	EndIf
 
 	If $bCloseArmyWindow = True Then
-		ClickP($aAway, 1, 0, "#0000") ;Click Away
+		ClickP($aAway, 1, 0, "#0000") ; Click Away
 		If _Sleep($iDelaycheckArmyCamp4) Then Return
 	EndIf
 EndFunc   ;==>getArmyCapacity

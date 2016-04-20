@@ -504,6 +504,14 @@ Func testDefs()
 	CaptureDefs(70, 70, 720, 540)
 EndFunc   ;==>testDefs
 
+Func testArmyInfo()
+	$RunState = True
+	SetLog("ARMY TEST..................START")
+	checkArmyCamp()
+	SetLog("ARMY TEST..................STOP")
+	$RunState = False
+EndFunc   ;==>testTestDonate
+
 Func testTestDonate()
 	$RunState = True
 	SetLog("DONATE TEST..................START")

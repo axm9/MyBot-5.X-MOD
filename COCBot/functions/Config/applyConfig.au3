@@ -1016,6 +1016,13 @@ Func applyConfig($bRedrawAtExit = True) ; Applies the data from config to the co
 		GUICtrlSetState($chkClearBarracksOnStart, $GUI_UNCHECKED)
 	EndIf
 	chkClearBarracksOnStart()
+	
+	If $stayOfflineWhileTrain = 1 Then
+		GUICtrlSetState($chkStayOfflineWhileTrain, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkStayOfflineWhileTrain, $GUI_UNCHECKED)
+	EndIf
+	chkStayOfflineWhileTrain()
 
 	; Spells Creation  ---------------------------------------------------------------------
 	GUICtrlSetData($txtNumLightningSpell, $iLightningSpellComp)

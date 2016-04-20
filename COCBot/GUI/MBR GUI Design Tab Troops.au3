@@ -94,6 +94,12 @@ $tabTroops = GUICtrlCreateTabItem(GetTranslated(1,1, "Troops"))
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "chkClearBarracksOnStart")
 			GUICtrlSetState(-1, $GUI_CHECKED)
+	
+		$chkStayOfflineWhileTrain = GUICtrlCreateCheckbox("Stay offline while training", $x - 20, $y + 20, -1, -1)
+			$txtTip = "Bot will exit Clash of Clans while troops are being trained and remain offline until they are finished."
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetOnEvent(-1, "chkGoOfflineWhileTrain")
+			GUICtrlSetState(-1, $GUI_CHECKED)
 
 	$y = 150
 	$x += 155
