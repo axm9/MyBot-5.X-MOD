@@ -311,12 +311,12 @@ Func Idle() ;Sequence that runs until Full Army
 		
 		; stay offline mode
 		If $stayOfflineWhileTrain = 1 Then
-			If $stayOfflineTime > 4 Then ; go offline if remaining training time takes more than 4 minutes
+			If $stayOfflineTime > 3 Then ; go offline if remaining training time takes more than 3 minutes
 				CloseCOC() ; Close COC
 				
 				; Sleeping until troops are training
-				$timewait = ($stayOfflineTime - 2) * 60000				   
-				SetLog("====== Sleeping for " & ($stayOfflineTime - 2) & " Minutes ======", $COLOR_GREEN)                 					
+				$timewait = ($stayOfflineTime - 1) * 60000				   
+				SetLog("====== Sleeping for " & ($stayOfflineTime - 1) & " Minutes ======", $COLOR_GREEN)                 					
 				If _Sleep($timewait) Then Return				
 						
 				OpenCOC() ; Open COC
