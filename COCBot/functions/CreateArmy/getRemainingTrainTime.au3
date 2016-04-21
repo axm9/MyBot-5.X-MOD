@@ -23,24 +23,28 @@ Func getRemainingTrainTime($Troops = True, $Spells = True)
 	Local $ResultSpells = getOcrLaboratoryTime(363, 423)
 	
 	If $Troops = True Then 
-		If StringInStr($ResultTroops, "h") > 1 Then 
+		If StringInStr($ResultTroops, "h") > 1 Then ; check if time has hour unit
 			$ResultTroopsHour = StringSplit($ResultTroops, "h", $STR_NOCOUNT)
 			; $ResultTroopsHour[0] will be the Hour and the $ResultTroopsHour[1] will be the Minutes with the "m" at end
 			$ResultTroopsMinutes = StringTrimRight($ResultTroopsHour[1], 1) ; removing the "m"
-			$aRemainTrainTroopTimer = (Number($ResultTroopsHour[0])*60) + Number($ResultTroopsMinutes)
+			$aRemainTrainTroopTimer = (Number($ResultTroopsHour[0]) * 60) + Number($ResultTroopsMinutes)
 		Else 
-			$aRemainTrainTroopTimer = Number(StringTrimRight($ResultTroops, 1))
+			If StringInStr($ResultTroops, "m") > 1 Then ; check if time has minute unit
+				$aRemainTrainTroopTimer = Number(StringTrimRight($ResultTroops, 1))
+			EndIf
 		EndIf 
 	EndIf 
 	
 	If $Spells = True Then 
-		If StringInStr($ResultSpells, "h") > 1 Then 
+		If StringInStr($ResultSpells, "h") > 1 Then ; check if time has hour unit
 			$ResultSpellsHour = StringSplit($ResultSpells, "h", $STR_NOCOUNT)
 			; $ResultSpellsHour[0] will be the Hour and the $ResultSpellsHour[1] will be the Minutes with the "m" at end
 			$ResultTroopsMinutes = StringTrimRight($ResultSpellsHour[1], 1) ; removing the "m"
-			$aRemainTrainSpellsTimer = (Number($ResultSpellsHour[0])*60) + Number($ResultTroopsMinutes)
+			$aRemainTrainSpellsTimer = (Number($ResultSpellsHour[0]) * 60) + Number($ResultTroopsMinutes)
 		Else 
-			$aRemainTrainSpellsTimer = Number(StringTrimRight($ResultSpells, 1))
+			If StringInStr($ResultTroops, "m") > 1 Then ; check if time has minute unit
+				$aRemainTrainSpellsTimer = Number(StringTrimRight($ResultSpells, 1))
+			EndIf
 		EndIf
 	EndIf 
 	
