@@ -15,7 +15,6 @@
 
 Func BotCommand()
 	If $iChkBotStop = 1 Then
-
 		$MeetCondStop = False  ; reset flags so bot can restart farming when conditions change.
 		$bTrainEnabled = True
 		$bDonationEnabled = True

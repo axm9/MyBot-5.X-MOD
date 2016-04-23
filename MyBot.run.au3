@@ -241,9 +241,6 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False) ; required here due to many possible exits
 			If $Restart = True Then ContinueLoop
-			If $iUnbreakableMode >= 1 Then
-				If Unbreakable() = True Then ContinueLoop
-			EndIf
 			Laboratory()
 			If _Sleep($iDelayRunBot3) Then Return
 			checkMainScreen(False) ; required here due to many possible exits
@@ -309,6 +306,8 @@ Func Idle() ;Sequence that runs until Full Army
 		If _Sleep($iDelayIdle1) Then Return
 		If $CommandStop = -1 Then SetLog("====== Waiting for full army ======", $COLOR_GREEN)
 		
+		Local $hTimer = TimerInit()
+		
 		; stay offline mode
 		If $stayOfflineWhileTrain = 1 Then
 			If $stayOfflineTime > 3 Then ; go offline if remaining training time takes more than 3 minutes
@@ -323,8 +322,6 @@ Func Idle() ;Sequence that runs until Full Army
 				OpenCOC() ; Open COC
 			EndIf
         EndIf
-		
-		Local $hTimer = TimerInit()
 		Local $iReHere = 0
 		While $iReHere < 7
 			$iReHere += 1
