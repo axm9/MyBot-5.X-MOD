@@ -562,14 +562,29 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "pushbullet", "AlertCampFull", 0)
 	EndIf
-	IniWrite($config, "advanced", "UnbreakableWait", GUICtrlRead($txtUnbreakable))
-	IniWrite($config, "advanced", "minUnBrkgold", GUICtrlRead($txtUnBrkMinGold))
-	IniWrite($config, "advanced", "minUnBrkelixir", GUICtrlRead($txtUnBrkMinElixir))
-	IniWrite($config, "advanced", "minUnBrkdark", GUICtrlRead($txtUnBrkMinDark))
-
-	IniWrite($config, "advanced", "maxUnBrkgold", GUICtrlRead($txtUnBrkMaxGold))
-	IniWrite($config, "advanced", "maxUnBrkelixir", GUICtrlRead($txtUnBrkMaxElixir))
-	IniWrite($config, "advanced", "maxUnBrkdark", GUICtrlRead($txtUnBrkMaxDark))
+	
+	; attack scheduler
+	If GUICtrlRead($chkAttackHours) = $GUI_CHECKED Then
+		IniWrite($config, "advanced", "AttackHoursEnable", 1)
+	Else
+		IniWrite($config, "advanced", "AttackHoursEnable", 0)
+	EndIf
+	
+	Local $string = ""
+	For $i = 0 To 23
+		If GUICtrlRead(Eval("chkAttackHours" & $i)) = $GUI_CHECKED Then
+			$string &= "1|"
+		Else
+			$string &= "0|"
+		EndIf
+	Next
+	IniWrite($config, "advanced", "AttackHours", $string)
+	
+	If GUICtrlRead($chkLogOffIfAttackDisabled) = $GUI_CHECKED Then
+		IniWrite($config, "advanced", "LogOffIfAttackDisabled", 1)
+	Else
+		IniWrite($config, "advanced", "LogOffIfAttackDisabled", 0)
+	EndIf
 
 	; Donate Settings-------------------------------------------------------------------------
 	If GUICtrlRead($chkRequest) = $GUI_CHECKED Then

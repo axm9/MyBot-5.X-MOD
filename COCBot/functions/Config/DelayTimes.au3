@@ -111,16 +111,6 @@ Global Const $iDelayLaunchTroop23 = 300
 Global Const $iDelayOldDropTroop1 = 100
 Global Const $iDelayOldDropTroop2 = 50
 
-;Unbreakable
-Global Const $iDelayUnbreakable1 = 1000
-Global Const $iDelayUnbreakable2 = 2000
-Global Const $iDelayUnbreakable3 = 3000
-Global Const $iDelayUnbreakable4 = 5000
-Global Const $iDelayUnbreakable5 = 15000
-Global Const $iDelayUnbreakable6 = 30000
-Global Const $iDelayUnbreakable7 = 100 ;click
-Global Const $iDelayUnbreakable8 = 50 ;click
-
 ;checkDarkElix
 Global Const $iDelaycheckDarkElix1 = 500
 Global Const $iDelaycheckDarkElix2 = 1000

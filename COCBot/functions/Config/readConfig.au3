@@ -221,6 +221,11 @@ Func readConfig() ;Reads config and sets it to the variables
 		$ATBullyMode = IniRead($config, "advanced", "ATBullyMode", "0")
 		$YourTH = IniRead($config, "advanced", "YourTH", "0")
 		$iTHBullyAttackMode = IniRead($config, "advanced", "THBullyAttackMode", "0")
+		
+		; Attack scheduler------------------------------------------------------------------------
+		$iPlannedAttackHoursEnable = IniRead($config, "advanced", "AttackHoursEnable", "0")
+		$iPlannedAttackHours = StringSplit(IniRead($config, "advanced", "AttackHours", "1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1"),"|", $STR_NOCOUNT)
+		$iLogOffIfAttackDisabled = IniRead($config, "advanced", "LogOffIfAttackDisabled", "0")
 
 		$OptTrophyMode = IniRead($config, "advanced", "TrophyMode", "0")
 		$THaddtiles = IniRead($config, "advanced", "THaddTiles", "2")
@@ -249,14 +254,6 @@ Func readConfig() ;Reads config and sets it to the variables
 		$ichkUseLSpellsTH = IniRead($config, "advanced", "UseLspellTH", "0")
 		$ichkUseRSpellsTH = IniRead($config, "advanced", "UseRspellTH", "0")
 		$ichkUseHSpellsTH = IniRead($config, "advanced", "UseHspellTH", "0")
-
-		$iUnbreakableWait = IniRead($config, "advanced", "UnbreakableWait", "5")
-		$iUnBrkMinGold = IniRead($config, "advanced", "minUnBrkgold", "50000")
-		$iUnBrkMinElixir = IniRead($config, "advanced", "minUnBrkelixir", "50000")
-		$iUnBrkMinDark = IniRead($config, "advanced", "minUnBrkdark", "5000")
-		$iUnBrkMaxGold = IniRead($config, "advanced", "maxUnBrkgold", "600000")
-		$iUnBrkMaxElixir = IniRead($config, "advanced", "maxUnBrkelixir", "600000")
-		$iUnBrkMaxDark = IniRead($config, "advanced", "maxUnBrkdark", "10000")
 
 		;End Battle Settings------------------------------------------------------------------------
 		$sTimeStopAtk = IniRead($config, "endbattle", "txtTimeStopAtk", "20")

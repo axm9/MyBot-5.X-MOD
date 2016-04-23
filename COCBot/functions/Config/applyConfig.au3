@@ -559,15 +559,28 @@ Func applyConfig($bRedrawAtExit = True) ; Applies the data from config to the co
 	ElseIf $ichkAlertPBCampFull = 0 Then
 		GUICtrlSetState($chkAlertPBCampFull, $GUI_UNCHECKED)
 	EndIf
-
-	GUICtrlSetData($txtUnbreakable, $iUnbreakableWait)
-	GUICtrlSetData($txtUnBrkMinGold, $iUnBrkMinGold)
-	GUICtrlSetData($txtUnBrkMinElixir, $iUnBrkMinElixir)
-	GUICtrlSetData($txtUnBrkMinDark, $iUnBrkMinDark)
-	GUICtrlSetData($txtUnBrkMaxGold, $iUnBrkMaxGold)
-	GUICtrlSetData($txtUnBrkMaxElixir, $iUnBrkMaxElixir)
-	GUICtrlSetData($txtUnBrkMaxDark, $iUnBrkMaxDark)
-	chkUnbreakable()
+	
+	; attack scheduler
+	If $iPlannedAttackHoursEnable = 1 Then
+		GUICtrlSetState($chkAttackHours, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkAttackHours, $GUI_UNCHECKED)
+	EndIf
+	chkAttackHours()
+	
+	For $i = 0 To 23
+		If $iPlannedAttackHours[$i] = 1 Then
+			GUICtrlSetState(Eval("chkAttackHours" & $i), $GUI_CHECKED)
+		Else
+			GUICtrlSetState(Eval("chkAttackHours" & $i), $GUI_UNCHECKED)
+		EndIf
+	Next
+	
+	If $iLogOffIfAttackDisabled = 1 Then
+		GUICtrlSetState($chkLogOffIfAttackDisabled, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkLogOffIfAttackDisabled, $GUI_UNCHECKED)
+	EndIf
 
 	; End Battle Settings------------------------------------------------------------------------
 	GUICtrlSetData($txtTimeStopAtk, $sTimeStopAtk)
@@ -1337,12 +1350,14 @@ Func applyConfig($bRedrawAtExit = True) ; Applies the data from config to the co
 		GUICtrlSetState($chkRequestCCHours, $GUI_UNCHECKED)
 	EndIf
 	chkRequestCCHours()
+	
 	If $iPlannedDonateHoursEnable = 1 Then
 		GUICtrlSetState($chkDonateHours, $GUI_CHECKED)
 	Else
 		GUICtrlSetState($chkDonateHours, $GUI_UNCHECKED)
 	EndIf
 	chkDonateHours()
+	
 	If $iPlannedDropCCHoursEnable = 1 Then
 		GUICtrlSetState($chkDropCCHours, $GUI_CHECKED)
 	Else

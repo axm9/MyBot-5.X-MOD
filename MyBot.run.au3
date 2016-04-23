@@ -315,8 +315,9 @@ Func Idle() ;Sequence that runs until Full Army
 				CloseCOC() ; Close COC
 				
 				; Sleeping until troops are training
-				$timewait = ($stayOfflineTime - 1) * 60000				   
-				SetLog("====== Sleeping for " & ($stayOfflineTime - 1) & " Minutes ======", $COLOR_GREEN)                 					
+				$timewait = ($stayOfflineTime - 1) * 60000
+				$timewait += Random(1000, 30000, 1) ; add 1-30 second random to wait time
+				SetLog("====== Sleeping for " & $stayOfflineTime & " Minutes ======", $COLOR_GREEN)                 					
 				If _Sleep($timewait) Then Return				
 						
 				OpenCOC() ; Open COC
@@ -395,53 +396,69 @@ Func Idle() ;Sequence that runs until Full Army
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
-	If $iChkUseCCBalanced = 1 Or $iChkUseCCBalancedCSV = 1 Then ; launch profilereport() only if option balance D/R it's activated
-		ProfileReport()
-		If _Sleep($iDelayAttackMain1) Then Return
-		checkMainScreen(False)
+	Local $time = StringSplit(_NowTime(4), ":", $STR_NOCOUNT)
+	If ($iPlannedAttackHours[$time[0]] <> 0 And $iPlannedAttackHoursEnable = 1) Or $iPlannedAttackHoursEnable = 0 Then ; check id attack scheduler
+		If $iChkUseCCBalanced = 1 Or $iChkUseCCBalancedCSV = 1 Then ; launch profilereport() only if option balance D/R it's activated
+			ProfileReport()
+			If _Sleep($iDelayAttackMain1) Then Return
+			checkMainScreen(False)
+			If $Restart = True Then Return
+		EndIf
+		If Number($iTrophyCurrent) > Number($iTxtMaxTrophy) Then ; If current trophy above max trophy, try drop first
+			DropTrophy()
+			$Is_ClientSyncError = False ; reset OOS flag to prevent looping.
+			If _Sleep($iDelayAttackMain1) Then Return
+			Return ; return to runbot, refill armycamps
+		EndIf
+		If $debugsetlog = 1 Then
+			SetLog(_PadStringCenter(" Hero status check" & BitAND($iHeroAttack[$DB], $iHeroWait[$DB], $iHeroAvailable) & "|" & $iHeroWait[$DB] & "|" & $iHeroAvailable, 54, "="), $COLOR_PURPLE)
+			SetLog(_PadStringCenter(" Hero status check" & BitAND($iHeroAttack[$LB], $iHeroWait[$LB], $iHeroAvailable) & "|" & $iHeroWait[$LB] & "|" & $iHeroAvailable, 54, "="), $COLOR_PURPLE)
+			Setlog("BullyMode: " & $OptBullyMode & ", Bully Hero: " & BitAND($iHeroAttack[$iTHBullyAttackMode], $iHeroWait[$iTHBullyAttackMode], $iHeroAvailable) & "|" & $iHeroWait[$iTHBullyAttackMode] & "|" & $iHeroAvailable, $COLOR_PURPLE)
+		EndIf
+		Switch $iCmbSearchMode
+			Case 0 ; Dead base
+				If Not AreHeroesAvailable($DB) Then
+					Setlog("Heroes not ready for dead base attack, return to wait!", $COLOR_BLUE)
+					Return
+				EndIf
+			Case 1 ; Live base
+				If Not AreHeroesAvailable($LB) Then
+					Setlog("Heroes not ready for live base attack, return to wait!", $COLOR_BLUE)
+					Return
+				EndIf
+			Case 2 ; Both Dead and Live bases
+				If Not AreHeroesAvailable($DB) And Not AreHeroesAvailable($LB) And ($OptBullyMode = 0 And $OptTrophyMode = 0) Then
+					Setlog("Heroes not ready for attack, return to wait!", $COLOR_BLUE)
+					Return
+				EndIf
+		EndSwitch
+		PrepareSearch()
+		If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
 		If $Restart = True Then Return
+		VillageSearch()
+		If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
+		If $Restart = True Then Return
+		PrepareAttack($iMatchMode)
+		If $Restart = True Then Return
+		Attack()
+		If $Restart = True Then Return
+		ReturnHome($TakeLootSnapShot)
+		If _Sleep($iDelayAttackMain2) Then Return
+		Return True
+	Elseif
+		Setlog("Attack scheduler is turned on, attacking is disabled during this hour.", $COLOR_RED)
+		If $iLogOffIfAttackDisabled = 1 Then ; log off and stay offline until next hour
+			CloseCOC() ; Close COC
+				
+			; Sleeping until next hour
+			Local $timewait = (60 - $time[1]) * 60000 
+			$timewait += Random(1000, 10000, 1) ; add 1-10 second random to wait time
+			SetLog("====== Sleeping for " & (60 - $time[1]) & " Minutes ======", $COLOR_GREEN)                 					
+			If _Sleep($timewait) Then Return				
+						
+			OpenCOC() ; Open COC
+		EndIf
 	EndIf
-	If Number($iTrophyCurrent) > Number($iTxtMaxTrophy) Then ; If current trophy above max trophy, try drop first
-		DropTrophy()
-		$Is_ClientSyncError = False ; reset OOS flag to prevent looping.
-		If _Sleep($iDelayAttackMain1) Then Return
-		Return ; return to runbot, refill armycamps
-	EndIf
-	If $debugsetlog = 1 Then
-		SetLog(_PadStringCenter(" Hero status check" & BitAND($iHeroAttack[$DB], $iHeroWait[$DB], $iHeroAvailable) & "|" & $iHeroWait[$DB] & "|" & $iHeroAvailable, 54, "="), $COLOR_PURPLE)
-		SetLog(_PadStringCenter(" Hero status check" & BitAND($iHeroAttack[$LB], $iHeroWait[$LB], $iHeroAvailable) & "|" & $iHeroWait[$LB] & "|" & $iHeroAvailable, 54, "="), $COLOR_PURPLE)
-		Setlog("BullyMode: " & $OptBullyMode & ", Bully Hero: " & BitAND($iHeroAttack[$iTHBullyAttackMode], $iHeroWait[$iTHBullyAttackMode], $iHeroAvailable) & "|" & $iHeroWait[$iTHBullyAttackMode] & "|" & $iHeroAvailable, $COLOR_PURPLE)
-	EndIf
-	Switch $iCmbSearchMode
-		Case 0 ; Dead base
-			If Not AreHeroesAvailable($DB) Then
-				Setlog("Heroes not ready for dead base attack, return to wait!", $COLOR_BLUE)
-				Return
-			EndIf
-		Case 1 ; Live base
-			If Not AreHeroesAvailable($LB) Then
-				Setlog("Heroes not ready for live base attack, return to wait!", $COLOR_BLUE)
-				Return
-			EndIf
-		Case 2 ; Both Dead and Live bases
-			If Not AreHeroesAvailable($DB) And Not AreHeroesAvailable($LB) And ($OptBullyMode = 0 And $OptTrophyMode = 0) Then
-				Setlog("Heroes not ready for attack, return to wait!", $COLOR_BLUE)
-				Return
-			EndIf
-	EndSwitch
-	PrepareSearch()
-	If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
-	If $Restart = True Then Return
-	VillageSearch()
-	If $OutOfGold = 1 Then Return ; Check flag for enough gold to search
-	If $Restart = True Then Return
-	PrepareAttack($iMatchMode)
-	If $Restart = True Then Return
-	Attack()
-	If $Restart = True Then Return
-	ReturnHome($TakeLootSnapShot)
-	If _Sleep($iDelayAttackMain2) Then Return
-	Return True
 EndFunc   ;==>AttackMain
 
 Func Attack() ; Selects which algorithm

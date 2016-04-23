@@ -588,8 +588,6 @@ Global $King, $Queen, $CC, $Barb, $Arch, $LSpell, $LSpellQ, $Warden
 Global $LeftTHx, $RightTHx, $BottomTHy, $TopTHy
 Global $AtkTroopTH
 Global $GetTHLoc
-Global $iUnbreakableMode = 0
-Global $iUnbreakableWait, $iUnBrkMinGold, $iUnBrkMinElixir, $iUnBrkMaxGold, $iUnBrkMaxElixir, $iUnBrkMinDark, $iUnBrkMaxDark
 Global $OutOfGold = 0 ; Flag for out of gold to search for attack
 Global $OutOfElixir = 0 ; Flag for out of elixir to train troops
 
@@ -920,14 +918,19 @@ Global $iWAOffsetX = 0
 Global $iWAOffsetY = 0
 
 ; Planned hours
-Global $iPlannedDonateHours[24]
-Global $iPlannedRequestCCHours[24]
-Global $iPlannedDropCCHours[24]
 Global $iPlannedDonateHoursEnable
 Global $iPlannedRequestCCHoursEnable
 Global $iPlannedDropCCHoursEnable
 Global $iPlannedBoostBarracksEnable
+Global $iPlannedDonateHours[24]
+Global $iPlannedRequestCCHours[24]
+Global $iPlannedDropCCHours[24]
 Global $iPlannedBoostBarracksHours[24]
+
+; Scheduled attacks
+Global $iPlannedAttackHoursEnable
+Global $iPlannedAttackHours[24]
+Global $iLogOffIfAttackDisabled = 0
 
 ; Share attack
 Global $iShareAttack = 0

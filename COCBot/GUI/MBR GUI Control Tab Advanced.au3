@@ -13,27 +13,17 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func chkUnbreakable()
-	If GUICtrlRead($chkUnbreakable) = $GUI_CHECKED Then
-		GUICtrlSetState($txtUnbreakable, $GUI_ENABLE)
-		GUICtrlSetState($txtUnBrkMinGold, $GUI_ENABLE)
-		GUICtrlSetState($txtUnBrkMaxGold, $GUI_ENABLE)
-		GUICtrlSetState($txtUnBrkMinElixir, $GUI_ENABLE)
-		GUICtrlSetState($txtUnBrkMaxElixir, $GUI_ENABLE)
-		GUICtrlSetState($txtUnBrkMinDark, $GUI_ENABLE)
-		GUICtrlSetState($txtUnBrkMaxDark, $GUI_ENABLE)
-		$iUnbreakableMode = 1
-	ElseIf GUICtrlRead($chkUnbreakable) = $GUI_UNCHECKED Then
-		GUICtrlSetState($txtUnbreakable, $GUI_DISABLE)
-		GUICtrlSetState($txtUnBrkMinGold, $GUI_DISABLE)
-		GUICtrlSetState($txtUnBrkMaxGold, $GUI_DISABLE)
-		GUICtrlSetState($txtUnBrkMinElixir, $GUI_DISABLE)
-		GUICtrlSetState($txtUnBrkMaxElixir, $GUI_DISABLE)
-		GUICtrlSetState($txtUnBrkMinDark, $GUI_DISABLE)
-		GUICtrlSetState($txtUnBrkMaxDark, $GUI_DISABLE)
-		$iUnbreakableMode = 0
+Func chkAttackHours()
+	If GUICtrlRead($chkAttackHours) = $GUI_CHECKED Then
+		For $i = $lbAttackHours1 To $lbAttackHoursPM
+			GUICtrlSetState($i, $GUI_ENABLE)
+		Next
+	Else
+		For $i = $lbAttackHours1 To $lbAttackHoursPM
+			GUICtrlSetState($i, $GUI_DISABLE)
+		Next
 	EndIf
-EndFunc   ;==>chkUnbreakable
+EndFunc   ;==>chkAttackHours
 
 Func chkAttackNow()
 	If GUICtrlRead($chkAttackNow) = $GUI_CHECKED Then

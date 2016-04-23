@@ -27,7 +27,6 @@
 #include "functions\Attack\PrepareAttack.au3"
 #include "functions\Attack\ReturnHome.au3"
 #include "functions\Attack\SnipeWhileTrain.au3"
-#include "functions\Attack\Unbreakable.au3"
 ; Unit Info file for casting lightning spell - Added by LunaEclipse
 #include "functions\Attack\UnitInfo.au3"
 
