@@ -271,7 +271,6 @@ Func runBot() ;Bot that runs everything in order
 				If _Sleep($iDelayRunBot1) Then Return
 				If $Restart = True Then ContinueLoop
 			EndIf
-
 		Else ; When error occours directly goes to attack
 			If $Is_SearchLimit = True Then
 				SetLog("Restarted due search limit", $COLOR_BLUE)
@@ -394,7 +393,7 @@ EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
 	Local $time = StringSplit(_NowTime(4), ":", $STR_NOCOUNT)
-	If ($iPlannedAttackHours[$time[0]] <> 0 And $iPlannedAttackHoursEnable = 1) Or $iPlannedAttackHoursEnable = 0 Then ; check id attack scheduler
+	If ($iPlannedAttackHours[$time[0]] <> 0 And $iPlannedAttackHoursEnable = 1) Or $iPlannedAttackHoursEnable = 0 Then ; check if attack is scheduled
 		If $iChkUseCCBalanced = 1 Or $iChkUseCCBalancedCSV = 1 Then ; launch profilereport() only if option balance D/R it's activated
 			ProfileReport()
 			If _Sleep($iDelayAttackMain1) Then Return
@@ -442,7 +441,7 @@ Func AttackMain() ;Main control for attack functions
 		ReturnHome($TakeLootSnapShot)
 		If _Sleep($iDelayAttackMain2) Then Return
 		Return True
-	Elseif
+	Else
 		Setlog("Attack scheduler is turned on, attacking is disabled during this hour.", $COLOR_RED)
 		If $iLogOffIfAttackDisabled = 1 Then ; log off and stay offline until next hour
 			CloseCOC() ; Close COC
