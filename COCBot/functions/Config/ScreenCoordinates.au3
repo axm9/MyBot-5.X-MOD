@@ -78,8 +78,8 @@ Global $aIsGemWindow3[4]     	= [586, 266 + $midOffsetY, 0xBC1218, 20] ; Main Sc
 Global $aIsGemWindow4[4]     	= [595, 266 + $midOffsetY, 0xBC1218, 20] ; Main Screen, pixel below Red X to close gem window
 Global $aLootCartBtn[2]      	= [430, 640 + $bottomOffsetY] ; Main Screen Loot Cart button
 Global $aCleanYard[4]        	= [418, 587 + $bottomOffsetY, 0xE1debe, 20] ; Main Screen Clean Resources - Trees , Mushrooms etc
-Global $aIsTrainPgChk1[4]	  = [717, 120 + $midOffsetY, 0xE0070A, 10]  ; Main Screen, Train page open - Red below X
-Global $aIsTrainPgChk2[4]	  = [762, 328 + $midOffsetY, 0xF18439, 10]  ; Main Screen, Train page open - Dark Orange in left arrow
+Global $aIsTrainPgChk1[4]	  	= [717, 120 + $midOffsetY, 0xE0070A, 10]  ; Main Screen, Train page open - Red below X
+Global $aIsTrainPgChk2[4]	  	= [762, 328 + $midOffsetY, 0xF18439, 10]  ; Main Screen, Train page open - Dark Orange in left arrow
 
 Global $aKingHealth          	= [ -1, 572 + $bottomOffsetY, 0x00b29e, 15] ; Attack Screen, Check King's Health, X coordinate is dynamic, not used from array   ;  -> with slot compensation 0xbfb29e
 Global $aQueenHealth         	= [ -1, 572 + $bottomOffsetY, 0x008227, 15] ; Attack Screen, Check Queen's Health, X coordinate is dynamic, not used from array  ;  -> with slot compensation 0xe08227
@@ -90,42 +90,42 @@ Global $aWonOneStarAtkRprt[4] 	= [325, 180 + $midOffsetY, 0xC8CaC4, 30] ; Center
 Global $aWonTwoStarAtkRprt[4] 	= [398, 180 + $midOffsetY, 0xD0D6D0, 30] ; Center of 2nd Star reached attacked village
 Global $aWonThreeStarAtkRprt[4] = [534, 180 + $midOffsetY, 0xC8CAC7, 30] ; Center of 3rd Star reached attacked village
 
-Global $TrainBarb[4]        	= [ 220, 310 + $midOffsetY, 0xFFC721,     40] ;  Done
-Global $TrainArch[4]        	= [ 301, 315 + $midOffsetY, 0x882852,     40] ;  Done 882858
-Global $TrainGiant[4]       	= [ 442, 310 + $midOffsetY, 0xFFCB8A,     40] ;  Done
-Global $TrainGobl[4]        	= [ 546, 310 + $midOffsetY, 0xA8F468,     40] ;  Done A0F263
-Global $TrainWall[4]        	= [ 646, 310 + $midOffsetY, 0x78D4F0,     40] ;  Done 72D4EA
+Global $TrainBarb[4] 			= [166, 310 + $midOffsetY, 0xFFB620, 40]
+Global $TrainArch[4] 			= [245, 315 + $midOffsetY, 0x882852, 40]
+Global $TrainGiant[4]			= [370, 310 + $midOffsetY, 0xFFCE94, 40]
+Global $TrainGobl[4] 			= [482, 310 + $midOffsetY, 0xA9F36B, 40]
+Global $TrainWall[4] 			= [557, 310 + $midOffsetY, 0x786C8A, 40]
+Global $TrainBall[4] 			= [682, 310 + $midOffsetY, 0x7C1C10, 40]
+
+Global $TrainWiza[4] 			= [183, 446 + $midOffsetY, 0xE3937C, 40]
+Global $TrainHeal[4] 			= [263, 459 + $midOffsetY, 0xD67244, 40]
+Global $TrainDrag[4]			= [383, 459 + $midOffsetY, 0x493153, 40]
+Global $TrainPekk[4] 			= [474, 459 + $midOffsetY, 0x395671, 40]
 	
-Global $TrainBall[4]        	= [ 220, 459 + $midOffsetY, 0x1C150C,     40] ;  Done
-Global $TrainWiza[4]        	= [ 319, 447 + $midOffsetY, 0x000000,     40] ;  Done
-Global $TrainHeal[4]        	= [ 442, 459 + $midOffsetY, 0xD77E57,     40] ;  Done D0724B
-Global $TrainDrag[4]        	= [ 546, 459 + $midOffsetY, 0xD04428,     40] ;  Done
-Global $TrainPekk[4]        	= [ 646, 459 + $midOffsetY, 0x406281,     40] ;  Done 436486
+Global $TrainMini[4]        	= [ 220, 310 + $midOffsetY, 0x182340, 40]
+Global $TrainHogs[4]        	= [ 301, 310 + $midOffsetY, 0x72D0E8, 40]
+Global $TrainValk[4]        	= [ 442, 310 + $midOffsetY, 0xA64002, 40]
+Global $TrainGole[4]        	= [ 546, 310 + $midOffsetY, 0xDEC3A8, 40]
+Global $TrainWitc[4]        	= [ 646, 324 + $midOffsetY, 0x3D3C65, 40]
 	
-Global $TrainMini[4]        	= [ 220, 310 + $midOffsetY, 0x182340,     40] ;  Done
-Global $TrainHogs[4]        	= [ 301, 310 + $midOffsetY, 0x72D0E8,     40] ;  Done 71D0E8
-Global $TrainValk[4]        	= [ 442, 310 + $midOffsetY, 0xA64002,     40] ;  Done A33D08
-Global $TrainGole[4]        	= [ 546, 310 + $midOffsetY, 0xDEC3A8,     40] ;  Done D8C0A5
-Global $TrainWitc[4]        	= [ 646, 324 + $midOffsetY, 0x3D3C65,     40] ;  Fix V4.0.1?  383865
+Global $TrainLava[4]        	= [ 220, 459 + $midOffsetY, 0x4F4F40, 40]
 	
-Global $TrainLava[4]        	= [ 220, 459 + $midOffsetY, 0x4F4F40,     40] ;  Done  4A4D3F
-	
-Global $NextBtn[4]          	= [ 780, 546 + $bottomOffsetY, 0xD34300,  20] ;  Next Button
+Global $NextBtn[4]          	= [ 780, 546 + $bottomOffsetY, 0xD34300, 20] ;  Next Button
 ; Someone asking troops : Color 0xD0E978 in x = 121
 
 Global $aRequestTroopsAO[6]		= [707, 290 + $midOffsetY, 0xD8EC80, 0x12130B, 0xDADADA, 20] ; Button Request Troops in Army Overview  (x,y,can request, request allready made, army full/no clan, toll)
 
-Global Const $FullBarb[4]   	= [ 253, 375 + $midOffsetY, 0x8F8F8F, 45]  ; Location of Elixir check pixel with normal color and Barrack Full color
-Global Const $FullArch[4]   	= [ 360, 375 + $midOffsetY, 0x8D8D8D, 45]
-Global Const $FullGiant[4]  	= [ 468, 375 + $midOffsetY, 0x8D8D8D, 45]
-Global Const $FullGobl[4]   	= [ 574, 375 + $midOffsetY, 0x8F8F8F, 45]
-Global Const $FullWall[4]   	= [ 680, 375 + $midOffsetY, 0x8F8F8F, 45]
-	
-Global Const $FullBall[4]   	= [ 253, 482 + $midOffsetY, 0xB5B5B5, 45]
-Global Const $FullWiza[4]   	= [ 360, 482 + $midOffsetY, 0xB5B5B5, 45]
-Global Const $FullHeal[4]   	= [ 468, 482 + $midOffsetY, 0xB5B5B5, 45]
-Global Const $FullDrag[4]   	= [ 574, 482 + $midOffsetY, 0xB5B5B5, 45]
-Global Const $FullPekk[4]   	= [ 680, 482 + $midOffsetY, 0xB5B5B5, 45]
+Global Const $FullBarb[4] 		= [198, 375 + $midOffsetY, 0x6D6D6D, 45] ; Location of Elixir check pixel with normal color and Barrack Full color
+Global Const $FullArch[4] 		= [308, 375 + $midOffsetY, 0x7F7F7F, 45]
+Global Const $FullGiant[4]		= [405, 375 + $midOffsetY, 0x7F7F7F, 45]
+Global Const $FullGobl[4] 		= [507, 375 + $midOffsetY, 0x7D7D7D, 45]
+Global Const $FullWall[4] 		= [609, 375 + $midOffsetY, 0x797979, 45]
+Global Const $FullBall[4] 		= [712, 375 + $midOffsetY, 0x7D7D7D, 45]
+		
+Global Const $FullWiza[4] 		= [200, 482 + $midOffsetY, 0x9C9C9C, 45]
+Global Const $FullHeal[4] 		= [302, 482 + $midOffsetY, 0x9F9F9F, 45]
+Global Const $FullDrag[4] 		= [404, 482 + $midOffsetY, 0x9C9C9C, 45]
+Global Const $FullPekk[4] 		= [507, 482 + $midOffsetY, 0x949494, 45]
 	
 Global Const $FullMini[4]   	= [ 255, 348 + $midOffsetY, 0xFFFFFF, 15] ; 0xC7F8F8 Most locations are only 30 decimal change in blue to gray (Dk blue chest)
 Global Const $FullHogs[4]   	= [ 364, 355 + $midOffsetY, 0xB2B2B2, 30] ; 0xD07C58 normal (lt brown shoulder)
@@ -135,24 +135,25 @@ Global Const $FullWitc[4]   	= [ 638, 339 + $midOffsetY, 0xACACAC, 15] ; 0xF83DA
 Global Const $FullLava[4]   	= [ 256, 458 + $midOffsetY, 0xB3B3B3, 30] ; 0xFF7000 normal (Orange line above DE drop)
 
 ; Pixel location of middle of right side of zero text for troop training, and color when out of Elixir
-Global Const $GemBarb[4]    	= [ 239, 372 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemArch[4]    	= [ 346, 372 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemGiant[4]   	= [ 453, 372 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemGobl[4]    	= [ 559, 372 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemWall[4]    	= [ 666, 372 + $midOffsetY, 0xE70A12, 30]	
-
-Global Const $GemBall[4]    	= [ 239, 372 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemWiza[4]    	= [ 346, 372 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemHeal[4]    	= [ 453, 372 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemDrag[4]    	= [ 559, 372 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemPekk[4]    	= [ 666, 372 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemBarb[4] 		= [187, 372 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemArch[4] 		= [290, 372 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemGiant[4]		= [392, 372 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemGobl[4] 		= [495, 372 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemWall[4] 		= [597, 372 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemBall[4] 		= [700, 372 + $midOffsetY, 0xE70A12, 30]
+		
+Global Const $GemWiza[4] 		= [188, 475 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemHeal[4] 		= [290, 475 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemDrag[4] 		= [392, 475 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemPekk[4] 		= [495, 475 + $midOffsetY, 0xE70A12, 30]
 	
 Global Const $GemMini[4]    	= [ 239, 378 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemHogs[4]    	= [ 346, 379 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemValk[4]    	= [ 453, 372 + $midOffsetY, 0xE70A12, 30]
 Global Const $GemGole[4]    	= [ 559, 378 + $midOffsetY, 0xE70A12, 30]
-Global Const $GemWitc[4]    	= [ 666, 372 + $midOffsetY, 0xE70A12, 30]	
-Global Const $GemLava[4]    	= [ 239, 372 + $midOffsetY, 0xE70A12, 30]
+Global Const $GemWitc[4]    	= [ 666, 372 + $midOffsetY, 0xE70A12, 30]
+
+Global Const $GemLava[4]    	= [ 239, 482 + $midOffsetY, 0xE70A12, 30]
 	
 Global Const $aCloseChat[4] 	= [ 331, 330 + $midOffsetY, 0xF0A03B, 20]
 
